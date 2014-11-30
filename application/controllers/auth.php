@@ -78,7 +78,7 @@ class Auth extends CI_Controller {
                 //if the login was un-successful
                 //redirect them back to the login page
                 $this->session->set_flashdata('message', $this->ion_auth->errors());
-                redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+                redirect('auth/login_wrong_attempt', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
             }
         } else {
             //the user is not logging in so display the login page
@@ -186,10 +186,19 @@ class Auth extends CI_Controller {
             } else {
                 $this->data['identity_label'] = $this->lang->line('forgot_password_email_identity_label');
             }
-
+            $this->data['identity'] = array('name' => 'identity',
+                'id' => 'identity',
+                'type' => 'text',
+                'value' => $this->form_validation->set_value('identity'),
+            );
+            $this->data['password'] = array('name' => 'password',
+                'id' => 'password',
+                'type' => 'password',
+            );
             //set any errors and display the form
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-            $this->_render_page('auth/forgot_password', $this->data);
+            //$this->_render_page('auth/forgot_password', $this->data);
+            $this->template->load(NULL, "auth/forgot_password", $this->data);
         } else {
             // get identity for that email
             $config_tables = $this->config->item('tables', 'ion_auth');
@@ -655,6 +664,21 @@ class Auth extends CI_Controller {
 
         if (!$render)
             return $view_html;
+    }
+    
+    function login_wrong_attempt() {
+        $this->data['message'] = $this->session->flashdata('message');
+        $this->data['identity'] = array('name' => 'identity',
+            'id' => 'identity',
+            'type' => 'text',
+            'value' => $this->form_validation->set_value('identity'),
+        );
+        $this->data['password'] = array('name' => 'password',
+            'id' => 'password',
+            'type' => 'password',
+        );
+        
+        //$this->template->load(NULL, "", $this->data);
     }
 
 }
