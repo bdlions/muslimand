@@ -1,0 +1,17 @@
+/* 
+    Document   : template.css
+    Created on : Nov 11, 2014, 10:35:07 PM
+    Author     : Alamgir
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.header{
+    background-color:green; 
+    height: 160px; 
+    color:white; 
+    text-align: right; 
+    background-image: url('../images/header_back.png'); 
+    background-repeat: repeat-x;
+}
+
