@@ -3,10 +3,10 @@
         <span style="font-size: 40px">Sign Up</span>
     </div>
     <div class="row form-group">
-        <div class="col-md-offset-1 col-md-6">
+        <div class="col-md-7">
             <img class="img-responsive" style="width: 100%" src="<?php echo base_url() ?>resources/images/banner.png">
         </div>
-        <div class="col-md-4" style="padding-left: 0px;">
+        <div class="col-md-5" style="padding-left: 0px;">
             <?php echo form_open("auth/login", array('id' => '', 'class' => 'form-horizontal')); ?>
             <div class="row form-group">
                 <label class="col-md-5 control-label">First name </label> 
@@ -58,18 +58,11 @@
             </div>
             <?php echo form_close(); ?>
         </div>
-        <div class="col-md-1">
-
-        </div>
-
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12 form-group">
-
-
-
+        <div class="col-md-12 form-group" style="padding: 0px">
             <?php for ($i = 0; $i < 12; $i++): ?>
                 <div class="col-md-1" style="padding-left: 0px">
                     <div class="row">
@@ -82,9 +75,7 @@
                                     <div class="col-md-5" style="padding-left: 0px">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div style="color: darkgreen; font-weight: bold; font-size: 8px; line-height: 10px">Tanveer Ahmed</div>
-                                                <!--                                                    <div style="font-size: 5px; line-height: 5px">Moderator</div>
-                                                                                                    <div style="font-size: 5px; line-height: 7px">Bangladesh</div>-->
+                                                <div style="color: darkgreen; font-weight: bold; font-size: 8px; line-height: 10px">Nazrul Islam</div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -99,7 +90,6 @@
                     </div>
                 </div>
             <?php endfor; ?>
-
 
         </div>
     </div>

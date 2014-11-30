@@ -1,4 +1,4 @@
-<div style="border: 2px solid lightgray; width: 100%"></div>
+<div style="border: 1px solid lightgray; width: 100%"></div>
 
 <div class="container-fluid">
     <div class="row">
