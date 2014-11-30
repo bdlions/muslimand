@@ -7,7 +7,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />        
         <meta name="keywords" content=""/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Muslimand</title>        
+        <title>Muslimand</title>
+        
+        <link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
+        <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>resources/css/styles.css'/>
+        <link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>resources/css/template.css">
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="<?php echo base_url(); ?>resources/js/jquery-1.11.1.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
     </head>
     <body class="back">
         <?php $this->load->view("templates/sections/header_with_login");?>

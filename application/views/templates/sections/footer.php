@@ -1,8 +1,11 @@
-<?php
+<div style="border: 2px solid lightgray; width: 100%"></div>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div style="padding: 20px 0px 0px 20px; color: #62C362">
+                About | Contact | Terms
+            </div>
+        </div>
+    </div>
+</div>
