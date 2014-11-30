@@ -29,7 +29,8 @@ class Auth extends CI_Controller {
             redirect('auth/login', 'refresh');
         } else {
             $user_group = $this->ion_auth->get_current_user_types();
-            foreach ($user_group as $group) {
+            //print_r($user_group);
+            foreach ($user_group as $key => $group) {
                 if($group == ADMIN){
                     //set the flash data error message if there is one
                     $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
@@ -45,12 +46,14 @@ class Auth extends CI_Controller {
                     break;
                 }
                 elseif($group == MEMBER){
-                    $this->template->load(NULL, MEMBER_LOGIN_SUCCESS_VIEW);
-                    break;
+                    $this->data['message'] = validation_errors() ? validation_errors() : $this->session->flashdata('message');
+                    $this->template->load(NULL, MEMBER_LOGIN_SUCCESS_VIEW, $this->data);
+                    return;
                 }
                 else{
                     echo "Non member";
                 }
+                
             }
             
         }
@@ -59,28 +62,104 @@ class Auth extends CI_Controller {
     //log the user in
     function login() {
         $this->data['title'] = "Login";
-
-        //validate form input
-        $this->form_validation->set_rules('identity', 'Identity', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-
+        if ($this->input->post('register_btn') != null) {
+            //validate form input to register
+            $this->form_validation->set_rules('r_first_name', 'First Name', 'required');
+            $this->form_validation->set_rules('r_last_name', 'Last Name', 'required');
+            $this->form_validation->set_rules('r_email', 'Email', 'required');        
+            $this->form_validation->set_rules('r_password', 'Password', 'required');
+            $this->form_validation->set_rules('r_password_conf', 'Password confirm', 'required|matches[r_password]');
+        }
+        else if ($this->input->post('login_btn') != null)
+        {
+            //validate form input to login
+            $this->form_validation->set_rules('identity', 'Identity', 'required');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+        }
+        
         if ($this->form_validation->run() == true) {
-            //check to see if the user is logging in
-            //check for "remember me"
-            $remember = (bool) $this->input->post('remember');
+            if ($this->input->post('register_btn') != null) {
+                $username = strtolower($this->input->post('r_first_name')) . ' ' . strtolower($this->input->post('r_last_name'));
+                $email = $this->input->post('r_email');
+                $password = $this->input->post('r_password');
 
-            if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
-                //if the login is successful
-                //redirect them back to the home page
-                $this->session->set_flashdata('message', $this->ion_auth->messages());
-                redirect('auth/', 'refresh');
-            } else {
-                //if the login was un-successful
-                //redirect them back to the login page
-                $this->session->set_flashdata('message', $this->ion_auth->errors());
-                redirect('auth/login_wrong_attempt', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+                $additional_data = array(
+                    'first_name' => $this->input->post('r_first_name'),
+                    'last_name' => $this->input->post('r_last_name')
+                );
+                if ($this->ion_auth->register($username, $password, $email, $additional_data)) {
+                    //check to see if we are creating the user
+                    //redirect them back to the admin page
+                    $this->session->set_flashdata('message', $this->ion_auth->messages());
+                } else {
+                    $this->session->set_flashdata('message', "Unsuccessful to register a user.");
+                }
+                redirect("auth/login", 'refresh');
+                //$this->data['message'] = $this->session->flashdata('message');
+                //redirect("auth/login", 'refresh');
+                //$this->template->load("templates/profile_setting_tmpl", "display_message", $this->data);
             }
+            else if ($this->input->post('login_btn') != null)
+            {
+                //check to see if the user is logging in
+                //check for "remember me"
+                $remember = (bool) $this->input->post('remember');
+
+                if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
+                    //if the login is successful
+                    //redirect them back to the home page
+                    $this->session->set_flashdata('message', $this->ion_auth->messages());
+                    redirect('auth/', 'refresh');
+                } else {
+                    //if the login was un-successful
+                    //redirect them back to the login page
+                    $this->session->set_flashdata('message', $this->ion_auth->errors());
+                    redirect('auth/login_wrong_attempt', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+                }
+            }            
         } else {
+            
+            $this->data['r_first_name'] = array(
+                'name' => 'r_first_name',
+                'id' => 'r_first_name',
+                'type' => 'text',
+                'placeholder' => lang('create_user_fname_label'),
+                'value' => $this->form_validation->set_value('r_first_name'),
+            );
+            $this->data['r_last_name'] = array(
+                'name' => 'r_last_name',
+                'id' => 'r_last_name',
+                'type' => 'text',
+                'placeholder' => lang('create_user_lname_label'),
+                'value' => $this->form_validation->set_value('r_last_name'),
+            );
+            $this->data['r_email'] = array(
+                'name' => 'r_email',
+                'id' => 'r_email',
+                'type' => 'text',
+                'placeholder' => lang('create_user_email_label'),
+                'value' => $this->form_validation->set_value('r_email'),
+            );
+            $this->data['r_password'] = array(
+                'name' => 'r_password',
+                'id' => 'r_password',
+                'type' => 'password',
+                'placeholder' => lang('create_user_password_label'),
+                'value' => $this->form_validation->set_value('r_password'),
+            );
+            $this->data['r_password_conf'] = array(
+                'name' => 'r_password_conf',
+                'id' => 'r_password_conf',
+                'type' => 'password',
+                'placeholder' => lang('create_user_confirm_password_label'),
+                'value' => $this->form_validation->set_value('r_password_conf'),
+            );            
+            $this->data['register_btn'] = array('name' => 'register_btn',
+                'id' => 'register_btn',
+                'type' => 'submit',
+                'value' => 'Sign Up',
+            );
+
             //the user is not logging in so display the login page
             //set the flash data error message if there is one
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
@@ -93,6 +172,12 @@ class Auth extends CI_Controller {
             $this->data['password'] = array('name' => 'password',
                 'id' => 'password',
                 'type' => 'password',
+            );
+            $this->data['login_btn'] = array('name' => 'login_btn',
+                'id' => 'login_btn',
+                'type' => 'submit',
+                'tabindex' => '4',
+                'value' => 'Sign in',
             );
 
             $this->template->load(NULL, LOGIN_VIEW, $this->data);

@@ -11,31 +11,31 @@
             <div class="row form-group">
                 <label class="col-md-5 control-label">First name </label> 
                 <div class="col-md-7">
-                    <input type="text" class="form-control" id="first_name" placeholder="Enter First Name">
+                    <?php echo form_input($r_first_name + array('class' => 'form-control')); ?>
                 </div>
             </div>
             <div class="row form-group">
                 <label class="col-md-5 control-label">Last name</label> 
                 <div class="col-md-7">
-                    <input type="text" class="form-control" id="last_name" placeholder="Enter Last Name">
+                    <?php echo form_input($r_last_name + array('class' => 'form-control')); ?>
                 </div>
             </div>
             <div class="row form-group">
                 <label class="col-md-5 control-label">Email</label> 
                 <div class="col-md-7">
-                    <input type="email" class="form-control" id="email" placeholder="Enter Email Address">
+                    <?php echo form_input($r_email + array('class' => 'form-control')); ?>
                 </div>
             </div>
             <div class="row form-group">
                 <label class="col-md-5 control-label">Password</label> 
                 <div class="col-md-7">
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <?php echo form_input($r_password + array('class' => 'form-control')); ?>
                 </div>
             </div>
             <div class="row form-group">
                 <label class="col-md-5 control-label">Confirm Password</label> 
                 <div class="col-md-7">
-                    <input type="password" class="form-control" id="confirm_password" placeholder="Re-enter Password">
+                    <?php echo form_input($r_password_conf + array('class' => 'form-control')); ?>
                 </div>
             </div>
             <div class="row form-group">
@@ -53,7 +53,7 @@
             </div>
             <div class="row form-group">
                 <div class="col-md-offset-5 col-md-7">
-                    <button type="submit" class="btn btn-success col-md-12" style="font-weight: bolder">SIGN UP</button> 
+                    <?php echo form_input($register_btn + array('class' => 'btn btn-success pull-right')); ?>
                 </div>
             </div>
             <?php echo form_close(); ?>

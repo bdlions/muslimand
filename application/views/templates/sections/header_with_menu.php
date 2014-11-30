@@ -6,26 +6,23 @@
             <br>Hello Muslims! Keep updated with Muslimand
         </div>
         <div class="col-md-3">
-            facebook tweeter
+            
         </div>
         <div class="col-md-2">
             <div class="">
-                <label class="control-label">Email/Username:</label> 
-                <?php echo form_input($identity + array('class' => 'form-control')); ?>
+                
             </div>
             <div class="">
-                <input type="checkbox"> <label class="control-label"> Remember Me</label> 
+                
             </div>
 
         </div>
         <div class="col-md-2">
             <div class="">
-                <label class="control-label">Password:</label>
-                <?php echo form_input($password + array('class' => 'form-control')); ?>
+                
             </div>
             <div class="">                
-                <?php echo form_input($login_btn + array('class' => 'btn btn-success pull-right col-md-3')); ?>
-                <a href="forgot_password" style="font-weight: bolder; color: white">Forgot password?</a>
+                
             </div>
         </div>
         <div class="col-md-1"></div>

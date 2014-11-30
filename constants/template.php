@@ -1,4 +1,8 @@
 <?php
+
+define('ADMIN', 'admin');
+define('MEMBER', 'members');
+
 define('NON_MEMBER_TEMPLATE', 'templates/home_tmpl');
 define('LOGIN_VIEW', 'nonmember/templates/main');
 
