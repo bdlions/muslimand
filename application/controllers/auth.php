@@ -763,7 +763,7 @@ class Auth extends CI_Controller {
             'type' => 'password',
         );
         
-        //$this->template->load(NULL, "", $this->data);
+        $this->template->load(NULL, "auth/wrong_password", $this->data);
     }
 
 }
