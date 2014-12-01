@@ -280,6 +280,11 @@ class Auth extends CI_Controller {
                 'id' => 'password',
                 'type' => 'password',
             );
+            $this->data['login_btn'] = array('name' => 'login_btn',
+                'id' => 'login_btn',
+                'type' => 'submit',
+                'value' => 'Sign in',
+            );
             //set any errors and display the form
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
             //$this->_render_page('auth/forgot_password', $this->data);
