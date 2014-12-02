@@ -767,7 +767,11 @@ class Auth extends CI_Controller {
             'id' => 'password',
             'type' => 'password',
         );
-        
+        $this->data['login_btn'] = array('name' => 'login_btn',
+            'id' => 'login_btn',
+            'type' => 'submit',
+            'value' => 'Sign in',
+        );        
         $this->template->load(NULL, "auth/wrong_password", $this->data);
     }
 
