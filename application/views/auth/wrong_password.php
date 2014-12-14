@@ -1,31 +1,3 @@
-<!--
-<div class="row form-group">  
-    <div class="col-md-4">
-
-    </div>
-</div>
-<div class="row form-group">
-    <label class="col-md-2" class="form-control">Email</label>
-    <div class="col-md-4">
-        <input type="email" class="form-control" id="email" placeholder="Enter Email Address">  
-    </div>
-</div>
-<div class="row form-group">
-    <label class="col-md-2" class="form-control">Password</label>
-    <div class="col-md-4">
-        <input type="password" class="form-control" id="password" placeholder="Enter your password">  
-    </div>
-</div>
-
-<div class="row form-group">
-    <div class=" col-md-offset-5 col-md-2">
-        <button class="btn btn-default">login</button>
-    </div>
-</div>
-<div>
-    <a ref=''>Forget Password?</a>
-</div>
--->
 
 
 <div class="row">

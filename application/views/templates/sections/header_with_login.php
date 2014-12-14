@@ -9,26 +9,32 @@
             facebook tweeter
         </div>
         <div class="col-md-2">
-            <div class="">
-                <label class="control-label">Email/Username:</label> 
+            <div class="form-group">
+                <label class="control-label">Email:</label> 
                 <?php echo form_input($identity + array('class' => 'form-control')); ?>
             </div>
             <div class="">
-                <input type="checkbox"> <label class="control-label"> Remember Me</label> 
+                <input type="checkbox"> <label class="control-label"> Remember me</label> 
             </div>
 
         </div>
         <div class="col-md-2">
-            <div class="">
+            <div class="form-group">
                 <label class="control-label">Password:</label>
                 <?php echo form_input($password + array('class' => 'form-control')); ?>
             </div>
             <div class="">                
-                <?php echo form_input($login_btn + array('class' => 'btn btn-success pull-right col-md-3')); ?>
+             
                 <a href="forgot_password" style="font-weight: bolder; color: white">Forgot password?</a>
             </div>
         </div>
-        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <div class="" style="margin-top: 25px">                
+                <?php echo form_input($login_btn + array('class' => 'btn btn-success pull-right')); ?>
+                
+            </div>
+        </div>
+       
 
         <?php echo form_close(); ?>
     </div>

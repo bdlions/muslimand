@@ -140,6 +140,7 @@ class Auth extends CI_Controller {
                 'placeholder' => lang('create_user_email_label'),
                 'value' => $this->form_validation->set_value('r_email'),
             );
+            
             $this->data['r_password'] = array(
                 'name' => 'r_password',
                 'id' => 'r_password',
@@ -151,7 +152,7 @@ class Auth extends CI_Controller {
                 'name' => 'r_password_conf',
                 'id' => 'r_password_conf',
                 'type' => 'password',
-                'placeholder' => lang('create_user_confirm_password_label'),
+                'placeholder' => lang('create_user_password_label'),
                 'value' => $this->form_validation->set_value('r_password_conf'),
             );            
             $this->data['register_btn'] = array('name' => 'register_btn',

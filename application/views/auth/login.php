@@ -31,11 +31,11 @@
                         </div>
                         <div class="col-md-2">
                             <div class="">
-                                <label class="control-label">Email/Username:</label> 
+                                <label class="control-label">Email:</label> 
                                 <?php echo form_input($identity + array('class' => 'form-control')); ?>
                             </div>
                             <div class="">
-                                <input type="checkbox"> <label class="control-label"> Remember Me</label> 
+                                <input type="checkbox"> <label class="control-label"> Remember me</label> 
                             </div>
 
                         </div>
@@ -67,38 +67,32 @@
                 <div class="col-md-4" style="padding-left: 0px;">
                     <?php echo form_open("auth/login", array('id' => '', 'class' => 'form-horizontal')); ?>
                     <div class="row form-group">
-                        <label class="col-md-5 control-label">First name </label> 
-                        <div class="col-md-7">
+                       <div class="col-md-9">
                             <input type="text" class="form-control" id="first_name" placeholder="Enter First Name">
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label class="col-md-5 control-label">Last name</label> 
-                        <div class="col-md-7">
+                         <div class="col-md-9">
                             <input type="text" class="form-control" id="last_name" placeholder="Enter Last Name">
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label class="col-md-5 control-label">Email</label> 
-                        <div class="col-md-7">
+                        <div class="col-md-9">
                             <input type="email" class="form-control" id="email" placeholder="Enter Email Address">
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label class="col-md-5 control-label">Password</label> 
-                        <div class="col-md-7">
+                        <div class="col-md-9">
                             <input type="password" class="form-control" id="password" placeholder="Password">
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label class="col-md-5 control-label">Confirm Password</label> 
-                        <div class="col-md-7">
+                        <div class="col-md-9">
                             <input type="password" class="form-control" id="confirm_password" placeholder="Re-enter Password">
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label class="col-md-5 control-label">Gender</label> 
-                        <div class="col-md-7">
+                        <div class="col-md-9">
                             <select class="form-control">
                                 <option class="form-control">
                                     Male
@@ -110,7 +104,7 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-md-offset-5 col-md-7">
+                        <div class="col-md-offset-5 col-md-9">
                             <button type="submit" class="btn btn-success col-md-12" style="font-weight: bolder">SIGN UP</button> 
                         </div>
                     </div>
