@@ -774,5 +774,24 @@ class Auth extends CI_Controller {
         );        
         $this->template->load(NULL, "auth/wrong_password", $this->data);
     }
+    
+    
+    
+//    function newsfeed()
+//    {
+//        $this->template->load(NULL, "view/member/newsfeed", $this->data);
+//    }
+//    function profile()
+//    {
+//        $this->template->load(NULL, "view/member/profile", $this->data);
+//    }
+//    function ()
+//    {
+//        $this->template->load(NULL, "view/member/newsfeed", $this->data);
+//    }
+//    function newsfeed()
+//    {
+//        $this->template->load(NULL, "view/member/newsfeed", $this->data);
+//    }
 
 }
