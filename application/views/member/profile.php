@@ -42,10 +42,15 @@
                     </div>
                     <div class=" col-md-7" style=" position: relative; border: 1px solid #DCDCDC;">
                         <div class=" coverBorder">
+                            <a id="u_jsonp_12_6" class="profilePicThumb" rel="theater" href="#">
+                                <img style="position: absolute; bottom: 10px; left: 20px; "class="profilePic img" src="images/Food.jpg" width="160" height="160" alt="Profile Name">
+                                <button type="button" class=" btn btn-default" style=" position: absolute; bottom: 40px; left: 24px; font-size: 80%">Upload profile picture</button>
+                            </a>
+                            <a  style="position: absolute; bottom: 32px; left: 180px;"class=" btn" href=""> Profile Name</a>
                             <button type="button" class=" btn btn-default" style=" position: absolute; top: 10px; left: 20px; font-size: 80%">Upload photo</button>
                             <button type="button" class=" btn btn-default" style=" position: absolute; bottom: 20px; right:  140px; font-size: 80%">Update Info</button>
                             <button type="button" class=" btn btn-default" style=" position: absolute; bottom: 20px; right:  20px; font-size: 80%">View Activity Log</button>
-                            <img src="images/car.jpg" alt="Smiley face" width="100%" height="40%">
+                            <img src="images/car.jpg" style="" "alt="Smiley face" width="100%" height="40%">
                         </div>
                         <div class=" btn-group" role="group" aria-label="...">
                             <button type="button" class=" btn btn-default" style=" font-size: 100%">Timeline</button>
@@ -64,7 +69,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class=" col-md-1">
+                    <div class=" col-md-2">
                         <a style=" color: black; font-size: 200%;" href=""> Sponsored</a>
                         <hr>
                         <img src="images/Food.jpg"  width="100%" height="20%">
@@ -78,24 +83,42 @@
                             <li><a style=" color: black" href="#">2010</li></a>
                             <li><a style=" color: black" href="#">Born</li></a>
                         </ul>
-<!--                        <a style=" color: black; font-size: 120%;" href=""> Recent</a></br>
-                        <a style=" color: black; font-size: 120%;" href=""> 2014</a></br>
-                        <a style=" color: black; font-size: 120%;" href=""> 2013</a></br>
-                        <a style=" color: black; font-size: 120%;" href=""> 2012</a></br>
-                        <a style=" color: black; font-size: 120%;" href=""> 2011</a></br>
-                        <a style=" color: black; font-size: 120%;" href=""> 2010</a>-->
+                      
                     </div>
-                    <div class="col-md-3">
-                        <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php">Profile Name One hacked your profile</a></br>
-                        <hr>
-                        <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name Three likes your photos</a></br>
-                        <hr>
-                        <img src="images/car.jpg"  width="42" height="42">
-                        <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name One</a></br>
-                        <img src="images/car_1.jpg"  width="42" height="42">
-                        <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name Two</a></br>
-                        <img src="images/Food.jpg"  width="42" height="42">
-                        <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name Three</a></br>
+                    <div class="col-md-2" style=" position: relative; border: 1px solid #DCDCDC;">
+                        <div class="col-md-12" style=" position: relative; border: 1px solid #DCDCDC; padding-bottom: 2px;">
+                           <button>
+                               <div class=" col-md-3">
+                                   <img src="images/car.jpg"  width="30" height="30">
+                               </div>
+                               <div class=" col-md-9">
+                                   <a style=" color: black; font-size: 80%;" href="http://localhost/BootstrapTraining/News_feed.php">Profile Name One hacked your profile</a>
+                               </div>
+                            </button>
+                            <button>
+                                <div class=" col-md-3">
+                                    <img src="images/Food.jpg"  width="30" height="30">
+                                </div>
+                                <div class=" col-md-9">
+                                <a style=" color: black; font-size: 80%" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name Three likes your photos</a> 
+                                </div>
+                            </button> 
+                        </div>
+                        
+                        <div class="col-md-12" style=" position: relative; border: 1px solid #DCDCDC; padding-top: 2px;">
+                            <button>
+                               <img src="images/car.jpg"  width="30" height="30">
+                                <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name One</a></br>
+                            </button>
+                            <button>
+                                <img src="images/car_1.jpg"  width="30" height="30">
+                                <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name Two</a></br>
+                            </button>
+                            <button>
+                                <img src="images/Food.jpg"  width="30" height="30">
+                                <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name Three</a></br> 
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
@@ -108,4 +131,3 @@
         </div>
     </body>
 </html>
-
