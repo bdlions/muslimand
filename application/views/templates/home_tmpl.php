@@ -8,7 +8,7 @@
         <meta name="keywords" content=""/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Muslimand</title>
-        
+
         <link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>resources/css/styles.css'/>
         <link rel="stylesheet" type='text/css' href="<?php echo base_url(); ?>resources/css/template.css">
@@ -18,12 +18,8 @@
         <script src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
     </head>
     <body class="back">
-        <?php $this->load->view("templates/sections/header_with_login");?>
-        <div class="container">
-            <div class="row">
-                <?php echo $contents; ?>
-            </div>
-        </div>
-        <?php $this->load->view("templates/sections/footer");?>
+        <?php $this->load->view("nonmember/sections/header_with_login"); ?>
+        <?php echo $contents; ?>
+        <?php $this->load->view("nonmember/sections/footer"); ?>
     </body>
 </html>

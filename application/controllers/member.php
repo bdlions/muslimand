@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+class Member extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -20,29 +20,20 @@ class Auth extends CI_Controller {
         $this->lang->load('auth');
         $this->load->helper('language');
     }
-
-    //redirect if needed, otherwise display the user list
- 
-
-       
-    
     
     function newsfeed()
     {
-        echo"fhgfh";        exit();
-        $this->template->load(NULL, "member/newsfeed", $this->data);
+        $this->template->load("member/newsfeed");
     }
     function profile()
     {
-        $this->template->load(NULL, "member/profile", $this->data);
+        $this->template->load("member/profile");
     }
-//    function ()
-//    {
-//        $this->template->load(NULL, "view/member/newsfeed", $this->data);
-//    }
-//    function newsfeed()
-//    {
-//        $this->template->load(NULL, "view/member/newsfeed", $this->data);
-//    }
+    function about()
+    {
+//        $this->template->load(NULL, "member/about", $this->data);
+        
+        $this->load->view("member/about");
+    }
 
 }
