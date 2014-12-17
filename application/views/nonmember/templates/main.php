@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color: #EDF0F5">
+<div class="container-fluid">
     <div class="row form-group">
         <div class="col-md-12"></div>
     </div>

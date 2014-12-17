@@ -5,129 +5,182 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css"/>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
-
-        <style>
-            .main_wrapper {
-                width: 100%;
-                margin: 0 auto;
-
-            }
-            .top{ background-color : #703684 ;}
-            .middle{ background-color:#EDF0F5 ;}
-            .footer{background-color: #FFFFFF;}
-        </style>
-
         <title>Muslimand</title>
     </head>
     <body>
-        <div class="main_wrapper" id="top">
-             <div class="container-fluid">
-                <div class="row top" style="padding: 20px 0 20px 0;">
-                    <div class="col-md-1 ">
-                        <img style=" margin-left: 80px" src="images/car.jpg"  width="30" height="32">
-                    </div>
-
-                    <div class="col-md-5">
-                        <input type ="text" class="form-control" style=" font-size: 120%"placeholder="Search for people, places and things">
-                    </div>
+        <!--HEADER-->
+        <div class="container-fluid" style="padding-top: 10px; background-color: #703684; color: white">
+            <div class="row form-group">
+                <div class="col-md-offset-1 col-md-5">
+                    <img>
+                    <input type="text" class="form-control" placeholder="Search for people, places and things">
                 </div>
-                <div class="row middle" style="margin: 0px 0px 30px 0px; padding: 30px 0 30px 0;">
-                    <div class="col-md-offset-1 col-md-1">
-                        <img src="images/car.jpg" alt="Smiley face" width="42" height="42">
-                        <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a></br></br>
-                        <a style=" color: black; font-size: 120%" href="http://localhost/BootstrapTraining/News_feed.php"> News Feed</a>
-                    </div>
-                    <div class="col-md-4">
-
-
-
-
-                        <form action="#" method="post" role="form" enctype="multipart/form-data" class="facebook-share-box">
-
-                            <div class="share">
-                                <div class="arrow"></div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><i class="fa fa-file"></i> Update Status</div>
-                                    <div class="panel-body">
-                                        <div class="">
-                                            <textarea name="message" cols="40" rows="10" id="status_message" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea> 
-                                        </div>
-                                    </div>
-                                    <div class="panel-footer">
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <div class="form-group">
-                                                    <div class=" btn-group-sm">
-
-                                                        <button type="button" class="btn-group"><i class="icon"></i>Tag</button>
-                                                        <button type="button" class="btn-group"><i class="icon icon-map-maker"></i> Location</button>
-                                                        <button type="button" class="btn-group"><i class="icon icon-picture"></i> Photo</button>
-                                                        <button type="button" class="btn-group"><i class="icon"></i> Emotion</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <select name="privacy" class="_42ft _4jy0 _11b _4jy3 _4jy1 selected _51sy_42ft _4jy0 _11b _4jy3 _4jy1 selected _51sy">
-                                                        <option value="1" selected="selected">Public</option>
-                                                        <option value="2">Friends</option>
-                                                        <option value="3">Only me</option>
-                                                    </select>                                    
-                                                    <input name="submit" type="submit" style=" color: white; background-color: #703684" value="Post" class="_42ft _4jy0 _11b _4jy3 _4jy1 selected _51sy_42ft _4jy0 _11b _4jy3 _4jy1 selected _51sy">                               
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                    </form>
-
-
-
-                    <div class="col-md-2" style=" background-color: white">
-                        <p>How many request</p>
-                        <hr>
-                        <p>People You May Know</p>
-                    </div>
-                    <div class=" col-md-1" >
-                        <
-                    </div>
-                    <div class="col-md-3">
-
-                        <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php">Profile Name One hacked your profile</a></br>
-                        <hr>
-                        <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name Three likes your photos</a></br>
-                        <hr>
-
-                        <img src="images/car.jpg"  width="42" height="42">
-                        <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name One</a></br>
-                        <img src="images/car_1.jpg"  width="42" height="42">
-                        <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name Two</a></br>
-                        <img src="images/Food.jpg"  width="42" height="42">
-                        <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name Three</a></br>
-                    </div>
-
-                </div>  
-
-                <div class="row footer" style="padding: 20px 0 20px 180px; margin: -45px 0px 0px 0px; ">
-                    <div class="col-md-12">
-
-
-                        &COPY; All right reserved
-                    </div>
+                <div class="col-md-offset-1 col-md-5">
+                    asdasd
                 </div>
             </div>
         </div>
+
+        <!--BODY-->
+        <div class="container-fluid" style="background-color: #E9EAED">
+            <div class="row">
+
+                <!--LEFT_COLUMN-->
+                <div class="col-md-offset-1 col-md-2">
+                    <div class="row form-group"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="images/car.jpg" alt="Smiley face" width="40" height="40">
+                            <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
+                        </div>
+                    </div>
+                    <div class="row form-group"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a style=" color: black;" href="http://localhost/BootstrapTraining/News_feed.php"> News Feed</a>
+                        </div>
+                    </div>
+                    <div class="row form-group"></div>
+                </div>
+                <div class="col-md-5">
+                    <div class="row form-group"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div style="background-color: #F6F7F8; padding: 15px">
+                                <div class="row">
+                                    <div class="col-md-4">Update Status</div>
+                                    <div class="col-md-8">Photo</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row form-group"></div>
+                                        <textarea class="form-control" placeholder="What's on your mind ?"></textarea>
+                                        <div class="row form-group"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <img src="<?php echo base_url(); ?>resources/images/add_img_place_ppl.PNG">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <!--<button class="btn btn-default">Frients</button>-->
+                                        <button class="btn btn-info pull-right form-control">Post</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pagelet">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <img src="images/car.jpg" alt="Smiley face" width="40" height="40">
+                                        <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
+                                    </div>
+                                </div>
+                                <div class="row form-group"></div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        Charidik e adhar oshlil kalo
+                                        srostha'r kache minotei dekhao ektu alo....
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pagelet">
+                                60 people like this.
+                                <div class="pagelet_divider"></div>
+                                <div class="user_comment">
+                                    <img src="images/car.jpg" alt="Smiley face" width="40" height="40">
+                                    <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
+                                </div>
+                                <div class="user_comment">
+                                    <img src="images/car.jpg" alt="Smiley face" width="40" height="40">
+                                    <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
+                                </div>
+                                <div class="user_comment">
+                                    <img src="images/car.jpg" alt="Smiley face" width="40" height="40">
+                                    <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
+                                </div>
+                                <div class="user_comment">
+                                    <img src="images/car.jpg" alt="Smiley face" width="40" height="40">
+                                    <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group"></div>
+                </div>
+
+
+                <!--CHATBOX COLUMN-->
+                <div class="col-md-offset-2 col-md-2" style="border-left: 1px solid lightgray">
+
+                    <!--CHATBOX_UPDATES-->
+                    <div class=" row">
+                        <div class=" col-md-12">
+                            <div class=" row">
+                                <div class=" form-group"></div>
+                                <div class=" col-md-3">
+                                    <img src="images/car.jpg"  width="30" height="30"> 
+                                </div>
+                                <div class=" col-md-9">
+                                    <a style=" color: black; font-size: 11px;" href="#"><b>Profile Name One</b> hacked your profile</a> 
+                                </div>
+                                <div class=" form-group"></div>
+                            </div>
+                            <div class=" row">
+                                <div class=" form-group"></div>
+                                <div class=" col-md-3">
+                                    <img src="images/car_1.jpg"  width="30" height="30"> 
+                                </div>
+                                <div class=" col-md-9">
+                                    <a style=" color: black; font-size: 11px;" href="#"><b>Profile Name Three</b> likes your photos</a> 
+                                </div>
+                                <div class=" form-group"></div>
+                            </div>  
+                        </div>
+                        <div class=" form-group"></div>
+                    </div>
+
+
+                    <!-- ChatBox-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row form-group"></div>
+
+                            <!--CHATBOX_FRIENDS-->
+                            <div class="row">
+                                <div class="form-group"></div>
+                                <div class="col-md-3">
+                                    <img src="images/car.jpg"  width="30" height="30">
+                                </div>
+                                <div class="col-md-9">
+                                    <a style="color: black; font-size: 80%" href="#"> Profile Name One</a>
+                                </div>
+                                <div class="form-group"></div>
+                            </div>
+                            <div class="row form-group"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!--FOOTER-->
+        <!--        <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <div style="padding: 20px 0px 0px 0px; color: #703684">
+                                About | Contact | Terms
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+
+
     </body>
 </html>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.status').click(function () {
-            $('.arrow').css("left", 0);
-        });
-        $('.photos').click(function () {
-            $('.arrow').css("left", 146);
-        });
-    });
-</script>
