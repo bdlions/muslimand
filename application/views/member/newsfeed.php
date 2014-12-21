@@ -30,7 +30,7 @@
                     <div class="row form-group"></div>
                     <div class="row">
                         <div class="col-md-12">
-                            <img src="images/car.jpg" alt="Smiley face" width="40" height="40">
+                            <img src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="40" height="40">
                             <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                             <div class="pagelet">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <img src="images/car.jpg" alt="Smiley face" width="40" height="40">
+                                        <img src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="40" height="40">
                                         <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
                                     </div>
                                 </div>
@@ -92,19 +92,19 @@
                                 60 people like this.
                                 <div class="pagelet_divider"></div>
                                 <div class="user_comment">
-                                    <img src="images/car.jpg" alt="Smiley face" width="40" height="40">
+                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="40" height="40">
                                     <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
                                 </div>
                                 <div class="user_comment">
-                                    <img src="images/car.jpg" alt="Smiley face" width="40" height="40">
+                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="40" height="40">
                                     <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
                                 </div>
                                 <div class="user_comment">
-                                    <img src="images/car.jpg" alt="Smiley face" width="40" height="40">
+                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="40" height="40">
                                     <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
                                 </div>
                                 <div class="user_comment">
-                                    <img src="images/car.jpg" alt="Smiley face" width="40" height="40">
+                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="40" height="40">
                                     <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@
                             <div class=" row">
                                 <div class=" form-group"></div>
                                 <div class=" col-md-3">
-                                    <img src="images/car.jpg"  width="30" height="30"> 
+                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="30" height="30"> 
                                 </div>
                                 <div class=" col-md-9">
                                     <a style=" color: black; font-size: 11px;" href="#"><b>Profile Name One</b> hacked your profile</a> 
@@ -133,7 +133,7 @@
                             <div class=" row">
                                 <div class=" form-group"></div>
                                 <div class=" col-md-3">
-                                    <img src="images/car_1.jpg"  width="30" height="30"> 
+                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="30" height="30"> 
                                 </div>
                                 <div class=" col-md-9">
                                     <a style=" color: black; font-size: 11px;" href="#"><b>Profile Name Three</b> likes your photos</a> 
@@ -154,7 +154,7 @@
                             <div class="row">
                                 <div class="form-group"></div>
                                 <div class="col-md-3">
-                                    <img src="images/car.jpg"  width="30" height="30">
+                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="30" height="30">
                                 </div>
                                 <div class="col-md-9">
                                     <a style="color: black; font-size: 80%" href="#"> Profile Name One</a>

@@ -8,46 +8,29 @@
                 <br>Hello Muslims! Keep updated with Muslimand
             </div>
         </div>
-        <div class="col-md-2">
-            facebook tweeter
+        <div class="col-md-2" style="padding: 20px 0px 0px 0px">
+            <img src="<?php echo base_url();?>resources/images/logins/facebook.png" >
+            <img src="<?php echo base_url();?>resources/images/logins/google.png" >
+            <img src="<?php echo base_url();?>resources/images/logins/twitter.png" >
+            <img src="<?php echo base_url();?>resources/images/logins/linkedin.png" >
+            <img src="<?php echo base_url();?>resources/images/logins/yahoo.png" >
+            <img src="<?php echo base_url();?>resources/images/logins/live.png" >
         </div>
         <div class="col-md-2">
-<!--            <div class="">
-                <label class="control-label">Email:</label> 
-            </div>
-                <?php echo form_input($identity + array('class' => '', 'style' => 'width: 100%')); ?>
-            <div style="padding-top: 5px">
-                 <input type="checkbox"> Remember me 
-            </div>-->
             <label>Email:</label>
-            <div><?php echo form_input($identity + array('style' => 'width: 100%')); ?></div>
+            <div style="color: #703684"><?php echo form_input($identity + array('style' => 'width: 100%')); ?></div>
             <div><input type="checkbox" style="vertical-align: top"> Remember me </div>
-
         </div>
         <div class="col-md-2">
-<!--            <div class="form-group">
-                <label class="control-label">Password:</label>
-                <?php echo form_input($password + array('class' => 'form-control')); ?>
-            </div>
-            <div class="">                
-             
-                <a href="forgot_password" style="font-weight: bolder; color: white">Forgot password?</a>
-            </div>
-            
-            -->
             <label>Password:</label>
-            <div><?php echo form_input($password + array('style' => 'width: 100%')); ?></div>
+            <div style="color: #703684"><?php echo form_input($password + array('style' => 'width: 100%')); ?></div>
             <div><a href="" style="color: white">Forgot password?</a></div>
-
         </div>
         <div class="col-md-1">
             <div class="" style="margin-top: 25px">                
                 <?php echo form_input($login_btn + array('class' => 'pull-right', 'style' => 'width: 100%; border: 0px; padding: 3px; color: #703684')); ?>
-                
             </div>
         </div>
-       
-
         <?php echo form_close(); ?>
     </div>
 </div>

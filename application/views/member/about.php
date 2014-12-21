@@ -120,7 +120,7 @@
                             <button type="button" class=" btn btn-default" style=" position: absolute; top: 10px; left: 20px; font-size: 80%">Upload photo</button>
                             <button type="button" class=" btn btn-default" style=" position: absolute; bottom: 20px; right:  140px; font-size: 80%">Update Info</button>
                             <button type="button" class=" btn btn-default" style=" position: absolute; bottom: 20px; right:  20px; font-size: 80%">View Activity Log</button>
-                            <img src="images/car.jpg" style="" "alt="Smiley face" width="100%" height="40%">
+                            <img src="images/car.jpg" style="" alt="Smiley face" width="100%" height="40%">
                         </div>
                         <div class=" btn-group" role="group" aria-label="...">
                             <button type="button" class=" btn btn-default" style=" font-size: 100%">Timeline</button>

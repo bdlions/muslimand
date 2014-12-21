@@ -289,7 +289,7 @@ class Auth extends CI_Controller {
             //set any errors and display the form
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
             //$this->_render_page('auth/forgot_password', $this->data);
-            $this->template->load(NULL, "auth/forgot_password", $this->data);
+            $this->template->load(NULL, "nonmember/forgot_password", $this->data);
         } else {
             // get identity for that email
             $config_tables = $this->config->item('tables', 'ion_auth');
@@ -759,40 +759,24 @@ class Auth extends CI_Controller {
     
     function login_wrong_attempt() {
         $this->data['message'] = $this->session->flashdata('message');
-        $this->data['identity'] = array('name' => 'identity',
+        $this->data['identity'] = array(
+            'name' => 'identity',
             'id' => 'identity',
             'type' => 'text',
             'value' => $this->form_validation->set_value('identity'),
         );
-        $this->data['password'] = array('name' => 'password',
+        $this->data['password'] = array(
+            'name' => 'password',
             'id' => 'password',
             'type' => 'password',
         );
-        $this->data['login_btn'] = array('name' => 'login_btn',
+        $this->data['login_btn'] = array(
+            'name' => 'login_btn',
             'id' => 'login_btn',
             'type' => 'submit',
             'value' => 'Sign in',
         );        
-        $this->template->load(NULL, "auth/wrong_password", $this->data);
+        $this->template->load(NULL, "nonmember/wrong_password", $this->data);
     }
-    
-    
-    
-//    function newsfeed()
-//    {
-//        $this->template->load(NULL, "view/member/newsfeed", $this->data);
-//    }
-//    function profile()
-//    {
-//        $this->template->load(NULL, "view/member/profile", $this->data);
-//    }
-//    function ()
-//    {
-//        $this->template->load(NULL, "view/member/newsfeed", $this->data);
-//    }
-//    function newsfeed()
-//    {
-//        $this->template->load(NULL, "view/member/newsfeed", $this->data);
-//    }
 
 }
