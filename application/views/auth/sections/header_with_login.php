@@ -3,9 +3,9 @@
         <?php echo form_open("auth/login"); ?>
         <div class="col-md-offset-1 col-md-3">
             <div class="pull-left" style="text-align: center" >
-
-                <span style="font-size: 50px; line-height: 50px;">Muslimand</span>
-                <br>Hello Muslims! Keep updated with Muslimand
+                <img src="<?php echo base_url();?>resources/images/logo.png" height="50px" width="50px" style="margin: -30px 10px 0px 0px; ">
+                <span style="font-size: 50px; line-height: 55px;">Muslimand</span>
+                <!--<br>Hello Muslims! Keep updated with Muslimand-->
             </div>
         </div>
         <div class="col-md-2" style="padding: 15px 0px 0px 0px">

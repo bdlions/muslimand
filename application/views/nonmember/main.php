@@ -1,3 +1,11 @@
+<style>
+    .user_brief_card
+    {
+        border: 4px solid lightgray; 
+        padding: 6px; 
+        background-color: white;
+    }
+</style>
 <div class="container-fluid">
     <div class="row form-group">
         <div class="col-md-12"></div>
@@ -72,11 +80,11 @@
     <div class="row">
         <div class="col-md-12 form-group">
             <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
-            <?php for ($i = 0; $i < 10; $i++): ?>
+            <?php for ($i = 0; $i < 10; $i++){ ?>
                 <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; ">
                     <div class="row">
                         <div class="col-md-12">
-                            <div style="border: 4px solid lightgray; padding: 6px; background-color: white">
+                            <div class="user_brief_card">
                                 <div class="row">
                                     <div class="col-md-7" style="padding-right: 6px">
                                         <img class="img-responsive" style="width: 100%" src="<?php echo base_url() ?>resources/images/face.jpg">
@@ -98,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-            <?php endfor; ?>
+            <?php } ?>
             <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
         </div>
     </div>

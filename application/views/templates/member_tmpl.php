@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Nazmul Hasan, Alamgir Kabir, Noor Alam, Tanveer, Rashida">
         <meta name="description" content="Social">
-        <meta name="author" content="Nazmul Hasan, Alamgir Kabir, Noor Alam, Ziaur Rahman,Omar Faruk,Redwan khaled,Tanveer">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />        
         <meta name="keywords" content=""/>
-        <title>Muslimand</title>        
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
+        <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
+        <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/template.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
+        <title>Muslimand</title>
     </head>
 
     <body>
-        <?php $this->load->view("templates/sections/header_with_menu");?>
-        <div class="container">
-            <div class="row">
-                <?php echo $contents; ?>
+        <?php $this->load->view("member/sections/header_member"); ?>
+        <div class="row">
+            <div class="col-md-12">
+                <div style="">
+                    <!--<div style="background-color: #EDF0F5">-->
+                    <?php echo $contents; ?>
+                </div>
             </div>
         </div>
-        <?php $this->load->view("templates/sections/footer");?>
     </body>
 </html>

@@ -23,11 +23,12 @@ class Member extends CI_Controller {
     
     function newsfeed()
     {
-        $this->template->load("member/newsfeed");
+//        $this->template->load("member/newsfeed");
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed");
     }
     function profile()
     {
-        $this->template->load("member/profile");
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/profile");
     }
     function about()
     {

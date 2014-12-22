@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <div style="background-color: #F6F7F8; padding: 15px">
+        <div class="pagelet">
             <div class="row">
                 <div class="col-md-4">Update Status</div>
                 <div class="col-md-8">Photo</div>
