@@ -33,8 +33,8 @@ class Member extends CI_Controller {
     function about()
     {
 //        $this->template->load(NULL, "member/about", $this->data);
-        
-        $this->load->view("member/about");
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/about");
+//        $this->load->view("member/about");
     }
 
 }
