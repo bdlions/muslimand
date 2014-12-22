@@ -134,8 +134,8 @@
                             <div class="pagelet">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <img src="<?php echo base_url() ?>resources/images/car.jpg" alt="Smiley face" width="40" height="40">
-                                        <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
+                                        <img src="<?php echo base_url() ?>resources/images/car.jpg" width="40" height="40">
+                                        <a style="color: black" href="#"> Profile Name</a>
                                     </div>
                                 </div>
                                 <div class="row form-group"></div>
