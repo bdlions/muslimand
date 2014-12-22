@@ -8,10 +8,10 @@
         <title>Muslimand</title>
     </head>
     <body>
-        
+
         <!--HEADER-->
         <?php $this->load->view("member/sections/header_member"); ?>
-        
+
         <!--BODY-->
         <div class="container-fluid" style="background-color: #E9EAED">
             <div class="row">
@@ -20,9 +20,18 @@
                 <div class="col-md-offset-1 col-md-2">
                     <div class="row form-group"></div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="100" height="100">
-                            <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
+                        <div class="col-md-3">
+                            <img  src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg" width="40" height="40">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a style=" color: black" href="#">Mohammad Rafique</a>
+                                </div>
+                                <div class="col-md-12">
+                                    <a style=" color: black" href="#">Edit Profile</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row form-group"></div>
@@ -89,8 +98,17 @@
                     <div class="row form-group"></div>
                     <?php $this->load->view("member/pagelets/shared_status"); ?>
                     <div class="row form-group"></div>
+                    <?php $this->load->view("member/pagelets/shared_link"); ?>
+                    <div class="row form-group"></div>
+                    <?php $this->load->view("member/pagelets/shared_photo"); ?>
+                    <div class="row form-group"></div>
+                    <?php $this->load->view("member/pagelets/shared_video"); ?>
+                    <div class="row form-group"></div>
+                    <?php $this->load->view("member/pagelets/updated_profile_pic"); ?>
+                    <div class="row form-group"></div>
+                    <?php $this->load->view("member/pagelets/updated_status"); ?>
+                    <div class="row form-group"></div>
                 </div>
-
 
                 <!--CHATBOX COLUMN-->
                 <div class="col-md-offset-2 col-md-2" style="border-left: 1px solid lightgray">
@@ -101,40 +119,40 @@
                             <div class=" row">
                                 <div class=" form-group"></div>
                                 <div class=" col-md-3">
-                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="30" height="30"> 
+                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30"> 
                                 </div>
                                 <div class=" col-md-9">
-                                    <a style=" color: black; font-size: 11px;" href="#"><b>Profile Name One</b> hacked your profile</a> 
+                                    <a style=" color: #3B59A9; font-size: 11px;" href="#"><b>Dr. Belal</b></a> shared a video.
                                 </div>
                                 <div class=" form-group"></div>
                             </div>
                             <div class=" row">
                                 <div class=" form-group"></div>
                                 <div class=" col-md-3">
-                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="30" height="30"> 
+                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="30" height="30"> 
                                 </div>
                                 <div class=" col-md-9">
-                                    <a style=" color: black; font-size: 11px;" href="#"><b>Profile Name Three</b> likes your photos</a> 
+                                    <a style=" color: #3B59A9; font-size: 11px;" href="#"><b>Maria Islam</b></a> likes your photos. 
                                 </div>
                                 <div class=" form-group"></div>
                             </div>  
                             <div class=" row">
                                 <div class=" form-group"></div>
                                 <div class=" col-md-3">
-                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="30" height="30"> 
+                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="30" height="30"> 
                                 </div>
                                 <div class=" col-md-9">
-                                    <a style=" color: black; font-size: 11px;" href="#"><b>Profile Name Three</b> likes your photos</a> 
+                                    <a style=" color: #3B59A9; font-size: 11px;" href="#"><b>Barak Obama</b></a> likes your photos. 
                                 </div>
                                 <div class=" form-group"></div>
                             </div>  
                             <div class=" row">
                                 <div class=" form-group"></div>
                                 <div class=" col-md-3">
-                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="30" height="30"> 
+                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="30" height="30"> 
                                 </div>
                                 <div class=" col-md-9">
-                                    <a style=" color: black; font-size: 11px;" href="#"><b>Profile Name Three</b> likes your photos</a> 
+                                    <a style=" color: #3B59A9; font-size: 11px;" href="#"><b>Fatematul Kobra</b></a> likes your comments. 
                                 </div>
                                 <div class=" form-group"></div>
                             </div>  
@@ -148,18 +166,78 @@
                             <div class="row form-group"></div>
 
                             <!--CHATBOX_FRIENDS-->
-                            <?php for ($i = 0; $i<10; $i++){?>
+
                             <div class="row">
                                 <div class="form-group"></div>
                                 <div class="col-md-3">
-                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="30" height="30">
+                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30">
                                 </div>
                                 <div class="col-md-9">
-                                    <a style="color: black; font-size: 80%" href="#"> Profile Name One</a>
+                                    <a style="color: #3B59A9; font-size: 80%" href="#">Dr. Belal</a>
                                 </div>
                                 <div class="form-group"></div>
                             </div>
-                            <?php }?>
+                            <div class="row">
+                                <div class="form-group"></div>
+                                <div class="col-md-3">
+                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="30" height="30">
+                                </div>
+                                <div class="col-md-9">
+                                    <a style="color: #3B59A9; font-size: 80%" href="#"> Sharmin Akter</a>
+                                </div>
+                                <div class="form-group"></div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group"></div>
+                                <div class="col-md-3">
+                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg"  width="30" height="30">
+                                </div>
+                                <div class="col-md-9">
+                                    <a style="color: #3B59A9; font-size: 80%" href="#"> Mohammad Azhar Uddin</a>
+                                </div>
+                                <div class="form-group"></div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group"></div>
+                                <div class="col-md-3">
+                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="30" height="30">
+                                </div>
+                                <div class="col-md-9">
+                                    <a style="color: #3B59A9; font-size: 80%" href="#">Fatematul Kobra</a>
+                                </div>
+                                <div class="form-group"></div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group"></div>
+                                <div class="col-md-3">
+                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="30" height="30">
+                                </div>
+                                <div class="col-md-9">
+                                    <a style="color: #3B59A9; font-size: 80%" href="#">Barak Obama</a>
+                                </div>
+                                <div class="form-group"></div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group"></div>
+                                <div class="col-md-3">
+                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30">
+                                </div>
+                                <div class="col-md-9">
+                                    <a style="color: #3B59A9; font-size: 80%" href="#">Jannatul Ferdaus</a>
+                                </div>
+                                <div class="form-group"></div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group"></div>
+                                <div class="col-md-3">
+                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="30" height="30">
+                                </div>
+                                <div class="col-md-9">
+                                    <a style="color: #3B59A9; font-size: 80%" href="#">Maria Islam</a>
+                                </div>
+                                <div class="form-group"></div>
+                            </div>
+
                             <div class="row form-group"></div>
                         </div>
                     </div>
