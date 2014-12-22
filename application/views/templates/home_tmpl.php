@@ -51,13 +51,13 @@
         <div id="wrapper">
             <div style="background-color: #EDF0F5">
                 <div id="header">
-                    <?php $this->load->view("nonmember/sections/header_with_login"); ?>
+                    <?php $this->load->view("auth/sections/header_with_login"); ?>
                 </div>
                 <div id="content">
                     <?php echo $contents; ?>
                 </div>
                 <div id="footer">
-                    <?php $this->load->view("nonmember/sections/footer"); ?>
+                    <?php $this->load->view("auth/sections/footer"); ?>
                 </div>
             </div>
         </div>

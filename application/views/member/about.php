@@ -194,7 +194,6 @@
                             <li><a style=" color: black" href="#">2010</li></a>
                             <li><a style=" color: black" href="#">Born</li></a>
                         </ul>
-                      
                     </div>
                     <div class="col-md-2" style=" position: relative; border: 1px solid #DCDCDC;">
                         <div class="col-md-12" style=" position: relative; border: 1px solid #DCDCDC; padding-bottom: 2px;">

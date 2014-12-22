@@ -8,19 +8,10 @@
         <title>Muslimand</title>
     </head>
     <body>
+        
         <!--HEADER-->
-        <div class="container-fluid" style="padding-top: 10px; background-color: #703684; color: white">
-            <div class="row form-group">
-                <div class="col-md-offset-1 col-md-5">
-                    <img>
-                    <input type="text" class="form-control" placeholder="Search for people, places and things">
-                </div>
-                <div class="col-md-offset-1 col-md-5">
-                    asdasd
-                </div>
-            </div>
-        </div>
-
+        <?php $this->load->view("member/sections/header_member"); ?>
+        
         <!--BODY-->
         <div class="container-fluid" style="background-color: #E9EAED">
             <div class="row">
@@ -30,86 +21,73 @@
                     <div class="row form-group"></div>
                     <div class="row">
                         <div class="col-md-12">
-                            <img src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="40" height="40">
+                            <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="100" height="100">
                             <a style=" color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
                         </div>
                     </div>
                     <div class="row form-group"></div>
                     <div class="row">
                         <div class="col-md-12">
-                            <a style=" color: black;" href="http://localhost/BootstrapTraining/News_feed.php"> News Feed</a>
+                            <a style=" color: black;" href="#"> News Feed</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a style=" color: black;" href="#"> Messages</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a style=" color: black;" href="#"> Friends</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a style=" color: black;" href="#"> Blogs</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a style=" color: black;" href="#"> Pages</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a style=" color: black;" href="#"> Academy</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a style=" color: black;" href="#"> Library</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a style=" color: black;" href="#"> Fund Raising</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a style=" color: black;" href="#"> Online Payment </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a style=" color: black;" href="#"> Zakat </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a style=" color: black;" href="#">Shop </a>
                         </div>
                     </div>
                     <div class="row form-group"></div>
                 </div>
                 <div class="col-md-5">
                     <div class="row form-group"></div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div style="background-color: #F6F7F8; padding: 15px">
-                                <div class="row">
-                                    <div class="col-md-4">Update Status</div>
-                                    <div class="col-md-8">Photo</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="row form-group"></div>
-                                        <textarea class="form-control" placeholder="What's on your mind ?"></textarea>
-                                        <div class="row form-group"></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <img src="<?php echo base_url(); ?>resources/images/add_img_place_ppl.PNG">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <!--<button class="btn btn-default">Frients</button>-->
-                                        <button class="btn btn-info pull-right form-control">Post</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php $this->load->view("member/pagelets/post_status"); ?>
                     <div class="row form-group"></div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="pagelet">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <img src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="40" height="40">
-                                        <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
-                                    </div>
-                                </div>
-                                <div class="row form-group"></div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        Charidik e adhar oshlil kalo
-                                        srostha'r kache minotei dekhao ektu alo....
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pagelet">
-                                60 people like this.
-                                <div class="pagelet_divider"></div>
-                                <div class="user_comment">
-                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="40" height="40">
-                                    <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
-                                </div>
-                                <div class="user_comment">
-                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="40" height="40">
-                                    <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
-                                </div>
-                                <div class="user_comment">
-                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="40" height="40">
-                                    <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
-                                </div>
-                                <div class="user_comment">
-                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg" alt="Smiley face" width="40" height="40">
-                                    <a style="color: black" href="http://localhost/BootstrapTraining/News_feed.php"> Profile Name</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php $this->load->view("member/pagelets/shared_status"); ?>
                     <div class="row form-group"></div>
                 </div>
 
@@ -140,17 +118,37 @@
                                 </div>
                                 <div class=" form-group"></div>
                             </div>  
+                            <div class=" row">
+                                <div class=" form-group"></div>
+                                <div class=" col-md-3">
+                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="30" height="30"> 
+                                </div>
+                                <div class=" col-md-9">
+                                    <a style=" color: black; font-size: 11px;" href="#"><b>Profile Name Three</b> likes your photos</a> 
+                                </div>
+                                <div class=" form-group"></div>
+                            </div>  
+                            <div class=" row">
+                                <div class=" form-group"></div>
+                                <div class=" col-md-3">
+                                    <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="30" height="30"> 
+                                </div>
+                                <div class=" col-md-9">
+                                    <a style=" color: black; font-size: 11px;" href="#"><b>Profile Name Three</b> likes your photos</a> 
+                                </div>
+                                <div class=" form-group"></div>
+                            </div>  
                         </div>
-                        <div class=" form-group"></div>
                     </div>
-
-
+                    <div class=" form-group"></div>
+                    <div style="border-bottom: 2px solid lightgray"></div>
                     <!-- ChatBox-->
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row form-group"></div>
 
                             <!--CHATBOX_FRIENDS-->
+                            <?php for ($i = 0; $i<10; $i++){?>
                             <div class="row">
                                 <div class="form-group"></div>
                                 <div class="col-md-3">
@@ -161,6 +159,7 @@
                                 </div>
                                 <div class="form-group"></div>
                             </div>
+                            <?php }?>
                             <div class="row form-group"></div>
                         </div>
                     </div>

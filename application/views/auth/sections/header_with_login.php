@@ -8,7 +8,7 @@
                 <br>Hello Muslims! Keep updated with Muslimand
             </div>
         </div>
-        <div class="col-md-2" style="padding: 20px 0px 0px 0px">
+        <div class="col-md-2" style="padding: 15px 0px 0px 0px">
             <img src="<?php echo base_url();?>resources/images/logins/facebook.png" >
             <img src="<?php echo base_url();?>resources/images/logins/google.png" >
             <img src="<?php echo base_url();?>resources/images/logins/twitter.png" >
@@ -17,17 +17,19 @@
             <img src="<?php echo base_url();?>resources/images/logins/live.png" >
         </div>
         <div class="col-md-2">
-            <label>Email:</label>
+            Email:
+            <!--<label>Email:</label>-->
             <div style="color: #703684"><?php echo form_input($identity + array('style' => 'width: 100%')); ?></div>
             <div><input type="checkbox" style="vertical-align: top"> Remember me </div>
         </div>
         <div class="col-md-2">
-            <label>Password:</label>
+            Password:
+            <!--<label>Password:</label>-->
             <div style="color: #703684"><?php echo form_input($password + array('style' => 'width: 100%')); ?></div>
             <div><a href="" style="color: white">Forgot password?</a></div>
         </div>
         <div class="col-md-1">
-            <div class="" style="margin-top: 25px">                
+            <div class="" style="margin-top: 20px">                
                 <?php echo form_input($login_btn + array('class' => 'pull-right', 'style' => 'width: 100%; border: 0px; padding: 3px; color: #703684')); ?>
             </div>
         </div>

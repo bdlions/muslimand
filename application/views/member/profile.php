@@ -41,27 +41,9 @@
         </style>
         <title>Profile Name</title>
     </head>
-
-
-
-
-
-
-
-
     <body>
         <!--HEADER-->
-        <div class="container-fluid" style="padding-top: 10px; background-color: #703684; color: white">
-            <div class="row form-group">
-                <div class="col-md-offset-1 col-md-5">
-                    <img>
-                    <input type="text" class="form-control" placeholder="Search for people, places and things">
-                </div>
-                <div class="col-md-offset-1 col-md-5">
-                    asdasd
-                </div>
-            </div>
-        </div>
+        <?php $this->load->view("member/sections/header_member"); ?>
 
         <!--BODY-->
         <div class="container-fluid" style="background-color: #E9EAED">
