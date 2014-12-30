@@ -11,7 +11,7 @@
                 <div class="col-md-9">
                     <div class="row">
                         <div class="col-md-12">
-                            <a style=" color: black" href="#">Mohammad Nazrul</a>
+                            <a style=" color: black" href="#">Mohammad Azhar Uddin</a>
                         </div>
                         <div class="col-md-12">
                             <a style=" color: black" href="#">Edit Profile</a>

@@ -67,90 +67,40 @@ and open the template in the editor.
 
 
 /*================================  Landing Page  ================================*/
+/*================================  Hridoys css  ================================*/
 
-
-
-
-
-
-
-
-
-
-
-
-/*================================  newsfeed and profile (hridoy)================================*/
-/*body {
-    padding-top: 40px;
-    padding-bottom: 40px;
+.ticker_friends{
+    background-color: #E9EAED;
+    padding: 10px;
+    font-size: 12px;
+    border-bottom: 1px solid lightgray;
 }
-.facebook-share-box {
-    width: 100%;
+.ticker_friends:hover,
+.message_friends_box:hover,
+.message_friends:hover{
+    cursor: pointer;
+    background-color: lightgrey;
 }
-.facebook-share-box .share {
-    -webkit-transition: 0.1s ease-out height;
-    -moz-transition: 0.1s ease-out height;
-    -ms-transition: 0.1s ease-out height;
-    -o-transition: 0.1s ease-out height;
-    transition: 0.1s ease-out height;
-    clear: both;
-    background: white;
-    border: 2px solid #dddddd;
-    margin-bottom: 10px;
-    position: relative;
+.message_friends{
+    background-color: white;
+    font-size: 12px;
+    padding: 10px;
+    border: 1px solid lightgray;
 }
-
-.facebook-share-box .share .arrow {
-    background: url(arrow.png) no-repeat #dddddd;
-    position: absolute;
-    width: 14px;
-    height: 10px;
-    left: 4px;
-    display: inline;
-    top: -10px;
-    -webkit-transition: 0.3s ease-out all;
-    -moz-transition: 0.3s ease-out all;
-    -ms-transition: 0.3s ease-out all;
-    -o-transition: 0.3s ease-out all;
-    transition: 0.3s ease-out all;
+.message_friends_box,.message_friends_box_1{
+    background-color: white;
+    font-size: 12px;
+    padding: 10px;
 }
-
-.facebook-share-box .post-types li a {
-    color: #085083;
-    text-decoration: none;
+.message_text:hover{
+    cursor: pointer;
+    opacity: 0.7;
 }
-
-.facebook-share-box .post-types li a.active {
-    color: #404040;
+.message_friends_divider_full,.message_friends_divider_others{
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-top: 0px;
 }
-
-.facebook-share-box .post-types {
-    padding-left: 5px;
+.message_friends_divider_full{
+    border-top: 1px solid lightgray;
 }
-
-.facebook-share-box ul {
-    list-style: none;
-    margin-bottom: 9px;
-}
-
-.facebook-share-box .post-types li {
-    display: inline;
-    margin-right: 10px;
-}
-
-.message {
-    border-radius: 0;
-    border: none;
-}
-.panel {
-    border-radius: 0;
-    border: none;
-    margin-bottom: 0;
-}
-
-.privacy-dropdown {
-    width: 100px;
-}*/
-/*================================  newsfeed and profile (hridoy)================================*/
-
-

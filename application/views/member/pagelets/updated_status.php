@@ -4,18 +4,18 @@
             <div class="row">
                 <div class="col-md-1">
                     <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg" width="40" height="40">
-                    </div>
-                    <div class="col-md-11">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a style="color: #3B59A9;" href="#"> Sharmin Akter</a>
-                            </div>
-                            <div class="col-md-12">
-                                December 22 at 10.30pm 
-                                <img src="<?php echo base_url(); ?>resources/images/shared_with.png" width="13" height="12">
-                            </div>
+                </div>
+                <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a style="color: #3B59A9;" href="#"> Sharmin Akter</a>
                         </div>
-                 </div>
+                        <div class="col-md-12">
+                            December 22 at 10.30pm 
+                            <img src="<?php echo base_url(); ?>resources/images/shared_with.png" width="13" height="12">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row form-group"></div>
             <div class="row">

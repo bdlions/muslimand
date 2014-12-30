@@ -3,9 +3,9 @@
         <div style="position: relative; z-index: 20">
             <img src="<?php echo base_url() ?>resources/images/car.jpg" width="100%" height="250">
             <a class="profilePicThumb" href="#">
-                <img style="outline: 1px solid gray; border: 6px solid whitesmoke; position: absolute; bottom: -20px; left: 15px;" class="profilePic img" src="<?php echo base_url() ?>resources/images/Food.jpg" width="160px" height="160px">
+                <img style="outline: 1px solid gray; border: 6px solid whitesmoke; position: absolute; bottom: -20px; left: 15px;" class="profilePic img" src="<?php echo base_url() ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="160px" height="160px">
             </a>
-            <a  style="position: absolute; bottom: 2px; left: 190px;"class=" btn" href=""><b>Profile Name</b></a>
+            <a  style="position: absolute; bottom: 2px; left: 190px; color: white;"class=" btn" href=""><b>Mohammad Azhar Uddin</b></a>
             <button type="button" class=" btn btn-default" style=" position: absolute; bottom: 20px; right:  140px; font-size: 80%">Update Info</button>
             <button type="button" class=" btn btn-default" style=" position: absolute; bottom: 20px; right:  20px; font-size: 80%">View Activity Log</button>
         </div>

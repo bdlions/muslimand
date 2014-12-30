@@ -60,7 +60,7 @@
                             <a class="profilePicThumb" href="#">
                                 <img style="position: absolute; bottom: -20px; left: 15px; "class="profilePic img" src="<?php echo base_url() ?>resources/images/Food.jpg" width="160px" height="160px">
                             </a>
-                            <a  style="position: absolute; bottom: 2px; left: 180px;"class=" btn" href=""><b>Profile Name</b></a>
+                            <a  style="position: absolute; bottom: 2px; left: 180px; color: white;"class=" btn" href=""><b>Mohammad Azhar Uddin</b></a>
                             <button type="button" class=" btn btn-default" style=" position: absolute; top: 10px; left: 20px; font-size: 80%">Upload cover photo</button>
                             <button type="button" class=" btn btn-default" style=" position: absolute; bottom: 20px; right:  140px; font-size: 80%">Update Info</button>
                             <button type="button" class=" btn btn-default" style=" position: absolute; bottom: 20px; right:  20px; font-size: 80%">View Activity Log</button>
@@ -176,30 +176,30 @@
                 <div class="col-md-offset-1 col-md-2" style="border-left: 1px solid lightgray">
 
                     <!--CHATBOX_UPDATES-->
-                    <div class=" row">
+                    <div class="row">
                         <div class=" col-md-12">
-                            <div class=" row">
-                                <div class=" form-group"></div>
-                                <div class=" col-md-3">
+                            <div class="row">
+                                <div class="form-group"></div>
+                                <div class="col-md-3">
                                     <img src="<?php echo base_url() ?>resources/images/car.jpg"  width="30" height="30"> 
                                 </div>
-                                <div class=" col-md-9">
+                                <div class="col-md-9">
                                     <a style=" color: black; font-size: 11px;" href="#"><b>Profile Name One</b> hacked your profile</a> 
                                 </div>
                                 <div class=" form-group"></div>
                             </div>
-                            <div class=" row">
-                                <div class=" form-group"></div>
+                            <div class="row">
+                                <div class="form-group"></div>
                                 <div class=" col-md-3">
                                     <img src="<?php echo base_url() ?>resources/images/car.jpg"  width="30" height="30"> 
                                 </div>
-                                <div class=" col-md-9">
+                                <div class="col-md-9">
                                     <a style=" color: black; font-size: 11px;" href="#"><b>Profile Name Three</b> likes your photos</a> 
                                 </div>
-                                <div class=" form-group"></div>
+                                <div class="form-group"></div>
                             </div>  
                         </div>
-                        <div class=" form-group"></div>
+                        <div class="form-group"></div>
                     </div>
 
 

@@ -17,13 +17,6 @@
 
     <body>
         <?php $this->load->view("member/sections/header_member"); ?>
-        <div class="row">
-            <div class="col-md-12">
-                <div style="">
-                    <!--<div style="background-color: #EDF0F5">-->
-                    <?php echo $contents; ?>
-                </div>
-            </div>
-        </div>
+        <?php echo $contents; ?>
     </body>
 </html>
