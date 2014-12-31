@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <div class=" pagelet">
+        <div class="pagelet">
             <div class="row">
                 <div class="col-md-2">
                     <span><b>Friend Requests</b></span>
@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <div class=" pagelet">
+        <div class="pagelet">
             <div class="row">
                 <div class="col-md-1">
                     <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg" width="40" height="40">
@@ -25,14 +25,14 @@
                 </div>
             </div>
         </div>
-        <div class=" pagelet">
+        <div class="pagelet">
             <div class="row">
                 <div class="col-md-12">
                     <span><b>People You May Know</b></span>
                 </div>
             </div>
         </div>
-        <div class=" pagelet">
+        <div class="pagelet">
             <div class="row">
                 <div class="col-md-1">
                     <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg" width="40" height="40">
@@ -134,7 +134,7 @@
                 </div>
             </div>
         </div>
-        <div class=" pagelet">
+        <div class="pagelet">
             <div class="row">
                 <div class="col-md-12">
                     <center><a style="color: #3B59A9;" href="#"><b>See All</b></a> </center>

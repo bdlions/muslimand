@@ -11,7 +11,6 @@
                     <!--<textarea style="resize: vertical; min-height: 64px" class="form-control" placeholder="What's on your mind ?"></textarea>-->
                     <div class="form-control" style="overflow: hidden; min-height: 66px;">
                         <div contenteditable="true" style="overflow-x: hidden; overflow-y: scroll; min-height: 66px; margin-right: -30px">
-                            
                         </div>
                     </div>
                     <div class="row form-group"></div>
@@ -23,7 +22,7 @@
                 </div>
                 <div class="col-md-3">
                     <!--<button class="btn btn-default">Frients</button>-->
-                    <button class="btn btn-info pull-right form-control"  style="background-color: #703684; color: white">Post</button>
+                    <button class="btn btn-info pull-right form-control" style="background-color: #703684; color: white">Post</button>
                 </div>
             </div>
         </div>

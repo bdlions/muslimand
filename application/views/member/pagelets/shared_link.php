@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg" width="40" height="40">
-                    <a style="color: #3B59A9;" href="#"> Mohammad Rafique</a> shared 
-                    <a style="color: #3B59A9;" href="#"> Cricinfo</a>'s status.
+                    <a style="color: #3B59A9;" href="#">Mohammad Rafique</a> shared 
+                    <a style="color: #3B59A9;" href="#">Cricinfo</a>'s status.
                 </div>
             </div>
             <div class="row form-group"></div>
@@ -23,7 +23,7 @@
             <div class="row form-group"></div>
             <div class="row">
                 <div class="col-md-12">
-                    <p>The Bangladesh team poses with trophies after sweeping the series 5-0 with a five-wicket win in Mirpur</p>
+                    <span>The Bangladesh team poses with trophies after sweeping the series 5-0 with a five-wicket win in Mirpur</span>
                 </div>
             </div>
             <div class="row form-group"></div>
@@ -35,7 +35,7 @@
             <div class="row form-group"></div>
             <div class="row">
                 <div class="col-md-12">
-                    <a style="color: #3B59A9;" href="#"> Like .</a>
+                    <a style="color: #3B59A9;" href="#">Like .</a>
                     <a style="color: #3B59A9;" href="#"> Comment .</a>
                     <a style="color: #3B59A9;" href="#"> Share</a>
                 </div>

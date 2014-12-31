@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="row form-group">
-            <div class=" col-md-offset-3 col-md-3">
+            <div class="col-md-offset-3 col-md-3">
                 <button class="btn btn-danger form-control" type="submit" name="submit_button">Reset Password</button>
             </div>
         </div>

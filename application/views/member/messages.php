@@ -1,5 +1,5 @@
 <div class="row">
-    <div class=" col-md-offset-1 col-md-11">
+    <div class="col-md-offset-1 col-md-11">
         <div class="row">
             <div class="pagelet">
                 <div class="row">
@@ -36,12 +36,12 @@
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-8">
-                                <a style=" color: black;" href="#"> <span><b>Mohammad Azhar Uddin</b></span> </a>
+                                <a style="color: black;" href="#"> <span><b>Mohammad Azhar Uddin</b></span> </a>
                             </div>
                             <div class="col-md-4">
                                 <div class="message_text">
-                                    <button class=" btn btn-default" style=" font-size: 12px;" type="button">New Message</button>
-                                    <button class=" btn btn-default" style=" font-size: 12px;" type="button">Action</button>
+                                    <button class="btn btn-default" style="font-size: 12px;" type="button">New Message</button>
+                                    <button class="btn btn-default" style="font-size: 12px;" type="button">Action</button>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@
                                     <div class="col-md-8">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <a style=" color: #3B74CB;" href="#"><b>Dr. Belal</b></a>
+                                                <a style="color: #3B74CB;" href="#"><b>Dr. Belal</b></a>
                                             </div>  
                                         </div>
                                         <div class="row">
@@ -161,7 +161,7 @@
                                     <div class="col-md-8">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <a style=" color: #3B74CB;" href="#"><b>Mohammad Azhar Uddin</b></a>
+                                                <a style="color: #3B74CB;" href="#"><b>Mohammad Azhar Uddin</b></a>
                                             </div> 
                                         </div>
                                         <div class="row">
@@ -186,8 +186,8 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="message_text">
-                                            <button class=" btn btn-default" type="button">Add files</button>
-                                            <button class=" btn btn-default" type="button">Add photos</button>
+                                            <button class="btn btn-default" type="button">Add files</button>
+                                            <button class="btn btn-default" type="button">Add photos</button>
                                         </div>
                                     </div>  
                                     <div class="col-md-4">

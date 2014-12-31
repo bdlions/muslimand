@@ -91,34 +91,34 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="row col-md-12">
-                                    <input type="radio" name="Reason for leaving"><span> I have a privacy concern.</span>
+                                    <input type="radio" name="Reason for leaving"><span>I have a privacy concern.</span>
                                 </div>
                                 <div class="row col-md-12">
-                                    <input type="radio" name="Reason for leaving"><span> I spend too much time using Muslimand.</span>
+                                    <input type="radio" name="Reason for leaving"><span>I spend too much time using Muslimand.</span>
                                 </div>
                                 <div class="row col-md-12">
-                                    <input type="radio" name="Reason for leaving"><span> I get too many emails, invitations, and requests from Muslimand.</span>
+                                    <input type="radio" name="Reason for leaving"><span>I get too many emails, invitations, and requests from Muslimand.</span>
                                 </div>
                                 <div class="row col-md-12">
-                                    <input type="radio" name="Reason for leaving"><span> My account was hacked.</span>
+                                    <input type="radio" name="Reason for leaving"><span>My account was hacked.</span>
                                 </div>
                                 <div class="row col-md-12">
-                                    <input type="radio" name="Reason for leaving"><span> I don't understand how to use Muslimand.</span>
+                                    <input type="radio" name="Reason for leaving"><span>I don't understand how to use Muslimand.</span>
                                 </div>
                                 <div class="row col-md-12">
-                                    <input type="radio" name="Reason for leaving"><span> I have another Muslimand account.</span>
+                                    <input type="radio" name="Reason for leaving"><span>I have another Muslimand account.</span>
                                 </div>
                                 <div class="row col-md-12">
-                                    <input type="radio" name="Reason for leaving"><span> I don't find Muslimand useful.</span>
+                                    <input type="radio" name="Reason for leaving"><span>I don't find Muslimand useful.</span>
                                 </div>
                                 <div class="row col-md-12">
-                                    <input type="radio" name="Reason for leaving"><span> I don't feel safe on Muslimand.</span>
+                                    <input type="radio" name="Reason for leaving"><span>I don't feel safe on Muslimand.</span>
                                 </div>
                                 <div class="row col-md-12">
-                                    <input type="radio" name="Reason for leaving"><span> This is temporary. I'll be back.</span>
+                                    <input type="radio" name="Reason for leaving"><span>This is temporary. I'll be back.</span>
                                 </div>
                                 <div class="row col-md-12">
-                                    <input type="radio" name="Reason for leaving"><span> Other</span>
+                                    <input type="radio" name="Reason for leaving"><span>Other</span>
                                 </div>
                             </div>
                         </div>

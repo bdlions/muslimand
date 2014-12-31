@@ -12,7 +12,7 @@
             <!--CARDS AFTER BANNER-->
             <div class="row">
                 <div class="col-md-5">
-
+                    <?php $this->load->view("member/pagelets/brief_info"); ?>
                 </div>
                 <div class="col-md-7">
                     <?php $this->load->view("member/pagelets/post_status"); ?>

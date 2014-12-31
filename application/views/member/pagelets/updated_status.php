@@ -8,7 +8,7 @@
                 <div class="col-md-11">
                     <div class="row">
                         <div class="col-md-12">
-                            <a style="color: #3B59A9;" href="#"> Sharmin Akter</a>
+                            <a style="color: #3B59A9;" href="#">Sharmin Akter</a>
                         </div>
                         <div class="col-md-12">
                             December 22 at 10.30pm 
@@ -26,7 +26,7 @@
             <div class="row form-group"></div>
             <div class="row">
                 <div class="col-md-12">
-                    <a style="color: #3B59A9;" href="#"> Like .</a>
+                    <a style="color: #3B59A9;" href="#">Like .</a>
                     <a style="color: #3B59A9;" href="#"> Comment .</a>
                     <a style="color: #3B59A9;" href="#"> Share</a>
                 </div>

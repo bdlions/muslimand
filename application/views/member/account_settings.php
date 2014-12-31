@@ -5,31 +5,31 @@
         <div class="row form-group"></div>
         <div class="row">
             <div class="col-md-12">
-                <a style=" color: black;" href="#">  Account</a>
+                <a style="color: black;" href="#">Account</a>
             </div>
         </div>
         <div class="pagelet_divider"></div>
         <div class="row">
             <div class="col-md-12">
-                <a style=" color: black;" href="#"> Security</a>
+                <a style="color: black;" href="#">Security</a>
             </div>
         </div>
         <div class="pagelet_divider"></div>
         <div class="row">
             <div class="col-md-12">
-                <a style=" color: black;" href="#"> Privacy</a>
+                <a style="color: black;" href="#">Privacy</a>
             </div>
         </div>
         <div class="pagelet_divider"></div>
         <div class="row">
             <div class="col-md-12">
-                <a style=" color: black;" href="#"> Notifications</a>
+                <a style="color: black;" href="#">Notifications</a>
             </div>
         </div>
         <div class="pagelet_divider"></div>
         <div class="row">
             <div class="col-md-12">
-                <a style=" color: black;" href="#"> Blocking</a>
+                <a style="color: black;" href="#">Blocking</a>
             </div>
         </div>
         <div class="row form-group"></div>
@@ -51,7 +51,7 @@
                     <span>Mohammad Azhar Uddin</span>
                 </div>
                 <div class="col-md-offset-1 col-md-1">
-                    <a style=" color: #703684;" href="#">Edit</a> 
+                    <a style="color: #703684;" href="#">Edit</a> 
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -60,10 +60,10 @@
                     <span>Username</span>
                 </div>
                 <div class="col-md-7">
-                    <span> https://www.muslimand.com/mohammad.azhar.uddin</span>
+                    <span>https://www.muslimand.com/mohammad.azhar.uddin</span>
                 </div>
                 <div class="col-md-offset-1 col-md-1">
-                    <a style=" color: #703684;" href="#">Edit</a> 
+                    <a style="color: #703684;" href="#">Edit</a> 
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -75,7 +75,7 @@
                     <span>mohammad.azhar.uddin@muslimand.com</span>
                 </div>
                 <div class="col-md-offset-1 col-md-1">
-                    <a style=" color: #703684;" href="#">Edit</a> 
+                    <a style="color: #703684;" href="#">Edit</a> 
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -84,10 +84,10 @@
                     <span>Password</span>
                 </div>
                 <div class="col-md-7">
-                    <span> Password has changed two months ago</span>
+                    <span>Password has changed two months ago</span>
                 </div>
                 <div class="col-md-offset-1 col-md-1">
-                    <a style=" color: #703684;" href="#">Edit</a> 
+                    <a style="color: #703684;" href="#">Edit</a> 
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -96,10 +96,10 @@
                     <span>Networks</span>
                 </div>
                 <div class="col-md-7">
-                    <span> No Networks.</span>
+                    <span>No Networks.</span>
                 </div>
                 <div class="col-md-offset-1 col-md-1">
-                    <a style=" color: #703684;" href="#">Edit</a> 
+                    <a style="color: #703684;" href="#">Edit</a> 
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -108,10 +108,10 @@
                     <span>Language</span>
                 </div>
                 <div class="col-md-7">
-                    <span> English(US)</span>
+                    <span>English(US)</span>
                 </div>
                 <div class="col-md-offset-1 col-md-1">
-                    <a style=" color: #703684;" href="#">Edit</a> 
+                    <a style="color: #703684;" href="#">Edit</a> 
                 </div>
             </div>
             <div class="pagelet_divider"></div>

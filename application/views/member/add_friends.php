@@ -1,7 +1,7 @@
 <div class="row form-group"></div>
 <div class="row">
     <div class="col-md-12">
-        <div class=" pagelet">
+        <div class="pagelet">
             <div class="row">
                 <div class="col-md-12">
                     <span><b>Respond to Your Friend Request</b></span>
@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <div class=" pagelet">
+        <div class="pagelet">
             <div class="row">
                 <div class="col-md-1">
                     <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg" width="60" height="60">
@@ -30,14 +30,14 @@
 <div class="row form-group"></div>
 <div class="row">
     <div class="col-md-12">
-        <div class=" pagelet">
+        <div class="pagelet">
             <div class="row">
                 <div class="col-md-12">
                     <span><b>People You May Know</b></span>
                 </div>
             </div>
         </div>
-        <div class=" pagelet">
+        <div class="pagelet">
             <div class="row">
                 <div class="col-md-1">
                     <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg" width="60" height="60">
@@ -73,7 +73,6 @@
                         <a style="color: #3B59A9;" href="#"><b>Jannatul Ferdaus</b></a>
                     </div>
                     <div class="col-md-12">
-
                     </div>
                     <div class="col-md-12">
                         <a style="color: #3B59A9;" href="#">Sharmin Akter</a>

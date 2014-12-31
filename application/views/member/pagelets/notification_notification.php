@@ -10,9 +10,9 @@
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-offset-4 col-md-8">
-                                <a style=" color: #3B59A9;" href="#"> <span>Mark as Read</span> </a>
+                                <a style="color: #3B59A9;" href="#"><span>Mark as Read</span></a>
                                 <span>.</span>
-                                <a style=" color: #3B59A9;" href="#"> <span>Settings</span> </a>
+                                <a style="color: #3B59A9;" href="#"><span>Settings</span></a>
                             </div>
                         </div>
                     </div>
@@ -23,7 +23,7 @@
                     <div class="pagelet message_friends_box">
                         <div class="row">
                             <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="50" height="50"> 
+                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg" width="50" height="50"> 
                             </div>
                             <div class="col-md-10 ">
                                 <div class="row">
@@ -46,12 +46,12 @@
                     <div class="pagelet message_friends_box">
                         <div class="row">
                             <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="50" height="50"> 
+                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg" width="50" height="50"> 
                             </div>
                             <div class="col-md-10">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <b> Sharmin Akter</b>
+                                        <b>Sharmin Akter</b>
                                         <span>'s birthday was on Dec 27.</span>
                                     </div>
                                     <div class="col-md-12">
@@ -64,7 +64,7 @@
                     <div class="pagelet message_friends_box">
                         <div class="row">
                             <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg"  width="50" height="50"> 
+                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg" width="50" height="50"> 
                             </div>
                             <div class="col-md-10">
                                 <div class="row">
@@ -83,7 +83,7 @@
                     <div class="pagelet message_friends_box">
                         <div class="row">
                             <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="50" height="50"> 
+                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg" width="50" height="50"> 
                             </div>
                             <div class="col-md-10">
                                 <div class="row">
@@ -127,7 +127,7 @@
                     <div class="pagelet message_friends_box">
                         <div class="row">
                             <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="50" height="50"> 
+                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg" width="50" height="50"> 
                             </div>
                             <div class="col-md-10">
                                 <div class="row">
@@ -148,7 +148,7 @@
                     <div class="pagelet message_friends_box">
                         <div class="row">
                             <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="50" height="50"> 
+                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg" width="50" height="50"> 
                             </div>
                             <div class="col-md-10">
                                 <div class="row">
@@ -166,10 +166,10 @@
                     </div>
                 </div>
             </div>
-            <div class=" pagelet">
+            <div class="pagelet">
                 <div class="row">
                     <div class="col-md-12">
-                        <center><a style="color: #3B59A9;" href="#"><b>See All</b></a> </center>
+                        <center><a style="color: #3B59A9;" href="#"><b>See All</b></a></center>
                     </div>
                 </div>
             </div>

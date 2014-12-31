@@ -36,5 +36,29 @@ class Member extends CI_Controller {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/about");
 //        $this->load->view("member/about");
     }
+    function account_settings()
+    {
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/account_settings");
+    }
+    function friends()
+    {
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/friends");
+    }
+    function add_friends()
+    {
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/add_friends");
+    }
+    function messages()
+    {
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/messages");
+    }
+    function notification_all()
+    {
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/notification_all");
+    }
+    function privacy_settings()
+    {
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/privacy_settings");
+    }
 
 }

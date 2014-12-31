@@ -1,5 +1,5 @@
-<div class=" row">
-    <div class=" col-md-12">
+<div class="row">
+    <div class="col-md-12">
         <div class="ticker_friends">
             <div class="row">
                 <div class="col-md-3">

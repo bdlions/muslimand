@@ -21,9 +21,9 @@
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-offset-4 col-md-8">
-                                <a style=" color: #3B59A9;" href="#"> <span>Mark All as Read</span> </a>
+                                <a style="color: #3B59A9;" href="#"><span>Mark All as Read</span></a>
                                 <span>.</span>
-                                <a style=" color: #3B59A9;" href="#"> <span>Send a New Message</span> </a>
+                                <a style="color: #3B59A9;" href="#"><span>Send a New Message</span></a>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                     <div class="pagelet message_friends_box">
                         <div class="row">
                             <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="60" height="60"> 
+                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg" width="60" height="60"> 
                             </div>
                             <div class="col-md-10 ">
                                 <div class="row">
@@ -42,7 +42,7 @@
                                         <b>Dr. Belal</b>
                                     </div>
                                     <div class="col-md-12">
-                                        <span>https://www.facebook.com/video.php?v=76624044009....</span>
+                                        <span>https://www.Muslimand.com/video.php?v=76624044009....</span>
                                     </div>
                                     <div class="col-md-12">
                                         <span>6:35pm</span>
@@ -59,10 +59,10 @@
                             <div class="col-md-10">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <b> Sharmin Akter</b>
+                                        <b>Sharmin Akter</b>
                                     </div>
                                     <div class="col-md-12">
-                                        <span> :)</span>
+                                        <span>:)</span>
                                     </div>
                                     <div class="col-md-12">
                                         <span>Wed</span>
@@ -82,7 +82,7 @@
                                         <b>Mohammad Rafique</b>
                                     </div>
                                     <div class="col-md-12">
-                                        <span> Goodbye</span>
+                                        <span>Goodbye</span>
                                     </div>
                                     <div class="col-md-12">
                                         <span>Mon</span>
@@ -148,7 +148,6 @@
                                         <span>Dec 16</span>
                                     </div>
                                 </div>
-
                             </div>
                         </div> 
                     </div>
@@ -174,7 +173,7 @@
                     </div>
                 </div>
             </div>
-            <div class=" pagelet">
+            <div class="pagelet">
                 <div class="row">
                     <div class="col-md-12">
                         <center><a style="color: #3B59A9;" href="#"><b>See All</b></a> </center>

@@ -28,12 +28,12 @@
             </div>
         </div>
         <div class="row form-group">
-            <div class=" col-md-offset-4 col-md-4">
+            <div class="col-md-offset-4 col-md-4">
                 <button class="btn btn-success form-control">Log In</button>
             </div>
         </div>
         <div class="row form-group">
-            <div class=" col-md-offset-4 col-md-4">
+            <div class="col-md-offset-4 col-md-4">
                 <a href="">Forget Password?</a>
                 <!--<button class="btn btn-success form-control">Log In</button>-->
             </div>
