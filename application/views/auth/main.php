@@ -8,106 +8,157 @@
 </style>
 <div class="container-fluid">
     <div class="row form-group">
-        <div class="col-md-12"></div>
-    </div>
-    <div class="row form-group">
-        <div class="col-md-offset-7 col-md-5">
-            <span style="font-size: 40px; color: #703684">Sign Up</span>
-        </div>
-    </div>
-    <div class="row form-group">
-        <div class="col-md-offset-1 col-md-5">
-            <img class="img-responsive" style="width: 100%" src="<?php echo base_url() ?>resources/images/banner.png">
-        </div>
-        <div class="col-md-offset-1 col-md-4">
-            <?php echo form_open("auth/login", array('id' => '', 'class' => 'form-horizontal')); ?>
-            <div class="row form-group">
-                <div class="col-md-6">
-                    <?php echo form_input($r_first_name + array('class' => 'form-control')); ?>
+                    <div class="col-md-12"></div>
                 </div>
-                <div class="col-md-6">
-                    <?php echo form_input($r_last_name + array('class' => 'form-control')); ?>
+                <div class="row form-group">
+                    <div class="col-md-offset-6 col-md-6">
+                        <span style="font-size: 25px; color: #703684"><b>Sign Up</b></span>
+                    </div>
                 </div>
-            </div>
-            <div class="row form-group"> 
-                <div class="col-md-12">
-                    <?php echo form_input($r_email + array('class' => 'form-control')); ?>
-                </div>
-            </div>
-            
-            <div class="row form-group"> 
-                <div class="col-md-12">
-                    <?php echo form_input($r_password + array('class' => 'form-control')); ?>
-                </div>
-            </div>
-            <div class="row form-group"> 
-                <div class="col-md-12">
-                    <?php echo form_input($r_password_conf + array('class' => 'form-control')); ?>
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col-md-6">
-                    <select class="form-control">
-                        <option class="">
-                            Male
-                        </option>
-                        <option class="">
-                            Female
-                        </option>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                   <select class="form-control">
-                        <option class="form-control">
-                            Australia 
-                        </option>
-                        <option class="form-control">
-                            Bangladesh 
-                        </option>
-                    </select>
-                </div>
-                
-            </div>
-            <div class="row form-group">
-                <div class="col-md-12">
-                    <?php echo form_input($register_btn + array('class' => 'btn pull-right', 'style' => 'color: white; background-color: #703684')); ?>
-                </div>
-            </div>
-            <?php echo form_close(); ?>
-        </div>
-    </div>
+                    <div class="col-md-offset-1 col-md-4">
+                               <img class="img-responsive" style="width: 1200px;" src="<?php echo base_url(); ?>resources/images/banner.png">
+                    </div>
+                    <div class="col-md-offset-1 col-md-5">
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <input type ="text" class="form-control" placeholder="First name">
+                            </div>
+                            <div class="col-md-6">
+                                <input type ="text" class="form-control" placeholder="Last name">
+                            </div>
+                        </div>
+                        <div class="row form-group"> 
+                            <div class="col-md-12">
+                                <input type ="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
 
-    <div class="row">
-        <div class="col-md-12 form-group">
-            <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
-            <?php for ($i = 0; $i < 10; $i++){ ?>
-                <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; ">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="user_brief_card">
+                        <div class="row form-group"> 
+                            <div class="col-md-12">
+                                <input type ="password" class="form-control" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="row form-group"> 
+                            <div class="col-md-12">
+                                <input type ="password" class="form-control" placeholder="Re-peated password">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12"> 
+                                <span style="color: #703684; font-size: 15px;"><b>Birthday</b></span>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-4">
+                                <div class="pages_type_add_form_input">
+                                    <select name="day" class="form-control">
+                                        <option value="">Day</option>
+                                        <?php
+                                        for ($i = 1; $i <= 31; $i++) {
+                                            echo "<option value='{$i}'>{$i}</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="pages_type_add_form_input">
+                                    <select name="month" class="form-control">
+                                        <option selected="1"value="0">Month</option>
+                                        <option value="1">Jan</option>
+                                        <option value="2">Feb</option>
+                                        <option value="3">Mar</option>
+                                        <option value="4">Apr</option>
+                                        <option value="5">May</option>
+                                        <option value="6">Jun</option>
+                                        <option value="7">Jul</option>
+                                        <option value="8">Aug</option>
+                                        <option value="9">Sep</option>
+                                        <option value="10">Oct</option>
+                                        <option value="11">Nov</option>
+                                        <option value="12">Dec</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="pages_type_add_form_input">
+                                    <select name="year" class="form-control">
+                                        <option value="">Year</option>
+                                        <?php
+                                        for ($j = 1900; $j <= 2015; $j++) {
+                                            echo"<option value='{$j}'>{$j}</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <select class="form-control">
+                                    <option class="">
+                                        Male
+                                    </option>
+                                    <option class="">
+                                        Female
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-control">
+                                    <option class="form-control">
+                                        Australia 
+                                    </option>
+                                    <option class="form-control">
+                                        Bangladesh 
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <span style="color: black; font-size: 11px;">By clicking Sign Up, you agree to our <a href="#">Terms and Conditions</a></span>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <button id="btnSubmit" type="submit" class="btn button-custom" style="background-color: #703684; color: white"><b>Sign Up</b></button>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
+                        <?php for ($i = 0; $i < 10; $i++) { ?>
+                            <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; ">
                                 <div class="row">
-                                    <div class="col-md-7" style="padding-right: 6px">
-                                        <img class="img-responsive" style="width: 100%" src="<?php echo base_url() ?>resources/images/face.jpg">
-                                    </div>
-                                    <div class="col-md-5" style="padding-left: 0px">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div style="color: darkgreen; font-weight: bold; font-size: 8px; line-height: 10px">Nazrul Islam</div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <img class="img-responsive" style="width: 100%" src="<?php echo base_url() ?>resources/images/flag.png">
+                                    <div class="col-md-12">
+                                        <div class="user_brief_card">
+                                            <div class="row">
+                                                <div class="col-md-7" style="padding-right: 6px">
+                                                    <img class="img-responsive" style="width: 100%" src="<?php echo base_url(); ?>resources/images/face.jpg">
+                                                </div>
+                                                <div class="col-md-5" style="padding-left: 0px">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div style="color: darkgreen; font-weight: bold; font-size: 8px; line-height: 10px">Nazrul Islam</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <img class="img-responsive" style="width: 100%" src="<?php echo base_url(); ?>resources/images/flag.png">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php } ?>
+                        <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
                     </div>
                 </div>
-            <?php } ?>
-            <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
-        </div>
-    </div>
 </div>
