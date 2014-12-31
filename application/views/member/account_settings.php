@@ -1,7 +1,7 @@
+<div class="row form-group"></div>
 <div class="row">
     <!--LEFT_COLUMN-->
-    <div class="col-md-offset-1 col-md-2">
-        <div class="row form-group"></div>
+    <div class="col-md-2">
         <div class="row form-group"></div>
         <div class="row">
             <div class="col-md-12">
@@ -35,7 +35,7 @@
         <div class="row form-group"></div>
     </div>
     <!--  Middle Column-->
-    <div class="col-md-9">
+    <div class="col-md-8">
         <div class="pagelet">
             <div class="row">
                 <div class="col-md-12">
@@ -117,4 +117,6 @@
             <div class="pagelet_divider"></div>
         </div>
     </div>
+    <div class="col-md-2"></div>
 </div>
+<div class="row form-group"></div>
