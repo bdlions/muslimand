@@ -4,17 +4,16 @@
         <div class="pagelet">
             <div class="row">
                 <div class="col-md-1">
-                    <img src="<?php echo base_url(); ?>resources/images/friends_icon.png"  width="28" height="28">   
+                    <img src="<?php echo base_url(); ?>resources/images/friends_icon.png" class="mm_thumb_comment">   
                 </div>
                 <div class="col-md-11 pagelet_title">
-                    <img src="<?php echo base_url(); ?>resources/images/friends_icon.png" class="pull-left">   
                     Friends
                 </div>
             </div>
         </div>
         <div class="pagelet">
             <div class="row">
-                <div class="col-md-6" >
+                <div class="col-md-6">
                     <div style="border: 1px solid lightgray;">
                         <div class="row">
                             <div class="col-md-3" >

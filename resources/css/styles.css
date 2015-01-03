@@ -9,13 +9,12 @@ and open the template in the editor.
 */
 
 
-/*================================  ALL PAGES  ================================*/
-.mm_input
-{
+/*================================  COMPONENTS  ================================*/
+.mm_input{
     width:100%;  
     height:30px;  
-    padding:4px 10px;  
-    font-size:12px;  
+    padding:0px 10px;  
+    font-size:16px;  
     color:#555;      
     background-color:#fff;  
     background-image:none;  
@@ -23,7 +22,24 @@ and open the template in the editor.
     border-radius:2px;  
 }
 
-
+.mm_thumb_big{
+    height: 100px;
+    width: 100px;
+    margin-right: 15px;
+    display: inline-block;
+}
+.mm_thumb{
+    height: 60px;
+    width: 60px;
+    margin-right: 15px;
+    display: inline-block;
+}
+.mm_thumb_comment{
+    height: 30px;
+    width: 30px;
+    margin-right: 15px;
+    display: inline-block;
+}
 
 /*================================  SECTIONS  ================================*/
 #mm_friend_request {
@@ -57,11 +73,6 @@ and open the template in the editor.
 .comment_box{
     
 }
-.pagelet_title img{
-    width: 30px;
-    height: 30px;
-    padding-right: 30px;
-}
 .pagelet_title{
     font-size: 24px;
     font-weight: bold;
@@ -71,7 +82,7 @@ and open the template in the editor.
     background-color: white;
     padding: 15px;
     margin-bottom: 1px;
-    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 2px #bbb;
 }
 .pagelet_divider{
     margin-top: 15px;
