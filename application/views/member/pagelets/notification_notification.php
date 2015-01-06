@@ -1,3 +1,10 @@
+hridoy: redesign it.
+
+use simple row column.
+remove all unnecessary things.
+think before you add tags.
+
+
 <div class="row">
     <div class="row form-group"></div>
     <div class="col-md-offset-3 col-md-4">
