@@ -86,7 +86,7 @@ and open the template in the editor.
     background-color: white;
     padding: 15px;
     margin-bottom: 1px;
-    box-shadow: 0 0 2px #bbb;
+    box-shadow: 0 0 1px #bbb;
 }
 .pagelet_divider{
     margin-top: 15px;

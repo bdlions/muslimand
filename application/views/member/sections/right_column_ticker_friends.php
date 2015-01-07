@@ -1,9 +1,7 @@
-
 <div style="height: 50%; overflow-x:hidden; overflow-y: scroll">
-    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="ticker_friends">
+                <div class="ticker_friends message_friends_divider_others">
                     <div class="row">
                         <div class="col-md-3">
                             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30"> 
@@ -13,7 +11,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ticker_friends">
+                <div class="ticker_friends message_friends_divider_others">
                     <div class="row">
                         <div class="col-md-3">
                             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30"> 
@@ -23,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ticker_friends">
+                <div class="ticker_friends message_friends_divider_others">
                     <div class="row">
                         <div class="col-md-3">
                             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30"> 
@@ -33,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ticker_friends">
+                <div class="ticker_friends message_friends_divider_others">
                     <div class="row">
                         <div class="col-md-3">
                             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30"> 
@@ -43,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ticker_friends">
+                <div class="ticker_friends message_friends_divider_others">
                     <div class="row">
                         <div class="col-md-3">
                             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="30" height="30"> 
@@ -53,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ticker_friends">
+                <div class="ticker_friends message_friends_divider_others">
                     <div class="row">
                         <div class="col-md-3">
                             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="30" height="30"> 
@@ -63,7 +61,7 @@
                         </div>
                     </div> 
                 </div>
-                <div class="ticker_friends">
+                <div class="ticker_friends message_friends_divider_others">
                     <div class="row">
                         <div class="col-md-3">
                             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="30" height="30"> 
@@ -75,13 +73,12 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 <div style="border-bottom: 2px solid lightgray"></div>
 <div style="height: 50%; overflow-x:hidden; overflow-y: scroll">
-    <div class="container-fluid"><div class="row">
+        <div class="row">
         <div class="col-md-12">
-            <div class="ticker_friends">
+            <div class="ticker_friends message_friends_divider_others">
                 <div class="row">
                     <div class="col-md-3">
                         <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30">
@@ -91,7 +88,7 @@
                     </div>
                 </div> 
             </div>
-            <div class="ticker_friends">
+            <div class="ticker_friends message_friends_divider_others">
                 <div class="row">
                     <div class="col-md-3">
                         <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="30" height="30">
@@ -101,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ticker_friends">
+            <div class="ticker_friends message_friends_divider_others">
                 <div class="row">
                     <div class="col-md-3">
                         <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg"  width="30" height="30">
@@ -111,7 +108,7 @@
                     </div>
                 </div> 
             </div>
-            <div class="ticker_friends">
+            <div class="ticker_friends message_friends_divider_others">
                 <div class="row">
                     <div class="col-md-3">
                         <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="30" height="30">
@@ -121,7 +118,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ticker_friends">
+            <div class="ticker_friends message_friends_divider_others">
                 <div class="row">
                     <div class="col-md-3">
                         <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="30" height="30">
@@ -131,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ticker_friends">
+            <div class="ticker_friends message_friends_divider_others">
                 <div class="row">
                     <div class="col-md-3">
                         <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30">
@@ -141,7 +138,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ticker_friends">
+            <div class="ticker_friends message_friends_divider_others">
                 <div class="row">
                     <div class="col-md-3">
                         <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="30" height="30">
@@ -152,8 +149,5 @@
                 </div>
             </div>
         </div>
-
-    </div></div>
-</div>
-
+        </div>
 </div>
