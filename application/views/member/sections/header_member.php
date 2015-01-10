@@ -8,10 +8,10 @@
         <input type="text" class="mm_input" placeholder="Search for people, places and things">
     </div>
     <div class="col-md-offset-1 col-md-2">
-        <a style="color: #fff; padding-top: 40px; font-size: 18px; ">
-            <img style="height: 25px; width: 25px;" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" alt="Smiley face">
-            &nbsp; Mohammad
-        </a>
+        <span style="cursor: pointer; color: #fff; padding-top: 40px; font-size: 18px;">
+            <img style="height: 25px; width: 25px;" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg">
+            &nbsp; <span style="text-decoration: none">Mohammad</span>
+        </span>
     </div>
     <div class="col-md-2">
         <!--<div id="mm_friend_request"><a href="#"></a></div>-->
@@ -86,6 +86,6 @@
         border: 1px solid darkgray;
         border-radius: 4px;
         background-color: white;
-        color: blueviolet;
+        color: black;
     }
 </style>

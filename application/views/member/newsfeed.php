@@ -3,74 +3,74 @@
     <div class="col-md-2">
         <div class="row form-group"></div>
         <div class="row">
-            <div class="col-md-3">
-                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="40" height="40">
+            <div class="col-md-12">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="100" height="100">
             </div>
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-12">
-                        <a style="color: black" href="#">Mohammad Azhar Uddin</a>
-                    </div>
-                    <div class="col-md-12">
-                        <a style="color: black" href="#">Edit Profile</a>
-                    </div>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Mohammad Azhar Uddin</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a style="color: black; font-size: 12px;" href="#">Edit Profile</a>
             </div>
         </div>
         <div class="row form-group"></div>
         <div class="row">
             <div class="col-md-12">
-                <a style="color: black;" href="#">News Feed</a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">News Feed</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a style="color: black;" href="#">Messages</a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Messages</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a style="color: black;" href="#">Friends</a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Friends</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a style="color: black;" href="#">Blogs</a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Blogs</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a style="color: black;" href="#">Pages</a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Pages</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a style="color: black;" href="#">Academy</a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Academy</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a style="color: black;" href="#">Library</a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Library</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a style="color: black;" href="#">Fund Raising</a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Fund Raising</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a style="color: black;" href="#"> Online Payment </a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#"> Online Payment </a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a style="color: black;" href="#"> Zakat </a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#"> Zakat </a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a style="color: black;" href="#">Shop </a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Shop </a>
             </div>
         </div>
         <div class="row form-group"></div>

@@ -3,19 +3,18 @@
         <div class="col-md-2">
             <span style="cursor: pointer; font-size: 12px; font-weight: bold;">Inbox </span>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-2">
             <span style="cursor: pointer; font-size: 12px; font-weight: bold;">Other</span>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="pull-right">
-                <a style="font-size: 11px; color: #8A2BE7;" href="#">Mark All as Read</a> . 
-                <a style="font-size: 11px; color: #8A2BE7;" href="#">Send a New Message</a>
+                <a style="font-size: 11px;" href="#">Mark All as Read</a> . 
+                <a style="font-size: 11px;" href="#">Send a New Message</a>
             </div>
         </div>
     </div>
 </div>
 <div style="max-height: 450px; overflow-x:hidden; overflow-y: scroll">
-    <?php for ($i = 1; $i <= 3; $i++) { ?>
         <div class="pagelet message_friends_box">
             <div class="row">
                 <div class="col-md-2">
@@ -36,7 +35,6 @@
                 </div>
             </div>
         </div>
-    <?php } ?>
     <div class="pagelet message_friends_box">
         <div class="row">
             <div class="col-md-2">
@@ -117,11 +115,51 @@
             </div>
         </div>
     </div>
+    <div class="pagelet message_friends_box">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="60" height="60"> 
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span style="font-weight: bold;">Barak Obama</span>
+                    </div>
+                    <div class="col-md-12">
+                        <span>I hate terrorists</span>
+                    </div>
+                    <div class="col-md-12">
+                        <span>05/01/15</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pagelet message_friends_box">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="60" height="60"> 
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span style="font-weight: bold;">Maria Islam</span>
+                    </div>
+                    <div class="col-md-12">
+                        <span>Happy New Year</span>
+                    </div>
+                    <div class="col-md-12">
+                        <span>01/01/15</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div style="border-top: 1px solid lightgray;"class="pagelet message_friends_box_1">
     <div class="row">
         <div class="col-md-12">
-            <div style="text-align: center; font-weight: bold;"><a style="color: #8A2BE7" href="#">See All</a></div>
+            <div style="text-align: center; font-weight: bold;"><a href="#">See All</a></div>
         </div>
     </div>
 </div>
