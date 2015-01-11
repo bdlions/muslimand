@@ -9,7 +9,7 @@
                     <img src="<?php echo base_url(); ?>resources/images/about.png"  width="28" height="28">   
                 </div>
                 <div class="col-md-11">
-                    <h3>About</h3>  
+                    <span style="font-size: 35px;">About</span>  
                 </div>
             </div>
         </div>
@@ -63,47 +63,44 @@
                 <div class="col-md-8">
                     <div class="pagelet">
                         <div class="row">
-                            <div class="row form-group"></div>
                             <div class="col-md-6">
-                                <div class="row">
+                                <div class="row form-group">
                                     <div class="col-md-2">
                                         <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="40" height="40"> 
                                     </div>
                                     <div class="col-md-10">
-                                        <h6>Works at <a style="color: blue;" href="#">Sampan-IT </a></h6>
+                                        Works at <a href="#">Sampan-IT </a>
                                     </div>
                                 </div>
                                 <div class="pagelet_divider"></div>
-                                <div class="row">
+                                <div class="row form-group">
                                     <div class="col-md-2">
                                         <img src="<?php echo base_url(); ?>resources/images/Food.jpg"  width="40" height="40"> 
                                     </div>
                                     <div class="col-md-10">
-                                        <h6>Studied at <a style="color: blue;" href="#">ABC University </a></h6>
+                                        Studied at <a href="#">ABC University </a>
                                     </div>
                                 </div>
                                 <div class="pagelet_divider"></div>
-                                <div class="row">
+                                <div class="row form-group">
                                     <div class="col-md-2">
                                         <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="40" height="40"> 
                                     </div>
                                     <div class="col-md-10">
-                                        <h6>Lives in <a style="color: blue;" href="#">Dhaka, Bangladesh </a></h6>
+                                        Lives in <a href="#">Dhaka, Bangladesh </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="row form-group"></div>
-                                <div class="row">
+                                <div class="row form-group">
                                     <div class="col-md-2">
                                         <img src="<?php echo base_url(); ?>resources/images/about_icons/mobile_icon.png"  width="20" height="20"> 
                                     </div>
                                     <div class="col-md-10">
-                                        <a style="color: blue;" href="#">01XXX XXX XXX </a>
+                                        <a href="#">01XXX XXX XXX </a>
                                     </div>
                                 </div>
-                                <div class="row form-group"></div>
-                                <div class="row">
+                                <div class="row form-group">
                                     <div class="col-md-2">
                                         <img src="<?php echo base_url(); ?>resources/images/about_icons/mail.png"  width="20" height="20"> 
                                     </div>
@@ -111,8 +108,7 @@
                                         <h6>mail@muslimand.com </h6>
                                     </div>
                                 </div>
-                                <div class="row form-group"></div>
-                                <div class="row">
+                                <div class="row form-group">
                                     <div class="col-md-2">
                                         <img src="<?php echo base_url(); ?>resources/images/about_icons/address.png"  width="20" height="20"> 
                                     </div>
@@ -120,26 +116,23 @@
                                         <h6>168, Shanti Niketon </h6>
                                     </div>
                                 </div>
-                                <div class="row form-group"></div>
-                                <div class="row">
+                                <div class="row form-group">
                                     <div class="col-md-2">
                                         <img src="<?php echo base_url(); ?>resources/images/about_icons/massenger.png"  width="20" height="20"> 
                                     </div>
                                     <div class="col-md-10">
-                                        <a style="color: blue;" href="#">sampan-it </a>
+                                        <a href="#">sampan-it </a>
                                     </div>
                                 </div>
-                                <div class="row form-group"></div>
-                                <div class="row">
+                                <div class="row form-group">
                                     <div class="col-md-2">
                                         <img src="<?php echo base_url(); ?>resources/images/about_icons/website.png"  width="20" height="20"> 
                                     </div>
                                     <div class="col-md-10">
-                                        <a style="color: blue;" href="#">http://www.muslimand.com/ </a>
+                                        <a href="#">http://www.muslimand.com/ </a>
                                     </div>
                                 </div>
-                                <div class="row form-group"></div>
-                                <div class="row">
+                                <div class="row form-group">
                                     <div class="col-md-2">
                                         <img src="<?php echo base_url(); ?>resources/images/about_icons/birth.png"  width="20" height="20"> 
                                     </div>
