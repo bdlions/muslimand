@@ -17,21 +17,21 @@
         <!--<div id="mm_friend_request"><a href="#"></a></div>-->
         
         <div id="mm_friend_request" style="position: relative" onclick="friend_toggle()">
-            <a href="css_intro.asp"></a>
+            <a href="javascript:void(0)"></a>
             <div id="mm_friend_request_box">
                 <?php $this->load->view("member/pagelets/notification_friend_request"); ?>
             </div>
         </div>
         
         <div id="mm_messages" style="position: relative" onclick="msg_toggle()">
-            <a href="css_intro.asp"></a>
+            <a href="javascript:void(0)"></a>
             <div id="mm_message_box">
                 <?php $this->load->view("member/pagelets/notification_message"); ?>
             </div>
         </div>
         
         <div id="mm_notification" style="position: relative" onclick="notf_toggle()">
-            <a href="css_syntax.asp"></a>
+            <a href="javascript:void(0)"></a>
             <div id="mm_notification_box">
                 <?php $this->load->view("member/pagelets/notification_notification"); ?>
             </div>
@@ -42,38 +42,32 @@
     </div>
 </div>
 <script>
-    $(document).mouseup(function (e)
-    {
-        var msg_container = $("#mm_friend_request_box");
-
-        if (!msg_container.is(e.target) && msg_container.has(e.target).length === 0)
-        {
-            msg_container.hide();
-        }
-        var msg_container = $("#mm_message_box");
-
-        if (!msg_container.is(e.target) && msg_container.has(e.target).length === 0)
-        {
-            msg_container.hide();
-        }
+    $(document).mouseup(function (e){
+        var fr_container = $("#mm_friend_request_box");
         var container = $("#mm_notification_box");
-
-        if (!container.is(e.target) && container.has(e.target).length === 0)
-        {
+        var msg_container = $("#mm_message_box");
+        
+        if (!fr_container.is(e.target) && fr_container.has(e.target).length === 0){
+            fr_container.hide();
+        }
+        if (!msg_container.is(e.target) && msg_container.has(e.target).length === 0){
+            msg_container.hide();
+        }
+        if (!container.is(e.target) && container.has(e.target).length === 0){
             container.hide();
         }
     });
-    function friend_toggle()
-    {
-        $('#mm_friend_request_box').toggle();
+    
+    function friend_toggle(){
+        $('#mm_friend_request_box').show();
     }
-    function msg_toggle()
-    {
-        $('#mm_message_box').toggle();
+    
+    function msg_toggle(){
+        $('#mm_message_box').show();
     }
-    function notf_toggle()
-    {
-        $('#mm_notification_box').toggle();
+    
+    function notf_toggle(){
+        $('#mm_notification_box').show();
     }
 </script>
 <style>
