@@ -159,7 +159,7 @@
 <div style="border-top: 1px solid lightgray;"class="pagelet message_friends_box_1">
     <div class="row">
         <div class="col-md-12">
-            <div style="text-align: center; font-weight: bold;"><a href="#">See All</a></div>
+            <div style="text-align: center; font-weight: bold;"><a href="<?php echo base_url(); ?>member/messages">See All</a></div>
         </div>
     </div>
 </div>
