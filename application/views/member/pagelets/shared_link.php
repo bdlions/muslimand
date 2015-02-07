@@ -25,7 +25,7 @@
     </div>
     
     <!--ORIGINAL CODE-->
-    <div class="row form-group">
+<!--    <div class="row form-group">
         <div class="col-md-1">
             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg" width="40" height="40">
         </div>
@@ -50,7 +50,7 @@
                 <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             </button>
         </div>
-    </div>
+    </div>-->
     <!--ORIGINAL CODE END-->
     
     
@@ -126,7 +126,7 @@
             </div>
         </div>
     </div>
-    <div class="row form-group">
+    <div class="row">
         <div class="col-md-1">
             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="30" height="30">
         </div>

@@ -1,30 +1,58 @@
 <div class="pagelet">
     <div class="row form-group">
-        <div class="col-md-1">
-            <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg" width="40" height="40">
-        </div>
-        <div class="col-md-10">
-            <div class="row">
-                <div class="col-md-12">
+        <div class="col-md-12">
+            <div style="float: left; padding-right: 10px;">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg" width="40" height="40">
+            </div>
+            <div style="float: left;">
+                <div>
                     <a style="font-weight: bold;"href="#">Sharmin Akter</a> shared 
-            <a href="#">Jannatul Ferdaus</a>'s photo.
+                    <a href="#">Jannatul Ferdaus</a>'s photo.
                     <button style="max-width: 35px; max-height: 30px; background-color: white;"type="button" class="btn btn-xs" aria-label="Left Align">
                         <img src="<?php echo base_url(); ?>resources/images/friends_icon.png" width="15" height="15"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
                     </button>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
+                <div>
                     January 7, 2015 at 10:45am.
                 </div>
             </div>
-        </div>
-        <div class="col-md-1">
-            <button style="background-color: white;"type="button" class="btn btn-xs" aria-label="Left Align">
-                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-            </button>
+            <div style="float: right;">
+                <button style="background-color: white;"type="button" class="btn btn-xs" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                </button>
+            </div>
         </div>
     </div>
+
+    <!--    <div class="row form-group">
+            <div class="col-md-1">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg" width="40" height="40">
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a style="font-weight: bold;"href="#">Sharmin Akter</a> shared 
+                <a href="#">Jannatul Ferdaus</a>'s photo.
+                        <button style="max-width: 35px; max-height: 30px; background-color: white;"type="button" class="btn btn-xs" aria-label="Left Align">
+                            <img src="<?php echo base_url(); ?>resources/images/friends_icon.png" width="15" height="15"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        January 7, 2015 at 10:45am.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <button style="background-color: white;"type="button" class="btn btn-xs" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>-->
+
+
+
     <div class="row form-group">
         <div class="col-md-11">
             <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg" width="100%" height="60%">
@@ -66,8 +94,8 @@
         <div class="col-md-11">
             <div class="row">
                 <div class="col-md-12">
-            <a style="font-weight: bold;" href="#">Maria Islam</a>
-           Nice pic :)
+                    <a style="font-weight: bold;" href="#">Maria Islam</a>
+                    Nice pic :)
                 </div>
             </div>
             <div class="row">
@@ -78,10 +106,10 @@
                     . <a>31</a>
                 </div>
             </div>
-            
+
         </div>
     </div>
-    <div class="row form-group">
+    <div class="row">
         <div class="col-md-1">
             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="30" height="30">
         </div>
