@@ -21,7 +21,7 @@
         <div class="pagelet">
             <div class="row form-group">
                 <div class="col-md-12">
-                    <?php for ($i = 0; $i < 12; $i++): ?>
+                    <?php for ($i = 0; $i < 4; $i++): ?>
                         <div style="padding: 10px; display: inline-block;">
                             <div class="friendd">
                                 <div style="float: left">

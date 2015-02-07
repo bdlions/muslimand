@@ -20,17 +20,17 @@
         <div class="row form-group"></div>
         <div class="row">
             <div class="col-md-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">News Feed</a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="<?php echo base_url(); ?>member/newsfeed">News Feed</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Messages</a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="<?php echo base_url(); ?>member/messages">Messages</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Friends</a>
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="<?php echo base_url(); ?>member/friends">Friends</a>
             </div>
         </div>
         <div class="row">
