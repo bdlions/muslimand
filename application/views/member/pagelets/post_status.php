@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-3">
             <!--<button class="btn btn-default">Frients</button>-->
-            <button class="btn btn-info pull-right form-control" style="background-color: #703684; color: white">Post</button>
+            <button class="btn btn-default pull-right form-control" style="background-color: #703684; color: white">Post</button>
         </div>
     </div>
 </div>

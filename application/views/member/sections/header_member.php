@@ -79,6 +79,7 @@
         right: 1px;
         border: 1px solid darkgray;
         border-radius: 4px;
+        box-shadow: 0 0 6px #491249;
         background-color: white;
         color: black;
     }

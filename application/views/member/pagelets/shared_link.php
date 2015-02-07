@@ -1,5 +1,31 @@
 <div class="pagelet">
     <div class="row form-group">
+        <div class="col-md-12">
+            <div style="float: left; padding-right: 10px">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg" width="40" height="40">
+            </div>
+            <div style="float: left">
+                <div>
+                    <a style="font-weight: bold;" href="#">Mohammad Rafique</a> shared 
+                    <a style="color: #3B59A9;" href="#">Cricinfo</a>'s Page.
+                    <button style="max-width: 35px; max-height: 30px; background-color: white;"type="button" class="btn btn-xs" aria-label="Left Align">
+                        <img src="<?php echo base_url(); ?>resources/images/friends_icon.png" width="15" height="15"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div>
+                    December 1, 2014 at 7.57pm.
+                </div>
+            </div>
+            <div style="float: right">
+                <button style="background-color: white;"type="button" class="btn btn-xs" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!--ORIGINAL CODE-->
+    <div class="row form-group">
         <div class="col-md-1">
             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg" width="40" height="40">
         </div>
@@ -7,7 +33,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <a style="font-weight: bold;" href="#">Mohammad Rafique</a> shared 
-            <a style="color: #3B59A9;" href="#">Cricinfo</a>'s status.
+                    <a style="color: #3B59A9;" href="#">Cricinfo</a>'s Page.
                     <button style="max-width: 35px; max-height: 30px; background-color: white;"type="button" class="btn btn-xs" aria-label="Left Align">
                         <img src="<?php echo base_url(); ?>resources/images/friends_icon.png" width="15" height="15"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
                     </button>
@@ -25,6 +51,11 @@
             </button>
         </div>
     </div>
+    <!--ORIGINAL CODE END-->
+    
+    
+    
+    
     <div class="row form-group">
         <div class="col-md-12">
             <img src="<?php echo base_url(); ?>resources/images/cricket.jpg" width="100%" height="60%">
