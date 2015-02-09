@@ -3,7 +3,7 @@
         <div style="position: relative;">
             <img src="<?php echo base_url() ?>resources/images/car.jpg" width="100%" height="250">
             <a class="profilePicThumb" href="#">
-                <img style="outline: 1px solid gray; border: 6px solid whitesmoke; position: absolute; bottom: 1px; left: 1px;" class="profilePic img" src="<?php echo base_url() ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="160px" height="160px">
+                <img style="border: 6px solid whitesmoke; position: absolute; bottom: 1px; left: 1px;" class="img-circle profilePic img" src="<?php echo base_url() ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="160px" height="160px">
             </a>
             <a style="position: absolute; bottom: 2px; left: 190px; color: white;"class="btn" href="">
                 <b>Mohammad Azhar Uddin</b>
@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-12">
         <div style="background-color: whitesmoke">
-        <div class="btn-group" role="group" aria-label="..." style="position: relative; left: 200px;">
+        <div class="btn-group" role="group" aria-label="...">
             <button type="button" class="btn btn-default" style="font-size: 100%">Timeline</button>
             <button type="button" class="btn btn-default" style="font-size: 100%">About</button>
             <button type="button" class="btn btn-default" style="font-size: 100%">Photo</button>

@@ -1,21 +1,21 @@
 <div class="row">
-    <div class="col-md-offset-1 col-md-1">
+    <div class="col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-xs-1">
         <a href="<?php echo base_url(); ?>member/newsfeed">
             <img src="<?php echo base_url(); ?>resources/images/logo.png" height="30" width="30">
         </a>
     </div>
-    <div class="col-md-4">
+    <div class="col-xs-3 col-sm-5 col-md-4">
         <input type="text" class="mm_input" placeholder="Search for people, places and things">
     </div>
-    <div class="col-md-offset-1 col-md-2">
-        <a href="<?php echo base_url(); ?>member/profile"><span style="cursor: pointer; color: #fff; padding-top: 40px; font-size: 18px;">
+    <div class="col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-xs-4 col-sm-3 col-md-2">
+        <a href="<?php echo base_url(); ?>member/profile">
+            <span style="cursor: pointer; color: #fff; padding-top: 40px; font-size: 16px;">
                 <img style="height: 25px; width: 25px;" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg">
                 &nbsp; <span style="text-decoration: none">Mohammad</span>
-            </span></a>
+            </span>
+        </a>
     </div>
-    <div class="col-md-2">
-        <!--<div id="mm_friend_request"><a href="#"></a></div>-->
-
+    <div class="col-xs-4 col-sm-3 col-md-2">
         <div id="mm_friend_request" style="position: relative" onclick="friend_toggle()">
             <a href="javascript:void(0)"></a>
             <div id="mm_friend_request_box">
@@ -38,7 +38,7 @@
         </div>
 
     </div>
-    <div class="col-md-1">
+    <div class="col-xs-1">
     </div>
 </div>
 <script>

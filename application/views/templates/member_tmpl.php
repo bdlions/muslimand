@@ -25,10 +25,10 @@
             <div style="padding-top: 60px"></div>
             <div class="container-fluid" style="background-color: #E9EAED;">
                 <div class="row">
-                    <div class="col-xs-offset-1 col-xs-9 col-sm-offset-1 col-sm-9 col-md-offset-1 col-md-9 col-lg-offset-1 col-lg-9 ">
+                    <div class="col-xs-offset-0 col-xs-10 col-sm-offset-0 col-sm-11 col-md-offset-1 col-md-9 col-lg-offset-1 col-lg-9 ">
                         <?php echo $contents; ?>                            
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2">
                         <div style="position: fixed; right: 0; top: 60px; z-index: 19; height: 90%;">
                         <?php $this->load->view("member/sections/right_column_ticker_friends"); ?>
                         </div>
