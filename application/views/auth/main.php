@@ -11,20 +11,20 @@
         <div class="col-md-12"></div>
     </div>
     <div class="row form-group">
-        <div class="col-md-offset-7 col-md-5">
-            <span style="font-size: 25px; color: #703684"><b>Sign Up</b></span>
+        <div class="col-md-offset-6 col-md-6 col-xs-12">
+            <span style="font-size: 25px; color: #703684; font-weight: bold;">Sign Up</span>
         </div>
     </div>
     <div class="row form-group">
-        <div class="col-md-offset-1 col-md-5">
+        <div class="col-md-offset-1 col-md-5 col-xs-12">
             <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/banner.png">
         </div>
         <div class="col-md-5">
             <div class="row form-group">
-                <div class="col-md-6">
+                <div class="col-md-6 col-xs-12 form-group">
                     <input type ="text" class="form-control" placeholder="First name">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-xs-12">
                     <input type ="text" class="form-control" placeholder="Last name">
                 </div>
             </div>
@@ -46,11 +46,11 @@
             </div>
             <div class="row form-group">
                 <div class="col-md-12"> 
-                    <span style="color: #703684; font-size: 15px;"><b>Birthday</b></span>
+                    <span style="color: #703684; font-size: 15px; font-weight: bold;">Birthday</span>
                 </div>
             </div>
             <div class="row form-group">
-                <div class="col-md-4">
+                <div class="col-md-4 col-xs-12 form-group">
                     <div class="pages_type_add_form_input">
                         <select name="day" class="form-control">
                             <option value="">Day</option>
@@ -62,7 +62,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-xs-12 form-group">
                     <div class="pages_type_add_form_input">
                         <select name="month" class="form-control">
                             <option selected="1"value="0">Month</option>
@@ -81,7 +81,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-xs-12 form-group">
                     <div class="pages_type_add_form_input">
                         <select name="year" class="form-control">
                             <option value="">Year</option>
@@ -95,7 +95,7 @@
                 </div>
             </div>
             <div class="row form-group">
-                <div class="col-md-6">
+                <div class="col-md-6 col-xs-12 form-group">
                     <select class="form-control">
                         <option class="">
                             Male
@@ -105,7 +105,7 @@
                         </option>
                     </select>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-xs-12 form-group">
                     <select class="form-control">
                         <option class="form-control">
                             Australia 
@@ -128,21 +128,22 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-1"></div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12 form-group">
+    <div class="row form-group">
+        <div class="col-md-12 col-xs-12 form-group">
             <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
             <?php for ($i = 0; $i < 10; $i++) { ?>
                 <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; ">
-                    <div class="row">
+                    <div class="row form-group">
                         <div class="col-md-12">
                             <div class="user_brief_card">
                                 <div class="row">
-                                    <div class="col-md-7" style="padding-right: 6px">
-                                        <img class="img-responsive" style="width: 100%" src="<?php echo base_url(); ?>resources/images/face.jpg">
+                                    <div class="col-md-7 col-xs-7" style="padding-right: 6px">
+                                        <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/face.jpg">
                                     </div>
-                                    <div class="col-md-5" style="padding-left: 0px">
+                                    <div class="col-md-5 col-xs-5" style="padding-left: 0px">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div style="color: darkgreen; font-weight: bold; font-size: 8px; line-height: 10px">Nazrul Islam</div>
@@ -150,7 +151,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <img class="img-responsive" style="width: 100%" src="<?php echo base_url(); ?>resources/images/flag.png">
+                                                <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/flag.png">
                                             </div>
                                         </div>
                                     </div>

@@ -1,22 +1,22 @@
 <div class="container-fluid" style="padding-top: 10px; background-color: #703684; color: white">
-    <div class="row form-group">
+    <div class="row">
         <?php echo form_open("auth/login"); ?>
-        <div class="col-md-offset-1 col-md-3">
-            <div class="pull-left" style="text-align: center; padding-top: 10px;">
-                <img height="32px" width="32px"src="<?php echo base_url(); ?>resources/images/logo.png" height="32px" width="32px" style="margin: 0px 10px 15px 0px;">
-                <span style="font-size: 35px; line-height: 40px; "><b>Muslimand</b></span>
+        <div class="col-md-4">
+            <div align="center" style="text-align: center; padding-top: 10px;">
+                <img src="<?php echo base_url(); ?>resources/images/logo.png" style="margin: 0px 10px 15px 0px; border-radius: 3px; padding-left: 10px;">
+                <span style="font-size: 35px; line-height: 40px; font-weight: bold;">Muslimand</span>
                 <!--<br>Hello Muslims! Keep updated with Muslimand-->
             </div>
         </div>
-        <div class="col-md-2" style="padding-top: 20px">
-            <img style="width: 22px; height: 22px;"src="<?php echo base_url(); ?>resources/images/logins/facebook.png" >
-            <img style="width: 22px; height: 22px;"src="<?php echo base_url(); ?>resources/images/logins/google.png" >
-            <img style="width: 22px; height: 22px;"src="<?php echo base_url(); ?>resources/images/logins/twitter.png" >
-            <img style="width: 22px; height: 22px;"src="<?php echo base_url(); ?>resources/images/logins/linkedin.png" >
-            <img style="width: 22px; height: 22px;"src="<?php echo base_url(); ?>resources/images/logins/yahoo.png" >
-            <img style="width: 22px; height: 22px;"src="<?php echo base_url(); ?>resources/images/logins/live.png" >
+        <div class="col-md-2 form-group" style="padding-top: 20px">
+            <img style="padding: 2px; border-radius: 5px;"src="<?php echo base_url(); ?>resources/images/logins/facebook.png" >
+            <img style="padding: 2px; border-radius: 5px;"src="<?php echo base_url(); ?>resources/images/logins/google.png" >
+            <img style="padding: 2px; border-radius: 5px;"src="<?php echo base_url(); ?>resources/images/logins/twitter.png" >
+            <img style="padding: 2px; border-radius: 5px;"src="<?php echo base_url(); ?>resources/images/logins/linkedin.png" >
+            <img style="padding: 2px; border-radius: 5px;"src="<?php echo base_url(); ?>resources/images/logins/yahoo.png" >
+            <img style="padding: 2px; border-radius: 5px;"src="<?php echo base_url(); ?>resources/images/logins/live.png" >
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-xs-12 form-group">
             <!--<label>Email:</label>-->
             <div class="row">
                 <div class="col-md-12">
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-xs-12">
             <div class="row">
                 <div class="col-md-12">
                     <span>Password:</span>
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-1 col-xs-12 form-group">
             <div class="" style="margin-top: 21px; margin-right: 16px;">  
                 <button type="submit" class="pull-right" style="font-size: 10px; font-weight: normal; height: 20px; width: 100%; border: 0px; padding: 3px; background-color: white; color: #703684">Sign In</button>
             </div>  
