@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="col-md-1 col-xs-12 form-group">
-            <div class="" style="margin-top: 21px; margin-right: 16px;">  
+            <div class="" style="margin-top: 21px;">  
                 <button type="submit" class="pull-right" style="font-size: 10px; font-weight: normal; height: 20px; width: 100%; border: 0px; padding: 3px; background-color: white; color: #703684">Sign In</button>
             </div>  
         </div>
