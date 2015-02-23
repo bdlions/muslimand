@@ -36,6 +36,10 @@ class Member extends CI_Controller {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/about");
 //        $this->load->view("member/about");
     }
+    function videos()
+    {
+        $this->template->load(VIDEO_IN_TEMPLATE, "member/videos");
+    }
     function account_settings()
     {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/account_settings");

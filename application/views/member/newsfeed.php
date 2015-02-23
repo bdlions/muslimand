@@ -35,6 +35,16 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Photos</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                 <a style="color: black; font-size: 12px; font-weight: bold;" href="<?php echo base_url(); ?>member/videos">Videos</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
                  <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Blogs</a>
             </div>
         </div>
