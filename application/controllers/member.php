@@ -39,12 +39,6 @@ class Member extends CI_Controller {
     function videos()
     {
         $this->template->load(VIDEO_IN_TEMPLATE, "member/videos");
-        $this->template->load(VIDEO_IN_TEMPLATE, "member/video/videos_sort_most_discussed");
-        $this->template->load(VIDEO_IN_TEMPLATE, "member/video/videos_sort_most_viewed");
-        $this->template->load(VIDEO_IN_TEMPLATE, "member/video/videos_sort_top_rated");
-        $this->template->load(VIDEO_IN_TEMPLATE, "member/video/videos_view_favorite");
-        $this->template->load(VIDEO_IN_TEMPLATE, "member/video/videos_view_friend");
-        $this->template->load(VIDEO_IN_TEMPLATE, "member/video/videos_view_my");
     }
     function account_settings()
     {
