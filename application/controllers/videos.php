@@ -41,5 +41,8 @@ class Videos extends CI_Controller {
     function videos_view_my(){
         $this->template->load(VIDEO_IN_TEMPLATE, "member/video/videos_view_my");
     }
+    function videos_iframe(){
+        $this->template->load(VIDEO_IN_TEMPLATE, "member/video/videos_iframe");
+    }
 
 }
