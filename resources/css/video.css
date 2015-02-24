@@ -49,20 +49,7 @@ and open the template in the editor.
 }
 
 /*================================  pagelets  ================================*/
-.comment_box{
-    
-}
-.pagelet_title{
-    font-size: 24px;
-    font-weight: bold;
-    color: #555;
-}
-.pagelet{
-    background-color: white;
-    padding: 15px;
-    margin-bottom: 1px;
-    box-shadow: 0 0 1px #bbb;
-}
+
 .pagelet_divider{
     margin-top: 15px;
     margin-bottom: 15px;
@@ -72,12 +59,8 @@ and open the template in the editor.
    padding: 5px 0px 5px 0px; 
 }
 
-/*================================  videos  ================================*/
+/*================================  Left Menu  ================================*/
 
-.is_clicked{
-    display: block;
-    float: left;
-}
 .left-inner-addon {
   position: relative;
 }

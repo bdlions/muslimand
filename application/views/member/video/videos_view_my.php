@@ -21,13 +21,13 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="video_ul">
-                    <li><a href="<?php echo base_url(); ?>member/videos">All Videos</a></li>
+                    <li><a href="">All Videos</a></li>
                     <div class="category_divider"></div>
-                    <li><a href="<?php echo base_url(); ?>member/video/videos_view_my">My Videos</a></li>
+                    <li><a href="#">My Videos</a></li>
                     <div class="category_divider"></div>
-                    <li><a href="<?php echo base_url(); ?>member/video/videos_view_favorite">My Favorites</a></li>
+                    <li><a href="#">My Favorites</a></li>
                     <div class="category_divider"></div>
-                    <li><a href="<?php echo base_url(); ?>member/video/videos_view_friend">Friends’ Videos</a></li>
+                    <li><a href="#">Friends’ Videos</a></li>
                     <div class="category_divider"></div>
                 </ul> 
             </div>
@@ -221,7 +221,7 @@
         </div>
         <div class="pagelet_divider"></div>
         <div class="row form-group"></div>
-        <?php $this->load->view("member/pagelets/video/sort_latest"); ?>
+        <?php $this->load->view("member/pagelets/video/view_my"); ?>
         <div class="row form-group"></div>
     </div>
     <!--ADD COLUMN-->
