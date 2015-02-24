@@ -29,7 +29,7 @@
                     <div class="category_divider"></div>
                     <li><a href="<?php echo base_url(); ?>videos/videos_view_friend">Friends’ Videos</a></li>
                     <div class="category_divider"></div>
-                </ul>  
+                </ul> 
             </div>
         </div>
         <div class="row form-group"></div>
@@ -221,7 +221,7 @@
         </div>
         <div class="pagelet_divider"></div>
         <div class="row form-group"></div>
-        <?php $this->load->view("member/pagelets/video/view_favorite"); ?>
+        <?php $this->load->view("member/pagelets/video/iframe"); ?>
         <div class="row form-group"></div>
     </div>
     <!--ADD COLUMN-->

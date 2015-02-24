@@ -1,6 +1,6 @@
 <div class="row form-group">
     <div class="col-md-12">
-        <span style="font-size: 16px; font-weight: bold;">Latest</span>
+        <span style="font-size: 16px; font-weight: bold;">Friends' Videos</span>
     </div>
 </div>
 <div class="pagelet_divider"></div>

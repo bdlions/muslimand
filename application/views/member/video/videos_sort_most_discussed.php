@@ -21,13 +21,13 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="video_ul">
-                    <li><a href="">All Videos</a></li>
+                    <li><a href="<?php echo base_url(); ?>videos/">All Videos</a></li>
                     <div class="category_divider"></div>
-                    <li><a href="#">My Videos</a></li>
+                    <li><a href="<?php echo base_url(); ?>videos/videos_view_my">My Videos</a></li>
                     <div class="category_divider"></div>
-                    <li><a href="#">My Favorites</a></li>
+                    <li><a href="<?php echo base_url(); ?>videos/videos_view_favorite">My Favorites</a></li>
                     <div class="category_divider"></div>
-                    <li><a href="#">Friends’ Videos</a></li>
+                    <li><a href="<?php echo base_url(); ?>videos/videos_view_friend">Friends’ Videos</a></li>
                     <div class="category_divider"></div>
                 </ul> 
             </div>

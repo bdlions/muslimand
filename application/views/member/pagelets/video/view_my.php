@@ -1,6 +1,6 @@
 <div class="row form-group">
     <div class="col-md-12">
-        <span style="font-size: 16px; font-weight: bold;">Latest</span>
+        <span style="font-size: 16px; font-weight: bold;">My Videos</span>
     </div>
 </div>
 <div class="pagelet_divider"></div>
@@ -18,12 +18,12 @@
     </div>
     <div class="col-md-3">
         <a href="#" >
-            <img scrolling="no" src="http://img.youtube.com/vi/_k-PbNos9DY/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/H2vTUeGnZE0/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
     </div>
     <div class="col-md-3">
         <a href="#" >
-            <img scrolling="no" src="http://img.youtube.com/vi/9t9vLimCBhY/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/BTlZ5Nuzei4/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="row form-group">
     <div class="col-md-12">
-        <span style="font-size: 16px; font-weight: bold;">Latest</span>
+        <span style="font-size: 16px; font-weight: bold;">My Favorites</span>
     </div>
 </div>
 <div class="pagelet_divider"></div>
@@ -41,12 +41,12 @@
     </div>
     <div class="col-md-3">
         <a href="#" >
-            <img scrolling="no" src="http://img.youtube.com/vi/PLD788F6C09A564342/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/bWsH-fbKjlk/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
     </div>
     <div class="col-md-3">
         <a href="#" >
-            <img scrolling="no" src="http://img.youtube.com/vi/PdhjzQ1X_nU/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/k7IWSj_iY0g/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
     </div>
 </div>
@@ -54,7 +54,7 @@
 <div class="row form-group">
     <div class="col-md-3">
         <a href="#" >
-            <img scrolling="no" src="http://img.youtube.com/vi/k7IWSj_iY0g/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/PdhjzQ1X_nU/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
     </div>
     <div class="col-md-3">
