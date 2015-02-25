@@ -5,7 +5,7 @@
     <div class="col-md-2">
     </div>
     <div class="col-md-4">
-        <button class="btn btn-xs" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;">Share a Video</button>
+        <a  href="<?php echo base_url(); ?>videos/video_add"><button class="btn btn-xs" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;">Share a Video</button></a>
     </div>
 </div>
 <div class="row">
