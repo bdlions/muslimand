@@ -165,3 +165,35 @@ and open the template in the editor.
 .category_divider{
     border-bottom: 1px solid lightgray;
 }
+
+/*================================  Admin Panel  ================================*/
+.borber_box_full,.borber_box_others{
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-top: 0px;
+    border-radius: 5px;
+}
+.borber_box_full{
+    border-top: 1px solid lightgray;
+}
+.text_center{
+    text-align: center;
+}
+.font_25px{
+    font-size: 25px;
+}
+.pagelet_padding{
+    padding: 0px!important;
+}
+/*================================  Search video icon ================================*/
+
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 30px;
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 6px;
+}
