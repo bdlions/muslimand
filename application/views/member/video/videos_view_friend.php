@@ -17,19 +17,20 @@
 </div>
 <div class="row">
     <!--LEFT_COLUMN-->
+    <!--LEFT_COLUMN-->
     <div class="col-md-2 col_md_2_extended">
         <div class="row">
             <div class="col-md-12">
                 <ul class="video_ul">
-                    <li><a href="<?php echo base_url(); ?>videos/">All Videos</a></li>
+                    <a href="<?php echo base_url(); ?>videos/"><li>All Videos</li></a>
                     <div class="category_divider"></div>
-                    <li><a href="<?php echo base_url(); ?>videos/videos_view_my">My Videos</a></li>
+                    <a href="<?php echo base_url(); ?>videos/videos_view_my"><li>My Videos</li></a>
                     <div class="category_divider"></div>
-                    <li><a href="<?php echo base_url(); ?>videos/videos_view_favorite">My Favorites</a></li>
+                    <a href="<?php echo base_url(); ?>videos/videos_view_favorite"><li>My Favorites</li></a>
                     <div class="category_divider"></div>
-                    <li><a href="<?php echo base_url(); ?>videos/videos_view_friend">Friends’ Videos</a></li>
+                    <a href="<?php echo base_url(); ?>videos/videos_view_friend"><li>Friends’ Videos</li></a>
                     <div class="category_divider"></div>
-                </ul>  
+                </ul> 
             </div>
         </div>
         <div class="row form-group"></div>
@@ -43,49 +44,49 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="category_ul">
-                    <li>Muslimand</li>
+                    <a href=""><li>Muslimand</li></a>
                     <div class="category_divider"></div>
-                    <li>Quran</li>
+                    <a href=""><li>Quran</li></a>
                     <div class="category_divider"></div>
-                    <li>Hadith</li>
+                    <a href=""><li>Hadith</li></a>
                     <div class="category_divider"></div>
-                    <li>Islam</li>
+                    <a href=""><li>Islam</li></a>
                     <div class="category_divider"></div>
-                    <li>Dawah</li>
+                    <a href=""><li>Dawah</li></a>
                     <div class="category_divider"></div>
-                    <li>Islamic History</li>
+                    <a href=""><li>Islamic History</li></a>
                     <div class="category_divider"></div>
-                    <li>Scientific Contribution of Islam</li>
+                    <a href=""><li>Scientific Contribution of Islam</li></a>
                     <div class="category_divider"></div>
-                    <li>Nasheeds</li>
+                    <a href=""><li>Nasheeds</li></a>
                     <div class="category_divider"></div>
-                    <li>Education</li>
+                    <a href=""><li>Education</li></a>
                     <div class="category_divider"></div>
-                    <li>News & Politics</li>
+                    <a href=""><li>News & Politics</li></a>
                     <div class="category_divider"></div>
-                    <li>Non-profits & Activism</li>
+                    <a href=""><li>Non-profits & Activism</li></a>
                     <div class="category_divider"></div>
-                    <li>People & Blogs</li>
+                    <a href=""><li>People & Blogs</li></a>
                     <div class="category_divider"></div>
-                    <li>Pets & Animals</li>
+                    <a href=""><li>Pets & Animals</li></a>
                     <div class="category_divider"></div>
-                    <li>Science & Technology</li>
+                    <a href=""><li>Science & Technology</li></a>
                     <div class="category_divider"></div>
-                    <li>Sports</li>
+                    <a href=""><li>Sports</li></a>
                     <div class="category_divider"></div>
-                    <li>Travels & Events</li>
+                    <a href=""><li>Travels & Events</li></a>
                     <div class="category_divider"></div>
-                    <li>Styles</li>
+                    <a href=""><li>Styles</li></a>
                     <div class="category_divider"></div>
-                    <li>Gaming</li>
+                    <a href=""><li>Gaming</li></a>
                     <div class="category_divider"></div>
-                    <li>Autos & Vehicles</li>
+                    <a href=""><li>Autos & Vehicles</li></a>
                     <div class="category_divider"></div>
-                    <li>Comedy</li>
+                    <a href=""><li>Comedy</li></a>
                     <div class="category_divider"></div>
-                    <li>Entertainment & Arts</li>
+                    <a href=""><li>Entertainment & Arts</li></a>
                     <div class="category_divider"></div>
-                    <li>Film & Animation</li>
+                    <a href=""><li>Film & Animation</li></a>
                     <div class="category_divider"></div>
                 </ul> 
             </div>
@@ -100,67 +101,21 @@
         <div class="row form-group"></div>
         <div class="row">
             <div class="col-md-12">
-                <a href="<?php echo base_url(); ?>member/newsfeed">News Feed</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="<?php echo base_url(); ?>member/messages">Messages</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="<?php echo base_url(); ?>member/friends">Friends</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#">Photos</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="<?php echo base_url(); ?>member/messages">Videos</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#">Blogs</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#">Pages</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#">Academy</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#">Library</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#">Fund Raising</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#"> Online Payment </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#"> Zakat </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#">Shop </a>
+                <ul class="video_ul">
+                    <a href="<?php echo base_url(); ?>member/newsfeed"><li>News Feed</li></a>
+                    <a href="<?php echo base_url(); ?>member/messages"><li>Messages</li></a>
+                    <a href="<?php echo base_url(); ?>member/friends"><li>Friends</li></a>
+                    <a href="#"><li>Photos</li></a>
+                    <a href="<?php echo base_url(); ?>videos/"><li>Videos</li></a>
+                    <a href="#"><li>Blogs</li></a>
+                    <a href="#"><li>Pages</li></a>
+                    <a href="#"><li>Academy</li></a>
+                    <a href="#"><li>Library</li></a>
+                    <a href="#"><li>Fund Raising</li></a>
+                    <a href="#"><li>Online Payment</li></a>
+                    <a href="#"><li>Zakat</li></a>
+                    <a href="#"><li>Shop</li></a>
+                </ul>
             </div>
         </div>
         <div class="row form-group"></div>
@@ -183,10 +138,10 @@
                                 Latest<span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Latest</a></li>
-                                <li><a href="#">Most Viewed</a></li>
-                                <li><a href="#">Top Rated</a></li>
-                                <li><a href="#">Most Discussed</a></li>
+                                <li><a href="<?php echo base_url(); ?>videos/">Latest</a></li>
+                                <li><a href="<?php echo base_url(); ?>videos/videos_sort_most_viewed">Most Viewed</a></li>
+                                <li><a href="<?php echo base_url(); ?>videos/videos_sort_top_rated">Top Rated</a></li>
+                                <li><a href="<?php echo base_url(); ?>videos/videos_sort_most_discussed">Most Discussed</a></li>
                             </ul>
                         </div>
                         &nbsp;
@@ -220,7 +175,6 @@
             </div>
         </div>
         <div class="pagelet_divider"></div>
-        <div class="row form-group"></div>
         <?php $this->load->view("member/pagelets/video/view_friend"); ?>
         <div class="row form-group"></div>
     </div>

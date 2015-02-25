@@ -19,68 +19,22 @@
         </div>
         <div class="row form-group"></div>
         <div class="row">
-            <div class="col-xs-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="<?php echo base_url(); ?>member/newsfeed">News Feed</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="<?php echo base_url(); ?>member/messages">Messages</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="<?php echo base_url(); ?>member/friends">Friends</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Photos</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="<?php echo base_url(); ?>member/videos">Videos</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Blogs</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Pages</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Academy</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Library</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Fund Raising</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#"> Online Payment </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#"> Zakat </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                 <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Shop </a>
+            <div class="col-md-12">
+                <ul class="video_ul">
+                    <a href="<?php echo base_url(); ?>member/newsfeed"><li>News Feed</li></a>
+                    <a href="<?php echo base_url(); ?>member/messages"><li>Messages</li></a>
+                    <a href="<?php echo base_url(); ?>member/friends"><li>Friends</li></a>
+                    <a href="#"><li>Photos</li></a>
+                    <a href="<?php echo base_url(); ?>videos/"><li>Videos</li></a>
+                    <a href="#"><li>Blogs</li></a>
+                    <a href="#"><li>Pages</li></a>
+                    <a href="#"><li>Academy</li></a>
+                    <a href="#"><li>Library</li></a>
+                    <a href="#"><li>Fund Raising</li></a>
+                    <a href="#"><li>Online Payment</li></a>
+                    <a href="#"><li>Zakat</li></a>
+                    <a href="#"><li>Shop</li></a>
+                </ul>
             </div>
         </div>
         <div class="row form-group"></div>

@@ -58,70 +58,89 @@ and open the template in the editor.
     border-bottom: 1px solid lightgray;
 }
 .user_comment{
-   padding: 5px 0px 5px 0px; 
+    padding: 5px 0px 5px 0px; 
+}
+
+/*================================  Search video ================================*/
+
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 30px;
+    height: 20px;
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 6px;
 }
 
 /*================================  Left Menu  ================================*/
-
-.left-inner-addon {
-  position: relative;
-}
-.left-inner-addon input {
-  padding-left: 30px;
-  height: 20px;
-}
-.left-inner-addon i {
-  position: absolute;
-  padding: 6px;
-}
-
 .video_ul,.category_ul{
     list-style-type:none;
-    line-height: 22px;
-    text-decoration: none;
-    cursor: pointer;
     font-weight: bold;
-    color: #333;
     margin: 0;
+    padding: 0;
 }
 .video_ul{
-     padding:  15px 15px 15px 0;
-     font-size: 13px;
+    line-height: 28px;
+    font-size: 13px;
 }
 .category_ul{
-    padding: 0;
-     font-size: 10px;
+    line-height: 22px;
+    font-size: 10px;
+}
+.video_ul a,.category_ul a{
+    text-decoration: none;
+    color: black;
 }
 
-.video_ul li:hover,.category_ul li:hover{
+.video_ul a li:hover,.category_ul a li:hover{
     display: block;
-    text-decoration: none;
-    line-height: 22px;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #703684;
+    color: white!important;
+    padding-left: 4px;
+    font-weight: bold;
+}
+.video_ul a li:hover{
+    border-radius: 3px;
+}
+
+
+/*================================  Iframe  ================================*/
+.borber_box_full,.borber_box_others{
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-top: 0px;
+    border-radius: 5px;
+}
+.borber_box_full{
+    border-top: 1px solid lightgray;
+}
+.text_center{
+    text-align: center;
+}
+.details:hover{
+    color: #703684;
     cursor: pointer;
 }
-.video_ul li:hover{
-    background-color: lightsalmon;
-    color: #703684;
-    padding-left: 3px;
+
+.font_10px{
+    font-size: 10px;
 }
-.category_ul li:hover{
-    background-color: #703684;
-     color: #fff;
-     padding-left: 4px;
-}
-a{
-    color: black; 
-    font-size: 12px; 
-    font-weight: bold;
-    text-decoration: none!important;
-}
+
+/*================================  Others  ================================*/
 .col_md_2_extended{
     width: 18.6667%;
 }
 .col_md_7_reduced{
     width: 56.3333%;
 }
-
 .category_divider{
     border-bottom: 1px solid lightgray;
+}
+.pagination_margin{
+    margin: 0!important;
 }

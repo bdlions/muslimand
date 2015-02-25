@@ -7,7 +7,7 @@
 <div class="row form-group"></div>
 <div class="row form-group">
     <div class="col-md-12">
-            <iframe src="https://www.youtube.com/watch?v=Xl1zLHd6gp8" width="200" height="200"></iframe>
+        <iframe style="border:none;" width="540px" height="400px" src="http://www.youtube.com/embed/Xl1zLHd6gp8"></iframe>
     </div>
 </div>
   

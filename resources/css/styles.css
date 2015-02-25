@@ -139,3 +139,29 @@ and open the template in the editor.
     border-top: 1px solid lightgray;
 }
 
+/*================================  Left Menu  ================================*/
+.video_ul{
+    list-style-type:none;
+    line-height: 28px;
+    font-weight: bold;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+.video_ul a{
+    text-decoration: none;
+    color: black;
+}
+.video_ul a li:hover{
+    display: block;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #703684;
+    color: white!important;
+    padding-left: 4px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+.category_divider{
+    border-bottom: 1px solid lightgray;
+}
