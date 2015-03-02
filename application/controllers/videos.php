@@ -10,7 +10,7 @@ class Videos extends CI_Controller {
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         $this->load->helper('url');
-
+        $this->load->helper(array('form', 'url'));
         // Load MongoDB library instead of native db driver if required
         $this->config->item('use_mongodb', 'ion_auth') ?
                         $this->load->library('mongo_db') :
