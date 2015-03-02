@@ -34,7 +34,7 @@ class Upload extends CI_Controller {
         } else {
             $upload_data = $this->upload->data();
             exec("ffmpeg -i " . $upload_data['full_path'] . " " . $upload_data['file_path'] . $upload_data['raw_name'] . ".flv");
-            $data = array('upload_data' => $this->upload->data());
+            $data = array('upload_data' => $this->upload->data(), 'filename1' => $upload_data['raw_name'].'.mp4', 'filename2' => $upload_data['raw_name'].'.flv');
             $this->load->view('upload_success', $data);
         }
     }

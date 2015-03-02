@@ -13,6 +13,9 @@
 </ul>
 
 <p><?php echo anchor('upload', 'Upload Another File!'); ?></p>
-
+<div class="form-group">
+    <video src="<?php echo base_url().'uploads/'. $filename1 ;?>" height="300" controls="autoplay"></video><br/>
+    <video src="<?php echo base_url().'uploads/'. $filename2 ;?>" height="300" controls="autoplay"></video><br/>
+</div>
 </body>
 </html>
