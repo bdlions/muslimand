@@ -10,10 +10,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="resources/js/jquery.navgoco.js"></script>
+        <!--<script type="text/javascript" src="resources/js/jquery.navgoco.js"></script>-->
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/video.css"/>
-        <link rel="stylesheet" href="resources/css/jquery.navgoco.css"/>
+        <!--<link rel="stylesheet" href="resources/css/jquery.navgoco.css"/>-->
         <title>Muslimand</title>
     </head>
 

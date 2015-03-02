@@ -6,6 +6,7 @@ class Videos extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->library('upload');
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         $this->load->helper('url');
@@ -46,6 +47,30 @@ class Videos extends CI_Controller {
     }
     function video_add(){
         $this->template->load(VIDEO_IN_TEMPLATE, "member/video/video_add");
+    }
+    function video_demo(){
+        $this->template->load(VIDEO_IN_TEMPLATE, "member/video/video_demo");
+    }
+    function do_upload() {
+        $config['upload_path'] = './uploads/';
+//        $config['allowed_types'] = 'gif|jpg|png';
+//        $config['max_size'] = '100';
+//        $config['max_width'] = '1024';
+//        $config['max_height'] = '768';
+
+//        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload()) {
+            $error = array('error' => $this->upload->display_errors());
+            var_dump($error);exit;
+//            $this->load->view('upload_form', $error);
+        } else {
+            $upload_data = $this->upload->data();
+            exec("ffmpeg -i " . $upload_data['full_path'] . " " . $upload_data['file_path'] . $upload_data['raw_name'] . ".flv");
+            $this->data['upload_data'] = $upload_data;
+            $this->template->load(VIDEO_IN_TEMPLATE, "member/video/video_demo");
+//            $this->load->view('video_demo', $data);
+        }
     }
 
 }
