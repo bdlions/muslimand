@@ -1,24 +1,25 @@
+<div class="row form-group"></div>
 <div class="row">
     <div class="col-md-6">
-        <span style="font-size: 25px; font-weight: bold;">Video</span>
+        <a href="<?php echo base_url(); ?>photos/"><img src="<?php echo base_url(); ?>resources/images/video/film_add.png"></a>
+        <a  class="anchor_property_change" href="<?php echo base_url(); ?>photos/"><span style="text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold;">Video</span></a>
     </div>
+    <div class="col-md-3"></div>
     <div class="col-md-2">
+        <a  href="<?php echo base_url(); ?>videos/video_add"><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 28px;">Share a Video</button></a>
     </div>
-    <div class="col-md-4">
-        <a  href="<?php echo base_url(); ?>videos/video_add"><button class="btn btn-xs" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;">Share a Video</button></a>
-    </div>
+    <div class="col-md-1"></div>
 </div>
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-11">
         <div class="pagelet_divider"></div>
     </div>    
-    <div class="col-md-2">
+    <div class="col-md-1">
     </div>    
 </div>
 <div class="row">
     <!--LEFT_COLUMN-->
-    <!--LEFT_COLUMN-->
-    <div class="col-md-2 col_md_2_extended">
+    <div class="col-md-2">
         <div class="row">
             <div class="col-md-12">
                 <ul class="video_ul">
@@ -92,7 +93,6 @@
             </div>
         </div>
         <div class="row form-group"></div>
-        <div class="row form-group"></div>
         <div class="row">
             <div class="col-md-12">
                 <span style="color: black; font-size: 16px; font-weight: bold; opacity: .6;" href="">Main</span>
@@ -105,7 +105,7 @@
                     <a href="<?php echo base_url(); ?>member/newsfeed"><li>News Feed</li></a>
                     <a href="<?php echo base_url(); ?>member/messages"><li>Messages</li></a>
                     <a href="<?php echo base_url(); ?>member/friends"><li>Friends</li></a>
-                    <a href="#"><li>Photos</li></a>
+                    <a href="<?php echo base_url(); ?>photos/"><li>Photos</li></a>
                     <a href="<?php echo base_url(); ?>videos/"><li>Videos</li></a>
                     <a href="#"><li>Blogs</li></a>
                     <a href="#"><li>Pages</li></a>
@@ -121,7 +121,7 @@
         <div class="row form-group"></div>
     </div>
     <!--MIDDLE COLUMN-->
-    <div class="col-md-7 col_md_7_reduced">
+    <div class="col-md-9">
         <div class="row">
             <div class="col-md-4 ">
                 <div class="left-inner-addon">
@@ -129,12 +129,12 @@
                     <input style="height: 26px; border-radius: 3px;" type="text" class="mm_input form-control" placeholder="Search videos..." />
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="row">
                     <div class="col-md-12">
                         <span style="font-size: 12px; font-weight: bold; opacity: .6;" href="">Sort:</span>
-                        <div class="btn-group" style="color: #703684;">
-                            <button style="background-color: #703684; color: white;" type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <div class="btn-group">
+                            <button style="background-color: #E9EAED; border: 1px solid #703684; padding: 2px 10px;" type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 Latest<span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -147,7 +147,7 @@
                         &nbsp;
                         <span style="font-size: 12px; font-weight: bold; opacity: .6;" href="">Show:</span>
                         <div class="btn-group">
-                            <button style="background-color: #703684; color: white;" type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <button style="background-color: #E9EAED; border: 1px solid #703684; padding: 2px 10px;" type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 12 per Page<span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -160,7 +160,7 @@
                         &nbsp;
                         <span style="font-size: 12px; font-weight: bold; opacity: .6;" href="">When:</span>
                         <div class="btn-group">
-                            <button style="background-color: #703684; color: white;" type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <button style="background-color: #E9EAED; border: 1px solid #703684; padding: 2px 10px;" type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 All Time<span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -173,13 +173,249 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-1"></div>
         </div>
         <div class="pagelet_divider"></div>
-        <?php $this->load->view("member/pagelets/video/view_my"); ?>
-        <div class="row form-group"></div>
-    </div>
-    <!--ADD COLUMN-->
-    <div class="col-md-3">
+        <div class="row">
+            <div class="col-md-9">
 
-    </div>
-</div>
+                <?php $this->load->view("member/pagelets/video/view_my"); ?>
+            </div>
+            <div class="col-md-3">
+                <div class="row form-group"></div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="ul_background_color">
+                            <li>Most Viewed</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+                            <img scrolling="no" src="http://img.youtube.com/vi/Xl1zLHd6gp8/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                        </a>
+                        <div class="font_11px">
+                            <a href="<?php echo base_url(); ?>videos/videos_iframe">amazing child</a><br>
+                        </div>
+                        <div class="font_10px">
+                            39 views<br>
+                            by <a href="">Dr. Belal</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+                            <img scrolling="no" src="http://img.youtube.com/vi/RDKbkBa03CE/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                        </a>
+                        <div class="font_11px">
+                            <a href="<?php echo base_url(); ?>videos/videos_iframe">Sheikh Motiur Rahman Madani 1</a><br>
+                        </div>
+                        <div class="font_10px">
+                            859 views<br>
+                            by <a href="">Jannatul Ferdaus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+                            <img scrolling="no" src="http://img.youtube.com/vi/OTUoExVeQNI/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                        </a>
+                        <div class="font_11px">
+                            <a href="<?php echo base_url(); ?>videos/videos_iframe">Sheikh Motiur Rahman Madani 2</a><br>
+                        </div>
+                        <div class="font_10px">
+                            558 views<br>
+                            by <a href="">Maria Islam</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+                            <img scrolling="no" src="http://img.youtube.com/vi/Re6T7aLVi1o/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                        </a>
+                        <div class="font_11px">
+                            <a href="<?php echo base_url(); ?>videos/videos_iframe">Quran Recite</a><br>
+                        </div>
+                        <div class="font_10px">
+                            7,954 views<br>
+                            by <a href="">Mohammad Rafique</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <a href="<?php echo base_url(); ?>videos/videos_sort_most_viewed">See All</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group"></div>
+                <div class="row form-group"></div>
+                <div class="row form-group"></div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="ul_background_color">
+                            <li>Most Rated</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+                            <img scrolling="no" src="http://img.youtube.com/vi/Xl1zLHd6gp8/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                        </a>
+                        <div class="font_11px">
+                            <a href="<?php echo base_url(); ?>videos/videos_iframe">amazing child</a><br>
+                        </div>
+                        <div class="font_10px">
+                            39 views<br>
+                            by <a href="">Dr. Belal</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+                            <img scrolling="no" src="http://img.youtube.com/vi/FgTuWiKSLkI/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                        </a>
+                        <div class="font_11px">
+                            <a href="<?php echo base_url(); ?>videos/videos_iframe">Enlighten power</a><br>
+                        </div>
+                        <div class="font_10px">
+                            1,921 views<br>
+                            by <a href="">Jannatul Ferdaus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+                            <img scrolling="no" src="http://img.youtube.com/vi/hCe81IJmmDo/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                        </a>
+                        <div class="font_11px">
+                            <a href="<?php echo base_url(); ?>videos/videos_iframe">Waz 3</a><br>
+                        </div>
+                        <div class="font_10px">
+                            3,159 views<br>
+                            by <a href="">Barak Obama</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+                            <img scrolling="no" src="http://img.youtube.com/vi/NIvOrtLto0M/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                        </a>
+                        <div class="font_11px">
+                            <a href="<?php echo base_url(); ?>videos/videos_iframe">Purity</a><br>
+                        </div>
+                        <div class="font_10px">
+                            2,259 views<br>
+                            by <a href="">Maria Islam</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <a href="<?php echo base_url(); ?>videos/videos_sort_top_rated">See All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row form-group"></div>
+                <div class="row form-group"></div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="ul_background_color">
+                            <li>Most Discussed</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+                            <img scrolling="no" src="http://img.youtube.com/vi/h9uGVSlTMK4/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                        </a>
+                        <div class="font_11px">
+                            <a href="<?php echo base_url(); ?>videos/videos_iframe">Critical Ques</a><br>
+                        </div>
+                        <div class="font_10px">
+                            3,901 views<br>
+                            by <a href="">Sharmin Akter</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+                            <img scrolling="no" src="http://img.youtube.com/vi/ogfbPh0MkzQ/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                        </a>
+                        <div class="font_11px">
+                            <a href="<?php echo base_url(); ?>videos/videos_iframe">Zakir Naik lecture 1</a><br>
+                        </div>
+                        <div class="font_10px">
+                            952 views<br>
+                            by <a href="">Mohammad Rafique</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+                            <img scrolling="no" src="http://img.youtube.com/vi/kwBDpW7QOmQ/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                        </a>
+                        <div class="font_11px">
+                            <a href="<?php echo base_url(); ?>videos/videos_iframe">Zakir Naik lecture 2</a><br>
+                        </div>
+                        <div class="font_10px">
+                            859 views<br>
+                            by <a href="">Jannatul Ferdaus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+                            <img scrolling="no" src="http://img.youtube.com/vi/NIvOrtLto0M/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                        </a>
+                        <div class="font_11px">
+                            <a href="<?php echo base_url(); ?>videos/videos_iframe">Purity</a><br>
+                        </div>
+                        <div class="font_10px">
+                            2,259 views<br>
+                            by <a href="">Maria Islam</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <a href="<?php echo base_url(); ?>videos/videos_sort_most_discussed">See All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group"></div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>

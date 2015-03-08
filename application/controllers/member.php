@@ -28,17 +28,17 @@ class Member extends CI_Controller {
     }
     function profile()
     {
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/profile");
+        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/profile");
     }
     function about()
     {
 //        $this->template->load(NULL, "member/about", $this->data);
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/about");
+        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/about");
 //        $this->load->view("member/about");
     }
     function videos()
     {
-        $this->template->load(VIDEO_IN_TEMPLATE, "member/videos");
+        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/videos");
     }
     function account_settings()
     {

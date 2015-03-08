@@ -24,7 +24,7 @@
                     <a href="<?php echo base_url(); ?>member/newsfeed"><li>News Feed</li></a>
                     <a href="<?php echo base_url(); ?>member/messages"><li>Messages</li></a>
                     <a href="<?php echo base_url(); ?>member/friends"><li>Friends</li></a>
-                    <a href="#"><li>Photos</li></a>
+                    <a href="<?php echo base_url(); ?>photos/"><li>Photos</li></a>
                     <a href="<?php echo base_url(); ?>videos/"><li>Videos</li></a>
                     <a href="#"><li>Blogs</li></a>
                     <a href="#"><li>Pages</li></a>

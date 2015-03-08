@@ -75,7 +75,7 @@ and open the template in the editor.
 
 /*================================  pagelets  ================================*/
 .comment_box{
-    
+
 }
 .pagelet_title{
     font-size: 24px;
@@ -94,7 +94,7 @@ and open the template in the editor.
     border-bottom: 1px solid lightgray;
 }
 .user_comment{
-   padding: 5px 0px 5px 0px; 
+    padding: 5px 0px 5px 0px; 
 }
 
 
@@ -156,7 +156,7 @@ and open the template in the editor.
     display: block;
     border-radius: 3px;
     cursor: pointer;
-    background-color: #703684;
+    background-color: #888888!important;
     color: white!important;
     padding-left: 4px;
     font-weight: bold;
@@ -196,4 +196,55 @@ and open the template in the editor.
 .left-inner-addon i {
     position: absolute;
     padding: 6px;
+}
+
+/*================================  Member templete ================================*/
+.body_wrapper{
+    position: relative; 
+    background-color: #E9EAED;
+}
+.header_wrapper{
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 20; 
+    box-shadow: 0 4px 4px -2px gray;
+}
+.container_wrapper{
+    background-color: #703684; 
+    color: white; 
+    padding: 10px 15px;
+}
+.Padding_top{
+    padding-top: 60px;
+}
+.container_background{
+    background-color: #E9EAED;
+}
+.ticker_friends_wrapper{
+    position: fixed; 
+    right: 0; 
+    top: 60px; 
+    z-index: 19; 
+    height: 90%;
+    width: 18%;
+}
+
+/*================================  font size ================================*/
+.font_10px{
+    font-size: 10px;
+}
+.font_11px{
+    font-size: 11px;
+}
+
+/*================================  Middle column section  ================================*/
+.pagination_margin{
+    margin: 0!important;
+}
+
+.anchor_property_change{
+    text-decoration: none!important;
+    cursor: pointer;
+    color: black!important;
 }

@@ -1,0 +1,65 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : March 04, 2015, 03:01:42 PM
+    Author     : Redoy
+*/
+
+
+/*================================  Photos  ================================*/
+
+/*================================  Left Category  ================================*/
+.video_ul,.category_ul{
+    list-style-type:none;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+.video_ul{
+    line-height: 28px;
+    font-size: 13px;
+}
+.category_ul{
+    line-height: 22px;
+    font-size: 10px;
+}
+.video_ul a,.category_ul a{
+    text-decoration: none;
+    color: black;
+}
+
+.video_ul a li:hover,.category_ul a li:hover{
+    display: block;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #888888!important;
+    color: white!important;
+    padding-left: 4px;
+    font-weight: bold;
+}
+.video_ul a li:hover{
+    border-radius: 3px;
+}
+/*================================  create album modal  ================================*/
+#album_box {
+    display: inline-block;
+    margin-right: 6px;
+    height: 30px;
+    width: 30px;
+}
+
+.modal_background_color{
+    opacity: .9;
+    font-weight: bold;
+}
+
+/*================================  create albums  ================================*/
+.border_without_bottom{
+border-left: 1px solid #703684; 
+border-right: 1px solid #703684; 
+border-bottom: 1px solid #703684; 
+width: 120px;
+}

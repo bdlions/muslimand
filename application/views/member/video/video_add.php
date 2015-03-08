@@ -31,28 +31,28 @@
                 <span style="font-size: 16px; font-weight: bold;">* Category:</span><br>
                 <select class="form-control">
                     <option value="">Select:</option>
-                    <option class="" value="47">Ummaland</option>
+                    <option class="" value="0">Ummaland</option>
                     <option class="" value="1">Quran</option>
                     <option class="" value="2">Hadith</option>
                     <option class="" value="3">Islam</option>
                     <option class="" value="4">Dawah</option>
-                    <option class="" value="45">Islamic History</option>
-                    <option class="" value="46">Scientific Contribution of Islam</option>
-                    <option class="" value="37">Nasheeds</option>
-                    <option class="" value="32">Education</option>
-                    <option class="" value="38">News & Politics</option>
-                    <option class="" value="39">Nonprofits & Activism</option>
-                    <option class="" value="40">People & Blogs</option>
-                    <option class="" value="41">Pets & Animals</option>
-                    <option class="" value="42">Science & Technology</option>
-                    <option class="" value="43">Sports</option>
-                    <option class="" value="44">Travels & Events</option>
-                    <option class="" value="36">Howto & Styles</option>
-                    <option class="" value="35">Gaming</option>
-                    <option class="" value="30">Autos & Vehicles</option>
-                    <option class="" value="31">Comedy</option>
-                    <option class="" value="33">Entertainment and Arts</option>
-                    <option class="" value="34">Film & Animation</option>
+                    <option class="" value="5">Islamic History</option>
+                    <option class="" value="6">Scientific Contribution of Islam</option>
+                    <option class="" value="7">Nasheeds</option>
+                    <option class="" value="8">Education</option>
+                    <option class="" value="9">News & Politics</option>
+                    <option class="" value="10">Nonprofits & Activism</option>
+                    <option class="" value="11">People & Blogs</option>
+                    <option class="" value="12">Pets & Animals</option>
+                    <option class="" value="13">Science & Technology</option>
+                    <option class="" value="14">Sports</option>
+                    <option class="" value="15">Travels & Events</option>
+                    <option class="" value="16">Howto & Styles</option>
+                    <option class="" value="17">Gaming</option>
+                    <option class="" value="18">Autos & Vehicles</option>
+                    <option class="" value="19">Comedy</option>
+                    <option class="" value="20">Entertainment and Arts</option>
+                    <option class="" value="21">Film & Animation</option>
                 </select>
             </div>
             <div class="col-md-8"></div>
