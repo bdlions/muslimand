@@ -123,7 +123,7 @@
             <div class="col-md-4 ">
                 <div class="left-inner-addon">
                     <i class="glyphicon glyphicon-search"></i> 
-                    <input style="height: 26px; border-radius: 3px;" type="text" class="mm_input form-control" placeholder="Search videos..." />
+                    <input style="height: 26px; border-radius: 3px;" type="text" class="mm_input form-control" placeholder="Search photos..."Search videos />
                 </div>
             </div>
             <div class="col-md-7">

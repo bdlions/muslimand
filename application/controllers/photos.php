@@ -46,4 +46,7 @@ class Photos extends CI_Controller {
     function photos_sort_most_discussed(){
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_sort_top_rated");
     }
+    function photos_gallery(){
+        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_gallery");
+    }
 }
