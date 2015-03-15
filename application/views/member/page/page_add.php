@@ -21,15 +21,19 @@
         <div class="row form-group"></div>
         <div class="row">
             <div class="col-md-4">
-                <div id="brand" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
+                <div class="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
                     <span>Brand</span>
                 </div>
             </div>
             <div class="col-md-4">
-                
+                <div class="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
+                    <span>Brand</span>
+                </div>
             </div>
             <div class="col-md-4">
-                
+                <div class="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
+                    <span>Brand</span>
+                </div>
             </div>
         </div>
         <!--        <div class="row">
@@ -136,3 +140,12 @@
     </div>
 </div>
 <?php $this->load->view("member/photo/modal_create_album"); ?>
+<script>
+$(function(){
+    $(".brand_cover").click(function(){$(".brand_cover").show();$(this).hide();});
+});
+
+
+
+</script>
+    
