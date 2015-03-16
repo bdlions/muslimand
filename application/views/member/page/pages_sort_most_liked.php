@@ -1,7 +1,8 @@
 <div class="row form-group"></div>
 <div class="row">
     <div class="col-md-6">
-        <span style="font-size: 25px; font-weight: bold;">Pages</span>
+        <a href="<?php echo base_url(); ?>photos/"><img src="<?php echo base_url(); ?>resources/images/pages/icon/page.png"></a>
+        <a  class="anchor_property_change" href="<?php echo base_url(); ?>pages/"><span style="text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold;">Page</span></a>
     </div>
     <div class="col-md-3"></div>
     <div class="col-md-2">
@@ -150,7 +151,7 @@
         <div class="pagelet_divider"></div>
         <div class="row">
             <div class="col-md-9">
-                <?php $this->load->view("member/pagelets/page/sort_latest"); ?>
+                <?php $this->load->view("member/pagelets/page/sort_most_liked"); ?>
             </div>
             <div class="col-md-3">
             </div>

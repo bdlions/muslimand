@@ -25,4 +25,16 @@ class Pages extends CI_Controller {
     function pages_add(){
         $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_add");
     }
+     function pages_sort_view_my(){
+        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_view_my");
+    }
+    function pages_sort_view_friend(){
+        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_view_friend");
+    }
+    function pages_sort_most_liked(){
+        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_most_liked");
+    }
+    function pages_newsfeed(){
+        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_newsfeed");
+    }
 }

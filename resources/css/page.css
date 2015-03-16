@@ -47,3 +47,72 @@ and open the template in the editor.
 
 /*---------------------------------Add a Page -------------------------------*/
 
+.label_padding_top{
+    padding-top: 10px;
+}
+.img_padding_top{
+    padding-top: 35px;
+}
+
+.brand_cover{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 11;
+    background-color: #CCBC90;
+    border-radius: 8px;
+    text-align: center;
+
+}
+.brand{
+    border-radius: 8px;
+    min-height: 220px;
+    position: relative;
+    background-color: lightgray;
+}
+/*--------------------------------- pagelets -------------------------------*/
+.title_info {
+    margin-left: 30px;
+    min-height: 55px;
+}
+.link{
+    font-size: 16px;
+    font-weight: bold;
+}
+.title_info, .extra_info {
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+extra_info{
+    color: #808080;
+    padding: 4px 0;
+}
+.extra_info_middot {
+    list-style-type: inline;
+    margin: 0;
+    padding: 0;
+}
+.extra_info_middot li{
+    display: inline;
+    padding-right: 6px;
+}
+.borber_style{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+.like_number{
+    font-weight: bold;
+}
+
+/*--------------------------------- newsfeed -------------------------------*/
+.left_column_sub_category ul{
+    list-style-type: none!important;
+}
+.left_column_sub_category ul a li:hover{
+    background-color: #888888;
+    border-radius: 3px;
+    color: #fff;
+    display: block;
+    padding-left: 4px;
+    font-weight: bold;
+}
