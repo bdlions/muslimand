@@ -93,8 +93,8 @@
                             <a href="<?php echo base_url(); ?>member/friends"><li>Friends</li></a>
                             <a href="<?php echo base_url(); ?>photos/"><li>Photos</li></a>
                             <a href="<?php echo base_url(); ?>videos/"><li>Videos</li></a>
-                            <a href="#"><li>Blogs</li></a>
-                            <a href="#"><li>Pages</li></a>
+                            <a href="blogs/"><li>Blogs</li></a>
+                            <a href="pages/"><li>Pages</li></a>
                             <a href="#"><li>Academy</li></a>
                             <a href="#"><li>Library</li></a>
                             <a href="#"><li>Fund Raising</li></a>

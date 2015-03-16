@@ -1,12 +1,11 @@
 <div class="row form-group"></div>
 <div class="row">
     <div class="col-md-6">
-        <a href="<?php echo base_url(); ?>photos/"><img src="<?php echo base_url(); ?>resources/images/photos/icon/photo.png"></a>
-        <a  class="anchor_property_change" href="<?php echo base_url(); ?>photos/"><span style="text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold;">Photo</span></a>
+        <span style="font-size: 25px; font-weight: bold;">Blogs</span>
     </div>
     <div class="col-md-3"></div>
     <div class="col-md-2">
-        <a  href="<?php echo base_url(); ?>photos/photos_add"><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 28px;">Upload a New Image</button></a>
+        <a  href="<?php echo base_url(); ?>blogs/blogs_add"><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 28px;">Add a New Blog</button></a>
     </div>
     <div class="col-md-1"></div>
 </div>
@@ -23,12 +22,9 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="video_ul">
-                    <a href="<?php echo base_url(); ?>photos/"><li>All Photos</li></a>
-                    <a href="<?php echo base_url(); ?>photos/photos_view_my"><li>My Photos</li></a>
-                    <a href="<?php echo base_url(); ?>photos/photos_view_friend"><li>Friends’ Photos</li></a>
-                    <div class="category_divider"></div>
-                    <a href="<?php echo base_url(); ?>photos/photos_albums"><li>All Albums</li></a>
-                    <a href="<?php echo base_url(); ?>photos/photos_view_my_albums"><li>My Albums</li></a>
+                    <a href="<?php echo base_url(); ?>blogs/"><li>All Blogs</li></a>
+                    <a href="<?php echo base_url(); ?>blogs/"><li>My Blogs</li></a>
+                    <a href="<?php echo base_url(); ?>blogs/"><li>Friends’ Blogs</li></a>
                     <div class="category_divider"></div>
                 </ul> 
             </div>
@@ -44,48 +40,41 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="category_ul">
-                    <a href=""><li>Anthro</li></a>
+                    <a href=""><li>Book Reviews</li></a>
                     <div class="category_divider"></div>
-                    <a href=""><li>Artisan Crafts</li></a>
+                    <a href=""><li>Business</li></a>
                     <div class="category_divider"></div>
-                    <a href=""><li>Cartoons & Comics</li></a>
+                    <a href=""><li>Stories</li></a>
                     <div class="category_divider"></div>
-                    <a href=""><li>Comedy</li></a>
+                    <a href=""><li>Dawah</li></a>
                     <div class="category_divider"></div>
-                    <a href=""><li>Community Projects</li></a>
+                    <a href=""><li>Education</li></a>
                     <div class="category_divider"></div>
-                    <a href=""><li>Contests</li></a>
+                    <a href=""><li>Arts</li></a>
                     <div class="category_divider"></div>
-                    <a href=""><li>Customization</li></a>
+                    <a href=""><li>Entertainment</li></a>
                     <div class="category_divider"></div>
-                    <a href=""><li>Designs & Interfaces</li></a>
+                    <a href=""><li>Family & Home</li></a>
                     <div class="category_divider"></div>
-                    <a href=""><li>Digital Art</li></a>
+                    <a href=""><li>Health & Fitness</li></a>
                     <div class="category_divider"></div>
-                    <a href=""><li>Fan Art</li></a>
+                    <a href=""><li>Interview</li></a>
                     <div class="category_divider"></div>
-                    <a href=""><li>Film & Animation</li></a>
+                    <a href=""><li>Recreation</li></a>
                     <div class="category_divider"></div>
-                    <a href=""><li>Fractal Art</li></a>
+                    <a href=""><li>Shopping</li></a>
                     <div class="category_divider"></div>
-                    <a href=""><li>Game Development Art</li></a>
-                    <div class="category_divider"></div>
-                    <a href=""><li>Literature</li></a>
-                    <div class="category_divider"></div>
-                    <a href=""><li>People</li></a>
-                    <div class="category_divider"></div>
-                    <a href=""><li>Pets & Animals</li></a>
-                    <div class="category_divider"></div>
-                    <a href=""><li>Photography</li></a>
-                    <div class="category_divider"></div>
-                    <a href=""><li>Resources & Stock Images</li></a>
-                    <div class="category_divider"></div>
-                    <a href=""><li>Science & Technology</li></a>
+                    <a href=""><li>Society</li></a>
                     <div class="category_divider"></div>
                     <a href=""><li>Sports</li></a>
                     <div class="category_divider"></div>
-                    <a href=""><li>Traditional Art</li></a>
+                    <a href=""><li>Stories of Phophets</li></a>
                     <div class="category_divider"></div>
+                    <a href=""><li>Technology</li></a>
+                    <div class="category_divider"></div>
+                    <a href=""><li>Quran Contest</li></a>
+                    <div class="category_divider"></div>
+
                 </ul> 
             </div>
         </div>
@@ -123,35 +112,22 @@
             <div class="col-md-4 ">
                 <div class="left-inner-addon">
                     <i class="glyphicon glyphicon-search"></i> 
-                    <input style="height: 26px; border-radius: 3px;" type="text" class="mm_input form-control" placeholder="Search photos..." />
+                    <input style="height: 26px; border-radius: 3px;" type="text" class="mm_input form-control" placeholder="Search blogs..." />
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-offset-2 col-md-5">
                 <div class="row">
                     <div class="col-md-12">
-                        <span style="font-size: 12px; font-weight: bold; opacity: .6;" href="">Sort:</span>
-                        <div class="btn-group">
-                            <button style="background-color: #E9EAED; border: 1px solid #703684; padding: 2px 10px;" type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                Latest<span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="<?php echo base_url(); ?>photos/">Latest</a></li>
-                                <li><a href="<?php echo base_url(); ?>photos/photos_sort_most_viewed">Most Viewed</a></li>
-                                <li><a href="<?php echo base_url(); ?>photos/photos_sort_top_rated">Top Rated</a></li>
-                                <li><a href="<?php echo base_url(); ?>photos/photos_sort_most_discussed">Most Discussed</a></li>
-                            </ul>
-                        </div>
                         &nbsp;
                         <span style="font-size: 12px; font-weight: bold; opacity: .6;" href="">Show:</span>
                         <div class="btn-group">
                             <button style="background-color: #E9EAED; border: 1px solid #703684; padding: 2px 10px;" type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                12 per Page<span class="caret"></span>
+                                5 per Page<span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">12 per Page</a></li>
-                                <li><a href="#">16 per Page</a></li>
-                                <li><a href="#">20 per Page</a></li>
-                                <li><a href="#">24 per Page</a></li>
+                                <li><a href="">5 per Page</a></li>
+                                <li><a href="">10 per Page</a></li>
+                                <li><a href="">15 per Page</a></li>
                             </ul>
                         </div>
                         &nbsp;
@@ -175,8 +151,7 @@
         <div class="pagelet_divider"></div>
         <div class="row">
             <div class="col-md-9">
-
-                <?php $this->load->view("member/pagelets/photo/sort_albums"); ?>
+                
             </div>
             <div class="col-md-3">
             </div>
