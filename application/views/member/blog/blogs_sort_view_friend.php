@@ -137,9 +137,26 @@
         <div class="pagelet_divider"></div>
         <div class="row">
             <div class="col-md-9">
-                 <?php $this->load->view("member/pagelets/blog/sort_view_friend"); ?>
+                <?php $this->load->view("member/pagelets/blog/sort_view_friend"); ?>
             </div>
             <div class="col-md-3">
+                <label style="background-color: lightgray; padding: 5px 33px;">Top Bloggers</label>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="top_blogger_ul">
+                            <a href=""><li>Mohammad Azhar Uddin (150)</li></a>
+                            <div class="category_divider"></div>
+                            <a href=""><li>Jannatul Ferdaus (120)</li></a>
+                            <div class="category_divider"></div>
+                            <a href=""><li>Sharmin Akter (110)</li></a>
+                            <div class="category_divider"></div>
+                            <a href=""><li>Maria Islam (100)</li></a>
+                            <div class="category_divider"></div>
+                            <a href=""><li>Dr. Belal (95)</li></a>
+                            <div class="category_divider"></div>
+                        </ul> 
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-1"></div>

@@ -11,5 +11,5 @@
     <a href="#"><li>Fund Raising</li></a>
     <a href="#"><li>Online Payment</li></a>
     <a href="#"><li>Zakat</li></a>
-    <a href="#"><li>Shop</li></a>
+    <a href="#"><li>Shopping</li></a>
 </ul>

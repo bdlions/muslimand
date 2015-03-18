@@ -96,6 +96,7 @@
             </div>
             <div class="row form-group">
                 <div class="col-md-6 col-xs-12 form-group">
+                    <label style="color: #703684; font-size: 15px; font-weight: bold;">Gender</label>
                     <select class="form-control">
                         <option class="">
                             Male
@@ -106,6 +107,7 @@
                     </select>
                 </div>
                 <div class="col-md-6 col-xs-12 form-group">
+                    <label style="color: #703684; font-size: 15px; font-weight: bold;">Country</label>
                     <select class="form-control">
                         <option class="form-control">
                             Australia 
