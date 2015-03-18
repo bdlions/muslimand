@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/muslimand/application/controllers/member.php</file>
-            <file>file:/C:/wamp/www/muslimand/resources/css/video.css</file>
+            <file>file:/C:/wamp/www/muslimand/resources/css/blog.css</file>
+            <file>file:/C:/wamp/www/muslimand/application/controllers/blogs.php</file>
+            <file>file:/C:/wamp/www/muslimand/application/controllers/auth.php</file>
+            <file>file:/C:/wamp/www/muslimand/application/views/member/blog/blog_home.php</file>
+            <file>file:/C:/wamp/www/muslimand/application/views/member/blog/blog_add.php</file>
         </group>
     </open-files>
 </project-private>
