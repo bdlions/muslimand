@@ -31,7 +31,8 @@
         <div class="row padding_top_over_row">
             <div class="col-md-12">
                 <label>*Post:</label><br>
-                CK Editor
+                <textarea id="blog_post_textarea"></textarea>
+                <input type="hidden" id="blog_post_inp">
             </div>
         </div>
         <div class="row padding_top_over_row">
@@ -93,6 +94,16 @@
             <div class="col-md-6">
                 <label>Please, type what you see on the image below to confirm you are not a Robot</label>
                 Capcha<br>
+                <script src="https://www.google.com/recaptcha/api.js?fallback=true" async defer></script>
+                <form action="?" method="POST">
+                    <div class="g-recaptcha" data-sitekey="6LctLfISAAAAAEWmA7GBCAJC7SL4bzFc5jZuDA0O"></div>
+                    <br/>
+                    <input type="submit" value="Submit">
+                </form>
+
+                <div id="captcha_div">
+                    
+                </div>
                 <button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 28px;">Publish</button><br>
             <span style="font-size: 12px;">* Required Fields </span>
             </div>
@@ -100,8 +111,6 @@
         </div>
         <div class="row form-group"></div>
         <div class="row form-group"></div>
-
-        
     </div>
     <div class="col-md-2"></div>
 </div>
@@ -208,4 +217,42 @@
     $('#cat_used').click(function (){
         $('#category_container').html( $('#used_id').html() );
     });
+</script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+window.onload = function()
+{
+    CKEDITOR.replace('blog_post_textarea', {
+        language: 'en',
+        toolbar: [
+            { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source', '-', 'Preview', '-', 'Templates' ] },
+            { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+            { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+            { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
+            '/',
+            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+
+            { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+            '/',
+            { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl' ] },
+            { name: 'forms', items: ['ImageButton'] },
+        ],
+            toolbarGroups: [
+                    { name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
+                    { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
+            { name: 'links' },
+            { name: 'colors' },
+                    '/',																// Line break - next group will be placed in new line.
+                    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+            { name: 'styles' },
+            '/',
+            { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+            { name: 'forms' },
+            ]
+        });
+        
+    $("#btnSubmit").on("click", function(){
+        $("#blog_post_inp").val(jQuery('<div />').text( filter_html_tags( CKEDITOR.instances.blog_post_textarea.getData() ) ).html());
+    });
+}
 </script>
