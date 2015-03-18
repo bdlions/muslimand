@@ -51,12 +51,12 @@ and open the template in the editor.
 .scrolling_y_axis_style{
     overflow-y: scroll;
     height: 150px;
-    border: 1px solid lightgray;
+    /*border: 1px solid lightgray;*/
 }
 .li_dot_remove{
     list-style-type: none;
     line-height: 20px;
-    padding-left: 25px;
+    /*padding-left: 25px;*/
 }
 .inline li{
     display: inline;
@@ -65,8 +65,8 @@ and open the template in the editor.
 .inline li:hover{
     cursor: pointer;
     line-height: 20px;
-    color: #fff;
-    background-color: firebrick;
+    /*color: #fff;*/
+    /*background-color: firebrick;*/
     
 }
 .li_dot_remove a{
