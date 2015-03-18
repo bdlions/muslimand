@@ -25,4 +25,13 @@ class Blogs extends CI_Controller {
     function blogs_add(){
         $this->template->load(MEMBER_BLOG_IN_TEMPLATE, "member/blog/blog_add");
     }
+    function blogs_sort_view_my(){
+        $this->template->load(MEMBER_BLOG_IN_TEMPLATE, "member/blog/blogs_sort_view_my");
+    }
+    function blogs_sort_view_friend(){
+        $this->template->load(MEMBER_BLOG_IN_TEMPLATE, "member/blog/blogs_sort_view_friend");
+    }
+    function blogs_newsfeed(){
+        $this->template->load(MEMBER_BLOG_IN_TEMPLATE, "member/blog/blogs_newsfeed");
+    }
 }

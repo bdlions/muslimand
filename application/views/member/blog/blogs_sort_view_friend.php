@@ -87,7 +87,7 @@
         <div class="row form-group"></div>
         <div class="row">
             <div class="col-md-12">
-                 <?php $this->load->view("member/sections/menu/menu_link"); ?>
+                <?php $this->load->view("member/sections/menu/menu_link"); ?>
             </div>
         </div>
         <div class="row form-group"></div>
@@ -137,7 +137,7 @@
         <div class="pagelet_divider"></div>
         <div class="row">
             <div class="col-md-9">
-                 <?php $this->load->view("member/pagelets/blog/sort_latest"); ?>
+                 <?php $this->load->view("member/pagelets/blog/sort_view_friend"); ?>
             </div>
             <div class="col-md-3">
             </div>
