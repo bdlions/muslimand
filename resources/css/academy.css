@@ -1,0 +1,67 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : March 21, 2015
+    Author     : Redoy
+*/
+
+
+/*================================  Academy  ================================*/
+.padding_top_over_row{
+    padding-top: 20px;
+}
+/*================================  Left Category  ================================*/
+.category_ul{
+    list-style-type:none;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    line-height: 22px;
+    font-size: 10px;
+}
+.category_ul a{
+    text-decoration: none;
+    color: black;
+}
+.category_ul a li:hover{
+    display: block;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #888888!important;
+    color: white!important;
+    padding-left: 4px;
+    font-weight: bold;
+}
+/*================================  home  ================================*/
+.courses_border_style {
+    background: none repeat scroll 0 0 lavender;
+    border: 5px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    float: left;
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+}
+
+.courses_naming_style{
+    font-size: 12px; 
+    font-weight: bold; 
+    text-align: justify;
+}
+.courses_naming_style:hover{
+    cursor: pointer;
+    text-decoration: none;
+    color: #703684;
+}
+.stat_numbers {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+}
+.stat_name {
+    opacity: 0.6;
+    font-size: 12px;
+}

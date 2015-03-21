@@ -64,4 +64,8 @@ class Member extends CI_Controller {
     {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/privacy_settings");
     }
+    function zakat()
+    {
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/zakat");
+    }
 }
