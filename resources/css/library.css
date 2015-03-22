@@ -1,0 +1,129 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : march 22, 2015
+    Author     : Redoy
+*/
+
+
+/*================================  Library  ================================*/
+
+
+/*================================  Left Menu  ================================*/
+.video_ul,.category_ul{
+    list-style-type:none;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+.video_ul{
+    line-height: 28px;
+    font-size: 13px;
+}
+.category_ul{
+    line-height: 22px;
+    font-size: 10px;
+}
+.video_ul a,.category_ul a{
+    text-decoration: none;
+    color: black;
+}
+
+.video_ul a li:hover,.category_ul a li:hover{
+    display: block;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #888888!important;
+    color: white!important;
+    padding-left: 4px;
+    font-weight: bold;
+}
+.video_ul a li:hover{
+    border-radius: 3px;
+}
+
+.padding_top_over_row{
+    padding-top: 20px;
+}
+/*================================  library home  ================================*/
+.title_right_panel{
+    background: none repeat scroll 0 0 #DADADA;
+    border-bottom: 1px solid #dfdfdf;
+    color: #666;
+    font-weight: bold;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 0 0 4px;
+}
+.img_border{
+    border: 1px solid blue;
+    padding: 5px;
+}
+.img_num_border{
+    background-color: black;
+    color: #fff;
+    border: 1px solid burlywood;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 101px;
+    bottom: 35px;
+    z-index: 101;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 5px;
+}
+.para_title{
+    cursor: pointer;
+    color: #703684;
+    font-weight: bold;
+    margin-top: -20px;
+}
+.para_author,.para_default{
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 10px;
+}
+.para_author a{
+    cursor: pointer;
+    color: #703684;
+    font-weight: bold;
+}
+/*================================  library add  ================================*/
+.download_li{
+    list-style-type: none;
+    cursor: pointer;
+}
+.download_li_active{
+  border: 1px solid lightgray;
+  position: relative;
+  left: -55px;
+  background-color: #E3F6E5;
+  padding: 3px 10px;
+  width: 80px;
+}
+.download_li_inactive{
+  border: 1px solid lightgray;
+  background-color: #F6E3E3;
+  position: relative;
+  left: -65px;
+  bottom: 0;
+  padding: 3px 10px;
+  width: 80px;
+}
+
+
+
+.table_shell{
+    background: url("../images/library/library_shell.png") repeat-x scroll center bottom rgba(0, 0, 0, 0);
+}
+.table_left_shell{
+    background: url("../images/library/left_side_shell.png") no-repeat scroll left bottom rgba(0, 0, 0, 0);
+}
+.table_right_shell{
+background: url("../images/library/right_side_shell.png") no-repeat scroll right bottom rgba(0, 0, 0, 0);
+}
