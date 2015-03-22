@@ -14,6 +14,7 @@
         <div class="pagelet">
             <div class="row padding_top_over_row">
                 <div class="col-md-12">
+                    <h2>Calculate Your Zakat:</h2>
                     <div class="form-group">
                         <span style="font-size: 20px; font-weight: bold;">Gold & Silver:</span><br>
                         Value of Gold: ($)
