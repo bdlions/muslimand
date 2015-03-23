@@ -13,6 +13,7 @@ define('MEMBER_PHOTO_IN_TEMPLATE', 'templates/member_photo_tmpl');
 define('MEMBER_PAGE_IN_TEMPLATE', 'templates/member_page_tmpl');
 define('MEMBER_BLOG_IN_TEMPLATE', 'templates/member_blog_tmpl');
 define('MEMBER_ACADEMY_IN_TEMPLATE', 'templates/member_academy_tmpl');
+define('MEMBER_FUND_IN_TEMPLATE', 'templates/member_fund_tmpl');
 define('MEMBER_LIBRARY_IN_TEMPLATE', 'templates/member_library_tmpl');
 define('MEMBER_PROFILE_TEMPLATE', 'templates/member_profile_tmpl');
 define('MEMBER_LOGIN_SUCCESS_VIEW', 'member/index');
