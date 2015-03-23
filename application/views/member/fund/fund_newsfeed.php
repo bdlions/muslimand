@@ -151,19 +151,24 @@
                         
                         
                         
-                        
+                        <style>
+                            #des_after,#don_after,#up_after{
+                                display: none
+                            }
+                        </style>
                         
                         
                         
                         <div class="row padding_top_over_row">
                             <div class="col-md-12">
                                 <ul class="nav nav-tabs nav-justified">
-                                    <li id="des" role="presentation" class="active"><a href="">Description</a></li>
-                                    <li id="don" role="presentation"><a href="">Donors</a></li>
-                                    <li id="up" role="presentation"><a href="">Updates</a></li>
+                                    <li onclick="$('#text_holder').html( $('#des_after').html() )" id="des" role="presentation" class="active">Description</li>
+                                    <li onclick="$('#text_holder').html( $('#don_after').html() )" id="don" role="presentation">Donors</li>
+                                    <li onclick="$('#text_holder').html( $('#up_after').html() )" id="up" role="presentation">Updates</li>
                                 </ul>
                             </div>
                         </div>
+                        <div id="text_holder" class="row padding_top_over_row"></div>
                         <div id="des_after" class="row padding_top_over_row">
                             <div class="col-md-12">
                                 <div class="row padding_top_over_row">
@@ -411,13 +416,7 @@
 </div>
 
 <script>
-    $('#des').click(function (){
-        ('#des_after').html() ;
-    });
-    $('#don').click(function (){
-        ('#don_after').html() ;
-    });
-    $('#up').click(function (){
-        ('#up_after').html() ;
+    $(function(){
+        $('#text_holder').html( $('#des_after').html() )
     });
 </script>
