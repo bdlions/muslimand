@@ -103,6 +103,16 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-md-7">
+            </div>
+            <div class="col-md-2">
+                <a href="" style="font-size: 13px;"> <img src="<?php echo base_url(); ?>resources/images/library/icon/download.png"> Download</a>
+            </div>
+            <div class="col-md-3">
+                 <a href="" style="font-size: 13px;"><img src="<?php echo base_url(); ?>resources/images/library/icon/attachment.png">Email as Attachment</a>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div class="borber_box_full font_10px">
                     <div class="row">
