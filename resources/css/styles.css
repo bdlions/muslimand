@@ -254,3 +254,6 @@ and open the template in the editor.
     padding: 10px; 
     border-radius: 5px;
 }
+.padding_top_over_row{
+   padding-top: 20px; 
+}
