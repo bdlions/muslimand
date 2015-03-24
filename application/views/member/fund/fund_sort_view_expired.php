@@ -45,7 +45,7 @@
                     <a href="<?php echo base_url(); ?>fund/fund_sort_view_reached"><li>Reached Campaigns</li></a>
                     <a href="<?php echo base_url(); ?>fund/fund_sort_view_expired"><li>Expired Campaigns</li></a>
                     <a href="<?php echo base_url(); ?>fund/fund_sort_view_closed"><li>Closed Campaigns</li></a>
-                </ul> 
+                </ul>  
             </div>
         </div>
         <div class="row form-group"></div>
@@ -103,7 +103,7 @@
     <div class="col-md-9">
         <div class="row">
             <div class="col-md-12">
-                <?php $this->load->view("member/pagelets/fund/sort_latest"); ?>
+                <?php $this->load->view("member/pagelets/fund/sort_view_expired"); ?>
             </div>
         </div>
     </div>

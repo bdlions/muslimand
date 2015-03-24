@@ -248,3 +248,9 @@ and open the template in the editor.
     cursor: pointer;
     color: black!important;
 }
+
+.comments_box{
+    background-color: #f5f5f5; 
+    padding: 10px; 
+    border-radius: 5px;
+}

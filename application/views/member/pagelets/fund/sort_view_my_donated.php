@@ -1,6 +1,6 @@
 <div class="row form-group">
     <div class="col-md-12">
-        <span style="font-size: 16px; font-weight: bold;">All Campaigns</span>
+        <span style="font-size: 16px; font-weight: bold;">My Donated Campaigns</span>
     </div>
 </div>
 <div class="pagelet_divider"></div>
@@ -9,25 +9,25 @@
         <div class="fund_rising_border_style">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="<?php echo base_url(); ?>fund/fund_newsfeed"><img class="img-responsive img-thumbnail" src="<?php echo base_url(); ?>resources/images/fund/160_240/01.jpg"></a>
-                    <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Sponsor Students to Learn Quran</span></a><br><br>
-                    In <a href="" class="anchor_style">Education</a><br>
+                    <a href="<?php echo base_url(); ?>fund/fund_newsfeed"><img class="img-responsive img-thumbnail" src="<?php echo base_url(); ?>resources/images/fund/160_240/03.jpg"></a>
+                    <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Gaza Crisis Appeal</span></a><br><br>
+                    In <a href="" class="anchor_style">Education</a>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                        <div style="background-color: #76bd22; height: 10px; width: 60%; border-radius: 5px;"></div>
+                        <div style="background-color: #76bd22; height: 10px; width: 70%; border-radius: 5px;"></div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <span class="stat_numbers">1663</span><br>
+                    <span class="stat_numbers">1368</span><br>
                     <span class="stat_name">Donors</span>
                 </div>
                 <div class="col-md-4">
-                    <span class="stat_numbers">$61,196</span><br>
+                    <span class="stat_numbers">$59,369</span><br>
                     <span class="stat_name">Donated</span>
                 </div>
                 <div class="col-md-4">
-                    <span class="stat_numbers">60%</span><br>
+                    <span class="stat_numbers">70%</span><br>
                     <span class="stat_name">Raised</span>
                 </div>
             </div>
@@ -65,25 +65,25 @@
         <div class="fund_rising_border_style">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="<?php echo base_url(); ?>fund/fund_newsfeed"><img class="img-responsive img-thumbnail" src="<?php echo base_url(); ?>resources/images/fund/160_240/03.jpg"></a>
-                    <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Gaza Crisis Appeal</span></a><br><br>
-                    In <a href="" class="anchor_style">Education</a>
+                    <a href="<?php echo base_url(); ?>fund/fund_newsfeed"><img class="img-responsive img-thumbnail" src="<?php echo base_url(); ?>resources/images/fund/160_240/01.jpg"></a>
+                    <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Sponsor Students to Learn Quran</span></a><br><br>
+                    In <a href="" class="anchor_style">Education</a><br>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                        <div style="background-color: #76bd22; height: 10px; width: 70%; border-radius: 5px;"></div>
+                        <div style="background-color: #76bd22; height: 10px; width: 60%; border-radius: 5px;"></div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <span class="stat_numbers">1368</span><br>
+                    <span class="stat_numbers">1663</span><br>
                     <span class="stat_name">Donors</span>
                 </div>
                 <div class="col-md-4">
-                    <span class="stat_numbers">$59,369</span><br>
+                    <span class="stat_numbers">$61,196</span><br>
                     <span class="stat_name">Donated</span>
                 </div>
                 <div class="col-md-4">
-                    <span class="stat_numbers">70%</span><br>
+                    <span class="stat_numbers">60%</span><br>
                     <span class="stat_name">Raised</span>
                 </div>
             </div>
@@ -95,8 +95,8 @@
         <div class="fund_rising_border_style">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="<?php echo base_url(); ?>fund/fund_newsfeed"><img class="img-responsive img-thumbnail" src="<?php echo base_url(); ?>resources/images/fund/160_240/04.jpg"></a>
-                    <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Islamic Online University</span></a><br><br>
+                    <a href="<?php echo base_url(); ?>fund/fund_newsfeed"><img class="img-responsive img-thumbnail" src="<?php echo base_url(); ?>resources/images/fund/160_240/06.jpg"></a>
+                    <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Muslim Kids TV Website Launch</span></a><br><br>
                     In <a href="" class="anchor_style">Education</a>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
                         <div style="background-color: #76bd22; height: 10px; width: 100%; border-radius: 5px;"></div>
@@ -105,15 +105,15 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <span class="stat_numbers">789</span><br>
+                    <span class="stat_numbers">1569</span><br>
                     <span class="stat_name">Donors</span>
                 </div>
                 <div class="col-md-4">
-                    <span class="stat_numbers">$39,654</span><br>
+                    <span class="stat_numbers">$78,756</span><br>
                     <span class="stat_name">Donated</span>
                 </div>
                 <div class="col-md-4">
-                    <span class="stat_numbers">112%</span><br>
+                    <span class="stat_numbers">119%</span><br>
                     <span class="stat_name">Raised</span>
                 </div>
             </div>
@@ -151,8 +151,8 @@
         <div class="fund_rising_border_style">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="<?php echo base_url(); ?>fund/fund_newsfeed"><img class="img-responsive img-thumbnail" src="<?php echo base_url(); ?>resources/images/fund/160_240/06.jpg"></a>
-                    <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Muslim Kids TV Website Launch</span></a><br><br>
+                    <a href="<?php echo base_url(); ?>fund/fund_newsfeed"><img class="img-responsive img-thumbnail" src="<?php echo base_url(); ?>resources/images/fund/160_240/04.jpg"></a>
+                    <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Islamic Online University</span></a><br><br>
                     In <a href="" class="anchor_style">Education</a>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
                         <div style="background-color: #76bd22; height: 10px; width: 100%; border-radius: 5px;"></div>
@@ -161,15 +161,15 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <span class="stat_numbers">1569</span><br>
+                    <span class="stat_numbers">789</span><br>
                     <span class="stat_name">Donors</span>
                 </div>
                 <div class="col-md-4">
-                    <span class="stat_numbers">$78,756</span><br>
+                    <span class="stat_numbers">$39,654</span><br>
                     <span class="stat_name">Donated</span>
                 </div>
                 <div class="col-md-4">
-                    <span class="stat_numbers">119%</span><br>
+                    <span class="stat_numbers">112%</span><br>
                     <span class="stat_name">Raised</span>
                 </div>
             </div>
@@ -181,25 +181,25 @@
         <div class="fund_rising_border_style">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="<?php echo base_url(); ?>fund/fund_newsfeed"><img class="img-responsive img-thumbnail" src="<?php echo base_url(); ?>resources/images/fund/160_240/07.jpg"></a>
-                    <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Support Independent Muslim Newspaper</span></a><br>
+                    <a href="<?php echo base_url(); ?>fund/fund_newsfeed"><img class="img-responsive img-thumbnail" src="<?php echo base_url(); ?>resources/images/fund/160_240/09.jpg"></a>
+                    <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Empowering Disabled Muslims</span></a><br><br>
                     In <a href="" class="anchor_style">Non-Profits & Charities</a>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                        <div style="background-color: #76bd22; height: 10px; width: 23%; border-radius: 5px;"></div>
+                        <div style="background-color: #76bd22; height: 10px; width: 69%; border-radius: 5px;"></div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <span class="stat_numbers">456</span><br>
+                    <span class="stat_numbers">969</span><br>
                     <span class="stat_name">Donors</span>
                 </div>
                 <div class="col-md-4">
-                    <span class="stat_numbers">$19,866</span><br>
+                    <span class="stat_numbers">$55,345</span><br>
                     <span class="stat_name">Donated</span>
                 </div>
                 <div class="col-md-4">
-                    <span class="stat_numbers">23%</span><br>
+                    <span class="stat_numbers">69%</span><br>
                     <span class="stat_name">Raised</span>
                 </div>
             </div>
@@ -237,25 +237,25 @@
         <div class="fund_rising_border_style">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="<?php echo base_url(); ?>fund/fund_newsfeed"><img class="img-responsive img-thumbnail" src="<?php echo base_url(); ?>resources/images/fund/160_240/09.jpg"></a>
-                    <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Empowering Disabled Muslims</span></a><br><br>
+                    <a href="<?php echo base_url(); ?>fund/fund_newsfeed"><img class="img-responsive img-thumbnail" src="<?php echo base_url(); ?>resources/images/fund/160_240/07.jpg"></a>
+                    <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Support Independent Muslim Newspaper</span></a><br>
                     In <a href="" class="anchor_style">Non-Profits & Charities</a>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                        <div style="background-color: #76bd22; height: 10px; width: 69%; border-radius: 5px;"></div>
+                        <div style="background-color: #76bd22; height: 10px; width: 23%; border-radius: 5px;"></div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <span class="stat_numbers">969</span><br>
+                    <span class="stat_numbers">456</span><br>
                     <span class="stat_name">Donors</span>
                 </div>
                 <div class="col-md-4">
-                    <span class="stat_numbers">$55,345</span><br>
+                    <span class="stat_numbers">$19,866</span><br>
                     <span class="stat_name">Donated</span>
                 </div>
                 <div class="col-md-4">
-                    <span class="stat_numbers">69%</span><br>
+                    <span class="stat_numbers">23%</span><br>
                     <span class="stat_name">Raised</span>
                 </div>
             </div>

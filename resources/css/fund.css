@@ -54,7 +54,7 @@ and open the template in the editor.
 .fund_rising_naming_style:hover{
     cursor: pointer;
     text-decoration: none;
-    color: #703684;
+    color: lightseagreen;
 }
 .stat_numbers {
     color: black;
@@ -119,5 +119,15 @@ and open the template in the editor.
 .donor_view a:hover {
     background: none repeat scroll 0 0 #333;
     color: #fff;
+}
+
+#des_after,#don_after,#up_after,#ab_after{
+    display: none
+}
+li.submenu-active a{
+    background-color: lightpink;
+    color: lightcoral;
+    display: block;
+    font-weight: bold;
 }
 

@@ -103,7 +103,7 @@
     <div class="col-md-9">
         <div class="row">
             <div class="col-md-12">
-                <?php $this->load->view("member/pagelets/fund/sort_latest"); ?>
+                <?php $this->load->view("member/pagelets/fund/sort_view_my"); ?>
             </div>
         </div>
     </div>
