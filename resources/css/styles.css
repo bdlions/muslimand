@@ -254,6 +254,52 @@ and open the template in the editor.
     padding: 10px; 
     border-radius: 5px;
 }
+/*------------------------------------------------------------------------------------------------*/
 .padding_top_over_row{
    padding-top: 20px; 
+}
+
+/*================================  Left Menu  ================================*/
+.video_ul,.category_ul{
+    list-style-type:none;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+.video_ul{
+    line-height: 28px;
+    font-size: 13px;
+}
+.category_ul{
+    line-height: 22px;
+    font-size: 10px;
+}
+.video_ul a,.category_ul a{
+    text-decoration: none;
+    color: black;
+}
+
+.video_ul a li:hover,.category_ul a li:hover{
+    display: block;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #888888!important;
+    color: white!important;
+    padding-left: 4px;
+    font-weight: bold;
+}
+.video_ul a li:hover{
+    border-radius: 3px;
+}
+
+
+/*---------------------------------------------invite (footer)---------------------------------------------------*/
+
+.invite_item_style{
+    padding: 8px 0;
+    border-top: 1px solid lightgray;
+}
+.invite_item_style:hover{
+    background-color: #EDEFF4;
+    cursor: pointer;
 }

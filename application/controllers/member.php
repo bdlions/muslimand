@@ -68,5 +68,9 @@ class Member extends CI_Controller {
     {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/zakat");
     }
+    function invite()
+    {
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE_WITH_FOOTER, "member/invite");
+    }
     
 }

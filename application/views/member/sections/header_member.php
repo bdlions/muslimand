@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-xs-1">
         <a href="<?php echo base_url(); ?>member/newsfeed">
-            <img src="<?php echo base_url(); ?>resources/images/logo.png" height="30" width="30">
+            <img style="border-radius: 3px;"src="<?php echo base_url(); ?>resources/images/logo.png" height="30" width="30">
         </a>
     </div>
     <div class="col-xs-3 col-sm-5 col-md-4">

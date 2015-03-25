@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color: #703684; color: white">
+<div class="container-fluid" style="padding-top: 10px; background-color: #703684; color: white">
     <?php echo form_open("auth/login"); ?>
     <div class="row form-group">
         <div class="col-md-4">
