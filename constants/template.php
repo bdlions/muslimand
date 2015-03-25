@@ -8,6 +8,7 @@ define('FOOTER_TEMPLATE', 'templates/footer_tmpl');
 define('LOGIN_VIEW', 'auth/main');
 
 define('MEMBER_LOGGED_IN_TEMPLATE', 'templates/member_default_tmpl');
+define('MEMBER_LOGGED_IN_TEMPLATE_WITH_FOOTER', 'templates/member_with_footer_tmpl');
 define('ADMIN_LOGGED_IN_TEMPLATE', 'templates/admin_tmpl');
 define('MEMBER_VIDEO_IN_TEMPLATE', 'templates/member_video_tmpl');
 define('MEMBER_PHOTO_IN_TEMPLATE', 'templates/member_photo_tmpl');

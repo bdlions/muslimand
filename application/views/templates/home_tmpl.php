@@ -27,7 +27,6 @@
             #header {
             }
             #content {
-            padding-bottom:80px; /* Height of the footer element */
             }
             #footer {
             background-color: #fff;
@@ -45,7 +44,7 @@
                 <div id="header">
                     <?php $this->load->view("auth/sections/header_with_login"); ?>
                 </div>
-                <div id="content">
+                <div class="container-fluid">
                     <?php echo $contents; ?>
                 </div>
                 <div id="footer">
