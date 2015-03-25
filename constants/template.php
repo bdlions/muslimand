@@ -4,6 +4,7 @@ define('ADMIN', 'admin');
 define('MEMBER', 'members');
 
 define('NON_MEMBER_TEMPLATE', 'templates/home_tmpl');
+define('FOOTER_TEMPLATE', 'templates/footer_tmpl');
 define('LOGIN_VIEW', 'auth/main');
 
 define('MEMBER_LOGGED_IN_TEMPLATE', 'templates/member_default_tmpl');

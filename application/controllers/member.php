@@ -68,8 +68,5 @@ class Member extends CI_Controller {
     {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/zakat");
     }
-    function contact()
-    {
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/contact");
-    }
+    
 }

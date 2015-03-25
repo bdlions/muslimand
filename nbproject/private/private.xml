@@ -11,6 +11,15 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/wamp/www/muslimand/application/views/member/contact.php</file>
+            <file>file:/C:/wamp/www/muslimand/application/views/templates/footer_tmpl.php</file>
+            <file>file:/C:/wamp/www/muslimand/application/controllers/footer.php</file>
+            <file>file:/C:/wamp/www/muslimand/application/views/auth/sections/footer.php</file>
+            <file>file:/C:/wamp/www/muslimand/resources/css/template.css</file>
+            <file>file:/C:/wamp/www/muslimand/application/views/templates/home_tmpl.php</file>
+            <file>file:/C:/wamp/www/muslimand/constants/template.php</file>
+            <file>file:/C:/wamp/www/muslimand/application/views/auth/sections/header_without_login.php</file>
+        </group>
     </open-files>
 </project-private>
