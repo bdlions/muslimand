@@ -56,6 +56,26 @@ class Member extends CI_Controller {
     {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/messages");
     }
+    function msg_box_1()
+    {
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/sections/msg_box/msg_box_1");
+    }
+    function msg_box_2()
+    {
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/sections/msg_box/msg_box_2");
+    }
+    function msg_box_3()
+    {
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/sections/msg_box/msg_box_3");
+    }
+    function msg_box_4()
+    {
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/sections/msg_box/msg_box_4");
+    }
+    function msg_box_5()
+    {
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/sections/msg_box/msg_box_5");
+    }
     function notification_all()
     {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/notification_all");

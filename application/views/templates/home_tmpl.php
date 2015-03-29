@@ -16,40 +16,40 @@
         <style>
             html,
             body {
-            margin:0;
-            padding:0;
-            height:100%;
+                margin:0;
+                padding:0;
+                height:100%;
             }
             #wrapper {
-            min-height:100%;
-            position:relative;
+                min-height:100%;
+                position:relative;
             }
             #header {
             }
             #content {
             }
             #footer {
-            background-color: #fff;
-            width:100%;
-            height:80px;
-            position:absolute;
-            bottom:0;
-            left:0;
+                background-color: #fff;
+                width:100%;
+                height: 60px;
+                position:absolute;
+                bottom:0;
+                left:0;
             }
         </style>
     </head>
     <body class="back">
         <div id="wrapper">
-            <div style="background-color: #EDF0F5">
-                <div id="header">
-                    <?php $this->load->view("auth/sections/header_with_login"); ?>
-                </div>
+            <div id="header">
+                <?php $this->load->view("auth/sections/header_with_login"); ?>
+            </div>
+            <div style="background-color: #EDF0F5; padding-bottom: 45px;">
                 <div class="container-fluid">
                     <?php echo $contents; ?>
                 </div>
-                <div id="footer">
-                    <?php $this->load->view("auth/sections/footer"); ?>
-                </div>
+            </div>
+            <div id="footer">
+                <?php $this->load->view("auth/sections/footer"); ?>
             </div>
         </div>
     </body>

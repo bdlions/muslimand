@@ -268,7 +268,7 @@ and open the template in the editor.
 }
 .video_ul{
     line-height: 28px;
-    font-size: 13px;
+    font-size: 12px;
 }
 .category_ul{
     line-height: 22px;
@@ -293,7 +293,7 @@ and open the template in the editor.
 }
 
 
-/*---------------------------------------------invite (footer)---------------------------------------------------*/
+/*------------------------------------invite (footer)-------------------------------------*/
 
 .invite_item_style{
     padding: 8px 0;
@@ -303,3 +303,66 @@ and open the template in the editor.
     background-color: #EDEFF4;
     cursor: pointer;
 }
+
+
+/*-------------------------------------msg box--------------------------------------*/
+
+.textarea_background_style{
+    background-color: lightgray;
+}
+.chatting_textarea_style{
+    background-color: #fff;
+    border: 1px solid #703684;
+    border-radius: 4px;
+    box-shadow: none;
+    resize: none;
+    width: 100%;
+}
+
+.message_owner_content_style, .message_friend_content_style {
+    border: 1px solid #d2d2d2;
+    border-radius: 3px;
+    display: inline-block;
+    font-weight: normal;
+    line-height: 32px;
+    margin-right: 5px;
+    overflow: hidden;
+    padding: 0 15px;
+    text-align: left;
+    border-radius: 5px;
+    word-wrap: break-word;
+    max-width: 600px;
+}
+.message_owner_content_style{
+    background-color: #9A70AD;
+    color: #fff;
+}
+.message_friend_content_style {
+    background-color: #F8F9F9;
+}
+
+.message_owner_style::before {
+    background-color: #9A70AD;
+    border-bottom: 1px solid #d2d2d2;
+    border-right: 1px solid #d2d2d2;
+    content: "";
+    height: 10px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    transform: rotate(-45deg);
+    width: 10px;
+}
+.message_friend_style::before {
+    background-color: #F8F9F9;
+    border-bottom: 1px solid #d2d2d2;
+    border-left: 1px solid #d2d2d2;
+    content: "";
+    height: 10px;
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    transform: rotate(45deg);
+    width: 10px;
+}
+

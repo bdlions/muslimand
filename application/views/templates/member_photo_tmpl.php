@@ -9,6 +9,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/modernizr.2.5.3.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/lib/hash.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/photo.css"/>
