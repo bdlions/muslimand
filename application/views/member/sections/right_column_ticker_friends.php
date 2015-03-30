@@ -148,3 +148,34 @@
         </div>
     </div>
 </div>
+<!--<div style="position: absolute; right: 100%; bottom: 0px; width: 400%; height: 1px">
+    <div class="row" style="position: absolute; bottom: 0px;">
+        <div class="col-xs-3">
+            <div class="msg">
+                a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="msg">
+                a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="msg">
+                a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="msg">
+                a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .msg{
+        height: 300px;
+        background-color: red;
+    }
+</style>
+-->
