@@ -256,7 +256,7 @@ and open the template in the editor.
 }
 /*------------------------------------------------------------------------------------------------*/
 .padding_top_over_row{
-   padding-top: 20px; 
+    padding-top: 20px; 
 }
 
 /*================================  Left Menu  ================================*/
@@ -308,30 +308,36 @@ and open the template in the editor.
 /*-------------------------------------msg box--------------------------------------*/
 
 .textarea_background_style{
-    background-color: lightgray;
+    border: 1px solid lightgray; 
+    padding-top: 5px; 
+    padding-bottom: 5px;
 }
 .chatting_textarea_style{
     background-color: #fff;
     border: 1px solid #703684;
-    border-radius: 4px;
+    border-radius: 3px;
     box-shadow: none;
     resize: none;
-    width: 100%;
+    width: 155px!important;
+    overflow-y: scroll;
+    height: 33px;
 }
 
 .message_owner_content_style, .message_friend_content_style {
     border: 1px solid #d2d2d2;
-    border-radius: 3px;
+    border-radius: 2px;
     display: inline-block;
     font-weight: normal;
-    line-height: 32px;
+    line-height: 20px;
     margin-right: 5px;
     overflow: hidden;
-    padding: 0 15px;
+    padding: 0 10px;
     text-align: left;
     border-radius: 5px;
     word-wrap: break-word;
     max-width: 600px;
+    font-size: 9px;
+    font-weight: bold;
 }
 .message_owner_content_style{
     background-color: #9A70AD;
@@ -346,12 +352,12 @@ and open the template in the editor.
     border-bottom: 1px solid #d2d2d2;
     border-right: 1px solid #d2d2d2;
     content: "";
-    height: 10px;
+    height: 8px;
     position: absolute;
-    right: 15px;
-    top: 10px;
+    right: 17px;
+    top: 6px;
     transform: rotate(-45deg);
-    width: 10px;
+    width: 8px;
 }
 .message_friend_style::before {
     background-color: #F8F9F9;
