@@ -60,7 +60,6 @@ and open the template in the editor.
 }
 .img_border{
     border: 1px solid blue;
-    padding: 5px;
 }
 .img_num_border{
     background-color: black;
@@ -69,7 +68,7 @@ and open the template in the editor.
     width: 30px;
     height: 30px;
     position: relative;
-    left: 101px;
+    left: 96px;
     bottom: 35px;
     z-index: 101;
     font-size: 12px;
