@@ -14,27 +14,27 @@
         </div>
     </div>
 </div>
-<div style="max-height: 450px; overflow-x:hidden; overflow-y: scroll">
-        <div class="pagelet message_friends_box">
-            <div class="row">
-                <div class="col-xs-2">
-                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="60" height="60"> 
-                </div>
-                <div class="col-xs-10">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <span style="font-weight: bold;"> Sharmin Akter</span>
-                        </div>
-                        <div class="col-xs-12">
-                            <span> Good Bye :)</span>
-                        </div>
-                        <div class="col-xs-12">
-                            <span>Wed</span>
-                        </div>
+<div style="max-height: 350px; overflow-x: hidden; overflow-y: scroll">
+    <div class="pagelet message_friends_box">
+        <div class="row">
+            <div class="col-xs-2">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="60" height="60"> 
+            </div>
+            <div class="col-xs-10">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <span style="font-weight: bold;"> Sharmin Akter</span>
+                    </div>
+                    <div class="col-xs-12">
+                        <span> Good Bye :)</span>
+                    </div>
+                    <div class="col-xs-12">
+                        <span>Wed</span>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     <div class="pagelet message_friends_box">
         <div class="row">
             <div class="col-xs-2">

@@ -410,8 +410,8 @@
                             </a>
                         </div>
                         <div class="col-md-8">
-                            <a style="font-weight: bold; color: black; cursor: pointer;" href="<?php echo base_url(); ?>member/profile">Mohammad Azhar Uddin</a><br>
-                            <input class="btn btn-xs" value="Send Message">
+                            <a style="font-weight: bold; color: black; cursor: pointer;" href="<?php echo base_url(); ?>member/profile">Mohammad Azhar Uddin</a>
+                            <input style="width: 100px;" class="btn btn-xs" value="Send Message">
                         </div>
                     </div>
                     <div class="row padding_top_over_row">
