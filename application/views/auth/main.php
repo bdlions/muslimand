@@ -120,7 +120,7 @@
             </div>
             <div class="row form-group">
                 <div class="col-md-12">
-                    <span style="color: black; font-size: 11px;">By clicking Sign Up, you agree to our <a href="#">Terms and Conditions</a></span>
+                    <span style="color: black; font-size: 11px;">By clicking Sign Up, you agree to our <a href="<?php echo base_url()?>footer/terms">Terms and Conditions</a></span>
                 </div>
             </div>
 

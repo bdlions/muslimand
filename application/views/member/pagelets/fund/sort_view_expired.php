@@ -13,7 +13,7 @@
                     <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Support Independent Muslim Newspaper</span></a><br>
                     In <a href="" class="anchor_style">Non-Profits & Charities</a>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                        <div style="background-color: #76bd22; height: 10px; width: 23%; border-radius: 5px;"></div>
+                        <div style="background-color: #9B69AD; height: 10px; width: 23%; border-radius: 5px;"></div>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                     <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Empowering Disabled Muslims</span></a><br><br>
                     In <a href="" class="anchor_style">Non-Profits & Charities</a>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                        <div style="background-color: #76bd22; height: 10px; width: 69%; border-radius: 5px;"></div>
+                        <div style="background-color: #9B69AD; height: 10px; width: 69%; border-radius: 5px;"></div>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                     <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Islamic Reality Show</span></a><br><br>
                     In <a href="" class="anchor_style">Education</a>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                        <div style="background-color: #76bd22; height: 10px; width: 77%; border-radius: 5px;"></div>
+                        <div style="background-color: #9B69AD; height: 10px; width: 77%; border-radius: 5px;"></div>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                     <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Islamic Online University</span></a><br><br>
                     In <a href="" class="anchor_style">Education</a>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                        <div style="background-color: #76bd22; height: 10px; width: 100%; border-radius: 5px;"></div>
+                        <div style="background-color: #9B69AD; height: 10px; width: 100%; border-radius: 5px;"></div>
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@
                     <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Muslim Kids TV Website Launch</span></a><br><br>
                     In <a href="" class="anchor_style">Education</a>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                        <div style="background-color: #76bd22; height: 10px; width: 100%; border-radius: 5px;"></div>
+                        <div style="background-color: #9B69AD; height: 10px; width: 100%; border-radius: 5px;"></div>
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@
                     <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Enable Quran for Deaf Muslims</span></a><br><br>
                     In <a href="" class="anchor_style">Education</a>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                        <div style="background-color: #76bd22; height: 10px; width: 96%; border-radius: 5px;"></div>
+                        <div style="background-color: #9B69AD; height: 10px; width: 96%; border-radius: 5px;"></div>
                     </div>
                 </div>
             </div>
@@ -185,7 +185,7 @@
                     <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Sponsor Students to Learn Quran</span></a><br><br>
                     In <a href="" class="anchor_style">Education</a><br>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                        <div style="background-color: #76bd22; height: 10px; width: 60%; border-radius: 5px;"></div>
+                        <div style="background-color: #9B69AD; height: 10px; width: 60%; border-radius: 5px;"></div>
                     </div>
                 </div>
             </div>
@@ -213,7 +213,7 @@
                     <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Gaza Crisis Appeal</span></a><br><br>
                     In <a href="" class="anchor_style">Education</a>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                        <div style="background-color: #76bd22; height: 10px; width: 70%; border-radius: 5px;"></div>
+                        <div style="background-color: #9B69AD; height: 10px; width: 70%; border-radius: 5px;"></div>
                     </div>
                 </div>
             </div>
@@ -241,7 +241,7 @@
                     <a style="text-decoration: none;" href="<?php echo base_url(); ?>fund/fund_newsfeed"><span class="fund_rising_naming_style">Educate a Woman - Educate a Nation</span></a><br>
                     In <a href="" class="anchor_style">Education</a>
                     <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                        <div style="background-color: #76bd22; height: 10px; width: 85%; border-radius: 5px;"></div>
+                        <div style="background-color: #9B69AD; height: 10px; width: 85%; border-radius: 5px;"></div>
                     </div>
                 </div>
             </div>

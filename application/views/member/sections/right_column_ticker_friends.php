@@ -148,10 +148,10 @@
         </div>
     </div>
 </div>
-<div style="position: absolute; right: 100%; bottom: 0; width: 360%; font-size: 10px;">
-    <div class="row" style="position: relative; bottom: 0px; margin: 5px;">
+<div style="position: absolute; right: 95%; bottom: -13px; width: 360%; font-size: 10px;">
+    <div class="row" style="position: relative; margin: 5px;">
         <div class="col-md-4">
-            <div id="msg_window_1" class="msg" style="display: none;">
+            <div id="msg_window_1" class="msg style_left_box" style="display: none;">
                 <div class="message_friends_divider_full">
                     <div class="row">
                         <div class="col-md-2">
@@ -168,7 +168,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="message_friends_divider_others chat_box_1_container" style="height: 150px; width: 100%; overflow-y: scroll; overflow-x: hidden; background-color: #fff;">
+                <div class="message_friends_divider_others chat_box_container" style="height: 150px; width: 100%; overflow-y: scroll; overflow-x: hidden; background-color: #fff;">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="message_owner_style pull-right">
@@ -226,7 +226,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div id="msg_window_2" class="msg" style="display: none;">
+            <div id="msg_window_2" class="msg style_middle_box" style="display: none;">
                 <div class="message_friends_divider_full">
                     <div class="row">
                         <div class="col-md-2">
@@ -243,7 +243,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="message_friends_divider_others chat_box_1_container" style="height: 150px; width: 100%; overflow-y: scroll; overflow-x: hidden; background-color: #fff;">
+                <div class="message_friends_divider_others chat_box_container" style="height: 150px; width: 100%; overflow-y: scroll; overflow-x: hidden; background-color: #fff;">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="message_owner_style pull-right">
@@ -318,7 +318,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="message_friends_divider_others chat_box_1_container" style="height: 150px; width: 100%; overflow-y: scroll; overflow-x: hidden; background-color: #fff;">
+                <div class="message_friends_divider_others chat_box_container" style="height: 150px; width: 100%; overflow-y: scroll; overflow-x: hidden; background-color: #fff;">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="message_owner_style pull-right">
@@ -385,7 +385,7 @@
 
 <script type="text/javascript">
     $(function() {
-        $(".chat_box_1_container").scrollTop($(".chat_box_1_container").height());
+        $(".chat_box_container").scrollTop($(".chat_box_container").height());
 
     });
     function close_message_window_1() {

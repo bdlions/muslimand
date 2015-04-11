@@ -7,7 +7,7 @@
 <div class="row padding_top_over_row">
     <div class="col-md-4">
         <div class="img_border">
-            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="125" src="<?php echo base_url() ?>resources/images/library/04.jpg"></a>
+            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="137" src="<?php echo base_url() ?>resources/images/library/04.jpg"></a>
         </div>
         <div class="img_num_border">
             <span>600p</span>
@@ -18,7 +18,7 @@
     </div>
     <div class="col-md-4">
         <div class="img_border">
-            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="125" src="<?php echo base_url() ?>resources/images/library/06.jpg"></a>
+            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="137" src="<?php echo base_url() ?>resources/images/library/06.jpg"></a>
         </div>
         <div class="img_num_border">
             <span>66p</span>
@@ -29,7 +29,7 @@
     </div>
     <div class="col-md-4">
         <div class="img_border">
-            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="125" src="<?php echo base_url() ?>resources/images/library/05.jpg"></a>
+            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="137" src="<?php echo base_url() ?>resources/images/library/05.jpg"></a>
         </div>
         <div class="img_num_border">
             <span>362p</span>
@@ -42,7 +42,7 @@
 <div class="row padding_top_over_row">
     <div class="col-md-4">
         <div class="img_border">
-            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="125" src="<?php echo base_url() ?>resources/images/library/01.jpg"></a>
+            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="137" src="<?php echo base_url() ?>resources/images/library/01.jpg"></a>
         </div>
         <div class="img_num_border">
             <span>60p</span>
@@ -53,7 +53,7 @@
     </div>
     <div class="col-md-4">
         <div class="img_border">
-            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="125" src="<?php echo base_url() ?>resources/images/library/02.jpg"></a>
+            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="137" src="<?php echo base_url() ?>resources/images/library/02.jpg"></a>
         </div>
         <div class="img_num_border">
             <span>656p</span>
@@ -64,7 +64,7 @@
     </div>
     <div class="col-md-4">
         <div class="img_border">
-            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="125" src="<?php echo base_url() ?>resources/images/library/03.jpg"></a>
+            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="137" src="<?php echo base_url() ?>resources/images/library/03.jpg"></a>
         </div>
         <div class="img_num_border">
             <span>192p</span>
@@ -78,7 +78,7 @@
 <div class="row padding_top_over_row">
     <div class="col-md-4">
         <div class="img_border">
-            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="125" src="<?php echo base_url() ?>resources/images/library/07.jpg"></a>
+            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="137" src="<?php echo base_url() ?>resources/images/library/07.jpg"></a>
         </div>
         <div class="img_num_border">
             <span>582p</span>
@@ -89,7 +89,7 @@
     </div>
     <div class="col-md-4">
         <div class="img_border">
-            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="125" src="<?php echo base_url() ?>resources/images/library/08.jpg"></a>
+            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="137" src="<?php echo base_url() ?>resources/images/library/08.jpg"></a>
         </div>
         <div class="img_num_border">
             <span>258p</span>
@@ -100,7 +100,7 @@
     </div>
     <div class="col-md-4">
         <div class="img_border">
-            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="125" src="<?php echo base_url() ?>resources/images/library/09.jpg"></a>
+            <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="137" src="<?php echo base_url() ?>resources/images/library/09.jpg"></a>
         </div>
         <div class="img_num_border">
             <span>369p</span>

@@ -162,7 +162,7 @@
                     <img class="img-circle" width="40" height="40" src="<?php echo base_url() ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg">
                     <img class="img-circle" width="40" height="40" src="<?php echo base_url() ?>resources/images/user_data/profile_pictures/profile_pictures_9.jpg">
                 </div>
-                
+
                 <div class="row padding_top_over_row">
                     <div class="col-md-12">
                         <div class="title_right_panel">Top Viewed Documents </div>
@@ -176,9 +176,14 @@
                         <div class="img_num_border">
                             <span>60p</span>
                         </div>
+                        <div class="middle_right_side_para_title">
+                            <a href="<?php echo base_url() ?>library/library_newsfeed"><span class="para_title">Hinduism & Islam</span></a><br>
+                            <span class="para_author">by <a href="<?php echo base_url() ?>member/profile">Mohammad Azhar Uddin</a></span><br>
+                            <span class="para_default">50 view(s) | 30 like(s)</span>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row padding_top_over_row">
                     <div class="col-md-12">
                         <div class="img_border">
                             <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="100%" src="<?php echo base_url() ?>resources/images/library/07.jpg"></a>
@@ -186,13 +191,18 @@
                         <div class="img_num_border">
                             <span>582p</span>
                         </div>
+                        <div class="middle_right_side_para_title">
+                            <a href="<?php echo base_url() ?>library/library_newsfeed"><span class="para_title">Shirk</span></a><br>
+                            <span class="para_author">by <a href="<?php echo base_url() ?>member/profile">Mohammad Rafique</a></span><br>
+                            <span class="para_default">520 view(s) | 39 like(s)</span>
+                        </div>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-md-12">
                         <div style="float: right;"><a href="<?php echo base_url() ?>library/library_most_view">See All</a></div>
-                        </div>
                     </div>
+                </div>
                 <div class="row padding_top_over_row">
                     <div class="col-md-12">
                         <div class="title_right_panel">Most Discussed Documents </div>
@@ -206,9 +216,14 @@
                         <div class="img_num_border">
                             <span>66p</span>
                         </div>
+                        <div class="middle_right_side_para_title">
+                            <a href="<?php echo base_url() ?>library/library_newsfeed"><span class="para_title">Imaner Dabi</span></a><br>
+                            <span class="para_author">by <a href="<?php echo base_url() ?>member/profile">Dr. Belal</a></span><br>
+                            <span class="para_default">200 view(s) | 120 like(s)</span>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row padding_top_over_row">
                     <div class="col-md-12">
                         <div class="img_border">
                             <a href="<?php echo base_url() ?>library/library_newsfeed"><img height="150" width="100%" src="<?php echo base_url() ?>resources/images/library/09.jpg"></a>
@@ -216,13 +231,18 @@
                         <div class="img_num_border">
                             <span>369p</span>
                         </div>
+                        <div class="middle_right_side_para_title">
+                            <a href="<?php echo base_url() ?>library/library_newsfeed"><span class="para_title">Sontaner Upor...</span></a><br>
+                            <span class="para_author">by <a href="<?php echo base_url() ?>member/profile">Fatematul Kobra</a></span><br>
+                            <span class="para_default">355 view(s) | 52 like(s)</span>
+                        </div>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-md-12">
                         <div style="float: right;"><a href="<?php echo base_url() ?>library/library_most_discussed">See All</a></div>
-                        </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>

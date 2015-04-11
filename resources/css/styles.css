@@ -307,6 +307,14 @@ and open the template in the editor.
 
 /*-------------------------------------msg box--------------------------------------*/
 
+.style_left_box{
+    margin-left: 30px;
+    margin-right: -30px;
+}
+.style_middle_box{
+    margin-left: 20px;
+    margin-right: -12px;
+}
 .textarea_background_style{
     border: 1px solid lightgray; 
     padding-top: 5px; 
@@ -372,3 +380,15 @@ and open the template in the editor.
     width: 10px;
 }
 
+/*-------------------------------------CK editor--------------------------------------*/
+.cke_1 .cke_top {
+    background-image: -moz-linear-gradient(center top , #9b69ad, #9b69ad)!important;
+    border-bottom-color: lightgrey!important;
+}
+.cke_1.cke_chrome {
+    border-color: lightgrey!important;
+}
+.cke_1 .cke_bottom {
+    background-image: -moz-linear-gradient(center top , #9b69ad, #9b69ad)!important;
+    border-top-color: lightgrey!important;
+}

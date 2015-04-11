@@ -80,7 +80,10 @@ and open the template in the editor.
     cursor: pointer;
     color: #703684;
     font-weight: bold;
-    margin-top: -20px;
+}
+
+.para_title, .middle_right_side_para_title{
+   margin-top: -20px;
 }
 .para_author,.para_default{
     cursor: pointer;
