@@ -1,10 +1,10 @@
-<div class="container-fluid" style="padding-top: 10px; background-color: #703684; color: white">
+<div class="container-fluid" style="padding-top: 10px; margin-bottom: -6px; background-color: #703684; color: white">
     <div class="row">
         <?php echo form_open("auth/login"); ?>
         <div class="col-md-4">
             <div align="center" style="text-align: center; padding-top: 10px; padding-left: 10px;">
-                <img src="<?php echo base_url(); ?>resources/images/logo.png" style="margin: 0px 10px 15px 0px; border-radius: 3px; ">
-                <span style="font-size: 35px; line-height: 40px; font-weight: bold;">Muslimand</span>
+                <img src="<?php echo base_url(); ?>resources/images/logo.png" style="margin: 0px 10px 22px 0px; border-radius: 3px;">
+                <span style="font-size: 42px; font-weight: bold; line-height: 40px;">Muslimand</span>
                 <!--<br>Hello Muslims! Keep updated with Muslimand-->
             </div>
         </div>
@@ -41,12 +41,14 @@
                     <input type ="password" class="" style="color: black; height: 20px;width: 100%;">
                 </div>
                 <div class="col-md-12">
-                    <a style="color:white;" href="#">Forgot your password?</a>
+                    <div style="margin-top: 2px;">
+                      <a style="color:white;" href="#">Forgot your password?</a>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-1 col-xs-12 form-group">
-            <div style="margin-top: 21px;">  
+            <div class="margin_style" style="margin-top: 18px;">  
                 <button type="submit" style="font-size: 10px; font-weight: normal; height: 20px; width: 100%; border: 0px; background-color: white; color: #703684;">Sign In</button>
             </div>  
         </div>

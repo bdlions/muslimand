@@ -382,7 +382,7 @@ and open the template in the editor.
 
 /*-------------------------------------CK editor--------------------------------------*/
 .cke_1 .cke_top {
-    background-image: -moz-linear-gradient(center top , #9b69ad, #9b69ad)!important;
+    background-image: -moz-linear-gradient(center top , #A848CE, #CA79EA)!important;
     border-bottom-color: lightgrey!important;
 }
 .cke_1.cke_chrome {
@@ -391,4 +391,58 @@ and open the template in the editor.
 .cke_1 .cke_bottom {
     background-image: -moz-linear-gradient(center top , #9b69ad, #9b69ad)!important;
     border-top-color: lightgrey!important;
+}
+.cke_path_item, .cke_path_empty {
+    text-shadow: none!important;
+    cursor: none!important;
+    color: lavender
+}
+
+.cke_1 a.cke_path_item:hover, .cke_1 a.cke_path_item:focus, .cke_1 a.cke_path_item:active {
+    background-color: lavender!important;
+}
+
+.cke_reset_all, .cke_reset_all * {
+    color: black!important;
+    
+}
+.cke_1 .cke_toolgroup {
+    background-image: none!important;
+    border-color: #E9EAED!important;
+}
+.cke_1 .cke_combo_button {
+    background-image: none!important;
+    border-color: #E9EAED!important;
+}
+
+.cke_1 .cke_button_on {
+    background-image: none!important;
+    background-color: #E9EAED!important;
+}
+
+a.cke_button_on:hover, a.cke_button_on:focus, a.cke_button_on:active {
+    box-shadow: none!important;
+}
+a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_button_disabled:hover, a.cke_button_disabled:focus, a.cke_button_disabled:active {
+    background: #FFA500!important;
+       box-shadow: none!important;
+
+}
+
+/*-------------------------------------Header (Auth)--------------------------------------*/
+
+.margin_style{
+        margin-left: -12px;
+        margin-right: 12px;
+    }
+@media all and (max-width: 991px){
+    .margin_style{
+        margin-left: 0!important;
+        margin-right: 0!important;
+    }
+}
+@media all and (max-width: 767px){
+    .padding_style{
+        padding-bottom: 15px;
+    }
 }

@@ -21,10 +21,10 @@
         </div>
         <div class="col-md-5">
             <div class="row form-group">
-                <div class="col-md-6 col-xs-12 form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 padding_style">
                     <input type ="text" class="form-control" placeholder="First name">
                 </div>
-                <div class="col-md-6 col-xs-12">
+                <div class="col-md-6 col-sm-6 col-xs-12">
                     <input type ="text" class="form-control" placeholder="Last name">
                 </div>
             </div>
