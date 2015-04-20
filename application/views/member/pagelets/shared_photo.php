@@ -8,18 +8,36 @@
                 <div>
                     <a style="font-weight: bold;"href="#">Sharmin Akter</a> shared 
                     <a href="#">Jannatul Ferdaus</a>'s photo.
-                    <button style="max-width: 35px; max-height: 30px; background-color: white;"type="button" class="btn btn-xs" aria-label="Left Align">
-                        <img src="<?php echo base_url(); ?>resources/images/friends_icon.png" width="15" height="15"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                    </button>
+                    <ul style="list-style-type: none; float: right;">
+                        <li class="dropdown">
+                            <div>
+                                <img src="<?php echo base_url(); ?>resources/images/friends_icon.png" width="15" height="15">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Everyone</a></li>
+                                    <li><a href="#">Friends</a></li>
+                                    <li><a href="#">Friends of friends</a></li>
+                                    <li><a href="#">Only Me</a></li>
+                                    <li><a href="#">Custom</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 <div>
                     January 7, 2015 at 10:45am.
                 </div>
             </div>
             <div style="float: right;">
-                <button style="background-color: white;"type="button" class="btn btn-xs" aria-label="Left Align">
-                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                </button>
+                <ul style="list-style-type: none;">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Report</a></li>
+                            <li><a href="#">Delete</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
