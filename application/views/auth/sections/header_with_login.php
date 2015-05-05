@@ -23,10 +23,10 @@
                     <span>Email:</span>
                 </div>  
                 <div class="col-md-12">
-                    <input type="email" class="" style="color: black; height: 20px; width: 100%;">
+                    <input id="identity" name="identity" type="email" class="" style="color: black; height: 20px; width: 100%;">
                 </div>  
                 <div class="col-md-12">
-                    <input type="checkbox">
+                    <input id="remember" name="remember" type="checkbox">
                     <span style="line-height: 22px;">Remember me</span>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="col-md-12">
-                    <input type ="password" class="" style="color: black; height: 20px;width: 100%;">
+                    <input id="password" name="password" type ="password" class="" style="color: black; height: 20px;width: 100%;">
                 </div>
                 <div class="col-md-12">
                     <div style="margin-top: 2px;">
@@ -49,7 +49,7 @@
         </div>
         <div class="col-md-1 col-xs-12 form-group">
             <div class="margin_style" style="margin-top: 18px;">  
-                <button type="submit" style="font-size: 10px; font-weight: normal; height: 20px; width: 100%; border: 0px; background-color: white; color: #703684;">Sign In</button>
+                <input id="login_btn" name="login_btn" type="submit" style="font-size: 10px; font-weight: normal; height: 20px; width: 100%; border: 0px; background-color: white; color: #703684;" value="Sign In"/>
             </div>  
         </div>
         <div class="col-md-offset-1"></div>

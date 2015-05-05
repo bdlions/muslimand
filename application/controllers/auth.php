@@ -9,7 +9,7 @@ class Auth extends CI_Controller {
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         $this->load->helper('url');
-
+        
         // Load MongoDB library instead of native db driver if required
         $this->config->item('use_mongodb', 'ion_auth') ?
                         $this->load->library('mongo_db') :
@@ -104,12 +104,13 @@ class Auth extends CI_Controller {
                 //check to see if the user is logging in
                 //check for "remember me"
                 $remember = (bool) $this->input->post('remember');
-
+                
                 if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
                     //if the login is successful
                     //redirect them back to the home page
-                    $this->session->set_flashdata('message', $this->ion_auth->messages());
-                    redirect('auth/', 'refresh');
+                    //$this->session->set_flashdata('message', $this->ion_auth->messages());
+                    //redirect('auth/', 'refresh');
+                    print_r('login is successful.');
                 } else {
                     //if the login was un-successful
                     //redirect them back to the login page
@@ -181,7 +182,7 @@ class Auth extends CI_Controller {
                 'value' => 'Sign in',
             );
 
-            $this->template->load(NULL, LOGIN_VIEW, $this->data);
+            $this->template->load("templates/home_tmpl", LOGIN_VIEW, $this->data);
             //$this->_render_page('auth/login', $this->data);
         }
     }
