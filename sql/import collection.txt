@@ -1,0 +1,2 @@
+mongoimport --host 127.0.0.1 --port 27017 --username admin --password pass --collection users --db muslimand_db --file users.json
+mongoimport --host 127.0.0.1 --port 27017 --username admin --password pass --collection groups --db muslimand_db --file groups.json
