@@ -73,6 +73,16 @@ and open the template in the editor.
     background-position: 0 -610px;
 }
 
+#mm_setting {
+    display: inline-block;
+    cursor: pointer;
+    height: 25px;
+    width: 28px;
+}
+#mm_setting a img{
+    margin-bottom: 18px;
+}
+
 /*================================  pagelets  ================================*/
 .comment_box{
 
@@ -236,6 +246,12 @@ and open the template in the editor.
 }
 .font_11px{
     font-size: 11px;
+}
+.font_12px{
+    font-size: 12px;
+}
+.font_13px{
+    font-size: 13px;
 }
 
 /*================================  Middle column section  ================================*/
@@ -445,4 +461,37 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     .padding_style{
         padding-bottom: 15px;
     }
+}
+
+/*================================  Admin Panel  ================================*/
+.admin_panel_left_menu_ul{
+    list-style-type:none;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+.admin_panel_left_menu_ul a{
+    text-decoration: none;
+    color: black;
+}
+.admin_panel_left_menu_li ul{
+   list-style-type: none; 
+   cursor: pointer; 
+   padding-left: 18px;
+}
+.admin_panel_left_menu_ul a li:hover{
+    display: block;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #888888!important;
+    color: white!important;
+    padding-left: 4px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.category_divider{
+    border-bottom: 1px solid lightgray;
 }

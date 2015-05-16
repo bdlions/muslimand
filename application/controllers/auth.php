@@ -59,6 +59,8 @@ class Auth extends CI_Controller {
         }
     }
 
+    
+
     //log the user in
     function login() {
         $this->data['title'] = "Login";
@@ -185,6 +187,14 @@ class Auth extends CI_Controller {
             $this->template->load("templates/home_tmpl", LOGIN_VIEW, $this->data);
             //$this->_render_page('auth/login', $this->data);
         }
+    }
+    
+    function login_attempt() {
+         $this->template->load(NON_MEMBER_TEMPLATE_HEADER_LOGO, "auth/wrong_password");
+        
+    }
+    function password_recover() {
+         $this->template->load(NON_MEMBER_TEMPLATE_HEADER_LOGO, "auth/forgot_password");    
     }
 
     //log the user out

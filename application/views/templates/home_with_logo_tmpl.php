@@ -41,7 +41,7 @@
     <body class="back">
         <div id="wrapper">
             <div id="header">
-                <?php $this->load->view("auth/sections/header_with_login"); ?>
+                <?php $this->load->view("auth/sections/header_with_logo"); ?>
             </div>
             <div style="background-color: #EDF0F5;">
                 <div class="container-fluid">

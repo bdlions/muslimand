@@ -36,12 +36,27 @@
                 <?php $this->load->view("member/pagelets/notification_notification"); ?>
             </div>
         </div>
-
+        <div id="mm_setting" style="position: relative;">
+            <a href="#" data-toggle="dropdown" id="dropdownMenuRight">
+                <img src="<?php echo base_url(); ?>resources/images/menu.png">
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuRight">
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="<?php echo base_url() ?>member/account_settings">Account settings</a>
+                </li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="<?php echo base_url() ?>member/privacy_settings">Privacy settings</a>
+                </li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="<?php echo base_url() ?>auth/logout">Log out</a>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="col-md-1"></div>
 </div>
 <script>
-    $(document).mouseup(function(e) {
+    $(document).mouseup(function (e) {
         var fr_container = $("#mm_friend_request_box");
         var container = $("#mm_notification_box");
         var msg_container = $("#mm_message_box");
