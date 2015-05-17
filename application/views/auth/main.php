@@ -149,28 +149,36 @@
                 <?php for ($i = 0; $i < 10; $i++) { ?>
                     <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; ">
                         <div class="row form-group">
-                            <div class="col-md-12">
+                            <div class="col-md-12 col-xs-12 col-sm-6">
                                 <div class="user_brief_card">
+                                   
                                     <div class="row">
-                                        <div class="col-md-7 col-xs-7" style="padding-right: 6px">
+                                        <div class="col-md-6 col-xs-6" style="padding-right: 6px; padding-top: 6px">
                                             <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/face.jpg">
                                         </div>
-                                        <div class="col-md-5 col-xs-5" style="padding-left: 0px">
+                                        <div class="col-md-6 col-xs-6" style="padding-left: 0px">
                                             <div class="row">
+                                                
                                                 <div class="col-md-12">
-                                                    <div style="color: darkgreen; font-weight: bold; font-size: 8px; line-height: 10px">Nazrul Islam</div>
+                                                    <div style="color: darkgreen; font-weight: bold; font-size: 8px; line-height: 10px">Doctor</div>
                                                 </div>
                                             </div>
                                             <div class="row">
+                                                
+                                                <div class="col-md-12">
+                                                    <div style="color: darkgreen; font-weight: bold; font-size: 8px; line-height: 10px">30 yrs</div>
+                                                </div>
+                                            </div>
+                                           <div class="row">
                                                 <div class="col-md-12">
                                                     <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/flag.png">
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div style="color: darkgreen; font-weight: bold; font-size: 8px; line-height: 10px">Nazrul Islam</div>
-                                                </div>
-                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="row">
+                                        <div class="col-md-12">
+                                            <div style="color: darkgreen; font-weight: bold; font-size: 8px; text-align: left; padding-top: 5px; line-height: 10px">Nazrul Islam</div>
                                         </div>
                                     </div>
                                 </div>

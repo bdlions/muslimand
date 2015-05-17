@@ -123,17 +123,5 @@
     </div>
     <div class="col-md-2"></div>    
 </div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
+<div style="padding-bottom: 180px;"></div>
+

@@ -30,6 +30,10 @@ class Member extends CI_Controller {
     {
         $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/profile");
     }
+    function non_friend()
+    {
+        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/non_friend");
+    }
     function about()
     {
 //        $this->template->load(NULL, "member/about", $this->data);

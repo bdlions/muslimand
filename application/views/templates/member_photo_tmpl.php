@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="ticker_friends_wrapper">
-                                <?php $this->load->view("member/sections/right_column_ticker_friends"); ?>
+                                <?php //$this->load->view("member/sections/right_column_ticker_friends"); ?>
                             </div>
                         </div>
                     </div>

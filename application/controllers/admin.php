@@ -25,5 +25,9 @@ class Admin extends CI_Controller {
     {
         $this->template->load(ADMIN_LOGGED_IN_TEMPLATE, "admin/admin_panel");
     }
+    function photo_config()
+    {
+        $this->template->load(ADMIN_LOGGED_IN_TEMPLATE, "admin/photos");
+    }
 
 }
