@@ -1,2 +1,4 @@
-mongoimport --host 127.0.0.1 --port 27017 --username admin --password pass --collection users --db muslimand_db --file users.json
-mongoimport --host 127.0.0.1 --port 27017 --username admin --password pass --collection groups --db muslimand_db --file groups.json
+mongoimport --host 127.0.0.1 --port 27017 --collection countries --db muslimand_db --file countries.json --jsonArray
+mongoimport --host 127.0.0.1 --port 27017 --collection religions --db muslimand_db --file religions.json --jsonArray
+mongoimport --host 127.0.0.1 --port 27017 --collection users --db muslimand_db --file users.json
+mongoimport --host 127.0.0.1 --port 27017 --collection groups --db muslimand_db --file groups.json
