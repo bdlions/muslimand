@@ -263,7 +263,6 @@ class Ion_auth {
         if (!$email_activation) {
             $id = $this->ion_auth_model->register($username, $password, $email, $additional_data, $group_ids);
             if ($id !== FALSE) {
-                $this->set_message('account_creation_successful');
                 $this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_successful'));
                 return $id;
             } else {

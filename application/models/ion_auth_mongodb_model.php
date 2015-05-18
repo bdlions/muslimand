@@ -699,7 +699,6 @@ class Ion_auth_mongodb_model extends CI_Model {
     public function register($username, $password, $email, $additional_data = array(), $groups = array()) {
         $this->trigger_events('pre_register');
         $manual_activation = $this->config->item('manual_activation', 'ion_auth');
-
         // Check if email already exists
         if ($this->identity_column == 'email' && $this->email_check($email)) {
             $this->set_error('account_creation_duplicate_email');
@@ -710,7 +709,6 @@ class Ion_auth_mongodb_model extends CI_Model {
             $this->set_error('account_creation_duplicate_username');
             return FALSE;
         }
-
         // If username is taken, use username1 or username2, etc.
         // TODO: Drop this shit!
         if ($this->identity_column != 'username') {
@@ -738,12 +736,10 @@ class Ion_auth_mongodb_model extends CI_Model {
             'active' => ($manual_activation === FALSE ? 1 : 0),
             'groups' => array(),
         );
-
         // Store salt in document?
         if ($this->store_salt) {
             $data['salt'] = $salt;
         }
-
         // Add groups to the user document, We don't use
         // add_to_group() API function here regarding lesser queries.
         if (!empty($groups)) {
@@ -753,25 +749,32 @@ class Ion_auth_mongodb_model extends CI_Model {
         }
         // Add to default group if not already set,
         // get the ID of the default group first:
-        $default_group = $this->where('name', $this->config->item('default_group', 'ion_auth'))->group()->document();
-        if ((isset($default_group->_id) && !isset($groups)) || (empty($groups) && !in_array($default_group->id, $groups))) {
-            $data['groups'][] = $default_group->_id;
-        }
-
+        
+//        $default_group = $this->where('title', "Memeber")->group()->document();
+//        if ((isset($default_group->_id) && !isset($groups)) || (empty($groups) && !in_array($default_group->id, $groups))) {
+//            $data['groups'][] = $default_group->_id;
+//        }
+        $data['groups'][] = 1;
+        
         // Filter out any data passed that doesn't have a matching column in the
         // user document and merge the set user data with the passed additional data
+        
         $data = array_merge($this->_filter_data($this->collections['users'], $additional_data), $data);
-
         $this->trigger_events('extra_set');
-
         // Insert new document and store the _id value
         $id = $this->mongo_db->insert($this->collections['users'], $data);
-
         $this->trigger_events('post_register');
 
         // Return new document _id or FALSE on failure
         return isset($id) ? $id : FALSE;
     }
+    
+    public function basic_info_add($additional_data){
+//      $data = array_merge($this->_filter_data($this->cothis->mongo_db->insert($this->collections['user_profiles'], $additional_data); llections['user_profiles'], $additional_data)); 
+       $id = $this->mongo_db->insert($this->collections['user_profiles'], $additional_data); 
+       return isset($id) ? $id : FALSE;
+    }
+    
 
     // ------------------------------------------------------------------------
 
@@ -1933,7 +1936,7 @@ class Ion_auth_mongodb_model extends CI_Model {
         // Define field dictionaries
         $columns = $collection == 'users' ?
                 // Users collection static schema array
-                array('_id', 'ip_address', 'username', 'password', 'salt', 'email', 'activation_code', 'forgotten_password_code', 'forgotten_password_time', 'remember_code', 'created_on', 'last_login', 'active', 'first_name', 'last_name', 'company', 'phone') :
+                array('_id', 'ip_address', 'username', 'password', 'salt', 'email', 'activation_code', 'forgotten_password_code', 'forgotten_password_time', 'remember_code', 'created_on', 'last_login', 'active', 'first_name', 'last_name', 'company', 'phone', 'users_country') :
                 // Groups collection static schema array
                 array('_id', 'name', 'description');
 

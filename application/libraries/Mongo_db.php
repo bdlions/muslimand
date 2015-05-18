@@ -1129,6 +1129,9 @@ class Mongo_db {
         }
     }
 
+    public function execute($function){
+        return $this->db->execute($function);
+    }
     /**
      * 	--------------------------------------------------------------------------------
      * 	//! Connect to MongoDB

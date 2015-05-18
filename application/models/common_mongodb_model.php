@@ -11,6 +11,9 @@ class Common_mongodb_model extends Ion_auth_mongodb_model
      */
     public function get_all_countries()
     {
+        return $this->mongo_db
+                ->select('*')
+                ->get($this->collections['countries']);
         
     }
 }

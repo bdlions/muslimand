@@ -12,29 +12,23 @@
                     Please Re-enter your Password
                 </div>
             </div>
-            <?php echo form_open("auth/forgot_password"); ?>
+            <?php echo form_open("auth/login"); ?>
 
             <div class="row form-group">
                 <label class="col-md-2" class="control-label">Email</label>
                 <div class="col-md-6">
-                    <input type="email" class="form-control" id="email" placeholder="Enter Email Address">  
+                    <?php echo form_input($identity + array('class' => 'form-control', 'placeholder' => 'Enter Email Address')); ?>
                 </div>
             </div>
             <div class="row form-group">
                 <label class="col-md-2" class="control-label">Password</label>
                 <div class="col-md-6">
-                    <input type="password" class="form-control" id="password" placeholder="Enter your password">  
+                    <?php echo form_input($password + array('class' => 'form-control', 'placeholder' => 'Enter your password')); ?>
                 </div>
             </div>
-                <div class="row form-group">
-                    <div class="col-md-offset-6 col-md-2">
-                        <button class="btn btn-xs" style="float: right; background-color: #703684; color: white; font-weight: bold; padding: 3px 28px;">Log In</button>
-                    </div>
-                </div>
             <div class="row form-group">
                 <div class="col-md-offset-6 col-md-2">
-                    <a href="">Forget Password?</a>
-                    <!--<button class="btn btn-success form-control">Log In</button>-->
+                    <?php echo form_input($login_btn + array('class' => 'btn button-custom pull-right', 'style' => 'background-color: #703684; color: white')); ?>
                 </div>
             </div>
             <?php echo form_close(); ?>

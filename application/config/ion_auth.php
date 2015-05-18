@@ -31,6 +31,8 @@ $config['account_status']['blocked_id']     = '5';
 $config['collections']['users']          = 'users';
 $config['collections']['groups']         = 'groups';
 $config['collections']['login_attempts'] = 'login_attempts';
+$config['collections']['countries']      = 'countries';
+$config['collections']['user_profiles']  = 'user_profiles';
 
 /*
 | -------------------------------------------------------------------------
