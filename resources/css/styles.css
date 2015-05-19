@@ -274,6 +274,9 @@ and open the template in the editor.
 .padding_top_over_row{
     padding-top: 20px; 
 }
+.padding_top_over_row_70px{
+    padding-top: 70px; 
+}
 
 /*================================  Left Menu  ================================*/
 .video_ul,.category_ul{
@@ -554,3 +557,34 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 .button-custom:hover {
     color: #fff;
 }
+
+/*------------------------------------------- Member (About) --------------------------------- */
+
+.header_label_style{
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0.7;
+}
+
+.holder_style{
+    margin-left: 8px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+.holder_style:hover{
+    text-decoration: none;
+}
+.cursor_holder_style{
+    cursor: pointer;
+}
+.subcategory_label_style{
+    font-size: 14px;
+}
+.achor_holder_style{
+    cursor: pointer;
+    font-size: 13px;
+}
+.achor_holder_style:hover{
+    text-decoration: none;
+}
+
