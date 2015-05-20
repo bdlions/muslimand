@@ -5,7 +5,7 @@
                 <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="40" height="40"> 
             </div>
             <div class="col-md-10">
-                Works at <a href="#">Sampan-IT 01</a>
+                Works at <a href="#">Sampan-IT</a>
             </div>
         </div>
         <div class="pagelet_divider"></div>

@@ -33,9 +33,3 @@
         <a style="color: black; text-decoration: none; cursor: pointer;" > Details About You</a>
     </div>
 </div>
-<div class="pagelet_divider"></div>
-<div id="category_life_events" class="row">
-    <div class="col-md-12">
-        <a style="color: black; text-decoration: none; cursor: pointer;" > Life Events</a>
-    </div>
-</div>

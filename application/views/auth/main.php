@@ -14,11 +14,11 @@
             <div class="col-md-offset-1 col-md-5">
                 <div class="row form-group">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <span style="font-size: 25px; color: #703684; font-weight: bold;">Global Social Network for People</span>
+                        <span style="font-size: 28px; color: #703684; font-weight: bold;">Global Social Network for People</span>
                     </div>
                 </div>
                 <div class="row form-group"></div>
-                <div class="row form-group">
+                <div style="padding-top: 40px;" class="row form-group">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/banner.png">
                     </div>
@@ -151,32 +151,32 @@
                         <div class="row form-group">
                             <div class="col-md-12 col-xs-12 col-sm-6">
                                 <div class="user_brief_card">
-                                   
+
                                     <div class="row">
                                         <div class="col-md-6 col-xs-6" style="padding-right: 6px; padding-top: 6px">
                                             <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/face.jpg">
                                         </div>
                                         <div class="col-md-6 col-xs-6" style="padding-left: 0px">
                                             <div class="row">
-                                                
+
                                                 <div class="col-md-12">
                                                     <div style="color: darkgreen; font-weight: bold; font-size: 8px; line-height: 10px">Doctor</div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                
+
                                                 <div class="col-md-12">
                                                     <div style="color: darkgreen; font-weight: bold; font-size: 8px; line-height: 10px">30 yrs</div>
                                                 </div>
                                             </div>
-                                           <div class="row">
+                                            <div class="row">
                                                 <div class="col-md-12">
                                                     <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/flag.png">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                     <div class="row">
+                                    <div class="row">
                                         <div class="col-md-12">
                                             <div style="color: darkgreen; font-weight: bold; font-size: 8px; text-align: left; padding-top: 5px; line-height: 10px">Nazrul Islam</div>
                                         </div>

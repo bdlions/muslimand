@@ -23,18 +23,16 @@
                 <div class="col-md-8">
                     <div class="pagelet">
                         <?php $this->load->view("member/pagelets/about/about_overview"); ?>
-                        <?php $this->load->view("member/pagelets/about/about_career/about_career"); ?>
-                        <?php $this->load->view("member/pagelets/about/about_place"); ?>
-                        <?php $this->load->view("member/pagelets/about/about_contact_info"); ?>
-                        <?php $this->load->view("member/pagelets/about/about_family_relation"); ?>
-                        <?php $this->load->view("member/pagelets/about/about_details"); ?>
-                        <?php $this->load->view("member/pagelets/about/about_life_events"); ?>
+                        <?php $this->load->view("member/pagelets/about/career/about_career"); ?>
+                        <?php $this->load->view("member/pagelets/about/place/about_place"); ?>
+                        <?php $this->load->view("member/pagelets/about/contact_info/about_contact_info"); ?>
+                        <?php $this->load->view("member/pagelets/about/family_relation/about_family_relation"); ?>
+                        <?php $this->load->view("member/pagelets/about/details/about_details"); ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--Left COLUMN (Update status & chat box)-->
     <div class="col-md-2" style="border-left: 1px solid lightgray">
     </div>
     <div class="row form-group"></div>
@@ -47,38 +45,50 @@
         $('#about_contact_info').hide();
         $('#about_family_relation').hide();
         $('#about_details').hide();
-        $('#about_life_events').hide();
-        $('#work').hide();
         $('#about_overview').show();
     });
+
     $('#category_career').on('click', function () {
         $('#about_overview').hide();
         $('#about_place').hide();
         $('#about_contact_info').hide();
         $('#about_family_relation').hide();
         $('#about_details').hide();
-        $('#about_life_events').hide();
+        $('#work').hide();
+        $('#professional_skill').hide();
+        $('#university').hide();
+        $('#college').hide();
+        $('#school').hide();
         $('#about_career').show();
+        $('#subcategory_work').show();
+        $('#subcategory_professional_skill').show();
+        $('#subcategory_university').show();
+        $("#subcategory_college").show();
+        $('#subcategory_school').show();
+        
     });
+
     $('#category_place').on('click', function () {
         $('#about_overview').hide();
         $('#about_career').hide();
         $('#about_contact_info').hide();
         $('#about_family_relation').hide();
         $('#about_details').hide();
-        $('#about_life_events').hide();
-        $('#work').hide();
+        $('#place').hide();
         $('#about_place').show();
+        $('#subcategory_place').show();
     });
+
     $('#category_contact_info').on('click', function () {
         $('#about_overview').hide();
         $('#about_career').hide();
         $('#about_place').hide();
         $('#about_family_relation').hide();
         $('#about_details').hide();
-        $('#about_life_events').hide();
-        $('#work').hide();
+        $('#contact_info').hide();
         $('#about_contact_info').show();
+        $('#subcategory_contact_info').show();
+        
     });
     $('#category_family_relation').on('click', function () {
         $('#about_overview').hide();
@@ -86,31 +96,20 @@
         $('#about_place').hide();
         $('#about_contact_info').hide();
         $('#about_details').hide();
-        $('#about_life_events').hide();
-        $('#work').hide();
-        $('#about_family_relation').show();
+        $('#family_relation').hide();
+       $('#about_family_relation').show();
+        $('#subcategory_family_relation').show();
     });
+    
     $('#category_details').on('click', function () {
         $('#about_overview').hide();
         $('#about_career').hide();
         $('#about_place').hide();
         $('#about_contact_info').hide();
         $('#about_family_relation').hide();
-        $('#about_life_events').hide();
-        $('#work').hide();
-        $('#about_details').show();
+        $('#details').hide();
+       $('#about_details').show();
+        $('#subcategory_details').show();
     });
-    $('#category_life_events').on('click', function () {
-        $('#about_overview').hide();
-       $('#about_career').hide();
-        $('#about_place').hide();
-        $('#about_contact_info').hide();
-        $('#about_family_relation').hide();
-        $('#about_details').hide();
-        $('#work').hide();
-        $('#about_life_events').show();
-    });
-
-
 </script>
 

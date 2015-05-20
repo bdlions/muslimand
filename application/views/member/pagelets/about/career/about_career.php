@@ -5,7 +5,6 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    
     <div id="subcategory_work" class="row">
         <div class="col-md-12">
             <div class="cursor_holder_style">
@@ -16,7 +15,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?php $this->load->view("member/pagelets/about/about_career/work"); ?>
+            <?php $this->load->view("member/pagelets/about/career/work"); ?>
         </div>
     </div>
 
@@ -72,7 +71,24 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?php $this->load->view("member/pagelets/about/about_career/professional_skill"); ?>
+            <?php $this->load->view("member/pagelets/about/career/professional_skill"); ?>
+        </div>
+    </div>
+    <div class="pagelet_divider"></div>
+    <div class="row">
+        <div class="col-md-8">
+            <a style="font-weight: bold" href="">Software Engineer</a>
+        </div>
+        <div class="col-md-4">
+            <div class="pull-right">
+                <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -93,7 +109,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?php $this->load->view("member/pagelets/about/about_career/university"); ?>
+            <?php $this->load->view("member/pagelets/about/career/university"); ?>
         </div>
     </div>
     <div class="pagelet_divider"></div>
@@ -141,7 +157,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?php $this->load->view("member/pagelets/about/about_career/college"); ?>
+            <?php $this->load->view("member/pagelets/about/career/college"); ?>
         </div>
     </div>
     <div class="pagelet_divider"></div>
@@ -189,7 +205,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?php $this->load->view("member/pagelets/about/about_career/school"); ?>
+            <?php $this->load->view("member/pagelets/about/career/school"); ?>
         </div>
     </div>
     <div class="pagelet_divider"></div>
@@ -220,29 +236,30 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
+</div>
 
 
 
-    <script>
-        $('#subcategory_work').on('click', function () {
-            $('#subcategory_work').hide();
-            $('#work').show();
-        });
-        $('#subcategory_professional_skill').on('click', function () {
-            $('#subcategory_professional_skill').hide();
-            $('#professional_skill').show();
-        });
-        $('#subcategory_university').on('click', function () {
-            $('#subcategory_university').hide();
-            $('#university').show();
-        });
-        $("#subcategory_college").on('click', function () {
-            $("#subcategory_college").hide();
-            $("#college").show();
-        });
-        $('#subcategory_school').on('click', function () {
-            $('#subcategory_school').hide();
-            $('#school').show();
-        });
-    </script>
+<script>
+    $('#subcategory_work').on('click', function () {
+        $('#subcategory_work').hide();
+        $('#work').show();
+    });
+    $('#subcategory_professional_skill').on('click', function () {
+        $('#subcategory_professional_skill').hide();
+        $('#professional_skill').show();
+    });
+    $('#subcategory_university').on('click', function () {
+        $('#subcategory_university').hide();
+        $("#university").show();
+    });
+    $("#subcategory_college").on('click', function () {
+        $("#subcategory_college").hide();
+        $("#college").show();
+    });
+    $('#subcategory_school').on('click', function () {
+        $('#subcategory_school').hide();
+        $('#school').show();
+    });
+</script>

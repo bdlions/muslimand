@@ -21,7 +21,7 @@
             <div class="col-md-12">
                 <span style="font-size: 16px; font-weight: bold;">* Video URL: </span><br>
                 <input class="form-control" type="text" style="width: 600px;" size="40" value=""><br>
-                Click <a href="">here</a> to view supported sites that you can import videos from. 
+                Click <a style="cursor: pointer;" onclick="open_modal_suppoted_video()">here</a> to view supported sites that you can import videos from. 
             </div>
         </div>
         <div class="row form-group"></div>
@@ -100,3 +100,4 @@
         <div class="col-md-2"></div>
     </div>
 </div>
+<?php $this->load->view("member/video/modal_suppoted_video"); ?>

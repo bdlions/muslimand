@@ -1,14 +1,14 @@
-<div id="university" style="display: none;">
+<div id="school" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style" aria-label="Close" onclick="close_window_3()"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col-md-4">
-                    <span class="subcategory_label_style">University</span>
+                    <span class="subcategory_label_style">School</span>
                 </div>
                 <div class="col-md-8">
                     <input class="form-control">
@@ -90,8 +90,8 @@
         });
 
     });
-    function close_window_3() {
-        $('#university').hide();
-        $('#subcategory_university').show();
+    function close_window_5() {
+        $('#school').hide();
+        $('#subcategory_school').show();
     }
 </script>
