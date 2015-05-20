@@ -65,7 +65,6 @@
         $('#subcategory_university').show();
         $("#subcategory_college").show();
         $('#subcategory_school').show();
-        
     });
 
     $('#category_place').on('click', function () {
@@ -88,7 +87,7 @@
         $('#contact_info').hide();
         $('#about_contact_info').show();
         $('#subcategory_contact_info').show();
-        
+
     });
     $('#category_family_relation').on('click', function () {
         $('#about_overview').hide();
@@ -97,10 +96,10 @@
         $('#about_contact_info').hide();
         $('#about_details').hide();
         $('#family_relation').hide();
-       $('#about_family_relation').show();
+        $('#about_family_relation').show();
         $('#subcategory_family_relation').show();
     });
-    
+
     $('#category_details').on('click', function () {
         $('#about_overview').hide();
         $('#about_career').hide();
@@ -108,7 +107,7 @@
         $('#about_contact_info').hide();
         $('#about_family_relation').hide();
         $('#details').hide();
-       $('#about_details').show();
+        $('#about_details').show();
         $('#subcategory_details').show();
     });
 </script>

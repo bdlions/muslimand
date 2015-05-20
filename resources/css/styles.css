@@ -588,3 +588,14 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     text-decoration: none;
 }
 
+.status_label_style{
+    padding: 5px 8px;
+}
+.status_label_style:hover{
+    cursor: pointer;
+    background-color: #703684;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 8px;
+}
+

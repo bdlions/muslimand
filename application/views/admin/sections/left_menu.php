@@ -23,10 +23,10 @@
                                             </ul>
                                             </li>
                                             <a href=""><li>Messages</li></a>
-                                            <a href="<?php echo base_url();?>admin/photo_config"><li>Photo Category</li></a>
-                                            <a href=""><li>Videos</li></a>
-                                            <a href=""><li>Blogs</li></a>
-                                            <a href=""><li>Pages</li></a>
+                                            <a href="<?php echo base_url();?>admin/photo_config"><li>Photo</li></a>
+                                            <a href="<?php echo base_url();?>admin/video_config"><li>Video</li></a>
+                                            <a href=""><li>Blog</li></a>
+                                            <a href="<?php echo base_url();?>admin/page_config""><li>Page</li></a>
                                             <a href=""> <li>Academy</li></a>
                                             <a href=""><li>Library</li></a>
                                             <a href=""><li>Fund Raising</li></a>

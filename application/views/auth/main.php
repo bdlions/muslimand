@@ -106,24 +106,44 @@
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group">
                         <label style="color: #703684; font-size: 15px; font-weight: bold;">Gender</label>
                         <select class="form-control">
-                            <option class="">
+                            <option >
                                 Male
                             </option>
-                            <option class="">
+                            <option >
                                 Female
                             </option>
                         </select>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                        <label style="color: #703684; font-size: 15px; font-weight: bold;">Religion</label>
+                        <select class="form-control">
+                            <option >
+                                Islam
+                            </option>
+                            <option >
+                                Hinduism
+                            </option>
+                            <option >
+                                Buddhism
+                            </option>
+                            <option >
+                                Christianity
+                            </option>
+                            <option >
+                                Other
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group">
                         <label style="color: #703684; font-size: 15px; font-weight: bold;">Country</label>
                         <select class="form-control">
-                            <option class="form-control">
+                            <option >
                                 Australia 
                             </option>
-                            <option class="form-control">
+                            <option >
                                 Bangladesh 
                             </option>
                         </select>

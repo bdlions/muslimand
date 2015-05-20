@@ -28,6 +28,11 @@
             <div class="container-fluid" style="background-color: #E9EAED;">
                 <div class="row">
                     <div class="col-md-offset-1 col-md-10">
+                        <div class="row padding_top_over_row">
+                            <div class="col-md-12">
+                                <div class="text_center font_25px pagelet_title">Welcome Admin</div>
+                            </div>
+                        </div>
                         <?php echo $contents; ?>                            
                     </div>
                     <div class="col-md-offset-1"></div>
