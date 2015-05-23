@@ -32,7 +32,7 @@
                 background-color: #fff;
                 width:100%;
                 height: 60px;
-                position:absolute;
+                position:relative;
                 bottom:0;
                 left:0;
             }
