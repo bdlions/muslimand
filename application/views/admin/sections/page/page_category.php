@@ -3,7 +3,7 @@
     <div class="panel-body font_12px">
         <div class="row">
             <div class="col-md-3">
-                <button id="" name="" value="" onclick="open_modal_photo_category_create()" class="form-control btn button-custom">Create page Category</button>
+                <button id="" name="" value="" onclick="open_modal_page_category_create()" class="form-control btn button-custom">Create page Category</button>
             </div>
         </div>
         <div class="row padding_top_over_row">
@@ -23,120 +23,120 @@
                                 <td>1</td>
                                 <td>Brand</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Product</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>3</td>
                                 <td>Group</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>4</td>
                                 <td>Community</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>5</td>
                                 <td>Business</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>6</td>
                                 <td>Place</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>7</td>
                                 <td>Entertainment</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>8</td>
                                 <td>Company</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>9</td>
                                 <td>Organization</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>10</td>
                                 <td>Institution</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>11</td>
                                 <td>Artist or Band</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>12</td>
                                 <td>Public Figure</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_photo_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_page_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                         </tbody>

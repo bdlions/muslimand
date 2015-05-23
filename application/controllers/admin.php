@@ -37,5 +37,21 @@ class Admin extends CI_Controller {
     {
         $this->template->load(ADMIN_LOGGED_IN_TEMPLATE, "admin/sections/page/pages");
     }
+    function blog_config()
+    {
+        $this->template->load(ADMIN_LOGGED_IN_TEMPLATE, "admin/sections/blog/blogs");
+    }
+    function academy_config()
+    {
+        $this->template->load(ADMIN_LOGGED_IN_TEMPLATE, "admin/sections/academy/academies");
+    }
+    function library_config()
+    {
+        $this->template->load(ADMIN_LOGGED_IN_TEMPLATE, "admin/sections/library/libraries");
+    }
+    function fund_config()
+    {
+        $this->template->load(ADMIN_LOGGED_IN_TEMPLATE, "admin/sections/fund/funds");
+    }
 
 }

@@ -1,9 +1,9 @@
 <div class="panel panel-default">
-    <div class="panel-heading">Video</div>
+    <div class="panel-heading">Academy</div>
     <div class="panel-body font_12px">
         <div class="row">
             <div class="col-md-3">
-                <button id="" name="" value="" onclick="open_modal_video_category_create()" class="form-control btn button-custom">Create Video Category</button>
+                <button id="" name="" value="" onclick="open_modal_academy_category_create()" class="form-control btn button-custom">Create academy Category</button>
             </div>
         </div>
         <div class="row padding_top_over_row">
@@ -21,52 +21,52 @@
                         <tbody id="tbody_product_category_list">
                             <tr>
                                 <td>1</td>
-                                <td>Muslimand</td>
+                                <td>Technology</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_video_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_academy_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_video_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_academy_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Quran</td>
+                                <td>Business</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_video_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_academy_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_video_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_academy_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Hadith</td>
+                                <td>Design</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_video_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_academy_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_video_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_academy_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>Islam</td>
+                                <td>Arts</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_video_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_academy_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_video_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_academy_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>5</td>
-                                <td>Dawah</td>
+                                <td>Photography</td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_video_category_update()"> Edit </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_academy_category_update()"> Edit </button>
                                 </td>
                                 <td>
-                                    <button class="form-control btn" value="" onclick="open_modal_video_category_delete()"> Delete </button>
+                                    <button class="form-control btn" value="" onclick="open_modal_academy_category_delete()"> Delete </button>
                                 </td>
                             </tr>
                         </tbody>
@@ -77,6 +77,6 @@
     </div>
 </div>
 
-<?php $this->load->view("admin/sections/video/modal_video_categoty_create"); ?>
-<?php $this->load->view("admin/sections/video/modal_video_categoty_update"); ?>
-<?php $this->load->view("admin/sections/video/modal_video_categoty_delete"); ?>
+<?php $this->load->view("admin/sections/academy/modal_academy_categoty_create"); ?>
+<?php $this->load->view("admin/sections/academy/modal_academy_categoty_update"); ?>
+<?php $this->load->view("admin/sections/academy/modal_academy_categoty_delete"); ?>

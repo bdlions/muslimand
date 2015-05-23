@@ -1,9 +1,9 @@
-<div class="modal fade" id="modal_page_category_delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_fund_category_delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Delete Page Category</h4>
+                <h4 class="modal-title" id="myModalLabel">Delete Fund Raising Category</h4>
             </div>
             <div class="modal-body">
                 <div class="row form-group">
@@ -28,7 +28,7 @@
 </div>
 
 <script>
-    function open_modal_page_category_delete() {
-        $('#modal_page_category_delete').modal('show');
+    function open_modal_fund_category_delete() {
+        $('#modal_fund_category_delete').modal('show');
     }
 </script>

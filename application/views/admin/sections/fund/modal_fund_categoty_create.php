@@ -1,9 +1,9 @@
-<div class="modal fade" id="modal_video_category_create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_fund_category_create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Create Video Category</h4>
+                <h4 class="modal-title" id="myModalLabel">Create Fund Raising Category</h4>
             </div>
             <div class="modal-body">
 
@@ -31,7 +31,7 @@
 </div>
 
 <script>
-    function open_modal_video_category_create() {
-        $('#modal_video_category_create').modal('show');
+    function open_modal_fund_category_create() {
+        $('#modal_fund_category_create').modal('show');
     }
 </script>

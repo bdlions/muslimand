@@ -1,9 +1,9 @@
-<div class="modal fade" id="modal_video_category_create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_academy_category_update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Create Video Category</h4>
+                <h4 class="modal-title" id="myModalLabel">Update Academy Category</h4>
             </div>
             <div class="modal-body">
 
@@ -19,7 +19,7 @@
                 <div class="row form-group">
                     <div class ="col-sm-6"></div>
                     <div class ="col-sm-3 col-xs-offset-6 col-xs-6">
-                        <button id="" name="" value="" class="form-control btn button-custom pull-right">Create</button>
+                        <button id="" name="" value="" class="form-control btn button-custom pull-right">Update</button>
                     </div>
                 </div>              
             </div>
@@ -31,7 +31,7 @@
 </div>
 
 <script>
-    function open_modal_video_category_create() {
-        $('#modal_video_category_create').modal('show');
+    function open_modal_academy_category_update() {
+        $('#modal_academy_category_update').modal('show');
     }
 </script>

@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal_photo_category_update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_video_category_update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -31,7 +31,7 @@
 </div>
 
 <script>
-    function open_modal_photo_category_update() {
-        $('#modal_photo_category_update').modal('show');
+    function open_modal_video_category_update() {
+        $('#modal_video_category_update').modal('show');
     }
 </script>

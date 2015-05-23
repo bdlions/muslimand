@@ -1,7 +1,7 @@
 <div class="row padding_top_over_row">
     <div class="col-md-12">
         <ul class="admin_panel_left_menu_ul">
-            <a href=<?php echo base_url();?>admin/admin_panel><li>Overview</li></a>
+            <a href=<?php echo base_url(); ?>admin/admin_panel><li>Overview</li></a>
             <li class="admin_panel_left_menu_li">Users
                 <ul>
                     <a href=""> <li>Overview</li></a>
@@ -23,13 +23,13 @@
                                             </ul>
                                             </li>
                                             <a href=""><li>Messages</li></a>
-                                            <a href="<?php echo base_url();?>admin/photo_config"><li>Photo</li></a>
-                                            <a href="<?php echo base_url();?>admin/video_config"><li>Video</li></a>
-                                            <a href=""><li>Blog</li></a>
-                                            <a href="<?php echo base_url();?>admin/page_config""><li>Page</li></a>
-                                            <a href=""> <li>Academy</li></a>
-                                            <a href=""><li>Library</li></a>
-                                            <a href=""><li>Fund Raising</li></a>
+                                            <a href="<?php echo base_url(); ?>admin/photo_config"><li>Photo</li></a>
+                                            <a href="<?php echo base_url(); ?>admin/video_config"><li>Video</li></a>
+                                            <a href="<?php echo base_url(); ?>admin/blog_config"><li>Blog</li></a>
+                                            <a href="<?php echo base_url(); ?>admin/page_config"><li>Page</li></a>
+                                            <a href="<?php echo base_url(); ?>admin/academy_config"> <li>Academy</li></a>
+                                            <a href="<?php echo base_url(); ?>admin/library_config"><li>Library</li></a>
+                                            <a href="<?php echo base_url(); ?>admin/fund_config"><li>Fund Raising</li></a>
                                             <a href=""><li>Online Payment</li></a>
                                             <a href=""><li>Zakat</li></a>
                                             <a href=""><li>Shopping</li></a>
