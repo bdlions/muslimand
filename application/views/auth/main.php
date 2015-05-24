@@ -204,9 +204,18 @@
     });
 
     $(function () {
-        $(".brand_cover_single_image").mouseover(function () {
-            $(".brand_cover_single_image").show();
-            $(this).hide();
+        $(".brand_single_image").mouseenter(function () {
+            var brand_single_image = $(this);
+            var brand_single_cover_image = $(this).find(".brand_cover_single_image");
+            $(brand_single_image).show();
+            $(brand_single_cover_image).hide();
+        });
+        $(".brand_single_image").mouseleave(function () {
+            var brand_single_image = $(this);
+            var brand_single_cover_image = $(this).find(".brand_cover_single_image");
+            if ($(brand_single_cover_image).prop("style").display === "none") {
+                $(brand_single_cover_image).show();
+            }
         });
     });
 </script>
