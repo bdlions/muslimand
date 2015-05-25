@@ -30,7 +30,7 @@
     <div class="col-md-6">
         <div class="row form-group">
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/about_icons/mobile_icon.png"  width="20" height="20"> 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/mobile_icon.png"  > 
             </div>
             <div class="col-md-10">
                 <a href="#">01XXX XXX XXX </a>
@@ -38,7 +38,7 @@
         </div>
         <div class="row form-group">
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/about_icons/mail.png"  width="20" height="20"> 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/mail.png"  > 
             </div>
             <div class="col-md-10">
                 <h6>mail@muslimand.com </h6>
@@ -46,7 +46,7 @@
         </div>
         <div class="row form-group">
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/about_icons/address.png"  width="20" height="20"> 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/address.png"  > 
             </div>
             <div class="col-md-10">
                 <h6>168, Shanti Niketon </h6>
@@ -54,7 +54,7 @@
         </div>
         <div class="row form-group">
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/about_icons/massenger.png"  width="20" height="20"> 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/massenger.png"  > 
             </div>
             <div class="col-md-10">
                 <a href="#">sampan-it </a>
@@ -62,7 +62,7 @@
         </div>
         <div class="row form-group">
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/about_icons/website.png"  width="20" height="20"> 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/website.png"  > 
             </div>
             <div class="col-md-10">
                 <a href="#">http://www.muslimand.com/ </a>
@@ -70,7 +70,7 @@
         </div>
         <div class="row form-group">
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/about_icons/birth.png"  width="20" height="20"> 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/birth.png"  > 
             </div>
             <div class="col-md-10">
                 <h6>January 1,1990 </h6>

@@ -20,15 +20,15 @@
     <body>
         <div style="position: relative; background-color: #E9EAED">
             <div style="position: fixed; top: 0; width: 100%; z-index: 20; box-shadow: 0 4px 4px -2px gray;">
-                <div class="container-fluid"  style="background-color: #703684; color: white; padding: 10px 15px">
-                    <?php $this->load->view("member/sections/header_member"); ?>
+                <div class="container-fluid"  style="background-color: #703684; color: white; padding: 0 15px">
+                    <?php $this->load->view("auth/sections/header_with_logo"); ?>
                 </div>
             </div>
             <div style="padding-top: 60px"></div>
             <div class="container-fluid" style="background-color: #E9EAED;">
                 <div class="row">
                     <div class="col-md-offset-1 col-md-10">
-                        <div class="row padding_top_over_row">
+                        <div class="row padding_top_over_row_70px">
                             <div class="col-md-12">
                                 <div class="text_center font_25px pagelet_title">Welcome Admin</div>
                             </div>

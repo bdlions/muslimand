@@ -26,7 +26,7 @@
     <div class="row form-group"></div>
     <div class="row">
         <div class="col-md-2">
-            <img src="<?php echo base_url(); ?>resources/images/about_box_3.png" width="20" height="20">
+            <img src="<?php echo base_url(); ?>resources/images/about_box_3.png">
         </div>
         <div class="col-md-10">
             <span>Lives in <a style="color: #3B59A9; font-size: 12;" href="#">Dhaka, Bangladesh.</a></span>
@@ -35,7 +35,7 @@
     <div class="row form-group"></div>
     <div class="row">
         <div class="col-md-2">
-            <img src="<?php echo base_url(); ?>resources/images/about_box_4.png" width="20" height="20">
+            <img src="<?php echo base_url(); ?>resources/images/about_box_4.png">
         </div>
         <div class="col-md-10">
             <div class="row">

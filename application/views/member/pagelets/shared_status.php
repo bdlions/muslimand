@@ -94,21 +94,21 @@
 <div class="pagelet">
     <div class="row form-group">
         <div class="col-md-12">
-            <img src="<?php echo base_url(); ?>resources/images/like_icon.png" width="35" height="35">
+            <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
             <a href="#">79 people</a> like this.
         </div>
     </div>
     <div class="pagelet_divider"></div>
     <div class="row form-group">
         <div class="col-md-12">
-            <img src="<?php echo base_url(); ?>resources/images/share_icon.jpg" width="30" height="30">
+            <img src="<?php echo base_url(); ?>resources/images/share_icon.png">
             <a href="#">54 shares</a>
         </div>
     </div>
     <div class="pagelet_divider"></div>
     <div class="row form-group">
         <div class="col-md-12">
-            <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" width="30" height="30">
+            <img src="<?php echo base_url(); ?>resources/images/comment_icon.png">
             <a href="#">view 10 more comments</a>
         </div>
     </div>
@@ -127,7 +127,7 @@
                 <div class="col-md-12">
                     January 6, 2015 at 6:30pm. 
                     <a>like</a>
-                    <img src="<?php echo base_url(); ?>resources/images/like_icon.png" width="30" height="30">
+                    <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
                     . <a>5</a>
                 </div>
             </div>
@@ -148,7 +148,7 @@
                 <div class="col-md-12">
                     January 7, 2015 at 10:15pm. 
                     <a>like</a>
-                    <img src="<?php echo base_url(); ?>resources/images/like_icon.png" width="30" height="30">
+                    <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
                     . <a>15</a>
                 </div>
             </div>

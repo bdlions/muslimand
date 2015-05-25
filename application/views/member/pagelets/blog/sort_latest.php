@@ -1,10 +1,10 @@
-<div class="row form-group">
+<div class="row form-group form-group">
     <div class="col-md-12">
         <span style="font-size: 16px; font-weight: bold;">All Blogs</span>
     </div>
 </div>
 <div class="pagelet_divider"></div>
-<div class="row padding_top_over_row">
+<div class="row form-group padding_top_over_row form-group">
     <div class="col-md-2">
         <a href="<?php echo base_url(); ?>member/profile" >
             <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg">
@@ -22,19 +22,19 @@
                     [Bukhari, Muslim] In general, gathering a lot of wealth in this world takes up a lot of time and ef... </p>
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
                 <a href="#" >Like .</a>
                 <a href="#" > Share</a>
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
-                <img src="<?php echo base_url(); ?>resources/images/like_icon.png" width="30" height="30">
+                <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
                 <a href="#">37 people </a> like this.
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
                 <img src="<?php echo base_url(); ?>resources/images/comment_icon.png">
                 <a href="<?php echo base_url(); ?>blogs/blogs_newsfeed">view 19 more comments</a>
@@ -42,7 +42,7 @@
         </div>
     </div>
 </div>
-<div class="row padding_top_over_row">
+<div class="row form-group padding_top_over_row form-group">
     <div class="col-md-2">
         <a href="<?php echo base_url(); ?>member/profile" >
             <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg">
@@ -60,19 +60,19 @@
                     in even the most hateful of situations. Allah (swt) h... </p>   
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
                 <a href="#" >Like .</a>
                 <a href="#" > Share</a>
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
-                <img src="<?php echo base_url(); ?>resources/images/like_icon.png" width="30" height="30">
+                <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
                 <a href="#">317 people </a> like this.
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
                 <img src="<?php echo base_url(); ?>resources/images/comment_icon.png">
                 <a href="<?php echo base_url(); ?>blogs/blogs_newsfeed">view 27 more comments</a>
@@ -80,7 +80,7 @@
         </div>
     </div>
 </div>
-<div class="row padding_top_over_row">
+<div class="row form-group padding_top_over_row form-group">
     <div class="col-md-2">
         <a href="<?php echo base_url(); ?>member/profile" >
             <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg">
@@ -98,19 +98,19 @@
                     thus drawing him away from the flames! In much ... </p>
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
                 <a href="#" >Like .</a>
                 <a href="#" > Share</a>
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
-                <img src="<?php echo base_url(); ?>resources/images/like_icon.png" width="30" height="30">
+                <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
                 <a href="#">337 people </a> like this.
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
                 <img src="<?php echo base_url(); ?>resources/images/comment_icon.png">
                 <a href="<?php echo base_url(); ?>blogs/blogs_newsfeed">view 58 more comments</a>
@@ -118,7 +118,7 @@
         </div>
     </div>
 </div>
-<div class="row padding_top_over_row">
+<div class="row form-group padding_top_over_row form-group">
     <div class="col-md-2">
         <a href="<?php echo base_url(); ?>member/profile" >
             <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg">
@@ -136,19 +136,19 @@
                     truth from your parents, but keep ... </p>
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
                 <a href="#" >Like .</a>
                 <a href="#" > Share</a>
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
-                <img src="<?php echo base_url(); ?>resources/images/like_icon.png" width="30" height="30">
+                <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
                 <a href="#">587 people </a> like this.
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
                 <img src="<?php echo base_url(); ?>resources/images/comment_icon.png">
                 <a href="<?php echo base_url(); ?>blogs/blogs_newsfeed">view 97 more comments</a>
@@ -156,7 +156,7 @@
         </div>
     </div>
 </div>
-<div class="row padding_top_over_row">
+<div class="row form-group padding_top_over_row form-group">
     <div class="col-md-2">
         <a href="<?php echo base_url(); ?>member/profile" >
             <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg">
@@ -174,19 +174,19 @@
                     in the world we are ever goi... </p>
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
                 <a href="#" >Like .</a>
                 <a href="#" > Share</a>
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
-                <img src="<?php echo base_url(); ?>resources/images/like_icon.png" width="30" height="30">
+                <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
                 <a href="#">55 people </a> like this.
             </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-12">
                 <img src="<?php echo base_url(); ?>resources/images/comment_icon.png">
                 <a href="<?php echo base_url(); ?>blogs/blogs_newsfeed">view 13 more comments</a>
@@ -196,8 +196,8 @@
 </div>
 
 
-<div class="row form-group"></div>
-<div class="row">
+<div class="row form-group form-group"></div>
+<div class="row form-group">
     <div class="col-md-4">
         <span>1-5 of 500 Results</span>
     </div>
@@ -223,5 +223,5 @@
         </nav>
     </div>
 </div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
+<div class="row form-group form-group"></div>
+<div class="row form-group form-group"></div>

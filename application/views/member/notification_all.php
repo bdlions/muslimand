@@ -71,7 +71,7 @@
             <div class="pagelet_divider"></div>
             <div class="row">
                 <div class="col-md-1">
-                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/birthday.png"  width="22" height="15"> 
+                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/birthday.png"> 
                 </div>
                 <div class="col-md-11">
                     <a href="#">Fatematul Kobra</a> had birthdays on December 27. 7:45pm
@@ -113,7 +113,7 @@
             <div class="pagelet_divider"></div>
             <div class="row">
                 <div class="col-md-1">
-                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/birthday.png"  width="22" height="15"> 
+                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/birthday.png"  > 
                 </div>
                 <div class="col-md-11">
                     <a href="#">Barak Obama</a> and 2 other friends had birthdays on December 26. 3:15am

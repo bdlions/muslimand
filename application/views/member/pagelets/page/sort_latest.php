@@ -28,7 +28,7 @@
                     </ul>
                 </div>
                 <div class="borber_style">
-                    <img width="35" height="35" src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                    <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
                     <a href="#">79 people</a>
                     like this.
                 </div>
@@ -61,7 +61,7 @@
                 </ul>
             </div>
             <div class="borber_style">
-                <img width="35" height="35" src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
                 <a href="#">83 people</a>
                 like this.
             </div>
@@ -93,7 +93,7 @@
                 </ul>
             </div>
             <div class="borber_style">
-                <img width="35" height="35" src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                <img  src="<?php echo base_url(); ?>resources/images/like_icon.png">
                 <a href="#">113 people</a>
                 like this.
             </div>
@@ -125,7 +125,7 @@
                 </ul>
             </div>
             <div class="borber_style">
-                <img width="35" height="35" src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
                 <a href="#">95 people</a>
                 like this.
             </div>
@@ -157,7 +157,7 @@
                 </ul>
             </div>
             <div class="borber_style">
-                <img width="35" height="35" src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                <img  src="<?php echo base_url(); ?>resources/images/like_icon.png">
                 <a href="#">123 people</a>
                 like this.
             </div>
@@ -189,7 +189,7 @@
                 </ul>
             </div>
             <div class="borber_style">
-                <img width="35" height="35" src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                <img  src="<?php echo base_url(); ?>resources/images/like_icon.png">
                 <a href="#">79 people</a>
                 like this.
             </div>
@@ -221,7 +221,7 @@
                 </ul>
             </div>
             <div class="borber_style">
-                <img width="35" height="35" src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                <img  src="<?php echo base_url(); ?>resources/images/like_icon.png">
                 <a href="#">61 people</a>
                 like this.
             </div>
@@ -253,7 +253,7 @@
                 </ul>
             </div>
             <div class="borber_style">
-                <img width="35" height="35" src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                <img  src="<?php echo base_url(); ?>resources/images/like_icon.png">
                 <a href="#">156 people</a>
                 like this.
             </div>
@@ -285,7 +285,7 @@
                 </ul>
             </div>
             <div class="borber_style">
-                <img width="35" height="35" src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                <img  src="<?php echo base_url(); ?>resources/images/like_icon.png">
                 <a href="#">92 people</a>
                 like this.
             </div>
@@ -317,7 +317,7 @@
                 </ul>
             </div>
             <div class="borber_style">
-                <img width="35" height="35" src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                <img  src="<?php echo base_url(); ?>resources/images/like_icon.png">
                 <a href="#">55 people</a>
                 like this.
             </div>

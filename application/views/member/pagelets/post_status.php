@@ -5,7 +5,7 @@
         <div id="link" class="col-xs-2 col-sm-2"><span class="status_label_style">Link</span></div>
     </div>
     <div id="photo_details" style="display: none;">
-        <div class="row form-group">
+        <div class="row">
             <div class="col-md-6">
                 <input type="file" name="image[]" size="30">
             </div>
@@ -13,27 +13,27 @@
         </div>
         <div class="row form-group">
             <div class="col-md-12">
-                Select a photo to upload
+                <span style="font-size: 12px">Select a photo to upload</span>
             </div>
         </div>
     </div>
     <div id="link_details" style="display: none;">
-        <div class="row form-group">
-            <div class="col-md-6">
-                <input class="form-control" type="text" placeholder="http://">
+        <div class="row">
+            <div class="col-md-10">
+                <input id="http" class="form-control" type="text" placeholder="http://">
             </div>
-            <div class="col-md-offset-6"></div>
+            <div class="col-md-2"></div>
         </div>
         <div class="row form-group">
             <div class="col-md-12">
-                Paste a link you would like to share. 
+                <span style="font-size: 12px">Paste a link you would like to share. </span>
             </div>
         </div>
     </div>
     <div id="category_status" class="row form-group">
-        <div class="col-xs-12">
-            <div class="form-control" style="overflow: hidden; min-height: 60px;">
-                <div contenteditable="true" placeholder="Share Your Status" style="overflow-x: hidden; overflow-y: scroll; min-height: 60px; margin-right: -30px">
+        <div class="col-md-12">
+            <div class="form-control" style="overflow: hidden; min-height: 66px; padding: 0px; margin: 0px;">
+                <div contenteditable="true" placeholder="Share Your Status" style="overflow-x: hidden; overflow-y: scroll; min-height: 66px; margin-right: -30px">
                 </div>
             </div>
         </div>
@@ -112,6 +112,10 @@
             $('#link').css("font-weight", "bold");
             $('#photo').css("font-weight", "normal");
             $('#status').css("font-weight", "normal");
+        });
+        $('#http').on('click', function () {
+            $('#status_privacy').show();
+            
         });
     });
 </script>

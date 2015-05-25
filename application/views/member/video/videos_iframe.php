@@ -180,17 +180,17 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="borber_box_full details">
-                    <img src="<?php echo base_url(); ?>resources/images/video/star_icon.ico" width="15" height="15">
+                    <img src="<?php echo base_url(); ?>resources/images/video/star_5.png" >
                     <span >Favorite</span>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="pull-right text_center">
-                    <img src="<?php echo base_url(); ?>resources/images/video/star.png" width="15" height="15">
-                    <img src="<?php echo base_url(); ?>resources/images/video/star_icon.ico" width="15" height="15">
-                    <img src="<?php echo base_url(); ?>resources/images/video/star_icon.ico" width="15" height="15">
-                    <img src="<?php echo base_url(); ?>resources/images/video/star_icon.ico" width="15" height="15">
-                    <img src="<?php echo base_url(); ?>resources/images/video/star_icon.ico" width="15" height="15"><br>
+                    <img src="<?php echo base_url(); ?>resources/images/video/star_1.png" >
+                    <img src="<?php echo base_url(); ?>resources/images/video/star_2.png" >
+                    <img src="<?php echo base_url(); ?>resources/images/video/star_3.png" >
+                    <img src="<?php echo base_url(); ?>resources/images/video/star_4.png" >
+                    <img src="<?php echo base_url(); ?>resources/images/video/star_5.png" ><br>
                     0 Ratings
                 </div>
             </div>
@@ -199,7 +199,8 @@
         <div class="row">
             <div class="col-md-12">
                 <a href="#" >Like .</a>
-                <a href="#" > Comment</a>
+                <a href="#" >Comment .</a>
+                <a href="#" > Share</a>
             </div>
         </div>
         <div class="row form-group"></div>
@@ -216,14 +217,21 @@
         <div class="row form-group"></div>
         <div class="row form-group">
             <div class="col-md-12">
-                <img src="<?php echo base_url(); ?>resources/images/like_icon.png" width="35" height="35">
+                <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
                 <a href="#">37 people </a> like this.
+            </div>
+        </div>
+        <div class="pagelet_divider"></div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <img src="<?php echo base_url(); ?>resources/images/share_icon.png">
+                <a href="#">54 shares</a>
             </div>
         </div>
         <div class="pagelet_divider"></div>
         <div class="row">
             <div class="col-md-12">
-                <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" width="30" height="30">
+                <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
                 <a href="#">view 19 more comments</a>
             </div>
         </div>
@@ -243,7 +251,7 @@
                     <div class="col-md-12">
                         January 08, 2015 at 2:15pm. 
                         <a>like</a>
-                        <img src="<?php echo base_url(); ?>resources/images/like_icon.png" width="30" height="30">
+                        <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
                         . <a>31</a>
                     </div>
                 </div>

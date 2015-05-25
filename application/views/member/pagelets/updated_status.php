@@ -81,21 +81,21 @@
 <div class="pagelet">
     <div class="row form-group">
         <div class="col-md-12">
-            <img src="<?php echo base_url(); ?>resources/images/like_icon.png" width="35" height="35">
+            <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
             <a style="color: #3B59A9;" href="#">60 people </a> like this.
         </div>
     </div>
     <div class="pagelet_divider"></div>
     <div class="row form-group">
         <div class="col-md-12">
-            <img src="<?php echo base_url(); ?>resources/images/share_icon.jpg" width="30" height="30">
+            <img src="<?php echo base_url(); ?>resources/images/share_icon.jpng" >
             <a href="#">4 shares</a>
         </div>
     </div>
     <div class="pagelet_divider"></div>
     <div class="row form-group">
         <div class="col-md-12">
-            <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" width="30" height="30">
+            <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
             <a href="#">view 21 more comments</a>
         </div>
     </div>
@@ -114,7 +114,7 @@
                 <div class="col-md-12">
                     January 9, 2015 at 10:15pm. 
                     <a>like</a>
-                    <img src="<?php echo base_url(); ?>resources/images/like_icon.png" width="30" height="30">
+                    <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
                     . <a>15</a>
                 </div>
             </div>
