@@ -182,6 +182,7 @@ class Ion_auth_mongodb_model extends CI_Model {
         $this->load->helper('cookie');
         $this->load->helper('date');
         $this->lang->load('ion_auth');
+        $this->lang->load('auth');
 
         // Initialize MongoDB collection names
         $this->collections = $this->config->item('collections', 'ion_auth');
@@ -769,11 +770,6 @@ class Ion_auth_mongodb_model extends CI_Model {
         return isset($id) ? $id : FALSE;
     }
     
-    public function basic_info_add($additional_data){
-//      $data = array_merge($this->_filter_data($this->cothis->mongo_db->insert($this->collections['user_profiles'], $additional_data); llections['user_profiles'], $additional_data)); 
-       $id = $this->mongo_db->insert($this->collections['user_profiles'], $additional_data); 
-       return isset($id) ? $id : FALSE;
-    }
     
 
     // ------------------------------------------------------------------------
@@ -1858,6 +1854,17 @@ class Ion_auth_mongodb_model extends CI_Model {
 
         return $_output;
     }
+    
+    public function messages_alert() {
+        $_output = '';
+        foreach ($this->messages as $message) {
+            $messageLang = $this->lang->line($message) ? $this->lang->line($message) : '##' . $message . '##';
+            $_output .= $messageLang;
+        }
+
+        return $_output;
+    }
+    
 
     // ------------------------------------------------------------------------
 
@@ -1902,6 +1909,16 @@ class Ion_auth_mongodb_model extends CI_Model {
         return $_output;
     }
 
+    
+    public function errors_alert() {
+        $_output = '';
+        foreach ($this->errors as $error) {
+            $errorLang = $this->lang->line($error) ? $this->lang->line($error) : '##' . $error . '##';
+            $_output .= $errorLang;
+        }
+
+        return $_output;
+    }
     // ------------------------------------------------------------------------
 
     /**

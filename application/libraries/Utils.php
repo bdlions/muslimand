@@ -14,8 +14,21 @@ class Utils {
 
        
     }
+    
+  /*
+  * this method return list of gender
+  * @Rashida 17th May 2015
+  *  
+  *  */
 
-  
+   public function get_gender(){
+        $gender = array(
+                         0=>'gender',
+                         1 => 'Male',
+                         2=> 'Female',
+            );
+        return $gender;
+    }
  
   /*
   * this method return list of month
@@ -23,7 +36,7 @@ class Utils {
   *  
   *  */
     
- public function get_monthList(){
+ public function get_month_list(){
         $months = array(
                         0=>'month',
                         1 => 'Jan',
@@ -41,20 +54,13 @@ class Utils {
             );
         return $months;
     }
- public function get_gender(){
-        $gender = array(
-                         0=>'gender',
-                        'Male' => 'Male',
-                        'Female' => 'Female',
-            );
-        return $gender;
-    }
+
  /*
   * this method return list of month
   *  @Rashida 17th May 2015
   *  
   *  */
- public function get_dateList() {
+ public function get_date_list() {
         $date_list[0] = "date";
         for ($i = 1; $i <= 31; $i++) {
             if ($i < 10) {
@@ -71,12 +77,13 @@ class Utils {
   *  @Rashida 17th May 2015
   *  
   *  */
- public function get_yearList() {
+ public function get_year_list() {
         $year_list[0] = "year";
         for ($i = 2011; $i >= 1905; $i--) {
             $year_list[$i] = "" . $i;
         }
         return $year_list;
     }
+    
 
 }

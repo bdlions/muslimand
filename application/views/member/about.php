@@ -65,6 +65,7 @@
         $('#subcategory_university').show();
         $("#subcategory_college").show();
         $('#subcategory_school').show();
+        
     });
 
     $('#category_place').on('click', function () {

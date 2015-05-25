@@ -158,4 +158,7 @@ $lang['email_forgot_password_link']       = 'Reset Your Password';
 // New Password Email
 $lang['email_new_password_heading']    = 'New Password for %s';
 $lang['email_new_password_subheading'] = 'Your password has been reset to: %s';
+//Basic Profile
 
+$lang['delete_user_profile_successful']                       = 'Basic Profile info is deleted successfully.';
+$lang['delete_user_profile_fail']                             = 'Failed to delete Basic Profile info';

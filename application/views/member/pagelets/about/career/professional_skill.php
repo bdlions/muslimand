@@ -1,3 +1,22 @@
+<script type="text/javascript">
+    $(function(){
+        $("#ps_update_btn").on('click',function(){
+              $.ajax({
+                dataType: 'json',
+                type: "POST",
+                url: '<?php echo base_url(); ?>' + 'basic_profile/add_professional_skills',
+                data: { 
+                    bp_profession_skill : $("#bp_profession_skill").val()
+                },
+                success: function(data) {
+                    alert(data.message);
+                }
+            });
+        });
+    });
+</script>
+
+
 <div id="professional_skill" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">
@@ -11,7 +30,7 @@
                     <span class="subcategory_label_style">Professional Skills</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control">
+                    <?php echo form_input($bp_profession_skill + array('class' => 'form-control'));?>
                 </div>
             </div>
         </div>
@@ -30,7 +49,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-default pull-right form-control" style="background-color: #703684; color: white; margin-right: -15px;">Save Updates</button>
+                    <?php echo form_input($ps_update_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>

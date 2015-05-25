@@ -31,31 +31,39 @@ $lang['activate_successful'] 		  	     = 'Account Activated';
 $lang['activate_unsuccessful'] 		 	     = 'Unable to Activate Account';
 $lang['deactivate_successful'] 		  	     = 'Account De-Activated';
 $lang['deactivate_unsuccessful'] 	  	     = 'Unable to De-Activate Account';
-$lang['activation_email_successful'] 	  	 = 'Activation Email Sent';
-$lang['activation_email_unsuccessful']   	 = 'Unable to Send Activation Email';
+$lang['activation_email_successful'] 	  	     = 'Activation Email Sent';
+$lang['activation_email_unsuccessful']   	     = 'Unable to Send Activation Email';
 
 // Login / Logout
 $lang['login_successful'] 		  	         = 'Logged In Successfully';
-$lang['login_unsuccessful'] 		  	     = 'Incorrect Login';
-$lang['login_unsuccessful_not_active'] 		 = 'Account is inactive';
-$lang['login_timeout']                       = 'Temporarily Locked Out.  Try again later.';
+$lang['login_unsuccessful'] 		  	         = 'Incorrect Login';
+$lang['login_unsuccessful_not_active'] 		         = 'Account is inactive';
+$lang['login_timeout']                                   = 'Temporarily Locked Out.  Try again later.';
 $lang['logout_successful'] 		 	         = 'Logged Out Successfully';
 
 // Account Changes
 $lang['update_successful'] 		 	         = 'Account Information Successfully Updated';
-$lang['update_unsuccessful'] 		 	     = 'Unable to Update Account Information';
-$lang['delete_successful']               = 'User Deleted';
-$lang['delete_unsuccessful']           = 'Unable to Delete User';
+$lang['update_unsuccessful'] 		 	         = 'Unable to Update Account Information';
+$lang['delete_successful']                               = 'User Deleted';
+$lang['delete_unsuccessful']                             = 'Unable to Delete User';
 
 // Groups
-$lang['group_creation_successful']  = 'Group created Successfully';
-$lang['group_already_exists']       = 'Group name already taken';
-$lang['group_update_successful']    = 'Group details updated';
-$lang['group_delete_successful']    = 'Group deleted';
-$lang['group_delete_unsuccessful'] 	= 'Unable to delete group';
-$lang['group_name_required'] 		= 'Group name is a required field';
+$lang['group_creation_successful']                       = 'Group created Successfully';
+$lang['group_already_exists']                            = 'Group name already taken';
+$lang['group_update_successful']                         = 'Group details updated';
+$lang['group_delete_successful']                         = 'Group deleted';
+$lang['group_delete_unsuccessful']                       = 'Unable to delete group';
+$lang['group_name_required'] 		                 = 'Group name is a required field';
 
 // Email Subjects
-$lang['email_forgotten_password_subject']    = 'Forgotten Password Verification';
-$lang['email_new_password_subject']          = 'New Password';
-$lang['email_activation_subject']            = 'Account Activation';
+$lang['email_forgotten_password_subject']                = 'Forgotten Password Verification';
+$lang['email_new_password_subject']                      = 'New Password';
+$lang['email_activation_subject']                        = 'Account Activation';
+
+//Basic Profile
+$lang['update_user_profile_successful']                   = 'Basic Profile info is updated successfully.';
+$lang['fail_to_update_user_profile']                      = 'Failed to update Basic Profile info';
+$lang['add_user_profile_successful']                      = 'Basic Profile info is added successfully.';
+$lang['fail_to_add_user_profile']                         = 'Failed to add Basic Profile info';
+$lang['delete_user_profile_successful']                   = 'Basic Profile info is deleted successfully.';
+$lang['fail_to_delete_user_profile']                      = 'Failed to delete Basic Profile info';
