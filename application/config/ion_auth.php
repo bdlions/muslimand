@@ -33,6 +33,7 @@ $config['collections']['groups']         = 'groups';
 $config['collections']['login_attempts'] = 'login_attempts';
 $config['collections']['countries']      = 'countries';
 $config['collections']['user_profiles']  = 'user_profiles';
+$config['collections']['religions']      = 'religions';
 
 /*
 | -------------------------------------------------------------------------

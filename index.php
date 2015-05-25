@@ -1,6 +1,8 @@
 <?php
 /***************** Custom constant **********************/
 include './constants/template.php';
+include './constants/basic_profile.php';
+
 /***************** Custom constant End **********************/
 /*
  *---------------------------------------------------------------

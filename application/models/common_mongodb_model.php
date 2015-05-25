@@ -16,4 +16,14 @@ class Common_mongodb_model extends Ion_auth_mongodb_model
                 ->get($this->collections['countries']);
         
     }
+    /*
+     * This method will return religions list from the database
+     */
+    public function get_all_religions()
+    {
+        return $this->mongo_db
+                ->select('*')
+                ->get($this->collections['religions']);
+        
+    }
 }

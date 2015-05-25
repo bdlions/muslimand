@@ -1,3 +1,21 @@
+<script type="text/javascript">
+    $(function(){
+        $("#college_update_btn").on('click',function(){
+              $.ajax({
+                dataType: 'json',
+                type: "POST",
+                url: '<?php echo base_url(); ?>' + 'basic_profile/add_colleges',
+                data: { 
+                    bp_college : $("#bp_college").val(),
+                    bp_college_des : $("#bp_college_des").val(),
+                },
+                success: function(data) {
+                    alert(data.message);
+                }
+            });
+        });
+    });
+</script>
 <div id="college" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">
@@ -11,7 +29,7 @@
                     <span class="subcategory_label_style">College</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control">
+                    <?php echo form_input($bp_college + array('class' => 'form-control')); ?>
                 </div>
             </div>
             <div class="row form-group">
@@ -51,7 +69,7 @@
                     <span class="subcategory_label_style">Description</span>
                 </div>
                 <div class="col-md-8">
-                    <textarea class="form-control"></textarea>
+                    <?php echo form_textarea($bp_college_des + array('class' => 'form-control'));?>
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -68,7 +86,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <button class="btn btn-default pull-right form-control" style="background-color: #703684; color: white; margin-right: -15px;">Save Updates</button>
+                             <?php echo form_input($college_update_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>

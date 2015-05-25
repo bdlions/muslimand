@@ -1,12 +1,24 @@
 <div id="about_overview" class="row">
     <div class="col-md-6">
+        <?php 
+               $work_places = json_decode($basic_info['work_places']);
+               $universities = json_decode($basic_info['universities']);
+               $colleges = json_decode($basic_info['colleges']);
+               $work_place_counter = count($work_places)-1;
+               $university = count($universities)-1;
+               $company  = $work_places[$work_place_counter];
+               $uv = $universities[$university];
+ 
+        ?>
+        <div id="about_overview_add_tmpl">
         <div class="row form-group">
             <div class="col-md-2">
                 <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="40" height="40"> 
             </div>
             <div class="col-md-10">
-                Works at <a href="#">Sampan-IT</a>
+                Works at <a href="#"><?php echo $company->company; ?></a>
             </div>
+        </div>
         </div>
         <div class="pagelet_divider"></div>
         <div class="row form-group">
@@ -14,7 +26,7 @@
                 <img src="<?php echo base_url(); ?>resources/images/Food.jpg"  width="40" height="40"> 
             </div>
             <div class="col-md-10">
-                Studied at <a href="#">ABC University </a>
+                Studied at <a href="#"> <?php echo $uv->university; ?></a>
             </div>
         </div>
         <div class="pagelet_divider"></div>
@@ -57,7 +69,7 @@
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/massenger.png"  width="20" height="20"> 
             </div>
             <div class="col-md-10">
-                <a href="#">sampan-it </a>
+                <a href="#"><?php echo $company->company; ?></a>
             </div>
         </div>
         <div class="row form-group">
