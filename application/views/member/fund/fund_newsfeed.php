@@ -133,7 +133,7 @@
                         <div class="row padding_top_over_row">
                             <div class="col-md-12">
                                 <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                                    <div style="background-color: #76bd22; height: 10px; width: 69%; border-radius: 5px;"></div>
+                                    <div style="background-color: #9B69AD; height: 10px; width: 69%; border-radius: 5px;"></div>
                                 </div>
                             </div> 
                         </div>
@@ -242,7 +242,7 @@
                         <div class="row padding_top_over_row">
                             <div class="col-md-12">
                                 <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                                    <div style="background-color: #76bd22; height: 10px; width: 69%; border-radius: 5px;"></div>
+                                    <div style="background-color: #9B69AD; height: 10px; width: 69%; border-radius: 5px;"></div>
                                 </div>
                             </div> 
                         </div>
@@ -271,7 +271,7 @@
                         <div class="row padding_top_over_row">
                             <div class="col-md-12">
                                 <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                                    <div style="background-color: #76bd22; height: 10px; width: 69%; border-radius: 5px;"></div>
+                                    <div style="background-color: #9B69AD; height: 10px; width: 69%; border-radius: 5px;"></div>
                                 </div>
                             </div> 
                         </div>
@@ -323,7 +323,7 @@
                         <div class="row padding_top_over_row">
                             <div class="col-md-12">
                                 <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                                    <div style="background-color: #76bd22; height: 10px; width: 69%; border-radius: 5px;"></div>
+                                    <div style="background-color: #9B69AD; height: 10px; width: 69%; border-radius: 5px;"></div>
                                 </div>
                             </div> 
                         </div>
@@ -434,7 +434,7 @@
                     <div class="row padding_top_over_row">
                         <div class="col-md-12">
                             <div style="margin: 10px 0; background-color:#dedede; height:10px; width:100%; border-radius: 5px;">
-                                <div style="background-color: #76bd22; height: 10px; width: 69%; border-radius: 5px;"></div>
+                                <div style="background-color: #9B69AD; height: 10px; width: 69%; border-radius: 5px;"></div>
                             </div>
                         </div> 
                     </div>

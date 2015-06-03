@@ -7,7 +7,7 @@
 <div class="row padding_top_over_row">
     <div class="col-md-2">
         <a href="<?php echo base_url(); ?>member/profile" >
-            <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg">
+            <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/blogs/50_50/05.jpg">
         </a>
     </div>
     <div class="col-md-10">
@@ -45,7 +45,7 @@
 <div class="row padding_top_over_row">
     <div class="col-md-2">
         <a href="<?php echo base_url(); ?>member/profile" >
-            <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg">
+            <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/blogs/50_50/04.jpg">
         </a>
     </div>
     <div class="col-md-10">
@@ -83,7 +83,7 @@
 <div class="row padding_top_over_row">
     <div class="col-md-2">
         <a href="<?php echo base_url(); ?>member/profile" >
-            <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg">
+            <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/blogs/50_50/03.jpg">
         </a>
     </div>
     <div class="col-md-10">
@@ -121,13 +121,13 @@
 <div class="row padding_top_over_row">
     <div class="col-md-2">
         <a href="<?php echo base_url(); ?>member/profile" >
-            <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg">
+            <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/blogs/50_50/02.jpg">
         </a>
     </div>
     <div class="col-md-10">
         <div class="row">
             <div class="col-md-12">
-                <a style="text-decoration: none; color: black; cursor: pointer;" href="<?php echo base_url(); ?>blogs/blogs_newsfeed"><h4>Do you Believe in Love?</h4></a>
+                <a style="text-decoration: none; color: black; cursor: pointer;" href="<?php echo base_url(); ?>blogs/blogs_newsfeed"><h4>Do you Believe in God?</h4></a>
                 by
                 <a href="<?php echo base_url(); ?>member/profile">Jannatul Ferdaus</a><br><br>
                 <p style="text-align: justify;"> “How can you believe in God when you can’t see Him?” I was presented with this argument shortly 
@@ -159,7 +159,7 @@
 <div class="row padding_top_over_row">
     <div class="col-md-2">
         <a href="<?php echo base_url(); ?>member/profile" >
-            <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg">
+            <img height="50" width="50" class="img-circle" src="<?php echo base_url(); ?>resources/images/blogs/50_50/01.jpg">
         </a>
     </div>
     <div class="col-md-10">

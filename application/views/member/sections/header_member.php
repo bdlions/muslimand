@@ -7,17 +7,7 @@
     <div class="col-md-4" style="padding-left: 40px;">
         <input type="text" class="mm_input" placeholder="Search for people, places and things">
     </div>
-    <div class="col-md-2">
-        <div class="pull-right">
-            <a href="<?php echo base_url(); ?>member/profile">
-                <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
-                    <img style="height: 25px; width: 25px;" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg">
-                    &nbsp; <span style="text-decoration: none">Mohammad</span>
-                </span>
-            </a>
-        </div>
-    </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
         <div class="pull-right">
             <div id="mm_friend_request" style="position: relative" onclick="friend_toggle()">
                 <a href="javascript:void(0)"></a>
@@ -56,7 +46,15 @@
                 </ul>
             </div>
         </div>
-    </div>
+        <div style="padding-right:  30px; vertical-align: middle; float: right;">
+            <a href="<?php echo base_url(); ?>member/profile">
+                <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
+                    <img style="height: 25px; width: 25px;" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg">
+                    &nbsp; <span style="text-decoration: none">Mohammad</span>
+                </span>
+            </a>
+        </div>
+        </div>
     <div class="col-md-1"></div>
 </div>
 <script>

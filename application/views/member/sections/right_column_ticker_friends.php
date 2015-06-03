@@ -158,7 +158,7 @@
                             <img class="img-responsive" style="margin-top: 3px;" src="<?php echo base_url() ?>resources/images/online.png">
                         </div>
                         <div class="col-md-6">
-                            <a style="color:#fff;" href="<?php echo base_url(); ?>member/profile">Dr. Belal</a>
+                            <a style="color:#fff; vertical-align: middle;" href="<?php echo base_url(); ?>member/profile">Dr. Belal</a>
                         </div>
                         <div class="col-md-2">
                             <img class="img-responsive" style="margin-top: 3px; cursor: pointer" src="<?php echo base_url() ?>resources/images/settings.png">
@@ -233,7 +233,7 @@
                             <img class="img-responsive" style="margin-top: 3px;" src="<?php echo base_url() ?>resources/images/online.png">
                         </div>
                         <div class="col-md-6">
-                            <a style="color:#fff;" href="<?php echo base_url(); ?>member/profile">Sharmin Akter</a>
+                            <a style="color:#fff; vertical-align: middle;" href="<?php echo base_url(); ?>member/profile">Sharmin Akter</a>
                         </div>
                         <div class="col-md-2">
                             <img class="img-responsive" style="margin-top: 3px; cursor: pointer" src="<?php echo base_url() ?>resources/images/settings.png">
@@ -308,7 +308,7 @@
                             <img class="img-responsive" style="margin-top: 3px;" src="<?php echo base_url() ?>resources/images/online.png">
                         </div>
                         <div class="col-md-6">
-                            <a style="color:#fff;" href="<?php echo base_url(); ?>member/profile">Mohammad Rafique</a>
+                            <a style="color:#fff; vertical-align: middle;" href="<?php echo base_url(); ?>member/profile">Mohammad Rafique</a>
                         </div>
                         <div class="col-md-2">
                             <img class="img-responsive" style="margin-top: 3px; cursor: pointer" src="<?php echo base_url() ?>resources/images/settings.png">

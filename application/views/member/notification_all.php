@@ -27,7 +27,7 @@
             <div class="pagelet_divider"></div>
             <div class="row">
                 <div class="col-md-1">
-                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/post.png"  width="22" height="15"> 
+                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/post.png"  > 
                 </div>
                 <div class="col-md-11">
                     <a href="#">Sharmin Akter</a>, <a href="#">Mohammad Rafique</a>
@@ -37,7 +37,7 @@
             <div class="pagelet_divider"></div>
             <div class="row">
                 <div class="col-md-1">
-                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/photo.png"  width="22" height="15"> 
+                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/photo.png"  > 
                 </div>
                 <div class="col-md-11">
                     <a href="#">Dr. Belal</a> added a <a href="#">photo</a>. 4:45pm
@@ -46,7 +46,7 @@
             <div class="pagelet_divider"></div>
             <div class="row">
                 <div class="col-md-1">
-                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/post.png"  width="22" height="15"> 
+                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/post.png"  > 
                 </div>
                 <div class="col-md-11">
                     <a href="#">Barak Obama</a> posted in <a href="#">I LOve Allah</a>. 10:15am
@@ -62,7 +62,7 @@
             <div class="pagelet_divider"></div>
             <div class="row">
                 <div class="col-md-1">
-                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/video.png"  width="22" height="15"> 
+                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/video.png"  > 
                 </div>
                 <div class="col-md-11">
                     <a href="#">Maria Islam</a> shared a <a href="#">Video</a>. 10:30pm
@@ -80,7 +80,7 @@
             <div class="pagelet_divider"></div>
             <div class="row">
                 <div class="col-md-1">
-                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/post.png"  width="22" height="15"> 
+                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/post.png"  > 
                 </div>
                 <div class="col-md-11">
                     <a href="#">Barak Obama</a> posted in <a href="#">I LOve Allah</a>. 10:15am
@@ -96,7 +96,7 @@
             <div class="pagelet_divider"></div>
             <div class="row">
                 <div class="col-md-1">
-                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/page.png"  width="22" height="15"> 
+                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/page.png"  > 
                 </div>
                 <div class="col-md-11"> <a href="#">Jannatul Ferdaus</a> posted in <a href="#">Quraneralo</a>. 6:27pm
                 </div>
@@ -104,7 +104,7 @@
             <div class="pagelet_divider"></div>
             <div class="row">
                 <div class="col-md-1">
-                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/post.png"  width="22" height="15"> 
+                    <img src="<?php echo base_url(); ?>resources/images/notification_icons/post.png"  > 
                 </div>
                 <div class="col-md-11">
                     <a href="#">Fatematul Kobra</a>posted in <a href="#">BCS Q COLLECTION</a>. 1:45pm
