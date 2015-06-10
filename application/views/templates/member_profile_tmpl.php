@@ -16,28 +16,24 @@
     </head>
 
     <body>
-        <div class="body_wrapper">
-            <div class="header_wrapper">
-                    <div class="container_wrapper">
-                <div class="container-fluid">
+        <div style="position: relative; background-color: #E9EAED">
+            <div style="position: fixed; top: 0; width: 100%; z-index: 20; box-shadow: 0 4px 4px -2px gray;">
+                <div class="container-fluid"  style="background-color: #703684; color: white; padding: 6px 9px">
                     <?php $this->load->view("member/sections/header_member"); ?>
-                    </div>
                 </div>
             </div>
-            <div class="Padding_top"></div>
-            <div class="container-fluid">
-                <div class="container_background">
+            <div style="padding-top: 70px"></div>
+            <div class="container-fluid" style="background-color: #E9EAED;">
                 <div class="row">
-                    <div class="col-md-offset-1 col-md-9">
+                    <div class="col-xs-11 col-sm-11 col-md-offset-1 col-md-9 col-lg-offset-1 col-lg-9 ">
                         <?php echo $contents; ?>                            
                     </div>
-                    <div class="col-md-2">
-                        <div class="ticker_friends_wrapper">
-                        <?php $this->load->view("member/sections/right_column_ticker_friends"); ?>
+                    <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2">
+                        <div style="position: fixed; right: 0; top: 60px; z-index: 19; height: 90%;">
+                            <?php $this->load->view("member/sections/right_column_ticker_friends"); ?>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </body>
