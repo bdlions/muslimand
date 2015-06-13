@@ -66,7 +66,7 @@
         </div>
         <div class="row form-group">
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/about_icons/massenger.png"  > 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/messenger.png"  > 
             </div>
             <div class="col-md-10">
                 <a href="#"><?php echo $company->company; ?></a>

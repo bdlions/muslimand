@@ -1,7 +1,7 @@
 <div class="pagelet" style="border: 1px solid lightgray;">
     <div class="row">
         <div class="col-md-2">
-            <img src="<?php echo base_url(); ?>resources/images/about_box_1.png" width="20" height="20">
+            <img src="<?php echo base_url(); ?>resources/images/about_box_1.png" >
         </div>
         <div class="col-md-10">
             <span>Works at <a style="color: #3B59A9; font-size: 12;" href="#">Sampan-IT</a></span>
@@ -10,7 +10,7 @@
     <div class="row form-group"></div>
     <div class="row">
         <div class="col-md-2">
-            <img src="<?php echo base_url(); ?>resources/images/about_box_2.png" width="20" height="20">
+            <img src="<?php echo base_url(); ?>resources/images/about_box_2.png" >
         </div>
         <div class="col-md-10">
             <div class="row">
@@ -51,7 +51,7 @@
     <div class="row form-group"></div>
     <div class="row">
         <div class="col-md-2">
-            <img src="<?php echo base_url(); ?>resources/images/about_box_1.png"  width="20" height="20">
+            <img src="<?php echo base_url(); ?>resources/images/about_box_5.png"  >
         </div>
         <div class="col-md-10">
             <span>Followed by <a style="color: #3B59A9; font-size: 12;" href="#">6 people</a></span>
