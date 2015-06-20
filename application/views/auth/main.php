@@ -83,7 +83,7 @@
                 <div class="row form-group">
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                         <label style="color: #703684; font-size: 15px; font-weight: bold;">Gender</label>
-                        <?php echo form_dropdown('gender', $gender, 0, 'class=form-control id=gender_id'); ?>
+                        <?php echo form_dropdown('gender_list', $gender_list, 0, 'class=form-control id=gender_id'); ?>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                         <label style="color: #703684; font-size: 15px; font-weight: bold;">Country</label>

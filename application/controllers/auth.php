@@ -11,7 +11,8 @@ class Auth extends CI_Controller {
         $this->load->library('utils');
         $this->load->helper('url');
         $this->load->model('common_mongodb_model');
-        $this->load->model('basic_profile_model');
+        $this->load->model('basic_profile_mongodb_model');
+        $this->load->model('landing_page_model');
         // Load MongoDB library instead of native db driver if required
         $this->config->item('use_mongodb', 'ion_auth') ?
                         $this->load->library('mongo_db') :
@@ -60,20 +61,26 @@ class Auth extends CI_Controller {
     //log the user in
     function login() {
         $this->data['title'] = "Login";
+        $countryAndRelisionList = $this->landing_page_model->get_countries_religions();
+        
+//        var_dump($countryAndRelisionList);
+//        exit();
+        
         $country_list = array();
         $religion_list = array();
         $gender_list[] = array();
         $gender = $this->utils->get_gender();
-        $countries = $this->common_mongodb_model->get_all_countries();
-        $religions = $this->common_mongodb_model->get_all_religions();
+//        $country_list = $countryAndRelisionList->countryList;
+//        $religion_list = $countryAndRelisionList->religionList;
+//        
         foreach ($gender as $key => $gender_info) {
             $gender_list[$key] = $gender_info;
         }
-        foreach ($countries as $country_info) {
-            $country_list[$country_info['code']] = $country_info['title'];
+        foreach ($countryAndRelisionList->countryList as $country_info) {
+            $country_list[$country_info->code] = $country_info->title;
         }
-        foreach ($religions as $religion_info) {
-        $religion_list[$religion_info['id']] = $religion_info['title'];  
+        foreach ($countryAndRelisionList->religionList as $religion_info) {
+            $religion_list[$religion_info->id] = $religion_info->title;
         }
         if ($this->input->post('register_btn') != null) {
             //validate form input to register
@@ -98,7 +105,7 @@ class Auth extends CI_Controller {
                     $country_title = $country_list[$country_code];
                 }
                 if ($gender_id != null) {
-                    $gender_title =$gender_list[$gender_id];
+                    $gender_title = $gender_list[$gender_id];
                 }
                 $users_country = array(
                     'code' => $country_code,
@@ -109,30 +116,28 @@ class Auth extends CI_Controller {
                     'last_name' => $this->input->post('r_last_name'),
                     'users_country' => json_encode($users_country)
                 );
-                $basic_info = array(
-                   'birthday_day' => $this->input->post('birthday_day'), 
-                   'birthday_month' => $this->input->post('birthday_month'), 
-                   'birthday_year' => $this->input->post('birthday_year'), 
-                );
-                $gender= array(
+                $gender = array(
                     'id' => $gender_id,
                     'title' => $gender_title
-                    
                 );
+                $basic_info = array(
+                    'birthday_day' => $this->input->post('birthday_day'),
+                    'birthday_month' => $this->input->post('birthday_month'),
+                    'birthday_year' => $this->input->post('birthday_year'),
+                    'gender' => $gender,
+                );
+                
                 $id = $this->ion_auth->register($username, $password, $email, $additional_data);
                 if ($id != null) {
                     $additional_data = array(
                         'user_id' => $id,
-                        'gender' =>  json_encode($gender), 
-                        'basic_info' => json_encode($basic_info)
+                        'basic_info' => json_encode($basic_info),
                     );
-                    var_dump($id);
-                $result = $this->basic_profile_model->add_basic_info($id,$additional_data);
-                var_dump($result);
-                if($result != null){
-                $this->ion_auth->set_message('account_creation_successful');
-                $this->data['image'] ="success_img.png" ;
-                }
+                    $result = $this->basic_profile_mongodb_model->add_basic_info($id, $additional_data);
+                    if ($result != null) {
+                        $this->ion_auth->set_message('account_creation_successful');
+                        $this->data['image'] = "success_img.png";
+                    }
                     //check to see if we are creating the user
                     //redirect them back to the admin page
                     $this->session->set_flashdata('message', $this->ion_auth->messages());
@@ -225,7 +230,7 @@ class Auth extends CI_Controller {
             $this->data['month_list'] = $this->utils->get_month_list();
             $this->data["date_list"] = $this->utils->get_date_list();
             $this->data["year_list"] = $this->utils->get_year_list();
-            
+
             $this->template->load("templates/home_tmpl", LOGIN_VIEW, $this->data);
             //$this->_render_page('auth/login', $this->data);
         }
