@@ -1,6 +1,6 @@
 <div class="row">
     <!--LEFT_COLUMN-->
-    <div class="col-md-2">
+    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
         <div class="row form-group"></div>
         <div class="row">
             <div class="col-xs-12">
@@ -26,7 +26,7 @@
         <div class="row form-group"></div>
     </div>
     <!--MIDDLE COLUMN-->
-    <div class="col-md-7">
+    <div class="col-md-7 col-xs-12 col-sm-12 col-lg-7">
         <div class="row form-group"></div>
         <?php $this->load->view("member/pagelets/post_status"); ?>
         <div class="row form-group"></div>

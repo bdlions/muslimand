@@ -36,12 +36,12 @@
             <div style="padding-top: 70px"></div>
             <div class="container-fluid" style="background-color: #E9EAED;">
                 <div class="row">
-                    <div class="col-xs-8 col-sm-9 col-md-offset-1 col-md-9 col-lg-offset-1 col-lg-9 ">
+                    <div class="col-md-offset-1 col-md-9">
                         <?php echo $contents; ?>                            
                     </div>
-                    <div class="col-xs-4 col-sm-3 col-md-1 col-lg-1">
-                        <div style="position: fixed; right: 0; top: 60px; height: 610px;">
-                        <?php $this->load->view("member/sections/right_column_ticker_friends"); ?>
+                    <div class="col-md-2">
+                        <div style="position: fixed; height: 610px;">
+                            <?php $this->load->view("member/sections/right_column_ticker_friends"); ?>
                         </div>
                     </div>
                 </div>

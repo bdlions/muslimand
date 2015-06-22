@@ -40,7 +40,7 @@
                 <div class="row">
                     <div class="col-md-offset-4 col-md-3">
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default dropdown-toggle button-custom" data-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 Everyone
                                 <span class="caret"></span>
                             </button>
@@ -59,16 +59,14 @@
                     <div class="col-md-3">
                         <input type="button" class="default_button form-control" value="Share Video" >
                     </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 <script>
     function open_modal_share_content() {
         $('#modal_share_content').modal('show');
     }
-
-   
 </script>

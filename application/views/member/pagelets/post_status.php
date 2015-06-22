@@ -32,10 +32,7 @@
     </div>
     <div id="category_status" class="row form-group">
         <div class="col-md-12">
-            <div class="form-control" style="overflow: hidden; min-height: 66px; padding: 0px; margin: 0px;">
-                <div contenteditable="true" placeholder="Share Your Status" style="overflow-x: hidden; overflow-y: scroll; min-height: 66px; margin-right: -30px">
-                </div>
-            </div>
+            <textarea class="form-control form_control_custom_style textarea_custom_style"></textarea>
         </div>
     </div>
 
