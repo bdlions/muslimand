@@ -1,21 +1,25 @@
 <script type="text/javascript">
     $(function(){
+       
         $("#college_update_btn").on('click',function(){
               $.ajax({
                 dataType: 'json',
                 type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_colleges',
+                url: '<?php echo base_url(); ?>' + 'basic_profile/add_college',
                 data: { 
                     bp_college : $("#bp_college").val(),
                     bp_college_des : $("#bp_college_des").val(),
                 },
                 success: function(data) {
-                    alert(data.message);
+                    $("#college_tmpl_id").html(tmpl("tmpl_colleges", data.college) + $("#college_tmpl_id").html());
+                    $("#college").hide();
+                    $("#subcategory_college").show();
                 }
             });
         });
     });
 </script>
+
 <div id="college" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">

@@ -49,23 +49,40 @@
     });
 
     $('#category_career').on('click', function () {
-        $('#about_overview').hide();
-        $('#about_place').hide();
-        $('#about_contact_info').hide();
-        $('#about_family_relation').hide();
-        $('#about_details').hide();
-        $('#work').hide();
-        $('#professional_skill').hide();
-        $('#university').hide();
-        $('#college').hide();
-        $('#school').hide();
-        $('#about_career').show();
-        $('#subcategory_work').show();
-        $('#subcategory_professional_skill').show();
-        $('#subcategory_university').show();
-        $("#subcategory_college").show();
-        $('#subcategory_school').show();
-        
+        $.ajax({
+            dataType: 'json',
+            type: "POST",
+            url: '<?php echo base_url(); ?>' + 'basic_profile/get_works_education',
+            data: {
+            },
+            success: function (data) {
+                $("#work_place_tmpl_id").html(tmpl("tmpl_work_places", data.work_places));
+                $("#p_skill_tmpl_id").html(tmpl("tmpl_p_skills", data.p_skills));
+                $("#uv_tmpl_id").html(tmpl("tmpl_universities", data.universities));
+                $("#college_tmpl_id").html(tmpl("tmpl_colleges", data.colleges));
+                $("#school_tmpl_id").html(tmpl("tmpl_schools", data.schools));
+                $('#about_overview').hide();
+                $('#about_place').hide();
+                $('#about_contact_info').hide();
+                $('#about_family_relation').hide();
+                $('#about_details').hide();
+                $('#work').hide();
+                $('#professional_skill').hide();
+                $('#university').hide();
+                $('#college').hide();
+                $('#school').hide();
+                $('#about_career').show();
+                $('#subcategory_work').show();
+                $('#subcategory_professional_skill').show();
+                $('#subcategory_university').show();
+                $("#subcategory_college").show();
+                $('#subcategory_school').show();
+            }
+        });
+
+
+
+
     });
 
     $('#category_place').on('click', function () {

@@ -8,7 +8,7 @@ class Member extends CI_Controller {
         parent::__construct();
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
-        $this->load->model('basic_profile_model');
+        $this->load->model('basic_profile_mongodb_model');
         $this->load->helper('url');
 
         // Load MongoDB library instead of native db driver if required
@@ -37,12 +37,11 @@ class Member extends CI_Controller {
     }
 
     function about() {
-            $user_id = "55605ee98267405c0700002a";
-            $basic_info_array = $this->basic_profile_model->get_basic_info($user_id);
+            $user_id = "5563101d8267404011000029";
+            $basic_info_array = $this->basic_profile_mongodb_model->get_basic_info($user_id);
             if (!empty($basic_info_array) && is_array($basic_info_array)) {
             $basic_info = $basic_info_array[0];
-//            var_dump($basic_info);
-            $this->data['basic_info']=$basic_info ;
+            $this->data['basic_info']= $basic_info ;
         }
 
         $this->data['bp_company'] = array(

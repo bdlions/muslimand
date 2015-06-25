@@ -2,3 +2,5 @@ mongoimport --host 127.0.0.1 --port 27017 --collection countries --db muslimand_
 mongoimport --host 127.0.0.1 --port 27017 --collection religions --db muslimand_db --file religions.json --jsonArray
 mongoimport --host 127.0.0.1 --port 27017 --collection users --db muslimand_db --file users.json
 mongoimport --host 127.0.0.1 --port 27017 --collection groups --db muslimand_db --file groups.json
+mongoimport --host 127.0.0.1 --port 27017 --collection user_profiles --db muslimand_db --file user_profiles.json
+mongoimport --host 127.0.0.1 --port 27017 --collection video_categories --db muslimand_db --file video_categories.json --jsonArray

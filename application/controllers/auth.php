@@ -61,14 +61,10 @@ class Auth extends CI_Controller {
     //log the user in
     function login() {
         $this->data['title'] = "Login";
-        $countryAndRelisionList = $this->landing_page_model->get_countries_religions();
-        
-//        var_dump($countryAndRelisionList);
-//        exit();
-        
         $country_list = array();
         $religion_list = array();
         $gender_list[] = array();
+        $countryAndRelisionList = $this->landing_page_model->get_countries_religions();
         $gender = $this->utils->get_gender();
 //        $country_list = $countryAndRelisionList->countryList;
 //        $religion_list = $countryAndRelisionList->religionList;

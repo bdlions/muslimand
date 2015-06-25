@@ -23,8 +23,10 @@ class Welcome extends CI_Controller {
         }
 	public function index()
 	{
-            $this->curl->create('http://localhost:8084/dataservice/generalservice/getallcountries');
-            //$this->curl->post(array("name" => "nazmul"));
+            $this->curl->create('http://localhost:8080/dataservice/ctrl/arrayTest');
+            $param = array("name" => "Alamgir", "workList" => array("ComapnyName1" => "Shampan", "ComapnyName2" => "BBC"), "userId" => 123);
+            
+            $this->curl->post(array("input" => json_encode($param)));
             print_r($this->curl->execute());
             
 	}

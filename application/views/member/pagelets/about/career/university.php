@@ -1,21 +1,36 @@
 <script type="text/javascript">
-    $(function(){
-        $("#uv_update_btn").on('click',function(){
-              $.ajax({
+    $(function () {
+        $("#uv_update_btn").on('click', function () {
+            $.ajax({
                 dataType: 'json',
                 type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_universities',
-                data: { 
-                    bp_university : $("#bp_university").val(),
-                    bp_university_des : $("#bp_university_des").val(),
+                url: '<?php echo base_url(); ?>' + 'basic_profile/add_university',
+                data: {
+                    bp_university: $("#bp_university").val(),
+                    bp_university_des: $("#bp_university_des").val(),
                 },
-                success: function(data) {
-                    alert(data.message);
+                success: function (data) {
+                    $("#uv_tmpl_id").html(tmpl("tmpl_universities", data.university) + $("#uv_tmpl_id").html());
+                    $("#about_overview_uiversity").html(tmpl("tmpl_uv_for_overview", data.university));
+                    $("#university").hide();
+                    $("#subcategory_university").show();
                 }
             });
         });
     });
 </script>
+<script type="text/x-tmpl" id="tmpl_uv_for_overview">
+{% var i=0, university = ((o instanceof Array) ? o[i++] : o); %}
+           <div class="row form-group">
+                <div class="col-md-2">
+                    <img src="<?php echo base_url(); ?>resources/images/Food.jpg"  width="40" height="40"> 
+                </div>
+                <div class="col-md-10">
+                    Studied at <a href=""><?php echo '{%= university.university%}' ?></a>
+                </div>
+            </div>
+</script>
+
 <div id="university" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">
@@ -29,7 +44,7 @@
                     <span class="subcategory_label_style">University</span>
                 </div>
                 <div class="col-md-8">
-                     <?php echo form_input($bp_university + array('class' => 'form-control')); ?>
+                    <?php echo form_input($bp_university + array('class' => 'form-control')); ?>
                 </div>
             </div>
             <div class="row form-group">
@@ -69,7 +84,7 @@
                     <span class="subcategory_label_style">Description</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_textarea($bp_university_des + array('class' => 'form-control'));?>
+                    <?php echo form_textarea($bp_university_des + array('class' => 'form-control')); ?>
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -87,7 +102,6 @@
                         </div>
                         <div class="col-md-4">
                             <?php echo form_input($uv_update_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
-                            <!--<button class="btn btn-default pull-right form-control" style="background-color: #703684; color: white; margin-right: -15px;">Save Updates</button>-->
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>

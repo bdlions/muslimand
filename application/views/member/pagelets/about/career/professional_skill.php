@@ -4,19 +4,19 @@
               $.ajax({
                 dataType: 'json',
                 type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_professional_skills',
+                url: '<?php echo base_url(); ?>' + 'basic_profile/add_professional_skill',
                 data: { 
                     bp_profession_skill : $("#bp_profession_skill").val()
                 },
                 success: function(data) {
-                    alert(data.message);
+                    $("#p_skill_tmpl_id").html(tmpl("tmpl_p_skills", data.p_skill) + $("#p_skill_tmpl_id").html());
+                    $("#professional_skill").hide();
+                    $("#subcategory_professional_skill").show();
                 }
             });
         });
     });
 </script>
-
-
 <div id="professional_skill" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">

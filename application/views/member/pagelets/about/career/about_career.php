@@ -1,15 +1,166 @@
-<?php
-$work_places = json_decode($basic_info['work_places']);
-$work_place_list = array_reverse($work_places);
-$prefessional_skills = json_decode($basic_info['p_skills']);
-$prefessional_skill_list = array_reverse($prefessional_skills);
-$universities = json_decode($basic_info['universities']);
-$university_list = array_reverse($universities);
-$colleges = json_decode($basic_info['colleges']);
-$college_list = array_reverse($colleges);
-$schools = json_decode($basic_info['schools']);
-$school_list = array_reverse($schools);
-?>
+
+<script type="text/javascript" src="<?php echo base_url() ?>resources/bootstrap3/js/tmpl.min.js"></script>
+
+<script type="text/x-tmpl" id="tmpl_work_places">
+    {% var i=0, work_place = ((o instanceof Array) ? o[i++] : o); %}
+    {% while(work_place){ %}
+<div class="row form-group">
+    <div class="col-md-2">
+        <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-8">
+                <a href=""><?php echo '{%= work_place.company%}' ?></a>
+            </div>
+            <div class="col-md-4">
+                <div class="pull-right">
+                    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                 <?php echo '{%= work_place.position%}' ?>,<?php echo '{%= work_place.city %}'; ?>,<?php echo '{%= work_place.description %}'; ?>
+            </div>
+        </div>
+    </div>
+</div> 
+    {% work_place = ((o instanceof Array) ? o[i++] : null); %}
+    {% } %}
+</script>
+<script type="text/x-tmpl" id="tmpl_p_skills">
+    {% var i=0, p_skill = ((o instanceof Array) ? o[i++] : o); %}
+    {% while(p_skill){ %}
+    <div class="row from-group">
+    <div class="col-md-8">
+    <a style="font-weight: bold" href=""><?php echo '{%= p_skill.pSkill%}' ?></a>
+    </div>
+    <div class="col-md-4">
+    <div class="pull-right">
+    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    {% p_skill = ((o instanceof Array) ? o[i++] : null); %}
+    {% } %}
+</script>
+<script type="text/x-tmpl" id="tmpl_universities">
+    {% var i=0, university = ((o instanceof Array) ? o[i++] : o); %}
+    {% while(university){ %}
+    <div class="row form-group">
+    <div class="col-md-2">
+    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+    </div>
+    <div class="col-md-10">
+    <div class="row">
+    <div class="col-md-8">
+    <a href=""><?php echo '{%= university.university%}' ?></a>
+    </div>
+    <div class="col-md-4">
+    <div class="pull-right">
+    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12">
+    <?php echo '{%= university.startDate%}' ?> - <?php echo '{%= university.endDate%}' ?>.<?php echo '{%= university.description%}' ?>
+    </div>
+    </div>
+    </div>
+    </div> 
+    {% university = ((o instanceof Array) ? o[i++] : null); %}
+    {% } %}
+</script>
+
+<script type="text/x-tmpl" id="tmpl_colleges">
+    {% var i=0, college = ((o instanceof Array) ? o[i++] : o); %}
+    {% while(college){ %}
+    <div class="row form-group">
+    <div class="col-md-2">
+        <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-8">
+                <a href=""><?php echo '{%= college.college%}' ?></a>
+            </div>
+            <div class="col-md-4">
+                <div class="pull-right">
+                    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+<?php echo '{%= college.startDate%}' ?> - <?php echo '{%= college.endDate%}' ?>.<?php echo '{%= college.description%}' ?>
+            </div>
+        </div>
+    </div>
+</div> 
+    {% college = ((o instanceof Array) ? o[i++] : null); %}
+    {% } %}
+</script>
+<script type="text/x-tmpl" id="tmpl_schools">
+    {% var i=0, school = ((o instanceof Array) ? o[i++] : o); %}
+    {% while(school){ %}
+<div class="row form-group">
+    <div class="col-md-2">
+        <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-8">
+                <a href=""><?php echo '{%= school.school%}' ?></a>
+            </div>
+            <div class="col-md-4">
+                <div class="pull-right">
+                    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                 <?php echo '{%= school.startDate%}'  ?> - <?php echo '{%= school.endDate%}'  ?>.<?php echo '{%= school.description%}' ?>
+            </div>
+        </div>
+    </div>
+</div> 
+    {% school = ((o instanceof Array) ? o[i++] : null); %}
+    {% } %}
+</script>
 
 <div id="about_career" style="display: none;">
     <div class="row">
@@ -33,44 +184,8 @@ $school_list = array_reverse($schools);
     </div>
 
     <div class="pagelet_divider"></div>
-    <div id="work_places_tmpl_add">
-        <div id="work_place">
-            <?php foreach ($work_place_list as $work_place) { ?>
-                <div class="row form-group">
-                    <div class="col-md-2">
-                        <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
-                    </div>
-                    <div class="col-md-10">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <a href=""><?php echo $work_place->company; ?></a>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="pull-right">
-                                    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                December 1, 2014 to present ·<?php echo $work_place->city; ?>, Bangladesh
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                http://sampan-it.com/
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
-        </div>
+    <div id="work_place_tmpl_id">
+
     </div>
     <div class="row padding_top_over_row_70px">
         <div class="col-md-12">
@@ -93,25 +208,9 @@ $school_list = array_reverse($schools);
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <?php foreach ($prefessional_skill_list as $p_skill) { ?>
-        <div class="row form-group">
-            <div class="col-md-8">
-                <a style="font-weight: bold" href=""><?php echo $p_skill->p_skill; ?></a>
-            </div>
-            <div class="col-md-4">
-                <div class="pull-right">
-                    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    <?php } ?>
+    <div id="p_skill_tmpl_id">
 
+    </div>
     <div class="row padding_top_over_row_70px">
         <div class="col-md-12">
             <span class="header_label_style">University</span>
@@ -132,36 +231,9 @@ $school_list = array_reverse($schools);
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <?php foreach ($university_list as $university) { ?>
-        <div class="row form-group">
-            <div class="col-md-2">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
-            </div>
-            <div class="col-md-10">
-                <div class="row">
-                    <div class="col-md-8">
-                        <a href=""><?php echo $university->university; ?></a>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="pull-right">
-                            <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        Class of 2014 · <?php echo $university->description; ?>
-                    </div>
-                </div>
-            </div>
-        </div> 
-    <?php } ?>
+    <div id="uv_tmpl_id">
+
+    </div>
     <div class="row padding_top_over_row_70px">
         <div class="col-md-12">
             <span class="header_label_style">College</span>
@@ -182,36 +254,10 @@ $school_list = array_reverse($schools);
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <?php foreach ($college_list as $college) { ?>
-        <div class="row from-group">
-            <div class="col-md-2">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
-            </div>
-            <div class="col-md-10">
-                <div class="row">
-                    <div class="col-md-8">
-                        <a href=""><?php echo $college->college; ?></a>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="pull-right">
-                            <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        Class of 2008 ·<?php echo $college->description; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php } ?>
+    <div id="college_tmpl_id">
+        
+    </div>
+
     <div class="row padding_top_over_row_70px">
         <div class="col-md-12">
             <span class="header_label_style">School/High School</span>
@@ -232,59 +278,33 @@ $school_list = array_reverse($schools);
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <?php foreach ($school_list as $school) { ?>
-        <div class="row from-group">
-            <div class="col-md-2">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
-            </div>
-            <div class="col-md-10">
-                <div class="row">
-                    <div class="col-md-8">
-                        <a href=""><?php echo $school->school; ?></a>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="pull-right">
-                            <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        Class of 2006 · <?php echo $school->description; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php } ?>
+    <div id="school_tmpl_id">
+    </div>
 </div>
 
 
 
 <script>
-    $('#subcategory_work').on('click', function() {
-        $('#subcategory_work').hide();
-        $('#work').show();
-    });
-    $('#subcategory_professional_skill').on('click', function() {
-        $('#subcategory_professional_skill').hide();
-        $('#professional_skill').show();
-    });
-    $('#subcategory_university').on('click', function() {
-        $('#subcategory_university').hide();
-        $("#university").show();
-    });
-    $("#subcategory_college").on('click', function() {
-        $("#subcategory_college").hide();
-        $("#college").show();
-    });
-    $('#subcategory_school').on('click', function() {
-        $('#subcategory_school').hide();
-        $('#school').show();
-    });
+$('#subcategory_work').on('click', function () {
+    $('#subcategory_work').hide();
+    $('#work').show();
+});
+$('#subcategory_professional_skill').on('click', function () {
+    $('#subcategory_professional_skill').hide();
+    $('#professional_skill').show();
+});
+$('#subcategory_university').on('click', function () {
+    $('#subcategory_university').hide();
+    $("#university").show();
+});
+$("#subcategory_college").on('click', function () {
+    $("#subcategory_college").hide();
+    $("#college").show();
+});
+$('#subcategory_school').on('click', function () {
+    $('#subcategory_school').hide();
+    $('#school').show();
+});
 </script>
+
+

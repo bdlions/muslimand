@@ -161,6 +161,9 @@ class Mongo_db {
         }
         return ($this);
     }
+    public function select_one($key){
+        return $this->select(array($key), array());
+    }
 
     /**
      * 	--------------------------------------------------------------------------------
@@ -963,6 +966,7 @@ class Mongo_db {
             show_error("MongoDB command failed to execute: {$e->getMessage()}", 500);
         }
     }
+
 
     /**
      * 	--------------------------------------------------------------------------------
