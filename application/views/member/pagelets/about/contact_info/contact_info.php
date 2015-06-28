@@ -1,107 +1,334 @@
-<div id="contact_info" style="display: none;">
-    <div class="row">
-        <div class="col-md-offset-2 col-md-10">
-            <div class="row form-group">
-                <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style" aria-label="Close" onclick="close_window_7()"><span aria-hidden="true">&times;</span></button>   
+<div class="row">
+    <div class="col-md-offset-1 col-md-11">
+        <div class="row form-group">
+            <div class="col-md-12">
+                <label>Contact Information</label>
+            </div>
+        </div>
+        <div class="pagelet_divider"></div>
+        <div id="add_mobile" class="row form-group">
+            <div class="col-md-12">
+                <div class="cursor_holder_style">
+                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <a class="holder_style">Add Your Mobile/Phone</a>
                 </div>
             </div>
-            <div class="row padding_top_over_row form-group">
-                <div class="col-md-12">
-                    <label>Contact Information</label>
+        </div>
+        <div id="mobile" class="display_hidden contact_background">
+            <div class="row form-group">
+                <div class="col-md-4">
+                    <span class="subcategory_label_style">Mobile or Phone</span>
+                </div>
+                <div class="col-md-8">
+                    <input class="form-control" placeholder="Add Your Mobile or Phone Number">
                 </div>
             </div>
             <div class="pagelet_divider"></div>
-            <div class="row form-group">
-                <div class="col-md-4">
-                    <span class="subcategory_label_style">Mobile Phones</span>
-                </div>
-                <div class="col-md-8">
-                    <input class="form-control">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="row form-group">
+                        <div class="col-md-5">
+                            <select class="form-control" name="control">
+                                <option selected="1" value="0">Everyone</option>
+                                <option value="1">Friends</option>
+                                <option value="2">Friends of Friends</option>
+                                <option value="3">Only Me</option>
+                                <option value="4">Custom</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="cancel_mobile_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div id="add_address" class="row form-group">
+            <div class="col-md-12">
+                <div class="cursor_holder_style">
+                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <a class="holder_style">Add Your Address</a>
+                </div>
+            </div>
+        </div>
+        <div id="address" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Address</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control">
+                    <input class="form-control" placeholder="Add Your Address">
                 </div>
             </div>
+            <div class="pagelet_divider"></div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="row form-group">
+                        <div class="col-md-5">
+                            <select class="form-control" name="control">
+                                <option selected="1" value="0">Everyone</option>
+                                <option value="1">Friends</option>
+                                <option value="2">Friends of Friends</option>
+                                <option value="3">Only Me</option>
+                                <option value="4">Custom</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="cancel_address_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="add_website" class="row form-group">
+            <div class="col-md-12">
+                <div class="cursor_holder_style">
+                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <a class="holder_style">Add Your Website</a>
+                </div>
+            </div>
+        </div>
+        <div id="website" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Website</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control">
+                    <input class="form-control" placeholder="Add Your Website">
                 </div>
             </div>
+            <div class="pagelet_divider"></div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="row form-group">
+                        <div class="col-md-5">
+                            <select class="form-control" name="control">
+                                <option selected="1" value="0">Everyone</option>
+                                <option value="1">Friends</option>
+                                <option value="2">Friends of Friends</option>
+                                <option value="3">Only Me</option>
+                                <option value="4">Custom</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="cancel_website_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="add_email" class="row form-group">
+            <div class="col-md-12">
+                <div class="cursor_holder_style">
+                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <a class="holder_style">Add Your Email</a>
+                </div>
+            </div>
+        </div>
+        <div id="email" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Email</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control">
-                </div>
-            </div>
-            <div class="row padding_top_over_row form-group">
-                <div class="col-md-12">
-                    <label>Basic Information</label>
+                    <input class="form-control" placeholder="Add Your Email">
                 </div>
             </div>
             <div class="pagelet_divider"></div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="row form-group">
+                        <div class="col-md-5">
+                            <select class="form-control" name="control">
+                                <option selected="1" value="0">Everyone</option>
+                                <option value="1">Friends</option>
+                                <option value="2">Friends of Friends</option>
+                                <option value="3">Only Me</option>
+                                <option value="4">Custom</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="cancel_email_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <label>Basic Information</label>
+            </div>
+        </div>
+        <div class="pagelet_divider"></div>
+        <div id="add_birth_day" class="row form-group">
+            <div class="col-md-12">
+                <div class="cursor_holder_style">
+                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <a class="holder_style">Add Your BirthDay</a>
+                </div>
+            </div>
+        </div>
+        <div id="birth_day" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">BirthDay</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control">
+                    <input class="form-control" placeholder="Add Your BirthDay">
                 </div>
             </div>
+            <div class="pagelet_divider"></div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="row form-group">
+                        <div class="col-md-5">
+                            <select class="form-control" name="control">
+                                <option selected="1" value="0">Everyone</option>
+                                <option value="1">Friends</option>
+                                <option value="2">Friends of Friends</option>
+                                <option value="3">Only Me</option>
+                                <option value="4">Custom</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="cancel_birth_day_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="add_gender" class="row form-group">
+            <div class="col-md-12">
+                <div class="cursor_holder_style">
+                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <a class="holder_style">Add Your Gender</a>
+                </div>
+            </div>
+        </div>
+        <div id="gender" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Gender</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control">
+                    <input class="form-control" placeholder="Add Your Gender">
                 </div>
             </div>
+            <div class="pagelet_divider"></div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="row form-group">
+                        <div class="col-md-5">
+                            <select class="form-control" name="control">
+                                <option selected="1" value="0">Everyone</option>
+                                <option value="1">Friends</option>
+                                <option value="2">Friends of Friends</option>
+                                <option value="3">Only Me</option>
+                                <option value="4">Custom</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="cancel_gender_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="add_language" class="row form-group">
+            <div class="col-md-12">
+                <div class="cursor_holder_style">
+                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <a class="holder_style">Add Your Language</a>
+                </div>
+            </div>
+        </div>
+        <div id="language" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-4">
-                    <span class="subcategory_label_style">Languages</span>
+                    <span class="subcategory_label_style">Language</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control">
+                    <input class="form-control" placeholder="Add Your Language">
                 </div>
             </div>
+            <div class="pagelet_divider"></div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="row form-group">
+                        <div class="col-md-5">
+                            <select class="form-control" name="control">
+                                <option selected="1" value="0">Everyone</option>
+                                <option value="1">Friends</option>
+                                <option value="2">Friends of Friends</option>
+                                <option value="3">Only Me</option>
+                                <option value="4">Custom</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="cancel_language_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="add_religion" class="row form-group">
+            <div class="col-md-12">
+                <div class="cursor_holder_style">
+                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <a class="holder_style">Add Your Religion</a>
+                </div>
+            </div>
+        </div>
+        <div id="religion" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Religion</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control">
+                    <input class="form-control" placeholder="Add Your Religion">
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="pagelet_divider"></div>
-    <div class="row">
-        <div class="col-md-offset-2 col-md-10">
+            <div class="pagelet_divider"></div>
             <div class="row">
-                <div class="col-md-5">
-                    <select class="form-control" name="control">
-                        <option selected="1" value="0">Everyone</option>
-                        <option value="1">Friends</option>
-                        <option value="2">Friends of Friends</option>
-                        <option value="3">Only Me</option>
-                        <option value="4">Custom</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn btn-default pull-right form-control" style="background-color: #703684; color: white; margin-right: -15px;">Save Updates</button>
-                </div>
-                <div class="col-md-3">
-                    <button class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="row form-group">
+                        <div class="col-md-5">
+                            <select class="form-control" name="control">
+                                <option selected="1" value="0">Everyone</option>
+                                <option value="1">Friends</option>
+                                <option value="2">Friends of Friends</option>
+                                <option value="3">Only Me</option>
+                                <option value="4">Custom</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="cancel_religion_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -111,15 +338,90 @@
 <script>
     $(function () {
         $("#checkbox_id").prop("checked", true);
-//        if($("checkbox_id").is(":checked")
         $("#checkbox_id").on("click", function () {
             $("#present").hide();
             $("#working_year").show();
         });
 
+        // Mobile Number
+        $("#add_mobile").on("click", function () {
+            $("#add_mobile").hide();
+            $("#mobile").show();
+        });
+        $("#cancel_mobile_window").on("click", function () {
+            $("#mobile").hide();
+            $("#add_mobile").show();
+        });
+
+        // Address
+        $("#add_address").on("click", function () {
+            $("#add_address").hide();
+            $("#address").show();
+        });
+        $("#cancel_address_window").on("click", function () {
+            $("#address").hide();
+            $("#add_address").show();
+        });
+        
+        // Website
+        $("#add_website").on("click", function () {
+            $("#add_website").hide();
+            $("#website").show();
+        });
+        $("#cancel_website_window").on("click", function () {
+            $("#website").hide();
+            $("#add_website").show();
+        });
+        
+        // Email
+        $("#add_email").on("click", function () {
+            $("#add_email").hide();
+            $("#email").show();
+        });
+        $("#cancel_email_window").on("click", function () {
+            $("#email").hide();
+            $("#add_email").show();
+        });
+        // Birth Day
+        $("#add_birth_day").on("click", function () {
+            $("#add_birth_day").hide();
+            $("#birth_day").show();
+        });
+        $("#cancel_birth_day_window").on("click", function () {
+            $("#birth_day").hide();
+            $("#add_birth_day").show();
+        });
+
+        // Gender
+        $("#add_gender").on("click", function () {
+            $("#add_gender").hide();
+            $("#gender").show();
+        });
+        $("#cancel_gender_window").on("click", function () {
+            $("#gender").hide();
+            $("#add_gender").show();
+        });
+        
+        // Language
+        $("#add_language").on("click", function () {
+            $("#add_language").hide();
+            $("#language").show();
+        });
+        $("#cancel_language_window").on("click", function () {
+            $("#language").hide();
+            $("#add_language").show();
+        });
+        
+        // Religion
+        $("#add_religion").on("click", function () {
+            $("#add_religion").hide();
+            $("#religion").show();
+        });
+        $("#cancel_religion_window").on("click", function () {
+            $("#religion").hide();
+            $("#add_religion").show();
+        });
+
     });
-    function close_window_7() {
-        $('#contact_info').hide();
-        $('#subcategory_contact_info').show();
-    }
+
 </script>
