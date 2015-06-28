@@ -1,43 +1,28 @@
-<script type="text/javascript">
-    $(function () {
-        $("#home_town_btn").on('click', function () {
-            $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_home_town',
-                data: {
-                    home_town: $("#home_town").val(),
-                },
-                success: function (data) {
-                    $("#home_town_id").html(tmpl("tmpl_home_town", data.home_town));
-                    $("#home_town_add").show();
-                    $("#h_town").hide();
-                }
-            });
-        });
-    });
-</script>
-<div id="h_town" style="display: none;">
+<div id="relation" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button id="home_town_close" style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
+                    <button id="relationship_close " style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
+            <div class="row padding_top_over_row form-group">
+                <div class="col-md-12">
+                    <label>Relationship</label>
+                </div>
+            </div>
+            <div class="pagelet_divider"></div>
             <div class="row form-group">
                 <div class="col-md-4">
-                    <span class="subcategory_label_style">Home Town</span>
+                    <span class="subcategory_label_style">Relationship</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($home_town + array('class' => 'form-control')); ?>
+                    <input class="form-control">
                 </div>
             </div>
-        </div>
-    </div>
     <div class="pagelet_divider"></div>
     <div class="row">
-        <div class="col-md-offset-2 col-md-10">
+        <div class="col-md-12">
             <div class="row">
                 <div class="col-md-5">
                     <select class="form-control" name="control">
@@ -49,7 +34,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <?php echo form_input($home_town_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
+                    <button class="btn btn-default pull-right form-control" style="background-color: #703684; color: white; margin-right: -15px;">Save Updates</button>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>
@@ -58,12 +43,14 @@
         </div>
     </div>
 </div>
+    </div>
+</div>
 
 <script>
     $(function () {
-        $("#home_town_close").on("click", function () {
-            $('#h_town').hide();
-            $('#home_town_add').show();
+       
+         $("#relationship_close").on("click", function () {
+            $("#relation").hide();
         });
         $("#checkbox_id").prop("checked", true);
 //        if($("checkbox_id").is(":checked")
@@ -73,5 +60,8 @@
         });
 
     });
-
+    function close_window_8() {
+        $('#family_relation').hide();
+        $('#subcategory_family_relation').show();
+    }
 </script>

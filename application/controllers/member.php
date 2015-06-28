@@ -141,6 +141,17 @@ class Member extends CI_Controller {
             'id' => 'home_town',
             'type' => 'text',
         );
+        $this->data['relationship'] = array(
+            'name' => 'relationship',
+            'id' => 'relationship',
+            'type' => 'text',
+        );
+        $this->data['relationship_btn'] = array(
+            'name' => 'relationship_btn',
+            'id' => 'relationship_btn',
+            'type' => 'submit',
+            'value' => 'Save',
+        );
         $this->data['school_update_btn'] = array(
             'name' => 'school_update_btn',
             'id' => 'school_update_btn',

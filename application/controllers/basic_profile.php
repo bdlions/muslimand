@@ -57,7 +57,7 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_work_place() {
-        $user_id = "100105";
+        $user_id = "100157";
         if ($this->input->post()) {
             $response = array();
             $return_basic_info = array();
@@ -75,7 +75,7 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_professional_skill() {
-        $user_id = "100105";
+        $user_id = "100157";
         if ($this->input->post()) {
             $response = array();
             $user_professional_skill = new stdClass();
@@ -90,7 +90,7 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_university() {
-        $user_id = "100105";
+        $user_id = "100157";
         if ($this->input->post()) {
             $response = array();
             $response['message'] = '';
@@ -107,7 +107,7 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_college() {
-        $user_id = "100105";
+        $user_id = "100157";
         if ($this->input->post()) {
             $response = array();
             $basic_info = array();
@@ -124,7 +124,7 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_school() {
-        $user_id = "100105";
+        $user_id = "100157";
         if ($this->input->post()) {
             $response = array();
             $response['message'] = '';
@@ -142,7 +142,7 @@ class Basic_profile extends CI_Controller {
     function get_works_education() {
         $response = array();
         $response['message'] = 'hi there';
-        $user_id = "100105";
+        $user_id = "100157";
         $basic_p_info = $this->basic_profile_mongodb_model->get_works_education($user_id);
         $response['work_places'] = $basic_p_info->workPlaces;
         $response['colleges'] = $basic_p_info->colleges;
@@ -157,6 +157,12 @@ class Basic_profile extends CI_Controller {
         $user_id = "100157";
         $city_town = $this->basic_profile_mongodb_model->get_city_town($user_id);
         echo json_encode($city_town);
+    }
+    function get_family_relations() {
+        $response = array();
+        $user_id = "100157";
+        $family_relations = $this->basic_profile_mongodb_model->get_family_relations($user_id);
+        echo json_encode($family_relations);
     }
 
     function add_current_city() {

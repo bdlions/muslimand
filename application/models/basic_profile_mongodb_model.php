@@ -20,6 +20,11 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id));
         return json_decode($this->curl->execute());
     }
+      public function get_family_relations($user_id){
+        $this->curl->create($this->SERVICE_BASIC_PROFILE.'getFamilyRelation');
+        $this->curl->post(array("userId" => $user_id));
+        return json_decode($this->curl->execute());
+    }
     
     public function add_work_place($user_id ,$additional_data){
         $this->curl->create($this->SERVICE_BASIC_PROFILE.'addWorkPlace');

@@ -120,14 +120,25 @@
 
     });
     $('#category_family_relation').on('click', function () {
-        $('#about_overview').hide();
-        $('#about_career').hide();
-        $('#about_place').hide();
-        $('#about_contact_info').hide();
-        $('#about_details').hide();
-        $('#family_relation').hide();
-        $('#about_family_relation').show();
-        $('#subcategory_family_relation').show();
+        $.ajax({
+            dataType: 'json',
+            type: "POST",
+            url: '<?php echo base_url(); ?>' + 'basic_profile/get_family_relations',
+            data: {
+            },
+            success: function (data) {
+                $('#about_family_relation').show();
+                $("#relationship_add").html(tmpl("tmpl_relationship_status", data.basicInfo));
+                $("#family_member_add").html(tmpl("tmpl_family_members", data.basicInfo.familyMember));
+                $('#about_overview').hide();
+                $('#about_career').hide();
+                $('#about_place').hide();
+                $('#about_contact_info').hide();
+                $('#about_details').hide();
+                $('#family_relation').hide();
+                $('#subcategory_family_relation').show();
+            }
+        });
     });
 
     $('#category_details').on('click', function () {
