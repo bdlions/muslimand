@@ -1,4 +1,22 @@
-<div id="place" style="display: none;">
+<script type="text/javascript">
+    $(function () {
+        $("#current_city_btn").on('click', function () {
+            $.ajax({
+                dataType: 'json',
+                type: "POST",
+                url: '<?php echo base_url(); ?>' + 'basic_profile/add_current_city',
+                data: {
+                    current_city: $("#current_city").val(),
+                },
+                success: function (data) {
+                    $("#current_city_id").html(tmpl("tmpl_current_city", data.current_city));
+                }
+            });
+        });
+    });
+</script>
+
+<div id="c_city" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">
             <div class="row form-group">
@@ -11,15 +29,7 @@
                     <span class="subcategory_label_style">Current City</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control">
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col-md-4">
-                    <span class="subcategory_label_style">HomeTown</span>
-                </div>
-                <div class="col-md-8">
-                    <input class="form-control">
+                    <?php echo form_input($current_city + array('class' => 'form-control')); ?>
                 </div>
             </div>
         </div>
@@ -38,7 +48,8 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-default pull-right form-control" style="background-color: #703684; color: white; margin-right: -15px;">Save Updates</button>
+                    <?php echo form_input($current_city_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
+                    <!--<button class="btn btn-default pull-right form-control" style="background-color: #703684; color: white; margin-right: -15px;">Save Updates</button>-->
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>
@@ -59,7 +70,7 @@
 
     });
     function close_window_6() {
-        $('#place').hide();
-        $('#subcategory_place').show();
+        $('#current_city').hide();
+        $('#current_city_add').show();
     }
 </script>

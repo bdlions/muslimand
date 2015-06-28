@@ -86,14 +86,26 @@
     });
 
     $('#category_place').on('click', function () {
-        $('#about_overview').hide();
-        $('#about_career').hide();
-        $('#about_contact_info').hide();
-        $('#about_family_relation').hide();
-        $('#about_details').hide();
-        $('#place').hide();
-        $('#about_place').show();
-        $('#subcategory_place').show();
+        $.ajax({
+            dataType: 'json',
+            type: "POST",
+            url: '<?php echo base_url(); ?>' + 'basic_profile/get_city_town',
+            data: {
+            },
+            success: function (data) {
+                $("#current_city_id").html(tmpl("tmpl_current_city", data.basicInfo.city));
+                $("#home_town_id").html(tmpl("tmpl_home_town", data.basicInfo.town));
+                $('#about_overview').hide();
+                $('#about_career').hide();
+                $('#about_contact_info').hide();
+                $('#about_family_relation').hide();
+                $('#about_details').hide();
+                $('#place').hide();
+                $('#about_place').show();
+                $('#subcategory_place').show();
+            }
+        });
+
     });
 
     $('#category_contact_info').on('click', function () {

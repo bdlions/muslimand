@@ -131,9 +131,31 @@ class Member extends CI_Controller {
             'cols' => 30,
             'type' => 'text',
         );
+        $this->data['current_city'] = array(
+            'name' => 'current_city',
+            'id' => 'current_city',
+            'type' => 'text',
+        );
+        $this->data['home_town'] = array(
+            'name' => 'home_town',
+            'id' => 'home_town',
+            'type' => 'text',
+        );
         $this->data['school_update_btn'] = array(
             'name' => 'school_update_btn',
             'id' => 'school_update_btn',
+            'type' => 'submit',
+            'value' => 'Save',
+        );
+        $this->data['current_city_btn'] = array(
+            'name' => 'current_city_btn',
+            'id' => 'current_city_btn',
+            'type' => 'submit',
+            'value' => 'Save',
+        );
+        $this->data['home_town_btn'] = array(
+            'name' => 'home_town_btn',
+            'id' => 'home_town_btn',
             'type' => 'submit',
             'value' => 'Save',
         );
