@@ -57,7 +57,7 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_work_place() {
-        $user_id = "100147";
+        $user_id = "100157";
         if ($this->input->post()) {
             $response = array();
             $return_basic_info = array();
@@ -75,7 +75,7 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_professional_skill() {
-        $user_id = "100147";
+        $user_id = "100157";
         if ($this->input->post()) {
             $response = array();
             $user_professional_skill = new stdClass();
@@ -90,7 +90,7 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_university() {
-        $user_id = "100147";
+        $user_id = "100157";
         if ($this->input->post()) {
             $response = array();
             $response['message'] = '';
@@ -107,7 +107,7 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_college() {
-        $user_id = "100147";
+        $user_id = "100157";
         if ($this->input->post()) {
             $response = array();
             $basic_info = array();
@@ -124,7 +124,7 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_school() {
-        $user_id = "100147";
+        $user_id = "100157";
         if ($this->input->post()) {
             $response = array();
             $response['message'] = '';
@@ -142,53 +142,81 @@ class Basic_profile extends CI_Controller {
     function get_works_education() {
         $response = array();
         $response['message'] = '';
-        $user_id = "100147";
+        $user_id = "100157";
         $basic_p_info = $this->basic_profile_mongodb_model->get_works_education($user_id);
-        if(!empty($basic_p_info)){
-        $response['work_places'] = $basic_p_info->workPlaces;
-        $response['colleges'] = $basic_p_info->colleges;
-        $response['universities'] = $basic_p_info->universities;
-        $response['schools'] = $basic_p_info->schools;
-        $response['p_skills'] = $basic_p_info->pSkills;
+        if (!empty($basic_p_info)) {
+            $response['work_places'] = $basic_p_info->workPlaces;
+            $response['colleges'] = $basic_p_info->colleges;
+            $response['universities'] = $basic_p_info->universities;
+            $response['schools'] = $basic_p_info->schools;
+            $response['p_skills'] = $basic_p_info->pSkills;
         }
         echo json_encode($response);
     }
 
     function get_city_town() {
         $response = array();
-        $user_id = "100147";
+        $user_id = "100157";
         $city_town = $this->basic_profile_mongodb_model->get_city_town($user_id);
-        if(!empty($city_town)){
-        $response['city_town'] = $city_town;
+        if (!empty($city_town)) {
+            $response['city_town'] = $city_town;
         }
         echo json_encode($response);
     }
+
+    function get_contact_basic_info() {
+        $response = array();
+        $user_id = "100157";
+        $basic_info = $this->basic_profile_mongodb_model->get_contact_basic_info($user_id);
+        if (!empty($basic_info)) {
+            $response['basic_info'] = $basic_info;
+        }
+        var_dump($response);exit;
+        echo json_encode($response);
+    }
+
     function get_family_relations() {
         $response = array();
-        $user_id = "100147";
+        $user_id = "100157";
         $family_relations = $this->basic_profile_mongodb_model->get_family_relations($user_id);
-        echo json_encode($family_relations);
+        if (!empty($family_relations)) {
+            $response['familyRelations'] = $family_relations;
+        }
+        echo json_encode($response);
     }
 
     function add_current_city() {
         $response = array();
-        $user_id = "100147";
+        $user_id = "100157";
         $user_current_city = new stdClass();
         $user_current_city->cityName = $this->input->post('current_city');
-        $result = $this->basic_profile_mongodb_model->add_current_city($user_id,$user_current_city);
-        if($result != null){
-            $response["current_city"] = $user_current_city ;
+        $result = $this->basic_profile_mongodb_model->add_current_city($user_id, $user_current_city);
+        if ($result != null) {
+            $response["current_city"] = $user_current_city;
         }
         echo json_encode($response);
     }
+
     function add_home_town() {
         $response = array();
-        $user_id = "100147";
+        $user_id = "100157";
         $user_home_town = new stdClass();
         $user_home_town->townName = $this->input->post('home_town');
-        $result = $this->basic_profile_mongodb_model->add_home_town($user_id,$user_home_town);
-        if($result != null){
-            $response["home_town"] = $user_home_town ;
+        $result = $this->basic_profile_mongodb_model->add_home_town($user_id, $user_home_town);
+        if ($result != null) {
+            $response["home_town"] = $user_home_town;
+        }
+        echo json_encode($response);
+    }
+
+    function add_relationship_status() {
+        $response = array();
+        $user_id = "100157";
+        $user_relationship_status = new stdClass();
+        $user_relationship_status->relationshipStatus = $this->input->post('relationship');
+        $result = $this->basic_profile_mongodb_model->add_relationship_status($user_id, $user_relationship_status);
+        if ($result != null) {
+            $response["relation_Status"] = $user_relationship_status;
         }
         echo json_encode($response);
     }

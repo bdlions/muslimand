@@ -1,8 +1,7 @@
-<div class="row form-group">
-    <div class="col-md-4">
-        Mobile Phones
-    </div>
-    <div class="col-md-4">
+<script type="text/x-tmpl" id="tmpl_contact_info">
+    {% var i=0, basic_info = ((o instanceof Array) ? o[i++] : o); %}
+    {% while(basic_info){ %}
+        <div class="col-md-4">
         <div class="row">
             <div class="col-md-12">
                 01912314466 
@@ -13,6 +12,18 @@
                 01675393840
             </div>
         </div>
+    </div>
+
+    {% basic_info = ((o instanceof Array) ? o[i++] : null); %}
+    {% } %}
+</script>
+
+
+<div class="row form-group">
+    <div class="col-md-4">
+        Mobile Phones
+    </div>
+    <div id="mobile_phone_id">
     </div>
     <div class="col-md-4">
         <div class="pull-right">
@@ -87,7 +98,7 @@
     <div class="col-md-4">
         <div class="row">
             <div class="col-md-12">
-               nazmulislamredoy@gmail.com
+                nazmulislamredoy@gmail.com
             </div>
         </div>
         <div class="row">
@@ -114,7 +125,7 @@
     <div class="col-md-4">
         <div class="row">
             <div class="col-md-12">
-              09.03.1988
+                09.03.1988
             </div>
         </div>
         <div class="row">
@@ -141,7 +152,7 @@
     <div class="col-md-4">
         <div class="row">
             <div class="col-md-12">
-              Male
+                Male
             </div>
         </div>
         <div class="row">
@@ -168,7 +179,7 @@
     <div class="col-md-4">
         <div class="row">
             <div class="col-md-12">
-              Bangla, English
+                Bangla, English
             </div>
         </div>
         <div class="row">
@@ -195,7 +206,7 @@
     <div class="col-md-4">
         <div class="row">
             <div class="col-md-12">
-              Islam
+                Islam
             </div>
         </div>
         <div class="row">

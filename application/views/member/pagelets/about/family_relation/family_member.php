@@ -1,23 +1,9 @@
-<div id="family_relation" style="display: none;">
+<div id="family_member_add_id" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style" aria-label="Close" onclick="close_window_8()"><span aria-hidden="true">&times;</span></button>   
-                </div>
-            </div>
-            <div class="row padding_top_over_row form-group">
-                <div class="col-md-12">
-                    <label>Relationship Status</label>
-                </div>
-            </div>
-            <div class="pagelet_divider"></div>
-            <div class="row form-group">
-                <div class="col-md-4">
-                    <span class="subcategory_label_style">Relationship Status</span>
-                </div>
-                <div class="col-md-8">
-                    <input class="form-control">
+                    <button id="family_member_close_id" style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style" aria-label="Close" onclick="close_window_8()"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row padding_top_over_row form-group">
@@ -73,9 +59,10 @@
             $("#working_year").show();
         });
 
+        $("#family_member_close_id").on("click", function(){
+            $("#family_member_add_id").hide();
+            $("#family_member_id").show();
+        });
     });
-    function close_window_8() {
-        $('#family_relation').hide();
-        $('#subcategory_family_relation').show();
-    }
+   
 </script>

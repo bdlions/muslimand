@@ -26,6 +26,12 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         return json_decode($this->curl->execute());
     }
     
+      public function get_contact_basic_info($user_id){
+        $this->curl->create($this->SERVICE_BASIC_PROFILE.'getContactBasicInfo');
+        $this->curl->post(array("userId" => $user_id));
+        return json_decode($this->curl->execute());
+    }
+    
     public function add_work_place($user_id ,$additional_data){
         $this->curl->create($this->SERVICE_BASIC_PROFILE.'addWorkPlace');
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
@@ -59,6 +65,11 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
     }
     public function add_home_town($user_id ,$additional_data){
         $this->curl->create($this->SERVICE_BASIC_PROFILE.'addHomeTown');
+        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
+        return $this->curl->execute();
+    }
+    public function add_relationship_status($user_id ,$additional_data){
+        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addRelationshipStatus');
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
         return $this->curl->execute();
     }
