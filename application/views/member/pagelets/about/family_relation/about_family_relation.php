@@ -110,13 +110,13 @@
     $(function(){
         $("#relationship_id").on("click",function(){
             $("#relationship_id").hide();
-            $("#relation").show();
+            $("#relationship_add_id").show();
             
         });
         
     });
-    $('#subcategory_family_relation').on('click', function () {
-        $('#subcategory_family_relation').hide();
-        $('#family_relation').show();
-    });
+//    $('#subcategory_family_relation').on('click', function () {
+//        $('#subcategory_family_relation').hide();
+//        $('#family_relation').show();
+//    });
 </script>

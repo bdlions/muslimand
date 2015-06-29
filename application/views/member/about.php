@@ -93,8 +93,10 @@
             data: {
             },
             success: function (data) {
-                $("#current_city_id").html(tmpl("tmpl_current_city", data.basicInfo.city));
-                $("#home_town_id").html(tmpl("tmpl_home_town", data.basicInfo.town));
+                if (data.basicInfo != null) {
+                    $("#current_city_id").html(tmpl("tmpl_current_city", data.basicInfo.city));
+                    $("#home_town_id").html(tmpl("tmpl_home_town", data.basicInfo.town));
+                }
                 $('#about_overview').hide();
                 $('#about_career').hide();
                 $('#about_contact_info').hide();
@@ -128,8 +130,12 @@
             },
             success: function (data) {
                 $('#about_family_relation').show();
-                $("#relationship_add").html(tmpl("tmpl_relationship_status", data.basicInfo));
-                $("#family_member_add").html(tmpl("tmpl_family_members", data.basicInfo.familyMember));
+                if (data != null) {
+                    $("#relationship_add").html(tmpl("tmpl_relationship_status", data.basicInfo));
+                }
+                if (data != null) {
+                    $("#family_member_add").html(tmpl("tmpl_family_members", data.basicInfo.familyMember));
+                }
                 $('#about_overview').hide();
                 $('#about_career').hide();
                 $('#about_place').hide();

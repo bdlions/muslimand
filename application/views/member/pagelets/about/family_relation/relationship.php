@@ -1,4 +1,4 @@
-<div id="relation" style="display: none;">
+<div id="relationship_add_id" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">
             <div class="row form-group">
@@ -60,8 +60,8 @@
         });
 
     });
-    function close_window_8() {
-        $('#family_relation').hide();
-        $('#subcategory_family_relation').show();
-    }
+//    function close_window_8() {
+//        $('#family_relation').hide();
+//        $('#subcategory_family_relation').show();
+//    }
 </script>
