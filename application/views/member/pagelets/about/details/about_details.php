@@ -6,14 +6,6 @@
     </div>
     <div class="pagelet_divider"></div>
 
-    <div id="subcategory_details" class="row">
-        <div class="col-md-12">
-            <div class="cursor_holder_style">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
-                <a class="holder_style">Add about Yourself</a>
-            </div>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-12">
             <?php $this->load->view("member/pagelets/about/details/details"); ?>
@@ -75,9 +67,3 @@
         </div>
     </div>
 </div>
-<script>
-    $('#subcategory_details').on('click', function () {
-        $('#subcategory_details').hide();
-        $('#details').show();
-    });
-</script>

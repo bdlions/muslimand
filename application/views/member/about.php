@@ -165,12 +165,14 @@
     $('#category_details').on('click', function () {
         $('#about_overview').hide();
         $('#about_career').hide();
-        $('#about_place').hide();
+        $('#place').hide();
         $('#about_contact_info').hide();
         $('#about_family_relation').hide();
-        $('#details').hide();
+        $("#about_own").hide();
+        $("#favorite_quote").hide();
         $('#about_details').show();
-        $('#subcategory_details').show();
+        $("#add_about_own").show();
+        $("#add_favorite_quote").show();
     });
 </script>
 
