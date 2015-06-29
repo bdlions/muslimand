@@ -111,14 +111,29 @@
     });
 
     $('#category_contact_info').on('click', function () {
-        $('#about_overview').hide();
-        $('#about_career').hide();
-        $('#about_place').hide();
-        $('#about_family_relation').hide();
-        $('#about_details').hide();
-        $('#contact_info').hide();
-        $('#about_contact_info').show();
-        $('#subcategory_contact_info').show();
+                $('#about_overview').hide();
+                $('#about_career').hide();
+                $('#place').hide();
+                $('#about_family_relation').hide();
+                $('#about_details').hide();
+                $('#mobile').hide();
+                $('#address').hide();
+                $('#website').hide();
+                $('#email').hide();
+                $('#birth_day').hide();
+                $('#gender').hide();
+                $('#language').hide();
+                $('#religion').hide();
+                $('#about_contact_info').show();
+                $('#add_mobile').show();
+                $('#add_address').show();
+                $('#add_website').show();
+                $('#add_email').show();
+                $('#add_birth_day').show();
+                $('#add_gender').show();
+                $('#add_language').show();
+                $('#add_religion').show();
+                
 
     });
     $('#category_family_relation').on('click', function () {
