@@ -93,9 +93,9 @@
             data: {
             },
             success: function (data) {
-                if (data.basicInfo != null) {
-                    $("#current_city_id").html(tmpl("tmpl_current_city", data.basicInfo.city));
-                    $("#home_town_id").html(tmpl("tmpl_home_town", data.basicInfo.town));
+                if (data.city_town.basicInfo != null) {
+                    $("#current_city_id").html(tmpl("tmpl_current_city", data.city_town.basicInfo.city));
+                    $("#home_town_id").html(tmpl("tmpl_home_town", data.city_town.basicInfo.town));
                 }
                 $('#about_overview').hide();
                 $('#about_career').hide();
@@ -111,6 +111,7 @@
     });
 
     $('#category_contact_info').on('click', function () {
+    
                 $('#about_overview').hide();
                 $('#about_career').hide();
                 $('#place').hide();
@@ -119,6 +120,9 @@
                 $('#mobile').hide();
                 $('#address').hide();
                 $('#website').hide();
+                $('#about_place').hide();
+                $('#current_city').hide();
+                $('#home_town').hide();
                 $('#email').hide();
                 $('#birth_day').hide();
                 $('#gender').hide();
@@ -146,10 +150,10 @@
             success: function (data) {
                 $('#about_family_relation').show();
                 if (data != null) {
-                    $("#relationship_add").html(tmpl("tmpl_relationship_status", data.basicInfo));
+                    $("#relationship_add").html(tmpl("tmpl_relationship_status", data.familyRelations.basicInfo));
                 }
                 if (data != null) {
-                    $("#family_member_add").html(tmpl("tmpl_family_members", data.basicInfo.familyMember));
+                    $("#family_member_add").html(tmpl("tmpl_family_members", data.familyRelations.basicInfo.familyMember));
                 }
                 $('#about_overview').hide();
                 $('#about_career').hide();
