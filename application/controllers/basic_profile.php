@@ -171,7 +171,6 @@ class Basic_profile extends CI_Controller {
         if (!empty($basic_info)) {
             $response['basic_info'] = $basic_info;
         }
-        var_dump($response);exit;
         echo json_encode($response);
     }
 
@@ -180,7 +179,7 @@ class Basic_profile extends CI_Controller {
         $user_id = "100157";
         $family_relations = $this->basic_profile_mongodb_model->get_family_relations($user_id);
         if (!empty($family_relations)) {
-            $response['familyRelations'] = $family_relations;
+            $response['family_relations'] = $family_relations;
         }
         echo json_encode($response);
     }
@@ -217,6 +216,50 @@ class Basic_profile extends CI_Controller {
         $result = $this->basic_profile_mongodb_model->add_relationship_status($user_id, $user_relationship_status);
         if ($result != null) {
             $response["relation_Status"] = $user_relationship_status;
+        }
+        echo json_encode($response);
+    }
+    function add_mobile_phone() {
+        $response = array();
+        $user_id = "100157";
+        $user_mobile_phone = new stdClass();
+        $user_mobile_phone->phone = $this->input->post('mobile_phone');
+        $result = $this->basic_profile_mongodb_model->add_mobile_phone($user_id, $user_mobile_phone);
+        if ($result != null) {
+            $response["mobile_phone"] = $user_mobile_phone;
+        }
+        echo json_encode($response);
+    }
+    function add_address() {
+        $response = array();
+        $user_id = "100157";
+        $user_address = new stdClass();
+        $user_address->address = $this->input->post('address');
+        $result = $this->basic_profile_mongodb_model->add_address($user_id, $user_address);
+        if ($result != null) {
+            $response["address"] = $user_address;
+        }
+        echo json_encode($response);
+    }
+    function add_website() {
+        $response = array();
+        $user_id = "100157";
+        $user_website = new stdClass();
+        $user_website->wibesite = $this->input->post('wibesite');
+        $result = $this->basic_profile_mongodb_model->add_website($user_id, $user_website);
+        if ($result != null) {
+            $response["website"] = $user_website;
+        }
+        echo json_encode($response);
+    }
+    function add_email() {
+        $response = array();
+        $user_id = "100157";
+        $user_email = new stdClass();
+        $user_email->email = $this->input->post('email');
+        $result = $this->basic_profile_mongodb_model->add_email($user_id, $user_email);
+        if ($result != null) {
+            $response["email"] = $user_email;
         }
         echo json_encode($response);
     }

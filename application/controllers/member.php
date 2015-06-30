@@ -37,13 +37,6 @@ class Member extends CI_Controller {
     }
 
     function about() {
-            $user_id = "5563101d8267404011000029";
-            $basic_info_array = $this->basic_profile_mongodb_model->get_basic_info($user_id);
-            if (!empty($basic_info_array) && is_array($basic_info_array)) {
-            $basic_info = $basic_info_array[0];
-            $this->data['basic_info']= $basic_info ;
-        }
-
         $this->data['bp_company'] = array(
             'name' => 'bp_company',
             'id' => 'bp_company',
@@ -146,6 +139,26 @@ class Member extends CI_Controller {
             'id' => 'relationship',
             'type' => 'text',
         );
+        $this->data['bp_mobile_phone'] = array(
+            'name' => 'bp_mobile_phone',
+            'id' => 'bp_mobile_phone',
+            'type' => 'text',
+        );
+        $this->data['bp_address'] = array(
+            'name' => 'bp_address',
+            'id' => 'bp_address',
+            'type' => 'text',
+        );
+        $this->data['bp_email'] = array(
+            'name' => 'bp_email',
+            'id' => 'bp_email',
+            'type' => 'text',
+        );
+        $this->data['bp_wibesite'] = array(
+            'name' => 'bp_wibesite',
+            'id' => 'bp_wibesite',
+            'type' => 'text',
+        );
         $this->data['relationship_btn'] = array(
             'name' => 'relationship_btn',
             'id' => 'relationship_btn',
@@ -167,6 +180,30 @@ class Member extends CI_Controller {
         $this->data['home_town_btn'] = array(
             'name' => 'home_town_btn',
             'id' => 'home_town_btn',
+            'type' => 'submit',
+            'value' => 'Save',
+        );
+        $this->data['mobile_phone_btn'] = array(
+            'name' => 'mobile_phone_btn',
+            'id' => 'mobile_phone_btn',
+            'type' => 'submit',
+            'value' => 'Save',
+        );
+        $this->data['address_btn'] = array(
+            'name' => 'address_btn',
+            'id' => 'address_btn',
+            'type' => 'submit',
+            'value' => 'Save',
+        );
+        $this->data['email_btn'] = array(
+            'name' => 'email_btn',
+            'id' => 'email_btn',
+            'type' => 'submit',
+            'value' => 'Save',
+        );
+        $this->data['wibesite_btn'] = array(
+            'name' => 'wibesite_btn',
+            'id' => 'wibesite_btn',
             'type' => 'submit',
             'value' => 'Save',
         );

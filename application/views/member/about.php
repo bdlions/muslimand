@@ -93,7 +93,7 @@
             data: {
             },
             success: function (data) {
-                if (data.city_town.basicInfo != null) {
+                if (data.city_town != null) {
                     $("#current_city_id").html(tmpl("tmpl_current_city", data.city_town.basicInfo.city));
                     $("#home_town_id").html(tmpl("tmpl_home_town", data.city_town.basicInfo.town));
                 }
@@ -111,7 +111,25 @@
     });
 
     $('#category_contact_info').on('click', function () {
-    
+        $.ajax({
+            dataType: 'json',
+            type: "POST",
+            url: '<?php echo base_url(); ?>' + 'basic_profile/get_contact_basic_info',
+            data: {
+            },
+            success: function (data) {
+                if (data.basic_info != null) {
+                    $("#mobile_phone_id").html(tmpl("tmpl_mobile_phones", data.basic_info.basicInfo.mobilePhones));
+                    if (data.basic_info.basicInfo.address != null) {
+                        $("#address_id").html(tmpl("tmpl_address", data.basic_info.basicInfo.address));
+                    }
+                    $("#website_id").html(tmpl("tmpl_website", data.basic_info.basicInfo));
+                    $("#email_id").html(tmpl("tmpl_emails", data.basic_info.basicInfo.emails));
+                    $("#birthday_id").html(tmpl("tmpl_birthday", data.basic_info.basicInfo));
+                    $("#gender_id").html(tmpl("tmpl_gender", data.basic_info.basicInfo.gender));
+                    $("#language_id").html(tmpl("tmpl_language", data.basic_info.basicInfo.language));
+                    $("#religion_id").html(tmpl("tmpl_religion", data.basic_info.basicInfo.religions));
+                }
                 $('#about_overview').hide();
                 $('#about_career').hide();
                 $('#place').hide();
@@ -137,8 +155,8 @@
                 $('#add_gender').show();
                 $('#add_language').show();
                 $('#add_religion').show();
-                
-
+            }
+        });
     });
     $('#category_family_relation').on('click', function () {
         $.ajax({
@@ -148,13 +166,11 @@
             data: {
             },
             success: function (data) {
+                if (data.family_relations != null) {
+                    $("#relationship_add").html(tmpl("tmpl_relationship_status", data.family_relations.basicInfo));
+                    $("#family_member_add").html(tmpl("tmpl_family_members", data.family_relations.basicInfo.familyMember));
+                }
                 $('#about_family_relation').show();
-                if (data != null) {
-                    $("#relationship_add").html(tmpl("tmpl_relationship_status", data.familyRelations.basicInfo));
-                }
-                if (data != null) {
-                    $("#family_member_add").html(tmpl("tmpl_family_members", data.familyRelations.basicInfo.familyMember));
-                }
                 $('#about_overview').hide();
                 $('#about_career').hide();
                 $('#about_place').hide();
@@ -165,7 +181,6 @@
             }
         });
     });
-
     $('#category_details').on('click', function () {
         $('#about_overview').hide();
         $('#about_career').hide();

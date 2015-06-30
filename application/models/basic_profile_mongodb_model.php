@@ -73,6 +73,26 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
         return $this->curl->execute();
     }
+    public function add_mobile_phone($user_id ,$additional_data){
+        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addMobilePhone');
+        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
+        return $this->curl->execute();
+    }
+    public function add_address($user_id ,$additional_data){
+        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addAddress');
+        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
+        return $this->curl->execute();
+    }
+    public function add_website($user_id ,$additional_data){
+        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addWebsite');
+        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
+        return $this->curl->execute();
+    }
+    public function add_email($user_id ,$additional_data){
+        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addEmail');
+        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
+        return $this->curl->execute();
+    }
     
     
     
