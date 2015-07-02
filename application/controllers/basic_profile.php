@@ -211,10 +211,11 @@ class Basic_profile extends CI_Controller {
     function add_relationship_status() {
         $response = array();
         $user_id = "100157";
+        $relationship_status = $this->input->post('relationship');
         $user_relationship_status = new stdClass();
-        $user_relationship_status->relationshipStatus = $this->input->post('relationship');
-        $result = $this->basic_profile_mongodb_model->add_relationship_status($user_id, $user_relationship_status);
-        if ($result != null) {
+        $user_relationship_status->relationshipStatus = $relationship_status;
+        $result = $this->basic_profile_mongodb_model->add_relationship_status($user_id, $relationship_status);
+        if ($relationship_status != null) {
             $response["relation_Status"] = $user_relationship_status;
         }
         echo json_encode($response);
@@ -244,8 +245,9 @@ class Basic_profile extends CI_Controller {
     function add_website() {
         $response = array();
         $user_id = "100157";
+        $website = $this->input->post('wibesite');
         $user_website = new stdClass();
-        $user_website->wibesite = $this->input->post('wibesite');
+        $user_website->wibesite = $website;
         $result = $this->basic_profile_mongodb_model->add_website($user_id, $user_website);
         if ($result != null) {
             $response["website"] = $user_website;

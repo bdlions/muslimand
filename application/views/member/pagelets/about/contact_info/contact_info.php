@@ -55,9 +55,9 @@
                     email: $("#bp_email").val(),
                 },
                 success: function (data) {
-                      $("#email_id").html(tmpl("tmpl_emails", data.email));
+                     $("#email_id").html(tmpl("tmpl_emails", data.email));
                      $("#email").hide();
-                     $("#add_email").hide();
+                     $("#add_email").show();
                 }
             });
         });

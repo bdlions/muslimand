@@ -68,19 +68,19 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
         return $this->curl->execute();
     }
-    public function add_relationship_status($user_id ,$additional_data){
+    public function add_relationship_status($user_id ,$relationship_status){
         $this->curl->create($this->SERVICE_BASIC_PROFILE.'addRelationshipStatus');
-        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
+        $this->curl->post(array("userId" => $user_id, "relationshipStatus" => $relationship_status));
         return $this->curl->execute();
     }
-    public function add_mobile_phone($user_id ,$additional_data){
+    public function add_mobile_phone($user_id ,$mobile_phone_info){
         $this->curl->create($this->SERVICE_BASIC_PROFILE.'addMobilePhone');
-        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
+        $this->curl->post(array("userId" => $user_id, "mobilePhoneInfo" => json_encode($mobile_phone_info)));
         return $this->curl->execute();
     }
-    public function add_address($user_id ,$additional_data){
+    public function add_address($user_id ,$address_info){
         $this->curl->create($this->SERVICE_BASIC_PROFILE.'addAddress');
-        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
+        $this->curl->post(array("userId" => $user_id, "addressInfo" => json_encode($address_info)));
         return $this->curl->execute();
     }
     public function add_website($user_id ,$additional_data){
@@ -88,9 +88,9 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
         return $this->curl->execute();
     }
-    public function add_email($user_id ,$additional_data){
+    public function add_email($user_id ,$email_info){
         $this->curl->create($this->SERVICE_BASIC_PROFILE.'addEmail');
-        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
+        $this->curl->post(array("userId" => $user_id, "emailInfo" => json_encode($email_info)));
         return $this->curl->execute();
     }
     
