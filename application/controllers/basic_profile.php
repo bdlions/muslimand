@@ -236,6 +236,9 @@ class Basic_profile extends CI_Controller {
         $user_id = "100157";
         $user_address = new stdClass();
         $user_address->address = $this->input->post('address');
+        $user_address->city = $this->input->post('city');
+        $user_address->postCode = $this->input->post('post_code');
+        $user_address->zip = $this->input->post('zip');
         $result = $this->basic_profile_mongodb_model->add_address($user_id, $user_address);
         if ($result != null) {
             $response["address"] = $user_address;

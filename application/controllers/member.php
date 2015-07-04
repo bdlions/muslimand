@@ -149,6 +149,22 @@ class Member extends CI_Controller {
             'id' => 'bp_address',
             'type' => 'text',
         );
+        
+        $this->data['address_city'] = array(
+            'name' => 'address_city',
+            'id' => 'address_city',
+            'type' => 'text',
+        );
+        $this->data['bp_post_code'] = array(
+            'name' => 'bp_post_code',
+            'id' => 'bp_post_code',
+            'type' => 'text',
+        );
+        $this->data['bp_zip'] = array(
+            'name' => 'bp_zip',
+            'id' => 'bp_zip',
+            'type' => 'text',
+        );
         $this->data['bp_email'] = array(
             'name' => 'bp_email',
             'id' => 'bp_email',

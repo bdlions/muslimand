@@ -34,7 +34,7 @@
     <div class="col-md-6">
     <div class="row">
     <div class="col-md-12">
-    168, Niketon, Gulshan-1, Dhaka. 
+    <?php echo '{%= address.postCode%}' ?>, <?php echo '{%= address.zip%}' ?>, <?php echo '{%= address.address%}' ?>, <?php echo '{%= address.city%}' ?>. 
     </div>
     </div>
     <div class="row">

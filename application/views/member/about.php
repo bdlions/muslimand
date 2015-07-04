@@ -120,15 +120,14 @@
             success: function (data) {
                 if (data.basic_info != null) {
                     $("#mobile_phone_id").html(tmpl("tmpl_mobile_phones", data.basic_info.basicInfo.mobilePhones));
-                    if (data.basic_info.basicInfo.address != null) {
-                        $("#address_id").html(tmpl("tmpl_address", data.basic_info.basicInfo.address));
-                    }
-                    $("#website_id").html(tmpl("tmpl_website", data.basic_info.basicInfo));
+                    $("#address_id").html(tmpl("tmpl_address", data.basic_info.basicInfo.address));
+                    $("#website_id").html(tmpl("tmpl_website", data.basic_info.basicInfo.website));
                     $("#email_id").html(tmpl("tmpl_emails", data.basic_info.basicInfo.emails));
                     $("#birthday_id").html(tmpl("tmpl_birthday", data.basic_info.basicInfo));
                     $("#gender_id").html(tmpl("tmpl_gender", data.basic_info.basicInfo.gender));
                     $("#language_id").html(tmpl("tmpl_language", data.basic_info.basicInfo.language));
                     $("#religion_id").html(tmpl("tmpl_religion", data.basic_info.basicInfo.religions));
+                    $("#address_id").html(tmpl("tmpl_address", data.basic_info.basicInfo.addresses));
                 }
                 $('#about_overview').hide();
                 $('#about_career').hide();

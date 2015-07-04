@@ -23,9 +23,12 @@
                 url: '<?php echo base_url(); ?>' + 'basic_profile/add_address',
                 data: {
                     address : $("#bp_address").val(),
+                    city : $("#address_city").val(),
+                    post_code : $("#bp_post_code").val(),
+                    zip : $("#bp_zip").val(),
                 },
                 success: function (data) {
-                     $("#address_id").html(tmpl("tmpl_address", data.address));
+                     $("#address_id").html(tmpl("tmpl_address", data.address)+$("#address_id").html());
                      $("#address").hide();
                      $("#add_address").show();
                 }
@@ -41,7 +44,7 @@
                 },
                 success: function (data) {
                      $("#website_id").html(tmpl("tmpl_website", data.website));
-                      $("#website").hide();
+                     $("#website").hide();
                      $("#add_website").show();
                 }
             });
@@ -134,6 +137,30 @@
                 </div>
                 <div class="col-md-8">
                      <?php echo form_input($bp_address + array('class' => 'form-control')); ?>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-4">
+                    <span class="subcategory_label_style">City</span>
+                </div>
+                <div class="col-md-8">
+                     <?php echo form_input($address_city + array('class' => 'form-control')); ?>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-4">
+                    <span class="subcategory_label_style">Post Code</span>
+                </div>
+                <div class="col-md-8">
+                     <?php echo form_input($bp_post_code + array('class' => 'form-control')); ?>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-4">
+                    <span class="subcategory_label_style">Zip</span>
+                </div>
+                <div class="col-md-8">
+                     <?php echo form_input($bp_zip + array('class' => 'form-control')); ?>
                 </div>
             </div>
             <div class="pagelet_divider"></div>
