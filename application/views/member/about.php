@@ -118,8 +118,10 @@
             data: {
             },
             success: function (data) {
+                console.dir(data);
                 if (data.basic_info != null) {
-                    $("#mobile_phone_id").html(tmpl("tmpl_mobile_phones", data.basic_info.basicInfo.mobilePhones));
+                    
+                    $("#mobile_phone_id").html(tmpl("tmpl_mobile_phones", typeof data.basic_info.basicInfo.mobilePhones == "undefined" ? "": data.basic_info.basicInfo.mobilePhones));
                     $("#address_id").html(tmpl("tmpl_address", data.basic_info.basicInfo.address));
                     $("#website_id").html(tmpl("tmpl_website", data.basic_info.basicInfo.website));
                     $("#email_id").html(tmpl("tmpl_emails", data.basic_info.basicInfo.emails));
@@ -166,7 +168,7 @@
             },
             success: function (data) {
                 if (data.family_relations != null) {
-                    $("#relationship_add").html(tmpl("tmpl_relationship_status", data.family_relations.basicInfo));
+                    $("#relationship_add").html(tmpl("tmpl_relationship_status", data.family_relations.basicInfo.relationshipStatus));
                     $("#family_member_add").html(tmpl("tmpl_family_members", data.family_relations.basicInfo.familyMember));
                 }
                 $('#about_family_relation').show();
