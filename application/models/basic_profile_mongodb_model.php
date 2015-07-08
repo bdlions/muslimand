@@ -3,106 +3,121 @@
 class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
 
     var $SERVICE_BASIC_PROFILE;
+
     public function __construct() {
         parent::__construct();
         $this->SERVICE_BASIC_PROFILE = SERVICE_PATH . "basicProfile/";
     }
 
-    
-      public function get_works_education($user_id){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'getWorksEducation');
+    public function get_overview($user_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'getOverview');
         $this->curl->post(array("userId" => $user_id));
         return json_decode($this->curl->execute());
     }
-    
-      public function get_city_town($user_id){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'getCityTown');
+
+    public function get_works_education($user_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'getWorksEducation');
         $this->curl->post(array("userId" => $user_id));
         return json_decode($this->curl->execute());
     }
-      public function get_family_relations($user_id){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'getFamilyRelation');
+
+    public function get_city_town($user_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'getCityTown');
         $this->curl->post(array("userId" => $user_id));
         return json_decode($this->curl->execute());
     }
-    
-      public function get_contact_basic_info($user_id){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'getContactBasicInfo');
+
+    public function get_family_relations($user_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'getFamilyRelation');
         $this->curl->post(array("userId" => $user_id));
         return json_decode($this->curl->execute());
     }
-    
-    public function add_work_place($user_id ,$additional_data){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addWorkPlace');
+
+    public function get_contact_basic_info($user_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'getContactBasicInfo');
+        $this->curl->post(array("userId" => $user_id));
+        return json_decode($this->curl->execute());
+    }
+
+    public function add_work_place($user_id, $additional_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addWorkPlace');
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
         return $this->curl->execute();
     }
-    public function add_p_skill($user_id ,$additional_data){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addPSkill');
+
+    public function add_p_skill($user_id, $additional_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addPSkill');
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
         return $this->curl->execute();
     }
-    
-    public function add_university($user_id ,$additional_data){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addUniversity');
+
+    public function add_university($user_id, $additional_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addUniversity');
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
         return $this->curl->execute();
     }
-    public function add_college($user_id ,$additional_data){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addCollege');
+
+    public function add_college($user_id, $additional_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addCollege');
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
         return $this->curl->execute();
     }
-    public function add_school($user_id ,$additional_data){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addSchool');
+
+    public function add_school($user_id, $additional_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addSchool');
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
         return $this->curl->execute();
     }
-    public function add_current_city($user_id ,$additional_data){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addCurrentCity');
+
+    public function add_current_city($user_id, $additional_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addCurrentCity');
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
         return $this->curl->execute();
     }
-    public function add_home_town($user_id ,$additional_data){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addHomeTown');
+
+    public function add_home_town($user_id, $additional_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addHomeTown');
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
         return $this->curl->execute();
     }
-    public function add_relationship_status($user_id ,$relationship_status){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addRelationshipStatus');
+
+    public function add_relationship_status($user_id, $relationship_status) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addRelationshipStatus');
         $this->curl->post(array("userId" => $user_id, "relationshipStatus" => $relationship_status));
         return $this->curl->execute();
     }
-    public function add_mobile_phone($user_id ,$mobile_phone_info){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addMobilePhone');
+
+    public function add_mobile_phone($user_id, $mobile_phone_info) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addMobilePhone');
         $this->curl->post(array("userId" => $user_id, "mobilePhoneInfo" => json_encode($mobile_phone_info)));
         return $this->curl->execute();
     }
-    public function add_address($user_id ,$address_info){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addAddress');
+
+    public function add_address($user_id, $address_info) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addAddress');
         $this->curl->post(array("userId" => $user_id, "addressInfo" => json_encode($address_info)));
         return $this->curl->execute();
     }
-    public function add_website($user_id ,$website_info){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addWebsite');
+
+    public function add_website($user_id, $website_info) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addWebsite');
         $this->curl->post(array("userId" => $user_id, "websiteInfo" => json_encode($website_info)));
         return $this->curl->execute();
     }
-    public function add_email($user_id ,$email_info){
-        $this->curl->create($this->SERVICE_BASIC_PROFILE.'addEmail');
+
+    public function add_email($user_id, $email_info) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addEmail');
         $this->curl->post(array("userId" => $user_id, "emailInfo" => json_encode($email_info)));
         return $this->curl->execute();
     }
-    
-    
-    
-    
+
     /*
      * This method add basic information of a user
      * parameter user_id 
      * @Rashida 19 May 2015
      */
-    public function add_basic_info($user_id,$additional_data) {
+
+    public function add_basic_info($user_id, $additional_data) {
         $this->trigger_events('pre_add_basic_info');
         //add filter data here
         $id = $this->mongo_db->insert($this->collections['user_profiles'], $additional_data);
@@ -117,7 +132,7 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
      */
 
     public function get_basic_info($user_id) {
-        
+
 //        $user_id='556311458267404811000029';
 //        var_dump($user_id);
 //        $cursor = $this->mongo_db
@@ -132,20 +147,21 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
 //            
 ////        }
 //        exit;
-        
+
         return $this->mongo_db
-                ->where('user_id', new MongoId($user_id))
-                ->where('basic_info', new MongoId($id))
-                ->select(array('basic_info'))
-                ->get($this->collections['user_profiles']);
+                        ->where('user_id', new MongoId($user_id))
+                        ->where('basic_info', new MongoId($id))
+                        ->select(array('basic_info'))
+                        ->get($this->collections['user_profiles']);
     }
-    
+
     /*
      * This method update basic information of a user
      * parameter user_id and additional data
      * @Rashida 19 May 2015
      */
-    function update_basic_info($user_id,$additional_data) {
+
+    function update_basic_info($user_id, $additional_data) {
 //        $this->trigger_events('extra_where');
         $result = $this->mongo_db
                 ->where('user_id', new MongoId($user_id))
@@ -158,13 +174,13 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         return FALSE;
     }
 
-     /*
+    /*
      * This method delete basic information of a user
      * parameter user_id 
      * @Rashida 19 May 2015
      */
-    
-     public function delete_basic_info($user_id) {
+
+    public function delete_basic_info($user_id) {
         if ($user_id != null) {
             $this->mongo_db
                     ->where('user_id', new MongoId($user_id))

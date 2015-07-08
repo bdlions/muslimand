@@ -23,18 +23,7 @@
     });
 </script>
 
-<script type="text/x-tmpl" id="tmpl_work_for_overview"> 
-    {% var i=0, workplace_company = ((o instanceof Array) ? o[i++] : o); %}
-    <div class="row form-group">
-    <div class="col-md-2">
-    <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="40" height="40"> 
-    </div>
-    <div class="col-md-10">
-    Works at <a href=""><?php echo'{%= workplace_company.company %}' ?></a>
-    </div>
-    </div>
 
-</script>
 <div id="work" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">

@@ -10,6 +10,7 @@
                 },
                 success: function (data) {
                     $("#current_city_id").html(tmpl("tmpl_current_city", data.current_city));
+                    $("#about_overview_location").html(tmpl("tmpl_location_for_overview", data.current_city));
                     $("#current_city_add").show();
                     $("#c_city").hide();
                 }

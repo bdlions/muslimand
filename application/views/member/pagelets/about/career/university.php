@@ -19,17 +19,7 @@
         });
     });
 </script>
-<script type="text/x-tmpl" id="tmpl_uv_for_overview">
-{% var i=0, university = ((o instanceof Array) ? o[i++] : o); %}
-           <div class="row form-group">
-                <div class="col-md-2">
-                    <img src="<?php echo base_url(); ?>resources/images/Food.jpg"  width="40" height="40"> 
-                </div>
-                <div class="col-md-10">
-                    Studied at <a href=""><?php echo '{%= university.university%}' ?></a>
-                </div>
-            </div>
-</script>
+
 
 <div id="university" style="display: none;">
     <div class="row">

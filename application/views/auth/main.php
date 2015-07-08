@@ -81,11 +81,15 @@
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                    <div class="col-md-4 col-sm-6 col-xs-12 form-group">
                         <label style="color: #703684; font-size: 15px; font-weight: bold;">Gender</label>
                         <?php echo form_dropdown('gender_list', $gender_list, 0, 'class=form-control id=gender_id'); ?>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                    <div class="col-md-4 col-sm-6 col-xs-12 form-group">
+                        <label style="color: #703684; font-size: 15px; font-weight: bold;">Religion</label>
+                         <?php echo form_dropdown('religion_list', $religion_list, '', 'class=form-control id=religion_list'); ?>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12 form-group">
                         <label style="color: #703684; font-size: 15px; font-weight: bold;">Country</label>
                          <?php echo form_dropdown('country_list', $country_list, '', 'class=form-control id=country_list'); ?>
                     </div>

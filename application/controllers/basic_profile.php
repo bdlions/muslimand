@@ -139,17 +139,73 @@ class Basic_profile extends CI_Controller {
         }
     }
 
+    function get_overview() {
+        $user_id = "100157";
+        $response = array();
+        $response['website'] = "";
+        $response['mobilePhone'] = "";
+        $response['city'] = "";
+        $response['university'] = "";
+        $response['birthDate'] = "";
+        $response['workPlace'] = "";
+        $response['email'] = "";
+        $response['address'] = "";
+        $overview = $this->basic_profile_mongodb_model->get_overview($user_id);
+        if (!empty($overview)) {
+            if (property_exists($overview, "website") != false) {
+                $response['website'] = json_decode($overview->website);
+            }
+            if (property_exists($overview, "mobilePhone") != false) {
+                $response['mobilePhone'] = json_decode($overview->mobilePhone);
+            }
+            if (property_exists($overview, "city") != FALSE) {
+                $response['city'] = json_decode($overview->city);
+            }
+            if (property_exists($overview, "university") != FALSE) {
+                $response['university'] = json_decode($overview->university);
+            }
+            if (property_exists($overview, "birthDate") != FALSE) {
+                $response['birthDate'] = json_decode($overview->birthDate);
+            }
+            if (property_exists($overview, "workPlace") != FALSE) {
+                $response['workPlace'] = json_decode($overview->workPlace);
+            }
+            if (property_exists($overview, "email") != FALSE) {
+                $response['email'] = json_decode($overview->email);
+            }
+            if (property_exists($overview, "address") != FALSE) {
+                $response['address'] = json_decode($overview->address);
+            }
+        }
+        echo json_encode($response);
+    }
+
     function get_works_education() {
         $response = array();
         $response['message'] = '';
+        $response['work_places'] = '';
+        $response['colleges'] = '';
+        $response['universities'] = '';
+        $response['schools'] = '';
+        $response['p_skills'] = '';
         $user_id = "100157";
         $basic_p_info = $this->basic_profile_mongodb_model->get_works_education($user_id);
         if (!empty($basic_p_info)) {
-            $response['work_places'] = $basic_p_info->workPlaces;
-            $response['colleges'] = $basic_p_info->colleges;
-            $response['universities'] = $basic_p_info->universities;
-            $response['schools'] = $basic_p_info->schools;
-            $response['p_skills'] = $basic_p_info->pSkills;
+            if (property_exists($basic_p_info, "workPlaces") != FALSE) {
+                $response['work_places'] = $basic_p_info->workPlaces;
+            }
+            if (property_exists($basic_p_info, "colleges") != FALSE) {
+                $response['colleges'] = $basic_p_info->colleges;
+            }
+            if (property_exists($basic_p_info, "universities") != FALSE) {
+                $response['universities'] = $basic_p_info->universities;
+            }
+            if (property_exists($basic_p_info, "schools") != FALSE) {
+                $response['schools'] = $basic_p_info->schools;
+            }
+            if (property_exists($basic_p_info, "pSkills") != FALSE) {
+                $response['p_skills'] = $basic_p_info->pSkills;
+            }
         }
         echo json_encode($response);
     }
@@ -157,6 +213,7 @@ class Basic_profile extends CI_Controller {
     function get_city_town() {
         $response = array();
         $user_id = "100157";
+        $response['city_town'] = "";
         $city_town = $this->basic_profile_mongodb_model->get_city_town($user_id);
         if (!empty($city_town)) {
             $response['city_town'] = $city_town;
@@ -167,6 +224,7 @@ class Basic_profile extends CI_Controller {
     function get_contact_basic_info() {
         $response = array();
         $user_id = "100157";
+        $response['basic_info'] = "";
         $basic_info = $this->basic_profile_mongodb_model->get_contact_basic_info($user_id);
         if (!empty($basic_info)) {
             $response['basic_info'] = $basic_info;
@@ -176,6 +234,7 @@ class Basic_profile extends CI_Controller {
 
     function get_family_relations() {
         $response = array();
+        $response['family_relations'] = "";
         $user_id = "100157";
         $family_relations = $this->basic_profile_mongodb_model->get_family_relations($user_id);
         if (!empty($family_relations)) {
@@ -220,6 +279,7 @@ class Basic_profile extends CI_Controller {
         }
         echo json_encode($response);
     }
+
     function add_mobile_phone() {
         $response = array();
         $user_id = "100157";
@@ -231,6 +291,7 @@ class Basic_profile extends CI_Controller {
         }
         echo json_encode($response);
     }
+
     function add_address() {
         $response = array();
         $user_id = "100157";
@@ -245,18 +306,19 @@ class Basic_profile extends CI_Controller {
         }
         echo json_encode($response);
     }
+
     function add_website() {
         $response = array();
         $user_id = "100157";
-        $website = $this->input->post('wibesite');
         $user_website = new stdClass();
-        $user_website->wibesite = $website;
+        $user_website->wibesite = $this->input->post('wibesite');
         $result = $this->basic_profile_mongodb_model->add_website($user_id, $user_website);
         if ($result != null) {
             $response["website"] = $user_website;
         }
         echo json_encode($response);
     }
+
     function add_email() {
         $response = array();
         $user_id = "100157";
