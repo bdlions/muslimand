@@ -1,191 +1,172 @@
-<script type="text/javascript">
-    $(document).ready(function ()
-    {
-        var $scrollbar = $("#ticker_notification");
-        $scrollbar.tinyscrollbar();
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function ()
-    {
-        var $scrollbar = $("#ticker_friend");
-        $scrollbar.tinyscrollbar();
-    });
-</script>
-<div id="ticker_notification" class="ticker">
-    <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
-    <div class="viewport" style="height: 300px">
-        <div class="overview">
-            <div class="ticker_friends message_friends_divider_full">
-                <div class="row">
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg"  width="30" height="30"> 
-                    </div>
-                    <div class="col-xs-9 col-sm-9 col-md-9">
-                         <b>Jannatul Ferdaus</b></a> shared a video.
-                    </div>
+<div id="ticker_notification" >
+    <div class="ticker">
+        <div class="ticker_friends message_friends_divider_full">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg"  width="30" height="30"> 
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9">
+                    <b>Jannatul Ferdaus</b></a> shared a video.
                 </div>
             </div>
-            <div class="ticker_friends message_friends_divider_others">
-                <div class="row">
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30"> 
-                    </div>
-                    <div class="col-xs-9 col-sm-9 col-md-9">
-                        <b>Jannatul Ferdaus</b></a> changed her profile pic.
-                    </div>
+        </div>
+        <div class="ticker_friends message_friends_divider_others">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30"> 
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9">
+                    <b>Jannatul Ferdaus</b></a> changed her profile pic.
                 </div>
             </div>
-            <div class="ticker_friends message_friends_divider_others">
-                <div class="row">
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="30" height="30"> 
-                    </div>
-                    <div class="col-xs-9 col-sm-9 col-md-9">
-                        <b>Sharmin Akter</b></a> likes your comment.
-                    </div>
+        </div>
+        <div class="ticker_friends message_friends_divider_others">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="30" height="30"> 
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9">
+                    <b>Sharmin Akter</b></a> likes your comment.
                 </div>
             </div>
-            <div class="ticker_friends message_friends_divider_others">
-                <div class="row">
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30"> 
-                    </div>
-                    <div class="col-xs-9 col-sm-9 col-md-9">
-                        <b>Dr. Belal</b></a> shared a video.
-                    </div>
+        </div>
+        <div class="ticker_friends message_friends_divider_others">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30"> 
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9">
+                    <b>Dr. Belal</b></a> shared a video.
                 </div>
             </div>
-            <div class="ticker_friends message_friends_divider_others">
-                <div class="row">
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="30" height="30"> 
-                    </div>
-                    <div class="col-xs-9 col-sm-9 col-md-9">
-                        <b>Maria Islam</b></a> likes your photos. 
-                    </div>
+        </div>
+        <div class="ticker_friends message_friends_divider_others">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="30" height="30"> 
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9">
+                    <b>Maria Islam</b></a> likes your photos. 
                 </div>
             </div>
-            <div class="ticker_friends message_friends_divider_others">
-                <div class="row">
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="30" height="30"> 
-                    </div>
-                    <div class="col-xs-9 col-sm-9 col-md-9">
-                        <b>Barak Obama</b></a> likes your photos. 
-                    </div>
-                </div> 
-            </div>
-            <div class="ticker_friends message_friends_divider_others">
-                <div class="row">
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="30" height="30"> 
-                    </div>
-                    <div class="col-xs-9 col-sm-9 col-md-9">
-                        <b>Fatematul Kobra</b></a> likes your comments. 
-                    </div>
-                </div> 
-            </div>
-            <div class="ticker_friends message_friends_divider_others">
-                <div class="row">
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_9.jpg"  width="30" height="30"> 
-                    </div>
-                    <div class="col-xs-9 col-sm-9 col-md-9">
-                        <b>John Ibrahim</b></a> likes your comments. 
-                    </div>
-                </div> 
-            </div>
+        </div>
+        <div class="ticker_friends message_friends_divider_others">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="30" height="30"> 
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9">
+                    <b>Barak Obama</b></a> likes your photos. 
+                </div>
+            </div> 
+        </div>
+        <div class="ticker_friends message_friends_divider_others">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="30" height="30"> 
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9">
+                    <b>Fatematul Kobra</b></a> likes your comments. 
+                </div>
+            </div> 
+        </div>
+        <div class="ticker_friends message_friends_divider_others">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_9.jpg"  width="30" height="30"> 
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9">
+                    <b>John Ibrahim</b></a> likes your comments. 
+                </div>
+            </div> 
         </div>
     </div>
 </div>
 
 
+
 <!--Chat box-->
-<div id="ticker_friend" class="ticker">
-    <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
-    <div class="viewport" style="height: 300px">
-        <div class="overview">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="ticker_friends message_friends_divider_full" onclick="open_message_window_1()">
-                        <div class="row">
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-xs-9 col-sm-9 col-md-9">
-                                <span class="ticker_vertical_font_align">Mohammad Rafique</span>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="ticker_friends message_friends_divider_others" onclick="open_message_window_2()">
-                        <div class="row">
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-xs-9 col-sm-9 col-md-9">
-                                <span class="ticker_vertical_font_align">Sharmin Akter</span>
-                            </div>
+<div id="ticker_friend">
+    <div class="ticker">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ticker_friends message_friends_divider_full" onclick="open_message_window_1()">
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg"  width="30" height="30">
+                        </div>
+                        <div class="col-xs-9 col-sm-9 col-md-9">
+                            <span class="ticker_vertical_font_align">Mohammad Rafique</span>
+                        </div>
+                    </div> 
+                </div>
+                <div class="ticker_friends message_friends_divider_others" onclick="open_message_window_2()">
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="30" height="30">
+                        </div>
+                        <div class="col-xs-9 col-sm-9 col-md-9">
+                            <span class="ticker_vertical_font_align">Sharmin Akter</span>
                         </div>
                     </div>
-                    <div class="ticker_friends message_friends_divider_others" onclick="open_message_window_3()">
-                        <div class="row">
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-xs-9 col-sm-9 col-md-9">
-                                <span class="ticker_vertical_font_align">Dr. Belal</span>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="ticker_friends message_friends_divider_others">
-                        <div class="row">
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-xs-9 col-sm-9 col-md-9">
-                               <span class="ticker_vertical_font_align">Fatematul Kobra</span> 
-                            </div>
+                </div>
+                <div class="ticker_friends message_friends_divider_others" onclick="open_message_window_3()">
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30">
+                        </div>
+                        <div class="col-xs-9 col-sm-9 col-md-9">
+                            <span class="ticker_vertical_font_align">Dr. Belal</span>
+                        </div>
+                    </div> 
+                </div>
+                <div class="ticker_friends message_friends_divider_others">
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="30" height="30">
+                        </div>
+                        <div class="col-xs-9 col-sm-9 col-md-9">
+                            <span class="ticker_vertical_font_align">Fatematul Kobra</span> 
                         </div>
                     </div>
-                    <div class="ticker_friends message_friends_divider_others">
-                        <div class="row">
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-xs-9 col-sm-9 col-md-9">
-                                <span class="ticker_vertical_font_align">Barak Obama</span> 
-                            </div>
+                </div>
+                <div class="ticker_friends message_friends_divider_others">
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="30" height="30">
+                        </div>
+                        <div class="col-xs-9 col-sm-9 col-md-9">
+                            <span class="ticker_vertical_font_align">Barak Obama</span> 
                         </div>
                     </div>
-                    <div class="ticker_friends message_friends_divider_others">
-                        <div class="row">
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-xs-9 col-sm-9 col-md-9">
-                                <span class="ticker_vertical_font_align">Jannatul Ferdaus</span> 
-                            </div>
+                </div>
+                <div class="ticker_friends message_friends_divider_others">
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30">
+                        </div>
+                        <div class="col-xs-9 col-sm-9 col-md-9">
+                            <span class="ticker_vertical_font_align">Jannatul Ferdaus</span> 
                         </div>
                     </div>
-                    <div class="ticker_friends message_friends_divider_others">
-                        <div class="row">
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-xs-9 col-sm-9 col-md-9">
-                                <span class="ticker_vertical_font_align">Maria Islam</span> 
-                            </div>
+                </div>
+                <div class="ticker_friends message_friends_divider_others">
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="30" height="30">
+                        </div>
+                        <div class="col-xs-9 col-sm-9 col-md-9">
+                            <span class="ticker_vertical_font_align">Maria Islam</span> 
                         </div>
                     </div>
-                    <div class="ticker_friends message_friends_divider_others">
-                        <div class="row">
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_9.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-xs-9 col-sm-9 col-md-9">
-                                <span class="ticker_vertical_font_align">John Ibrahim</span> 
-                            </div>
+                </div>
+                <div class="ticker_friends message_friends_divider_others">
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_9.jpg"  width="30" height="30">
+                        </div>
+                        <div class="col-xs-9 col-sm-9 col-md-9">
+                            <span class="ticker_vertical_font_align">John Ibrahim</span> 
                         </div>
                     </div>
                 </div>
@@ -430,6 +411,26 @@
     }
 </style>
 
+<script>
+    (function ($) {
+        $(window).load(function () {
+            $("#ticker_notification .ticker").mCustomScrollbar({
+                setHeight: 300,
+                theme: "dark-3"
+            });
+        });
+    })(jQuery);
+</script>
+<script>
+    (function ($) {
+        $(window).load(function () {
+            $("#ticker_friend .ticker").mCustomScrollbar({
+                setHeight: 300,
+                theme: "dark-3"
+            });
+        });
+    })(jQuery);
+</script>
 <script type="text/javascript">
     $(function () {
         $(".chat_box_container").scrollTop($(".chat_box_container").height());
