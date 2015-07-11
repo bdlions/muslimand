@@ -13,30 +13,6 @@
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/template.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
         <title>Muslimand</title>
-        <style>
-            html,
-            body {
-                margin:0;
-                padding:0;
-                height:100%;
-            }
-            #wrapper {
-                min-height:100%;
-                position:relative;
-            }
-            #header {
-            }
-            #content {
-            }
-            #footer {
-                background-color: #fff;
-                width:100%;
-                height: 60px;
-                position:relative;
-                bottom:0;
-                left:0;
-            }
-        </style>
     </head>
     <body class="back">
         <div id="wrapper">

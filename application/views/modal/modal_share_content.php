@@ -2,7 +2,11 @@
     <div class="modal-dialog">
         <div class="modal-content modal_background_color">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               <div class="row">
+                    <div class="col-md-12">
+                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <h4 class="modal-title" id="myModalLabel">Share This Video</h4>

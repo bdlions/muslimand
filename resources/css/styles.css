@@ -283,6 +283,9 @@ html, body {
 .padding_top_over_row_70px{
     padding-top: 70px; 
 }
+.padding_top_over_row_30px{
+    padding-top: 30px; 
+}
 
 /*================================  Left Menu  ================================*/
 .video_ul,.category_ul{
@@ -706,18 +709,6 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     padding: 3px;
 }
 
-.modal_content_row_border_full{
-    border: 1px solid lightgray;
-    padding: 10px 30px;
-    margin-top: -8px;
-}
-.modal_content_row_border_without_top{
-    border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-    padding: 10px 30px;
-}
-
 .well {
     background-color: #fff;
     border: 0px;
@@ -795,9 +786,16 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     border-radius: 3px;
 }
 
-.contact_background{
+.contact_background,.carrer_bg{
     background-color: #E9EAED;
     padding: 10px;
     margin: 10px;
     border-radius: 5px;
 }
+
+.modal_content_row_border_full{
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid lightgray;
+}
+

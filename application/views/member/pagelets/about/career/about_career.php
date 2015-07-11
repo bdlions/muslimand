@@ -183,11 +183,10 @@
         </div>
     </div>
 
-    <div class="pagelet_divider"></div>
     <div id="work_place_tmpl_id">
 
     </div>
-    <div class="row padding_top_over_row_70px">
+    <div class="row padding_top_over_row_30px">
         <div class="col-md-12">
             <span class="header_label_style">Professional Skills</span>
         </div>
@@ -207,11 +206,10 @@
             <?php $this->load->view("member/pagelets/about/career/professional_skill"); ?>
         </div>
     </div>
-    <div class="pagelet_divider"></div>
     <div id="p_skill_tmpl_id">
 
     </div>
-    <div class="row padding_top_over_row_70px">
+    <div class="row padding_top_over_row_30px">
         <div class="col-md-12">
             <span class="header_label_style">University</span>
         </div>
@@ -230,11 +228,10 @@
             <?php $this->load->view("member/pagelets/about/career/university"); ?>
         </div>
     </div>
-    <div class="pagelet_divider"></div>
     <div id="uv_tmpl_id">
 
     </div>
-    <div class="row padding_top_over_row_70px">
+    <div class="row padding_top_over_row_30px">
         <div class="col-md-12">
             <span class="header_label_style">College</span>
         </div>
@@ -253,12 +250,11 @@
             <?php $this->load->view("member/pagelets/about/career/college"); ?>
         </div>
     </div>
-    <div class="pagelet_divider"></div>
     <div id="college_tmpl_id">
         
     </div>
 
-    <div class="row padding_top_over_row_70px">
+    <div class="row padding_top_over_row_30px">
         <div class="col-md-12">
             <span class="header_label_style">School/High School</span>
         </div>
@@ -277,7 +273,6 @@
             <?php $this->load->view("member/pagelets/about/career/school"); ?>
         </div>
     </div>
-    <div class="pagelet_divider"></div>
     <div id="school_tmpl_id">
     </div>
 </div>

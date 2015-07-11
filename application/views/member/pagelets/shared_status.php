@@ -86,23 +86,19 @@
 
 
 
-
-
-
-
     <div class="pagelet" id="edited_hidden_post_1">
 
         <div class="row form-group">
             <div class="col-md-12">
                 <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
-                <a id="liked_people_list" class="cursor_holder_style" onclick="open_modal_liked_people_list()" data-toggle="tooltip" data-placement="top" data-html="true" title="Nazrul Islam <br> Alamgir Kabir <br> Nazmul Hasan <br> Redoy <br> Rashida <br> Salma <br> and more" >79 people</a> like this.
+                <a class="cursor_holder_style" data-target="#modal_liked_people_list" data-toggle="modal">79 people</a> like this.
             </div>
         </div>
         <div class="pagelet_divider"></div>
         <div class="row form-group">
             <div class="col-md-12">
                 <img src="<?php echo base_url(); ?>resources/images/share_icon.png">
-                <a id="shared_people_list" class="cursor_holder_style" onclick="open_modal_shared_people_list()">54 shares</a>
+                <a class="cursor_holder_style" data-target="#modal_shared_people_list" data-toggle="modal">54 shares</a>
             </div>
         </div>
         <div class="pagelet_divider"></div>
@@ -264,7 +260,6 @@
     </div>
 </div>
 
-
 <?php $this->load->view("modal/modal_custom_privacy"); ?>
 <?php $this->load->view("modal/modal_delete_post"); ?>
 <?php $this->load->view("modal/modal_report_post"); ?>
@@ -328,15 +323,6 @@
         $('#hidden_comment_counter_anchor_1').on('click', function () {
             $('#hidden_comment_counter_line_1').hide();
         });
-
-        $('#liked_people_list').on('click', function () {
-            $('#modal_liked_people_list').show();
-        });
-
-        $('#shared_people_list').on('click', function () {
-            $('#modal_shared_people_list').show();
-        });
-
         $('#write_comment_line_1').on('click', function () {
             $('#comment_input_field').focus();
         });

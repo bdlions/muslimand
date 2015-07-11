@@ -290,7 +290,24 @@
                     <span class="subcategory_label_style">BirthDay</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control" placeholder="Add Your BirthDay">
+                     <div class="row form-group">
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                        <div class="pages_type_add_form_input">
+                        <input class="form-control" placeholder="Day">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                        <div class="pages_type_add_form_input">
+                            <input class="form-control" placeholder="Month">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                        <div class="pages_type_add_form_input">
+                            <input class="form-control" placeholder="Year">
+                        </div>
+                    </div>
+                </div>
+                    
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -330,7 +347,11 @@
                     <span class="subcategory_label_style">Gender</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control" placeholder="Add Your Gender">
+                    <select id="gender_id" class="form-control" name="gender_list">
+                        <option selected="selected" value="0">Gender</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                    </select>
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -410,7 +431,24 @@
                     <span class="subcategory_label_style">Religion</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control" placeholder="Add Your Religion">
+                    <select id="religion_options" class="form-control">
+                        <option >
+                            Islam
+                        </option>
+                        <option >
+                            Hinduism
+                        </option>
+                        <option >
+                            Buddhism
+                        </option>
+                        <option >
+                            Christianity
+                        </option>
+                        <option id="other_religion">
+                            Other
+                        </option>
+                    </select>
+                    <input style="display: none;" placeholder="Write Your Religion" id="religion_input" class="form-control">
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -523,9 +561,14 @@
         });
         $("#cancel_religion_window").on("click", function () {
             $("#religion").hide();
+            $('#religion_input').hide();
             $("#add_religion").show();
+            $('#religion_options').show();
         });
-
+        $('#other_religion').on('click', function () {
+            $('#religion_options').hide();
+            $('#religion_input').show();
+        });
     });
 
 </script>
