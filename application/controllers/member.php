@@ -28,15 +28,19 @@ class Member extends CI_Controller {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed");
     }
 
-    function profile() {
-        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/profile");
+//    function profile($user_id = 0) {
+//        $this->data['user_id'] = $user_id;
+//        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/profile",$this->data);
+//    }
+
+    function timeline($user_id = 0) {
+        $this->data['user_id'] = $user_id;
+        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/timeline",$this->data);
     }
 
-    function non_friend() {
-        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/non_friend");
-    }
-
-    function about() {
+    function about($user_id = 0) {
+         $this->data['user_id'] = $user_id;
+         
         $this->data['bp_company'] = array(
             'name' => 'bp_company',
             'id' => 'bp_company',
