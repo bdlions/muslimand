@@ -2,6 +2,8 @@
 /***************** Custom constant **********************/
 include './constants/template.php';
 include './constants/basic_profile.php';
+include './constants/status.php';
+
 
 /***************** Custom constant End **********************/
 /*

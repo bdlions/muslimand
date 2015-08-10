@@ -1,3 +1,6 @@
+
+
+
 <div class="pagelet" style="border: 1px solid #fff;">
     <div class="row">
         <div class="col-md-12">
@@ -7,7 +10,7 @@
 </div>
 <div class="pagelet" style="border: 1px solid #fff;">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-9">
             <div class="row">
                 <div class="col-md-12">
                     To see his details with friends, <a href="">send him a friend request. </a>
@@ -20,8 +23,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2">
-            <button class="btn btn-default pull-right form-control" style="background-color: #703684; color: white">Add Friend</button> 
+        <div class="col-md-3">
+            <button  class="addFriendRequestId btn btn-default pull-right form-control" style="background-color: #703684; color: white" ng-click="addFriend()" id="friendId" >Add Friend</button>
+            <button style="display: none" class=" FriendRequestSentId btn btn-default pull-right form-control" style="background-color: #703684; color: white" ng-click="" id="friendId" >Friend Request Sent</button>
         </div>
     </div>
 </div>

@@ -12,7 +12,7 @@
 
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
-        
+
 
         <!--scroll bar customize-->
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/jquery.mCustomScrollbar.css"/>
@@ -24,7 +24,8 @@
 
 
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
-
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
         <title>Muslimand</title>
     </head>
 

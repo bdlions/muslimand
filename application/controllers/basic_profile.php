@@ -60,7 +60,6 @@ class Basic_profile extends CI_Controller {
         $user_id = "100157";
         if ($this->input->post()) {
             $response = array();
-            $return_basic_info = array();
             $user_work_places = new stdClass();
             $user_work_places->company = $this->input->post('bp_company');
             $user_work_places->position = $this->input->post('bp_position');
@@ -334,6 +333,25 @@ class Basic_profile extends CI_Controller {
     function delete_basic_profile_info() {
         $user_id = "5563101d8267404011000029";
         $result = $this->basic_profile_mongodb_model->delete_basic_info($user_id);
+    }
+
+    function angular_test() {
+        $response = array();
+        $response['firstName'] = "shemin";
+        $response['lastName'] = "Haque";
+        $response['email'] = "shemin@gmail.com";
+        echo json_encode($response);
+    }
+    
+    function test_add(){
+//        $arr['firstName'] = "dklfjsdf";
+//        $arr['lastName'] = "fsdfsdf";
+//        $arr['firstName'] = $_POST['firstName'];
+//        $arr['lastName'] = $_POST['lastName'];
+        
+        echo json_encode($this->input->post());
+//        var_dump($this->input->post('testArray'));
+        
     }
 
 }

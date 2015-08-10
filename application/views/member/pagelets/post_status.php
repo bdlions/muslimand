@@ -1,3 +1,5 @@
+<!--<div ng-app="app.Status">
+    <div ng-controller="statusController">-->
 <div class="pagelet">
     <div class="row form-group">
         <div id="status" class="col-xs-2 col-sm-2"><span class="status_label_style">Status</span></div>
@@ -5,7 +7,8 @@
         <div id="link" class="col-xs-2 col-sm-2"><span class="status_label_style">Link</span></div>
     </div>
     <div id="photo_details" style="display: none;">
-        <div class="row">
+
+<!--        <div class="row">
             <div class="col-md-6">
                 <input type="file" name="image[]" size="30">
             </div>
@@ -15,7 +18,7 @@
             <div class="col-md-12">
                 <span style="font-size: 12px">Select a photo to upload</span>
             </div>
-        </div>
+        </div>-->
     </div>
     <div id="link_details" style="display: none;">
         <div class="row">
@@ -32,11 +35,9 @@
     </div>
     <div id="category_status" class="row form-group">
         <div class="col-md-12">
-            <textarea class="form-control form_control_custom_style textarea_custom_style"></textarea>
+            <textarea id="statusPostId" ng-model="statusInfo.description" class="form-control form_control_custom_style textarea_custom_style"></textarea>
         </div>
     </div>
-
-
     <div id="status_privacy" style="display: none;">
         <div class="row" style="line-height: 20px;">
             <div class="col-xs-5">
@@ -52,11 +53,14 @@
                 </select>
             </div>
             <div class="col-xs-3">
-                <button class="btn btn-default pull-right form-control" style="background-color: #703684; color: white">Post</button>
+                <button class="btn btn-default pull-right form-control" style="background-color: #703684; color: white" ng-click="addStatus()">Post</button>
             </div>
         </div>
     </div>
 </div>
+
+<!--</div>-->
+<!--</div>-->
 
 <script>
     $('#category_status').on('click', function () {
@@ -112,7 +116,7 @@
         });
         $('#http').on('click', function () {
             $('#status_privacy').show();
-            
+
         });
     });
 </script>

@@ -237,9 +237,9 @@ class Member extends CI_Controller {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/account_settings");
     }
 
-    function friends() {
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/friends");
-    }
+//    function friends() {
+//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/friends");
+//    }
 
     function add_friends() {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/add_friends");
