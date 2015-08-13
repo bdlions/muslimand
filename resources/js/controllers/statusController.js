@@ -1,15 +1,23 @@
 angular.module('controllers.Status', ['services.Status']).
         controller('statusController', function ($scope, statusService) {
+            $scope.statuses = [];
             $scope.status = {};
-            $scope.status.comment = {};
+            $scope.comments = [];
             $scope.statusInfo = {};
             $scope.commentInfo = {};
             $scope.newsfeeds = [];
+            
+//            $scope.testArray = [];
+//            var test =["rashida@gmail.com","shemin"];
+//            var test1 =["rashida@gmail.com","shemin haque"];
+//            $scope.testArray.push(test);
+//            $scope.testArray.push(test1);
+//            console.log($scope.testArray);
 //        
             $scope.addStatus = function () {
                 statusService.addStatus($scope.statusInfo).
                         success(function (data, status, headers, config) {
-                            $scope.status = data;
+                            $scope.statuses.push(data);
                             $("#updateStatusPagelet").show();
                             $("#statusPostId").val('');
                         });
@@ -19,7 +27,7 @@ angular.module('controllers.Status', ['services.Status']).
                         success(function (data, status, headers, config) {
                             $("#updateStatus").hide();
                             $("#displayStatusId").show();
-                            $scope.status = data;
+                            $scope.statuses.push(data);
                         });
             };
             
@@ -35,7 +43,7 @@ angular.module('controllers.Status', ['services.Status']).
             $scope.addComment = function () {
                 statusService.addComment($scope.statusInfo).
                         success(function (data, status, headers, config) {
-                            $scope.status.comment = data;
+                            $scope.comments.push(data);
                             $("#commentInputField").val('');
                         });
                         return false;
