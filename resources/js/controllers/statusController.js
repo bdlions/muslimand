@@ -17,6 +17,7 @@ angular.module('controllers.Status', ['services.Status']).
             $scope.addStatus = function () {
                 statusService.addStatus($scope.statusInfo).
                         success(function (data, status, headers, config) {
+                            console.log(data);
                             $scope.statuses.push(data);
                             $("#updateStatusPagelet").show();
                             $("#statusPostId").val('');

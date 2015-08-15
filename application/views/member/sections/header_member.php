@@ -1,3 +1,12 @@
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/typeahead/typeahead.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/typeahead/bloodhound.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/typeahead/angular-typeahead.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/searchController.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/searchService.js "></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/searchApp.js "></script>
+
 <div class="row" style="padding-top: 15px;">
     <div class="col-xs-2  col-sm-2 col-md-offset-1 col-md-1 form-group">
         <a href="<?php echo base_url(); ?>member/newsfeed">
@@ -5,7 +14,12 @@
         </a>
     </div>
     <div class="col-xs-10 col-sm-4 col-md-4 form-group">
-        <input type="text" class="mm_input" placeholder="Search for people, places and things">
+        <div ng-app="app.Search">
+            <div ng-controller="searchController">
+                    <input class='typeahead mm_input'  placeholder="Search for people, places and things" type="text" sf-typeahead options="exampleOptionsNonEditable" datasets="numbersDataset" ng-model="searchValue">
+                    <!--<input type="text" class="mm_input" placeholder="Search for people, places and things">-->
+            </div>
+        </div>
     </div>
     <div class="col-xs-6 col-sm-3 col-md-offset-1 col-md-2 form-group">
         <a href="<?php echo base_url(); ?>member/timeline">
