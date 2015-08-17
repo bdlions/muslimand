@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         *Name:<br>
-                        <input class="form-control" type="text">
+                        <input class="form-control" type="text"  ng-model="albumInfo.title">
                     </div>
                     <div class="col-md-6"></div>
                 </div>
@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         Description:<br>
-                        <textarea rows="4" cols="50"></textarea>
+                        <textarea class="form-control form_control_custom_style textarea_custom_style" ng-model="albumInfo.description"></textarea>
                     </div>
                 </div>
                 <div class="row form-group"></div>
@@ -62,7 +62,7 @@
                 <div class="row form-group"></div>
                 <div class="row">
                     <div class="col-md-6">
-                        <button class="btn btn-xs" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;">Submit</button>
+                        <button class="btn btn-xs" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;" ng-click="createAlbum()">Submit</button>
                     </div>
                     <div class="col-md-6"></div>
                 </div>
@@ -74,14 +74,10 @@
                 </div>
                 <div class="row form-group"></div>
             </div>
+            
             <div class="modal-footer">
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<script>
-    function open_modal_create_album() {
-        $('#modal_create_album_box').modal('show');
-    }
-</script>

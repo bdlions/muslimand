@@ -83,7 +83,7 @@
                 <div class="pagelet_divider"></div>
                 <div class="row form-group">
                     <div class="col-md-12">
-                        <img src="<?php echo base_url(); ?>resources/images/share_icon.jpng" >
+                        <img src="<?php echo base_url(); ?>resources/images/share_icon.png" >
                         <a href="#">4 shares</a>
                     </div>
                 </div>
@@ -129,29 +129,7 @@
                 </div>
             </div>
         </div>
-        <!--        <div class="row form-group">
-                    <div ng-repeat="commentInfo in comments">
-                        <div class="col-md-1">
-                            <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg" width="30" height="30">
-                        </div>
-                        <div class="col-md-11">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <a style="font-weight: bold;" href><span ng-bind="commentInfo.status_comment_info.userInfo.fristName"></span>&nbsp<span ng-bind="commentInfo.status_comment_info.userInfo.lastName"></span></a>
-                                    <span ng-bind="commentInfo.status_comment_info.description">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    January 9, 2015 at 10:15pm. 
-                                    <a>like</a>
-                                    <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
-                                    . <a>15</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
+
     </div>
 </div>
 

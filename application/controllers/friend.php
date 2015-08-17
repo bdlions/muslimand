@@ -39,18 +39,13 @@ class Friend extends CI_Controller {
     }
 
     function get_friend_list() {
-        $user_id = "100105";
+        $user_id = "100157";
         $friend_list = array();
         $result = $this->friend_mongodb_model->get_friend_list($user_id);
         if (!empty($result)) {
             $result = json_decode($result);
             if (property_exists($result, "friendList") != false) {
-                $friend_list_array = $result->friendList;
-            }
-            foreach ($friend_list_array as $friends) {
-                $friends->fristName = "Shemin";
-                $friends->lastName = "Haque";
-                $friend_list[] = $friends;
+                $friend_list = $result->friendList;
             }
         }
         $this->data['friendList'] = json_encode($friend_list);

@@ -7,13 +7,6 @@ angular.module('controllers.Status', ['services.Status']).
             $scope.commentInfo = {};
             $scope.newsfeeds = [];
             
-//            $scope.testArray = [];
-//            var test =["rashida@gmail.com","shemin"];
-//            var test1 =["rashida@gmail.com","shemin haque"];
-//            $scope.testArray.push(test);
-//            $scope.testArray.push(test1);
-//            console.log($scope.testArray);
-//        
             $scope.addStatus = function () {
                 statusService.addStatus($scope.statusInfo).
                         success(function (data, status, headers, config) {

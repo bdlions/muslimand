@@ -90,7 +90,7 @@ var_dump(json_encode($newsfeed));
                     <div class="pagelet_divider"></div>
                     <div class="row form-group">
                         <div class="col-md-12">
-                            <img src="<?php echo base_url(); ?>resources/images/share_icon.jpng" >
+                            <img src="<?php echo base_url(); ?>resources/images/share_icon.png" >
                             <a href="#">4 shares</a>
                         </div>
                     </div>
