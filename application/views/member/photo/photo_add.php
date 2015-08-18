@@ -76,7 +76,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <span style="font-size: 16px; font-weight: bold;">Select Photo(s): </span>
-                        <input type="file"  size="30" name="image[]">
+                        <input multiple="" type="file"  size="30" name="image[]">
                     </div>
                     <div class="col-md-6"></div>
                 </div>

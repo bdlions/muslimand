@@ -8,6 +8,12 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
         parent::__construct();
         $this->SERVICE_PHOTO = SERVICE_PATH . "photo/";
     }
+    
+    public function get_albums_and_categories($user_id) {
+        $this->curl->create($this->SERVICE_PHOTO . 'getCategoriesAndAlbums');
+        $this->curl->post(array("userId" => $user_id));
+        return $this->curl->execute();
+    }
 
     public function get_photo_categories() {
         $this->curl->create($this->SERVICE_PHOTO . 'getCategories');

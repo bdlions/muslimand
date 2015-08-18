@@ -10,7 +10,6 @@ angular.module('controllers.Status', ['services.Status']).
             $scope.addStatus = function () {
                 statusService.addStatus($scope.statusInfo).
                         success(function (data, status, headers, config) {
-                            console.log(data);
                             $scope.statuses.push(data);
                             $("#updateStatusPagelet").show();
                             $("#statusPostId").val('');
@@ -30,7 +29,6 @@ angular.module('controllers.Status', ['services.Status']).
                         success(function (data, status, headers, config) {
                             $("#statusLikeId").hide();
                             $("#statusUnLikeId").show();
-//                            $scope.status = data;
                         });
                         return false;
             };
@@ -54,7 +52,5 @@ angular.module('controllers.Status', ['services.Status']).
             
             $scope.setNewsfeeds = function (t) {
                 $scope.newsfeeds = JSON.parse(t);
-                console.log($scope.newsfeeds);
-//                  console.log(t);
             };
         });

@@ -9,7 +9,7 @@ angular.module('services.Photo', []).
                     url: '../photos/create_album',
                     data: {
                         title: albumInfo.title,
-                        description:albumInfo.description ,
+                        description: albumInfo.description,
                     },
 //                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 });
@@ -17,14 +17,12 @@ angular.module('services.Photo', []).
             photoService.addPhoto = function (photoInfo) {
                 return $http({
                     method: 'post',
-                    url: '../photos/add_photos',
+                    url: '../photos/photos_add',
                     data: {
                         albumId: photoInfo.albumId,
-                        categoryId:photoInfo.categoryId ,
+                        categoryId: photoInfo.categoryId,
                     },
                 });
             };
-  
-          
             return photoService;
         });

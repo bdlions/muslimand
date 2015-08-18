@@ -7,11 +7,9 @@ angular.module('controllers.Photo', ['services.Photo']).
 
             $scope.setPhotoCategories = function (t) {
                 $scope.categories = JSON.parse(t);
-                console.log($scope.categories);
             };
             $scope.setAlbums = function (albumList) {
                 $scope.albums = JSON.parse(albumList);
-                console.log($scope.albums);
             };
 
             $scope.createAlbum = function () {
@@ -30,7 +28,4 @@ angular.module('controllers.Photo', ['services.Photo']).
                         });
             };
 
-//            $scope.testController = function () {
-//                console.log("test Controler");
-//            };
         });
