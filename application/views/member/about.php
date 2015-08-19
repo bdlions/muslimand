@@ -1,7 +1,7 @@
 <link href="<?php echo base_url(); ?>resources/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
 <div class="row">
     <div class="col-md-10">
-        <?php $this->load->view("member/timeline"); ?>
+        <?php $this->load->view("member/pagelets/timeline/profile_cover"); ?>
         <div class="row form-group"></div>
         <div class="pagelet">
             <div class="row">
