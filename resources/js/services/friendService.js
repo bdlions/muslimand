@@ -8,7 +8,7 @@ angular.module('services.Friend', []).
                     url: '../friend/add_friend',
                     data: {
                         userId: "100157",
-                        friendId: "100105"
+                        friendId: "1003"
                     },
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 });

@@ -24,8 +24,6 @@
 
 
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
         <title>Muslimand</title>
     </head>
 

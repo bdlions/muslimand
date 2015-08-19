@@ -10,8 +10,8 @@
             </a>
             <!--            <button type="button" class="btn btn-default" style="position: absolute; bottom: 20px; right:  140px; font-size: 80%">Update Info</button>
             <button type="button" class="btn btn-default" style="position: absolute; bottom: 20px; right:  20px; font-size: 80%">View Activity Log</button>-->
-            <button type="button" class=" addFriendRequestId btn btn-default" style="position: absolute; bottom: 20px; right:  160px; font-size: 80%" ng-click="addFriend()" >Add Friend</button>
-            <button type="button" class=" FriendRequestSentId btn btn-default  " style="display: none ; position: absolute; bottom: 20px; right:  160px; font-size: 80%" ng-click="" >Friend Request Sent</button>
+            <button type="button" class="addFriendRequestId btn btn-default" style="position: absolute; bottom: 20px; right:  160px; font-size: 80%" ng-click="addFriend()" >Add Friend</button>
+            <button type="button" class="FriendRequestSentId btn btn-default  " style="display: none ; position: absolute; bottom: 20px; right:  160px; font-size: 80%" ng-click="" >Friend Request Sent</button>
             <button type="button" class="btn btn-default" style="position: absolute; bottom: 20px; right:  80px; font-size: 80%">Message</button>
             <div class="dropdown dropdown_style">
                 <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -25,6 +25,8 @@
             </div>
         </div>
     </div>
+</div>
+<div class="row">
     <div class="col-md-12">
         <div style="background-color: whitesmoke">
             <div class="btn-group" role="group" aria-label="...">
