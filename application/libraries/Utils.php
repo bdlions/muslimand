@@ -15,6 +15,20 @@ class Utils {
     }
 
     /*
+     * This method will return a random string based on given length
+     * @param $lendth, random string length
+     * @author nazmul hasan on 19th August 2015
+     */
+    function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $randomString;
+    }
+    
+    /*
      * this method return list of gender
      * @Rashida 17th May 2015
      *  

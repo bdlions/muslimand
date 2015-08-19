@@ -13,7 +13,7 @@ angular.module('services.Status', []).
 //                        userId : userId,
 //                        refId : refId
                     },
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+//                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 });
             };
             statusService.updateStatus = function (statusInfo) {

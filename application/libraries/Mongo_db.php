@@ -513,11 +513,19 @@ class Mongo_db {
 
         $returns = array();
 
-        while ($documents->hasNext()) {
+//        while ($documents->hasNext()) {
+//            if ($this->CI->config->item('mongo_return') == 'object') {
+//                $returns[] = (object) $documents->getNext();
+//            } else {
+//                $returns[] = (array) $documents->getNext();
+//            }
+//        }
+        
+        foreach ($documents as $document) {
             if ($this->CI->config->item('mongo_return') == 'object') {
-                $returns[] = (object) $documents->getNext();
+                $returns[] = (object) $document;
             } else {
-                $returns[] = (array) $documents->getNext();
+                $returns[] = (array) $document;
             }
         }
 

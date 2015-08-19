@@ -45,6 +45,13 @@ class Ion_auth_mongodb_model extends CI_Model {
     public $collections = array();
 
     /**
+     * length of user id
+     *
+     * @var string
+     */
+    public $user_id_length;
+    
+    /**
      * activation code
      *
      * @var string
@@ -178,12 +185,15 @@ class Ion_auth_mongodb_model extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->load->library('mongo_db');
+        $this->load->library('utils');
         $this->load->config('ion_auth', TRUE);
         $this->load->helper('cookie');
         $this->load->helper('date');
         $this->lang->load('ion_auth');
         $this->lang->load('auth');
 
+        $this->user_id_length = $this->config->item('user_id_length', 'ion_auth');
+        
         // Initialize MongoDB collection names
         $this->collections = $this->config->item('collections', 'ion_auth');
 
@@ -726,10 +736,12 @@ class Ion_auth_mongodb_model extends CI_Model {
         $salt = $this->store_salt ? $this->salt() : FALSE;
         $password = $this->hash_password($password, $salt);
 
+        $user_id = $this->utils->generateRandomString($this->user_id_length);
         // New user document
         $data = array(
             'username' => $username,
             'password' => $password,
+            'user_id' => $user_id,
             'email' => $email,
             'ip_address' => $ip_address,
             'created_on' => time(),
@@ -790,7 +802,7 @@ class Ion_auth_mongodb_model extends CI_Model {
         $this->trigger_events('extra_where');
 
         $document = $this->mongo_db
-                ->select(array($this->identity_column, '_id', 'username', 'email', 'password', 'active', 'last_login'))
+                ->select(array($this->identity_column, '_id', 'user_id', 'username', 'email', 'password', 'active', 'last_login'))
                 // MongoDB is vulnerable to SQL Injection like attacks (in PHP at least), in MongoDB
                 // PHP driver we use objects to make queries and as we know PHP allows us to submit
                 // objects via GET, POST, etc. and so getting user input like password[$ne]=1 is possible
@@ -819,7 +831,7 @@ class Ion_auth_mongodb_model extends CI_Model {
                     'identity' => $user->{$this->identity_column},
                     'username' => $user->username,
                     'email' => $user->email,
-                    'user_id' => $user->_id,
+                    'user_id' => $user->user_id,
                     'old_last_login' => $user->last_login
                 );
                 $this->session->set_userdata($session_data);

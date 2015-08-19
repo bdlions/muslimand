@@ -76,7 +76,7 @@ class Auth extends CI_Controller {
             $country_list[$country_info->code] = $country_info->title;
         }
         foreach ($countryAndRelisionList->religionList as $religion_info) {
-            $religion_list[$religion_info->id] = $religion_info->title;
+            $religion_list[$religion_info->religionId] = $religion_info->title;
         }
         if ($this->input->post('register_btn') != null) {
             //validate form input to register
