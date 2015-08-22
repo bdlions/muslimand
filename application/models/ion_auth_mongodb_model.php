@@ -43,6 +43,12 @@ class Ion_auth_mongodb_model extends CI_Model {
      * @var array
      */
     public $collections = array();
+    
+    /**
+     * Holds the attributes mapping
+     * @var array
+     */
+    public $attr_map = array();
 
     /**
      * length of user id
@@ -194,6 +200,9 @@ class Ion_auth_mongodb_model extends CI_Model {
 
         $this->user_id_length = $this->config->item('user_id_length', 'ion_auth');
         
+        // Initialize MongoDB attributes mapping
+        $this->attr_map = $this->config->item('attr_map', 'ion_auth');
+        
         // Initialize MongoDB collection names
         $this->collections = $this->config->item('collections', 'ion_auth');
 
@@ -272,19 +281,19 @@ class Ion_auth_mongodb_model extends CI_Model {
         $this->trigger_events('extra_where');
 
         $document = $this->mongo_db
-                ->select(array('password', 'salt'))
+                ->select(array($this->attr_map['password'], $this->attr_map['salt']))
                 ->where('_id', new MongoId($id))
                 ->limit(1)
                 ->get($this->collections['users']);
         $hash_password_db = (object) $document[0];
-
+        
         if (count($document) !== 1) {
             return FALSE;
         }
-
+        
         // Bcrypt
         if ($use_sha1_override === FALSE && $this->hash_method == 'bcrypt') {
-            if ($this->bcrypt->verify($password, $hash_password_db->password)) {
+            if ($this->bcrypt->verify($password, $hash_password_db->{$this->attr_map['password']})) {
                 return TRUE;
             }
 
@@ -293,13 +302,13 @@ class Ion_auth_mongodb_model extends CI_Model {
 
         // SHA1
         if ($this->store_salt) {
-            $db_password = sha1($password . $hash_password_db->salt);
+            $db_password = sha1($password . $hash_password_db->{$this->attr_map['salt']});
         } else {
-            $salt = substr($hash_password_db->password, 0, $this->salt_length);
+            $salt = substr($hash_password_db->{$this->attr_map['password']}, 0, $this->salt_length);
             $db_password = $salt . substr(sha1($salt . $password), 0, -$this->salt_length);
         }
 
-        return ($db_password == $hash_password_db->password);
+        return ($db_password == $hash_password_db->{$this->attr_map['password']});
     }
 
     // ------------------------------------------------------------------------
@@ -556,7 +565,7 @@ class Ion_auth_mongodb_model extends CI_Model {
         $this->trigger_events('extra_where');
         $username = new MongoRegex('/^' . $username . '$/i');
         return count($this->mongo_db
-                                ->where('username', $username)
+                                ->where($this->attr_map['username'], $username)
                                 ->get($this->collections['users'])) > 0;
     }
 
@@ -577,7 +586,7 @@ class Ion_auth_mongodb_model extends CI_Model {
         $this->trigger_events('extra_where');
         $email = new MongoRegex('/^' . $email . '$/i');
         return count($this->mongo_db
-                                ->where('email', $email)
+                                ->where($this->attr_map['email'], $email)
                                 ->get($this->collections['users'])) > 0;
     }
 
@@ -711,18 +720,18 @@ class Ion_auth_mongodb_model extends CI_Model {
         $this->trigger_events('pre_register');
         $manual_activation = $this->config->item('manual_activation', 'ion_auth');
         // Check if email already exists
-        if ($this->identity_column == 'email' && $this->email_check($email)) {
+        if ($this->identity_column == $this->attr_map['email'] && $this->email_check($email)) {
             $this->set_error('account_creation_duplicate_email');
             return FALSE;
         }
         // Check if username already exists
-        elseif ($this->identity_column == 'username' && $this->username_check($username)) {
+        elseif ($this->identity_column == $this->attr_map['username'] && $this->username_check($username)) {
             $this->set_error('account_creation_duplicate_username');
             return FALSE;
         }
         // If username is taken, use username1 or username2, etc.
         // TODO: Drop this shit!
-        if ($this->identity_column != 'username') {
+        if ($this->identity_column != $this->attr_map['username']) {
             $original_username = $username;
             for ($i = 0; $this->username_check($username); $i++) {
                 if ($i > 0) {
@@ -739,25 +748,25 @@ class Ion_auth_mongodb_model extends CI_Model {
         $user_id = $this->utils->generateRandomString($this->user_id_length);
         // New user document
         $data = array(
-            'username' => $username,
-            'password' => $password,
-            'user_id' => $user_id,
-            'email' => $email,
-            'ip_address' => $ip_address,
-            'created_on' => time(),
-            'last_login' => time(),
-            'active' => ($manual_activation === FALSE ? 1 : 0),
-            'groups' => array(),
+            $this->attr_map['username'] => $username,
+            $this->attr_map['password'] => $password,
+            $this->attr_map['user_id'] => $user_id,
+            $this->attr_map['email'] => $email,
+            $this->attr_map['ip_address'] => $ip_address,
+            $this->attr_map['created_on'] => time(),
+            $this->attr_map['last_login'] => time(),
+            $this->attr_map['account_status_id'] => ($manual_activation === FALSE ? ACCOUNT_STATUS_ID_ACTIVE : ACCOUNT_STATUS_ID_INACTIVE),
+            $this->attr_map['groups'] => array(),
         );
         // Store salt in document?
         if ($this->store_salt) {
-            $data['salt'] = $salt;
+            $data[$this->attr_map['salt']] = $salt;
         }
         // Add groups to the user document, We don't use
         // add_to_group() API function here regarding lesser queries.
         if (!empty($groups)) {
             foreach ($groups as $group) {
-                $data['groups'][] = $group;
+                $data[$this->attr_map['groups']][] = $group;
             }
         }
         // Add to default group if not already set,
@@ -767,7 +776,7 @@ class Ion_auth_mongodb_model extends CI_Model {
 //        if ((isset($default_group->_id) && !isset($groups)) || (empty($groups) && !in_array($default_group->id, $groups))) {
 //            $data['groups'][] = $default_group->_id;
 //        }
-        $data['groups'][] = 1;
+        
         
         // Filter out any data passed that doesn't have a matching column in the
         // user document and merge the set user data with the passed additional data
@@ -779,7 +788,7 @@ class Ion_auth_mongodb_model extends CI_Model {
         $this->trigger_events('post_register');
 
         // Return new document _id or FALSE on failure
-        return isset($id) ? $id : FALSE;
+        return isset($id) ? $user_id : FALSE;
     }
     
     
@@ -802,7 +811,7 @@ class Ion_auth_mongodb_model extends CI_Model {
         $this->trigger_events('extra_where');
 
         $document = $this->mongo_db
-                ->select(array($this->identity_column, '_id', 'user_id', 'username', 'email', 'password', 'active', 'last_login'))
+                ->select(array($this->identity_column, '_id', $this->attr_map['user_id'], $this->attr_map['username'], $this->attr_map['email'], $this->attr_map['password'], $this->attr_map['account_status_id'], $this->attr_map['last_login']))
                 // MongoDB is vulnerable to SQL Injection like attacks (in PHP at least), in MongoDB
                 // PHP driver we use objects to make queries and as we know PHP allows us to submit
                 // objects via GET, POST, etc. and so getting user input like password[$ne]=1 is possible
@@ -817,25 +826,25 @@ class Ion_auth_mongodb_model extends CI_Model {
         if (count($document) === 1) {
             $user = (object) $document[0];
             $password = $this->hash_password_db($user->_id, $password);
-
+            
             if ($password === TRUE) {
                 // Not yet activated?
-                if ($user->active == 0) {
+                if ($user->{$this->attr_map['account_status_id']} == 0) {
                     $this->trigger_events('post_login_unsuccessful');
                     $this->set_error('login_unsuccessful_not_active');
                     return FALSE;
                 }
-
+                
                 // Set user session data
                 $session_data = array(
                     'identity' => $user->{$this->identity_column},
-                    'username' => $user->username,
-                    'email' => $user->email,
-                    'user_id' => $user->user_id,
-                    'old_last_login' => $user->last_login
+                    'username' => $user->{$this->attr_map['username']},
+                    'email' => $user->{$this->attr_map['email']},
+                    'user_id' => $user->{$this->attr_map['user_id']},
+                    'old_last_login' => $user->{$this->attr_map['last_login']}
                 );
                 $this->session->set_userdata($session_data);
-
+                
                 // Clean login attempts, also update last login time
                 $this->update_last_login($user->_id);
                 $this->clear_login_attempts($identity);
@@ -1489,7 +1498,7 @@ class Ion_auth_mongodb_model extends CI_Model {
 
         return $this->mongo_db
                         ->where('_id', new MongoId($id))
-                        ->set('last_login', time())
+                        ->set($this->attr_map['last_login'], time())
                         ->update($this->collections['users']);
     }
 
@@ -1963,11 +1972,18 @@ class Ion_auth_mongodb_model extends CI_Model {
     protected function _filter_data($collection, $data) {
         $filtered_data = $columns = array();
         // Define field dictionaries
-        $columns = $collection == 'users' ?
-                // Users collection static schema array
-                array('_id', 'ip_address', 'username', 'password', 'salt', 'email', 'activation_code', 'forgotten_password_code', 'forgotten_password_time', 'remember_code', 'created_on', 'last_login', 'active', 'first_name', 'last_name', 'company', 'phone', 'users_country') :
-                // Groups collection static schema array
-                array('_id', 'name', 'description');
+        if($collection == $this->collections['users'])
+        {
+            $columns = array('_id', 'ip_address', 'username', 'password', 'salt', 'email', 'activation_code', 'forgotten_password_code', 'forgotten_password_time', 'remember_code', 'created_on', 'last_login', 'active', $this->attr_map['first_name'], $this->attr_map['last_name'], 'company', 'phone', $this->attr_map['country']);
+        }
+        else if($collection == $this->collections['user_profiles'])
+        {
+            $columns = array();
+        }
+        else
+        {
+            $columns = array();
+        }
 
         if (is_array($data)) {
             foreach ($columns as $column) {

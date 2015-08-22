@@ -3,9 +3,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
-
+    /**
+     * Holds the name of collection of user
+     * @var array
+     */
+    public $attr_map = array();
+    
     function __construct() {
         parent::__construct();
+        $this->attr_map = $this->config->item('attr_map', 'ion_auth');
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         $this->load->library('utils');
@@ -103,31 +109,36 @@ class Auth extends CI_Controller {
                 if ($gender_id != null) {
                     $gender_title = $gender_list[$gender_id];
                 }
-                $users_country = array(
+                $country = array(
                     'code' => $country_code,
                     'title' => $country_title,
                 );
                 $additional_data = array(
-                    'first_name' => $this->input->post('r_first_name'),
-                    'last_name' => $this->input->post('r_last_name'),
-                    'users_country' => json_encode($users_country)
+                    $this->attr_map['first_name'] => $this->input->post('r_first_name'),
+                    $this->attr_map['last_name'] => $this->input->post('r_last_name'),
+                    $this->attr_map['country'] => $country
                 );
                 $gender = array(
-                    'id' => $gender_id,
-                    'title' => $gender_title
+                    $this->attr_map['gender_id'] => $gender_id,
+                    $this->attr_map['title'] => $gender_title
                 );
                 $basic_info = array(
-                    'birthday_day' => $this->input->post('birthday_day'),
-                    'birthday_month' => $this->input->post('birthday_month'),
-                    'birthday_year' => $this->input->post('birthday_year'),
-                    'gender' => $gender,
+                    $this->attr_map['birth_day'] => $this->input->post('birthday_day'),
+                    $this->attr_map['birth_month'] => $this->input->post('birthday_month'),
+                    $this->attr_map['birth_year'] => $this->input->post('birthday_year'),
+                    $this->attr_map['gender'] => $gender,
                 );
-                
-                $id = $this->ion_auth->register($username, $password, $email, $additional_data);
+                $group_info = array(
+                    $this->attr_map['group_id'] => MEMBER_GROUP_ID,
+                    $this->attr_map['title'] => MEMBER_GROUP_TITLE
+                );
+                $groups = array();
+                $groups[] = $group_info;
+                $id = $this->ion_auth->register($username, $password, $email, $additional_data, $groups);
                 if ($id != null) {
                     $additional_data = array(
-                        'user_id' => $id,
-                        'basic_info' => json_encode($basic_info),
+                        $this->attr_map['user_id'] => $id,
+                        $this->attr_map['basic_info'] => $basic_info,
                     );
                     $result = $this->basic_profile_mongodb_model->add_basic_info($id, $additional_data);
                     if ($result != null) {

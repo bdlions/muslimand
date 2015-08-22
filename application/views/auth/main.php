@@ -66,17 +66,17 @@
                 <div class="row form-group">
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group">
                         <div class="pages_type_add_form_input">
-                            <?php echo form_dropdown('birthday_day', $date_list, 0, 'class=form-control id=birthday_day'); ?>
+                            <?php echo form_dropdown('birthday_day', $date_list, "0", 'class=form-control id=birthday_day'); ?>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group">
                         <div class="pages_type_add_form_input">
-                            <?php echo form_dropdown('birthday_month', $month_list, 0, 'class=form-control id=birthday_month'); ?>
+                            <?php echo form_dropdown('birthday_month', $month_list, "0", 'class=form-control id=birthday_month'); ?>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group">
                         <div class="pages_type_add_form_input">
-                            <?php echo form_dropdown('birthday_year', $year_list, 0, 'class=form-control id=birthday_year'); ?>
+                            <?php echo form_dropdown('birthday_year', $year_list, "0", 'class=form-control id=birthday_year'); ?>
                         </div>
                     </div>
                 </div>
