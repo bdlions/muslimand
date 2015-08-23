@@ -27,7 +27,7 @@
             <div class="col-md-5">
                 <?php echo form_open("auth/login"); ?>
                 <?php if (isset($message) && ($message != NULL)): ?>
-                <div class="alert alert-dismissible" style="background-color: #703684;color: #ffffff"><?php echo $message; ?></div>
+                    <div class="alert alert-dismissible" style="background-color: #703684;color: #ffffff"><?php echo $message; ?></div>
                 <?php endif; ?>
                 <div class="row form-group">
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -87,11 +87,11 @@
                     </div>
                     <div class="col-md-4 col-sm-6 col-xs-12 form-group">
                         <label style="color: #703684; font-size: 15px; font-weight: bold;">Religion</label>
-                         <?php echo form_dropdown('religion_list', $religion_list, '', 'class=form-control id=religion_list'); ?>
+                        <?php echo form_dropdown('religion_list', $religion_list, '', 'class=form-control id=religion_list'); ?>
                     </div>
                     <div class="col-md-4 col-sm-6 col-xs-12 form-group">
                         <label style="color: #703684; font-size: 15px; font-weight: bold;">Country</label>
-                         <?php echo form_dropdown('country_list', $country_list, '', 'class=form-control id=country_list'); ?>
+                        <?php echo form_dropdown('country_list', $country_list, '', 'class=form-control id=country_list'); ?>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -110,42 +110,65 @@
             <div class="col-md-1"></div>
         </div>
         <div class="row form-group">
-            <div class="col-md-12 col-sm-6 col-xs-12 form-group">
-                <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
-                <?php for ($i = 0; $i < 10; $i++) { ?>
-                    <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; ">
-                        <div class="row form-group">
+            <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
+            <?php for ($i = 0; $i < 10; $i++) { ?>
+                <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
+                    <div id="brand" class="brand_single_image">
+                        <div class="brand_cover_single_image">
+                            <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/face.jpg"><br>
+                            <p class="font_10px" style="margin-right: 8px;">Nazrul Islam</p>
+                            <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag.png"><br>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-12">
-                                <div class="user_brief_card">
-                                    <div class="row">
-                                        <div class="col-md-7 col-xs-7" style="padding-right: 6px">
-                                            <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/face.jpg">
-                                        </div>
-                                        <div class="col-md-5 col-xs-5" style="padding-left: 0px">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div style="color: darkgreen; font-weight: bold; font-size: 8px; line-height: 10px">Nazrul Islam</div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/flag.png">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div style="color: darkgreen; font-weight: bold; font-size: 8px; line-height: 10px">Nazrul Islam</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <span class="label_padding_top_single_image" >Nazrul Islam</span>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                                <ul style="margin: 0px; padding: 0px; padding-top: 5px; list-style-type: none;">
+                                    <li style="padding: 2px 0px;" class="font_10px">Profession:
+                                        <ul style="margin: 0px; padding: 0px; list-style-type: none;">
+                                            <li class="info_style_single_image">Doctor</li>
+                                        </ul>
+                                    </li>
+                                    <li style="padding: 2px 0px;" class="font_10px">Age:
+                                        <ul style="margin: 0px; padding: 0px; list-style-type: none;">
+                                            <li class="info_style_single_image ">30 Years</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-offset-1"></div>
+                        </div>
                     </div>
-                <?php } ?>
-                <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
-            </div>
+                </div>
+            <?php } ?>
+            <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
         </div>
     </div>
 </div>
+
+<script>
+    $('#other_religion').on('click', function () {
+        $('#religion').hide();
+        $('#religion_input').show();
+    });
+
+    $(function () {
+        $(".brand_single_image").mouseenter(function () {
+            var brand_single_image = $(this);
+            var brand_single_cover_image = $(this).find(".brand_cover_single_image");
+            $(brand_single_image).show();
+            $(brand_single_cover_image).hide();
+        });
+        $(".brand_single_image").mouseleave(function () {
+            var brand_single_image = $(this);
+            var brand_single_cover_image = $(this).find(".brand_cover_single_image");
+            if ($(brand_single_cover_image).prop("style").display === "none") {
+                $(brand_single_cover_image).show();
+            }
+        });
+    });
+</script>
