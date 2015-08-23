@@ -3,12 +3,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
+
     /**
      * Holds the name of collection of user
      * @var array
      */
     public $attr_map = array();
-    
+
     function __construct() {
         parent::__construct();
         $this->attr_map = $this->config->item('attr_map', 'ion_auth');
@@ -69,20 +70,27 @@ class Auth extends CI_Controller {
         $this->data['title'] = "Login";
         $country_list = array();
         $religion_list = array();
-        $gender_list[] = array();
-        $countryAndRelisionList = $this->landing_page_model->get_countries_religions();
+        $gender_list = array();
+        $country_and_relisionList = $this->landing_page_model->get_countries_religions();
         $gender = $this->utils->get_gender();
 //        $country_list = $countryAndRelisionList->countryList;
 //        $religion_list = $countryAndRelisionList->religionList;
 //        
+
         foreach ($gender as $key => $gender_info) {
             $gender_list[$key] = $gender_info;
         }
-        foreach ($countryAndRelisionList->countryList as $country_info) {
-            $country_list[$country_info->code] = $country_info->title;
-        }
-        foreach ($countryAndRelisionList->religionList as $religion_info) {
-            $religion_list[$religion_info->religionId] = $religion_info->title;
+        if (!empty($country_and_relisionList)) {
+            if (property_exists($country_and_relisionList, "countryList") != FALSE) {
+                foreach ($country_and_relisionList->countryList as $country_info) {
+                    $country_list[$country_info->code] = $country_info->title;
+                }
+            }
+            if (property_exists($country_and_relisionList, "religionList") != FALSE) {
+                foreach ($country_and_relisionList->religionList as $religion_info) {
+                    $religion_list[$religion_info->religionId] = $religion_info->title;
+                }
+            }
         }
         if ($this->input->post('register_btn') != null) {
             //validate form input to register

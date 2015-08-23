@@ -1,57 +1,62 @@
 angular.module('controllers.BasicProfile', ['services.BasicProfile']).
         controller('basicProfileController', function ($scope, basicProfileService) {
-//        $scope.basicProfileOverview = [];
-            $scope.test = {};
-            $scope.testArray = {};
-            $scope.test1 = [];
-            $scope.login = [];
-            $scope.workPlace = {};
-            $scope.university = {};
-            $scope.city = {};
-            $scope.mobilePhone = {};
-
-            $scope.submitTestIddnfo = function () {
-                console.log($scope.testArray);
-                basicProfileService.addTestInfo($scope.testArray).
+            $scope.overview = {};
+            $scope.workPlaces = {};
+            $scope.universities = {};
+            $scope.colleges = {};
+            $scope.schools = {};
+            $scope.pSkills = {};
+            $scope.getOverview = function (userId) {
+                basicProfileService.getOverviews(userId).
                         success(function (data, status, headers, config) {
-//                        
-//                        $scope.test1.push(data);
-                            console.log(data);
+                            $scope.overview = data;
+                            $('#about_career').hide();
+                            $('#about_place').hide();
+                            $('#about_contact_info').hide();
+                            $('#about_family_relation').hide();
+                            $('#about_details').hide();
+                            $('#about_overview').show();
                         });
             };
-//            $scope.setOverviews = function (t) {
-//                var result = JSON.parse(t);
-//                $scope.workPlace = result.workPlace;
-//                $scope.university = result.university;
-//                $scope.city = result.city;
-//                console.log($scope.city);
-//            };
-
-            $scope.overviewClick = function () {
-                basicProfileService.getOverviews().
+            $scope.getWorksEducation = function (userId) {
+                basicProfileService.getWorksEducation(userId).
                         success(function (data, status, headers, config) {
-                            $scope.workPlace = data.workPlace;
-                            $scope.university = data.university;
-                            $scope.city = data.city;
-//                            return $scope;
-//                            console.log(data);
+                            if(data.work_places != null){
+                                 $scope.workPlaces = data.work_places;
+                                $('#work_place_tmpl_id').show(); 
+                            }
+                            if(data.p_skills != null){
+                                 $scope.pSkills = data.p_skills;
+                                $('#p_skill_tmpl_id').show(); 
+                            }
+                            if(data.universities != null){
+                                 $scope.universities = data.universities;
+                                $('#uv_tmpl_id').show(); 
+                            }
+                            if(data.colleges != null){
+                                 $scope.colleges = data.colleges;
+                                $('#college_tmpl_id').show(); 
+                            }
+                            if(data.schools != null){
+                                 $scope.schools = data.schools;
+                                $('#school_tmpl_id').show(); 
+                            }
+                            $('#about_overview').hide();
+                            $('#about_place').hide();
+                            $('#about_contact_info').hide();
+                            $('#about_family_relation').hide();
+                            $('#about_details').hide();
+                            $('#work').hide();
+                            $('#professional_skill').hide();
+                            $('#university').hide();
+                            $('#college').hide();
+                            $('#school').hide();
+                            $('#about_career').show();
+                            $('#subcategory_work').show();
+                            $('#subcategory_professional_skill').show();
+                            $('#subcategory_university').show();
+                            $("#subcategory_college").show();
+                            $('#subcategory_school').show();
                         });
             };
-
-            $scope.angularTest = function () {
-                basicProfileService.setTest().
-                        success(function (data, status, headers, config) {
-                            $scope.test = data;
-                            $scope.test1 = data.lastName;
-                            console.log(data.lastName);
-                        });
-            };
-
-            $scope.addWelcomeTest = function () {
-                basicProfileService.addWelcomeTest($scope.login).
-                        success(function (data, status, headers, config) {
-                            console.log(data);
-
-                        });
-            }
         });

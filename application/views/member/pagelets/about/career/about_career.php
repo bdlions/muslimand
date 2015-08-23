@@ -1,167 +1,3 @@
-
-<script type="text/javascript" src="<?php echo base_url() ?>resources/bootstrap3/js/tmpl.min.js"></script>
-
-<script type="text/x-tmpl" id="tmpl_work_places">
-    {% var i=0, work_place = ((o instanceof Array) ? o[i++] : o); %}
-    {% while(work_place){ %}
-<div class="row form-group">
-    <div class="col-md-2">
-        <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
-    </div>
-    <div class="col-md-10">
-        <div class="row">
-            <div class="col-md-8">
-                <a href=""><?php echo '{%= work_place.company%}' ?></a>
-            </div>
-            <div class="col-md-4">
-                <div class="pull-right">
-                    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                 <?php echo '{%= work_place.position%}' ?>,<?php echo '{%= work_place.city %}'; ?>,<?php echo '{%= work_place.description %}'; ?>
-            </div>
-        </div>
-    </div>
-</div> 
-    {% work_place = ((o instanceof Array) ? o[i++] : null); %}
-    {% } %}
-</script>
-<script type="text/x-tmpl" id="tmpl_p_skills">
-    {% var i=0, p_skill = ((o instanceof Array) ? o[i++] : o); %}
-    {% while(p_skill){ %}
-    <div class="row from-group">
-    <div class="col-md-8">
-    <a style="font-weight: bold" href=""><?php echo '{%= p_skill.pSkill%}' ?></a>
-    </div>
-    <div class="col-md-4">
-    <div class="pull-right">
-    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-    <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-    </ul>
-    </div>
-    </div>
-    </div>
-    </div>
-    {% p_skill = ((o instanceof Array) ? o[i++] : null); %}
-    {% } %}
-</script>
-<script type="text/x-tmpl" id="tmpl_universities">
-    {% var i=0, university = ((o instanceof Array) ? o[i++] : o); %}
-    {% while(university){ %}
-    <div class="row form-group">
-    <div class="col-md-2">
-    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
-    </div>
-    <div class="col-md-10">
-    <div class="row">
-    <div class="col-md-8">
-    <a href=""><?php echo '{%= university.university%}' ?></a>
-    </div>
-    <div class="col-md-4">
-    <div class="pull-right">
-    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-    <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-    </ul>
-    </div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-md-12">
-    <?php echo '{%= university.startDate%}' ?> - <?php echo '{%= university.endDate%}' ?>.<?php echo '{%= university.description%}' ?>
-    </div>
-    </div>
-    </div>
-    </div> 
-    {% university = ((o instanceof Array) ? o[i++] : null); %}
-    {% } %}
-</script>
-
-<script type="text/x-tmpl" id="tmpl_colleges">
-    {% var i=0, college = ((o instanceof Array) ? o[i++] : o); %}
-    {% while(college){ %}
-    <div class="row form-group">
-    <div class="col-md-2">
-        <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
-    </div>
-    <div class="col-md-10">
-        <div class="row">
-            <div class="col-md-8">
-                <a href=""><?php echo '{%= college.college%}' ?></a>
-            </div>
-            <div class="col-md-4">
-                <div class="pull-right">
-                    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-<?php echo '{%= college.startDate%}' ?> - <?php echo '{%= college.endDate%}' ?>.<?php echo '{%= college.description%}' ?>
-            </div>
-        </div>
-    </div>
-</div> 
-    {% college = ((o instanceof Array) ? o[i++] : null); %}
-    {% } %}
-</script>
-<script type="text/x-tmpl" id="tmpl_schools">
-    {% var i=0, school = ((o instanceof Array) ? o[i++] : o); %}
-    {% while(school){ %}
-<div class="row form-group">
-    <div class="col-md-2">
-        <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
-    </div>
-    <div class="col-md-10">
-        <div class="row">
-            <div class="col-md-8">
-                <a href=""><?php echo '{%= school.school%}' ?></a>
-            </div>
-            <div class="col-md-4">
-                <div class="pull-right">
-                    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                 <?php echo '{%= school.startDate%}'  ?> - <?php echo '{%= school.endDate%}'  ?>.<?php echo '{%= school.description%}' ?>
-            </div>
-        </div>
-    </div>
-</div> 
-    {% school = ((o instanceof Array) ? o[i++] : null); %}
-    {% } %}
-</script>
-
 <div id="about_career" style="display: none;">
     <div class="row">
         <div class="col-md-12">
@@ -183,8 +19,36 @@
         </div>
     </div>
 
-    <div id="work_place_tmpl_id">
-
+    <div id="work_place_tmpl_id" style="display: none;">
+        <div class="row form-group" ng-repeat="workPlace in workPlaces">
+            <div class="col-md-2">
+                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-8">
+                        <a href=""><span ng-bind="workPlace.company"></span></a>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span ng-bind="workPlace.position"></span>,<span ng-bind="workPlace.city"></span> .
+                        <span ng-bind="workPlace.description"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row padding_top_over_row_30px">
         <div class="col-md-12">
@@ -193,7 +57,7 @@
     </div>
     <div class="pagelet_divider"></div>
 
-    <div id="subcategory_professional_skill" class="row">
+    <div id="subcategory_professional_skill" class="row" >
         <div class="col-md-12">
             <div class="cursor_holder_style">
                 <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
@@ -206,9 +70,25 @@
             <?php $this->load->view("member/pagelets/about/career/professional_skill"); ?>
         </div>
     </div>
-    <div id="p_skill_tmpl_id">
-
+    <div id="p_skill_tmpl_id" style="display: none;">
+        <div class="row from-group" ng-repeat="pSkill in pSkills">
+            <div class="col-md-8">
+                <a style="font-weight: bold" href=""><span ng-bind="pSkill.pSkill"></span></a>
+            </div>
+            <div class="col-md-4">
+                <div class="pull-right">
+                    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
+
     <div class="row padding_top_over_row_30px">
         <div class="col-md-12">
             <span class="header_label_style">University</span>
@@ -228,7 +108,37 @@
             <?php $this->load->view("member/pagelets/about/career/university"); ?>
         </div>
     </div>
-    <div id="uv_tmpl_id">
+    <div id="uv_tmpl_id" style="display: none;">
+        <div class="row form-group"ng-repeat="university in universities">
+            <div class="col-md-2">
+                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-8">
+                        <a href=""><span ng-bind="university.university"></span></a>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span ng-bind="university.startDate">-</span><span ng-bind="university.endDate"></span>
+                        <span ng-bind="university.university"></span>.
+                        <span ng-bind="university.description"></span>
+                    </div>
+                </div>
+            </div>
+        </div> 
 
     </div>
     <div class="row padding_top_over_row_30px">
@@ -250,8 +160,36 @@
             <?php $this->load->view("member/pagelets/about/career/college"); ?>
         </div>
     </div>
-    <div id="college_tmpl_id">
-        
+    <div id="college_tmpl_id" style="display: none;">
+        <div class="row form-group" ng-repeat="college in colleges">
+            <div class="col-md-2">
+                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-8">
+                        <a href=""><span ng-bind="college.college"></span></a>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span ng-bind="college.startDate">-</span><span ng-bind="college.endDate"></span>
+                        <span ng-bind="college.description"></span>
+                    </div>
+                </div>
+            </div>
+        </div> 
     </div>
 
     <div class="row padding_top_over_row_30px">
@@ -273,33 +211,62 @@
             <?php $this->load->view("member/pagelets/about/career/school"); ?>
         </div>
     </div>
-    <div id="school_tmpl_id">
+    <div id="school_tmpl_id" style="display: none;">
+        <div class="row form-group"ng-repeat="school in schools">
+            <div class="col-md-2">
+                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-8">
+                        <a href=""><span ng-bind="school.school"></span></a>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span ng-bind="school.startDate">-</span><span ng-bind="school.endDate"></span>
+                        <span ng-bind="school.description"></span>
+                    </div>
+                </div>
+            </div>
+        </div> 
     </div>
 </div>
 
 
 
 <script>
-$('#subcategory_work').on('click', function () {
-    $('#subcategory_work').hide();
-    $('#work').show();
-});
-$('#subcategory_professional_skill').on('click', function () {
-    $('#subcategory_professional_skill').hide();
-    $('#professional_skill').show();
-});
-$('#subcategory_university').on('click', function () {
-    $('#subcategory_university').hide();
-    $("#university").show();
-});
-$("#subcategory_college").on('click', function () {
-    $("#subcategory_college").hide();
-    $("#college").show();
-});
-$('#subcategory_school').on('click', function () {
-    $('#subcategory_school').hide();
-    $('#school').show();
-});
+    $('#subcategory_work').on('click', function () {
+        $('#subcategory_work').hide();
+        $('#work').show();
+    });
+    $('#subcategory_professional_skill').on('click', function () {
+        $('#subcategory_professional_skill').hide();
+        $('#professional_skill').show();
+    });
+    $('#subcategory_university').on('click', function () {
+        $('#subcategory_university').hide();
+        $("#university").show();
+    });
+    $("#subcategory_college").on('click', function () {
+        $("#subcategory_college").hide();
+        $("#college").show();
+    });
+    $('#subcategory_school').on('click', function () {
+        $('#subcategory_school').hide();
+        $('#school').show();
+    });
 </script>
 
 
