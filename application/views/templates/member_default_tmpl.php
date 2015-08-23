@@ -14,7 +14,6 @@
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
         <title>Muslimand</title>
     </head>
-
     <body>
         <div class="body_wrapper">
             <div class="header_wrapper">
@@ -33,7 +32,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="ticker_friends_wrapper">
-                        <?php $this->load->view("member/sections/right_column_ticker_friends"); ?>
+                        <?php // $this->load->view("member/sections/right_column_ticker_friends"); ?>
                         </div>
                     </div>
                 </div>

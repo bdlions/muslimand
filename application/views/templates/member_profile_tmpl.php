@@ -14,6 +14,9 @@
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/basicProfileController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/basicProfileService.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/basicProfileApp.js "></script>
         <title>Muslimand</title>
     </head>
 
@@ -32,7 +35,7 @@
                     </div>
                     <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2">
                         <div style="position: fixed; right: 0; top: 60px; z-index: 19; height: 90%;">
-                            <?php $this->load->view("member/sections/right_column_ticker_friends"); ?>
+                            <?php // $this->load->view("member/sections/right_column_ticker_friends"); ?>
                         </div>
                     </div>
                 </div>

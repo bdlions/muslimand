@@ -139,7 +139,9 @@ class Basic_profile extends CI_Controller {
     }
 
     function get_overview() {
-        $user_id = "100157";
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $request->userId;
         $response = array();
         $response['website'] = "";
         $response['mobilePhone'] = "";
@@ -180,6 +182,9 @@ class Basic_profile extends CI_Controller {
     }
 
     function get_works_education() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $request->userId;
         $response = array();
         $response['message'] = '';
         $response['work_places'] = '';
@@ -187,7 +192,6 @@ class Basic_profile extends CI_Controller {
         $response['universities'] = '';
         $response['schools'] = '';
         $response['p_skills'] = '';
-        $user_id = "100157";
         $basic_p_info = $this->basic_profile_mongodb_model->get_works_education($user_id);
         if (!empty($basic_p_info)) {
             if (property_exists($basic_p_info, "workPlaces") != FALSE) {
@@ -342,16 +346,15 @@ class Basic_profile extends CI_Controller {
         $response['email'] = "shemin@gmail.com";
         echo json_encode($response);
     }
-    
-    function test_add(){
+
+    function test_add() {
 //        $arr['firstName'] = "dklfjsdf";
 //        $arr['lastName'] = "fsdfsdf";
 //        $arr['firstName'] = $_POST['firstName'];
 //        $arr['lastName'] = $_POST['lastName'];
-        
+
         echo json_encode($this->input->post());
 //        var_dump($this->input->post('testArray'));
-        
     }
 
 }

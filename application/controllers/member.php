@@ -39,7 +39,7 @@ class Member extends CI_Controller {
     }
 
     function about($user_id = 0) {
-         $this->data['user_id'] = $user_id;
+         $this->data['user_id'] = "100157";//get from session;
          
         $this->data['bp_company'] = array(
             'name' => 'bp_company',

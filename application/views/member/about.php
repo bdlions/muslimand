@@ -1,99 +1,105 @@
-<div class="row">
-    <div class="col-md-10">
-        <?php $this->load->view("member/pagelets/timeline/profile_cover"); ?>
-        <div class="row form-group"></div>
-        <div class="pagelet">
-            <div class="row">
-                <div class="col-md-1">
-                    <div class="row form-group"></div>
-                    <img src="<?php echo base_url(); ?>resources/images/about.png"  width="28" height="28">   
-                </div>
-                <div class="col-md-11">
-                    <span style="font-size: 35px;">About</span>  
-                </div>
-            </div>
-        </div>
-        <div class="pagelet">
-            <div class="row">
-                <div class="col-md-4" style="border-right: 1px solid lightgray;">
-                    <div class="pagelet">
-                        <?php $this->load->view("member/pagelets/about/about_categoty"); ?>
-                    </div>
-                </div> 
-                <div class="col-md-8">
-                    <div class="pagelet">
-                        <?php $this->load->view("member/pagelets/about/about_overview"); ?>
-                        <?php $this->load->view("member/pagelets/about/career/about_career"); ?>
-                        <?php $this->load->view("member/pagelets/about/place/about_place"); ?>
-                        <?php $this->load->view("member/pagelets/about/contact_info/about_contact_info"); ?>
-                        <?php $this->load->view("member/pagelets/about/family_relation/about_family_relation"); ?>
-                        <?php $this->load->view("member/pagelets/about/details/about_details"); ?>
+<div ng-app="app.BasicProfile">
+    <div ng-controller="basicProfileController">
+        <div class="row">
+            <div class="col-md-10">
+                <?php $this->load->view("member/pagelets/timeline/profile_cover"); ?>
+                <div class="row form-group"></div>
+                <div class="pagelet">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class="row form-group"></div>
+                            <img src="<?php echo base_url(); ?>resources/images/about.png"  width="28" height="28">   
+                        </div>
+                        <div class="col-md-11">
+                            <span style="font-size: 35px;">About</span>  
+                        </div>
                     </div>
                 </div>
+                <div class="pagelet">
+                    <div class="row">
+                        <div class="col-md-4" style="border-right: 1px solid lightgray;">
+                            <div class="pagelet">
+                                <?php $this->load->view("member/pagelets/about/about_categoty"); ?>
+                            </div>
+                        </div> 
+                        <div class="col-md-8">
+                            <div class="pagelet">
+                                <?php $this->load->view("member/pagelets/about/about_overview"); ?>
+                                <?php $this->load->view("member/pagelets/about/career/about_career"); ?>
+                                <?php $this->load->view("member/pagelets/about/place/about_place"); ?>
+                                <?php $this->load->view("member/pagelets/about/contact_info/about_contact_info"); ?>
+                                <?php $this->load->view("member/pagelets/about/family_relation/about_family_relation"); ?>
+                                <?php $this->load->view("member/pagelets/about/details/about_details"); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="col-md-2" style="border-left: 1px solid lightgray"></div>
         </div>
     </div>
-    <div class="col-md-2" style="border-left: 1px solid lightgray"></div>
 </div>
 
 <script>
-    $('#category_overview').on('click', function() {
-        $.ajax({
-            dataType: 'json',
-            type: "POST",
-            url: '<?php echo base_url(); ?>' + 'basic_profile/get_overview',
-            data: {
-            },
-            success: function(data) {
-                $("#about_overview_company").html(tmpl("tmpl_work_for_overview", data.workPlace));
-                $("#about_overview_uiversity").html(tmpl("tmpl_uv_for_overview", data.university));
-                $("#about_overview_location").html(tmpl("tmpl_location_for_overview", data.city));
-                $("#about_overview_phone").html(tmpl("tmpl_phone_for_overview", data.mobilePhone));
-                $("#about_overview_email").html(tmpl("tmpl_email_for_overview", data.email));
-                $("#about_overview_address").html(tmpl("tmpl_address_for_overview", data.address));
-                $("#about_overview_website").html(tmpl("tmpl_website_for_overview", data.website));
-                $("#about_overview_birthdate").html(tmpl("tmpl_birthdate_for_overview", data.birthDate));
-                $('#about_career').hide();
-                $('#about_place').hide();
-                $('#about_contact_info').hide();
-                $('#about_family_relation').hide();
-                $('#about_details').hide();
-                $('#about_overview').show();
-            }
-        });
-    });
-    $('#category_career').on('click', function() {
-        $.ajax({
-            dataType: 'json',
-            type: "POST",
-            url: '<?php echo base_url(); ?>' + 'basic_profile/get_works_education',
-            data: {
-            },
-            success: function(data) {
-                $("#work_place_tmpl_id").html(tmpl("tmpl_work_places", data.work_places));
-                $("#p_skill_tmpl_id").html(tmpl("tmpl_p_skills", data.p_skills));
-                $("#uv_tmpl_id").html(tmpl("tmpl_universities", data.universities));
-                $("#college_tmpl_id").html(tmpl("tmpl_colleges", data.colleges));
-                $("#school_tmpl_id").html(tmpl("tmpl_schools", data.schools));
-                $('#about_overview').hide();
-                $('#about_place').hide();
-                $('#about_contact_info').hide();
-                $('#about_family_relation').hide();
-                $('#about_details').hide();
-                $('#work').hide();
-                $('#professional_skill').hide();
-                $('#university').hide();
-                $('#college').hide();
-                $('#school').hide();
-                $('#about_career').show();
-                $('#subcategory_work').show();
-                $('#subcategory_professional_skill').show();
-                $('#subcategory_university').show();
-                $("#subcategory_college").show();
-                $('#subcategory_school').show();
-            }
-        });
-    });
+    
+//    $('#category_overview').on('click', function() {
+//        $.ajax({
+//            dataType: 'json',
+//            type: "POST",
+//            url: '<?php echo base_url(); ?>' + 'basic_profile/get_overview',
+//            data: {
+//            },
+//            success: function(data) {
+//                $("#about_overview_company").html(tmpl("tmpl_work_for_overview", data.workPlace));
+//                $("#about_overview_uiversity").html(tmpl("tmpl_uv_for_overview", data.university));
+//                $("#about_overview_location").html(tmpl("tmpl_location_for_overview", data.city));
+//                $("#about_overview_phone").html(tmpl("tmpl_phone_for_overview", data.mobilePhone));
+//                $("#about_overview_email").html(tmpl("tmpl_email_for_overview", data.email));
+//                $("#about_overview_address").html(tmpl("tmpl_address_for_overview", data.address));
+//                $("#about_overview_website").html(tmpl("tmpl_website_for_overview", data.website));
+//                $("#about_overview_birthdate").html(tmpl("tmpl_birthdate_for_overview", data.birthDate));
+//                $('#about_career').hide();
+//                $('#about_place').hide();
+//                $('#about_contact_info').hide();
+//                $('#about_family_relation').hide();
+//                $('#about_details').hide();
+//                $('#about_overview').show();
+//            }
+//        });
+//    });
+  
+//    $('#category_career').on('click', function() {
+//        $.ajax({
+//            dataType: 'json',
+//            type: "POST",
+//            url: '<?php echo base_url(); ?>' + 'basic_profile/get_works_education',
+//            data: {
+//            },
+//            success: function(data) {
+//                $("#work_place_tmpl_id").html(tmpl("tmpl_work_places", data.work_places));
+//                $("#p_skill_tmpl_id").html(tmpl("tmpl_p_skills", data.p_skills));
+//                $("#uv_tmpl_id").html(tmpl("tmpl_universities", data.universities));
+//                $("#college_tmpl_id").html(tmpl("tmpl_colleges", data.colleges));
+//                $("#school_tmpl_id").html(tmpl("tmpl_schools", data.schools));
+//                $('#about_overview').hide();
+//                $('#about_place').hide();
+//                $('#about_contact_info').hide();
+//                $('#about_family_relation').hide();
+//                $('#about_details').hide();
+//                $('#work').hide();
+//                $('#professional_skill').hide();
+//                $('#university').hide();
+//                $('#college').hide();
+//                $('#school').hide();
+//                $('#about_career').show();
+//                $('#subcategory_work').show();
+//                $('#subcategory_professional_skill').show();
+//                $('#subcategory_university').show();
+//                $("#subcategory_college").show();
+//                $('#subcategory_school').show();
+//            }
+//        });
+//    });
     $('#category_place').on('click', function() {
         $.ajax({
             dataType: 'json',

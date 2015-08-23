@@ -12,6 +12,11 @@
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/template.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/landingController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/landingService.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/landingApp.js "></script>
         <title>Muslimand</title>
     </head>
     <body class="back">
