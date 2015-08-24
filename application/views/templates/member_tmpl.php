@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-xs-4 col-sm-4 col-md-offset-2 col-md-2 col-lg-offset-2 col-lg-2">
                     <div style="position: fixed; height: 300px">
-                        <?php // $this->load->view("member/sections/right_column_ticker_friends"); ?>
+                        <?php  $this->load->view("member/sections/right_column_ticker_friends"); ?>
                     </div>
                 </div>
             </div>

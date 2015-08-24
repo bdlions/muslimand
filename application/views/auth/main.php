@@ -1,12 +1,12 @@
 <style>
     .user_brief_card
     {
-        border: 4px solid lightgray; 
-        padding: 6px; 
+        border: 2px solid lightgray; 
+        padding: 3px 2px;
         background-color: white;
     }
 </style>
-<div style=" padding-bottom: 45px;">
+<div style="padding-bottom: 45px;">
     <div class="container-fluid">
         <div class="row form-group"></div>
         <div class="row form-group"></div>
@@ -109,9 +109,11 @@
             </div>
             <div class="col-md-1"></div>
         </div>
-        <div class="row form-group">
+        
+        
+<!--        <div class="row form-group">
             <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
-            <?php for ($i = 0; $i < 10; $i++) { ?>
+            <?php //for ($i = 0; $i < 10; $i++) { ?>
                 <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
                     <div id="brand" class="brand_single_image">
                         <div class="brand_cover_single_image">
@@ -144,9 +146,532 @@
                         </div>
                     </div>
                 </div>
-            <?php } ?>
+            <?php //} ?>
+            <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
+        </div>-->
+        
+        <div class="row form-group">
+            <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
+            
+            
+                <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
+                    <div id="brand" class="brand_single_image">
+                        <div class="brand_cover_single_image">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px;">Dr. Belal</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag/1.png"><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="label_padding_top_single_image" >Dr. Belal</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Profession:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">Doctor</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Age:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">40 Years</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-1"></div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
+                    <div id="brand" class="brand_single_image">
+                        <div class="brand_cover_single_image">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px;">Barak Obama</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag/2.png"><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="label_padding_top_single_image" >Barak Obama</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Profession:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">President</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Age:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">45 Years</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
+                    <div id="brand" class="brand_single_image">
+                        <div class="brand_cover_single_image">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg"><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px;">Mohammad Azhar Uddin</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag/3.png"><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="label_padding_top_single_image" >Mohammad Azhar Uddin</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Profession:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">Student</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Age:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">22 Years</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
+                    <div id="brand" class="brand_single_image">
+                        <div class="brand_cover_single_image">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px;">Maria Islam</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag/4.png"><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="label_padding_top_single_image" >Maria Islam</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Profession:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">Teacher</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Age:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">29 Years</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
+                    <div id="brand" class="brand_single_image">
+                        <div class="brand_cover_single_image">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px;">Jannatul Ferdaus</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag/5.png"><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="label_padding_top_single_image" >Jannatul Ferdaus</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Profession:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">Engineer</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Age:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">26 Years</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
+                    <div id="brand" class="brand_single_image">
+                        <div class="brand_cover_single_image">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px;">Fatematul Kobra</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag/6.png"><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="label_padding_top_single_image" >Fatematul Kobra</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Profession:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">Housewife</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Age:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">25 Years</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
+                    <div id="brand" class="brand_single_image">
+                        <div class="brand_cover_single_image">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px;">Sharmin Akter</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag/7.png"><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="label_padding_top_single_image" >Sharmin Akter</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Profession:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">Lawyer</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Age:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">28 Years</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
+                    <div id="brand" class="brand_single_image">
+                        <div class="brand_cover_single_image">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg"><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px;">Mohammad Rafique</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag/8.png"><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="label_padding_top_single_image" >Mohammad Rafique</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Profession:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">Professor</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Age:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">35 Years</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
+                    <div id="brand" class="brand_single_image">
+                        <div class="brand_cover_single_image">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_9.jpg"><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px;">John Ibrahim</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag/9.png"><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="label_padding_top_single_image" >John Ibrahim</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Profession:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">Service Holder</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Age:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">38 Years</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
+                    <div id="brand" class="brand_single_image">
+                        <div class="brand_cover_single_image">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_10.jpg"><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px;">Nazrul Islam</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag/10.png"><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="label_padding_top_single_image" >Nazrul Islam</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Profession:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">Businessman</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="padding: 2px 0px;" class="font_10px">Age:</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="info_style_single_image">28 Years</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-1"></div>
+                        </div>
+                    </div>
+                </div>
+                
+            
+            
             <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
         </div>
+        
+        
+        
     </div>
 </div>
 

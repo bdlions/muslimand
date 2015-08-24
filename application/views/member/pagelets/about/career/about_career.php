@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div id="subcategory_work" class="row">
+    <div id="subcategory_work" class="row form-group">
         <div class="col-md-12">
             <div class="cursor_holder_style">
                 <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
@@ -57,7 +57,7 @@
     </div>
     <div class="pagelet_divider"></div>
 
-    <div id="subcategory_professional_skill" class="row" >
+    <div id="subcategory_professional_skill" class="row form-group" >
         <div class="col-md-12">
             <div class="cursor_holder_style">
                 <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
@@ -95,7 +95,7 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div id="subcategory_university" class="row">
+    <div id="subcategory_university" class="row form-group">
         <div class="col-md-12">
             <div class="cursor_holder_style">
                 <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
@@ -147,7 +147,7 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div id="subcategory_college" class="row">
+    <div id="subcategory_college" class="row form-group">
         <div class="col-md-12">
             <div class="cursor_holder_style">
                 <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
@@ -198,7 +198,7 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div id="subcategory_school" class="row">
+    <div id="subcategory_school" class="row form-group">
         <div class="col-md-12">
             <div class="cursor_holder_style">
                 <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
