@@ -27,6 +27,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row form-group">
+                    <div class="col-md-offset-9 col-md-3">
+                        <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancelling_btn" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                    </div>
+                </div>
+            <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Company</span>
                 </div>
@@ -125,7 +130,7 @@
                     <?php echo form_input($work_update_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
                 </div>
                 <div class="col-md-3">
-                    <button id="cancel_work_window" class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>
+                    <button class="btn btn-default form-control cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
                 </div>
             </div>
         </div>
@@ -152,7 +157,7 @@
         });
 
 
-        $("#cancel_work_window").on("click", function () {
+        $(".cancelling_btn").on("click", function () {
             $("#work").hide();
             $("#subcategory_work").show();
         });

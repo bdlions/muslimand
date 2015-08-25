@@ -1,9 +1,9 @@
-<div id="family_member_add_id" style="display: none;">
-    <div class="row">
+<div id="family_member_add_id" style="display: none;" class="carrer_bg">
+    <div class="row form-group">
         <div class="col-md-offset-2 col-md-10">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button id="family_member_close_id" style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style" aria-label="Close" onclick="close_window_8()"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style family_member_close_id" aria-label="Close" onclick="close_window_8()"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row padding_top_over_row form-group">
@@ -38,10 +38,10 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-default pull-right form-control" style="background-color: #703684; color: white; margin-right: -15px;">Save Updates</button>
+                    <button class="pull-right form-control form_control_custom_style member_about_save_button" style="background-color: #703684; color: white; margin-right: -15px;">Save Updates</button>
                 </div>
                 <div class="col-md-3">
-                    <button class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>
+                    <button class="btn btn-default form-control family_member_close_id" style="background-color: #703684; color: white">Cancel</button>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
             $("#working_year").show();
         });
 
-        $("#family_member_close_id").on("click", function(){
+        $(".family_member_close_id").on("click", function(){
             $("#family_member_add_id").hide();
             $("#family_member_id").show();
         });

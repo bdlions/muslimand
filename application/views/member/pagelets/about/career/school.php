@@ -18,12 +18,12 @@
         });
     });
 </script>
-<div id="school" class="" style="display: none;">
-    <div class="row">
+<div id="school" class="carrer_bg" style="display: none;">
+    <div class="row form-group">
         <div class="col-md-offset-2 col-md-10">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancelling_btn" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row form-group">
@@ -92,7 +92,7 @@
                             <!--<button class="btn btn-default pull-right form-control" style="background-color: #703684; color: white; margin-right: -15px;">Save Updates</button>-->
                         </div>
                         <div class="col-md-3">
-                            <button class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>
+                            <button class="btn btn-default form-control cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -109,10 +109,10 @@
             $("#present").hide();
             $("#working_year").show();
         });
+        $(".cancelling_btn").on("click", function () {
+           $('#school').hide();
+        $('#subcategory_school').show();
+        });
 
     });
-    function close_window_5() {
-        $('#school').hide();
-        $('#subcategory_school').show();
-    }
 </script>
