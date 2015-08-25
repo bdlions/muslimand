@@ -57,14 +57,16 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_work_place() {
-        $user_id = "100157";
-        if ($this->input->post()) {
-            $response = array();
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $request->userId;
             $user_work_places = new stdClass();
-            $user_work_places->company = $this->input->post('bp_company');
-            $user_work_places->position = $this->input->post('bp_position');
-            $user_work_places->city = $this->input->post('bp_city');
-            $user_work_places->description = $this->input->post('bp_work_description');
+            $user_work_places->company = $request->company;
+            $user_work_places->position = $request->position;
+            $user_work_places->city = $request->city;
+            $user_work_places->description = $request->description;
             $result = $this->basic_profile_mongodb_model->add_work_place($user_id, $user_work_places);
             if ($result != null) {
                 $response["work_place"] = $user_work_places;
@@ -74,11 +76,13 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_professional_skill() {
-        $user_id = "100157";
-        if ($this->input->post()) {
-            $response = array();
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $request->userId;
             $user_professional_skill = new stdClass();
-            $user_professional_skill->pSkill = $this->input->post('bp_profession_skill');
+            $user_professional_skill->pSkill = $request->pSkil;
             $result = $this->basic_profile_mongodb_model->add_p_skill($user_id, $user_professional_skill);
             if ($result != null) {
                 $response["p_skill"] = $user_professional_skill;
@@ -89,14 +93,14 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_university() {
-        $user_id = "100157";
-        if ($this->input->post()) {
-            $response = array();
-            $response['message'] = '';
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $request->userId;
             $user_university = new stdClass();
-            $user_university->university = $this->input->post('bp_university');
-            $user_university->description = $this->input->post('bp_university_des');
-//            $user_university->time_period = $this->input->post('time_period');
+            $user_university->university = $request->university;
+            $user_university->description = $request->description;
             $result = $this->basic_profile_mongodb_model->add_university($user_id, $user_university);
             if ($result != null) {
                 $response["university"] = $user_university;
@@ -106,14 +110,14 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_college() {
-        $user_id = "100157";
-        if ($this->input->post()) {
-            $response = array();
-            $basic_info = array();
-            $response['message'] = '';
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $request->userId;
             $user_college = new stdClass();
-            $user_college->college = $this->input->post('bp_college');
-            $user_college->description = $this->input->post('bp_college_des');
+            $user_college->college = $request->college;
+            $user_college->description = $request->description;
             $result = $this->basic_profile_mongodb_model->add_college($user_id, $user_college);
             if ($result != null) {
                 $response["college"] = $user_college;
@@ -123,13 +127,14 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_school() {
-        $user_id = "100157";
-        if ($this->input->post()) {
-            $response = array();
-            $response['message'] = '';
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $request->userId;
             $user_school = new stdClass();
-            $user_school->school = $this->input->post('bp_school');
-            $user_school->description = $this->input->post('bp_school_dec');
+            $user_school->school = $request->school;
+            $user_school->description = $request->description;
             $result = $this->basic_profile_mongodb_model->add_school($user_id, $user_school);
             if ($result != null) {
                 $response["school"] = $user_school;
@@ -214,23 +219,31 @@ class Basic_profile extends CI_Controller {
     }
 
     function get_city_town() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $request->userId;
         $response = array();
-        $user_id = "100157";
         $response['city_town'] = "";
         $city_town = $this->basic_profile_mongodb_model->get_city_town($user_id);
         if (!empty($city_town)) {
-            $response['city_town'] = $city_town;
+            if (property_exists($city_town, "basicInfo") != FALSE) {
+                $response['city_town'] = $city_town->basicInfo;
+            }
         }
         echo json_encode($response);
     }
 
     function get_contact_basic_info() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $request->userId;
         $response = array();
-        $user_id = "100157";
         $response['basic_info'] = "";
         $basic_info = $this->basic_profile_mongodb_model->get_contact_basic_info($user_id);
         if (!empty($basic_info)) {
-            $response['basic_info'] = $basic_info;
+            if (property_exists($basic_info, "basicInfo") != FALSE) {
+                $response['basic_info'] = $basic_info;
+            }
         }
         echo json_encode($response);
     }
@@ -247,25 +260,33 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_current_city() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
         $response = array();
-        $user_id = "100157";
-        $user_current_city = new stdClass();
-        $user_current_city->cityName = $this->input->post('current_city');
-        $result = $this->basic_profile_mongodb_model->add_current_city($user_id, $user_current_city);
-        if ($result != null) {
-            $response["current_city"] = $user_current_city;
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_current_city = new stdClass();
+            $user_current_city->cityName = $request->cityName;
+            $result = $this->basic_profile_mongodb_model->add_current_city($user_id, $user_current_city);
+            if ($result != null) {
+                $response["current_city"] = $user_current_city;
+            }
         }
         echo json_encode($response);
     }
 
     function add_home_town() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
         $response = array();
-        $user_id = "100157";
-        $user_home_town = new stdClass();
-        $user_home_town->townName = $this->input->post('home_town');
-        $result = $this->basic_profile_mongodb_model->add_home_town($user_id, $user_home_town);
-        if ($result != null) {
-            $response["home_town"] = $user_home_town;
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_home_town = new stdClass();
+            $user_home_town->townName = $request->townName;
+            $result = $this->basic_profile_mongodb_model->add_home_town($user_id, $user_home_town);
+            if ($result != null) {
+                $response["home_town"] = $user_home_town;
+            }
         }
         echo json_encode($response);
     }
@@ -284,52 +305,68 @@ class Basic_profile extends CI_Controller {
     }
 
     function add_mobile_phone() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
         $response = array();
-        $user_id = "100157";
-        $user_mobile_phone = new stdClass();
-        $user_mobile_phone->phone = $this->input->post('mobile_phone');
-        $result = $this->basic_profile_mongodb_model->add_mobile_phone($user_id, $user_mobile_phone);
-        if ($result != null) {
-            $response["mobile_phone"] = $user_mobile_phone;
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_mobile_phone = new stdClass();
+            $user_mobile_phone->phone = $request->phone;
+            $result = $this->basic_profile_mongodb_model->add_mobile_phone($user_id, $user_mobile_phone);
+            if ($result != null) {
+                $response["mobile_phone"] = $user_mobile_phone;
+            }
         }
         echo json_encode($response);
     }
 
     function add_address() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
         $response = array();
-        $user_id = "100157";
-        $user_address = new stdClass();
-        $user_address->address = $this->input->post('address');
-        $user_address->city = $this->input->post('city');
-        $user_address->postCode = $this->input->post('post_code');
-        $user_address->zip = $this->input->post('zip');
-        $result = $this->basic_profile_mongodb_model->add_address($user_id, $user_address);
-        if ($result != null) {
-            $response["address"] = $user_address;
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_address = new stdClass();
+            $user_address->address = $request->address;
+            $user_address->city = $request->city;
+            $user_address->postCode = $request->postCode;
+            $user_address->zip = $request->zip;
+            $result = $this->basic_profile_mongodb_model->add_address($user_id, $user_address);
+            if ($result != null) {
+                $response["address"] = $user_address;
+            }
         }
         echo json_encode($response);
     }
 
     function add_website() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
         $response = array();
-        $user_id = "100157";
-        $user_website = new stdClass();
-        $user_website->wibesite = $this->input->post('wibesite');
-        $result = $this->basic_profile_mongodb_model->add_website($user_id, $user_website);
-        if ($result != null) {
-            $response["website"] = $user_website;
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_website = new stdClass();
+            $user_website->website = $request->website;
+            $result = $this->basic_profile_mongodb_model->add_website($user_id, $user_website);
+            if ($result != null) {
+                $response["website"] = $user_website;
+            }
         }
         echo json_encode($response);
     }
 
     function add_email() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
         $response = array();
-        $user_id = "100157";
-        $user_email = new stdClass();
-        $user_email->email = $this->input->post('email');
-        $result = $this->basic_profile_mongodb_model->add_email($user_id, $user_email);
-        if ($result != null) {
-            $response["email"] = $user_email;
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_email = new stdClass();
+            $user_email->email = $request->email;
+            $result = $this->basic_profile_mongodb_model->add_email($user_id, $user_email);
+            if ($result != null) {
+                $response["email"] = $user_email;
+            }
         }
         echo json_encode($response);
     }

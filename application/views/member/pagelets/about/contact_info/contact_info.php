@@ -1,73 +1,40 @@
 <script src="<?php echo base_url(); ?>resources/bootstrap3/js/tmpl.js"></script>
 <script type="text/javascript">
     $(function () {
-        $("#mobile_phone_btn").on('click', function () {
-            $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_mobile_phone',
-                data: {
-                    mobile_phone: $("#bp_mobile_phone").val(),
-                },
-                success: function (data) {
-                    $("#mobile_phone_id").html(tmpl("tmpl_mobile_phones", data.mobile_phone) + $("#mobile_phone_id").html());
-                    $("#about_overview_phone").html(tmpl("tmpl_phone_for_overview", data.mobile_phone));
-                    $("#mobile").hide();
-                    $("#add_mobile").show();
-                }
-            });
-        });
-        $("#address_btn").on('click', function () {
-            $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_address',
-                data: {
-                    address: $("#bp_address").val(),
-                    city: $("#address_city").val(),
-                    post_code: $("#bp_post_code").val(),
-                    zip: $("#bp_zip").val(),
-                },
-                success: function (data) {
-                    $("#address_id").html(tmpl("tmpl_address", data.address) + $("#address_id").html());
-                    $("#about_overview_address").html(tmpl("tmpl_address_for_overview", data.address));
-                    $("#address").hide();
-                    $("#add_address").show();
-                }
-            });
-        });
-        $("#wibesite_btn").on('click', function () {
-            $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_website',
-                data: {
-                    wibesite: $("#bp_wibesite").val(),
-                },
-                success: function (data) {
-                    $("#website_id").html(tmpl("tmpl_website", data.website));
-                    $("#about_overview_website").html(tmpl("tmpl_website_for_overview", data.website));
-                    $("#website").hide();
-                    $("#add_website").show();
-                }
-            });
-        });
-        $("#email_btn").on('click', function () {
-            $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_email',
-                data: {
-                    email: $("#bp_email").val(),
-                },
-                success: function (data) {
-                    $("#email_id").html(tmpl("tmpl_emails", data.email));
-                    $("#about_overview_email").html(tmpl("tmpl_email_for_overview", data.email));
-                    $("#email").hide();
-                    $("#add_email").show();
-                }
-            });
-        });
+
+
+//        $("#wibesite_btn").on('click', function () {
+//            $.ajax({
+//                dataType: 'json',
+//                type: "POST",
+//                url: '<?php echo base_url(); ?>' + 'basic_profile/add_website',
+//                data: {
+//                    wibesite: $("#bp_wibesite").val(),
+//                },
+//                success: function (data) {
+//                    $("#website_id").html(tmpl("tmpl_website", data.website));
+//                    $("#about_overview_website").html(tmpl("tmpl_website_for_overview", data.website));
+//                    $("#website").hide();
+//                    $("#add_website").show();
+//                }
+//            });
+//        });
+//        $("#email_btn").on('click', function () {
+//            $.ajax({
+//                dataType: 'json',
+//                type: "POST",
+//                url: '<?php echo base_url(); ?>' + 'basic_profile/add_email',
+//                data: {
+//                    email: $("#bp_email").val(),
+//                },
+//                success: function (data) {
+//                    $("#email_id").html(tmpl("tmpl_emails", data.email));
+//                    $("#about_overview_email").html(tmpl("tmpl_email_for_overview", data.email));
+//                    $("#email").hide();
+//                    $("#add_email").show();
+//                }
+//            });
+//        });
 
 
 
@@ -100,7 +67,7 @@
                     <span class="subcategory_label_style">Mobile or Phone</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($bp_mobile_phone + array('class' => 'form-control')); ?>
+                    <input type="text" class="form-control" ng-model="PhoneInfo.phone">
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -117,7 +84,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <?php echo form_input($mobile_phone_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
+                            <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addPhone(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button id="cancel_mobile_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
@@ -140,7 +107,7 @@
                     <span class="subcategory_label_style">Address</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($bp_address + array('class' => 'form-control')); ?>
+                    <input type="text" class="form-control" ng-model="addressInfo.address">
                 </div>
             </div>
             <div class="row form-group">
@@ -148,7 +115,7 @@
                     <span class="subcategory_label_style">City</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($address_city + array('class' => 'form-control')); ?>
+                    <input type="text" class="form-control" ng-model="addressInfo.city">
                 </div>
             </div>
             <div class="row form-group">
@@ -156,7 +123,7 @@
                     <span class="subcategory_label_style">Post Code</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($bp_post_code + array('class' => 'form-control')); ?>
+                    <input type="text" class="form-control" ng-model="addressInfo.postCode">
                 </div>
             </div>
             <div class="row form-group">
@@ -164,7 +131,7 @@
                     <span class="subcategory_label_style">Zip</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($bp_zip + array('class' => 'form-control')); ?>
+                    <input type="text" class="form-control" ng-model="addressInfo.zip">
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -181,7 +148,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <?php echo form_input($address_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
+                            <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addAddress(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button id="cancel_address_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
@@ -204,7 +171,7 @@
                     <span class="subcategory_label_style">Website</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($bp_wibesite + array('class' => 'form-control')); ?>
+                      <input type="text" class="form-control" ng-model="websiteInfo.website">
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -221,7 +188,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <?php echo form_input($wibesite_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
+                             <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addWebsite(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button id="cancel_website_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
@@ -244,7 +211,7 @@
                     <span class="subcategory_label_style">Email</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($bp_email + array('class' => 'form-control')); ?>
+                     <input type="text" class="form-control" ng-model="emailInfo.email">
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -261,7 +228,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <?php echo form_input($email_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
+                            <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addEmail(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button id="cancel_email_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>

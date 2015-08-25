@@ -1,24 +1,3 @@
-<script type="text/javascript">
-    $(function () {
-        $("#current_city_btn").on('click', function () {
-            $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_current_city',
-                data: {
-                    current_city: $("#current_city").val(),
-                },
-                success: function (data) {
-                    $("#current_city_id").html(tmpl("tmpl_current_city", data.current_city));
-                    $("#about_overview_location").html(tmpl("tmpl_location_for_overview", data.current_city));
-                    $("#current_city_add").show();
-                    $("#c_city").hide();
-                }
-            });
-        });
-    });
-</script>
-
 <div id="c_city" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">
@@ -32,7 +11,7 @@
                     <span class="subcategory_label_style">Current City</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($current_city + array('class' => 'form-control')); ?>
+                    <input type="text" class="form-control" ng-model="currentCityInfo.cityName">
                 </div>
             </div>
         </div>
@@ -51,7 +30,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <?php echo form_input($current_city_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
+                    <button class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addCurrentCity(<?php echo $user_id; ?>)">Save</button>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>
@@ -62,18 +41,18 @@
 </div>
 
 <script>
-    $(function () {
-        $("#current_city_close").on("click",function(){
-            $("#c_city").hide();
-            $('#current_city_add').show();
-        });
-        $("#checkbox_id").prop("checked", true);
+            $(function () {
+                $("#current_city_close").on("click", function () {
+                    $("#c_city").hide();
+                    $('#current_city_add').show();
+                });
+                $("#checkbox_id").prop("checked", true);
 //        if($("checkbox_id").is(":checked")
-        $("#checkbox_id").on("click", function () {
-            $("#present").hide();
-            $("#working_year").show();
-        });
+                $("#checkbox_id").on("click", function () {
+                    $("#present").hide();
+                    $("#working_year").show();
+                });
 
-    });
-   
+            });
+
 </script>

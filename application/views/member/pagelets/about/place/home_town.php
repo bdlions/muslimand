@@ -1,22 +1,3 @@
-<script type="text/javascript">
-    $(function () {
-        $("#home_town_btn").on('click', function () {
-            $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_home_town',
-                data: {
-                    home_town: $("#home_town").val(),
-                },
-                success: function (data) {
-                    $("#home_town_id").html(tmpl("tmpl_home_town", data.home_town));
-                    $("#home_town_add").show();
-                    $("#h_town").hide();
-                }
-            });
-        });
-    });
-</script>
 <div id="h_town" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">
@@ -30,7 +11,7 @@
                     <span class="subcategory_label_style">Home Town</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($home_town + array('class' => 'form-control')); ?>
+                    <input type="text" class="form-control" ng-model="homeTownInfo.townName">
                 </div>
             </div>
         </div>
@@ -49,7 +30,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <?php echo form_input($home_town_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
+                    <button class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addHomeTown(<?php echo $user_id; ?>)">Save</button>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>

@@ -20,7 +20,7 @@
     </div>
 
     <div id="work_place_tmpl_id" style="display: none;">
-        <div class="row form-group" ng-repeat="workPlace in workPlaces">
+        <div class="row form-group" ng-repeat="workPlace in workPlaces.slice().reverse() ">
             <div class="col-md-2">
                 <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
             </div>
@@ -71,7 +71,7 @@
         </div>
     </div>
     <div id="p_skill_tmpl_id" style="display: none;">
-        <div class="row from-group" ng-repeat="pSkill in pSkills">
+        <div class="row from-group" ng-repeat="pSkill in pSkills.slice().reverse()">
             <div class="col-md-8">
                 <a style="font-weight: bold" href=""><span ng-bind="pSkill.pSkill"></span></a>
             </div>
@@ -109,7 +109,7 @@
         </div>
     </div>
     <div id="uv_tmpl_id" style="display: none;">
-        <div class="row form-group"ng-repeat="university in universities">
+        <div class="row form-group"ng-repeat="university in universities.slice().reverse()">
             <div class="col-md-2">
                 <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
             </div>
@@ -161,7 +161,7 @@
         </div>
     </div>
     <div id="college_tmpl_id" style="display: none;">
-        <div class="row form-group" ng-repeat="college in colleges">
+        <div class="row form-group" ng-repeat="college in colleges.slice().reverse()">
             <div class="col-md-2">
                 <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
             </div>
@@ -212,7 +212,7 @@
         </div>
     </div>
     <div id="school_tmpl_id" style="display: none;">
-        <div class="row form-group"ng-repeat="school in schools">
+        <div class="row form-group"ng-repeat="school in schools.slice().reverse()">
             <div class="col-md-2">
                 <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
             </div>

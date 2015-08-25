@@ -1,22 +1,4 @@
-<script type="text/javascript">
-    $(function(){
-        $("#ps_update_btn").on('click',function(){
-              $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_professional_skill',
-                data: { 
-                    bp_profession_skill : $("#bp_profession_skill").val()
-                },
-                success: function(data) {
-                    $("#p_skill_tmpl_id").html(tmpl("tmpl_p_skills", data.p_skill) + $("#p_skill_tmpl_id").html());
-                    $("#professional_skill").hide();
-                    $("#subcategory_professional_skill").show();
-                }
-            });
-        });
-    });
-</script>
+
 <div id="professional_skill" style="display: none;" class="carrer_bg">
     <div class="row">
         <div class="col-md-12">
@@ -25,7 +7,7 @@
                     <span class="subcategory_label_style">Professional Skills</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($bp_profession_skill + array('class' => 'form-control'));?>
+                    <input type="text" class="form-control" ng-model="pSkillInfo.pSkil">
                 </div>
             </div>
         </div>
@@ -44,7 +26,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <?php echo form_input($ps_update_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
+                    <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addPSkill(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                 </div>
                 <div class="col-md-3">
                     <button id="cancel_professional_skill_window" class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>

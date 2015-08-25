@@ -1,24 +1,4 @@
-<script type="text/javascript">
-    $(function(){
-       
-        $("#college_update_btn").on('click',function(){
-              $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_college',
-                data: { 
-                    bp_college : $("#bp_college").val(),
-                    bp_college_des : $("#bp_college_des").val(),
-                },
-                success: function(data) {
-                    $("#college_tmpl_id").html(tmpl("tmpl_colleges", data.college) + $("#college_tmpl_id").html());
-                    $("#college").hide();
-                    $("#subcategory_college").show();
-                }
-            });
-        });
-    });
-</script>
+
 
 <div id="college" style="display: none;">
     <div class="row">
@@ -33,7 +13,7 @@
                     <span class="subcategory_label_style">College</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($bp_college + array('class' => 'form-control')); ?>
+                    <input type="text" class="form-control" ng-model="collegeInfo.college ">
                 </div>
             </div>
             <div class="row form-group">
@@ -73,7 +53,7 @@
                     <span class="subcategory_label_style">Description</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_textarea($bp_college_des + array('class' => 'form-control'));?>
+                    <textarea type="text" class="form-control" ng-model="collegeInfo.description"></textarea>
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -90,7 +70,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                             <?php echo form_input($college_update_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
+                            <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addCollege(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>

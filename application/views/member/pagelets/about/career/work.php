@@ -1,28 +1,3 @@
-<script src="<?php echo base_url(); ?>resources/bootstrap3/js/tmpl.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $("#work_update_btn").on('click', function () {
-            $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_work_place',
-                data: {
-                    bp_company: $("#bp_company").val(),
-                    bp_position: $("#bp_position").val(),
-                    bp_city: $("#bp_city").val(),
-                    bp_work_description: $("#bp_work_description").val()
-                },
-                success: function (data) {
-                    $("#work_place_tmpl_id").html(tmpl("tmpl_work_places", data.work_place) + $("#work_place_tmpl_id").html());
-                    $("#about_overview_company").html(tmpl("tmpl_work_for_overview", data.work_place));
-                    $("#work").hide();
-                    $("#subcategory_work").show();
-                }
-            });
-        });
-    });
-</script>
-
 <div id="work" style="display: none;" class="carrer_bg">
     <div class="row">
         <div class="col-md-12">
@@ -31,7 +6,7 @@
                     <span class="subcategory_label_style">Company</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($bp_company + array('class' => 'form-control')); ?>
+                    <input type="text" class="form-control" ng-model="workInfo.company" ui-keydown="{esc: 'keyCallback($event)'}">
                 </div>
             </div>
             <div class="row form-group">
@@ -39,7 +14,7 @@
                     <span class="subcategory_label_style">Position</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($bp_position + array('class' => 'form-control')); ?>
+                    <input type="text" class="form-control" ng-model="workInfo.position">
                 </div>
             </div>
 
@@ -48,7 +23,7 @@
                     <span class="subcategory_label_style">City/Town</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($bp_city + array('class' => 'form-control')); ?>
+                    <input type="text" class="form-control" ng-model="workInfo.city">
                 </div>
             </div>
             <div class="row form-group">
@@ -56,7 +31,7 @@
                     <span class="subcategory_label_style">Description</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_textarea($bp_work_description + array('class' => 'form-control')); ?>
+                    <textarea type="text" class="form-control" ng-model="workInfo.description"></textarea>
                 </div>
             </div>
             <div class="row form-group">
@@ -122,7 +97,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <?php echo form_input($work_update_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
+                    <button id="cancel_work_window" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addWorkPlace(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                 </div>
                 <div class="col-md-3">
                     <button id="cancel_work_window" class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>

@@ -11,13 +11,13 @@
     </div>
 </div>
 <div class="pagelet_divider"></div>
-<div id="category_place" class="row">
+<div id="category_place" class="row" ng-click="getCityTown(<?php echo $user_id ;?>)">
     <div class="col-md-12">
         <a style="color: black; text-decoration: none; cursor: pointer;" > Places you've lived</a>
     </div>
 </div>
 <div class="pagelet_divider"></div>
-<div id="category_contact_info" class="row">
+<div id="category_contact_info" class="row" ng-click="getContactBasicInfo(<?php echo $user_id ;?>)">
     <div class="col-md-12">
         <a style="color: black; text-decoration: none; cursor: pointer;" > Contacts and Basic Info</a>
     </div>
