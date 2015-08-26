@@ -10,6 +10,11 @@
         </div>
         <div id="about_own" class="display_hidden contact_background">
             <div class="row form-group">
+                <div class="col-md-offset-9 col-md-3">
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_about_own_window" aria-label="Close" onclick="close_window_8()"><span aria-hidden="true">&times;</span></button>   
+                </div>
+            </div>
+            <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Add About You</span>
                 </div>
@@ -34,7 +39,7 @@
                             <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
                         </div>
                         <div class="col-md-3">
-                            <button id="cancel_about_own_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                            <button class="form-control form_control_custom_style member_about_cancel_button cancel_about_own_window" >Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -49,6 +54,11 @@
             </div>
         </div>
         <div id="favorite_quote" class="display_hidden contact_background">
+            <div class="row form-group">
+                <div class="col-md-offset-9 col-md-3">
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_favorite_quote_window" aria-label="Close" onclick="close_window_8()"><span aria-hidden="true">&times;</span></button>   
+                </div>
+            </div>
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Add Favorite Quote</span>
@@ -74,7 +84,7 @@
                             <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
                         </div>
                         <div class="col-md-3">
-                            <button id="cancel_favorite_quote_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                            <button class="form-control form_control_custom_style member_about_cancel_button cancel_favorite_quote_window" >Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -90,7 +100,7 @@
             $("#add_about_own").hide();
             $("#about_own").show();
         });
-        $("#cancel_about_own_window").on("click", function () {
+        $(".cancel_about_own_window").on("click", function () {
             $("#about_own").hide();
             $("#add_about_own").show();
         });
@@ -100,7 +110,7 @@
             $("#add_favorite_quote").hide();
             $("#favorite_quote").show();
         });
-        $("#cancel_favorite_quote_window").on("click", function () {
+        $(".cancel_favorite_quote_window").on("click", function () {
             $("#favorite_quote").hide();
             $("#add_favorite_quote").show();
         });

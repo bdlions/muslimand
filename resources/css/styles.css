@@ -620,6 +620,9 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 .label_padding_top_single_image{
     padding-top: 5px;
+    height: 45px;
+    font-size: 12px;
+    padding-left: 5px;
 }
 .img_pad_mar_top_single_image{
     padding-top: 5px;
@@ -627,7 +630,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 .brand_cover_single_image{
     position: absolute;
-    height: 100%;
+    height: 120px;
     width: 100%;
     z-index: 11;
     background-color: #703684;
@@ -636,15 +639,15 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     text-align: center;
 }
 .brand_single_image{
-    text-indent: 10px;
+    text-indent: 2px;
     border-radius: 3px;
-    max-height: 105px;
+    height: 120px;
     width: 100%;
     position: relative;
     background-color: lightgray;
 }
 .info_style_single_image{
-    text-indent: 20px;
+    text-indent: 2px;
     font-size: 10px;
     color: #703684;
     font-weight: bold;  

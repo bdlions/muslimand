@@ -19,12 +19,12 @@
 </script>
 
 
-<div id="relationship_add_id" style="display: none;">
-    <div class="row">
+<div id="relationship_add_id" style="display: none;" class="carrer_bg">
+    <div class="row form-group">
         <div class="col-md-offset-2 col-md-10">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button id="relationship_close_id" style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style relationship_close_id" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row padding_top_over_row form-group">
@@ -55,10 +55,10 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <?php echo form_input($relationship_btn + array('class' => 'btn button-default pull-right form-control', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
+                    <?php echo form_input($relationship_btn + array('class' => 'pull-right form-control form_control_custom_style member_about_save_button', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
                 </div>
                 <div class="col-md-3">
-                    <button class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>
+                    <button class="btn btn-default form-control relationship_close_id" style="background-color: #703684; color: white">Cancel</button>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
 <script>
     $(function () {
        
-         $("#relationship_close_id").on("click", function () {
+         $(".relationship_close_id").on("click", function () {
             $("#relationship_add_id").hide();
             $("#relationship_id").show();
         });

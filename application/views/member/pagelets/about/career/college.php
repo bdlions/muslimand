@@ -1,11 +1,11 @@
 
 
-<div id="college" style="display: none;">
+<div id="college" class="carrer_bg" style="display: none;">
     <div class="row">
         <div class="col-md-offset-2 col-md-10">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style" aria-label="Close" onclick="close_window_4()"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style college_area_hide" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row form-group">
@@ -73,7 +73,7 @@
                             <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addCollege(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                         </div>
                         <div class="col-md-3">
-                            <button class="btn btn-default form-control" style="background-color: #703684; color: white">Cancel</button>
+                            <button class="btn btn-default form-control college_area_hide" style="background-color: #703684; color: white">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -92,8 +92,9 @@
                 });
 
             });
-            function close_window_4() {
-                $("#college").hide();
-                $("#subcategory_college").show();
-            }
+            
+             $(".college_area_hide").on("click", function () {
+                    $("#college").hide();
+                    $("#subcategory_college").show();
+                });
         </script>
