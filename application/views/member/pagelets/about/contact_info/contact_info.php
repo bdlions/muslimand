@@ -1,49 +1,3 @@
-<script src="<?php echo base_url(); ?>resources/bootstrap3/js/tmpl.js"></script>
-<script type="text/javascript">
-    $(function () {
-
-
-//        $("#wibesite_btn").on('click', function () {
-//            $.ajax({
-//                dataType: 'json',
-//                type: "POST",
-//                url: '<?php echo base_url(); ?>' + 'basic_profile/add_website',
-//                data: {
-//                    wibesite: $("#bp_wibesite").val(),
-//                },
-//                success: function (data) {
-//                    $("#website_id").html(tmpl("tmpl_website", data.website));
-//                    $("#about_overview_website").html(tmpl("tmpl_website_for_overview", data.website));
-//                    $("#website").hide();
-//                    $("#add_website").show();
-//                }
-//            });
-//        });
-//        $("#email_btn").on('click', function () {
-//            $.ajax({
-//                dataType: 'json',
-//                type: "POST",
-//                url: '<?php echo base_url(); ?>' + 'basic_profile/add_email',
-//                data: {
-//                    email: $("#bp_email").val(),
-//                },
-//                success: function (data) {
-//                    $("#email_id").html(tmpl("tmpl_emails", data.email));
-//                    $("#about_overview_email").html(tmpl("tmpl_email_for_overview", data.email));
-//                    $("#email").hide();
-//                    $("#add_email").show();
-//                }
-//            });
-//        });
-
-
-
-
-    });
-</script>
-
-
-
 
 <div class="row">
     <div class="col-md-offset-1 col-md-11">
@@ -62,6 +16,11 @@
             </div>
         </div>
         <div id="mobile" class="display_hidden contact_background">
+            <div class="row form-group">
+                <div class="col-md-offset-9 col-md-3">
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_mobile_window" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
+                </div>
+            </div>
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Mobile or Phone</span>
@@ -87,7 +46,7 @@
                             <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addPhone(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                         </div>
                         <div class="col-md-3">
-                            <button id="cancel_mobile_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                            <button class="form-control form_control_custom_style member_about_cancel_button cancel_mobile_window" >Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -102,6 +61,11 @@
             </div>
         </div>
         <div id="address" class="display_hidden contact_background">
+            <div class="row form-group">
+                <div class="col-md-offset-9 col-md-3">
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_address_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                </div>
+            </div>
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Address</span>
@@ -151,7 +115,7 @@
                             <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addAddress(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                         </div>
                         <div class="col-md-3">
-                            <button id="cancel_address_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                            <button class="form-control form_control_custom_style member_about_cancel_button cancel_address_window" >Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -166,6 +130,11 @@
             </div>
         </div>
         <div id="website" class="display_hidden contact_background">
+            <div class="row form-group">
+                <div class="col-md-offset-9 col-md-3">
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_website_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                </div>
+            </div>
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Website</span>
@@ -191,7 +160,7 @@
                              <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addWebsite(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                         </div>
                         <div class="col-md-3">
-                            <button id="cancel_website_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                            <button class="form-control form_control_custom_style member_about_cancel_button cancel_website_window" >Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -206,6 +175,11 @@
             </div>
         </div>
         <div id="email" class="display_hidden contact_background">
+            <div class="row form-group">
+                <div class="col-md-offset-9 col-md-3">
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_email_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                </div>
+            </div>
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Email</span>
@@ -231,7 +205,7 @@
                             <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addEmail(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                         </div>
                         <div class="col-md-3">
-                            <button id="cancel_email_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                            <button class="form-control form_control_custom_style member_about_cancel_button cancel_email_window" >Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -252,6 +226,11 @@
             </div>
         </div>
         <div id="birth_day" class="display_hidden contact_background">
+            <div class="row form-group">
+                <div class="col-md-offset-9 col-md-3">
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_birth_day_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                </div>
+            </div>
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">BirthDay</span>
@@ -294,7 +273,7 @@
                             <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
                         </div>
                         <div class="col-md-3">
-                            <button id="cancel_birth_day_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                            <button class="form-control form_control_custom_style member_about_cancel_button cancel_birth_day_window" >Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -309,6 +288,11 @@
             </div>
         </div>
         <div id="gender" class="display_hidden contact_background">
+            <div class="row form-group">
+                <div class="col-md-offset-9 col-md-3">
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_gender_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                </div>
+            </div>
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Gender</span>
@@ -338,7 +322,7 @@
                             <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
                         </div>
                         <div class="col-md-3">
-                            <button id="cancel_gender_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                            <button class="form-control form_control_custom_style member_about_cancel_button cancel_gender_window" >Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -353,6 +337,11 @@
             </div>
         </div>
         <div id="language" class="display_hidden contact_background">
+            <div class="row form-group">
+                <div class="col-md-offset-9 col-md-3">
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_language_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                </div>
+            </div>
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Language</span>
@@ -378,7 +367,7 @@
                             <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
                         </div>
                         <div class="col-md-3">
-                            <button id="cancel_language_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                            <button class="form-control form_control_custom_style member_about_cancel_button cancel_language_window" >Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -393,6 +382,11 @@
             </div>
         </div>
         <div id="religion" class="display_hidden contact_background">
+            <div class="row form-group">
+                <div class="col-md-offset-9 col-md-3">
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_mobile_window cancel_religion_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                </div>
+            </div>
             <div class="row form-group">
                 <div class="col-md-4">
                     <span class="subcategory_label_style">Religion</span>
@@ -435,7 +429,7 @@
                             <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
                         </div>
                         <div class="col-md-3">
-                            <button id="cancel_religion_window" class="form-control form_control_custom_style member_about_cancel_button" >Cancel</button>
+                            <button class="form-control form_control_custom_style member_about_cancel_button cancel_religion_window" >Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -457,7 +451,7 @@
             $("#add_mobile").hide();
             $("#mobile").show();
         });
-        $("#cancel_mobile_window").on("click", function () {
+        $(".cancel_mobile_window").on("click", function () {
             $("#mobile").hide();
             $("#add_mobile").show();
         });
@@ -467,7 +461,7 @@
             $("#add_address").hide();
             $("#address").show();
         });
-        $("#cancel_address_window").on("click", function () {
+        $(".cancel_address_window").on("click", function () {
             $("#address").hide();
             $("#add_address").show();
         });
@@ -477,7 +471,7 @@
             $("#add_website").hide();
             $("#website").show();
         });
-        $("#cancel_website_window").on("click", function () {
+        $(".cancel_website_window").on("click", function () {
             $("#website").hide();
             $("#add_website").show();
         });
@@ -487,7 +481,7 @@
             $("#add_email").hide();
             $("#email").show();
         });
-        $("#cancel_email_window").on("click", function () {
+        $(".cancel_email_window").on("click", function () {
             $("#email").hide();
             $("#add_email").show();
         });
@@ -496,7 +490,7 @@
             $("#add_birth_day").hide();
             $("#birth_day").show();
         });
-        $("#cancel_birth_day_window").on("click", function () {
+        $(".cancel_birth_day_window").on("click", function () {
             $("#birth_day").hide();
             $("#add_birth_day").show();
         });
@@ -506,7 +500,7 @@
             $("#add_gender").hide();
             $("#gender").show();
         });
-        $("#cancel_gender_window").on("click", function () {
+        $(".cancel_gender_window").on("click", function () {
             $("#gender").hide();
             $("#add_gender").show();
         });
@@ -516,7 +510,7 @@
             $("#add_language").hide();
             $("#language").show();
         });
-        $("#cancel_language_window").on("click", function () {
+        $(".cancel_language_window").on("click", function () {
             $("#language").hide();
             $("#add_language").show();
         });
@@ -526,7 +520,7 @@
             $("#add_religion").hide();
             $("#religion").show();
         });
-        $("#cancel_religion_window").on("click", function () {
+        $(".cancel_religion_window").on("click", function () {
             $("#religion").hide();
             $('#religion_input').hide();
             $("#add_religion").show();
