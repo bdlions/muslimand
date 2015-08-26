@@ -26,6 +26,15 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.gender = {};
             $scope.website = {};
             $scope.town = {};
+            $scope.rStatus = {};
+            $scope.rStatusInfo = {};
+            $scope.fMemebers = [];
+            $scope.about = {};
+            $scope.aboutInfo = {};
+            $scope.fQuote = {};
+            $scope.fQuoteInfo = {};
+
+            // about  overview  ................          
             $scope.getOverview = function (userId) {
                 basicProfileService.getOverviews(userId).
                         success(function (data, status, headers, config) {
@@ -38,6 +47,8 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             $('#about_overview').show();
                         });
             };
+
+// works and education module...................
 
             $scope.getWorksEducation = function (userId) {
                 basicProfileService.getWorksEducation(userId).
@@ -80,6 +91,59 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             $('#subcategory_school').show();
                         });
             };
+            $scope.addWorkPlace = function (userId) {
+                $scope.workInfo.userId = userId;
+                basicProfileService.addWorkPlace($scope.workInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.workPlaces.push(data.work_place)
+                            $scope.workInfo = null;
+                            $("#work").hide();
+                            $("#subcategory_work").show();
+                        });
+            };
+            $scope.addPSkill = function (userId) {
+                $scope.pSkillInfo.userId = userId;
+                basicProfileService.addPSkill($scope.pSkillInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.pSkills.push(data.p_skill)
+                            $scope.pSkillInfo = null;
+                            $("#professional_skill").hide();
+                            $("#subcategory_professional_skill").show();
+                        });
+            };
+            $scope.addUniversity = function (userId) {
+                $scope.universityInfo.userId = userId;
+                basicProfileService.addUniversity($scope.universityInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.universities.push(data.university)
+                            $scope.universityInfo = null;
+                            $("#university").hide();
+                            $("#subcategory_university").show();
+                        });
+            };
+            $scope.addCollege = function (userId) {
+                $scope.collegeInfo.userId = userId;
+                basicProfileService.addCollege($scope.collegeInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.colleges.push(data.college)
+                            $scope.collegeInfo = null;
+                            $("#college").hide();
+                            $("#subcategory_college").show();
+                        });
+            };
+            $scope.addSchool = function (userId) {
+                $scope.schoolInfo.userId = userId;
+                basicProfileService.addSchool($scope.schoolInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.schools.push(data.school);
+                            $scope.schoolInfo = null;
+                            $("#school").hide();
+                            $("#subcategory_school").show();
+                        });
+            };
+
+
+// .............. places module........................... 
 
             $scope.getCityTown = function (userId) {
                 basicProfileService.getCityTown(userId).
@@ -102,6 +166,31 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             $('#subcategory_place').show();
                         });
             };
+
+            $scope.addCurrentCity = function (userId) {
+                $scope.currentCityInfo.userId = userId;
+                basicProfileService.addCurrentCity($scope.currentCityInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.city = data.current_city;
+                            $scope.currentCityInfo = null;
+                            $('#current_city_id').show();
+                            $("#current_city_add").show();
+                            $("#c_city").hide();
+                        });
+            };
+            $scope.addHomeTown = function (userId) {
+                $scope.homeTownInfo.userId = userId;
+                basicProfileService.addHomeTown($scope.homeTownInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.town = data.home_town;
+                            $scope.homeTownInfo = null;
+                            $('#home_town_id').show();
+                            $("#home_town_add").show();
+                            $("#h_town").hide();
+                        });
+            };
+
+//........... Contact and Basic Info module...........            
 
             $scope.getContactBasicInfo = function (userId) {
                 basicProfileService.getContactBasicInfo(userId).
@@ -171,80 +260,6 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                         });
 
             };
-//            get_contact_basic_info
-
-            $scope.addWorkPlace = function (userId) {
-                $scope.workInfo.userId = userId;
-                basicProfileService.addWorkPlace($scope.workInfo).
-                        success(function (data, status, headers, config) {
-                            $scope.workPlaces.push(data.work_place)
-                            $scope.workInfo = null;
-                            $("#work").hide();
-                            $("#subcategory_work").show();
-                        });
-            };
-            $scope.addPSkill = function (userId) {
-                $scope.pSkillInfo.userId = userId;
-                basicProfileService.addPSkill($scope.pSkillInfo).
-                        success(function (data, status, headers, config) {
-                            $scope.pSkills.push(data.p_skill)
-                            $scope.pSkillInfo = null;
-                            $("#professional_skill").hide();
-                            $("#subcategory_professional_skill").show();
-                        });
-            };
-            $scope.addUniversity = function (userId) {
-                $scope.universityInfo.userId = userId;
-                basicProfileService.addUniversity($scope.universityInfo).
-                        success(function (data, status, headers, config) {
-                            $scope.universities.push(data.university)
-                            $scope.universityInfo = null;
-                            $("#university").hide();
-                            $("#subcategory_university").show();
-                        });
-            };
-            $scope.addCollege = function (userId) {
-                $scope.collegeInfo.userId = userId;
-                basicProfileService.addCollege($scope.collegeInfo).
-                        success(function (data, status, headers, config) {
-                            $scope.colleges.push(data.college)
-                            $scope.collegeInfo = null;
-                            $("#college").hide();
-                            $("#subcategory_college").show();
-                        });
-            };
-            $scope.addSchool = function (userId) {
-                $scope.schoolInfo.userId = userId;
-                basicProfileService.addSchool($scope.schoolInfo).
-                        success(function (data, status, headers, config) {
-                            $scope.schools.push(data.school);
-                            $scope.schoolInfo = null;
-                            $("#school").hide();
-                            $("#subcategory_school").show();
-                        });
-            };
-            $scope.addCurrentCity = function (userId) {
-                $scope.currentCityInfo.userId = userId;
-                basicProfileService.addCurrentCity($scope.currentCityInfo).
-                        success(function (data, status, headers, config) {
-                            $scope.city = data.current_city;
-                            $scope.currentCityInfo = null;
-                            $('#current_city_id').show();
-                            $("#current_city_add").show();
-                            $("#c_city").hide();
-                        });
-            };
-            $scope.addHomeTown = function (userId) {
-                $scope.homeTownInfo.userId = userId;
-                basicProfileService.addHomeTown($scope.homeTownInfo).
-                        success(function (data, status, headers, config) {
-                            $scope.town = data.home_town;
-                            $scope.homeTownInfo = null;
-                            $('#home_town_id').show();
-                            $("#home_town_add").show();
-                            $("#h_town").hide();
-                        });
-            };
             $scope.addPhone = function (userId) {
                 $scope.PhoneInfo.userId = userId;
                 basicProfileService.addPhone($scope.PhoneInfo).
@@ -289,4 +304,103 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             $("#add_email").show();
                         });
             };
+
+//................ Family and Relation..............
+            $scope.getFamilyRelation = function (userId) {
+                basicProfileService.getFamilyRelation(userId).
+                        success(function (data, status, headers, config) {
+                            if (data.family_relations.basicInfo != null) {
+                                if (data.family_relations.basicInfo.relationshipStatus != null) {
+                                    $('#relationship_add').show();
+                                    $scope.rStatus = data.family_relations.basicInfo.relationshipStatus;
+                                    console.log($scope.rStatus);
+                                }
+                                if (data.family_relations.basicInfo.familyMember != null) {
+                                    $('#family_member_add').show();
+                                    $scope.fMemebers = data.family_relations.basicInfo.familyMember;
+                                }
+                            }
+
+                            $('#about_family_relation').show();
+                            $('#about_overview').hide();
+                            $('#about_career').hide();
+                            $('#about_place').hide();
+                            $('#about_contact_info').hide();
+                            $('#about_details').hide();
+                            $('#family_relation').hide();
+                            $('#subcategory_family_relation').show();
+                        });
+            };
+            $scope.addRStatus = function (userId) {
+                $scope.rStatusInfo.userId = userId;
+                basicProfileService.addRStatus($scope.rStatusInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.rStatus = data.relation_Status;
+                            $('#relationship_add').show();
+                            $("#relationship_add_id").hide();
+                            $("#relationship_id").show();
+                            $scope.rStatusInfo = null;
+
+                            ;
+                        });
+            };
+            //......................About Yourself....................
+
+            $scope.getAboutFQuote = function (userId) {
+                basicProfileService.getAboutFQuote(userId).
+                        success(function (data, status, headers, config) {
+                            if (data.about_fquote != null) {
+                                if (data.about_fquote.about != null) {
+                                    $('#aboutId').show();
+                                    $scope.about = data.about_fquote.about;
+                                    console.log($scope.about);
+                                }
+                                if (data.about_fquote.fQuote != null) {
+                                    $('#fQuoteId').show();
+                                    $scope.fQuote = data.about_fquote.fQuote;
+                                    console.log($scope.fQuote);
+                                }
+                            }
+                            $('#about_overview').hide();
+                            $('#about_career').hide();
+                            $('#place').hide();
+                            $('#about_contact_info').hide();
+                            $('#about_family_relation').hide();
+                            $("#about_own").hide();
+                            $("#favorite_quote").hide();
+                            $('#about_details').show();
+                            $("#add_about_own").show();
+                            $("#add_favorite_quote").show();
+
+                        });
+            };
+
+            $scope.addAbout = function (userId) {
+                $scope.aboutInfo.userId = userId;
+                basicProfileService.addAbout($scope.aboutInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.about = data.about;
+                            $('#aboutId').show();
+                            $("#add_about_own").show();
+                            $("#about_own").hide();
+                            $scope.aboutInfo = null;
+
+                            ;
+                        });
+            };
+            $scope.addFQuote = function (userId) {
+                $scope.fQuoteInfo.userId = userId;
+                basicProfileService.addFQuote($scope.fQuoteInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.fQuote = data.f_quote;
+                            $('#fQuoteId').show();
+                            $("#add_favorite_quote").show();
+                            $("#favorite_quote").hide();
+                            $scope.fQuoteInfo = null;
+
+                            ;
+                        });
+            };
+
+
         });

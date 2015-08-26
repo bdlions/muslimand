@@ -23,13 +23,13 @@
     </div>
 </div>
 <div class="pagelet_divider"></div>
-<div id="category_family_relation" class="row">
+<div id="category_family_relation" class="row" ng-click="getFamilyRelation(<?php echo $user_id ;?>)">
     <div class="col-md-12">
         <a style="color: black; text-decoration: none; cursor: pointer;" > Family and Relationships</a>
     </div>
 </div>
 <div class="pagelet_divider"></div>
-<div id="category_details" class="row">
+<div id="category_details" class="row" ng-click="getAboutFQuote(<?php echo $user_id ;?>)">
     <div class="col-md-12">
         <a style="color: black; text-decoration: none; cursor: pointer;" > Details About You</a>
     </div>

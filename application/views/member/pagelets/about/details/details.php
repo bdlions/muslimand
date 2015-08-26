@@ -19,7 +19,7 @@
                     <span class="subcategory_label_style">Add About You</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control" placeholder="Add Something About You">
+                    <textarea class="form-control" placeholder="Add Something About You" ng-model="aboutInfo.about"></textarea>
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -36,7 +36,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
+                            <button class="pull-right form-control form_control_custom_style member_about_save_button" ng-click="addAbout(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button class="form-control form_control_custom_style member_about_cancel_button cancel_about_own_window" >Cancel</button>
@@ -61,10 +61,10 @@
             </div>
             <div class="row form-group">
                 <div class="col-md-4">
-                    <span class="subcategory_label_style">Add Favorite Quote</span>
+                    <span class="subcategory_label_style">Add Quote</span>
                 </div>
                 <div class="col-md-8">
-                    <input class="form-control" placeholder="Add Your Favorite Quote">
+                    <textarea class="form-control" placeholder="Add Your Favorite Quote" ng-model="fQuoteInfo.fQuote"></textarea>
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -81,7 +81,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
+                            <button class="pull-right form-control form_control_custom_style member_about_save_button" ng-click="addFQuote(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button class="form-control form_control_custom_style member_about_cancel_button cancel_favorite_quote_window" >Cancel</button>

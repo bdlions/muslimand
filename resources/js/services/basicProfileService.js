@@ -1,6 +1,8 @@
 angular.module('services.BasicProfile', []).
         factory('basicProfileService', ["$http", function ($http) {
                 var basicProfileService = {};
+
+//.............. about overview module..........................                
                 basicProfileService.getOverviews = function (userId) {
                     return $http({
                         method: 'post',
@@ -10,6 +12,8 @@ angular.module('services.BasicProfile', []).
                         },
                     });
                 };
+
+//.............. about Works and Education ..........................   
                 basicProfileService.getWorksEducation = function (userId) {
                     return $http({
                         method: 'post',
@@ -19,24 +23,7 @@ angular.module('services.BasicProfile', []).
                         },
                     });
                 };
-                basicProfileService.getCityTown = function (userId) {
-                    return $http({
-                        method: 'post',
-                        url: '../basic_profile/get_city_town',
-                        data: {
-                            userId: userId,
-                        },
-                    });
-                };
-                basicProfileService.getContactBasicInfo = function (userId) {
-                    return $http({
-                        method: 'post',
-                        url: '../basic_profile/get_contact_basic_info',
-                        data: {
-                            userId: userId,
-                        },
-                    });
-                };
+
 
                 basicProfileService.addWorkPlace = function (WorkInfo) {
                     return $http({
@@ -94,6 +81,18 @@ angular.module('services.BasicProfile', []).
                         },
                     });
                 };
+
+//..................... About Places module................                
+
+                basicProfileService.getCityTown = function (userId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/get_city_town',
+                        data: {
+                            userId: userId,
+                        },
+                    });
+                };
                 basicProfileService.addCurrentCity = function (currentCityInfo) {
                     return $http({
                         method: 'post',
@@ -114,6 +113,21 @@ angular.module('services.BasicProfile', []).
                         },
                     });
                 };
+
+
+
+//.................. About Contact and Basic Info ...................
+                basicProfileService.getContactBasicInfo = function (userId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/get_contact_basic_info',
+                        data: {
+                            userId: userId,
+                        },
+                    });
+                };
+
+
                 basicProfileService.addPhone = function (PhoneInfo) {
                     return $http({
                         method: 'post',
@@ -154,6 +168,58 @@ angular.module('services.BasicProfile', []).
                         data: {
                             userId: emailInfo.userId,
                             email: emailInfo.email,
+                        },
+                    });
+                };
+
+//...................... About Family and relationship ..............
+                basicProfileService.getFamilyRelation = function (userId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/get_family_relations',
+                        data: {
+                            userId: userId,
+                        },
+                    });
+                };
+                basicProfileService.addRStatus = function (rStatusInfo) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/add_relationship_status',
+                        data: {
+                            userId: rStatusInfo.userId,
+                            relationship: rStatusInfo.relationship,
+                        },
+                    });
+                };
+//................About Yourself.................................
+
+                basicProfileService.getAboutFQuote = function (userId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/get_about_fquote',
+                        data: {
+                            userId: userId,
+                        },
+                    });
+                };
+                  basicProfileService.addAbout = function (aboutInfo) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/add_about',
+                        data: {
+                            userId: aboutInfo.userId,
+                            about: aboutInfo.about,
+                        },
+                    });
+                };
+                  basicProfileService.addFQuote = function (fQuoteInfo) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/add_fquote',
+                        data: {
+                            userId: fQuoteInfo.userId,
+                            fQuote: fQuoteInfo.fQuote,
                         },
                     });
                 };

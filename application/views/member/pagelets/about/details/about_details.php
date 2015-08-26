@@ -13,11 +13,13 @@
     </div>
 
     <div class="pagelet_divider"></div>
-    <div class="row form-group">
+    <div class="row form-group" style="display: none" id="aboutId">
         <div class="col-md-4"> About You </div>
         <div class="col-md-6">
             <div class="row">
-                <div class="col-md-12"> I want to be a pure Muslim ... </div>
+                <div class="col-md-12">
+                    <span ng-bind="about.about"></span>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12"> </div>
@@ -40,11 +42,13 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div class="row form-group">
+    <div class="row form-group" style="display: none" id="fQuoteId">
         <div class="col-md-4"> Favorite Quotes </div>
         <div class="col-md-6">
             <div class="row">
-                <div class="col-md-12"> I am a Muslim ... </div>
+                <div class="col-md-12">
+                    <span ng-bind="fQuote.fQuote"></span>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12"> </div>

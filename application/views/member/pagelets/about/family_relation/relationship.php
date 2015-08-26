@@ -38,7 +38,7 @@
                     <span class="subcategory_label_style">Relationship</span>
                 </div>
                 <div class="col-md-8">
-                    <?php echo form_input($relationship+ array('class' => 'form-control')); ?>
+                    <input type="text" class="form-control" ng-model="rStatusInfo.relationship">
                 </div>
             </div>
     <div class="pagelet_divider"></div>
@@ -55,7 +55,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <?php echo form_input($relationship_btn + array('class' => 'pull-right form-control form_control_custom_style member_about_save_button', 'style' => 'background-color: #703684; color: white; margin-right: -15px')); ?>
+                    <button class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addRStatus(<?php echo $user_id; ?>)">Save</button>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-default form-control relationship_close_id" style="background-color: #703684; color: white">Cancel</button>

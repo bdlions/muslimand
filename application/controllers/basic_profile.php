@@ -22,38 +22,84 @@ class Basic_profile extends CI_Controller {
         $this->load->helper('language');
     }
 
-    function add_basic_info($document_id, $additional_data) {
-//        $user_id = $this->session->userdata('user_id');
-        $user_id = "5563101d8267404011000029";
-        $basic_info = array();
-        $new_data_list = array();
-        $basic_info_list = array();
-        $new_basic_info = array();
-        $return_basic_info = array();
-        $new_data = array();
-        $basic_info_array = $this->basic_profile_mongodb_model->get_basic_info($user_id);
-        if (!empty($basic_info_array) && is_array($basic_info_array)) {
-            $basic_info = $basic_info_array[0];
-            $new_basic_info = $basic_info;
-            $doucument_exsist_id = array_key_exists($document_id, $basic_info);
-            if ($doucument_exsist_id == 1) {
-                $basic_info_list = ($basic_info[$document_id]);
-                $new_data_list = json_decode($basic_info_list);
-            }
-        }
-        $new_data_list[] = $additional_data;
-        $new_basic_info [$document_id] = json_encode($new_data_list);
-        if ($basic_info != null) {
-            $result_id = $this->basic_profile_mongodb_model->update_basic_info($user_id, $new_basic_info);
-            if ($result_id == true) {
+//..........................About Module ...............................
+// ................... about overview ...................
 
-                return $return_basic_info[$document_id] = $additional_data;
-            } else {
-                return $this->basic_profile_mongodb_model->errors_alert();
+    function get_overview() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $request->userId;
+        $response = array();
+        $response['website'] = "";
+        $response['mobilePhone'] = "";
+        $response['city'] = "";
+        $response['university'] = "";
+        $response['birthDate'] = "";
+        $response['workPlace'] = "";
+        $response['email'] = "";
+        $response['address'] = "";
+        $overview = $this->basic_profile_mongodb_model->get_overview($user_id);
+        if (!empty($overview)) {
+            if (property_exists($overview, "website") != false) {
+                $response['website'] = json_decode($overview->website);
             }
-        } else {
-            return $result_id = $this->basic_profile_mongodb_model->add_basic_info($user_id, $new_basic_info);
+            if (property_exists($overview, "mobilePhone") != false) {
+                $response['mobilePhone'] = json_decode($overview->mobilePhone);
+            }
+            if (property_exists($overview, "city") != FALSE) {
+                $response['city'] = json_decode($overview->city);
+            }
+            if (property_exists($overview, "university") != FALSE) {
+                $response['university'] = json_decode($overview->university);
+            }
+            if (property_exists($overview, "birthDate") != FALSE) {
+                $response['birthDate'] = json_decode($overview->birthDate);
+            }
+            if (property_exists($overview, "workPlace") != FALSE) {
+                $response['workPlace'] = json_decode($overview->workPlace);
+            }
+            if (property_exists($overview, "email") != FALSE) {
+                $response['email'] = json_decode($overview->email);
+            }
+            if (property_exists($overview, "address") != FALSE) {
+                $response['address'] = json_decode($overview->address);
+            }
         }
+        echo json_encode($response);
+    }
+
+    //.................. About Works and Educations ...................... ..
+
+    function get_works_education() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $request->userId;
+        $response = array();
+        $response['message'] = '';
+        $response['work_places'] = '';
+        $response['colleges'] = '';
+        $response['universities'] = '';
+        $response['schools'] = '';
+        $response['p_skills'] = '';
+        $basic_p_info = $this->basic_profile_mongodb_model->get_works_education($user_id);
+        if (!empty($basic_p_info)) {
+            if (property_exists($basic_p_info, "workPlaces") != FALSE) {
+                $response['work_places'] = $basic_p_info->workPlaces;
+            }
+            if (property_exists($basic_p_info, "colleges") != FALSE) {
+                $response['colleges'] = $basic_p_info->colleges;
+            }
+            if (property_exists($basic_p_info, "universities") != FALSE) {
+                $response['universities'] = $basic_p_info->universities;
+            }
+            if (property_exists($basic_p_info, "schools") != FALSE) {
+                $response['schools'] = $basic_p_info->schools;
+            }
+            if (property_exists($basic_p_info, "pSkills") != FALSE) {
+                $response['p_skills'] = $basic_p_info->pSkills;
+            }
+        }
+        echo json_encode($response);
     }
 
     function add_work_place() {
@@ -143,80 +189,7 @@ class Basic_profile extends CI_Controller {
         }
     }
 
-    function get_overview() {
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        $user_id = $request->userId;
-        $response = array();
-        $response['website'] = "";
-        $response['mobilePhone'] = "";
-        $response['city'] = "";
-        $response['university'] = "";
-        $response['birthDate'] = "";
-        $response['workPlace'] = "";
-        $response['email'] = "";
-        $response['address'] = "";
-        $overview = $this->basic_profile_mongodb_model->get_overview($user_id);
-        if (!empty($overview)) {
-            if (property_exists($overview, "website") != false) {
-                $response['website'] = json_decode($overview->website);
-            }
-            if (property_exists($overview, "mobilePhone") != false) {
-                $response['mobilePhone'] = json_decode($overview->mobilePhone);
-            }
-            if (property_exists($overview, "city") != FALSE) {
-                $response['city'] = json_decode($overview->city);
-            }
-            if (property_exists($overview, "university") != FALSE) {
-                $response['university'] = json_decode($overview->university);
-            }
-            if (property_exists($overview, "birthDate") != FALSE) {
-                $response['birthDate'] = json_decode($overview->birthDate);
-            }
-            if (property_exists($overview, "workPlace") != FALSE) {
-                $response['workPlace'] = json_decode($overview->workPlace);
-            }
-            if (property_exists($overview, "email") != FALSE) {
-                $response['email'] = json_decode($overview->email);
-            }
-            if (property_exists($overview, "address") != FALSE) {
-                $response['address'] = json_decode($overview->address);
-            }
-        }
-        echo json_encode($response);
-    }
-
-    function get_works_education() {
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        $user_id = $request->userId;
-        $response = array();
-        $response['message'] = '';
-        $response['work_places'] = '';
-        $response['colleges'] = '';
-        $response['universities'] = '';
-        $response['schools'] = '';
-        $response['p_skills'] = '';
-        $basic_p_info = $this->basic_profile_mongodb_model->get_works_education($user_id);
-        if (!empty($basic_p_info)) {
-            if (property_exists($basic_p_info, "workPlaces") != FALSE) {
-                $response['work_places'] = $basic_p_info->workPlaces;
-            }
-            if (property_exists($basic_p_info, "colleges") != FALSE) {
-                $response['colleges'] = $basic_p_info->colleges;
-            }
-            if (property_exists($basic_p_info, "universities") != FALSE) {
-                $response['universities'] = $basic_p_info->universities;
-            }
-            if (property_exists($basic_p_info, "schools") != FALSE) {
-                $response['schools'] = $basic_p_info->schools;
-            }
-            if (property_exists($basic_p_info, "pSkills") != FALSE) {
-                $response['p_skills'] = $basic_p_info->pSkills;
-            }
-        }
-        echo json_encode($response);
-    }
+    //............. About Places ...........................
 
     function get_city_town() {
         $postdata = file_get_contents("php://input");
@@ -229,32 +202,6 @@ class Basic_profile extends CI_Controller {
             if (property_exists($city_town, "basicInfo") != FALSE) {
                 $response['city_town'] = $city_town->basicInfo;
             }
-        }
-        echo json_encode($response);
-    }
-
-    function get_contact_basic_info() {
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        $user_id = $request->userId;
-        $response = array();
-        $response['basic_info'] = "";
-        $basic_info = $this->basic_profile_mongodb_model->get_contact_basic_info($user_id);
-        if (!empty($basic_info)) {
-            if (property_exists($basic_info, "basicInfo") != FALSE) {
-                $response['basic_info'] = $basic_info;
-            }
-        }
-        echo json_encode($response);
-    }
-
-    function get_family_relations() {
-        $response = array();
-        $response['family_relations'] = "";
-        $user_id = "100157";
-        $family_relations = $this->basic_profile_mongodb_model->get_family_relations($user_id);
-        if (!empty($family_relations)) {
-            $response['family_relations'] = $family_relations;
         }
         echo json_encode($response);
     }
@@ -291,15 +238,18 @@ class Basic_profile extends CI_Controller {
         echo json_encode($response);
     }
 
-    function add_relationship_status() {
+    //................. About Contact and Basic Info .................   
+    function get_contact_basic_info() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $request->userId;
         $response = array();
-        $user_id = "100157";
-        $relationship_status = $this->input->post('relationship');
-        $user_relationship_status = new stdClass();
-        $user_relationship_status->relationshipStatus = $relationship_status;
-        $result = $this->basic_profile_mongodb_model->add_relationship_status($user_id, $relationship_status);
-        if ($relationship_status != null) {
-            $response["relation_Status"] = $user_relationship_status;
+        $response['basic_info'] = "";
+        $basic_info = $this->basic_profile_mongodb_model->get_contact_basic_info($user_id);
+        if (!empty($basic_info)) {
+            if (property_exists($basic_info, "basicInfo") != FALSE) {
+                $response['basic_info'] = $basic_info;
+            }
         }
         echo json_encode($response);
     }
@@ -370,6 +320,85 @@ class Basic_profile extends CI_Controller {
         }
         echo json_encode($response);
     }
+
+//......................About Family and RelationShip ...............
+
+    function get_family_relations() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $request->userId;
+        $response['family_relations'] = "";
+        $family_relations = $this->basic_profile_mongodb_model->get_family_relations($user_id);
+        if (!empty($family_relations)) {
+            $response['family_relations'] = $family_relations;
+        }
+        echo json_encode($response);
+    }
+
+    function add_relationship_status() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_relationship_status = new stdClass();
+            $user_relationship_status->relationshipStatus = $request->relationship;
+            $result = $this->basic_profile_mongodb_model->add_relationship_status($user_id, $user_relationship_status);
+            if ($result != null) {
+                $response["relation_Status"] = $user_relationship_status;
+            }
+        }
+        echo json_encode($response);
+    }
+
+    //..............About Yourself ........................
+
+    function get_about_fquote() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $request->userId;
+        $response['about_fquote'] = "";
+        $about_fquote = $this->basic_profile_mongodb_model->get_about_fquote($user_id);
+        if (!empty($about_fquote)) {
+            if (property_exists($about_fquote, "basicInfo") != FALSE) {
+                $response['about_fquote'] = $about_fquote->basicInfo;
+            }
+        }
+        echo json_encode($response);
+    }
+
+    function add_about() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_about = new stdClass();
+            $user_about->about = $request->about;
+            $result = $this->basic_profile_mongodb_model->add_about($user_id, $user_about);
+            if ($result != null) {
+                $response["about"] = $user_about;
+            }
+        }
+        echo json_encode($response);
+    }
+    function add_fquote() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_fquote = new stdClass();
+            $user_fquote->fQuote = $request->fQuote;
+            $result = $this->basic_profile_mongodb_model->add_fquote($user_id, $user_fquote);
+            if ($result != null) {
+                $response["f_quote"] = $user_fquote;
+            }
+        }
+        echo json_encode($response);
+    }
+
+//................... ...............End About Module .......................
 
     function delete_basic_profile_info() {
         $user_id = "5563101d8267404011000029";

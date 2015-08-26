@@ -38,10 +38,24 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id));
         return json_decode($this->curl->execute());
     }
-
-    public function add_work_place($user_id, $additional_data) {
+    public function get_about_fquote($user_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'getAboutFQuote');
+        $this->curl->post(array("userId" => $user_id));
+        return json_decode($this->curl->execute());
+    }
+  public function add_work_place($user_id, $additional_data) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addWorkPlace');
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
+        return $this->curl->execute();
+    }
+    public function add_about($user_id, $additional_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addAbout');
+        $this->curl->post(array("userId" => $user_id, "aboutInfo" => json_encode($additional_data)));
+        return $this->curl->execute();
+    }
+    public function add_fquote($user_id, $user_fquote) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addFQuote');
+        $this->curl->post(array("userId" => $user_id, "fQuoteInfo" => json_encode($user_fquote)));
         return $this->curl->execute();
     }
 
@@ -83,7 +97,7 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
 
     public function add_relationship_status($user_id, $relationship_status) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addRelationshipStatus');
-        $this->curl->post(array("userId" => $user_id, "relationshipStatus" => $relationship_status));
+        $this->curl->post(array("userId" => $user_id, "relationshipStatus" =>  json_encode($relationship_status)));
         return $this->curl->execute();
     }
 
