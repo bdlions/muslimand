@@ -1,4 +1,4 @@
-
+<?php // echo $user_id ; ?>
 <div id="category_overview" class="row" ng-click="getOverview(<?php echo $user_id; ?>)">
     <div class="col-md-12" >
         <a style="color: black; text-decoration: none; cursor: pointer;" >Overview</a>

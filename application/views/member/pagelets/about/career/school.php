@@ -1,23 +1,4 @@
-<script type="text/javascript">
-    $(function(){
-        $("#school_update_btn").on('click',function(){
-              $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_school',
-                data: { 
-                    bp_school : $("#bp_school").val(),
-                    bp_school_dec : $("#bp_school_dec").val(),
-                },
-                success: function(data) {
-                    $("#school_tmpl_id").html(tmpl("tmpl_schools", data.school) + $("#school_tmpl_id").html());
-                    $("#school").hide();
-                    $("#subcategory_school").show();
-                }
-            });
-        });
-    });
-</script>
+
 <div id="school" class="carrer_bg" style="display: none;">
     <div class="row form-group">
         <div class="col-md-offset-2 col-md-10">

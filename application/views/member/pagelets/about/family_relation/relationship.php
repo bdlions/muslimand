@@ -1,23 +1,3 @@
-<script type="text/javascript">
-    $(function () {
-        $("#relationship_btn").on('click', function () {
-            $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>' + 'basic_profile/add_relationship_status',
-                data: {
-                    relationship: $("#relationship").val(),
-                },
-                success: function (data) {
-                   $("#relationship_add").html(tmpl("tmpl_relationship_status", data.relation_Status));
-                   $("#relationship_add_id").hide();
-                   $("#relationship_id").show();
-                }
-            });
-        });
-    });
-</script>
-
 
 <div id="relationship_add_id" style="display: none;" class="carrer_bg">
     <div class="row form-group">
@@ -55,7 +35,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addRStatus(<?php echo $user_id; ?>)">Save</button>
+                    <button class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addRStatus(<?php echo $user_id ;?>)">Save</button>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-default form-control relationship_close_id" style="background-color: #703684; color: white">Cancel</button>

@@ -38,6 +38,42 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.getOverview = function (userId) {
                 basicProfileService.getOverviews(userId).
                         success(function (data, status, headers, config) {
+                            if(data.workPlace != null){
+                                $('#about_overview_workplace').show();
+                                  $scope.overview.workPlace = data.workPlace;
+                            }
+                            if(data.university != null){
+                                $('#about_overview_uiversity').show();
+                                  $scope.overview.university = data.university;
+                            }
+                            if(data.city != null){
+                                $('#about_overview_city').show();
+                                  $scope.overview.city = data.city;
+                            }
+                            if(data.mobilePhone != null){
+                                $('#about_overview_phone').show();
+                                  $scope.overview.mobilePhone = data.mobilePhone;
+                            }
+                            if(data.email != null){
+                                $('#about_overview_email').show();
+                                  $scope.overview.email = data.email;
+                            }
+                            if(data.address != null){
+                                $('#about_overview_address').show();
+                                  $scope.overview.address = data.address;
+                            }
+                            if(data.company != null){
+                                $('#about_overview_company').show();
+                                  $scope.overview.company = data.company;
+                            }
+                            if(data.website != null){
+                                $('#about_overview_website').show();
+                                  $scope.overview.website = data.website;
+                            }
+                            if(data.birthDate != null){
+                                $('#about_overview_birthDate').show();
+                                  $scope.overview.birthDate = data.birthDate;
+                            }
                             $scope.overview = data;
                             $('#about_career').hide();
                             $('#about_place').hide();

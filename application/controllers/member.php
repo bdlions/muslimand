@@ -35,12 +35,13 @@ class Member extends CI_Controller {
 
     function timeline($user_id = 0) {
         $this->data['user_id'] = $user_id;
-        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/timeline",$this->data);
+        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/timeline", $this->data);
     }
 
     function about($user_id = 0) {
-         $this->data['user_id'] = "100157";//get from session;
-         
+        $user_id = $this->session->userdata('user_id');
+//        var_dump($user_id);
+        $this->data['user_id'] = "100157" ;//get from session;
         $this->data['bp_company'] = array(
             'name' => 'bp_company',
             'id' => 'bp_company',
@@ -153,7 +154,7 @@ class Member extends CI_Controller {
             'id' => 'bp_address',
             'type' => 'text',
         );
-        
+
         $this->data['address_city'] = array(
             'name' => 'address_city',
             'id' => 'address_city',

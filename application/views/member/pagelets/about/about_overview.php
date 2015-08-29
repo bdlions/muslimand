@@ -1,6 +1,6 @@
 <div id="about_overview" class="row">
     <div class="col-md-6">
-        <div class="row form-group" id="about_overview_company">
+        <div class="row form-group" id="about_overview_workplace" style="display:none">
             <div class="col-md-2">
                 <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="40" height="40"> 
             </div>
@@ -10,19 +10,17 @@
             </div>
         </div>
         <div class="pagelet_divider"></div>
-        <div id="about_overview_uiversity">
-            <div class="row form-group">
-                <div class="col-md-2">
-                    <img src="<?php echo base_url(); ?>resources/images/Food.jpg"  width="40" height="40"> 
-                </div>
-                <div class="col-md-10">
-                    Studied at <a href="#"> <span ng-bind="overview.university.university"></span></a>
-                </div>
+        <div class="row form-group" id="about_overview_uiversity" style="display: none">
+            <div class="col-md-2">
+                <img src="<?php echo base_url(); ?>resources/images/Food.jpg"  width="40" height="40"> 
+            </div>
+            <div class="col-md-10">
+                Studied at <a href="#"> <span ng-bind="overview.university.university"></span></a>
             </div>
         </div>
 
         <div class="pagelet_divider"></div>
-        <div class="row form-group">
+        <div class="row form-group" id="about_overview_city" style="display: none"> 
             <div class="col-md-2">
                 <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="40" height="40"> 
             </div>
@@ -32,7 +30,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="row form-group">
+        <div class="row form-group" id="about_overview_phone" style="display: none">
             <div class="col-md-2">
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/mobile_icon.png"  > 
             </div>
@@ -40,7 +38,7 @@
                 <a href="#"><span ng-bind="overview.mobilePhone.phone"></span></a>
             </div>
         </div>
-        <div class="row form-group">
+        <div class="row form-group" id="about_overview_email" style="display: none">
             <div class="col-md-2">
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/mail.png"  > 
             </div>
@@ -48,7 +46,7 @@
                 <h6><span ng-bind="overview.email.email"></span></h6>
             </div>
         </div>
-        <div class="row form-group">
+        <div class="row form-group" id="about_overview_address" style="display: none">
             <div class="col-md-2">
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/address.png"  > 
             </div>
@@ -56,7 +54,7 @@
                 <h6><span ng-bind="overview.address.postCode"></span>,<span ng-bind="overview.address.zip"></span>,<span ng-bind="overview.address.address"></span>,<span ng-bind="overview.address.city"></span></h6>
             </div>
         </div>
-        <div class="row form-group">
+        <div class="row form-group" id="about_overview_company" style="display: none">
             <div class="col-md-2">
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/messenger.png"  > 
             </div>
@@ -64,7 +62,7 @@
                 <a href="#"><span ng-bind="overview.company.company"></span></a>
             </div>
         </div>
-        <div class="row form-group">
+        <div class="row form-group" id="about_overview_website" style="display: none">
             <div class="col-md-2">
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/website.png"  > 
             </div>
@@ -72,7 +70,7 @@
                 <a href="#"><span ng-bind="overview.website.website"></span></a>
             </div>
         </div>
-        <div class="row form-group">
+        <div class="row form-group" id="about_overview_birthDate" style="display: none">
             <div class="col-md-2">
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/birth.png"  > 
             </div>
