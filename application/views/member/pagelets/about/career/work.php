@@ -102,7 +102,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <button id="cancel_work_window" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addWorkPlace(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
+                    <button id="cancel_work_window" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addWorkPlace('<?php echo $user_id; ?>')">Save</button>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-default form-control cancelling_btn" style="background-color: #703684; color: white">Cancel</button>

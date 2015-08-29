@@ -43,7 +43,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addPhone(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
+                            <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addPhone('<?php echo $user_id; ?>')">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button class="form-control form_control_custom_style member_about_cancel_button cancel_mobile_window" >Cancel</button>
@@ -112,7 +112,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addAddress(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
+                            <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addAddress('<?php echo $user_id; ?>')">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button class="form-control form_control_custom_style member_about_cancel_button cancel_address_window" >Cancel</button>
@@ -157,7 +157,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                             <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addWebsite(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
+                             <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addWebsite('<?php echo $user_id; ?>')">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button class="form-control form_control_custom_style member_about_cancel_button cancel_website_window" >Cancel</button>
@@ -202,7 +202,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addEmail(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
+                            <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addEmail('<?php echo $user_id; ?>')">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button class="form-control form_control_custom_style member_about_cancel_button cancel_email_window" >Cancel</button>

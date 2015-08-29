@@ -31,7 +31,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addPSkill(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
+                    <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addPSkill('<?php echo $user_id; ?>')">Save</button>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-default form-control cancelling_btn" style="background-color: #703684; color: white">Cancel</button>

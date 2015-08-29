@@ -30,7 +30,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addHomeTown(<?php echo $user_id ;?>)">Save</button>
+                    <button class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addHomeTown('<?php echo $user_id ;?>')">Save</button>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-default form-control home_town_close" style="background-color: #703684; color: white">Cancel</button>

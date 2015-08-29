@@ -36,7 +36,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <button class="pull-right form-control form_control_custom_style member_about_save_button" ng-click="addAbout(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
+                            <button class="pull-right form-control form_control_custom_style member_about_save_button" ng-click="addAbout('<?php echo $user_id; ?>')">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button class="form-control form_control_custom_style member_about_cancel_button cancel_about_own_window" >Cancel</button>
@@ -81,7 +81,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <button class="pull-right form-control form_control_custom_style member_about_save_button" ng-click="addFQuote(<?php echo htmlspecialchars(json_encode($user_id)); ?>)">Save</button>
+                            <button class="pull-right form-control form_control_custom_style member_about_save_button" ng-click="addFQuote('<?php echo $user_id; ?>')">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button class="form-control form_control_custom_style member_about_cancel_button cancel_favorite_quote_window" >Cancel</button>

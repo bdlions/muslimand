@@ -35,7 +35,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addRStatus(<?php echo $user_id ;?>)">Save</button>
+                    <button class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addRStatus('<?php echo $user_id ;?>')">Save</button>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-default form-control relationship_close_id" style="background-color: #703684; color: white">Cancel</button>
