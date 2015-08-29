@@ -54,14 +54,14 @@
                 <h6><span ng-bind="overview.address.postCode"></span>,<span ng-bind="overview.address.zip"></span>,<span ng-bind="overview.address.address"></span>,<span ng-bind="overview.address.city"></span></h6>
             </div>
         </div>
-        <div class="row form-group" id="about_overview_company" style="display: none">
+<!--        <div class="row form-group" id="about_overview_company" style="display: none">
             <div class="col-md-2">
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/messenger.png"  > 
             </div>
             <div class="col-md-10">
                 <a href="#"><span ng-bind="overview.company.company"></span></a>
             </div>
-        </div>
+        </div>-->
         <div class="row form-group" id="about_overview_website" style="display: none">
             <div class="col-md-2">
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/website.png"  > 
