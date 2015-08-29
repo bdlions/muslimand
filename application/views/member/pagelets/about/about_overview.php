@@ -5,8 +5,15 @@
                 <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="40" height="40"> 
             </div>
             <div class="col-md-10">
-
                 Works at <a href ><span ng-bind="overview.workPlace.company"></span></a>
+            </div>
+        </div>
+        <div id="" class="row form-group">
+            <div class="col-md-12">
+                <div class="cursor_holder_style">
+                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <a class="holder_style">Add a workplace</a>
+                </div>
             </div>
         </div>
         <div class="pagelet_divider"></div>
@@ -18,7 +25,14 @@
                 Studied at <a href="#"> <span ng-bind="overview.university.university"></span></a>
             </div>
         </div>
-
+        <div id="" class="row form-group">
+            <div class="col-md-12">
+                <div class="cursor_holder_style">
+                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <a class="holder_style">Add Your University</a>
+                </div>
+            </div>
+        </div>
         <div class="pagelet_divider"></div>
         <div class="row form-group" id="about_overview_city" style="display: none"> 
             <div class="col-md-2">
@@ -26,6 +40,14 @@
             </div>
             <div class="col-md-10">
                 Lives in <a href="#"> <span ng-bind="overview.city.cityName"></span></a>
+            </div>
+        </div>
+        <div id="" class="row form-group">
+            <div class="col-md-12">
+                <div class="cursor_holder_style">
+                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <a class="holder_style">Add Current City</a>
+                </div>
             </div>
         </div>
     </div>
@@ -54,14 +76,14 @@
                 <h6><span ng-bind="overview.address.postCode"></span>,<span ng-bind="overview.address.zip"></span>,<span ng-bind="overview.address.address"></span>,<span ng-bind="overview.address.city"></span></h6>
             </div>
         </div>
-<!--        <div class="row form-group" id="about_overview_company" style="display: none">
-            <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/about_icons/messenger.png"  > 
-            </div>
-            <div class="col-md-10">
-                <a href="#"><span ng-bind="overview.company.company"></span></a>
-            </div>
-        </div>-->
+        <!--        <div class="row form-group" id="about_overview_company" style="display: none">
+                    <div class="col-md-2">
+                        <img src="<?php echo base_url(); ?>resources/images/about_icons/messenger.png"  > 
+                    </div>
+                    <div class="col-md-10">
+                        <a href="#"><span ng-bind="overview.company.company"></span></a>
+                    </div>
+                </div>-->
         <div class="row form-group" id="about_overview_website" style="display: none">
             <div class="col-md-2">
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/website.png"  > 
