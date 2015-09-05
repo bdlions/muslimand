@@ -34,7 +34,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.fQuote = {};
             $scope.fQuoteInfo = {};
 
-            // about  overview  ................          
+            // about  overview  ................      
             $scope.getOverview = function (userId) {
                 basicProfileService.getOverviews(userId).
                         success(function (data, status, headers, config) {
@@ -133,10 +133,14 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 $scope.workInfo.userId = userId;
                 basicProfileService.addWorkPlace($scope.workInfo).
                         success(function (data, status, headers, config) {
+                            console.log($scope.workPlaces);
+                            console.log(data.work_place);
                             $scope.workPlaces.push(data.work_place)
+                            console.log($scope.workPlaces);
                             $scope.workInfo = "";
                             $("#work").hide();
                             $("#subcategory_work").show();
+                            $("#work_place_tmpl_id").show();
                         });
             };
             $scope.addPSkill = function (userId) {
@@ -147,6 +151,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             $scope.pSkillInfo = "";
                             $("#professional_skill").hide();
                             $("#subcategory_professional_skill").show();
+                            $("#p_skill_tmpl_id").show();
                         });
             };
             $scope.addUniversity = function (userId) {
@@ -157,6 +162,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             $scope.universityInfo = "";
                             $("#university").hide();
                             $("#subcategory_university").show();
+                            $("#uv_tmpl_id").show();
                         });
             };
             $scope.addCollege = function (userId) {
@@ -167,6 +173,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             $scope.collegeInfo = "";
                             $("#college").hide();
                             $("#subcategory_college").show();
+                            $("#college_tmpl_id").show();
                         });
             };
             $scope.addSchool = function (userId) {
@@ -177,6 +184,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             $scope.schoolInfo = "";
                             $("#school").hide();
                             $("#subcategory_school").show();
+                            $("#school_tmpl_id").show();
                         });
             };
 
