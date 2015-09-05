@@ -36,10 +36,11 @@ $config['collections']['user_profiles']  = 'user_profiles';
 $config['collections']['religions']      = 'religions';
 
 $config['attr_map']['basic_info']                = 'bInfo';
+$config['attr_map']['birth_date']                = 'bDate';
 $config['attr_map']['birth_day']                 = 'bd';
 $config['attr_map']['birth_month']               = 'bm';
 $config['attr_map']['birth_year']                = 'by';
-$config['attr_map']['gender_id']                 = 'gndId';
+$config['attr_map']['gender_id']                 = 'gId';
 $config['attr_map']['gender']                    = 'gender';
 $config['attr_map']['user_id']                   = 'uId';
 $config['attr_map']['username']                  = 'un';
@@ -56,6 +57,13 @@ $config['attr_map']['account_status_id']         = 'asId';
 $config['attr_map']['groups']                    = 'groups';
 $config['attr_map']['group_id']                  = 'gId';
 $config['attr_map']['title']                     = 'title';
+
+$config['attr_map']['company']                   = 'cmp';
+$config['attr_map']['position']                  = 'pos';
+$config['attr_map']['city']                      = 'ct';
+$config['attr_map']['description']               = 'des';
+$config['attr_map']['startDate']                 = 'sd';
+$config['attr_map']['endDate']                   = 'ed';
 
 
 /*

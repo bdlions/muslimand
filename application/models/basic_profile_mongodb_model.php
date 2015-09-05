@@ -43,7 +43,13 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id));
         return json_decode($this->curl->execute());
     }
-  public function add_work_place($user_id, $additional_data) {
+    /*
+     * This method will add work place of a user
+     * @param $user_id, user id
+     * @param $additional_data, work place data to be added
+     * @author nazmul hasan
+     */
+    public function add_work_place($user_id, $additional_data) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addWorkPlace');
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
         return $this->curl->execute();

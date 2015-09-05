@@ -1,7 +1,5 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/typeahead/typeahead.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/typeahead/bloodhound.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/typeahead/angular-typeahead.min.js"></script>
 <!--<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/searchController.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/searchService.js "></script>

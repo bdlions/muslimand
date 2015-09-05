@@ -3,9 +3,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Basic_profile extends CI_Controller {
-
+    /**
+     * Holds the attributes mapping
+     * @var array
+     */
+    public $attr_map = array();
     function __construct() {
         parent::__construct();
+        // Initialize attributes mapping
+        $this->attr_map = $this->config->item('attr_map', 'ion_auth');
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         $this->load->model('basic_profile_mongodb_model');
@@ -101,21 +107,30 @@ class Basic_profile extends CI_Controller {
         }
         echo json_encode($response);
     }
-
+    
+    /*
+     * This method will add work place of a user
+     * @author nazmul hasan on 31st August 2015
+     */
     function add_work_place() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
         $response = array();
         if (!empty($request)) {
             $user_id = $request->userId;
-            $user_work_places = new stdClass();
-            $user_work_places->company = $request->company;
-            $user_work_places->position = $request->position;
-            $user_work_places->city = $request->city;
-            $user_work_places->description = $request->description;
-            $result = $this->basic_profile_mongodb_model->add_work_place($user_id, $user_work_places);
+            $work_place = new stdClass();
+            $user_work_place = new stdClass();
+            $user_work_place->{$this->attr_map['company']} = $request->company;
+            $work_place->company = $request->company;
+            $user_work_place->{$this->attr_map['position']} = $request->position;
+            $work_place->position = $request->position;
+            $user_work_place->{$this->attr_map['city']} = $request->city;
+            $work_place->city = $request->city;
+            $user_work_place->{$this->attr_map['description']} = $request->description;
+            $work_place->description = $request->description;
+            $result = $this->basic_profile_mongodb_model->add_work_place($user_id, $user_work_place);
             if ($result != null) {
-                $response["work_place"] = $user_work_places;
+                $response["work_place"] = $work_place;
             }
             echo json_encode($response);
         }
