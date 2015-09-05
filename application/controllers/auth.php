@@ -130,11 +130,14 @@ class Auth extends CI_Controller {
                     $this->attr_map['gender_id'] => $gender_id,
                     $this->attr_map['title'] => $gender_title
                 );
-                $basic_info = array(
+                $birth_date = array(
                     $this->attr_map['birth_day'] => $this->input->post('birthday_day'),
                     $this->attr_map['birth_month'] => $this->input->post('birthday_month'),
-                    $this->attr_map['birth_year'] => $this->input->post('birthday_year'),
-                    $this->attr_map['gender'] => $gender,
+                    $this->attr_map['birth_year'] => $this->input->post('birthday_year')
+                );
+                $basic_info = array(
+                    $this->attr_map['birth_date'] => $birth_date,
+                    $this->attr_map['gender'] => $gender
                 );
                 $group_info = array(
                     $this->attr_map['group_id'] => MEMBER_GROUP_ID,
