@@ -133,10 +133,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 $scope.workInfo.userId = userId;
                 basicProfileService.addWorkPlace($scope.workInfo).
                         success(function (data, status, headers, config) {
-                            console.log($scope.workPlaces);
-                            console.log(data.work_place);
                             $scope.workPlaces.push(data.work_place)
-                            console.log($scope.workPlaces);
                             $scope.workInfo = "";
                             $("#work").hide();
                             $("#subcategory_work").show();

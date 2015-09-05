@@ -12,6 +12,7 @@ class Basic_profile extends CI_Controller {
         parent::__construct();
         // Initialize attributes mapping
         $this->attr_map = $this->config->item('attr_map', 'ion_auth');
+        $this->load->library('utils');
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         $this->load->model('basic_profile_mongodb_model');
@@ -26,6 +27,191 @@ class Basic_profile extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
+    }
+    
+    //---------------------------- About -> Works and Education Module -------------------------//
+    /*
+     * This method will return list of work places, professional skills, universities, 
+     * colleges and schools of a user
+     * @author nazmul hasan on 5th September 2015
+     */
+    function get_works_education() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $request->userId;
+        $response = array();
+        $response['message'] = '';
+        $response['work_places'] = '';
+        $response['colleges'] = '';
+        $response['universities'] = '';
+        $response['schools'] = '';
+        $response['p_skills'] = '';
+        $basic_p_info = $this->basic_profile_mongodb_model->get_works_education($user_id);
+        if (!empty($basic_p_info)) {
+            if (property_exists($basic_p_info, "wps") != FALSE) {
+                $response['work_places'] = $basic_p_info->wps;
+            }
+            if (property_exists($basic_p_info, "clgs") != FALSE) {
+                $response['colleges'] = $basic_p_info->clgs;
+            }
+            if (property_exists($basic_p_info, "unis") != FALSE) {
+                $response['universities'] = $basic_p_info->unis;
+            }
+            if (property_exists($basic_p_info, "schs") != FALSE) {
+                $response['schools'] = $basic_p_info->schs;
+            }
+            if (property_exists($basic_p_info, "pss") != FALSE) {
+                $response['p_skills'] = $basic_p_info->pss;
+            }
+        }
+        echo json_encode($response);
+    }
+    /*
+     * This method will add work place of a user
+     * @author nazmul hasan on 31st August 2015
+     */
+    function add_work_place() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_work_place = new stdClass();
+            $user_work_place->id = $this->utils->generateRandomString(BASCI_PROFILE_WORK_PLACE_ID_LENGTH);
+            $user_work_place->{$this->attr_map['company']} = $request->company;
+            $user_work_place->{$this->attr_map['position']} = $request->position;
+            $user_work_place->{$this->attr_map['city']} = $request->city;
+            $user_work_place->{$this->attr_map['description']} = $request->description;
+            $result = $this->basic_profile_mongodb_model->add_work_place($user_id, $user_work_place);
+            if ($result != null) {
+                $response["work_place"] = $user_work_place;
+            }
+            echo json_encode($response);
+        }
+    }
+    /*
+     * This method will add professional skill of a user
+     * @author nazmul hasan on 31st August 2015
+     */
+    function add_professional_skill() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_professional_skill = new stdClass();
+            $user_professional_skill->id = $this->utils->generateRandomString(BASCI_PROFILE_PROFESSIONAL_SKILL_ID_LENGTH);
+            $user_professional_skill->{$this->attr_map['professional_skill']} = $request->pSkil;
+            $result = $this->basic_profile_mongodb_model->add_p_skill($user_id, $user_professional_skill);
+            if ($result != null) {
+                $response["p_skill"] = $user_professional_skill;
+            }
+            echo json_encode($response);
+        }
+    }
+    /*
+     * This method will add university of a user
+     * @author nazmul hasan on 31st August 2015
+     */
+    function add_university() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_university = new stdClass();
+            $user_university->id = $this->utils->generateRandomString(BASCI_PROFILE_UNIVERSITY_ID_LENGTH);
+            $user_university->{$this->attr_map['university']} = $request->university;
+            $user_university->{$this->attr_map['description']} = $request->description;
+            $result = $this->basic_profile_mongodb_model->add_university($user_id, $user_university);
+            if ($result != null) {
+                $response["university"] = $user_university;
+            }
+            echo json_encode($response);
+        }
+    }
+    /*
+     * This method will add college of a user
+     * @author nazmul hasan on 31st August 2015
+     */
+    function add_college() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_college = new stdClass();
+            $user_college->id = $this->utils->generateRandomString(BASCI_PROFILE_COLLEGE_ID_LENGTH);
+            $user_college->{$this->attr_map['college']} = $request->college;
+            $user_college->{$this->attr_map['description']} = $request->description;
+            $result = $this->basic_profile_mongodb_model->add_college($user_id, $user_college);
+            if ($result != null) {
+                $response["college"] = $user_college;
+            }
+            echo json_encode($response);
+        }
+    }
+    /*
+     * This method will add school of a user
+     * @author nazmul hasan on 31st August 2015
+     */
+    function add_school() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $request->userId;
+            $user_school = new stdClass();
+            $user_school->id = $this->utils->generateRandomString(BASCI_PROFILE_SCHOOL_ID_LENGTH);
+            $user_school->{$this->attr_map['school']} = $request->school;
+            $user_school->{$this->attr_map['description']} = $request->description;
+            $result = $this->basic_profile_mongodb_model->add_school($user_id, $user_school);
+            if ($result != null) {
+                $response["school"] = $user_school;
+            }
+            echo json_encode($response);
+        }
+    }
+    
+    /*
+     * This method will edit work place of a user
+     * @author nazmul hasan on 5th September 2015
+     */
+    function edit_work_place()
+    {
+        
+    }
+    /*
+     * This method will edit professional skill of a user
+     * @author nazmul hasan on 5th September 2015
+     */
+    function edit_professional_skill()
+    {
+        
+    }
+    /*
+     * This method will edit university of a user
+     * @author nazmul hasan on 5th September 2015
+     */
+    function edit_university()
+    {
+        
+    }
+    /*
+     * This method will edit college of a user
+     * @author nazmul hasan on 5th September 2015
+     */
+    function edit_college()
+    {
+        
+    }
+    /*
+     * This method will edit school of a user
+     * @author nazmul hasan on 5th September 2015
+     */
+    function edit_school()
+    {
+        
     }
 
 //..........................About Module ...............................
@@ -72,136 +258,6 @@ class Basic_profile extends CI_Controller {
             }
         }
         echo json_encode($response);
-    }
-
-    //.................. About Works and Educations ...................... ..
-
-    function get_works_education() {
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        $user_id = $request->userId;
-        $response = array();
-        $response['message'] = '';
-        $response['work_places'] = '';
-        $response['colleges'] = '';
-        $response['universities'] = '';
-        $response['schools'] = '';
-        $response['p_skills'] = '';
-        $basic_p_info = $this->basic_profile_mongodb_model->get_works_education($user_id);
-        if (!empty($basic_p_info)) {
-            if (property_exists($basic_p_info, "workPlaces") != FALSE) {
-                $response['work_places'] = $basic_p_info->workPlaces;
-            }
-            if (property_exists($basic_p_info, "colleges") != FALSE) {
-                $response['colleges'] = $basic_p_info->colleges;
-            }
-            if (property_exists($basic_p_info, "universities") != FALSE) {
-                $response['universities'] = $basic_p_info->universities;
-            }
-            if (property_exists($basic_p_info, "schools") != FALSE) {
-                $response['schools'] = $basic_p_info->schools;
-            }
-            if (property_exists($basic_p_info, "pSkills") != FALSE) {
-                $response['p_skills'] = $basic_p_info->pSkills;
-            }
-        }
-        echo json_encode($response);
-    }
-    
-    /*
-     * This method will add work place of a user
-     * @author nazmul hasan on 31st August 2015
-     */
-    function add_work_place() {
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        $response = array();
-        if (!empty($request)) {
-            $user_id = $request->userId;
-            $work_place = new stdClass();
-            $user_work_place = new stdClass();
-            $user_work_place->{$this->attr_map['company']} = $request->company;
-            $work_place->company = $request->company;
-            $user_work_place->{$this->attr_map['position']} = $request->position;
-            $work_place->position = $request->position;
-            $user_work_place->{$this->attr_map['city']} = $request->city;
-            $work_place->city = $request->city;
-            $user_work_place->{$this->attr_map['description']} = $request->description;
-            $work_place->description = $request->description;
-            $result = $this->basic_profile_mongodb_model->add_work_place($user_id, $user_work_place);
-            if ($result != null) {
-                $response["work_place"] = $work_place;
-            }
-            echo json_encode($response);
-        }
-    }
-
-    function add_professional_skill() {
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        $response = array();
-        if (!empty($request)) {
-            $user_id = $request->userId;
-            $user_professional_skill = new stdClass();
-            $user_professional_skill->pSkill = $request->pSkil;
-            $result = $this->basic_profile_mongodb_model->add_p_skill($user_id, $user_professional_skill);
-            if ($result != null) {
-                $response["p_skill"] = $user_professional_skill;
-            }
-
-            echo json_encode($response);
-        }
-    }
-
-    function add_university() {
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        $response = array();
-        if (!empty($request)) {
-            $user_id = $request->userId;
-            $user_university = new stdClass();
-            $user_university->university = $request->university;
-            $user_university->description = $request->description;
-            $result = $this->basic_profile_mongodb_model->add_university($user_id, $user_university);
-            if ($result != null) {
-                $response["university"] = $user_university;
-            }
-            echo json_encode($response);
-        }
-    }
-
-    function add_college() {
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        $response = array();
-        if (!empty($request)) {
-            $user_id = $request->userId;
-            $user_college = new stdClass();
-            $user_college->college = $request->college;
-            $user_college->description = $request->description;
-            $result = $this->basic_profile_mongodb_model->add_college($user_id, $user_college);
-            if ($result != null) {
-                $response["college"] = $user_college;
-            }
-            echo json_encode($response);
-        }
-    }
-
-    function add_school() {
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        $response = array();
-        if (!empty($request)) {
-            $user_id = $request->userId;
-            $user_school = new stdClass();
-            $user_school->school = $request->school;
-            $user_school->description = $request->description;
-            $result = $this->basic_profile_mongodb_model->add_school($user_id, $user_school);
-            if ($result != null) {
-                $response["school"] = $user_school;
-            }
-            echo json_encode($response);
-        }
     }
 
     //............. About Places ...........................

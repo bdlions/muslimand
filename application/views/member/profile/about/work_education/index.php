@@ -15,7 +15,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?php $this->load->view("member/pagelets/about/career/work"); ?>
+            <?php $this->load->view("member/profile/about/work_education/add_work_place"); ?>
         </div>
     </div>
 
@@ -27,7 +27,7 @@
             <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-8">
-                        <a href=""><span ng-bind="workPlace.company"></span></a>
+                        <a href=""><span ng-bind="workPlace.cmp"></span></a>
                     </div>
                     <div class="col-md-4">
                         <div class="pull-right">
@@ -43,8 +43,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <span ng-bind="workPlace.position"></span>,<span ng-bind="workPlace.city"></span> .
-                        <span ng-bind="workPlace.description"></span>
+                        <span ng-bind="workPlace.pos"></span>,<span ng-bind="workPlace.ct"></span> .
+                        <span ng-bind="workPlace.desc"></span>
                     </div>
                 </div>
             </div>
@@ -67,13 +67,13 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?php $this->load->view("member/pagelets/about/career/professional_skill"); ?>
+            <?php $this->load->view("member/profile/about/work_education/add_professional_skill"); ?>
         </div>
     </div>
     <div id="p_skill_tmpl_id" style="display: none;">
         <div class="row from-group" ng-repeat="pSkill in pSkills.slice().reverse()">
             <div class="col-md-8">
-                <a style="font-weight: bold" href=""><span ng-bind="pSkill.pSkill"></span></a>
+                <a style="font-weight: bold" href=""><span ng-bind="pSkill.ps"></span></a>
             </div>
             <div class="col-md-4">
                 <div class="pull-right">
@@ -105,7 +105,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?php $this->load->view("member/pagelets/about/career/university"); ?>
+            <?php $this->load->view("member/profile/about/work_education/add_university"); ?>
         </div>
     </div>
     <div id="uv_tmpl_id" style="display: none;">
@@ -116,7 +116,7 @@
             <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-8">
-                        <a href=""><span ng-bind="university.university"></span></a>
+                        <a href=""><span ng-bind="university.uni"></span></a>
                     </div>
                     <div class="col-md-4">
                         <div class="pull-right">
@@ -132,9 +132,9 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <span ng-bind="university.startDate">-</span><span ng-bind="university.endDate"></span>
-                        <span ng-bind="university.university"></span>.
-                        <span ng-bind="university.description"></span>
+                        <span ng-bind="university.sd">-</span><span ng-bind="university.ed"></span>
+                        <span ng-bind="university.uni"></span>.
+                        <span ng-bind="university.desc"></span>
                     </div>
                 </div>
             </div>
@@ -157,7 +157,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?php $this->load->view("member/pagelets/about/career/college"); ?>
+            <?php $this->load->view("member/profile/about/work_education/add_college"); ?>
         </div>
     </div>
     <div id="college_tmpl_id" style="display: none;">
@@ -168,7 +168,7 @@
             <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-8">
-                        <a href=""><span ng-bind="college.college"></span></a>
+                        <a href=""><span ng-bind="college.clg"></span></a>
                     </div>
                     <div class="col-md-4">
                         <div class="pull-right">
@@ -184,8 +184,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <span ng-bind="college.startDate">-</span><span ng-bind="college.endDate"></span>
-                        <span ng-bind="college.description"></span>
+                        <span ng-bind="college.sd">-</span><span ng-bind="college.ed"></span>
+                        <span ng-bind="college.desc"></span>
                     </div>
                 </div>
             </div>
@@ -208,7 +208,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?php $this->load->view("member/pagelets/about/career/school"); ?>
+            <?php $this->load->view("member/profile/about/work_education/add_school"); ?>
         </div>
     </div>
     <div id="school_tmpl_id" style="display: none;">
@@ -219,7 +219,7 @@
             <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-8">
-                        <a href=""><span ng-bind="school.school"></span></a>
+                        <a href=""><span ng-bind="school.sch"></span></a>
                     </div>
                     <div class="col-md-4">
                         <div class="pull-right">
@@ -235,8 +235,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <span ng-bind="school.startDate">-</span><span ng-bind="school.endDate"></span>
-                        <span ng-bind="school.description"></span>
+                        <span ng-bind="school.sd">-</span><span ng-bind="school.ed"></span>
+                        <span ng-bind="school.desc"></span>
                     </div>
                 </div>
             </div>

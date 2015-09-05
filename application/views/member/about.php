@@ -25,7 +25,7 @@
                         <div class="col-md-8">
                             <div class="pagelet">
                                 <?php $this->load->view("member/pagelets/about/about_overview"); ?>
-                                <?php $this->load->view("member/pagelets/about/career/about_career"); ?>
+                                <?php $this->load->view("member/profile/about/work_education/index"); ?>
                                 <?php $this->load->view("member/pagelets/about/place/about_place"); ?>
                                 <?php $this->load->view("member/pagelets/about/contact_info/about_contact_info"); ?>
                                 <?php $this->load->view("member/pagelets/about/family_relation/about_family_relation"); ?>

@@ -12,7 +12,7 @@
                     <span class="subcategory_label_style">School</span>
                 </div>
                 <div class="col-md-8">
-                     <input type="text" class="form-control" ng-model="schoolInfo.school ">
+                    <input type="text" class="form-control" ng-model="schoolInfo.school ">
                 </div>
             </div>
             <div class="row form-group">
@@ -52,8 +52,7 @@
                     <span class="subcategory_label_style">Description</span>
                 </div>
                 <div class="col-md-8">
-                     <textarea type="text" class="form-control" ng-model="schoolInfo.description"></textarea>
-                    <?php echo form_textarea($bp_school_dec + array('class' => 'form-control'));?>
+                    <textarea type="text" class="form-control" ng-model="schoolInfo.description"></textarea>
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -70,7 +69,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                             <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addUniversity('<?php echo $user_id; ?>')">Save</button>
+                            <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addSchool('<?php echo $user_id; ?>')">Save</button>
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-default form-control cancelling_btn" style="background-color: #703684; color: white">Cancel</button>

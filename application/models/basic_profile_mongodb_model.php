@@ -8,15 +8,120 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         parent::__construct();
         $this->SERVICE_BASIC_PROFILE = SERVICE_PATH . "basicProfile/";
     }
-
-    public function get_overview($user_id) {
-        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'getOverview');
+    
+    //---------------------------- About -> Works and Education Module -------------------------//
+    /*
+     * This method will return list of work places, professional skills, universities, 
+     * colleges and schools of a user
+     * @param $user_id, user id
+     * @author nazmul hasan on 5th September 2015
+     */
+    public function get_works_education($user_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'getWorksEducation');
         $this->curl->post(array("userId" => $user_id));
         return json_decode($this->curl->execute());
     }
-
-    public function get_works_education($user_id) {
-        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'getWorksEducation');
+    /*
+     * This method will add work place of a user
+     * @param $user_id, user id
+     * @param $work_place_data, work place data to be added
+     * @author nazmul hasan on 5th September 2015
+     */
+    public function add_work_place($user_id, $work_place_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addWorkPlace');
+        $this->curl->post(array("userId" => $user_id, "workPlaceData" => json_encode($work_place_data)));
+        return $this->curl->execute();
+    }
+    /*
+     * This method will add professional skill of a user
+     * @param $user_id, user id
+     * @param $professional_skill_data, professional skill data to be added
+     * @author nazmul hasan on 5th September 2015
+     */
+    public function add_p_skill($user_id, $professional_skill_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addProfessionalSkill');
+        $this->curl->post(array("userId" => $user_id, "professionalSkillData" => json_encode($professional_skill_data)));
+        return $this->curl->execute();
+    }
+    /*
+     * This method will add university of a user
+     * @param $user_id, user id
+     * @param $university_data, university data to be added
+     * @author nazmul hasan on 5th September 2015
+     */
+    public function add_university($user_id, $university_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addUniversity');
+        $this->curl->post(array("userId" => $user_id, "universityData" => json_encode($university_data)));
+        return $this->curl->execute();
+    }
+    /*
+     * This method will add college of a user
+     * @param $user_id, user id
+     * @param $college_data, college data to be added
+     * @author nazmul hasan on 5th September 2015
+     */
+    public function add_college($user_id, $college_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addCollege');
+        $this->curl->post(array("userId" => $user_id, "collegeData" => json_encode($college_data)));
+        return $this->curl->execute();
+    }
+    /*
+     * This method will add school of a user
+     * @param $user_id, user id
+     * @param $school_data, school data to be added
+     * @author nazmul hasan on 5th September 2015
+     */
+    public function add_school($user_id, $school_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addSchool');
+        $this->curl->post(array("userId" => $user_id, "schoolData" => json_encode($school_data)));
+        return $this->curl->execute();
+    }
+    
+    /*
+     * This method will edit work place of a user
+     * @author nazmul hasan on 5th September 2015
+     */
+    function edit_work_place()
+    {
+        
+    }
+    /*
+     * This method will edit professional skill of a user
+     * @author nazmul hasan on 5th September 2015
+     */
+    function edit_professional_skill()
+    {
+        
+    }
+    /*
+     * This method will edit university of a user
+     * @author nazmul hasan on 5th September 2015
+     */
+    function edit_university()
+    {
+        
+    }
+    /*
+     * This method will edit college of a user
+     * @author nazmul hasan on 5th September 2015
+     */
+    function edit_college()
+    {
+        
+    }
+    /*
+     * This method will edit school of a user
+     * @author nazmul hasan on 5th September 2015
+     */
+    function edit_school()
+    {
+        
+    }
+    
+    
+    
+    public function get_overview($user_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'getOverview');
         $this->curl->post(array("userId" => $user_id));
         return json_decode($this->curl->execute());
     }
@@ -43,17 +148,7 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id));
         return json_decode($this->curl->execute());
     }
-    /*
-     * This method will add work place of a user
-     * @param $user_id, user id
-     * @param $additional_data, work place data to be added
-     * @author nazmul hasan
-     */
-    public function add_work_place($user_id, $additional_data) {
-        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addWorkPlace');
-        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
-        return $this->curl->execute();
-    }
+    
     public function add_about($user_id, $additional_data) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addAbout');
         $this->curl->post(array("userId" => $user_id, "aboutInfo" => json_encode($additional_data)));
@@ -65,29 +160,7 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         return $this->curl->execute();
     }
 
-    public function add_p_skill($user_id, $additional_data) {
-        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addPSkill');
-        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
-        return $this->curl->execute();
-    }
-
-    public function add_university($user_id, $additional_data) {
-        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addUniversity');
-        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
-        return $this->curl->execute();
-    }
-
-    public function add_college($user_id, $additional_data) {
-        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addCollege');
-        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
-        return $this->curl->execute();
-    }
-
-    public function add_school($user_id, $additional_data) {
-        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addSchool');
-        $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
-        return $this->curl->execute();
-    }
+    
 
     public function add_current_city($user_id, $additional_data) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addCurrentCity');

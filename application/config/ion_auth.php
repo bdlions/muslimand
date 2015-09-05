@@ -35,35 +35,38 @@ $config['collections']['countries']      = 'countries';
 $config['collections']['user_profiles']  = 'user_profiles';
 $config['collections']['religions']      = 'religions';
 
+$config['attr_map']['account_status_id']         = 'asId';
 $config['attr_map']['basic_info']                = 'bInfo';
 $config['attr_map']['birth_date']                = 'bDate';
 $config['attr_map']['birth_day']                 = 'bd';
 $config['attr_map']['birth_month']               = 'bm';
 $config['attr_map']['birth_year']                = 'by';
-$config['attr_map']['gender_id']                 = 'gId';
-$config['attr_map']['gender']                    = 'gender';
-$config['attr_map']['user_id']                   = 'uId';
-$config['attr_map']['username']                  = 'un';
-$config['attr_map']['password']                  = 'pwd';
-$config['attr_map']['salt']                      = 'salt';
-$config['attr_map']['email']                     = 'email';
-$config['attr_map']['first_name']                = 'fn';
-$config['attr_map']['last_name']                 = 'ln';
+$config['attr_map']['city']                      = 'ct';
+$config['attr_map']['college']                   = 'clg';
+$config['attr_map']['company']                   = 'cmp';
 $config['attr_map']['country']                   = 'cty';
-$config['attr_map']['ip_address']                = 'ia';
 $config['attr_map']['created_on']                = 'co';
-$config['attr_map']['last_login']                = 'll';
-$config['attr_map']['account_status_id']         = 'asId';
+$config['attr_map']['description']               = 'desc';
+$config['attr_map']['email']                     = 'email';
+$config['attr_map']['endDate']                   = 'ed';
+$config['attr_map']['first_name']                = 'fn';
+$config['attr_map']['gender']                    = 'gender';
+$config['attr_map']['gender_id']                 = 'gId';
 $config['attr_map']['groups']                    = 'groups';
 $config['attr_map']['group_id']                  = 'gId';
-$config['attr_map']['title']                     = 'title';
-
-$config['attr_map']['company']                   = 'cmp';
+$config['attr_map']['ip_address']                = 'ia';
+$config['attr_map']['last_login']                = 'll';
+$config['attr_map']['last_name']                 = 'ln';
+$config['attr_map']['password']                  = 'pwd';
 $config['attr_map']['position']                  = 'pos';
-$config['attr_map']['city']                      = 'ct';
-$config['attr_map']['description']               = 'des';
+$config['attr_map']['professional_skill']        = 'ps';
+$config['attr_map']['salt']                      = 'salt';
+$config['attr_map']['school']                    = 'sch';
 $config['attr_map']['startDate']                 = 'sd';
-$config['attr_map']['endDate']                   = 'ed';
+$config['attr_map']['title']                     = 'title';
+$config['attr_map']['university']                = 'uni';
+$config['attr_map']['username']                  = 'un';
+$config['attr_map']['user_id']                   = 'uId';
 
 
 /*
