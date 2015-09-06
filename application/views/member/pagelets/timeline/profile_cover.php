@@ -31,7 +31,7 @@
         <div style="background-color: whitesmoke">
             <div class="btn-group" role="group" aria-label="...">
                 <button type="button" class="btn btn-default" style="font-size: 100%">Timeline</button>
-                <button type="button" class="btn btn-default" style="font-size: 100%">About</button>
+                <button type="button" class="btn btn-default" style="font-size: 100%" ng-click="getOverview('<?php echo $user_id; ?>')">About</button>
                 <button type="button" class="btn btn-default" style="font-size: 100%">Photo</button>
                 <button type="button" class="btn btn-default" style="font-size: 100%">Friends</button>
                 <div class="btn-group" role="group">

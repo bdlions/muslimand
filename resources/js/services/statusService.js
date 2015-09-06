@@ -13,55 +13,59 @@ angular.module('services.Status', []).
 //                        userId : userId,
 //                        refId : refId
                     },
-//                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 });
             };
+            //update status............    
             statusService.updateStatus = function (statusInfo) {
                 return $http({
                     method: 'post',
                     url: '../status/update_status',
                     data: {
                         description: statusInfo.description,
-                        statusId: 1
+                        statusId: statusInfo.statusId
 //                        userId : userId,
 //                        refId : refId
                     },
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 });
             };
 
-            statusService.addLike = function () {
+            statusService.addLike = function (statusId) {
                 return $http({
                     method: 'post',
                     url: '../status/add_status_like',
                     data: {
-                        statusId: 1,
-                        refUserId: "100105",
+                        statusId: statusId,
+//                        refUserId: "100105",
 //                        refId: refId
                     },
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 });
             };
+            /*
+             * comment Add 
+             * 
+             * **/
+
             statusService.addComment = function (statusInfo) {
                 return $http({
                     method: 'post',
                     url: '../status/add_status_comment',
                     data: {
-                        statusId: 1,
+                        statusId: statusInfo.statusId,
                         refUserId: "100105",
                         description: statusInfo.commentDes
                     },
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 });
             };
-            statusService.deleteStatus = function () {
+            /**
+             * Delete status..
+             * */
+            statusService.deleteStatus = function (statusId) {
                 return $http({
                     method: 'post',
                     url: '../status/delete_status',
                     data: {
-                        statusId: 1
+                        statusId: statusId
                     },
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 });
             };
 

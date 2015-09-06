@@ -1,6 +1,6 @@
 <div style="display: none" id="updateStatusPagelet">
-    <div class="pagelet">
-        <div ng-repeat="status in statuses">
+    <div ng-repeat="status in statuses.slice().reverse()" class="form-group">
+        <div class="pagelet" id="pagelet{{status.statusId}}">
             <div class="row form-group">
                 <div class="col-md-12">
                     <div style="float: left; padding-right: 10px;">
@@ -8,7 +8,7 @@
                     </div>
                     <div style="float: left;">
                         <div>
-                            <a href="#" style="font-weight: bold;"><span ng-bind="status.status_info.userInfo.fristName"></span>&nbsp<span ng-bind="status.status_info.userInfo.lastName"></span></a> update his/her status 
+                            <a href="#" style="font-weight: bold;"><span ng-bind="status.userInfo.fristName"></span>&nbsp<span ng-bind="status.userInfo.lastName"></span></a> update his/her status 
                             <ul style="list-style-type: none; float: right;">
                                 <li class="dropdown">
                                     <div>
@@ -34,9 +34,9 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li id="editStatusId"><a >Edit</a></li>
+                                    <li ng-click="selectEditField(status.statusId)"><a >Edit</a></li>
                                     <li><a href="#">Report</a></li>
-                                    <li><a href  ng-click="deleteStatus()">Delete</a></li>
+                                    <li><a href  ng-click="deleteStatus(status.statusId)">Delete</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -45,31 +45,32 @@
             </div>
             <div class="row form-group">
                 <div class="col-md-12">
-                    <div id="displayStatusId" ng-bind="status.status_info.description"></div>
-                    <div id="updateStatus" style="display: none;">
-                        <div class="row form-group">
-                            <div class="col-md-12">
-                                <textarea class="form-control form_control_custom_style textarea_custom_style" ng-bind="status.status_info.description" ng-model="statusInfo.description"></textarea>
+                    <div id="displayStatus{{status.statusId}}" ng-bind="status.description"></div>
+                    <div id="updateStatus{{status.statusId}}" style="display: none;">
+                        <form ng-submit="updateStatus(status)" >
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <textarea class="form-control form_control_custom_style textarea_custom_style" ng-model="status.description"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-offset-8 col-md-2">
-                                <input id="statusUpdateCancelId" type="button" class="button-custom" value="Cancel">
+                            <div class="row">
+                                <div class="col-md-offset-8 col-md-2">
+                                    <input id="statusUpdateCancel{{status.statusId}}" type="button" class="button-custom" value="Cancel">
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="submit" id="submit" value="Done" class=" button-custom form-control btn-primary">
+                                </div>
                             </div>
-                            <div class="col-md-2">
-                                <input type="button" class="button-custom" data-dismiss="modal" aria-hidden="true" value="Done"  ng-click="updateStatus()">
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class=" col-md-11">
-                    <!--<a id="link-1" href ng-click="addLike()">link 1</a> (link, don't reload)<br />-->
-                    <a style="color: #3B59A9;" href id="statusLikeId" ng-click="addLike()">Like,</a> 
-                    <a style="color: #3B59A9; display: none;" href="#" id="statusUnLikeId" ng-click="unLike()">UnLike,</a> 
-                    <a style="color: #3B59A9;" href id="statusCommentId"> Comment,</a>
-                    <a style="color: #3B59A9;" href="#"> Share</a>
+                    <a style="color: #3B59A9;" href id="statusLike{{status.statusId}}" ng-click="addLike(status.statusId)">Like,</a> 
+                    <a style="color: #3B59A9; display: none;" href id="statusUnLike{{status.statusId}}" ng-click="unLike(status.statusId)">UnLike,</a> 
+                    <a style="color: #3B59A9;" href ng-click="selectCommentField(status.statusId)"> Comment,</a>
+                    <a style="color: #3B59A9;" href ng-click="openModalShare(status.statusId)"> Share</a>
                 </div>
             </div>
 
@@ -77,7 +78,7 @@
                 <div class="row form-group">
                     <div class="col-md-12">
                         <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
-                        <a style="color: #3B59A9;" href="#">60 people </a> like this.
+                        <a style="color: #3B59A9;" href ><span id="statusLike{{status.statusId}}"> you</span> and 60 people </a> like this.
                     </div>
                 </div>
                 <div class="pagelet_divider"></div>
@@ -95,15 +96,15 @@
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div ng-repeat="commentInfo in comments">
+                    <div ng-repeat="commentInfo in status.commentList">
                         <div class="col-md-1">
                             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg" width="30" height="30">
                         </div>
                         <div class="col-md-11">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <a style="font-weight: bold;" href><span ng-bind="commentInfo.status_comment_info.userInfo.fristName"></span>&nbsp<span ng-bind="commentInfo.status_comment_info.userInfo.lastName"></span></a>
-                                    <span ng-bind="commentInfo.status_comment_info.description">
+                                    <a style="font-weight: bold;" href><span ng-bind="commentInfo.userInfo.fristName"></span>&nbsp<span ng-bind="commentInfo.userInfo.lastName"></span></a>
+                                    <span ng-bind="commentInfo.description">
                                 </div>
                             </div>
                             <div class="row">
@@ -122,8 +123,8 @@
                         <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="30" height="30">
                     </div>
                     <div class="col-md-11">
-                        <form  ng-submit="addComment()">
-                            <input  id="commentInputField" type ="text" class="form-control" placeholder="Write a comment" ng-model="statusInfo.commentDes">
+                        <form  ng-submit="addComment(status.statusId)">
+                            <input  id="commentInputField{{status.statusId}}" type ="text" class="form-control" placeholder="Write a comment" ng-model="statusInfo.commentDes">
                         </form>
                     </div>
                 </div>
@@ -133,20 +134,41 @@
     </div>
 </div>
 
-<script>
-    $(function () {
-        $("#editStatusId").on("click", function () {
-            $("#displayStatusId").hide();
-            $("#updateStatus").show();
 
-        });
-        $("#statusCommentId").on("click", function () {
-            $('#commentInputField').focus();
-        });
-        $("#statusUpdateCancelId").on("click", function () {
-            $('#updateStatus').hide();
-            $("#displayStatusId").show();
-        });
-    });
+<script>
+//            $(function () {
+//            $("#editStatusId").on("click", function () {
+//            $("#displayStatusId").hide();
+//                    $("#updateStatus").show();
+//            });
+//        $("#statusCommentId").on("click", function () {
+//            $('#commentInputField').focus();
+//        });
+//                    $("#statusUpdateCancelId").on("click", function () {
+//            $('#updateStatus').hide();
+//                    $("#displayStatusId").show();
+//            });
+//            });
+
+//            function openModalShare(){
+//            alert("fgdghfh");
+//            }
 
 </script>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">I'm a modal!</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
