@@ -28,7 +28,7 @@ class Status_mongodb_model extends Ion_auth_mongodb_model {
     }
 
     public function add_status_like($status_id, $like_info) {
-        $this->curl->create($this->SERVICE_STATUS . 'updateStatusLike');
+        $this->curl->create($this->SERVICE_STATUS . 'addStatusLike');
         $this->curl->post(array("statusId" => $status_id, 'likeInfo' => json_encode($like_info)));
         return $this->curl->execute();
     }
@@ -39,9 +39,9 @@ class Status_mongodb_model extends Ion_auth_mongodb_model {
         return $this->curl->execute();
     }
 
-    public function update_status_share($status_id, $share_info) {
-        $this->curl->create($this->SERVICE_STATUS . 'updateStatusShare');
-        $this->curl->post(array("statusId" => $status_id, 'shareInfo' => json_encode($share_info)));
+    public function share_status($status_id, $ref_user_info, $share_info) {
+        $this->curl->create($this->SERVICE_STATUS . 'shareStatus');
+        $this->curl->post(array("statusId" => $status_id, 'refUserInfo' => json_encode($refUserInfo), 'shareInfo' => json_encode($share_info)));
         return $this->curl->execute();
     }
     

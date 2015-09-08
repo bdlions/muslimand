@@ -38,7 +38,7 @@
                 <div class="row form-group"></div>
                 <?php $this->load->view("member/pagelets/updated_status"); ?>
                 <div class="row form-group"></div>
-                <?php // $this->load->view("member/pagelets/newsfeed_status"); ?>
+                <?php $this->load->view("modal/modal_share_content"); ?>
                 <div class="row form-group"></div>
                 <?php $this->load->view("member/pagelets/shared_link"); ?>
                 <div class="row form-group"></div>
@@ -48,7 +48,7 @@
                 <div class="row form-group"></div>
                 <?php $this->load->view("member/pagelets/updated_profile_pic"); ?>
                 <div class="row form-group"></div>
-                <?php // $this->load->view("member/pagelets/shared_status"); ?>
+                <?php $this->load->view("member/pagelets/shared_status"); ?>
                 <div class="row form-group"></div>
             </div>
             <!--ADD COLUMN-->
