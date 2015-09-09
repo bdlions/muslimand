@@ -61,8 +61,4 @@
         });
 
     });
-//    function close_window_8() {
-//        $('#family_relation').hide();
-//        $('#subcategory_family_relation').show();
-//    }
 </script>

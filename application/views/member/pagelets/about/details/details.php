@@ -11,7 +11,7 @@
         <div id="about_own" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_about_own_window" aria-label="Close" onclick="close_window_8()"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_about_own_window" aria-label="Close" ><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row form-group">
@@ -56,7 +56,7 @@
         <div id="favorite_quote" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_favorite_quote_window" aria-label="Close" onclick="close_window_8()"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_favorite_quote_window" aria-label="Close" ><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row form-group">

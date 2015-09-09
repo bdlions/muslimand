@@ -3,7 +3,7 @@
         <div class="col-md-12">
                 <div class="row form-group">
                     <div class="col-md-offset-9 col-md-3">
-                        <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancelling_btn" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                        <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancelling_btn" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                     </div>
                 </div>
             <div class="row form-group">

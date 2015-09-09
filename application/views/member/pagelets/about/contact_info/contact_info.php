@@ -62,7 +62,7 @@
         <div id="address" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_address_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_address_window" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row form-group">
@@ -131,7 +131,7 @@
         <div id="website" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_website_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_website_window" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row form-group">
@@ -176,7 +176,7 @@
         <div id="email" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_email_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_email_window" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row form-group">
@@ -227,7 +227,7 @@
         <div id="birth_day" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_birth_day_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_birth_day_window" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row form-group">
@@ -289,7 +289,7 @@
         <div id="gender" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_gender_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_gender_window" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row form-group">
@@ -338,7 +338,7 @@
         <div id="language" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_language_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_language_window" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row form-group">
@@ -383,7 +383,7 @@
         <div id="religion" class="display_hidden contact_background">
             <div class="row form-group">
                 <div class="col-md-offset-9 col-md-3">
-                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_mobile_window cancel_religion_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
+                    <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_mobile_window cancel_religion_window" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                 </div>
             </div>
             <div class="row form-group">
