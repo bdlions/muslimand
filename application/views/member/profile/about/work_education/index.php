@@ -5,22 +5,13 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div id="subcategory_work" class="row form-group">
-        <div class="col-md-12">
-            <div class="cursor_holder_style">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
-                <a class="holder_style">Add a workplace</a>
-            </div>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/work_education/add_work_place"); ?>
         </div>
     </div>
-
     <div id="work_place_tmpl_id" style="display: none;">
-        <div class="row form-group" ng-repeat="workPlace in workPlaces.slice().reverse() ">
+        <div class="row form-group" ng-repeat="workPlace in workPlaces.slice().reverse()">
             <div class="col-md-2">
                 <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
             </div>
@@ -50,21 +41,13 @@
             </div>
         </div>
     </div>
+
     <div class="row padding_top_over_row_30px">
         <div class="col-md-12">
             <span class="header_label_style">Professional Skills</span>
         </div>
     </div>
     <div class="pagelet_divider"></div>
-
-    <div id="subcategory_professional_skill" class="row form-group" >
-        <div class="col-md-12">
-            <div class="cursor_holder_style">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
-                <a class="holder_style">Add Professional Skills</a>
-            </div>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/work_education/add_professional_skill"); ?>
@@ -95,14 +78,6 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div id="subcategory_university" class="row form-group">
-        <div class="col-md-12">
-            <div class="cursor_holder_style">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
-                <a class="holder_style">Add a University</a>
-            </div>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/work_education/add_university"); ?>
@@ -147,14 +122,6 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div id="subcategory_college" class="row form-group">
-        <div class="col-md-12">
-            <div class="cursor_holder_style">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
-                <a class="holder_style">Add a College</a>
-            </div>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/work_education/add_college"); ?>
@@ -198,14 +165,6 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div id="subcategory_school" class="row form-group">
-        <div class="col-md-12">
-            <div class="cursor_holder_style">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
-                <a class="holder_style">Add a School/High School</a>
-            </div>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/work_education/add_school"); ?>
@@ -243,30 +202,3 @@
         </div> 
     </div>
 </div>
-
-
-
-<script>
-    $('#subcategory_work').on('click', function () {
-        $('#subcategory_work').hide();
-        $('#work').show();
-    });
-    $('#subcategory_professional_skill').on('click', function () {
-        $('#subcategory_professional_skill').hide();
-        $('#professional_skill').show();
-    });
-    $('#subcategory_university').on('click', function () {
-        $('#subcategory_university').hide();
-        $("#university").show();
-    });
-    $("#subcategory_college").on('click', function () {
-        $("#subcategory_college").hide();
-        $("#college").show();
-    });
-    $('#subcategory_school').on('click', function () {
-        $('#subcategory_school').hide();
-        $('#school').show();
-    });
-</script>
-
-

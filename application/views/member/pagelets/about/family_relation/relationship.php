@@ -1,4 +1,3 @@
-
 <div id="relationship_add_id" style="display: none;" class="carrer_bg">
     <div class="row form-group">
         <div class="col-md-offset-2 col-md-10">

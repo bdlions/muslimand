@@ -1,24 +1,24 @@
 <div style="">
-    <div id="add_about_own" class="row form-group">
+    <div id="add_language" class="row form-group">
         <div class="col-md-12">
             <div class="cursor_holder_style">
                 <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
-                <a class="holder_style">Add About You</a>
+                <a class="holder_style">Add Your Language</a>
             </div>
         </div>
     </div>
-    <div id="about_own" class="display_hidden contact_background">
+    <div id="language" class="display_hidden contact_background">
         <div class="row form-group">
             <div class="col-md-offset-9 col-md-3">
-                <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_about_own_window" aria-label="Close" onclick="close_window_8()"><span aria-hidden="true">&times;</span></button>   
+                <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancel_language_window" aria-label="Close" onclick="close_window_5()"><span aria-hidden="true">&times;</span></button>   
             </div>
         </div>
         <div class="row form-group">
             <div class="col-md-4">
-                <span class="subcategory_label_style">Add About You</span>
+                <span class="subcategory_label_style">Language</span>
             </div>
             <div class="col-md-8">
-                <textarea class="form-control" placeholder="Add Something About You" ng-model="aboutInfo.about"></textarea>
+                <input class="form-control" placeholder="Add Your Language">
             </div>
         </div>
         <div class="pagelet_divider"></div>
@@ -35,10 +35,10 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button class="pull-right form-control form_control_custom_style member_about_save_button" ng-click="addAbout('<?php echo $user_id; ?>')">Save</button>
+                        <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
                     </div>
                     <div class="col-md-3">
-                        <button class="form-control form_control_custom_style member_about_cancel_button cancel_about_own_window" >Cancel</button>
+                        <button class="form-control form_control_custom_style member_about_cancel_button cancel_language_window" >Cancel</button>
                     </div>
                 </div>
             </div>
@@ -48,14 +48,14 @@
 
 <script>
     $(function() {
-        // About Own
-        $("#add_about_own").on("click", function() {
-            $("#add_about_own").hide();
-            $("#about_own").show();
+        // Language
+        $("#add_language").on("click", function() {
+            $("#add_language").hide();
+            $("#language").show();
         });
-        $(".cancel_about_own_window").on("click", function() {
-            $("#about_own").hide();
-            $("#add_about_own").show();
+        $(".cancel_language_window").on("click", function() {
+            $("#language").hide();
+            $("#add_language").show();
         });
     });
 
