@@ -21,28 +21,28 @@ class Welcome extends CI_Controller {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public function __construct() {
-        header('Access-Control-Allow-Origin: *');
-        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
-        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
-        $method = $_SERVER['REQUEST_METHOD'];
-        if ($method == "OPTIONS") {
-            die();
-        }
+//        header('Access-Control-Allow-Origin: *');
+//        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+//        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+//        $method = $_SERVER['REQUEST_METHOD'];
+//        if ($method == "OPTIONS") {
+//            die();
+//        }
         parent::__construct();
-        $this->load->library('ion_auth');
-        $this->load->library('form_validation');
-        $this->load->model('basic_profile_mongodb_model');
+//        $this->load->library('ion_auth');
+//        $this->load->library('form_validation');
+//        $this->load->model('basic_profile_mongodb_model');
         $this->load->helper('url');
-
-        // Load MongoDB library instead of native db driver if required
-        $this->config->item('use_mongodb', 'ion_auth') ?
-                        $this->load->library('mongo_db') :
-                        $this->load->database();
-
-        $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
-
-        $this->lang->load('auth');
-        $this->load->helper('language');
+//
+//        // Load MongoDB library instead of native db driver if required
+//        $this->config->item('use_mongodb', 'ion_auth') ?
+//                        $this->load->library('mongo_db') :
+//                        $this->load->database();
+//
+//        $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+//
+//        $this->lang->load('auth');
+//        $this->load->helper('language');
     }
 
 //	public function index()
@@ -57,14 +57,14 @@ class Welcome extends CI_Controller {
 
 
     public function index() {
-        $this->load->view("wwww");
+        $this->load->view("welcome_test");
     }
-
-    public function post() {
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        var_dump($request);
-    }
+//
+//    public function post() {
+//        $postdata = file_get_contents("php://input");
+//        $request = json_decode($postdata);
+//        var_dump($request);
+//    }
 
 }
 

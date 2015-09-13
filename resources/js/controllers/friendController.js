@@ -6,7 +6,7 @@ angular.module('controllers.Friend', ['services.Friend']).
                 $scope.friends = JSON.parse(t);
                 console.log($scope.friends);
             };
-            
+
             $scope.addFriend = function () {
                 friendService.addFriend().
                         success(function (data, status, headers, config) {
@@ -15,6 +15,11 @@ angular.module('controllers.Friend', ['services.Friend']).
 
                         });
 
+            };
+            
+            $scope.testfunction = function (data) {
+                alert("Call-testfunction: " + data);
+                
             };
         });
 
