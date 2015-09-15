@@ -688,6 +688,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     vertical-align: middle;
     height: 30px;
     line-height: 15px;
+    font-weight: bold;
 }
 
 .modal_cancel_button_style{
@@ -800,5 +801,11 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     padding: 5px;
     margin: 5px;
     border: 1px solid lightgray;
+}
+
+
+.common_content_delete{
+    font-size: 15px;
+    font-weight: bold;
 }
 

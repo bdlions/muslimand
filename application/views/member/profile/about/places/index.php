@@ -27,8 +27,8 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1">Edit</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1">Delete</a></li>
                             </ul>
                         </div>
                     </div>
