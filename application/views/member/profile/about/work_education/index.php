@@ -12,32 +12,37 @@
     </div>
     <div id="work_place_tmpl_id" style="display: none;">
         <div class="row form-group" ng-repeat="workPlace in workPlaces.slice().reverse()">
-            <div class="col-md-2">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
-            </div>
-            <div class="col-md-10">
-                <div class="row">
-                    <div class="col-md-8">
-                        <a href=""><span ng-bind="workPlace.cmp"></span></a>
+            <div id="workPlace{{workPlace.id}}">
+                <div class="col-md-2">
+                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <a href=""><span ng-bind="workPlace.cmp"></span></a>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="pull-right">
+                                <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href ng-click="selectEditField(workPlace.id)">Edit</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="pull-right">
-                            <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                            </ul>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span ng-bind="workPlace.pos"></span>,<span ng-bind="workPlace.ct"></span> .
+                            <span ng-bind="workPlace.desc"></span>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <span ng-bind="workPlace.pos"></span>,<span ng-bind="workPlace.ct"></span> .
-                        <span ng-bind="workPlace.desc"></span>
-                    </div>
-                </div>
+            </div>
+            <div style="display: none" id="editStatus{{workPlace.id}}">
+                 <?php $this->load->view("member/profile/about/work_education/edit_work_place"); ?>
             </div>
         </div>
     </div>

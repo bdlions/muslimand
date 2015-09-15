@@ -38,6 +38,21 @@ angular.module('services.BasicProfile', []).
                         },
                     });
                 };
+                basicProfileService.updateWorkPlace = function (WorkInfo) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/update_work_place',
+                        data: {
+                            id: WorkInfo.id,
+                            company: WorkInfo.cmp,
+                            position: WorkInfo.pos,
+                            city: WorkInfo.ct,
+                            description: WorkInfo.desc,
+                        },
+                    });
+                };
+                
+                
                 basicProfileService.addPSkill = function (pSkillInfo) {
                     return $http({
                         method: 'post',

@@ -3,11 +3,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Basic_profile extends CI_Controller {
+
     /**
      * Holds the attributes mapping
      * @var array
      */
     public $attr_map = array();
+
     function __construct() {
         parent::__construct();
         // Initialize attributes mapping
@@ -28,7 +30,7 @@ class Basic_profile extends CI_Controller {
         $this->lang->load('auth');
         $this->load->helper('language');
     }
-    
+
     //---------------------------- About -> Works and Education Module -------------------------//
     /*
      * This method will return list of work places, professional skills, universities, 
@@ -66,10 +68,12 @@ class Basic_profile extends CI_Controller {
         }
         echo json_encode($response);
     }
+
     /*
      * This method will add work place of a user
      * @author nazmul hasan on 31st August 2015
      */
+
     function add_work_place() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -89,10 +93,12 @@ class Basic_profile extends CI_Controller {
             echo json_encode($response);
         }
     }
+
     /*
      * This method will add professional skill of a user
      * @author nazmul hasan on 31st August 2015
      */
+
     function add_professional_skill() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -109,10 +115,12 @@ class Basic_profile extends CI_Controller {
             echo json_encode($response);
         }
     }
+
     /*
      * This method will add university of a user
      * @author nazmul hasan on 31st August 2015
      */
+
     function add_university() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -130,10 +138,12 @@ class Basic_profile extends CI_Controller {
             echo json_encode($response);
         }
     }
+
     /*
      * This method will add college of a user
      * @author nazmul hasan on 31st August 2015
      */
+
     function add_college() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -151,10 +161,12 @@ class Basic_profile extends CI_Controller {
             echo json_encode($response);
         }
     }
+
     /*
      * This method will add school of a user
      * @author nazmul hasan on 31st August 2015
      */
+
     function add_school() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -172,45 +184,66 @@ class Basic_profile extends CI_Controller {
             echo json_encode($response);
         }
     }
-    
+
     /*
      * This method will edit work place of a user
      * @author nazmul hasan on 5th September 2015
      */
-    function edit_work_place()
-    {
-        
+
+    function update_work_place() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $response = array();
+         if (!empty($request)) {
+            $user_id = $this->session->userdata('user_id');
+            $work_place_id = $request->id;
+            $user_work_place = new stdClass();
+            $user_work_place->id = $work_place_id;
+            $user_work_place->{$this->attr_map['company']} = $request->company;
+            $user_work_place->{$this->attr_map['position']} = $request->position;
+            $user_work_place->{$this->attr_map['city']} = $request->city;
+            $user_work_place->{$this->attr_map['description']} = $request->description;
+            $result = $this->basic_profile_mongodb_model->update_work_place($user_id, $work_place_id,$user_work_place);
+            if ($result != null) {
+                $response["work_place"] = $user_work_place;
+            }
+            echo json_encode($response);
+        }
     }
+
     /*
      * This method will edit professional skill of a user
      * @author nazmul hasan on 5th September 2015
      */
-    function edit_professional_skill()
-    {
+
+    function edit_professional_skill() {
         
     }
+
     /*
      * This method will edit university of a user
      * @author nazmul hasan on 5th September 2015
      */
-    function edit_university()
-    {
+
+    function edit_university() {
         
     }
+
     /*
      * This method will edit college of a user
      * @author nazmul hasan on 5th September 2015
      */
-    function edit_college()
-    {
+
+    function edit_college() {
         
     }
+
     /*
      * This method will edit school of a user
      * @author nazmul hasan on 5th September 2015
      */
-    function edit_school()
-    {
+
+    function edit_school() {
         
     }
 
@@ -453,6 +486,7 @@ class Basic_profile extends CI_Controller {
         }
         echo json_encode($response);
     }
+
     function add_fquote() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);

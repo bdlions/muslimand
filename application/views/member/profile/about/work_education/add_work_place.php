@@ -20,7 +20,7 @@
                         <span class="subcategory_label_style">Company</span>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" ng-model="workInfo.company" ui-keydown="{esc: 'keyCallback($event)'}">
+                        <input type="text" class="form-control" ng-model="workInfo.company">
                     </div>
                 </div>
                 <div class="row form-group">

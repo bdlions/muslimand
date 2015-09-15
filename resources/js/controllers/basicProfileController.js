@@ -140,6 +140,25 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             $("#work_place_tmpl_id").show();
                         });
             };
+
+            /**
+             * Feild hide and show 
+             * */
+
+            $scope.selectEditField = function (workPlaceId) {
+                $('#workPlace' + workPlaceId).hide();
+                $('#editStatus' + workPlaceId).show();
+            };
+
+            $scope.updateWorkPlace = function (workPlace) {
+                workPlaceId = workPlace.id;
+                basicProfileService.updateWorkPlace(workPlace).
+                        success(function (data, status, headers, config) {
+                            $('#workPlace' + workPlaceId).show();
+                            $('#editStatus' + workPlaceId).hide();
+                        });
+            };
+
             $scope.addPSkill = function (userId) {
                 $scope.pSkillInfo.userId = userId;
                 basicProfileService.addPSkill($scope.pSkillInfo).

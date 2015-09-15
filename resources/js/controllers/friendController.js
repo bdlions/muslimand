@@ -1,6 +1,7 @@
 angular.module('controllers.Friend', ['services.Friend']).
         controller('friendController', function ($scope, friendService) {
 
+            $scope.TestInfo = {};
             $scope.friends = [];
             $scope.setFriendList = function (t) {
                 $scope.friends = JSON.parse(t);
@@ -18,6 +19,7 @@ angular.module('controllers.Friend', ['services.Friend']).
             };
             
             $scope.testfunction = function (data) {
+                console.log($scope.TestInfo);
                 alert("Call-testfunction: " + data);
                 
             };
