@@ -20,7 +20,7 @@
                         <span class="subcategory_label_style">University</span>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" ng-model="universityInfo.university">
+                        <input type="text" id="university_add_id" class="form-control" ng-model="universityInfo.university">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -29,29 +29,23 @@
                     </div>
                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-4">
-                                <a class="achor_holder_style">Add Year</a>
+                            <div class="col-md-5">
+                                <div class="pages_type_add_form_input">
+                                    <select class="form-control"  ng-options="year for year in yearList" ng-model="universityInfo.startDate">
+                                        <option value="" selected>Select Year</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-md-2">
                                 to
                             </div>
-                            <div class="col-md-4">
-                                <a class="achor_holder_style">Add Year</a>
+                            <div class="col-md-5">
+                                <div class="pages_type_add_form_input">
+                                    <select class="form-control"  ng-options="year for year in yearList" ng-model="universityInfo.endDate">
+                                        <option value="" selected>Select Year</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="working_year" class="row" style="display: none">
-                    <div class="col-md-12">
-                        <div class="pages_type_add_form_input">
-                            <select name="year" class="form-control">
-                                <option value="">Year</option>
-                                <?php
-                                for ($j = 1985; $j <= 2015; $j++) {
-                                    echo"<option value='{$j}'>{$j}</option>";
-                                }
-                                ?>
-                            </select>
                         </div>
                     </div>
                 </div>
@@ -77,7 +71,7 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addUniversity('<?php echo $user_id; ?>')">Save</button>
+                                <button id="university_btn_id" class="btn btn-default form-control" style="background-color: #703684; color: white" onclick="add_university('<?php echo $user_id; ?>')">Save</button>
                             </div>
                             <div class="col-md-3">
                                 <button class="btn btn-default form-control cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
@@ -91,15 +85,27 @@
 </div>
 
 <script>
-    $(function() {
-        $('#subcategory_university').on('click', function() {
+    $(function () {
+        $('#subcategory_university').on('click', function () {
             $('#subcategory_university').hide();
             $("#university").show();
         });
-        $(".cancelling_btn").on("click", function() {
+        $(".cancelling_btn").on("click", function () {
             $("#university").hide();
             $("#subcategory_university").show();
         });
     });
 
+    function add_university(userId) {
+        var university = $('#university_add_id').val();
+        if (university.length == 0) {
+            alert("Please Fill up University Name");
+            return;
+        }
+        angular.element($('#university_btn_id')).scope().addUniversity(userId, function () {
+            $("#university").hide();
+            $("#subcategory_university").show();
+            $("#uv_tmpl_id").show();
+        });
+    }
 </script>

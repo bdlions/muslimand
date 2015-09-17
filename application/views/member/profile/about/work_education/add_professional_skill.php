@@ -20,7 +20,7 @@
                         <span class="subcategory_label_style">Professional Skills</span>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" ng-model="pSkillInfo.pSkil">
+                        <input type="text" id="p_skill_id" class="form-control" ng-model="pSkillInfo.pSkil">
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addPSkill('<?php echo $user_id; ?>')">Save</button>
+                        <button id="save_p_skill_btn" class="btn btn-default form-control" style="background-color: #703684; color: white" onclick="add_s_skill('<?php echo $user_id; ?>')">Save</button>
                     </div>
                     <div class="col-md-3">
                         <button class="btn btn-default form-control cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
@@ -51,15 +51,29 @@
 </div>
 
 <script>
-    $(function() {
-        $('#subcategory_professional_skill').on('click', function() {
+    $(function () {
+        $('#subcategory_professional_skill').on('click', function () {
             $('#subcategory_professional_skill').hide();
             $('#professional_skill').show();
         });
-        $(".cancelling_btn").on("click", function() {
+        $(".cancelling_btn").on("click", function () {
             $("#professional_skill").hide();
             $("#subcategory_professional_skill").show();
         });
     });
+    function add_s_skill(userId) {
+        var pSkill = $('#p_skill_id').val();
+        if (pSkill.length == 0) {
+            alert("Please Fill up Professional Field");
+            return;
+        }
+        angular.element($('#save_p_skill_btn')).scope().addPSkill(userId, function () {
+            $("#professional_skill").hide();
+            $("#subcategory_professional_skill").show();
+            $("#p_skill_tmpl_id").show();
+        });
+
+
+    }
 
 </script>

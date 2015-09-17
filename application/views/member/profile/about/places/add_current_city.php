@@ -20,7 +20,7 @@
                         <span class="subcategory_label_style">Current City</span>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" ng-model="currentCityInfo.cityName">
+                        <input type="text" id="current_city_add_id" class="form-control" ng-model="currentCityInfo.cityName">
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addCurrentCity('<?php echo $user_id; ?>')">Save</button>
+                        <button  id="save_city_btn" class="btn btn-default form-control" style="background-color: #703684; color: white" onclick="add_current_city('<?php echo $user_id; ?>')">Save</button>
                     </div>
                     <div class="col-md-3">
                         <button class="btn btn-default form-control current_city_close" style="background-color: #703684; color: white">Cancel</button>
@@ -51,17 +51,29 @@
 </div>
 
 <script>
-    $(function() {
+    $(function () {
         //current city
-        $('#current_city_add').on('click', function() {
+        $('#current_city_add').on('click', function () {
             $('#current_city_add').hide();
             $('#c_city').show();
         });
 
-        $(".current_city_close").on("click", function() {
+        $(".current_city_close").on("click", function () {
             $("#c_city").hide();
             $('#current_city_add').show();
         });
     });
 
+    function add_current_city(userId) {
+        var cityName = $('#current_city_add_id').val();
+        if (cityName.length == 0) {
+            alert("Please Fill up City Name");
+            return;
+        }
+        angular.element($('#save_city_btn')).scope().addCurrentCity(userId, function () {
+            $('#current_city_id').show();
+            $("#current_city_add").show();
+            $("#c_city").hide();
+        });
+    }
 </script>

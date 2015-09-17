@@ -1,9 +1,9 @@
 <script>
     var responseFunction;
-    function delete_confirmation(selectionInfo,requestFunction)
+    function delete_confirmation(selectionInfo, requestFunction)
     {
         responseFunction = requestFunction;
-         $("#content").append(selectionInfo);
+        $("#content").append(selectionInfo);
         $('#common_delete_confirmation_modal').modal('show');
 
     }
@@ -11,6 +11,7 @@
     function delete_comfirm(comfirm_btn) {
         var confirmValue = $(comfirm_btn).val();
         responseFunction(confirmValue);
+
     }
     function delete_cancel(cancel_btn) {
         var cancelValue = $(cancel_btn).val();
@@ -37,7 +38,10 @@
                 <div class="row form-group">
                     <div class="col-md-12">
                         <div id="delete_id" class="text-center"></div>
-                        <div id="content" class="text-center">Are you sure to delete this</div>
+                        <div class="text-center">
+                            <span >Are you sure to delete this </span>
+                            <span id="content"></span>
+                        </div>
                     </div>
                 </div>
             </div>

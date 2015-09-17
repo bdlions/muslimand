@@ -24,7 +24,7 @@ angular.module('services.BasicProfile', []).
                     });
                 };
 
-
+//.........................Work and Education.............................
                 basicProfileService.addWorkPlace = function (workInfo) {
                     return $http({
                         method: 'post',
@@ -43,8 +43,8 @@ angular.module('services.BasicProfile', []).
                         },
                     });
                 };
-                
-                basicProfileService.deleteStatus = function (workPlaceId) {
+
+                basicProfileService.deleteWorkPlace = function (workPlaceId) {
                     return $http({
                         method: 'post',
                         url: '../basic_profile/delete_work_place',
@@ -53,52 +53,123 @@ angular.module('services.BasicProfile', []).
                         },
                     });
                 };
-                
-                
+
+//............................Professional Skill..............
                 basicProfileService.addPSkill = function (pSkillInfo) {
                     return $http({
                         method: 'post',
                         url: '../basic_profile/add_professional_skill',
                         data: {
-                            userId: pSkillInfo.userId,
-                            pSkil: pSkillInfo.pSkil,
+                            pSkillInfo: pSkillInfo
                         },
                     });
                 };
-                basicProfileService.addUniversity = function (UniversityInfo) {
+
+                basicProfileService.editPSkill = function (pSkill) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/edit_professional_skill',
+                        data: {
+                            pSkill: pSkill,
+                        },
+                    });
+                };
+
+                basicProfileService.deletePSkill = function (pSkillId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/delete_p_skill',
+                        data: {
+                            pSkillId: pSkillId,
+                        },
+                    });
+                };
+//................................University..............................
+                basicProfileService.addUniversity = function (universityInfo) {
                     return $http({
                         method: 'post',
                         url: '../basic_profile/add_university',
                         data: {
-                            userId: UniversityInfo.userId,
-                            university: UniversityInfo.university,
-                            description: UniversityInfo.description,
+                            universityInfo: universityInfo
                         },
                     });
                 };
+
+                basicProfileService.editUniversity = function (uvInfo) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/edit_university',
+                        data: {
+                            uvInfo: uvInfo,
+                        },
+                    });
+                };
+                basicProfileService.deleteUniversity = function (universityId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/delete_university',
+                        data: {
+                            universityId: universityId,
+                        },
+                    });
+                };
+                //...................................College............................
+
                 basicProfileService.addCollege = function (collegeInfo) {
                     return $http({
                         method: 'post',
                         url: '../basic_profile/add_college',
                         data: {
-                            userId: collegeInfo.userId,
-                            college: collegeInfo.college,
-                            description: collegeInfo.description,
+                            collegeInfo: collegeInfo
                         },
                     });
                 };
+                basicProfileService.editCollege = function (collegeInfo) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/edit_college',
+                        data: {
+                            collegeInfo: collegeInfo,
+                        },
+                    });
+                };
+                basicProfileService.deleteCollege = function (collegeId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/delete_college',
+                        data: {
+                            collegeId: collegeId,
+                        },
+                    });
+                };
+//..............................School.................................
                 basicProfileService.addSchool = function (schoolInfo) {
                     return $http({
                         method: 'post',
                         url: '../basic_profile/add_school',
                         data: {
-                            userId: schoolInfo.userId,
-                            school: schoolInfo.school,
-                            description: schoolInfo.description,
+                            schoolInfo: schoolInfo
                         },
                     });
                 };
-
+                basicProfileService.editSchool = function (schoolInfo) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/edit_school',
+                        data: {
+                            schoolInfo: schoolInfo,
+                        },
+                    });
+                };
+                basicProfileService.deleteSchool = function (schoolId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/delete_school',
+                        data: {
+                            schoolId: schoolId,
+                        },
+                    });
+                };
 //..................... About Places module................                
 
                 basicProfileService.getCityTown = function (userId) {
@@ -115,8 +186,16 @@ angular.module('services.BasicProfile', []).
                         method: 'post',
                         url: '../basic_profile/add_current_city',
                         data: {
-                            userId: currentCityInfo.userId,
-                            cityName: currentCityInfo.cityName,
+                            currentCityInfo: currentCityInfo
+                        },
+                    });
+                };
+                basicProfileService.editCurrentCity = function (schoolInfo) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/edit_current_city',
+                        data: {
+                            schoolInfo: schoolInfo,
                         },
                     });
                 };
@@ -125,12 +204,19 @@ angular.module('services.BasicProfile', []).
                         method: 'post',
                         url: '../basic_profile/add_home_town',
                         data: {
-                            userId: homeTownInfo.userId,
-                            townName: homeTownInfo.townName,
+                            homeTownInfo: homeTownInfo
                         },
                     });
                 };
-
+                basicProfileService.editHomeTown = function (homeTownInfo) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/edit_home_town',
+                        data: {
+                            homeTownInfo: homeTownInfo,
+                        },
+                    });
+                };
 
 
 //.................. About Contact and Basic Info ...................
@@ -220,7 +306,7 @@ angular.module('services.BasicProfile', []).
                         },
                     });
                 };
-                  basicProfileService.addAbout = function (aboutInfo) {
+                basicProfileService.addAbout = function (aboutInfo) {
                     return $http({
                         method: 'post',
                         url: '../basic_profile/add_about',
@@ -230,7 +316,7 @@ angular.module('services.BasicProfile', []).
                         },
                     });
                 };
-                  basicProfileService.addFQuote = function (fQuoteInfo) {
+                basicProfileService.addFQuote = function (fQuoteInfo) {
                     return $http({
                         method: 'post',
                         url: '../basic_profile/add_fquote',

@@ -103,8 +103,10 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
      * @author nazmul hasan on 5th September 2015
      */
 
-    function edit_professional_skill() {
-        
+    function edit_professional_skill($user_id, $p_skill_id, $user_professional_skill) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editProfessionalSkill');
+        $this->curl->post(array("userId" => $user_id, "pSkillId" => $work_place_id, "pSkillData" => json_encode($user_professional_skill)));
+        return $this->curl->execute();
     }
 
     /*
@@ -112,8 +114,10 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
      * @author nazmul hasan on 5th September 2015
      */
 
-    function edit_university() {
-        
+    function edit_university($user_id, $uv_id, $user_university) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editUniversity');
+        $this->curl->post(array("userId" => $user_id, "universityId" => $uv_id, "universityData" => json_encode($user_university)));
+        return $this->curl->execute();
     }
 
     /*
@@ -121,8 +125,10 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
      * @author nazmul hasan on 5th September 2015
      */
 
-    function edit_college() {
-        
+    function edit_college($user_id, $college_id, $user_college) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editCollege');
+        $this->curl->post(array("userId" => $user_id, "collegeId" => $college_id, "collegeData" => json_encode($user_college)));
+        return $this->curl->execute();
     }
 
     /*
@@ -130,8 +136,10 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
      * @author nazmul hasan on 5th September 2015
      */
 
-    function edit_school() {
-        
+    function edit_school($user_id, $school_id, $user_school) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editSchool');
+        $this->curl->post(array("userId" => $user_id, "schoolId" => $school_id, "schoolData" => json_encode($user_school)));
+        return $this->curl->execute();
     }
 
     /*
@@ -139,11 +147,51 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
      * @author Rashida Sultana on 11-9-15
      */
 
-    function delete_work_place($user_id,$work_place_id) {
+    function delete_work_place($user_id, $work_place_id) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'deleteWrokPlace');
-        $this->curl->post(array("userId" => $user_id,"wrokPlaceId" => $work_place_id));
+        $this->curl->post(array("userId" => $user_id, "wrokPlaceId" => $work_place_id));
         return $this->curl->execute();
-        
+    }
+
+    /*
+     * This method will delete  Professional of a user
+     * @author Rashida Sultana on 11-9-15
+     */
+
+    function delete_p_skill($user_id, $p_skill_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'deletePSkill');
+        $this->curl->post(array("userId" => $user_id, "pSkillId" => $p_skill_id));
+        return $this->curl->execute();
+    }
+    /*
+     * This method will delete  University of a user
+     * @author Rashida Sultana on 11-9-15
+     */
+
+    function delete_university($user_id, $university_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'deleteUniversity');
+        $this->curl->post(array("userId" => $user_id, "universityId" => $university_id));
+        return $this->curl->execute();
+    }
+    /*
+     * This method will delete  College of a user
+     * @author Rashida Sultana on 11-9-15
+     */
+
+    function delete_college($user_id, $college_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'deleteCollege');
+        $this->curl->post(array("userId" => $user_id, "collegeId" => $college_id));
+        return $this->curl->execute();
+    }
+    /*
+     * This method will delete  College of a user
+     * @author Rashida Sultana on 11-9-15
+     */
+
+    function delete_school($user_id, $school_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'deleteSchool');
+        $this->curl->post(array("userId" => $user_id, "schoolId" => $school_id));
+        return $this->curl->execute();
     }
 
     public function get_overview($user_id) {
@@ -244,71 +292,8 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         return isset($id) ? $id : FALSE;
     }
 
-    /*
-     * This method add basic information of a user
-     * parameter user_id 
-     * @Rashida 19 May 2015
-     */
+  
 
-    public function get_basic_info($user_id) {
-
-//        $user_id='556311458267404811000029';
-//        var_dump($user_id);
-//        $cursor = $this->mongo_db
-////                ->where('_id', new MongoId($user_id))
-//                ->select(array(),array('email'))
-//                ->limit(1)
-////                ->offset(1)
-//                ->get('users');
-//        
-////        foreach ($cursor as $user){
-//            var_dump($cursor);
-//            
-////        }
-//        exit;
-
-        return $this->mongo_db
-                        ->where('user_id', new MongoId($user_id))
-                        ->where('basic_info', new MongoId($id))
-                        ->select(array('basic_info'))
-                        ->get($this->collections['user_profiles']);
-    }
-
-    /*
-     * This method update basic information of a user
-     * parameter user_id and additional data
-     * @Rashida 19 May 2015
-     */
-
-    function update_basic_info($user_id, $additional_data) {
-//        $this->trigger_events('extra_where');
-        $result = $this->mongo_db
-                ->where('user_id', new MongoId($user_id))
-                ->update($this->collections['user_profiles'], $additional_data);
-        if ($result === TRUE) {
-            $this->set_message('update_user_profile_successful');
-            return TRUE;
-        }
-        $this->set_error('fail_to_update_user_profile');
-        return FALSE;
-    }
-
-    /*
-     * This method delete basic information of a user
-     * parameter user_id 
-     * @Rashida 19 May 2015
-     */
-
-    public function delete_basic_info($user_id) {
-        if ($user_id != null) {
-            $this->mongo_db
-                    ->where('user_id', new MongoId($user_id))
-                    ->delete($this->collections['user_profiles']);
-            $this->set_message('delete_user_profile_successful');
-            return TRUE;
-        }
-        $this->set_error('fail_to_delete_user_profile');
-        return FALSE;
-    }
+  
 
 }

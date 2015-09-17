@@ -20,7 +20,7 @@
                         <span class="subcategory_label_style">School</span>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" ng-model="schoolInfo.school">
+                        <input type="text" id="school_add_id" class="form-control" ng-model="schoolInfo.school">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -30,28 +30,18 @@
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-4">
-                                <a class="achor_holder_style">Add Year</a>
+                                <select class="form-control"  ng-options="year for year in yearList" ng-model="schoolInfo.startDate">
+                                    <option value="" selected>Select Year</option>
+                                </select>
                             </div>
                             <div class="col-md-2">
                                 to
                             </div>
                             <div class="col-md-4">
-                                <a class="achor_holder_style">Add Year</a>
+                                <select class="form-control"  ng-options="year for year in yearList" ng-model="schoolInfo.endDate">
+                                    <option value="" selected>Select Year</option>
+                                </select>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="working_year" class="row" style="display: none">
-                    <div class="col-md-12">
-                        <div class="pages_type_add_form_input">
-                            <select name="year" class="form-control">
-                                <option value="">Year</option>
-                                <?php
-                                for ($j = 1985; $j <= 2015; $j++) {
-                                    echo"<option value='{$j}'>{$j}</option>";
-                                }
-                                ?>
-                            </select>
                         </div>
                     </div>
                 </div>
@@ -77,7 +67,7 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addSchool('<?php echo $user_id; ?>')">Save</button>
+                                <button id="save_school_btn" class="btn btn-default form-control" style="background-color: #703684; color: white" onclick="add_school('<?php echo $user_id; ?>')">Save</button>
                             </div>
                             <div class="col-md-3">
                                 <button class="btn btn-default form-control cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
@@ -91,22 +81,34 @@
 </div>
 
 <script>
-    $(function() {
+    $(function () {
         $("#checkbox_id").prop("checked", true);
         //        if($("checkbox_id").is(":checked")
-        $("#checkbox_id").on("click", function() {
+        $("#checkbox_id").on("click", function () {
             $("#present").hide();
             $("#working_year").show();
         });
 
-        $('#subcategory_school').on('click', function() {
+        $('#subcategory_school').on('click', function () {
             $('#subcategory_school').hide();
             $('#school').show();
         });
-        $(".cancelling_btn").on("click", function() {
+        $(".cancelling_btn").on("click", function () {
             $('#school').hide();
             $('#subcategory_school').show();
         });
 
     });
+    function add_school(userId) {
+        var school = $('#school_add_id').val();
+        if (school.length == 0) {
+            alert("Please Fill up School Name");
+            return;
+        }
+        angular.element($('#save_school_btn')).scope().addSchool(userId, function () {
+            $("#school").hide();
+            $("#subcategory_school").show();
+            $("#school_tmpl_id").show();
+        });
+    }
 </script>

@@ -117,13 +117,18 @@ class Basic_profile extends CI_Controller {
 
     function add_professional_skill() {
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        $requestInfo = json_decode($postdata);
+        $request = $requestInfo->pSkillInfo;
         $response = array();
         if (!empty($request)) {
-            $user_id = $request->userId;
+            if (property_exists($request, "userId") != FALSE) {
+                $user_id = $request->userId;
+            }
             $user_professional_skill = new stdClass();
             $user_professional_skill->id = $this->utils->generateRandomString(BASCI_PROFILE_PROFESSIONAL_SKILL_ID_LENGTH);
-            $user_professional_skill->{$this->attr_map['professional_skill']} = $request->pSkil;
+            if (property_exists($request, "pSkil") != FALSE) {
+                $user_professional_skill->{$this->attr_map['professional_skill']} = $request->pSkil;
+            }
             $result = $this->basic_profile_mongodb_model->add_p_skill($user_id, $user_professional_skill);
             if ($result != null) {
                 $response["p_skill"] = $user_professional_skill;
@@ -139,14 +144,29 @@ class Basic_profile extends CI_Controller {
 
     function add_university() {
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "universityInfo") != FALSE) {
+            $request = $requestInfo->universityInfo;
+        }
         $response = array();
         if (!empty($request)) {
-            $user_id = $request->userId;
+            if (property_exists($request, "userId") != FALSE) {
+                $user_id = $request->userId;
+            }
             $user_university = new stdClass();
             $user_university->id = $this->utils->generateRandomString(BASCI_PROFILE_UNIVERSITY_ID_LENGTH);
-            $user_university->{$this->attr_map['university']} = $request->university;
-            $user_university->{$this->attr_map['description']} = $request->description;
+            if (property_exists($request, "university") != FALSE) {
+                $user_university->{$this->attr_map['university']} = $request->university;
+            }
+            if (property_exists($request, "description") != FALSE) {
+                $user_university->{$this->attr_map['description']} = $request->description;
+            }
+            if (property_exists($request, "startDate") != FALSE) {
+                $user_university->{$this->attr_map['startDate']} = $request->startDate;
+            }
+            if (property_exists($request, "endDate") != FALSE) {
+                $user_university->{$this->attr_map['endDate']} = $request->endDate;
+            }
             $result = $this->basic_profile_mongodb_model->add_university($user_id, $user_university);
             if ($result != null) {
                 $response["university"] = $user_university;
@@ -162,14 +182,29 @@ class Basic_profile extends CI_Controller {
 
     function add_college() {
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "collegeInfo") != FALSE) {
+            $request = $requestInfo->collegeInfo;
+        }
         $response = array();
         if (!empty($request)) {
-            $user_id = $request->userId;
+            if (property_exists($request, "userId") != FALSE) {
+                $user_id = $request->userId;
+            }
             $user_college = new stdClass();
             $user_college->id = $this->utils->generateRandomString(BASCI_PROFILE_COLLEGE_ID_LENGTH);
-            $user_college->{$this->attr_map['college']} = $request->college;
-            $user_college->{$this->attr_map['description']} = $request->description;
+            if (property_exists($request, "college") != FALSE) {
+                $user_college->{$this->attr_map['college']} = $request->college;
+            }
+            if (property_exists($request, "description") != FALSE) {
+                $user_college->{$this->attr_map['description']} = $request->description;
+            }
+            if (property_exists($request, "startDate") != FALSE) {
+                $user_college->{$this->attr_map['startDate']} = $request->startDate;
+            }
+            if (property_exists($request, "endDate") != FALSE) {
+                $user_college->{$this->attr_map['endDate']} = $request->endDate;
+            }
             $result = $this->basic_profile_mongodb_model->add_college($user_id, $user_college);
             if ($result != null) {
                 $response["college"] = $user_college;
@@ -185,14 +220,29 @@ class Basic_profile extends CI_Controller {
 
     function add_school() {
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "schoolInfo") != FALSE) {
+            $request = $requestInfo->schoolInfo;
+        }
         $response = array();
         if (!empty($request)) {
-            $user_id = $request->userId;
+            if (property_exists($request, "userId") != FALSE) {
+                $user_id = $request->userId;
+            }
             $user_school = new stdClass();
             $user_school->id = $this->utils->generateRandomString(BASCI_PROFILE_SCHOOL_ID_LENGTH);
-            $user_school->{$this->attr_map['school']} = $request->school;
-            $user_school->{$this->attr_map['description']} = $request->description;
+            if (property_exists($request, "school") != FALSE) {
+                $user_school->{$this->attr_map['school']} = $request->school;
+            }
+            if (property_exists($request, "description") != FALSE) {
+                $user_school->{$this->attr_map['description']} = $request->description;
+            }
+            if (property_exists($request, "startDate") != FALSE) {
+                $user_school->{$this->attr_map['startDate']} = $request->startDate;
+            }
+            if (property_exists($request, "endDate") != FALSE) {
+                $user_school->{$this->attr_map['endDate']} = $request->endDate;
+            }
             $result = $this->basic_profile_mongodb_model->add_school($user_id, $user_school);
             if ($result != null) {
                 $response["school"] = $user_school;
@@ -250,7 +300,26 @@ class Basic_profile extends CI_Controller {
      */
 
     function edit_professional_skill() {
-        
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        $request = $requestInfo->pSkill;
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $this->session->userdata('user_id');
+            if (property_exists($request, "id") != FALSE) {
+                $p_skill_id = $request->id;
+            }
+            $user_professional_skill = new stdClass();
+            $user_professional_skill->id = $p_skill_id;
+            if (property_exists($request, "ps") != FALSE) {
+                $user_professional_skill->{$this->attr_map['professional_skill']} = $request->ps;
+            }
+            $result = $this->basic_profile_mongodb_model->edit_professional_skill($user_id, $p_skill_id, $user_professional_skill);
+            if ($result != null) {
+                $response["p_skill"] = $user_professional_skill;
+            }
+            echo json_encode($response);
+        }
     }
 
     /*
@@ -259,7 +328,37 @@ class Basic_profile extends CI_Controller {
      */
 
     function edit_university() {
-        
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "uvInfo") != FALSE) {
+            $request = $requestInfo->uvInfo;
+        }
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $this->session->userdata('user_id');
+            if (property_exists($request, "id") != FALSE) {
+                $uv_id = $request->id;
+            }
+            $user_university = new stdClass();
+            $user_university->id = $uv_id;
+            if (property_exists($request, "uni") != FALSE) {
+                $user_university->{$this->attr_map['university']} = $request->uni;
+            }
+            if (property_exists($request, "desc") != FALSE) {
+                $user_university->{$this->attr_map['description']} = $request->desc;
+            }
+            if (property_exists($request, "sd") != FALSE) {
+                $user_university->{$this->attr_map['startDate']} = $request->sd;
+            }
+            if (property_exists($request, "ed") != FALSE) {
+                $user_university->{$this->attr_map['endDate']} = $request->ed;
+            }
+            $result = $this->basic_profile_mongodb_model->edit_university($user_id, $uv_id, $user_university);
+            if ($result != null) {
+                $response["university"] = $user_university;
+            }
+            echo json_encode($response);
+        }
     }
 
     /*
@@ -268,7 +367,37 @@ class Basic_profile extends CI_Controller {
      */
 
     function edit_college() {
-        
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "collegeInfo") != FALSE) {
+            $request = $requestInfo->collegeInfo;
+        }
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $this->session->userdata('user_id');
+            $user_college = new stdClass();
+            if (property_exists($request, "id") != FALSE) {
+                $college_id = $request->id;
+            }
+            $user_college->id = $college_id;
+            if (property_exists($request, "clg") != FALSE) {
+                $user_college->{$this->attr_map['college']} = $request->clg;
+            }
+            if (property_exists($request, "desc") != FALSE) {
+                $user_college->{$this->attr_map['description']} = $request->desc;
+            }
+            if (property_exists($request, "sd") != FALSE) {
+                $user_college->{$this->attr_map['startDate']} = $request->sd;
+            }
+            if (property_exists($request, "ed") != FALSE) {
+                $user_college->{$this->attr_map['endDate']} = $request->ed;
+            }
+            $result = $this->basic_profile_mongodb_model->edit_college($user_id, $college_id, $user_college);
+            if ($result != null) {
+                $response["college"] = $user_college;
+            }
+            echo json_encode($response);
+        }
     }
 
     /*
@@ -277,7 +406,37 @@ class Basic_profile extends CI_Controller {
      */
 
     function edit_school() {
-        
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "schoolInfo") != FALSE) {
+            $request = $requestInfo->schoolInfo;
+        }
+        $response = array();
+        if (!empty($request)) {
+            $user_id = $this->session->userdata('user_id');
+            $user_school = new stdClass();
+            if (property_exists($request, "id") != FALSE) {
+                $school_id = $request->id;
+            }
+            $user_school->id = $school_id;
+            if (property_exists($request, "sch") != FALSE) {
+                $user_school->{$this->attr_map['school']} = $request->sch;
+            }
+            if (property_exists($request, "desc") != FALSE) {
+                $user_school->{$this->attr_map['description']} = $request->desc;
+            }
+            if (property_exists($request, "sd") != FALSE) {
+                $user_school->{$this->attr_map['startDate']} = $request->sd;
+            }
+            if (property_exists($request, "ed") != FALSE) {
+                $user_school->{$this->attr_map['endDate']} = $request->ed;
+            }
+            $result = $this->basic_profile_mongodb_model->edit_school($user_id, $school_id, $user_school);
+            if ($result != null) {
+                $response["school"] = $user_school;
+            }
+            echo json_encode($response);
+        }
     }
 
     /*
@@ -292,9 +451,85 @@ class Basic_profile extends CI_Controller {
         $work_place_id = $request->workPlaceId;
         $response = array();
         $result = array();
-        $result = $this->basic_profile_mongodb_model->delete_work_place($user_id,$work_place_id);
+        $result = $this->basic_profile_mongodb_model->delete_work_place($user_id, $work_place_id);
         if ($result != null) {
             $response["message"] = "Wrok Place Delete Successfully";
+        }
+        echo json_encode($response);
+    }
+
+    /*
+     * This method will delete  Professinal Skill of a user
+     * @author Rashida Sultana on 11-9-15
+     */
+
+    function delete_p_skill() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $this->session->userdata('user_id');
+        $p_skill_id = $request->pSkillId;
+        $response = array();
+        $result = array();
+        $result = $this->basic_profile_mongodb_model->delete_p_skill($user_id, $p_skill_id);
+        if ($result != null) {
+            $response["message"] = "Professional Skill Delete Successfully";
+        }
+        echo json_encode($response);
+    }
+
+    /*
+     * This method will delete  College of a user
+     * @author Rashida Sultana on 11-9-15
+     */
+
+    function delete_university() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $this->session->userdata('user_id');
+        $university_id = $request->universityId;
+        $response = array();
+        $result = array();
+        $result = $this->basic_profile_mongodb_model->delete_university($user_id, $university_id);
+        if ($result != null) {
+            $response["message"] = "University Delete Successfully";
+        }
+        echo json_encode($response);
+    }
+
+    /*
+     * This method will delete  College of a user
+     * @author Rashida Sultana on 11-9-15
+     */
+
+    function delete_college() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $this->session->userdata('user_id');
+        $college_id = $request->collegeId;
+        $response = array();
+        $result = array();
+        $result = $this->basic_profile_mongodb_model->delete_college($user_id, $college_id);
+        if ($result != null) {
+            $response["message"] = "College Delete Successfully";
+        }
+        echo json_encode($response);
+    }
+
+    /*
+     * This method will delete  College of a user
+     * @author Rashida Sultana on 11-9-15
+     */
+
+    function delete_school() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $this->session->userdata('user_id');
+        $school_id = $request->schoolId;
+        $response = array();
+        $result = array();
+        $result = $this->basic_profile_mongodb_model->delete_school($user_id, $school_id);
+        if ($result != null) {
+            $response["message"] = "School Delete Successfully";
         }
         echo json_encode($response);
     }
@@ -355,8 +590,8 @@ class Basic_profile extends CI_Controller {
         $response['city_town'] = "";
         $city_town = $this->basic_profile_mongodb_model->get_city_town($user_id);
         if (!empty($city_town)) {
-            if (property_exists($city_town, "basicInfo") != FALSE) {
-                $response['city_town'] = $city_town->basicInfo;
+            if (property_exists($city_town, "bInfo") != FALSE) {
+                $response['city_town'] = $city_town->bInfo;
             }
         }
         echo json_encode($response);
@@ -364,12 +599,20 @@ class Basic_profile extends CI_Controller {
 
     function add_current_city() {
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "currentCityInfo") != FALSE) {
+            $request = $requestInfo->currentCityInfo;
+        }
         $response = array();
         if (!empty($request)) {
-            $user_id = $request->userId;
+            if (property_exists($request, "userId") != FALSE) {
+                $user_id = $request->userId;
+            }
             $user_current_city = new stdClass();
-            $user_current_city->cityName = $request->cityName;
+            $user_current_city->id = $this->utils->generateRandomString(BASCI_PROFILE_CURRENT_CITY_ID_LENGTH);
+            if (property_exists($request, "cityName") != FALSE) {
+                $user_current_city->cityName = $request->cityName;
+            }
             $result = $this->basic_profile_mongodb_model->add_current_city($user_id, $user_current_city);
             if ($result != null) {
                 $response["current_city"] = $user_current_city;
@@ -380,12 +623,20 @@ class Basic_profile extends CI_Controller {
 
     function add_home_town() {
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "homeTownInfo") != FALSE) {
+            $request = $requestInfo->homeTownInfo;
+        }
         $response = array();
         if (!empty($request)) {
-            $user_id = $request->userId;
+            if (property_exists($request, "userId") != FALSE) {
+                $user_id = $request->userId;
+            }
             $user_home_town = new stdClass();
-            $user_home_town->townName = $request->townName;
+            $user_home_town->id = $this->utils->generateRandomString(BASCI_PROFILE_HOME_TOWN_ID_LENGTH);
+            if (property_exists($request, "townName") != FALSE) {
+                $user_home_town->townName = $request->townName;
+            }
             $result = $this->basic_profile_mongodb_model->add_home_town($user_id, $user_home_town);
             if ($result != null) {
                 $response["home_town"] = $user_home_town;
@@ -403,7 +654,7 @@ class Basic_profile extends CI_Controller {
         $response['basic_info'] = "";
         $basic_info = $this->basic_profile_mongodb_model->get_contact_basic_info($user_id);
         if (!empty($basic_info)) {
-            if (property_exists($basic_info, "basicInfo") != FALSE) {
+            if (property_exists($basic_info, "bInfo") != FALSE) {
                 $response['basic_info'] = $basic_info;
             }
         }
@@ -485,6 +736,8 @@ class Basic_profile extends CI_Controller {
         $user_id = $request->userId;
         $response['family_relations'] = "";
         $family_relations = $this->basic_profile_mongodb_model->get_family_relations($user_id);
+        var_dump($family_relations);
+        exit;
         if (!empty($family_relations)) {
             $response['family_relations'] = $family_relations;
         }
@@ -516,8 +769,8 @@ class Basic_profile extends CI_Controller {
         $response['about_fquote'] = "";
         $about_fquote = $this->basic_profile_mongodb_model->get_about_fquote($user_id);
         if (!empty($about_fquote)) {
-            if (property_exists($about_fquote, "basicInfo") != FALSE) {
-                $response['about_fquote'] = $about_fquote->basicInfo;
+            if (property_exists($about_fquote, "bInfo") != FALSE) {
+                $response['about_fquote'] = $about_fquote->bInfo;
             }
         }
         echo json_encode($response);

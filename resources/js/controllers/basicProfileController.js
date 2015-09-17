@@ -68,6 +68,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             };
 
 // works and education module...........................................
+//.......................work Place...............
             $scope.getWorksEducation = function (userId, requestFunction) {
                 basicProfileService.getWorksEducation(userId).
                         success(function (data, status, headers, config) {
@@ -102,183 +103,219 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             requestFunction();
                         });
             };
-            $scope.deleteWorkPlace = function (workPlaceId, requestFunction) {
-                basicProfileService.deleteStatus(workPlaceId).
-                        success(function (data, status, headers, config) {
-                            requestFunction();
-                        });
-
-            };
-
             $scope.editWorkPlace = function (workPlace, requestFunction) {
                 basicProfileService.editWorkPlace(workPlace).
                         success(function (data, status, headers, config) {
                             requestFunction();
                         });
             };
+            $scope.deleteWorkPlace = function (workPlaceId, requestFunction) {
+                basicProfileService.deleteWorkPlace(workPlaceId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
 
-            $scope.addPSkill = function (userId) {
+            };
+
+
+            //...........pSkill.................................
+            $scope.addPSkill = function (userId, requestFunction) {
                 $scope.pSkillInfo.userId = userId;
                 basicProfileService.addPSkill($scope.pSkillInfo).
                         success(function (data, status, headers, config) {
                             $scope.pSkills.push(data.p_skill)
                             $scope.pSkillInfo = "";
-                            $("#professional_skill").hide();
-                            $("#subcategory_professional_skill").show();
-                            $("#p_skill_tmpl_id").show();
+                            requestFunction();
                         });
             };
-            $scope.addUniversity = function (userId) {
+            $scope.editPSkill = function (pSkill, requestFunction) {
+                basicProfileService.editPSkill(pSkill).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+            };
+
+            $scope.deletePSkill = function (pSkillId, requestFunction) {
+                basicProfileService.deletePSkill(pSkillId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+
+            };
+
+//..........................University.......................
+            $scope.addUniversity = function (userId, requestFunction) {
                 $scope.universityInfo.userId = userId;
                 basicProfileService.addUniversity($scope.universityInfo).
                         success(function (data, status, headers, config) {
                             $scope.universities.push(data.university)
                             $scope.universityInfo = "";
-                            $("#university").hide();
-                            $("#subcategory_university").show();
-                            $("#uv_tmpl_id").show();
+                            requestFunction();
+
                         });
             };
-            $scope.addCollege = function (userId) {
+            $scope.editUniversity = function (uvInfo, requestFunction) {
+                basicProfileService.editUniversity(uvInfo).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+            };
+
+            $scope.deleteUniversity = function (universityId, requestFunction) {
+                basicProfileService.deleteUniversity(universityId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+
+            };
+//.............................College....................
+            $scope.addCollege = function (userId, requestFunction) {
                 $scope.collegeInfo.userId = userId;
                 basicProfileService.addCollege($scope.collegeInfo).
                         success(function (data, status, headers, config) {
                             $scope.colleges.push(data.college)
                             $scope.collegeInfo = "";
-                            $("#college").hide();
-                            $("#subcategory_college").show();
-                            $("#college_tmpl_id").show();
+                            requestFunction();
                         });
             };
-            $scope.addSchool = function (userId) {
+
+            $scope.editCollege = function (collegeInfo, requestFunction) {
+                basicProfileService.editCollege(collegeInfo).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+            };
+            $scope.deleteCollege = function (collegeId, requestFunction) {
+                basicProfileService.deleteCollege(collegeId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+
+            };
+//.....................School..................................
+            $scope.addSchool = function (userId, requestFunction) {
                 $scope.schoolInfo.userId = userId;
                 basicProfileService.addSchool($scope.schoolInfo).
                         success(function (data, status, headers, config) {
                             $scope.schools.push(data.school);
                             $scope.schoolInfo = "";
-                            $("#school").hide();
-                            $("#subcategory_school").show();
-                            $("#school_tmpl_id").show();
+                            requestFunction();
                         });
             };
 
+            $scope.editSchool = function (schoolInfo, requestFunction) {
+                basicProfileService.editSchool(schoolInfo).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+            };
+            $scope.deleteSchool = function (schoolId, requestFunction) {
+                basicProfileService.deleteSchool(schoolId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+
+            };
 
 // .............. places module........................... 
 
-            $scope.getCityTown = function (userId) {
+            $scope.getCityTown = function (userId, requestFunction) {
                 basicProfileService.getCityTown(userId).
                         success(function (data, status, headers, config) {
                             if (data.city_town.city != "") {
-                                $('#current_city_id').show();
                                 $scope.city = data.city_town.city;
                             }
                             if (data.city_town.town != "") {
-                                $('#home_town_id').show();
                                 $scope.town = data.city_town.town;
                             }
-                            $('#about_overview').hide();
-                            $('#about_career').hide();
-                            $('#about_contact_info').hide();
-                            $('#about_family_relation').hide();
-                            $('#about_details').hide();
-                            $('#place').hide();
-                            $('#about_place').show();
-                            $('#subcategory_place').show();
+                            requestFunction(data);
                         });
             };
 
-            $scope.addCurrentCity = function (userId) {
+            $scope.addCurrentCity = function (userId, requestFunction) {
                 $scope.currentCityInfo.userId = userId;
                 basicProfileService.addCurrentCity($scope.currentCityInfo).
                         success(function (data, status, headers, config) {
                             $scope.city = data.current_city;
                             $scope.currentCityInfo = "";
-                            $('#current_city_id').show();
-                            $("#current_city_add").show();
-                            $("#c_city").hide();
+                            requestFunction();
                         });
             };
-            $scope.addHomeTown = function (userId) {
+            $scope.editCurrentCity = function (cityInfo, requestFunction) {
+                basicProfileService.editCurrentCity(cityInfo).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+            };
+            $scope.deleteCurrentCity = function (cCityId, requestFunction) {
+                basicProfileService.deleteCurrentCity(cCityId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+
+            };
+
+
+            $scope.addHomeTown = function (userId, requestFunction) {
                 $scope.homeTownInfo.userId = userId;
                 basicProfileService.addHomeTown($scope.homeTownInfo).
                         success(function (data, status, headers, config) {
                             $scope.town = data.home_town;
                             $scope.homeTownInfo = "";
-                            $('#home_town_id').show();
-                            $("#home_town_add").show();
-                            $("#h_town").hide();
+                            requestFunction();
+
                         });
+            };
+            $scope.editHomeTown = function (homeTownInfo, requestFunction) {
+                basicProfileService.editHomeTown(homeTownInfo).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+            };
+
+            $scope.deleteHomeTown = function (hTownId, requestFunction) {
+                basicProfileService.deleteHomeTown(hTownId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+
             };
 
 //........... Contact and Basic Info module...........            
 
-            $scope.getContactBasicInfo = function (userId) {
+            $scope.getContactBasicInfo = function (userId, requestFunction) {
                 basicProfileService.getContactBasicInfo(userId).
                         success(function (data, status, headers, config) {
                             if (data.basic_info != "") {
-                                if (data.basic_info.basicInfo != "") {
-                                    if (data.basic_info.basicInfo.mobilePhones != "") {
-                                        $('#mobile_phone_id').show();
-                                        $scope.mobilePhones = data.basic_info.basicInfo.mobilePhones;
+                                if (data.basic_info.bInfo != "") {
+                                    if (data.basic_info.bInfo.mobilePhones != "") {
+                                        $scope.mobilePhones = data.basic_info.bInfo.mobilePhones;
                                     }
-                                    if (data.basic_info.basicInfo.addresses != "") {
+                                    if (data.basic_info.bInfo.addresses != "") {
 
-                                        $('#address_id').show();
-                                        $scope.address = data.basic_info.basicInfo.addresses;
+                                        $scope.address = data.basic_info.bInfo.addresses;
                                     }
-                                    if (data.basic_info.basicInfo.website != "") {
-                                        $('#website_id').show();
-                                        $scope.website = data.basic_info.basicInfo.website;
+                                    if (data.basic_info.bInfo.website != "") {
+                                        $scope.website = data.basic_info.bInfo.website;
                                     }
-                                    if (data.basic_info.basicInfo.emails != "") {
-                                        $('#email_id').show();
-                                        $scope.emails = data.basic_info.basicInfo.emails;
+                                    if (data.basic_info.bInfo.emails != "") {
+                                        $scope.emails = data.basic_info.bInfo.emails;
                                     }
-                                    if (data.basic_info.basicInfo.birthDate != "") {
-                                        $('#birthday_id').show();
-                                        $scope.birthDate = data.basic_info.basicInfo.birthDate;
+                                    if (data.basic_info.bInfo.birthDate != "") {
+                                        $scope.birthDate = data.basic_info.bInfo.birthDate;
                                     }
-                                    if (data.basic_info.basicInfo.gender != "") {
-                                        $scope.gender = data.basic_info.basicInfo.gender;
-                                        $('#genderId').show();
-                                        console.log($scope.gender);
+                                    if (data.basic_info.bInfo.gender != "") {
+                                        $scope.gender = data.basic_info.bInfo.gender;
                                     }
-                                    if (data.basic_info.basicInfo.language != "") {
-                                        $('#language_id').show();
-                                        $scope.languages = data.basic_info.basicInfo.language;
+                                    if (data.basic_info.bInfo.language != "") {
+                                        $scope.languages = data.basic_info.bInfo.language;
                                     }
-                                    if (data.basic_info.basicInfo.religions != "") {
-                                        $('#religion_id').show();
-                                        $scope.religion = data.basic_info.basicInfo.religions;
+                                    if (data.basic_info.bInfo.religions != "") {
+                                        $scope.religion = data.basic_info.bInfo.religions;
                                     }
                                 }
                             }
-                            $('#about_overview').hide();
-                            $('#about_career').hide();
-                            $('#place').hide();
-                            $('#about_family_relation').hide();
-                            $('#about_details').hide();
-                            $('#mobile').hide();
-                            $('#address').hide();
-                            $('#website').hide();
-                            $('#about_place').hide();
-                            $('#current_city').hide();
-                            $('#home_town').hide();
-                            $('#email').hide();
-                            $('#birth_day').hide();
-                            $('#gender').hide();
-                            $('#language').hide();
-                            $('#religion').hide();
-                            $('#about_contact_info').show();
-                            $('#add_mobile').show();
-                            $('#add_address').show();
-                            $('#add_website').show();
-                            $('#add_email').show();
-                            $('#add_birth_day').show();
-                            $('#add_gender').show();
-                            $('#add_language').show();
-                            $('#add_religion').show();
-
+                            requestFunction(data);
                         });
 
             };
@@ -328,33 +365,23 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             };
 
 //................ Family and Relation..............
-            $scope.getFamilyRelation = function (userId) {
+            $scope.getFamilyRelation = function (userId, requestFunction) {
                 basicProfileService.getFamilyRelation(userId).
                         success(function (data, status, headers, config) {
                             if (data.family_relations != "") {
-                                if (data.family_relations.basicInfo != "") {
-                                    if (data.family_relations.basicInfo.relationshipStatus != "") {
-                                        $('#relationship_add').show();
-                                        $scope.rStatus = data.family_relations.basicInfo.relationshipStatus;
-                                        console.log($scope.rStatus);
+                                if (data.family_relations.bInfo != "") {
+                                    if (data.family_relations.bInfo.relationshipStatus != "") {
+                                        $scope.rStatus = data.family_relations.bInfo.relationshipStatus;
                                     }
-                                    if (data.family_relations.basicInfo.familyMember != "") {
-                                        $('#family_member_add').show();
-                                        $scope.fMemebers = data.family_relations.basicInfo.familyMember;
+                                    if (data.family_relations.bInfo.familyMember != "") {
+                                        $scope.fMemebers = data.family_relations.bInfo.familyMember;
                                     }
                                 }
                             }
-
-                            $('#about_family_relation').show();
-                            $('#about_overview').hide();
-                            $('#about_career').hide();
-                            $('#about_place').hide();
-                            $('#about_contact_info').hide();
-                            $('#about_details').hide();
-                            $('#family_relation').hide();
-                            $('#subcategory_family_relation').show();
+                            requestFunction(data);
                         });
             };
+
             $scope.addRStatus = function (userId) {
                 $scope.rStatusInfo.userId = userId;
                 basicProfileService.addRStatus($scope.rStatusInfo).

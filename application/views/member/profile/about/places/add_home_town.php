@@ -20,7 +20,7 @@
                         <span class="subcategory_label_style">Home Town</span>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" ng-model="homeTownInfo.townName">
+                        <input type="text" id="home_town_add_id" class="form-control" ng-model="homeTownInfo.townName">
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addHomeTown('<?php echo $user_id; ?>')">Save</button>
+                        <button id="save_home_town_btn" class="btn btn-default form-control" style="background-color: #703684; color: white" onclick="add_home_town('<?php echo $user_id; ?>')">Save</button>
                     </div>
                     <div class="col-md-3">
                         <button class="btn btn-default form-control home_town_close" style="background-color: #703684; color: white">Cancel</button>
@@ -51,15 +51,28 @@
 </div>
 
 <script>
-    $(function() {
+    $(function () {
         //home town
-        $('#home_town_add').on('click', function() {
+        $('#home_town_add').on('click', function () {
             $('#home_town_add').hide();
             $('#h_town').show();
         });
-        $(".home_town_close").on("click", function() {
+        $(".home_town_close").on("click", function () {
             $('#h_town').hide();
             $('#home_town_add').show();
         });
     });
+
+    function add_home_town(userId) {
+        var cityName = $('#home_town_add_id').val();
+        if (cityName.length == 0) {
+            alert("Please Fill up Home Town");
+            return;
+        }
+        angular.element($('#save_home_town_btn')).scope().addHomeTown(userId, function () {
+            $('#home_town_id').show();
+            $("#home_town_add").show();
+            $("#h_town").hide();
+        });
+    }
 </script>
