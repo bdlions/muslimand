@@ -621,6 +621,46 @@ class Basic_profile extends CI_Controller {
         echo json_encode($response);
     }
 
+    function edit_current_city() {
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "cityInfo") != FALSE) {
+            $request = $requestInfo->cityInfo;
+        }
+        $response = array();
+        $user_id = $this->session->userdata('user_id');
+        if (!empty($request)) {
+            if (property_exists($request, "id") != FALSE) {
+                $city_id = $request->id;
+            }
+            $user_current_city = new stdClass();
+            $user_current_city->id = $city_id;
+            if (property_exists($request, "cityName") != FALSE) {
+                $user_current_city->cityName = $request->cityName;
+            }
+            $result = $this->basic_profile_mongodb_model->edit_current_city($user_id, $city_id, $user_current_city);
+            if ($result != null) {
+                $response["current_city"] = $user_current_city;
+            }
+        }
+        echo json_encode($response);
+    }
+    
+    function delete_current_city(){
+         $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $this->session->userdata('user_id');
+        $city_id = $request->cCityId;
+        $response = array();
+        $result = array();
+        $result = $this->basic_profile_mongodb_model->delete_current_city($user_id, $city_id);
+        if ($result != null) {
+            $response["message"] = "Current City Delete Successfully";
+        }
+        echo json_encode($response);
+        
+    }
+
     function add_home_town() {
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
@@ -645,6 +685,45 @@ class Basic_profile extends CI_Controller {
         echo json_encode($response);
     }
 
+    function edit_home_town() {
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "homeTownInfo") != FALSE) {
+            $request = $requestInfo->homeTownInfo;
+        }
+        $user_id = $this->session->userdata('user_id');
+        $response = array();
+        if (!empty($request)) {
+            $user_home_town = new stdClass();
+            if (property_exists($request, "id") != FALSE) {
+                $home_town_id = $request->id;
+            }
+            $user_home_town->id = $home_town_id;
+            if (property_exists($request, "townName") != FALSE) {
+                $user_home_town->townName = $request->townName;
+            }
+            $result = $this->basic_profile_mongodb_model->edit_home_town($user_id, $home_town_id, $user_home_town);
+            if ($result != null) {
+                $response["home_town"] = $user_home_town;
+            }
+        }
+        echo json_encode($response);
+    }
+
+    function delete_home_town(){
+         $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $this->session->userdata('user_id');
+        $town_id = $request->hTownId;
+        $response = array();
+        $result = array();
+        $result = $this->basic_profile_mongodb_model->delete_home_town($user_id,$town_id);
+        if ($result != null) {
+            $response["message"] = "Home Town Delete Successfully";
+        }
+        echo json_encode($response);
+        
+    }
     //................. About Contact and Basic Info .................   
     function get_contact_basic_info() {
         $postdata = file_get_contents("php://input");

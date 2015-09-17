@@ -82,6 +82,8 @@
             $('#about_contact_info').hide();
             $('#about_family_relation').hide();
             $('#about_details').hide();
+            $('#about_details').hide();
+            $('#h_town_edit_place_id').hide();
             $('#place').hide();
             $('#about_place').show();
             $('#subcategory_place').show();

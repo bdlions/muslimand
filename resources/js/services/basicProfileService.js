@@ -190,12 +190,21 @@ angular.module('services.BasicProfile', []).
                         },
                     });
                 };
-                basicProfileService.editCurrentCity = function (schoolInfo) {
+                basicProfileService.editCurrentCity = function (cityInfo) {
                     return $http({
                         method: 'post',
                         url: '../basic_profile/edit_current_city',
                         data: {
-                            schoolInfo: schoolInfo,
+                            cityInfo: cityInfo,
+                        },
+                    });
+                };
+                basicProfileService.deleteCurrentCity = function (cCityId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/delete_current_city',
+                        data: {
+                            cCityId: cCityId,
                         },
                     });
                 };
@@ -214,6 +223,15 @@ angular.module('services.BasicProfile', []).
                         url: '../basic_profile/edit_home_town',
                         data: {
                             homeTownInfo: homeTownInfo,
+                        },
+                    });
+                };
+                basicProfileService.deleteHomeTown = function (hTownId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/delete_home_town',
+                        data: {
+                            hTownId: hTownId,
                         },
                     });
                 };
