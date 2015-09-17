@@ -25,29 +25,31 @@ angular.module('services.BasicProfile', []).
                 };
 
 
-                basicProfileService.addWorkPlace = function (WorkInfo) {
+                basicProfileService.addWorkPlace = function (workInfo) {
                     return $http({
                         method: 'post',
                         url: '../basic_profile/add_work_place',
                         data: {
-                            userId: WorkInfo.userId,
-                            company: WorkInfo.company,
-                            position: WorkInfo.position,
-                            city: WorkInfo.city,
-                            description: WorkInfo.description,
+                            workInfo: workInfo
                         },
                     });
                 };
-                basicProfileService.updateWorkPlace = function (WorkInfo) {
+                basicProfileService.editWorkPlace = function (workInfo) {
                     return $http({
                         method: 'post',
-                        url: '../basic_profile/update_work_place',
+                        url: '../basic_profile/edit_work_place',
                         data: {
-                            id: WorkInfo.id,
-                            company: WorkInfo.cmp,
-                            position: WorkInfo.pos,
-                            city: WorkInfo.ct,
-                            description: WorkInfo.desc,
+                            workInfo: workInfo,
+                        },
+                    });
+                };
+                
+                basicProfileService.deleteStatus = function (workPlaceId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/delete_work_place',
+                        data: {
+                            workPlaceId: workPlaceId,
                         },
                     });
                 };

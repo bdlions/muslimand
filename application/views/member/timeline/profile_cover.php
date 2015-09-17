@@ -31,13 +31,9 @@
         <div style="background-color: whitesmoke">
             <div class="btn-group" role="group" aria-label="...">
                 <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url();?>member/timeline">Timeline</a>
-                <a class="btn btn-default" style="font-size: 100%" ng-click="getOverview('<?php echo $user_id; ?>')" href="<?php echo base_url();?>member/about">About</a>
+                <a class="btn btn-default get_over_view_class" style="font-size: 100%" onclick="getOverview('<?php echo $user_id; ?>')" href="<?php echo base_url();?>member/about">About</a>
                 <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url();?>photos">Photo</a>
                 <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url();?>friend/get_friend_list">Friends</a>
-<!--                <button type="button" class="btn btn-default" style="font-size: 100%">Timeline</button>
-                <button type="button" class="btn btn-default" style="font-size: 100%" ng-click="getOverview('<?php echo $user_id; ?>')">About</button>
-                <button type="button" class="btn btn-default" style="font-size: 100%">Photo</button>
-                <button type="button" class="btn btn-default" style="font-size: 100%">Friends</button>-->
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         More

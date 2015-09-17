@@ -12,7 +12,7 @@
     </div>
     <div id="work_place_tmpl_id" style="display: none;">
         <div class="row form-group" ng-repeat="workPlace in workPlaces.slice().reverse()">
-            <div id="workPlace{{workPlace.id}}">
+            <div id="work_place_{{workPlace.id}}">
                 <div class="col-md-2">
                     <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
                 </div>
@@ -27,8 +27,9 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href ng-click="selectEditField(workPlace.id)">Edit</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                                    <!--<li role="presentation"><a role="menuitem" tabindex="-1" href ng-click="selectEditField(workPlace.id)">Edit</a></li>-->
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href onclick="show_work_place(this)" id="{{workPlace.id}}">Edit</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href onclick="open_modal_work_Place_delete(this)" id="{{workPlace.id}}">Delete</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -41,8 +42,8 @@
                     </div>
                 </div>
             </div>
-            <div style="display: none" id="editStatus{{workPlace.id}}">
-                 <?php $this->load->view("member/profile/about/work_education/edit_work_place"); ?>
+            <div style="display: none" id="edit_work_{{workPlace.id}}">
+                <?php $this->load->view("member/profile/about/work_education/edit_work_place"); ?>
             </div>
         </div>
     </div>
@@ -207,3 +208,32 @@
         </div> 
     </div>
 </div>
+<?php $this->load->view("common/common_delete_confirmation_modal"); ?>
+<script type="text/javascript">
+
+    function show_work_place(e) {
+        var workPlaceId = $(e).attr('id');
+        $('#work_place_' + workPlaceId).hide();
+        $('#edit_work_' + workPlaceId).show();
+    }
+    function open_modal_work_Place_delete(e) {
+        var workPlaceId = $(e).attr('id');
+        var selectionInfo = "Work Place ?";
+        delete_confirmation(selectionInfo, function (response) {
+            if (response == "Yes") {
+                angular.element($('#delete_content_btn')).scope().deleteWorkPlace(workPlaceId, function () {
+                    $('#common_delete_confirmation_modal').modal('hide');
+                });
+
+            } else {
+                $('#common_delete_confirmation_modal').modal('hide');
+            }
+        });
+
+
+
+//        $('#delete_id').val(workPlaceId);
+//        $("#content").append("work Place ?");
+//        $('#common_delete_confirmation_modal').modal('show');
+    }
+</script>

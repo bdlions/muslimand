@@ -97,7 +97,7 @@
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/birth.png"  > 
             </div>
             <div class="col-md-10">
-                <h6><span ng-bind="overview.birthDate.birthDay"></span>-<span ng-bind="overview.birthDate.birthMonth"></span>-<span ng-bind="overview.birthDate.birthYear"></span></h6>
+                <h6><span ng-bind="overview.birthDate.bd"></span>-<span ng-bind="overview.birthDate.bm"></span>-<span ng-bind="overview.birthDate.by"></span></h6>
             </div>
         </div>
         <div class="row form-group" ng-click="getContactBasicInfo('<?php echo $user_id ;?>')">

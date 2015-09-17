@@ -1,9 +1,10 @@
 angular.module('controllers.BasicProfile', ['services.BasicProfile']).
         controller('basicProfileController', function ($scope, basicProfileService) {
+            $scope.yearList = [];
             $scope.overview = {};
             $scope.places = {};
             $scope.workPlaces = [];
-            $scope.WorkInfo = {};
+            $scope.workInfo = {};
             $scope.pSkillInfo = {};
             $scope.universityInfo = {};
             $scope.collegeInfo = {};
@@ -34,128 +35,85 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.fQuote = {};
             $scope.fQuoteInfo = {};
 
-            // about  overview  ................      
-            $scope.getOverview = function (userId) {
+            // about  overview  ........................................      
+            $scope.getOverview = function (userId, requestFunction) {
                 basicProfileService.getOverviews(userId).
                         success(function (data, status, headers, config) {
-//                            console.log(data);
-                            if (data.workPlace != "") {
-                                console.log(data.workPlace);
-                                $('#about_overview_workplace').show();
+                            if (data.workPlace !== "") {
                                 $scope.overview.workPlace = data.workPlace;
                             }
-                            if (data.university != "") {
-                                $('#about_overview_uiversity').show();
+                            if (data.university !== "") {
                                 $scope.overview.university = data.university;
                             }
-                            if (data.city != "") {
-                                $('#about_overview_city').show();
+                            if (data.city !== "") {
                                 $scope.overview.city = data.city;
                             }
-                            if (data.mobilePhone != "") {
-                                $('#about_overview_phone').show();
+                            if (data.mobilePhone !== "") {
                                 $scope.overview.mobilePhone = data.mobilePhone;
                             }
-                            if (data.email != "") {
-                                $('#about_overview_email').show();
+                            if (data.email !== "") {
                                 $scope.overview.email = data.email;
                             }
-                            if (data.address != "") {
-                                $('#about_overview_address').show();
+                            if (data.address !== "") {
                                 $scope.overview.address = data.address;
                             }
-//                            if(data.company != ""){
-//                                $('#about_overview_company').show();
-//                                  $scope.overview.company = data.company;
-//                            }
-                            if (data.website != "") {
-                                $('#about_overview_website').show();
+                            if (data.website !== "") {
                                 $scope.overview.website = data.website;
                             }
-                            if (data.birthDate != "") {
-                                $('#about_overview_birthDate').show();
+                            if (data.birthDate !== "") {
                                 $scope.overview.birthDate = data.birthDate;
                             }
-                            $scope.overview = data;
-                            $('#about_career').hide();
-                            $('#about_place').hide();
-                            $('#about_contact_info').hide();
-                            $('#about_family_relation').hide();
-                            $('#about_details').hide();
-//                            $('#about_overview').show();
+                            requestFunction(data)
                         });
             };
 
-// works and education module...................
-
-            $scope.getWorksEducation = function (userId) {
+// works and education module...........................................
+            $scope.getWorksEducation = function (userId, requestFunction) {
                 basicProfileService.getWorksEducation(userId).
                         success(function (data, status, headers, config) {
+                            $scope.yearList = data.year_list;
                             if (data.work_places != "") {
                                 $scope.workPlaces = data.work_places;
-                                $('#work_place_tmpl_id').show();
                             }
                             if (data.p_skills != "") {
                                 $scope.pSkills = data.p_skills;
-                                $('#p_skill_tmpl_id').show();
                             }
                             if (data.universities != "") {
                                 $scope.universities = data.universities;
-                                $('#uv_tmpl_id').show();
                             }
                             if (data.colleges != "") {
                                 $scope.colleges = data.colleges;
-                                $('#college_tmpl_id').show();
                             }
                             if (data.schools != "") {
                                 $scope.schools = data.schools;
-                                $('#school_tmpl_id').show();
                             }
-                            $('#about_overview').hide();
-                            $('#about_place').hide();
-                            $('#about_contact_info').hide();
-                            $('#about_family_relation').hide();
-                            $('#about_details').hide();
-                            $('#work').hide();
-                            $('#professional_skill').hide();
-                            $('#university').hide();
-                            $('#college').hide();
-                            $('#school').hide();
-                            $('#about_career').show();
-                            $('#subcategory_work').show();
-                            $('#subcategory_professional_skill').show();
-                            $('#subcategory_university').show();
-                            $("#subcategory_college").show();
-                            $('#subcategory_school').show();
+                            requestFunction(data);
                         });
             };
-            $scope.addWorkPlace = function (userId) {
+            $scope.addWorkPlace = function (userId, cYear, requestFunction) {
+                if (cYear != null) {
+                    $scope.workInfo.endDate = cYear;
+                }
                 $scope.workInfo.userId = userId;
                 basicProfileService.addWorkPlace($scope.workInfo).
                         success(function (data, status, headers, config) {
-                            $scope.workPlaces.push(data.work_place)
+                            $scope.workPlaces.push(data.work_place);
                             $scope.workInfo = "";
-                            $("#work").hide();
-                            $("#subcategory_work").show();
-                            $("#work_place_tmpl_id").show();
+                            requestFunction();
                         });
             };
+            $scope.deleteWorkPlace = function (workPlaceId, requestFunction) {
+                basicProfileService.deleteStatus(workPlaceId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
 
-            /**
-             * Feild hide and show 
-             * */
-
-            $scope.selectEditField = function (workPlaceId) {
-                $('#workPlace' + workPlaceId).hide();
-                $('#editStatus' + workPlaceId).show();
             };
 
-            $scope.updateWorkPlace = function (workPlace) {
-                workPlaceId = workPlace.id;
-                basicProfileService.updateWorkPlace(workPlace).
+            $scope.editWorkPlace = function (workPlace, requestFunction) {
+                basicProfileService.editWorkPlace(workPlace).
                         success(function (data, status, headers, config) {
-                            $('#workPlace' + workPlaceId).show();
-                            $('#editStatus' + workPlaceId).hide();
+                            requestFunction();
                         });
             };
 

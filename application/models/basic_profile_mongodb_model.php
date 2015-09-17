@@ -92,9 +92,9 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
      * @author nazmul hasan on 5th September 2015
      */
 
-    function update_work_place($user_id,$work_place_id,$work_place_data) {
-        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'UpdateWorkPlace');
-        $this->curl->post(array("userId" => $user_id,"workPlaceId" => $work_place_id, "workPlaceData" => json_encode($work_place_data)));
+    function edit_work_place($user_id, $work_place_id, $work_place_data) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editWorkPlace');
+        $this->curl->post(array("userId" => $user_id, "workPlaceId" => $work_place_id, "workPlaceData" => json_encode($work_place_data)));
         return $this->curl->execute();
     }
 
@@ -131,6 +131,18 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
      */
 
     function edit_school() {
+        
+    }
+
+    /*
+     * This method will delete  workPlce of a user
+     * @author Rashida Sultana on 11-9-15
+     */
+
+    function delete_work_place($user_id,$work_place_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'deleteWrokPlace');
+        $this->curl->post(array("userId" => $user_id,"wrokPlaceId" => $work_place_id));
+        return $this->curl->execute();
         
     }
 

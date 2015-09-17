@@ -42,6 +42,7 @@ class Basic_profile extends CI_Controller {
         $request = json_decode($postdata);
         $user_id = $request->userId;
         $response = array();
+        $response["year_list"] = $this->utils->get_year_list();
         $response['message'] = '';
         $response['work_places'] = '';
         $response['colleges'] = '';
@@ -76,16 +77,31 @@ class Basic_profile extends CI_Controller {
 
     function add_work_place() {
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        $requestInfo = json_decode($postdata);
+        $request = $requestInfo->workInfo;
         $response = array();
         if (!empty($request)) {
             $user_id = $request->userId;
             $user_work_place = new stdClass();
             $user_work_place->id = $this->utils->generateRandomString(BASCI_PROFILE_WORK_PLACE_ID_LENGTH);
-            $user_work_place->{$this->attr_map['company']} = $request->company;
-            $user_work_place->{$this->attr_map['position']} = $request->position;
-            $user_work_place->{$this->attr_map['city']} = $request->city;
-            $user_work_place->{$this->attr_map['description']} = $request->description;
+            if (property_exists($request, "company") != FALSE) {
+                $user_work_place->{$this->attr_map['company']} = $request->company;
+            }
+            if (property_exists($request, "position") != FALSE) {
+                $user_work_place->{$this->attr_map['position']} = $request->position;
+            }
+            if (property_exists($request, "city") != FALSE) {
+                $user_work_place->{$this->attr_map['city']} = $request->city;
+            }
+            if (property_exists($request, "description") != FALSE) {
+                $user_work_place->{$this->attr_map['description']} = $request->description;
+            }
+            if (property_exists($request, "startDate") != FALSE) {
+                $user_work_place->{$this->attr_map['startDate']} = $request->startDate;
+            }
+            if (property_exists($request, "endDate") != FALSE) {
+                $user_work_place->{$this->attr_map['endDate']} = $request->endDate;
+            }
             $result = $this->basic_profile_mongodb_model->add_work_place($user_id, $user_work_place);
             if ($result != null) {
                 $response["work_place"] = $user_work_place;
@@ -190,20 +206,37 @@ class Basic_profile extends CI_Controller {
      * @author nazmul hasan on 5th September 2015
      */
 
-    function update_work_place() {
+    function edit_work_place() {
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        $requestInfo = json_decode($postdata);
+        $request = $requestInfo->workInfo;
         $response = array();
-         if (!empty($request)) {
+        if (!empty($request)) {
             $user_id = $this->session->userdata('user_id');
-            $work_place_id = $request->id;
+            if (property_exists($request, "id") != FALSE) {
+                $work_place_id = $request->id;
+            }
             $user_work_place = new stdClass();
             $user_work_place->id = $work_place_id;
-            $user_work_place->{$this->attr_map['company']} = $request->company;
-            $user_work_place->{$this->attr_map['position']} = $request->position;
-            $user_work_place->{$this->attr_map['city']} = $request->city;
-            $user_work_place->{$this->attr_map['description']} = $request->description;
-            $result = $this->basic_profile_mongodb_model->update_work_place($user_id, $work_place_id,$user_work_place);
+            if (property_exists($request, "cmp") != FALSE) {
+                $user_work_place->{$this->attr_map['company']} = $request->cmp;
+            }
+            if (property_exists($request, "pos") != FALSE) {
+                $user_work_place->{$this->attr_map['position']} = $request->pos;
+            }
+            if (property_exists($request, "ct") != FALSE) {
+                $user_work_place->{$this->attr_map['city']} = $request->ct;
+            }
+            if (property_exists($request, "desc") != FALSE) {
+                $user_work_place->{$this->attr_map['description']} = $request->desc;
+            }
+            if (property_exists($request, "sd") != FALSE) {
+                $user_work_place->{$this->attr_map['startDate']} = $request->sd;
+            }
+            if (property_exists($request, "ed") != FALSE) {
+                $user_work_place->{$this->attr_map['endDate']} = $request->ed;
+            }
+            $result = $this->basic_profile_mongodb_model->edit_work_place($user_id, $work_place_id, $user_work_place);
             if ($result != null) {
                 $response["work_place"] = $user_work_place;
             }
@@ -245,6 +278,25 @@ class Basic_profile extends CI_Controller {
 
     function edit_school() {
         
+    }
+
+    /*
+     * This method will delete  workPlce of a user
+     * @author Rashida Sultana on 11-9-15
+     */
+
+    function delete_work_place() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $this->session->userdata('user_id');
+        $work_place_id = $request->workPlaceId;
+        $response = array();
+        $result = array();
+        $result = $this->basic_profile_mongodb_model->delete_work_place($user_id,$work_place_id);
+        if ($result != null) {
+            $response["message"] = "Wrok Place Delete Successfully";
+        }
+        echo json_encode($response);
     }
 
 //..........................About Module ...............................
