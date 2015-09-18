@@ -105,7 +105,7 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
 
     function edit_professional_skill($user_id, $p_skill_id, $user_professional_skill) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editProfessionalSkill');
-        $this->curl->post(array("userId" => $user_id, "pSkillId" => $work_place_id, "pSkillData" => json_encode($user_professional_skill)));
+        $this->curl->post(array("userId" => $user_id, "pSkillId" => $p_skill_id, "pSkillData" => json_encode($user_professional_skill)));
         return $this->curl->execute();
     }
 
@@ -247,7 +247,7 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
 
     public function edit_current_city($user_id, $city_id, $city_info) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editCurrentCity');
-        $this->curl->post(array("userId" => $user_id, "cityId" => $city_id, "cityData" => json_encode($city_info)));
+        $this->curl->post(array("userId" => $user_id, "cityData" => json_encode($city_info)));
         return $this->curl->execute();
     }
 
@@ -265,7 +265,7 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
 
     public function edit_home_town($user_id, $home_town_id, $user_home_town) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editHomeTown');
-        $this->curl->post(array("userId" => $user_id, "townId" => $home_town_id, "townData" => json_encode($user_home_town)));
+        $this->curl->post(array("userId" => $user_id, "townData" => json_encode($user_home_town)));
         return $this->curl->execute();
     }
 
