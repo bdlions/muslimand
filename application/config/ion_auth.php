@@ -68,6 +68,12 @@ $config['attr_map']['university']                = 'uni';
 $config['attr_map']['username']                  = 'un';
 $config['attr_map']['user_id']                   = 'uId';
 
+$config['rev_attr_map']['asId']                  = "account_status_id";
+$config['rev_attr_map']['bDate']                 = 'birth_date';
+$config['rev_attr_map']['bInfo']                 = 'basic_info';
+$config['rev_attr_map']['cmp']                   = 'company';
+$config['rev_attr_map']['pos']                   = 'position';
+
 
 /*
 | -------------------------------------------------------------------------

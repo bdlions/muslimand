@@ -9,9 +9,14 @@ if (!defined('BASEPATH'))
  *
  */
 class Utils {
-
+    public $attr_map = array();
+    public $rev_attr_map = array();
+    
     public function __construct() {
-        
+        $this->CI = & get_instance();        
+        $this->CI->load->config('ion_auth', TRUE);
+        $this->attr_map = $this->CI->config->item('attr_map', 'ion_auth');
+        $this->rev_attr_map = $this->CI->config->item('rev_attr_map', 'ion_auth');
     }
 
     /*
@@ -98,6 +103,38 @@ class Utils {
             $year_list["" . $i] = "" . $i;
         }
         return $year_list;
+    }
+    
+    /*
+     * This method will encode an object to a json string mapping attributes
+     * @author nazmul hasan
+     * @created on 18th september 2015
+     */
+    public function json_encode_attr_map($value, $options = 0, $depth = 512)
+    {
+        $value = json_encode($value);
+        $matches = array();
+        preg_match_all('/\"(\w+)\":/', $value, $matches, PREG_SET_ORDER);
+        foreach($matches as $match)
+        {
+            $value = str_replace($match[0], "\"".$this->attr_map[$match[1]]."\":", $value);
+        }
+        return $value;
+    }
+    /*
+     * This method will decode a json string to an object mapping attributes
+     * @author nazmul hasan
+     * @created on 18th september 2015
+     */
+    public function json_decode_attr_map($json, $assoc = false, $depth = 512, $options = 0)
+    {
+        $matches = array();
+        preg_match_all('/\"(\w+)\":/', $json, $matches, PREG_SET_ORDER);
+        foreach($matches as $match)
+        {
+            $json = str_replace($match[0], "\"".$this->rev_attr_map[$match[1]]."\":", $json);
+        }
+        return json_decode($json);
     }
 
 }

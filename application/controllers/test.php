@@ -10,6 +10,7 @@ class Test extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model('common_mongodb_model');
         $this->load->helper('url');
+        $this->load->library('Utils');
 
         // Load MongoDB library instead of native db driver if required
         $this->config->item('use_mongodb', 'ion_auth') ?
@@ -33,7 +34,15 @@ class Test extends CI_Controller {
     
     
     function t(){
-        echo $this->lang->line('update_user_profile_successful');
+        $user_work_place = new stdClass();
+        $user_work_place->company = "testcompany";
+        $user_work_place->position = "testposition";
+        
+        $result = $this->utils->json_encode_attr_map($user_work_place);
+        print_r($result);
+        
+        $result2 = $this->utils->json_decode_attr_map($result);
+        print_r($result2);
     }
   
 
