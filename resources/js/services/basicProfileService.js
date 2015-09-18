@@ -195,8 +195,8 @@ angular.module('services.BasicProfile', []).
                         method: 'post',
                         url: '../basic_profile/edit_current_city',
                         data: {
-                            cityInfo: cityInfo,
-                        },
+                            cityInfo: cityInfo
+                        }
                     });
                 };
                 basicProfileService.deleteCurrentCity = function (cCityId) {
@@ -204,8 +204,8 @@ angular.module('services.BasicProfile', []).
                         method: 'post',
                         url: '../basic_profile/delete_current_city',
                         data: {
-                            cCityId: cCityId,
-                        },
+                            cCityId: cCityId
+                        }
                     });
                 };
                 basicProfileService.addHomeTown = function (homeTownInfo) {
@@ -214,7 +214,7 @@ angular.module('services.BasicProfile', []).
                         url: '../basic_profile/add_home_town',
                         data: {
                             homeTownInfo: homeTownInfo
-                        },
+                        }
                     });
                 };
                 basicProfileService.editHomeTown = function (homeTownInfo) {
@@ -222,7 +222,7 @@ angular.module('services.BasicProfile', []).
                         method: 'post',
                         url: '../basic_profile/edit_home_town',
                         data: {
-                            homeTownInfo: homeTownInfo,
+                            homeTownInfo: homeTownInfo
                         },
                     });
                 };
@@ -231,8 +231,8 @@ angular.module('services.BasicProfile', []).
                         method: 'post',
                         url: '../basic_profile/delete_home_town',
                         data: {
-                            hTownId: hTownId,
-                        },
+                            hTownId: hTownId
+                        }
                     });
                 };
 
@@ -243,8 +243,8 @@ angular.module('services.BasicProfile', []).
                         method: 'post',
                         url: '../basic_profile/get_contact_basic_info',
                         data: {
-                            userId: userId,
-                        },
+                            userId: userId
+                        }
                     });
                 };
 
@@ -254,9 +254,8 @@ angular.module('services.BasicProfile', []).
                         method: 'post',
                         url: '../basic_profile/add_mobile_phone',
                         data: {
-                            userId: PhoneInfo.userId,
-                            phone: PhoneInfo.phone,
-                        },
+                            PhoneInfo: PhoneInfo
+                        }
                     });
                 };
                 basicProfileService.addAddress = function (addressInfo) {

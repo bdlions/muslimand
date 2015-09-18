@@ -645,9 +645,9 @@ class Basic_profile extends CI_Controller {
         }
         echo json_encode($response);
     }
-    
-    function delete_current_city(){
-         $postdata = file_get_contents("php://input");
+
+    function delete_current_city() {
+        $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
         $user_id = $this->session->userdata('user_id');
         $city_id = $request->cCityId;
@@ -658,7 +658,6 @@ class Basic_profile extends CI_Controller {
             $response["message"] = "Current City Delete Successfully";
         }
         echo json_encode($response);
-        
     }
 
     function add_home_town() {
@@ -710,20 +709,20 @@ class Basic_profile extends CI_Controller {
         echo json_encode($response);
     }
 
-    function delete_home_town(){
-         $postdata = file_get_contents("php://input");
+    function delete_home_town() {
+        $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
         $user_id = $this->session->userdata('user_id');
         $town_id = $request->hTownId;
         $response = array();
         $result = array();
-        $result = $this->basic_profile_mongodb_model->delete_home_town($user_id,$town_id);
+        $result = $this->basic_profile_mongodb_model->delete_home_town($user_id, $town_id);
         if ($result != null) {
             $response["message"] = "Home Town Delete Successfully";
         }
         echo json_encode($response);
-        
     }
+
     //................. About Contact and Basic Info .................   
     function get_contact_basic_info() {
         $postdata = file_get_contents("php://input");
@@ -742,12 +741,19 @@ class Basic_profile extends CI_Controller {
 
     function add_mobile_phone() {
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "PhoneInfo") != FALSE) {
+            $request = $requestInfo->PhoneInfo;
+        }
         $response = array();
         if (!empty($request)) {
-            $user_id = $request->userId;
+            if (property_exists($request, "userId") != FALSE) {
+                $user_id = $request->userId;
+            }
             $user_mobile_phone = new stdClass();
-            $user_mobile_phone->phone = $request->phone;
+            if (property_exists($request, "phone") != FALSE) {
+                $user_mobile_phone->{$this->attr_map['phone']} = $request->phone;
+            }
             $result = $this->basic_profile_mongodb_model->add_mobile_phone($user_id, $user_mobile_phone);
             if ($result != null) {
                 $response["mobile_phone"] = $user_mobile_phone;

@@ -60,8 +60,8 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             if (data.website !== "") {
                                 $scope.overview.website = data.website;
                             }
-                            if (data.birthDate !== "") {
-                                $scope.overview.birthDate = data.birthDate;
+                            if (data.bDate !== "") {
+                                $scope.overview.birthDate = data.bDate;
                             }
                             requestFunction(data)
                         });
@@ -286,31 +286,31 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.getContactBasicInfo = function (userId, requestFunction) {
                 basicProfileService.getContactBasicInfo(userId).
                         success(function (data, status, headers, config) {
-                            if (data.basic_info != "") {
-                                if (data.basic_info.bInfo != "") {
-                                    if (data.basic_info.bInfo.mobilePhones != "") {
+                            if (data.basic_info !== "") {
+                                if (data.basic_info.bInfo !== "") {
+                                    if (data.basic_info.bInfo.mbs !== "") {
                                         $scope.mobilePhones = data.basic_info.bInfo.mobilePhones;
                                     }
-                                    if (data.basic_info.bInfo.addresses != "") {
+                                    if (data.basic_info.bInfo.addresses !== "") {
 
                                         $scope.address = data.basic_info.bInfo.addresses;
                                     }
-                                    if (data.basic_info.bInfo.website != "") {
+                                    if (data.basic_info.bInfo.website !== "") {
                                         $scope.website = data.basic_info.bInfo.website;
                                     }
-                                    if (data.basic_info.bInfo.emails != "") {
+                                    if (data.basic_info.bInfo.emails !== "") {
                                         $scope.emails = data.basic_info.bInfo.emails;
                                     }
-                                    if (data.basic_info.bInfo.birthDate != "") {
-                                        $scope.birthDate = data.basic_info.bInfo.birthDate;
+                                    if (data.basic_info.bInfo.bDate !== "") {
+                                        $scope.birthDate = data.basic_info.bInfo.bDate;
                                     }
-                                    if (data.basic_info.bInfo.gender != "") {
+                                    if (data.basic_info.bInfo.gender !== "") {
                                         $scope.gender = data.basic_info.bInfo.gender;
                                     }
-                                    if (data.basic_info.bInfo.language != "") {
+                                    if (data.basic_info.bInfo.language !== "") {
                                         $scope.languages = data.basic_info.bInfo.language;
                                     }
-                                    if (data.basic_info.bInfo.religions != "") {
+                                    if (data.basic_info.bInfo.religions !== "") {
                                         $scope.religion = data.basic_info.bInfo.religions;
                                     }
                                 }
@@ -319,15 +319,14 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                         });
 
             };
-            $scope.addPhone = function (userId) {
+            $scope.addPhone = function (userId, requestFunction) {
                 $scope.PhoneInfo.userId = userId;
                 basicProfileService.addPhone($scope.PhoneInfo).
                         success(function (data, status, headers, config) {
+                            console.log(data);
                             $scope.mobilePhones.push(data.mobile_phone);
                             $scope.PhoneInfo = "";
-                            $('#mobile_phone_id').show();
-                            $("#mobile").hide();
-                            $("#add_mobile").show();
+                            requestFunction();
                         });
             };
             $scope.addAddress = function (userId) {

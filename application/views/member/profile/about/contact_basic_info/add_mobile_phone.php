@@ -18,7 +18,7 @@
                 <span class="subcategory_label_style">Mobile or Phone</span>
             </div>
             <div class="col-md-8">
-                <input type="text" class="form-control" ng-model="PhoneInfo.phone">
+                <input type="text" id="phone_add_id" class="form-control" ng-model="PhoneInfo.phone">
             </div>
         </div>
         <div class="pagelet_divider"></div>
@@ -35,7 +35,7 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addPhone('<?php echo $user_id; ?>')">Save</button>
+                        <button id="save_mobile_btn" class="btn btn-default form-control" style="background-color: #703684; color: white" onclick="add_phone('<?php echo $user_id; ?>')">Save</button>
                     </div>
                     <div class="col-md-3">
                         <button class="form-control form_control_custom_style member_about_cancel_button cancel_mobile_window" >Cancel</button>
@@ -47,15 +47,27 @@
 </div>
 
 <script>
-    $(function() {
+    $(function () {
         // Mobile Number
-        $("#add_mobile").on("click", function() {
+        $("#add_mobile").on("click", function () {
             $("#add_mobile").hide();
             $("#mobile").show();
         });
-        $(".cancel_mobile_window").on("click", function() {
+        $(".cancel_mobile_window").on("click", function () {
             $("#mobile").hide();
             $("#add_mobile").show();
         });
     });
+    function add_phone(userId) {
+        var phone = $('#phone_add_id').val();
+        if (phone.length == 0) {
+            alert("Please Fill up Phone number");
+            return;
+        }
+        angular.element($('#save_mobile_btn')).scope().addPhone(userId, function () {
+            $('#mobile_phone_id').show();
+            $("#mobile").hide();
+            $("#add_mobile").show();
+        });
+    }
 </script>

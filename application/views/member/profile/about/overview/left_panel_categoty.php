@@ -34,7 +34,6 @@
         <a style="color: black; text-decoration: none; cursor: pointer;" > Details About You</a>
     </div>
 </div>
-<?php $this->load->view("member/profile/about/overview/left_panel_categoty_js"); ?>
 <script type="text/javascript">
     function get_family_relation(userId) {
         angular.element($('#category_family_relation')).scope().getFamilyRelation(userId, function (data) {
@@ -157,31 +156,32 @@
     }
     function get_contact_basic_info(userId) {
         angular.element($('#category_contact_info')).scope().getContactBasicInfo(userId, function (data) {
-            if (data.basic_info !== "") {
-                if (data.basic_info.bInfo !== "") {
-                    if (data.basic_info.bInfo.mobilePhones !== "") {
+            console.log(data.basic_info.bInfo.bDate);
+            if (typeof data.basic_info !== "undefined") {
+                if (typeof data.basic_info.bInfo !== "undefined") {
+                    if (typeof data.basic_info.bInfo.mobilePhones !== "undefined") {
                         $('#mobile_phone_id').show();
                     }
-                    if (data.basic_info.bInfo.addresses !== "") {
+                    if (typeof data.basic_info.bInfo.addresses !== "undefined") {
 
                         $('#address_id').show();
                     }
-                    if (data.basic_info.bInfo.website !== "") {
+                    if (typeof data.basic_info.bInfo.website !== "undefined") {
                         $('#website_id').show();
                     }
-                    if (data.basic_info.bInfo.emails !== "") {
+                    if (typeof data.basic_info.bInfo.emails !== "undefined") {
                         $('#email_id').show();
                     }
-                    if (data.basic_info.bInfo.birthDate !== "") {
+                    if (typeof data.basic_info.bInfo.bDate !== "undefined") {
                         $('#birthday_id').show();
                     }
-                    if (data.basic_info.bInfo.gender !== "") {
+                    if (typeof data.basic_info.bInfo.gender !== "undefined") {
                         $('#genderId').show();
                     }
-                    if (data.basic_info.bInfo.language !=="") {
+                    if (typeof data.basic_info.bInfo.language !== "undefined") {
                         $('#language_id').show();
                     }
-                    if (data.basic_info.bInfo.religions !== "") {
+                    if (typeof data.basic_info.bInfo.religions !== "undefined") {
                         $('#religion_id').show();
                     }
                 }

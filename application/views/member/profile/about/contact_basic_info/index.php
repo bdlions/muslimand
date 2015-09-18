@@ -175,7 +175,7 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-6">
-                        <span ng-bind="birthDate.birthDay"></span>-<span ng-bind="birthDate.birthMonth"></span>-<span ng-bind="birthDate.birthYear"></span>
+                        <span ng-bind="birthDate.bd"></span>-<span ng-bind="birthDate.bm"></span>-<span ng-bind="birthDate.by"></span>
                     </div>
                     <div class="col-md-2"></div>
                     <div class="col-md-4">
