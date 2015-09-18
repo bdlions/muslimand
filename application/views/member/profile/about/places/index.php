@@ -49,7 +49,6 @@
     <div class="row form-group">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/places/add_home_town"); ?>
-            <?php $this->load->view("member/profile/about/places/edit_home_town"); ?>
         </div>
     </div>
     <!--Show updated home town-->
@@ -83,7 +82,7 @@
             </div>
         </div> 
     </div>
-   <div id ="home_town_edit_id" style="display: none">
+    <div id ="home_town_edit_id" style="display: none">
         <?php $this->load->view("member/profile/about/places/edit_home_town"); ?>
     </div>
 </div>

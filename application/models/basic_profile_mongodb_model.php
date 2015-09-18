@@ -105,7 +105,7 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
 
     function edit_professional_skill($user_id, $p_skill_id, $user_professional_skill) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editProfessionalSkill');
-        $this->curl->post(array("userId" => $user_id, "pSkillId" => $work_place_id, "pSkillData" => json_encode($user_professional_skill)));
+        $this->curl->post(array("userId" => $user_id, "pSkillId" => $p_skill_id, "pSkillData" => json_encode($user_professional_skill)));
         return $this->curl->execute();
     }
 
@@ -163,6 +163,7 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id, "pSkillId" => $p_skill_id));
         return $this->curl->execute();
     }
+
     /*
      * This method will delete  University of a user
      * @author Rashida Sultana on 11-9-15
@@ -173,6 +174,7 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id, "universityId" => $university_id));
         return $this->curl->execute();
     }
+
     /*
      * This method will delete  College of a user
      * @author Rashida Sultana on 11-9-15
@@ -183,6 +185,7 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id, "collegeId" => $college_id));
         return $this->curl->execute();
     }
+
     /*
      * This method will delete  College of a user
      * @author Rashida Sultana on 11-9-15
@@ -242,9 +245,33 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         return $this->curl->execute();
     }
 
+    public function edit_current_city($user_id, $city_id, $city_info) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editCurrentCity');
+        $this->curl->post(array("userId" => $user_id, "cityData" => json_encode($city_info)));
+        return $this->curl->execute();
+    }
+
+    function delete_current_city($user_id, $city_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'deleteCurrentCity');
+        $this->curl->post(array("userId" => $user_id, "cityId" => $city_id));
+        return $this->curl->execute();
+    }
+
     public function add_home_town($user_id, $additional_data) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addHomeTown');
         $this->curl->post(array("userId" => $user_id, "additionalData" => json_encode($additional_data)));
+        return $this->curl->execute();
+    }
+
+    public function edit_home_town($user_id, $home_town_id, $user_home_town) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editHomeTown');
+        $this->curl->post(array("userId" => $user_id, "townData" => json_encode($user_home_town)));
+        return $this->curl->execute();
+    }
+
+    function delete_home_town($user_id, $town_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'deleteHomeTown');
+        $this->curl->post(array("userId" => $user_id, "townId" => $town_id));
         return $this->curl->execute();
     }
 
@@ -291,9 +318,5 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
         $this->trigger_events('post_add_basic_info');
         return isset($id) ? $id : FALSE;
     }
-
-  
-
-  
 
 }
