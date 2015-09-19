@@ -18,7 +18,7 @@
                 <span class="subcategory_label_style">Address</span>
             </div>
             <div class="col-md-8">
-                <input type="text" class="form-control" ng-model="addressInfo.address">
+                <input type="text" id="address_add_id" class="form-control" ng-model="addressInfo.address">
             </div>
         </div>
         <div class="row form-group">
@@ -59,7 +59,7 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addAddress('<?php echo $user_id; ?>')">Save</button>
+                        <button id="save_address_btn" class="btn btn-default form-control" style="background-color: #703684; color: white" onclick="add_address('<?php echo $user_id; ?>')">Save</button>
                     </div>
                     <div class="col-md-3">
                         <button class="form-control form_control_custom_style member_about_cancel_button cancel_address_window" >Cancel</button>
@@ -71,15 +71,30 @@
 </div>
 
 <script>
-    $(function() {
+    $(function () {
         // Address
-        $("#add_address").on("click", function() {
+        $("#add_address").on("click", function () {
             $("#add_address").hide();
             $("#address").show();
         });
-        $(".cancel_address_window").on("click", function() {
+        $(".cancel_address_window").on("click", function () {
             $("#address").hide();
             $("#add_address").show();
         });
     });
+    function add_address(userId) {
+        var address = $('#address_add_id').val();
+        if (address.length == 0) {
+            alert("Please Give  your Address");
+            return;
+        }
+        angular.element($('#save_address_btn')).scope().addAddress(userId, function () {
+            $('#address_id').show();
+            $("#address").hide();
+            $("#add_address").show();
+        }
+        )
+    }
+    ;
+
 </script>

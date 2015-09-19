@@ -732,9 +732,7 @@ class Basic_profile extends CI_Controller {
         $response['basic_info'] = "";
         $basic_info = $this->basic_profile_mongodb_model->get_contact_basic_info($user_id);
         if (!empty($basic_info)) {
-            if (property_exists($basic_info, "bInfo") != FALSE) {
-                $response['basic_info'] = $basic_info;
-            }
+            $response['basic_info'] = $basic_info->basic_info;
         }
         echo json_encode($response);
     }
@@ -742,8 +740,8 @@ class Basic_profile extends CI_Controller {
     function add_mobile_phone() {
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
-        if (property_exists($requestInfo, "PhoneInfo") != FALSE) {
-            $request = $requestInfo->PhoneInfo;
+        if (property_exists($requestInfo, "phoneInfo") != FALSE) {
+            $request = $requestInfo->phoneInfo;
         }
         $response = array();
         if (!empty($request)) {
@@ -751,8 +749,9 @@ class Basic_profile extends CI_Controller {
                 $user_id = $request->userId;
             }
             $user_mobile_phone = new stdClass();
+            $user_mobile_phone->id = $this->utils->generateRandomString(BASCI_PROFILE_HOME_TOWN_ID_LENGTH);
             if (property_exists($request, "phone") != FALSE) {
-                $user_mobile_phone->{$this->attr_map['phone']} = $request->phone;
+                $user_mobile_phone->phone = $request->phone;
             }
             $result = $this->basic_profile_mongodb_model->add_mobile_phone($user_id, $user_mobile_phone);
             if ($result != null) {
@@ -762,17 +761,70 @@ class Basic_profile extends CI_Controller {
         echo json_encode($response);
     }
 
-    function add_address() {
+    function edit_mobile_phone() {
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "phoneInfo") != FALSE) {
+            $request = $requestInfo->phoneInfo;
+        }
         $response = array();
         if (!empty($request)) {
-            $user_id = $request->userId;
+            $user_id = $this->session->userdata('user_id');
+            $user_mobile_phone = new stdClass();
+            if (property_exists($request, "id") != FALSE) {
+                $mobile_phone_id = $request->id;
+            }
+            $user_mobile_phone->id = $mobile_phone_id;
+            if (property_exists($request, "phone") != FALSE) {
+                $user_mobile_phone->phone = $request->phone;
+            }
+            $result = $this->basic_profile_mongodb_model->edit_mobile_phone($user_id, $mobile_phone_id, $user_mobile_phone);
+            if ($result != null) {
+                $response["mobile_phone"] = $user_mobile_phone;
+            }
+        }
+        echo json_encode($response);
+    }
+
+    function delete_mobile_phone() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $this->session->userdata('user_id');
+        $phone_id = $request->phoneId;
+        $response = array();
+        $result = array();
+        $result = $this->basic_profile_mongodb_model->delete_mobile_phone($user_id, $phone_id);
+        if ($result != null) {
+            $response["message"] = "Mobile Phone Delete Successfully";
+        }
+        echo json_encode($response);
+    }
+
+    function add_address() {
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "addressInfo") != FALSE) {
+            $request = $requestInfo->addressInfo;
+        }
+        $response = array();
+        if (!empty($request)) {
+            if (property_exists($request, "userId") != FALSE) {
+                $user_id = $request->userId;
+            }
             $user_address = new stdClass();
-            $user_address->address = $request->address;
-            $user_address->city = $request->city;
-            $user_address->postCode = $request->postCode;
-            $user_address->zip = $request->zip;
+            $user_address->id = $this->utils->generateRandomString(BASCI_PROFILE_HOME_TOWN_ID_LENGTH);
+            if (property_exists($request, "address") != FALSE) {
+                $user_address->address = $request->address;
+            }
+            if (property_exists($request, "city") != FALSE) {
+                $user_address->city = $request->city;
+            }
+            if (property_exists($request, "postCode") != FALSE) {
+                $user_address->post_code = $request->postCode;
+            }
+            if (property_exists($request, "zip") != FALSE) {
+                $user_address->zip = $request->zip;
+            }
             $result = $this->basic_profile_mongodb_model->add_address($user_id, $user_address);
             if ($result != null) {
                 $response["address"] = $user_address;
@@ -781,14 +833,69 @@ class Basic_profile extends CI_Controller {
         echo json_encode($response);
     }
 
-    function add_website() {
+    function edit_address() {
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "addressInfo") != FALSE) {
+            $request = $requestInfo->addressInfo;
+        }
         $response = array();
         if (!empty($request)) {
-            $user_id = $request->userId;
+            $user_id = $this->session->userdata('user_id');
+            $user_address = new stdClass();
+            if (property_exists($request, "id") != FALSE) {
+                $user_address->id = $request->id;
+            }
+            if (property_exists($request, "address") != FALSE) {
+                $user_address->address = $request->address;
+            }
+            if (property_exists($request, "city") != FALSE) {
+                $user_address->city = $request->city;
+            }
+            if (property_exists($request, "postCode") != FALSE) {
+                $user_address->post_code = $request->postCode;
+            }
+            if (property_exists($request, "zip") != FALSE) {
+                $user_address->zip = $request->zip;
+            }
+            $result = $this->basic_profile_mongodb_model->edit_address($user_id, $user_address);
+            if ($result != null) {
+                $response["address"] = $user_address;
+            }
+        }
+        echo json_encode($response);
+    }
+
+    function delete_address() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $this->session->userdata('user_id');
+        $address_id = $request->addressId;
+        $response = array();
+        $result = array();
+        $result = $this->basic_profile_mongodb_model->delete_address($user_id, $address_id);
+        if ($result != null) {
+            $response["message"] = "Mobile Phone Delete Successfully";
+        }
+        echo json_encode($response);
+    }
+
+    function add_website() {
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "websiteInfo") != FALSE) {
+            $request = $requestInfo->websiteInfo;
+        }
+        $response = array();
+        if (!empty($request)) {
+            if (property_exists($request, "userId") != FALSE) {
+                $user_id = $request->userId;
+            }
             $user_website = new stdClass();
-            $user_website->website = $request->website;
+            $user_website->id = $this->utils->generateRandomString(BASCI_PROFILE_HOME_TOWN_ID_LENGTH);
+            if (property_exists($request, "website") != FALSE) {
+                $user_website->website = $request->website;
+            }
             $result = $this->basic_profile_mongodb_model->add_website($user_id, $user_website);
             if ($result != null) {
                 $response["website"] = $user_website;
@@ -797,11 +904,53 @@ class Basic_profile extends CI_Controller {
         echo json_encode($response);
     }
 
-    function add_email() {
+    function edit_website() {
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "websiteInfo") != FALSE) {
+            $request = $requestInfo->websiteInfo;
+        }
         $response = array();
         if (!empty($request)) {
+            $user_id = $this->session->userdata('user_id');
+            $user_website = new stdClass();
+            if (property_exists($request, "id") != FALSE) {
+                $user_website->id = $request->id;
+            }
+            if (property_exists($request, "website") != FALSE) {
+                $user_website->website = $request->website;
+            }
+            $result = $this->basic_profile_mongodb_model->edit_website($user_id, $user_website);
+            if ($result != null) {
+                $response["website"] = $user_website;
+            }
+        }
+        echo json_encode($response);
+    }
+
+    function delete_website() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $user_id = $this->session->userdata('user_id');
+        $website_id = $request->websiteId;
+        $response = array();
+        $result = array();
+        $result = $this->basic_profile_mongodb_model->delete_website($user_id, $website_id);
+        if ($result != null) {
+            $response["message"] = "Website Delete Successfully";
+        }
+        echo json_encode($response);
+    }
+
+    function add_email() {
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "emailInfo") != FALSE) {
+            $request = $requestInfo->emailInfo;
+        }
+        $response = array();
+        if (!empty($request)) {
+
             $user_id = $request->userId;
             $user_email = new stdClass();
             $user_email->email = $request->email;
@@ -909,6 +1058,17 @@ class Basic_profile extends CI_Controller {
     }
 
     function test_add() {
+        //        $user_obj1 = new stdClass();
+//        $user_obj1->birth_day = "01";
+//        $user_obj1->birth_month = "02";
+//        $user_obj1->birth_year = "06";
+//        $user_test = new stdClass();
+//        $user_test->addresses = "Shanti niketon";
+//        $user_test->city = "Dhaka";
+//        $user_test->birth_date = $user_obj1;
+//        $result1 = $this->utils->json_encode_attr_map($user_test);
+//        var_dump($result1);
+//        exit;
 //        $arr['firstName'] = "dklfjsdf";
 //        $arr['lastName'] = "fsdfsdf";
 //        $arr['firstName'] = $_POST['firstName'];

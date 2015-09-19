@@ -18,7 +18,7 @@
                 <span class="subcategory_label_style">Website</span>
             </div>
             <div class="col-md-8">
-                <input type="text" class="form-control" ng-model="websiteInfo.website">
+                <input type="text" class="form-control" id="website_add_id" ng-model="websiteInfo.website">
             </div>
         </div>
         <div class="pagelet_divider"></div>
@@ -35,7 +35,7 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addWebsite('<?php echo $user_id; ?>')">Save</button>
+                        <button id="save_website_btn" class="btn btn-default form-control" style="background-color: #703684; color: white" onclick="add_website('<?php echo $user_id; ?>')">Save</button>
                     </div>
                     <div class="col-md-3">
                         <button class="form-control form_control_custom_style member_about_cancel_button cancel_website_window" >Cancel</button>
@@ -47,15 +47,27 @@
 </div>
 
 <script>
-    $(function() {
+    $(function () {
         // Website
-        $("#add_website").on("click", function() {
+        $("#add_website").on("click", function () {
             $("#add_website").hide();
             $("#website").show();
         });
-        $(".cancel_website_window").on("click", function() {
+        $(".cancel_website_window").on("click", function () {
             $("#website").hide();
             $("#add_website").show();
         });
     });
+    function add_website(userId) {
+        var website = $('#website_add_id').val();
+        if (website.length == 0) {
+            alert("Please Give Wibsite");
+            return;
+        }
+        angular.element($('#save_website_btn')).scope().addWebsite(userId, function () {
+            $('#website_id').show();
+            $("#website").hide();
+            $("#add_website").show();
+        });
+    }
 </script>

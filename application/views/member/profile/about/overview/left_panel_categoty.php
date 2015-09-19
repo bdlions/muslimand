@@ -99,19 +99,19 @@
     }
     function get_works_education(userId) {
         angular.element($('#category_overview')).scope().getWorksEducation(userId, function (data) {
-            if (data.work_places != "") {
+            if (typeof data.work_places != "undefined") {
                 $('#work_place_tmpl_id').show();
             }
-            if (data.p_skills != "") {
+            if (typeof data.p_skills != "undefined") {
                 $('#p_skill_tmpl_id').show();
             }
-            if (data.universities != "") {
+            if (typeof data.universities != "undefined") {
                 $('#uv_tmpl_id').show();
             }
-            if (data.colleges != "") {
+            if (typeof data.colleges != "undefined") {
                 $('#college_tmpl_id').show();
             }
-            if (data.schools != "") {
+            if (typeof data.schools != "undefined") {
                 $('#school_tmpl_id').show();
             }
             $('#about_overview').hide();
@@ -156,32 +156,31 @@
     }
     function get_contact_basic_info(userId) {
         angular.element($('#category_contact_info')).scope().getContactBasicInfo(userId, function (data) {
-            console.log(data.basic_info.bInfo.bDate);
             if (typeof data.basic_info !== "undefined") {
-                if (typeof data.basic_info.bInfo !== "undefined") {
-                    if (typeof data.basic_info.bInfo.mobilePhones !== "undefined") {
+                if (typeof data.basic_info !== "undefined") {
+                    if (typeof data.basic_info.mobile_phones !== "undefined") {
                         $('#mobile_phone_id').show();
                     }
-                    if (typeof data.basic_info.bInfo.addresses !== "undefined") {
+                    if (typeof data.basic_info.addresses !== "undefined") {
 
                         $('#address_id').show();
                     }
-                    if (typeof data.basic_info.bInfo.website !== "undefined") {
+                    if (typeof data.basic_info.website !== "undefined") {
                         $('#website_id').show();
                     }
-                    if (typeof data.basic_info.bInfo.emails !== "undefined") {
+                    if (typeof data.basic_info.emails !== "undefined") {
                         $('#email_id').show();
                     }
-                    if (typeof data.basic_info.bInfo.bDate !== "undefined") {
+                    if (typeof data.basic_info.birth_date !== "undefined") {
                         $('#birthday_id').show();
                     }
-                    if (typeof data.basic_info.bInfo.gender !== "undefined") {
+                    if (typeof data.basic_info.gender !== "undefined") {
                         $('#genderId').show();
                     }
-                    if (typeof data.basic_info.bInfo.language !== "undefined") {
+                    if (typeof data.basic_info.language !== "undefined") {
                         $('#language_id').show();
                     }
-                    if (typeof data.basic_info.bInfo.religions !== "undefined") {
+                    if (typeof data.basic_info.religions !== "undefined") {
                         $('#religion_id').show();
                     }
                 }

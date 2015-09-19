@@ -39,28 +39,28 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.getOverview = function (userId, requestFunction) {
                 basicProfileService.getOverviews(userId).
                         success(function (data, status, headers, config) {
-                            if (data.workPlace !== "") {
+                            if (data.workPlace !== "undefined") {
                                 $scope.overview.workPlace = data.workPlace;
                             }
-                            if (data.university !== "") {
+                            if (data.university !== "undefined") {
                                 $scope.overview.university = data.university;
                             }
-                            if (data.city !== "") {
+                            if (data.city !== "undefined") {
                                 $scope.overview.city = data.city;
                             }
-                            if (data.mobilePhone !== "") {
+                            if (data.mobilePhone !== "undefined") {
                                 $scope.overview.mobilePhone = data.mobilePhone;
                             }
-                            if (data.email !== "") {
+                            if (data.email !== "undefined") {
                                 $scope.overview.email = data.email;
                             }
-                            if (data.address !== "") {
+                            if (data.address !== "undefined") {
                                 $scope.overview.address = data.address;
                             }
-                            if (data.website !== "") {
+                            if (data.website !== "undefined") {
                                 $scope.overview.website = data.website;
                             }
-                            if (data.bDate !== "") {
+                            if (data.bDate !== "undefined") {
                                 $scope.overview.birthDate = data.bDate;
                             }
                             requestFunction(data)
@@ -73,19 +73,19 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 basicProfileService.getWorksEducation(userId).
                         success(function (data, status, headers, config) {
                             $scope.yearList = data.year_list;
-                            if (data.work_places != "") {
+                            if (data.work_places != "undefined") {
                                 $scope.workPlaces = data.work_places;
                             }
-                            if (data.p_skills != "") {
+                            if (data.p_skills != "undefined") {
                                 $scope.pSkills = data.p_skills;
                             }
-                            if (data.universities != "") {
+                            if (data.universities != "undefined") {
                                 $scope.universities = data.universities;
                             }
-                            if (data.colleges != "") {
+                            if (data.colleges != "undefined") {
                                 $scope.colleges = data.colleges;
                             }
-                            if (data.schools != "") {
+                            if (data.schools != "undefined") {
                                 $scope.schools = data.schools;
                             }
                             requestFunction(data);
@@ -222,10 +222,10 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.getCityTown = function (userId, requestFunction) {
                 basicProfileService.getCityTown(userId).
                         success(function (data, status, headers, config) {
-                            if (data.city_town.city != "") {
+                            if (data.city_town.city != "undefined") {
                                 $scope.city = data.city_town.city;
                             }
-                            if (data.city_town.town != "") {
+                            if (data.city_town.town != "undefined") {
                                 $scope.town = data.city_town.town;
                             }
                             requestFunction(data);
@@ -286,32 +286,33 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.getContactBasicInfo = function (userId, requestFunction) {
                 basicProfileService.getContactBasicInfo(userId).
                         success(function (data, status, headers, config) {
-                            if (data.basic_info !== "") {
-                                if (data.basic_info.bInfo !== "") {
-                                    if (data.basic_info.bInfo.mbs !== "") {
-                                        $scope.mobilePhones = data.basic_info.bInfo.mobilePhones;
+                            if (data.basic_info !== "undefined") {
+                                if (data.basic_info !== "undefined") {
+                                    
+                                    if (typeof data.basic_info.mobile_phones !== "undefined") {
+                                        $scope.mobilePhones = data.basic_info.mobile_phones;
                                     }
-                                    if (data.basic_info.bInfo.addresses !== "") {
+                                    if (data.basic_info.addresses !== "undefined") {
 
-                                        $scope.address = data.basic_info.bInfo.addresses;
+                                        $scope.address = data.basic_info.addresses;
                                     }
-                                    if (data.basic_info.bInfo.website !== "") {
-                                        $scope.website = data.basic_info.bInfo.website;
+                                    if (data.basic_info.website !== "undefined") {
+                                        $scope.website = data.basic_info.website;
                                     }
-                                    if (data.basic_info.bInfo.emails !== "") {
-                                        $scope.emails = data.basic_info.bInfo.emails;
+                                    if (data.basic_info.emails !== "undefined") {
+                                        $scope.emails = data.basic_info.emails;
                                     }
-                                    if (data.basic_info.bInfo.bDate !== "") {
-                                        $scope.birthDate = data.basic_info.bInfo.bDate;
+                                    if (data.basic_info.birth_date !== "undefined") {
+                                        $scope.birthDate = data.basic_info.birth_date;
                                     }
-                                    if (data.basic_info.bInfo.gender !== "") {
-                                        $scope.gender = data.basic_info.bInfo.gender;
+                                    if (data.basic_info.gender !== "undefined") {
+                                        $scope.gender = data.basic_info.gender;
                                     }
-                                    if (data.basic_info.bInfo.language !== "") {
-                                        $scope.languages = data.basic_info.bInfo.language;
+                                    if (data.basic_info.language !== "undefined") {
+                                        $scope.languages = data.basic_info.language;
                                     }
-                                    if (data.basic_info.bInfo.religions !== "") {
-                                        $scope.religion = data.basic_info.bInfo.religions;
+                                    if (data.basic_info.religions !== "undefined") {
+                                        $scope.religion = data.basic_info.religions;
                                     }
                                 }
                             }
@@ -320,35 +321,73 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
 
             };
             $scope.addPhone = function (userId, requestFunction) {
-                $scope.PhoneInfo.userId = userId;
-                basicProfileService.addPhone($scope.PhoneInfo).
+                $scope.phoneInfo.userId = userId;
+                basicProfileService.addPhone($scope.phoneInfo).
                         success(function (data, status, headers, config) {
-                            console.log(data);
                             $scope.mobilePhones.push(data.mobile_phone);
-                            $scope.PhoneInfo = "";
+                            $scope.phoneInfo = "";
                             requestFunction();
                         });
             };
-            $scope.addAddress = function (userId) {
+
+            $scope.editMobilePhone = function (phoneInfo, requestFunction) {
+                console.log(phoneInfo);
+                basicProfileService.editMobilePhone(phoneInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.phoneInfo = "";
+                            requestFunction();
+                        });
+            };
+
+            $scope.deleteMobilePhone = function (phoneId, requestFunction) {
+                basicProfileService.deleteMobilePhone(phoneId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+            };
+
+            $scope.addAddress = function (userId, requestFunction) {
                 $scope.addressInfo.userId = userId;
                 basicProfileService.addAddress($scope.addressInfo).
                         success(function (data, status, headers, config) {
-                            $('#address_id').show();
                             $scope.address = data.address;
                             $scope.addressInfo = "";
-                            $("#address").hide();
-                            $("#add_address").show();
+                            requestFunction();
                         });
             };
-            $scope.addWebsite = function (userId) {
+            $scope.editAddress = function (addressInfo, requestFunction) {
+                basicProfileService.editAddress(addressInfo).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+            };
+
+            $scope.deleteAddress = function (addressId, requestFunction) {
+                basicProfileService.deleteAddress(addressId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+            };
+
+            $scope.addWebsite = function (userId, requestFunction) {
                 $scope.websiteInfo.userId = userId;
                 basicProfileService.addWebsite($scope.websiteInfo).
                         success(function (data, status, headers, config) {
-                            $('#website_id').show();
                             $scope.website = data.website;
                             $scope.websiteInfo = "";
-                            $("#website").hide();
-                            $("#add_website").show();
+                            requestFunction();
+                        });
+            };
+            $scope.editWebsite = function (websiteInfo, requestFunction) {
+                basicProfileService.editWebsite(websiteInfo).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+            };
+            $scope.deleteWebsite = function (websiteId, requestFunction) {
+                basicProfileService.deleteWebsite(websiteId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
                         });
             };
             $scope.addEmail = function (userId) {
@@ -367,12 +406,12 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.getFamilyRelation = function (userId, requestFunction) {
                 basicProfileService.getFamilyRelation(userId).
                         success(function (data, status, headers, config) {
-                            if (data.family_relations != "") {
-                                if (data.family_relations.bInfo != "") {
-                                    if (data.family_relations.bInfo.relationshipStatus != "") {
+                            if (data.family_relations != "undefined") {
+                                if (data.family_relations.bInfo != "undefined") {
+                                    if (data.family_relations.bInfo.relationshipStatus != "undefined") {
                                         $scope.rStatus = data.family_relations.bInfo.relationshipStatus;
                                     }
-                                    if (data.family_relations.bInfo.familyMember != "") {
+                                    if (data.family_relations.bInfo.familyMember != "undefined") {
                                         $scope.fMemebers = data.family_relations.bInfo.familyMember;
                                     }
                                 }
@@ -399,13 +438,13 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.getAboutFQuote = function (userId) {
                 basicProfileService.getAboutFQuote(userId).
                         success(function (data, status, headers, config) {
-                            if (data.about_fquote != "") {
-                                if (data.about_fquote.about != "") {
+                            if (data.about_fquote != "undefined") {
+                                if (data.about_fquote.about != "undefined") {
                                     $('#aboutId').show();
                                     $scope.about = data.about_fquote.about;
                                     console.log($scope.about);
                                 }
-                                if (data.about_fquote.fQuote != "") {
+                                if (data.about_fquote.fQuote != "undefined") {
                                     $('#fQuoteId').show();
                                     $scope.fQuote = data.about_fquote.fQuote;
                                     console.log($scope.fQuote);

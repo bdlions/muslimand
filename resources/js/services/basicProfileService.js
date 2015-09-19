@@ -249,12 +249,30 @@ angular.module('services.BasicProfile', []).
                 };
 
 
-                basicProfileService.addPhone = function (PhoneInfo) {
+                basicProfileService.addPhone = function (phoneInfo) {
                     return $http({
                         method: 'post',
                         url: '../basic_profile/add_mobile_phone',
                         data: {
-                            PhoneInfo: PhoneInfo
+                            phoneInfo: phoneInfo
+                        }
+                    });
+                };
+                basicProfileService.editMobilePhone = function (phoneInfo) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/edit_mobile_phone',
+                        data: {
+                            phoneInfo: phoneInfo
+                        }
+                    });
+                };
+                basicProfileService.deleteMobilePhone = function (phoneId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/delete_mobile_phone',
+                        data: {
+                            phoneId: phoneId
                         }
                     });
                 };
@@ -263,11 +281,25 @@ angular.module('services.BasicProfile', []).
                         method: 'post',
                         url: '../basic_profile/add_address',
                         data: {
-                            userId: addressInfo.userId,
-                            address: addressInfo.address,
-                            city: addressInfo.city,
-                            postCode: addressInfo.postCode,
-                            zip: addressInfo.zip,
+                            addressInfo: addressInfo
+                        },
+                    });
+                };
+                basicProfileService.editAddress = function (addressInfo) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/edit_address',
+                        data: {
+                            addressInfo: addressInfo
+                        },
+                    });
+                };
+                basicProfileService.deleteAddress = function (addressId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/delete_address',
+                        data: {
+                            addressId: addressId
                         },
                     });
                 };
@@ -276,8 +308,25 @@ angular.module('services.BasicProfile', []).
                         method: 'post',
                         url: '../basic_profile/add_website',
                         data: {
-                            userId: websiteInfo.userId,
-                            website: websiteInfo.website,
+                            websiteInfo: websiteInfo
+                        },
+                    });
+                };
+                basicProfileService.editWebsite = function (websiteInfo) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/edit_website',
+                        data: {
+                            websiteInfo: websiteInfo
+                        },
+                    });
+                };
+                basicProfileService.deleteWebsite = function (websiteId) {
+                    return $http({
+                        method: 'post',
+                        url: '../basic_profile/delete_website',
+                        data: {
+                            websiteId: websiteId
                         },
                     });
                 };
@@ -286,8 +335,7 @@ angular.module('services.BasicProfile', []).
                         method: 'post',
                         url: '../basic_profile/add_email',
                         data: {
-                            userId: emailInfo.userId,
-                            email: emailInfo.email,
+                            emailInfo: emailInfo
                         },
                     });
                 };

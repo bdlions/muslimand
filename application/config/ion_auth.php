@@ -37,7 +37,8 @@ $config['collections']['login_attempts'] = 'login_attempts';
 $config['collections']['countries'] = 'countries';
 $config['collections']['user_profiles'] = 'user_profiles';
 $config['collections']['religions'] = 'religions';
-
+$config['attr_map']['address'] = "adrs";
+$config['attr_map']['addresses'] = "adrses";
 $config['attr_map']['account_status_id'] = 'asId';
 $config['attr_map']['basic_info'] = 'bInfo';
 $config['attr_map']['birth_date'] = 'bDate';
@@ -57,10 +58,14 @@ $config['attr_map']['gender'] = 'gender';
 $config['attr_map']['gender_id'] = 'gId';
 $config['attr_map']['groups'] = 'groups';
 $config['attr_map']['group_id'] = 'gId';
+$config['attr_map']['id'] = 'id';
 $config['attr_map']['ip_address'] = 'ia';
 $config['attr_map']['last_login'] = 'll';
 $config['attr_map']['last_name'] = 'ln';
+$config['attr_map']['mobile_phones'] = 'mps';
 $config['attr_map']['password'] = 'pwd';
+
+$config['attr_map']['post_code'] = 'pc';
 $config['attr_map']['position'] = 'pos';
 $config['attr_map']['professional_skill'] = 'ps';
 $config['attr_map']['phone'] = 'phn';
@@ -71,13 +76,31 @@ $config['attr_map']['title'] = 'title';
 $config['attr_map']['university'] = 'uni';
 $config['attr_map']['username'] = 'un';
 $config['attr_map']['user_id'] = 'uId';
+$config['attr_map']['website'] = 'ws';
+$config['attr_map']['zip'] = 'zip';
 
+$config['rev_attr_map']['_id'] = '_id';
+$config['rev_attr_map']['asId'] = "account_status_id";
+$config['rev_attr_map']['adrs'] = "address";
+$config['rev_attr_map']['adrses'] = "addresses";
+$config['rev_attr_map']['bDate'] = 'birth_date';
+$config['rev_attr_map']['bd'] = 'birth_day';
+$config['rev_attr_map']['bm'] = 'birth_month';
+$config['rev_attr_map']['by'] = 'birth_year';
+$config['rev_attr_map']['bInfo'] = 'basic_info';
+$config['rev_attr_map']['cmp'] = 'company';
+$config['rev_attr_map']['cty'] = 'country';
+$config['rev_attr_map']['ct'] = 'city';
+$config['rev_attr_map']['gId'] = 'gender_id';
+$config['rev_attr_map']['id'] = 'id';
+$config['rev_attr_map']['mps'] = 'mobile_phones';
+$config['rev_attr_map']['pc'] = 'post_code';
+$config['rev_attr_map']['phn'] = 'phone';
+$config['rev_attr_map']['pos'] = 'position';
+$config['rev_attr_map']['uId'] = 'user_id';
+$config['rev_attr_map']['ws'] = 'website';
+$config['rev_attr_map']['zip'] = 'zip';
 
-$config['rev_attr_map']['asId']                  = "account_status_id";
-$config['rev_attr_map']['bDate']                 = 'birth_date';
-$config['rev_attr_map']['bInfo']                 = 'basic_info';
-$config['rev_attr_map']['cmp']                   = 'company';
-$config['rev_attr_map']['pos']                   = 'position';
 
 
 /*

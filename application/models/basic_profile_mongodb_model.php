@@ -6,6 +6,7 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
 
     public function __construct() {
         parent::__construct();
+        $this->load->library('Utils');
         $this->SERVICE_BASIC_PROFILE = SERVICE_PATH . "basicProfile/";
     }
 
@@ -218,7 +219,7 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
     public function get_contact_basic_info($user_id) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'getContactBasicInfo');
         $this->curl->post(array("userId" => $user_id));
-        return json_decode($this->curl->execute());
+        return $this->utils->json_decode_attr_map($this->curl->execute());
     }
 
     public function get_about_fquote($user_id) {
@@ -283,25 +284,69 @@ class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
 
     public function add_mobile_phone($user_id, $mobile_phone_info) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addMobilePhone');
-        $this->curl->post(array("userId" => $user_id, "mobilePhoneInfo" => json_encode($mobile_phone_info)));
+        $this->curl->post(array("userId" => $user_id, "mobilePhoneInfo" => $this->utils->json_encode_attr_map($mobile_phone_info)));
+        return $this->curl->execute();
+    }
+
+    public function edit_mobile_phone($user_id, $mobile_phone_id, $mobile_phone_info) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editMobilePhone');
+        $this->curl->post(array("userId" => $user_id, "mobileId" => $mobile_phone_id, "mobilePhoneInfo" => $this->utils->json_encode_attr_map($mobile_phone_info)));
+        return $this->curl->execute();
+    }
+
+    public function delete_mobile_phone($user_id, $mobile_phone_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'deleteMobilePhone');
+        $this->curl->post(array("userId" => $user_id, "phoneId" => $mobile_phone_id));
         return $this->curl->execute();
     }
 
     public function add_address($user_id, $address_info) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addAddress');
-        $this->curl->post(array("userId" => $user_id, "addressInfo" => json_encode($address_info)));
+        $address = $this->utils->json_encode_attr_map($address_info);
+        var_dump($address);
+        $this->curl->post(array("userId" => $user_id, "addressInfo" => $address));
+        return $this->curl->execute();
+    }
+
+    public function edit_address($user_id, $address_info) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editAddress');
+        $this->curl->post(array("userId" => $user_id, "addressInfo" => $this->utils->json_encode_attr_map($address_info)));
+        return $this->curl->execute();
+    }
+
+    public function delete_address($user_id, $address_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'deleteAddress');
+        $this->curl->post(array("userId" => $user_id, "addressId" => $address_id));
         return $this->curl->execute();
     }
 
     public function add_website($user_id, $website_info) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addWebsite');
-        $this->curl->post(array("userId" => $user_id, "websiteInfo" => json_encode($website_info)));
+        $this->curl->post(array("userId" => $user_id, "websiteInfo" => $this->utils->json_encode_attr_map($website_info)));
+        return $this->curl->execute();
+    }
+
+    public function edit_website($user_id, $website_info) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editWebsite');
+        $this->curl->post(array("userId" => $user_id, "websiteInfo" => $this->utils->json_encode_attr_map($website_info)));
+        return $this->curl->execute();
+    }
+
+    public function delete_website($user_id, $website_id) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'deleteWebsite');
+        $this->curl->post(array("userId" => $user_id, "websiteId" => $website_id));
         return $this->curl->execute();
     }
 
     public function add_email($user_id, $email_info) {
         $this->curl->create($this->SERVICE_BASIC_PROFILE . 'addEmail');
-        $this->curl->post(array("userId" => $user_id, "emailInfo" => json_encode($email_info)));
+        $this->curl->post(array("userId" => $user_id, "emailInfo" => $this->utils->json_encode_attr_map($email_info)));
+        return $this->curl->execute();
+    }
+
+    public function edit_email($user_id, $email_info) {
+        $this->curl->create($this->SERVICE_BASIC_PROFILE . 'editEmail');
+        $this->curl->post(array("userId" => $user_id, "emailInfo" => $this->utils->json_encode_attr_map($email_info)));
         return $this->curl->execute();
     }
 

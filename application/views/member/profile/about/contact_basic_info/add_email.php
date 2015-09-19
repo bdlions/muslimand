@@ -18,7 +18,7 @@
                 <span class="subcategory_label_style">Email</span>
             </div>
             <div class="col-md-8">
-                <input type="text" class="form-control" ng-model="emailInfo.email">
+                <input type="text" id="email_add_id" class="form-control" ng-model="emailInfo.email">
             </div>
         </div>
         <div class="pagelet_divider"></div>
@@ -35,7 +35,7 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button id="" class="btn btn-default form-control" style="background-color: #703684; color: white" ng-click="addEmail('<?php echo $user_id; ?>')">Save</button>
+                        <button id="save_email_btn" class="btn btn-default form-control" style="background-color: #703684; color: white" onclick="add_email('<?php echo $user_id; ?>')">Save</button>
                     </div>
                     <div class="col-md-3">
                         <button class="form-control form_control_custom_style member_about_cancel_button cancel_email_window" >Cancel</button>
@@ -47,15 +47,27 @@
 </div>
 
 <script>
-    $(function() {
+    $(function () {
         // Email
-        $("#add_email").on("click", function() {
+        $("#add_email").on("click", function () {
             $("#add_email").hide();
             $("#email").show();
         });
-        $(".cancel_email_window").on("click", function() {
+        $(".cancel_email_window").on("click", function () {
             $("#email").hide();
             $("#add_email").show();
         });
     });
+    function add_email(userId) {
+        var email = $('#email_add_id').val();
+        if (email.length == 0) {
+            alert("Please Give your Email");
+            return;
+        }
+        angular.element($('#save_email_btn')).scope().addEmail(userId, function () {
+            $('#email_id').show();
+            $("#email").hide();
+            $("#add_email").show();
+        });
+    }
 </script>

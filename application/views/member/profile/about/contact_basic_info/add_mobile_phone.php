@@ -18,7 +18,7 @@
                 <span class="subcategory_label_style">Mobile or Phone</span>
             </div>
             <div class="col-md-8">
-                <input type="text" id="phone_add_id" class="form-control" ng-model="PhoneInfo.phone">
+                <input type="text" id="phone_add_id" class="form-control" ng-model="phoneInfo.phone">
             </div>
         </div>
         <div class="pagelet_divider"></div>
