@@ -12,6 +12,21 @@ angular.module('controllers.Photo', ['services.Photo']).
                 $scope.albums = JSON.parse(albumList);
             };
 
+
+
+            $scope.getAllAlbums = function (userId) {
+
+            };
+
+            $scope.getAlbum = function (userId) {
+
+            };
+//
+//            $scope.getLatest = function (userId) {
+//
+//            };
+
+
             $scope.createAlbum = function () {
                 photoService.createAlbum($scope.albumInfo).
                         success(function (data, status, headers, config) {
@@ -20,12 +35,85 @@ angular.module('controllers.Photo', ['services.Photo']).
                             alert(data.message);
                         });
             };
+
+            $scope.editAlbum = function (albumId, albumInfo) {
+
+
+            };
+
+            $scope.deleteAlbum = function (albumId) {
+
+
+            };
+
+            $scope.addAlbumLike = function (likeInfo) {
+
+
+            };
+
+            $scope.deleteAlbumLike = function (albumId, likeId) {
+
+
+            };
+
+            $scope.addAlbumComment = function (commentInfo) {
+
+
+            };
+
+            $scope.editAlbumComment = function (commentInfo) {
+
+
+            };
+
+            $scope.deleteAlbumComment = function (albumId, commentId) {
+
+
+            };
+
+            $scope.AddAlbumShare = function (shareInfo) {
+
+
+            };
+            //.............................photo module...............
+            $scope.getPhotos = function (userId) {
+
+            };
+
+            $scope.getPhoto = function (userId) {
+
+            };
+
             $scope.addPhoto = function () {
-                console.log($scope.photoInfo);
                 photoService.addPhoto($scope.photoInfo).
                         success(function (data, status, headers, config) {
                             alert(data.message);
                         });
             };
+
+            $scope.addPhotoLike = function (photoInfo) {
+
+            };
+
+            $scope.deletePhotoLike = function (photoInfo) {
+
+            };
+
+            $scope.addPhotoComment = function (photoCommentInfo) {
+
+            };
+
+            $scope.editPhotoComment = function (photoCommentInfo) {
+
+            };
+
+            $scope.deletePhotoComment = function (albumId, commentId) {
+
+            };
+
+            $scope.searchPhoto = function () {
+
+            };
+
 
         });
