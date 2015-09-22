@@ -7,11 +7,11 @@
 <div class="row form-group"></div>
 <div class="row form-group font_11px">
     <div class="col-md-3">
-        <a href="" >
+        <a href="<?php echo base_url();?>photos/photos_view_albums_pic" >
             <img style="border: 1px solid #703684;" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="120" height="100">
         </a>
         <div class="border_without_bottom" >
-            <a href="" > Profile Pictures</a><br>
+            <a href="<?php echo base_url();?>photos/photos_view_albums_pic" > Profile Pictures</a><br>
             72 photos
         </div>
     </div>

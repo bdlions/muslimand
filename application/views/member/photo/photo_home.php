@@ -162,13 +162,9 @@
                 <div class="pagelet_divider"></div>
                 <div class="row">
                     <div class="col-md-9">
-
                         <?php $this->load->view("member/pagelets/photo/sort_latest"); ?>
                     </div>
-                    <div class="col-md-3">
-
-
-                    </div>
+                    <div class="col-md-3"></div>
                 </div>
                 <div class="col-md-1"></div>
             </div>

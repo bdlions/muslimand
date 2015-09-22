@@ -95,6 +95,9 @@ border: 1px solid #703684;
 .pagelet {
     margin: 15px;
 }
+.pagelet_mg_custom {
+    margin: 0px!important;
+}
 
 .pagelet_divider{
     border-bottom: 1px solid lightgray;

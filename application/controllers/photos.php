@@ -30,6 +30,9 @@ class Photos extends CI_Controller {
     function photos_view_my() {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my");
     }
+    function photos_view_albums_pic() {
+        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums_view");
+    }
 
     function photos_view_friend() {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_friend");

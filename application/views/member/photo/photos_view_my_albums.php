@@ -109,12 +109,9 @@
                 <div class="row">
                     <div ng-init="setUserAlbumList(<?php echo htmlspecialchars(json_encode($user_album_list)); ?>)" >
                         <div class="col-md-9">
-
                             <?php $this->load->view("member/pagelets/photo/sort_view_my_albums"); ?>
                         </div>
                         <div class="col-md-3">
-
-
                         </div>
                     </div>
                     <div class="col-md-1"></div>
