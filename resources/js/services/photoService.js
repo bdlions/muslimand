@@ -4,15 +4,6 @@ angular.module('services.Photo', []).
 
 
 
-            photoService.getAllAlbums = function (userId) {
-                return $http({
-                    method: 'post',
-                    url: '../photos/get_all_albums',
-                    data: {
-                        userId: userId
-                    }
-                });
-            };
             photoService.getAlbum = function (albumId) {
                 return $http({
                     method: 'post',

@@ -22,7 +22,9 @@ class Photos extends CI_Controller {
     }
 
     function index() {
-        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_home");
+        $user_id = $this->session->userdata('user_id');
+        $this->data['user_id'] = $user_id;
+        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_home", $this->data);
     }
 
     function photos_view_my() {
@@ -36,11 +38,6 @@ class Photos extends CI_Controller {
     function photos_albums() {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums");
     }
-
-    function photos_view_my_albums() {
-        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my_albums");
-    }
-
     function photos_sort_most_viewed() {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_sort_most_viewed");
     }
@@ -57,14 +54,18 @@ class Photos extends CI_Controller {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_gallery");
     }
 
-    function get_all_albums() {
-        $response = array();
-        $postdata = file_get_contents("php://input");
-        $requestInfo = json_decode($postdata);
-        if (property_exists($requestInfo, "userId") != FALSE) {
-            $user_id = $requestInfo->userId;
+    function get_user_albums() {
+        $user_id = $this->session->userdata('user_id');
+        $result = $this->photo_mongodb_model->get_user_albums($user_id);
+        $result_array = json_decode($result);
+        if (!empty($result_array)) {
+            if(property_exists($result_array, "albumList")){
+            $this->data['user_album_list'] = json_encode($result_array->albumList);
+            }
         }
+        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my_albums",$this->data);
     }
+
     function get_album() {
         $response = array();
         $postdata = file_get_contents("php://input");
@@ -81,17 +82,26 @@ class Photos extends CI_Controller {
         if (property_exists($requestInfo, "albumInfo") != FALSE) {
             $request = $requestInfo->albumInfo;
         }
-        $album_info = new stdClass();
-        $album_info->albumId = "4"; //this need to autoincrement id ;
-        $album_info->userId = $user_id; //from session;
-        $album_info->title = $request->title;
-        $album_info->description = $request->description;
-        $result = $this->photo_mongodb_model->create_album($album_info);
-        if ($result != null) {
-            $response["album_lsit"] = $album_info;
-            $response["message"] = "Create Album Successfully";
+        if (!empty($request)) {
+            $album_info = new stdClass();
+            $album_info->albumId = $this->utils->generateRandomString(USER_PHOTO_CREATE_ALBUM_ID_LENGTH);
+            $album_info->userId = $this->session->userdata('user_id');
+            if (property_exists($request, "title") != FALSE) {
+                $album_info->title = $request->title;
+            }
+            if (property_exists($request, "description") != FALSE) {
+                $album_info->description = $request->description;
+            }
+            $result = $this->photo_mongodb_model->create_album($album_info);
+            if ($result != null) {
+                $response["album_lsit"] = $album_info;
+                $response["message"] = "Create Album Successfully";
+            }
+            echo json_encode($response);
+        } else {
+            $response['message'] = "Create Album is Failed ! ";
+            echo json_encode($response);
         }
-        echo json_encode($response);
     }
 
     function edit_album() {
@@ -184,7 +194,7 @@ class Photos extends CI_Controller {
         $category_list = array();
         $album_list = array();
         $response = array();
-        $user_id = "100157";
+        $user_id = $this->session->userdata('user_id');
         if (!empty($request)) {
             $photo_info = new stdClass();
             $photo_info->photoId = "1"; //this need to autoincrement id ;

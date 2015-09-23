@@ -5,23 +5,14 @@
 </div>
 <div class="pagelet_divider"></div>
 <div class="row form-group"></div>
-<div class="row form-group font_11px">
-    <div class="col-md-3">
+<div class="row form-group font_11px" >
+    <div class="col-md-3" ng-repeat="album in userAlbums">
         <a href="" >
             <img style="border: 1px solid #703684;" src="<?php echo base_url(); ?>resources/images/photos/albums/English_Cotton/03.jpg" width="120" height="100">
         </a>
         <div class="border_without_bottom" >
-            <a href="" > English Cotton</a><br>
-            35 photos
-        </div>
-    </div>
-    <div class="col-md-3">
-        <a href="" >
-            <img style="border: 1px solid #703684;" src="<?php echo base_url(); ?>resources/images/photos/albums/Perfumes/05.jpg" width="120" height="100">
-        </a>
-        <div class="border_without_bottom" >
-            <a href="" >Perfumes</a><br>
-            78 photos
+            <a href="" > <span ng-bind="album.title"></span></a><br>
+            <span ng-bind="album.totalImg"></span> photos
         </div>
     </div>
 </div>

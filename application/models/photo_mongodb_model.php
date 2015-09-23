@@ -29,7 +29,7 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function get_all_albums($user_id) {
+    public function get_user_albums($user_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getAlbums');
         $this->curl->post(array("userId" => $user_id));
         return $this->curl->execute();
@@ -71,7 +71,7 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
 
     public function edit_album($user_id, $album_id, $album_info) {
         $this->curl->create($this->SERVICE_PHOTO . 'editAlbum');
-        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id, "albumInfo" => json_encode($album_info)));
+        $this->curl->post(array("albumId" => $album_id, "albumInfo" => json_encode($album_info)));
         return $this->curl->execute();
     }
 
@@ -84,7 +84,7 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
 
     public function delete_album($user_id, $album_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'deleteAlbum');
-        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id));
+        $this->curl->post(array("albumId" => $album_id));
         return $this->curl->execute();
     }
 
@@ -96,9 +96,9 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Shemin on 20th September 2015
      */
 
-    public function add_album_like($user_id, $album_id, $like_info) {
+    public function add_album_like($album_id, $like_info) {
         $this->curl->create($this->SERVICE_PHOTO . 'addAlbumLike');
-        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id, "likeInfo" => json_encode($like_info)));
+        $this->curl->post(array("albumId" => $album_id, "likeInfo" => json_encode($like_info)));
         return $this->curl->execute();
     }
 
@@ -109,9 +109,9 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Shemin on 20th September 2015
      */
 
-    public function delete_album_like($user_id, $album_id) {
+    public function delete_album_like($album_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'deleteAlbumLike');
-        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id));
+        $this->curl->post(array("albumId" => $album_id));
         return $this->curl->execute();
     }
 
@@ -123,23 +123,23 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function add_album_comment($user_id, $album_id, $comment_info) {
+    public function add_album_comment($album_id, $comment_info) {
         $this->curl->create($this->SERVICE_PHOTO . 'addAlbumComment');
-        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id, "commentInfo" => json_encode($comment_info)));
+        $this->curl->post(array("albumId" => $album_id, "commentInfo" => json_encode($comment_info)));
         return $this->curl->execute();
     }
 
     /*
      * This method will edit album comment
-     * @param $user_id, user id 
      * @param $album_id,album id 
+     * @param $comment_id, comment id 
      * @param $comment_info,comment informations
      * @author created by Rashida on 20th September 2015
      */
 
-    public function edit_album_comment($user_id, $album_id, $comment_info) {
+    public function edit_album_comment($album_id, $comment_id, $comment_info) {
         $this->curl->create($this->SERVICE_PHOTO . 'editAlbumComment');
-        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id, "commentInfo" => json_encode($comment_info)));
+        $this->curl->post(array("albumId" => $album_id, "commentId" => $comment_id, "commentInfo" => json_encode($comment_info)));
         return $this->curl->execute();
     }
 
@@ -150,9 +150,9 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function delete_album_comment($user_id, $album_id) {
+    public function delete_album_comment($album_id, $comment_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'deleteAlbumComment');
-        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id));
+        $this->curl->post(array("albumId" => $album_id, "commentId" => $comment_id,));
         return $this->curl->execute();
     }
 
@@ -205,7 +205,7 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
 
     public function edit_photo($album_id, $photo_id, $photo_info) {
         $this->curl->create($this->SERVICE_PHOTO . 'editPhoto');
-        $this->curl->post(array("albumId" => $album_id, "photoId" => $photo_id, "photoInfo" => json_encode($photo_info)));
+        $this->curl->post(array("photoId" => $photo_id, "photoInfo" => json_encode($photo_info)));
         return $this->curl->execute();
     }
 
@@ -216,9 +216,9 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function delete_photo($album_id, $photo_id) {
+    public function delete_photo($photo_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'deletePhoto');
-        $this->curl->post(array("albumId" => $album_id, "photoId" => $photo_id));
+        $this->curl->post(array("photoId" => $photo_id));
         return $this->curl->execute();
     }
 
@@ -232,7 +232,7 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
 
     public function add_photo_like($album_id, $photo_id, $like_info) {
         $this->curl->create($this->SERVICE_PHOTO . 'addPhotoLike');
-        $this->curl->post(array("albumId" => $album_id, "photoId" => $photo_id, "likeInfo" => json_encode($like_info)));
+        $this->curl->post(array("photoId" => $photo_id, "likeInfo" => json_encode($like_info)));
         return $this->curl->execute();
     }
 
@@ -243,23 +243,22 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function delete_photo_like($album_id, $photo_id) {
+    public function delete_photo_like($photo_id, $like_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'deletePhotoLike');
-        $this->curl->post(array("albumId" => $album_id, "photoId" => $photo_id));
+        $this->curl->post(array("photoId" => $photo_id, "likeId" => $like_id));
         return $this->curl->execute();
     }
 
     /*
      * This method will add photo comment
-     * @param $album_id,album id 
      * @param $photo_id,photo id 
      * @param $coment_info, comment info 
      * @author created by Rashida on 20th September 2015
      */
 
-    public function add_photo_comment($album_id, $photo_id, $coment_info) {
+    public function add_photo_comment($photo_id, $coment_info) {
         $this->curl->create($this->SERVICE_PHOTO . 'addPhotoComment');
-        $this->curl->post(array("albumId" => $album_id, "photoId" => $photo_id, "commentInfo" => json_encode($coment_info)));
+        $this->curl->post(array("photoId" => $photo_id, "commentInfo" => json_encode($coment_info)));
         return $this->curl->execute();
     }
 
@@ -284,9 +283,9 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function delete_photo_comment($album_id, $photo_id) {
+    public function delete_photo_comment($photo_id,$comment_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'deletePhotoComment');
-        $this->curl->post(array("albumId" => $album_id, "photoId" => $photo_id));
+        $this->curl->post(array("photoId" => $photo_id,"commentId" => $comment_id));
         return $this->curl->execute();
     }
 

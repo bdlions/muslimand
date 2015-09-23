@@ -1,6 +1,3 @@
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/photoController.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/photoService.js "></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/photoApp.js "></script>
 <div ng-app="app.Photo">
     <div ng-controller="photoController"  ng-init="setPhotoCategories(<?php echo htmlspecialchars(json_encode($category_list)); ?>)" >
         <div class="row form-group"></div>
@@ -24,7 +21,7 @@
                 <div class="row">
                     <div class="col-md-4" ng-init="setAlbums(<?php echo htmlspecialchars(json_encode($album_lsit)); ?>)">
                         <span style="font-size: 16px; font-weight: bold;">* Photo Album:</span><br>
-                         <select class="form-control"  ng-options="album.albumId as album.title for album in albums" ng-model="photoInfo.albumId">
+                        <select class="form-control"  ng-options="album.albumId as album.title for album in albumList" ng-model="photoInfo.albumId">
                             <option value="" selected>Select Album</option>
                         </select>
                         <a style="text-decoration: none; cursor: pointer;"> <span id="createAlbumIdOnClick">(Create a New Photo Album)</span></a>
@@ -36,7 +33,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span style="font-size: 16px; font-weight: bold;">* Category:</span><br>
-                        <select class="form-control"  ng-options="category.categoryId as category.title for category in categories" ng-model="photoInfo.categoryId">
+                        <select class="form-control"  ng-options="category.categoryId as category.title for category in categoryList" ng-model="photoInfo.categoryId">
                             <option value="" selected>Select Category</option>
                         </select>
                     </div>
@@ -76,7 +73,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <span style="font-size: 16px; font-weight: bold;">Select Photo(s): </span>
-                        <input multiple="" type="file"  size="30" name="image[]">
+                        <input type="file"  size="30"  ng-model="photoInfo.image">
                     </div>
                     <div class="col-md-6"></div>
                 </div>
@@ -90,7 +87,7 @@
                 <div class="row form-group"></div>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-xs" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;"  ng-click="addPhoto()">Upload</button>
+                        <button class="btn btn-xs" id="add_photos_btn" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;"  ng-click="addPhotos()">Upload</button>
                     </div>
                     <div class="col-md-8"></div>
                 </div>
@@ -101,7 +98,7 @@
                 <div class="col-md-2"></div>
             </div>
         </div>
-<?php $this->load->view("member/photo/modal_create_album"); ?>
+        <?php $this->load->view("member/photo/modal_create_album"); ?>
     </div>
 </div>
 <script type="text/javascript">

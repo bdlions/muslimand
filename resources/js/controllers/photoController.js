@@ -1,21 +1,19 @@
 angular.module('controllers.Photo', ['services.Photo']).
         controller('photoController', function ($scope, photoService) {
-            $scope.categories = [];
-            $scope.albums = [];
+            $scope.categoryList = [];
+            $scope.albumList = [];
+            $scope.userAlbums = [];
             $scope.albumInfo = {};
             $scope.photoInfo = {};
 
             $scope.setPhotoCategories = function (t) {
-                $scope.categories = JSON.parse(t);
+                $scope.categoryList = JSON.parse(t);
             };
             $scope.setAlbums = function (albumList) {
-                $scope.albums = JSON.parse(albumList);
+                $scope.albumList = JSON.parse(albumList);
             };
-
-
-
-            $scope.getAllAlbums = function (userId) {
-
+            $scope.setUserAlbumList = function (userAlbumList) {
+                $scope.userAlbums = JSON.parse(userAlbumList);
             };
 
             $scope.getAlbum = function (userId) {
@@ -27,12 +25,12 @@ angular.module('controllers.Photo', ['services.Photo']).
 //            };
 
 
-            $scope.createAlbum = function () {
+            $scope.createAlbum = function (requestFunction) {
                 photoService.createAlbum($scope.albumInfo).
                         success(function (data, status, headers, config) {
-                            $scope.albums.push(data.album_lsit);
-                            $('#modal_create_album_box').modal('hide');
-                            alert(data.message);
+                            $scope.albumList.push(data.album_lsit);
+                            $scope.albumInfo = "";
+                            requestFunction();
                         });
             };
 
@@ -84,8 +82,9 @@ angular.module('controllers.Photo', ['services.Photo']).
 
             };
 
-            $scope.addPhoto = function () {
-                photoService.addPhoto($scope.photoInfo).
+            $scope.addPhotos = function () {
+                console.log($scope.photoInfo);
+                photoService.addPhotos($scope.photoInfo).
                         success(function (data, status, headers, config) {
                             alert(data.message);
                         });

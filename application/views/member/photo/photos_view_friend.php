@@ -6,7 +6,7 @@
     </div>
     <div class="col-md-3"></div>
     <div class="col-md-2">
-        <a  href="<?php echo base_url(); ?>photos/photos_add"><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 28px;">Upload a New Image</button></a>
+        <a  href="<?php echo base_url(); ?>photos/add_photos"><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 28px;">Upload a New Image</button></a>
     </div>
     <div class="col-md-1"></div>
 </div>
@@ -28,7 +28,7 @@
                     <a href="<?php echo base_url(); ?>photos/photos_view_friend"><li>Friends’ Photos</li></a>
                     <div class="category_divider"></div>
                     <a href="<?php echo base_url(); ?>photos/photos_albums"><li>All Albums</li></a>
-                    <a href="<?php echo base_url(); ?>photos/photos_view_my_albums"><li>My Albums</li></a>
+                    <a href="<?php echo base_url(); ?>photos/get_user_albums"><li>My Albums</li></a>
                     <div class="category_divider"></div>
                 </ul>  
             </div>

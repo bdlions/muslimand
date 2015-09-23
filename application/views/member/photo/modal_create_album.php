@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         *Name:<br>
-                        <input class="form-control" type="text"  ng-model="albumInfo.title">
+                        <input class="form-control" id="album_title_id" type="text"  ng-model="albumInfo.title">
                     </div>
                     <div class="col-md-6"></div>
                 </div>
@@ -56,13 +56,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                         Control who can comment on this photo album and any photos associated with it.
+                        Control who can comment on this photo album and any photos associated with it.
                     </div>
                 </div>
                 <div class="row form-group"></div>
                 <div class="row">
                     <div class="col-md-6">
-                        <button class="btn btn-xs" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;" ng-click="createAlbum()">Submit</button>
+                        <button class="btn btn-xs" id="create_album_btn" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;" onclick="create_album()">Submit</button>
                     </div>
                     <div class="col-md-6"></div>
                 </div>
@@ -74,10 +74,22 @@
                 </div>
                 <div class="row form-group"></div>
             </div>
-            
+
             <div class="modal-footer">
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<script type="text/javascript">
+    function create_album() {
+        var title = $('#album_title_id').val();
+        if (title.length == 0) {
+            alert("Please Give the Title of your Album");
+            return;
+        }
+        angular.element($('#create_album_btn')).scope().createAlbum(function () {
+            $('#modal_create_album_box').modal('hide');
+        });
+    }
+</script>
 
