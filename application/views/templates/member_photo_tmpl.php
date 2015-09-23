@@ -21,9 +21,14 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/lib/hash.js"></script>
          <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
+         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload-shim.min.js"></script>
+         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload.min.js"></script>
+         
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/photoController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageUploadController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/photoService.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/fileUploadService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/photoApp.js "></script>
         <title>Muslimand</title>
     </head>

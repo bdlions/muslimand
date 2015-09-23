@@ -8,8 +8,8 @@ angular.module('services.BasicProfile', []).
                         method: 'post',
                         url: '../basic_profile/get_overview',
                         data: {
-                            userId: userId,
-                        },
+                            userId: userId
+                        }
                     });
                 };
 
@@ -19,8 +19,8 @@ angular.module('services.BasicProfile', []).
                         method: 'post',
                         url: '../basic_profile/get_works_education',
                         data: {
-                            userId: userId,
-                        },
+                            userId: userId
+                        }
                     });
                 };
 
