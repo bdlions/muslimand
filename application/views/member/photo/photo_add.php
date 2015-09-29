@@ -72,7 +72,7 @@
             </div>
             <div class="row form-group"></div>
             <div class="row">
-                <div class="col-md-6" ng-controller="imageUploadController">
+                <div class="col-md-6">
                     <form name="form">
                         <input type="file" accept="image/*" image="image"/>
                         <!--<img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}" />-->

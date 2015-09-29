@@ -2,8 +2,11 @@ angular.module('controllers.Photo', ['services.Photo']).
         controller('photoController', function ($scope, photoService) {
             $scope.categoryList = [];
             $scope.albumList = [];
+            $scope.albumPhotoList = [];
+            $scope.photoInfoList = [];
             $scope.userAlbums = [];
             $scope.albumInfo = {};
+            $scope.albumDetail = {};
             $scope.photoInfo = {};
 
             $scope.setPhotoCategories = function (t) {
@@ -16,8 +19,16 @@ angular.module('controllers.Photo', ['services.Photo']).
                 $scope.userAlbums = JSON.parse(userAlbumList);
             };
 
-            $scope.getAlbum = function (userId) {
-
+            $scope.setAlbumInfo = function(albumInfo) {
+                $scope.albumDetail = JSON.parse(albumInfo);
+                console.log($scope.albumDetail);
+            };
+            $scope.setAlbumPhotoList = function(photoList) {
+                $scope.albumPhotoList = JSON.parse(photoList);
+            };
+            $scope.setPhotoInfo = function(photoInfo) {
+                $scope.photoInfoList.push(JSON.parse(photoInfo));
+                console.log($scope.photoInfoList);
             };
 //
 //            $scope.getLatest = function (userId) {

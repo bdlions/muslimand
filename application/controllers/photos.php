@@ -30,6 +30,7 @@ class Photos extends CI_Controller {
     function photos_view_my() {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my");
     }
+
     function photos_view_albums_pic() {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums_view");
     }
@@ -41,6 +42,7 @@ class Photos extends CI_Controller {
     function photos_albums() {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums");
     }
+
     function photos_sort_most_viewed() {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_sort_most_viewed");
     }
@@ -58,24 +60,32 @@ class Photos extends CI_Controller {
     }
 
     function get_user_albums() {
+        $this->data['user_album_list'] = array();
         $user_id = $this->session->userdata('user_id');
         $result = $this->photo_mongodb_model->get_user_albums($user_id);
         $result_array = json_decode($result);
         if (!empty($result_array)) {
-            if(property_exists($result_array, "albumList")){
-            $this->data['user_album_list'] = json_encode($result_array->albumList);
+            if (property_exists($result_array, "albumList")) {
+                $this->data['user_album_list'] = json_encode($result_array->albumList);
             }
         }
-        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my_albums",$this->data);
+        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my_albums", $this->data);
     }
 
-    function get_album() {
+    function get_album($album_id = 0) {
         $response = array();
-        $postdata = file_get_contents("php://input");
-        $requestInfo = json_decode($postdata);
-        if (property_exists($requestInfo, "userId") != FALSE) {
-            $user_id = $requestInfo->userId;
+        $result = $this->photo_mongodb_model->get_photos($album_id);
+        $result_array = json_decode($result);
+        if (!empty($result_array)) {
+            if (property_exists($result_array, "photoList")) {
+                $this->data['photo_list'] = json_encode($result_array->photoList);
+            }
+            if (property_exists($result_array, "albumInfo")) {
+                $this->data['album_info'] = json_encode(json_decode($result_array->albumInfo));
+            }
+            
         }
+        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums_view", $this->data);
     }
 
     function create_album() {
@@ -167,25 +177,28 @@ class Photos extends CI_Controller {
     }
 
 //.........................photo module.........................................
-    function get_photos() {
+    function get_user_photos() {
+        $offset = 0;
+        $limit = 5;
+        $user_id = "2";
         $response = array();
-        $postdata = file_get_contents("php://input");
-        $requestInfo = json_decode($postdata);
+//        $user_id = $this->session->userdata('user_id');
+        $result = $this->photo_mongodb_model->get_user_photos($user_id, $offset, $limit);
+        var_dump($result);
+        exit;
         if (property_exists($requestInfo, "albumId") != FALSE) {
             $album_id = $requestInfo->albumId;
         }
     }
 
-    function get_photo() {
+    function get_photo($photo_id = 0) {
         $response = array();
-        $postdata = file_get_contents("php://input");
-        $requestInfo = json_decode($postdata);
-        if (property_exists($requestInfo, "albumId") != FALSE) {
-            $album_id = $requestInfo->albumId;
+         $result = $this->photo_mongodb_model->get_photo($photo_id);
+          $result_array = json_decode($result);
+        if (!empty($result_array)) {
+                $this->data['photo_info'] = json_encode($result_array);
         }
-        if (property_exists($requestInfo, "photoId") != FALSE) {
-            $photo_id = $requestInfo->photoId;
-        }
+        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_gallery",$this->data);
     }
 
     function add_photos() {

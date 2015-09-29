@@ -42,9 +42,9 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Rasida on 20th September 2015
      */
 
-    public function get_album($user_id, $album_id) {
+    public function get_album($album_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getAlbum');
-        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id));
+        $this->curl->post(array("albumId" => $album_id));
         return $this->curl->execute();
     }
 
@@ -160,6 +160,16 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
 
     /*
      * This method will return a photos info in a album
+     * @param $user_id,user id 
+     * @author created by Rashida on 20th September 2015
+     */
+    public function get_user_photos($user_id,$offset,$limit) {
+        $this->curl->create($this->SERVICE_PHOTO . 'getUserPhotos');
+        $this->curl->post(array("userId" => $user_id,"offset" => $offset, "limit" => $limit));
+        return $this->curl->execute();
+    }
+    /*
+     * This method will return a photos info in a album
      * @param $album_id,album id 
      * @author created by Rashida on 20th September 2015
      */
@@ -176,9 +186,9 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function get_photo($album_id, $photo_id) {
+    public function get_photo($photo_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getPhoto');
-        $this->curl->post(array("albumId" => $album_id, "photoId" => $photo_id));
+        $this->curl->post(array("photoId" => $photo_id));
         return $this->curl->execute();
     }
 

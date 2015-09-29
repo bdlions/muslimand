@@ -1,8 +1,3 @@
-<?php 
-var_dump($newsfeed);
-var_dump(json_encode($newsfeed));
-
-?>
 <div ng-app="app.Status">
     <div ng-controller="statusController"  ng-init="setNewsfeeds(<?php echo htmlspecialchars(json_encode($newsfeed)); ?>)" >
         <li ng-repeat="newsfeed in newsfeeds">

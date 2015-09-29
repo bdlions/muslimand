@@ -70,7 +70,7 @@
                     <a style="color: #3B59A9;" href id="statusLike{{status.statusId}}" ng-click="addLike(status.statusId)">Like,</a> 
                     <a style="color: #3B59A9; display: none;" href id="statusUnLike{{status.statusId}}" ng-click="unLike(status.statusId)">UnLike,</a> 
                     <a style="color: #3B59A9;" href ng-click="selectCommentField(status.statusId)"> Comment,</a>
-                    <a style="color: #3B59A9;" href ng-click="openModalShare(status.statusId)"> Share</a>
+                    <!--<a style="color: #3B59A9;" href ng-click="openModalShare(status.statusId)"> Share</a>-->
                 </div>
             </div>
 

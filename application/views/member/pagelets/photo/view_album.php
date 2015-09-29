@@ -1,75 +1,19 @@
+<div class="row">
+    <div class="col-md-12">
+        <span style="font-size: 16px; font-weight: bold;" ng-bind="albumDetail.title"></span>
+    </div>
+</div>
 <div class="row form-group">
     <div class="col-md-12">
-        <span style="font-size: 16px; font-weight: bold;">Album Name</span>
+        <span style="font-size: 14px; " ng-bind="albumDetail.description"></span>
     </div>
 </div>
 <div class="pagelet_divider"></div>
 <div class="row form-group"></div>
 <div class="row form-group">
-    <div class="col-md-3">
-        <a href="<?php echo base_url();?>photos/photos_gallery" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/01.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-         <a href="<?php echo base_url();?>photos/photos_gallery" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/02.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-         <a href="<?php echo base_url();?>photos/photos_gallery" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/03.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-         <a href="<?php echo base_url();?>photos/photos_gallery" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/04.jpg" width="120" height="100">
-        </a>
-    </div>
-</div>
-<div class="row form-group"></div>
-<div class="row form-group">
-    <div class="col-md-3">
-         <a href="<?php echo base_url();?>photos/photos_gallery" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/05.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-         <a href="<?php echo base_url();?>photos/photos_gallery" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/06.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-         <a href="<?php echo base_url();?>photos/photos_gallery" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/07.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-         <a href="<?php echo base_url();?>photos/photos_gallery" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/08.jpg" width="120" height="100">
-        </a>
-    </div>
-</div>
-<div class="row form-group"></div>
-<div class="row form-group">
-    <div class="col-md-3">
-         <a href="<?php echo base_url();?>photos/photos_gallery" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/09.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-         <a href="<?php echo base_url();?>photos/photos_gallery" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/10.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-         <a href="<?php echo base_url();?>photos/photos_gallery" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/11.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-         <a href="<?php echo base_url();?>photos/photos_gallery" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/12.jpg" width="120" height="100">
+    <div class="col-md-3" ng-repeat="photo in albumPhotoList">
+        <a href="<?php echo base_url();?>photos/get_photo/{{photo.photoId}}" >
+            <img style="border: 1px solid #703684;"src="<?php echo base_url().USER_ALBUM_IMAGE_PATH ?>{{photo.image}}" width="120" height="100">
         </a>
     </div>
 </div>
@@ -130,15 +74,15 @@
             <a href="#">view 19 more comments</a>
         </div>
     </div>
-    <div class="row form-group">
+    <div class="row form-group"  ng-repeat="comment in albumDetail.comment">
         <div class="col-md-1">
             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg" width="30" height="30">
         </div>
         <div class="col-md-11">
             <div class="row">
                 <div class="col-md-12">
-                    <a style="font-weight: bold;" href="#">Maria Islam</a>
-                    Nice pic :)
+                    <a style="font-weight: bold;" href="#">{{comment.userInfo.fristName}}&nbsp{{comment.userInfo.lastName}}</a>
+                    {{comment.description}}
                 </div>
             </div>
             <div class="row">

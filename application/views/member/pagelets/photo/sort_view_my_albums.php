@@ -7,8 +7,8 @@
 <div class="row form-group"></div>
 <div class="row form-group font_11px" >
     <div class="col-md-3" ng-repeat="album in userAlbums">
-        <a href="" >
-            <img style="border: 1px solid #703684;" src="<?php echo base_url(); ?>resources/images/photos/albums/English_Cotton/03.jpg" width="120" height="100">
+        <a href="<?php echo base_url(); ?>photos/get_album/{{album.albumId}}" >
+            <img style="border: 1px solid #703684;" src="<?php echo base_url().USER_ALBUM_IMAGE_PATH ?>{{album.defaultImg}}" width="120" height="100">
         </a>
         <div class="border_without_bottom" >
             <a href="" > <span ng-bind="album.title"></span></a><br>

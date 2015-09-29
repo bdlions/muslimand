@@ -38,7 +38,7 @@
                 <div class="row form-group"></div>
                 <?php $this->load->view("member/pagelets/updated_status"); ?>
                 <div class="row form-group"></div>
-                <?php $this->load->view("modal/modal_share_content"); ?>
+                <?php // $this->load->view("modal/modal_share_content"); ?>
                 <div class="row form-group"></div>
                 <?php $this->load->view("member/pagelets/shared_link"); ?>
                 <div class="row form-group"></div>
