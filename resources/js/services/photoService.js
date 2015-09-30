@@ -43,12 +43,12 @@ angular.module('services.Photo', []).
                 });
             };
 
-            photoService.addAlbumLike = function (albumLikeInfo) {
+            photoService.addAlbumLike = function (albumId) {
                 return $http({
                     method: 'post',
                     url: '../photos/add_album_like',
                     data: {
-                        albumLikeInfo: albumLikeInfo
+                        albumId: albumId
                     }
                 });
             };
@@ -62,10 +62,20 @@ angular.module('services.Photo', []).
                     }
                 });
             };
+            photoService.getAlbumLikeList = function (albumId) {
+                return $http({
+                    method: 'post',
+                    url: '../photos/get_album_like_list',
+                    data: {
+                        albumId: albumId,
+                    }
+                });
+            };
+            
             photoService.addAlbumComment = function (commentInfo) {
                 return $http({
                     method: 'post',
-                    url: '../photos/add_album_comment',
+                    url: '../../photos/add_album_comment',
                     data: {
                         commentInfo: commentInfo
                     }
@@ -151,12 +161,12 @@ angular.module('services.Photo', []).
                 });
             };
 
-            photoService.addPhotoLike = function (photoLikeInfo) {
+            photoService.addPhotoLike = function (photoId) {
                 return $http({
                     method: 'post',
                     url: '../photos/add_photo_like',
                     data: {
-                        photoLikeInfo: photoLikeInfo
+                        photoId: photoId
                     }
                 });
             };

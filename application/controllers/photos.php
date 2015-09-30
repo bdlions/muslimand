@@ -83,7 +83,6 @@ class Photos extends CI_Controller {
             if (property_exists($result_array, "albumInfo")) {
                 $this->data['album_info'] = json_encode(json_decode($result_array->albumInfo));
             }
-            
         }
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums_view", $this->data);
     }
@@ -139,9 +138,22 @@ class Photos extends CI_Controller {
         $response = array();
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
-        if (property_exists($requestInfo, "albumLikeInfo") != FALSE) {
-            $request = $requestInfo->albumLikeInfo;
+        if (property_exists($requestInfo, "albumId") != FALSE) {
+            $album_id = $requestInfo->albumId;
         }
+        $user_info = new stdClass();
+        $user_info->userId = $this->session->userdata('user_id');
+        $user_info->fristName = "Rashida Sultana";
+        $user_info->lastName = "Shemin";
+        $like_info = new stdClass();
+        $like_info->userInfo = $user_info;
+//        $user_info->fristName = $this->session->userdata('frist_name');
+//        $user_info->lastName = $this->session->userdata('last_name');
+        $result = $this->photo_mongodb_model->add_album_like($album_id, $like_info);
+        if ($result != null) {
+            $response["message"] = "Add like Successfully";
+        }
+        echo json_encode($response);
     }
 
     function delete_album_like() {
@@ -153,15 +165,58 @@ class Photos extends CI_Controller {
         }
     }
 
+    function get_album_like_list() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        var_dump($postdata);exit;
+        if (property_exists($requestInfo, "albumId") != FALSE) {
+            $album_id = $requestInfo->albumId;
+        }
+        $result = $this->photo_mongodb_model->get_album_like_list($album_id);
+        $request_array = json_decode($result);
+        if(!empty($request_array)){
+           $response[like_list] =$request_array->like;
+        }
+          echo json_encode($response);
+    }
+
     function add_album_comment() {
         $response = array();
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
+        var_dump($requestInfo);exit;
+        return;
         if (property_exists($requestInfo, "commentInfo") != FALSE) {
             $request = $requestInfo->commentInfo;
         }
-    }
+        if (property_exists($request, "albumId") != FALSE) {
+            $album_id = $request->albumId;
+        }
+        $user_info = new stdClass();
+        $user_info->userId = $this->session->userdata('user_id');
+        $user_info->fristName = "Rashida Sultana";
+        $user_info->lastName = "Shemin";
+//        $user_info->fristName = $this->session->userdata('frist_name');
+//        $user_info->lastName = $this->session->userdata('last_name');
 
+        $comment_info = new stdClass();
+        if (property_exists($request, "comment") != FALSE) {
+            $comment_info->description = $request->comment;
+        }
+        $comment_info->userInfo = $user_info;
+        $comment_info->comment = array();
+        $comment_info->like = array();
+        $comment_info->share = array();
+        $result = $this->photo_mongodb_model->add_album_comment($album_id, $comment_info);
+        if ($result != null) {
+            $response["comment"] = $comment_info;
+        }
+        echo json_encode($response);
+        return;
+    }
+    
+    
     function edit_album_comment() {
         $response = array();
         $postdata = file_get_contents("php://input");
@@ -193,12 +248,12 @@ class Photos extends CI_Controller {
 
     function get_photo($photo_id = 0) {
         $response = array();
-         $result = $this->photo_mongodb_model->get_photo($photo_id);
-          $result_array = json_decode($result);
+        $result = $this->photo_mongodb_model->get_photo($photo_id);
+        $result_array = json_decode($result);
         if (!empty($result_array)) {
-                $this->data['photo_info'] = json_encode($result_array);
+            $this->data['photo_info'] = json_encode($result_array);
         }
-        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_gallery",$this->data);
+        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_gallery", $this->data);
     }
 
     function add_photos() {
@@ -257,9 +312,22 @@ class Photos extends CI_Controller {
         $response = array();
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
-        if (property_exists($requestInfo, "photoLikeInfo") != FALSE) {
-            $request = $requestInfo->photoLikeInfo;
+        if (property_exists($requestInfo, "photoId") != FALSE) {
+            $photo_id = $requestInfo->photoId;
         }
+        $user_info = new stdClass();
+        $user_info->userId = $this->session->userdata('user_id');
+        $user_info->fristName = "Rashida Sultana";
+        $user_info->lastName = "Shemin";
+//        $user_info->fristName = $this->session->userdata('frist_name');
+//        $user_info->lastName = $this->session->userdata('last_name');
+        $like_info = new stdClass();
+        $like_info->userInfo = $user_info;
+        $result = $this->photo_mongodb_model->add_photo_like($photo_id, $like_info);
+        if ($result != null) {
+            $response["like_info"] = $like_info;
+        }
+        echo json_encode($response);
     }
 
     function delete_photo_like() {
@@ -272,12 +340,31 @@ class Photos extends CI_Controller {
     }
 
     function add_photo_comment() {
+
         $response = array();
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
         if (property_exists($requestInfo, "commentInfo") != FALSE) {
             $request = $requestInfo->commentInfo;
         }
+        if (property_exists($request, "photoId") != FALSE) {
+            $photo_id = $request->photoId;
+        }
+        $user_info = new stdClass();
+        $user_info->userId = $this->session->userdata('user_id');
+        $user_info->fristName = "Rashida Sultana";
+        $user_info->lastName = "Shemin";
+        $comment_info = new stdClass();
+        if (property_exists($request, "comment") != FALSE) {
+            $comment_info->description = $request->comment;
+        }
+        $comment_info->userInfo = $user_info;
+        $result = $this->photo_mongodb_model->add_photo_comment($photo_id, $comment_info);
+        if ($result != null) {
+            $response["comment"] = $comment_info;
+        }
+        echo json_encode($response);
+        return;
     }
 
     function edit_photo_comment() {

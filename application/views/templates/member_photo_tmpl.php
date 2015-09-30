@@ -13,6 +13,7 @@
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/photo.css"/>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/pictureflip.css"/>
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/jquery.mCustomScrollbar.css"/>
 
 
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/modernizr.js"></script>
@@ -20,10 +21,10 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.pictureflip.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/lib/hash.js"></script>
-         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
-         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload-shim.min.js"></script>
-         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload.min.js"></script>
-         
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload-shim.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/photoController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/photoService.js "></script>

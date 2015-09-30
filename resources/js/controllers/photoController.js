@@ -5,9 +5,12 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.albumPhotoList = [];
             $scope.photoInfoList = [];
             $scope.userAlbums = [];
+            $scope.albumlikeList = [];
             $scope.albumInfo = {};
             $scope.albumDetail = {};
             $scope.photoInfo = {};
+            $scope.albumCommentInfo = {};
+            $scope.photoCommentInfo = {};
 
             $scope.setPhotoCategories = function (t) {
                 $scope.categoryList = JSON.parse(t);
@@ -19,23 +22,28 @@ angular.module('controllers.Photo', ['services.Photo']).
                 $scope.userAlbums = JSON.parse(userAlbumList);
             };
 
-            $scope.setAlbumInfo = function(albumInfo) {
+            $scope.setAlbumInfo = function (albumInfo) {
                 $scope.albumDetail = JSON.parse(albumInfo);
                 console.log($scope.albumDetail);
             };
-            $scope.setAlbumPhotoList = function(photoList) {
+            $scope.setAlbumPhotoList = function (photoList) {
                 $scope.albumPhotoList = JSON.parse(photoList);
             };
-            $scope.setPhotoInfo = function(photoInfo) {
+            $scope.setPhotoInfo = function (photoInfo) {
                 $scope.photoInfoList.push(JSON.parse(photoInfo));
                 console.log($scope.photoInfoList);
             };
-//
-//            $scope.getLatest = function (userId) {
-//
-//            };
 
 
+
+            $scope.getAlbumLikeList = function (albumId, requestFunction) {
+                photoService.getAlbumLikeList(albumId).
+                        success(function (data, status, headers, config) {
+                            $scope.albumlikeList.push(data.album_lsit);
+                            requestFunction();
+                        });
+                return false;
+            };
             $scope.createAlbum = function (requestFunction) {
                 photoService.createAlbum($scope.albumInfo).
                         success(function (data, status, headers, config) {
@@ -43,6 +51,7 @@ angular.module('controllers.Photo', ['services.Photo']).
                             $scope.albumInfo = "";
                             requestFunction();
                         });
+                return false;
             };
 
             $scope.editAlbum = function (albumId, albumInfo) {
@@ -55,19 +64,29 @@ angular.module('controllers.Photo', ['services.Photo']).
 
             };
 
-            $scope.addAlbumLike = function (likeInfo) {
-
-
+            $scope.addAlbumLike = function (albumId, requestFunction) {
+                photoService.addAlbumLike($scope.albumId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
             };
+
 
             $scope.deleteAlbumLike = function (albumId, likeId) {
 
 
             };
 
-            $scope.addAlbumComment = function (commentInfo) {
-
-
+            $scope.addAlbumComment = function (albumId) {
+                $scope.albumCommentInfo.albumId = albumId;
+                photoService.addAlbumComment($scope.albumCommentInfo).
+                        success(function (data, status, headers, config) {
+                            if ($scope.albumDetail.albumId === albumId) {
+                                $scope.albumDetail.comment.push(data.comment);
+                            }
+                            $scope.albumCommentInfo = "";
+                        });
+                return false;
             };
 
             $scope.editAlbumComment = function (commentInfo) {
@@ -99,18 +118,40 @@ angular.module('controllers.Photo', ['services.Photo']).
                         success(function (data, status, headers, config) {
                             alert(data.message);
                         });
+                return false;
             };
 
             $scope.addPhotoLike = function (photoInfo) {
 
+
+            };
+            $scope.addPhotoLike = function (photoId, requestFunction) {
+                photoService.addPhotoLike(photoId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+                return false;
             };
 
             $scope.deletePhotoLike = function (photoInfo) {
 
             };
 
-            $scope.addPhotoComment = function (photoCommentInfo) {
+            $scope.addPhotoComment = function (photoId) {
+                $scope.photoCommentInfo.photoId = photoId;
+                photoService.addPhotoComment($scope.photoCommentInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.photoCommentInfo = "";
+                            angular.forEach($scope.photoInfoList, function (value, key) {
+                                if (value.photoId == photoId) {
+                                    if(value.comment=== "undefined" ? value.comment.push(new Array()) :value.comment.push(data.comment)){
+                                        
+                                    }
+                                }
+                            }, $scope.photoInfoList);
 
+                        });
+                return false;
             };
 
             $scope.editPhotoComment = function (photoCommentInfo) {

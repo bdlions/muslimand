@@ -115,6 +115,12 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
         return $this->curl->execute();
     }
 
+    public function get_album_like_list($album_id) {
+        $this->curl->create($this->SERVICE_PHOTO . 'getAlbumLikeList');
+        $this->curl->post(array("albumId" => $album_id));
+        return $this->curl->execute();
+    }
+
     /*
      * This method will add  album comment
      * @param $user_id, user id 
@@ -163,16 +169,18 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @param $user_id,user id 
      * @author created by Rashida on 20th September 2015
      */
-    public function get_user_photos($user_id,$offset,$limit) {
+    public function get_user_photos($user_id, $offset, $limit) {
         $this->curl->create($this->SERVICE_PHOTO . 'getUserPhotos');
-        $this->curl->post(array("userId" => $user_id,"offset" => $offset, "limit" => $limit));
+        $this->curl->post(array("userId" => $user_id, "offset" => $offset, "limit" => $limit));
         return $this->curl->execute();
     }
+
     /*
      * This method will return a photos info in a album
      * @param $album_id,album id 
      * @author created by Rashida on 20th September 2015
      */
+
     public function get_photos($album_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getPhotos');
         $this->curl->post(array("albumId" => $album_id));
@@ -240,7 +248,7 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function add_photo_like($album_id, $photo_id, $like_info) {
+    public function add_photo_like($photo_id, $like_info) {
         $this->curl->create($this->SERVICE_PHOTO . 'addPhotoLike');
         $this->curl->post(array("photoId" => $photo_id, "likeInfo" => json_encode($like_info)));
         return $this->curl->execute();
@@ -293,9 +301,9 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function delete_photo_comment($photo_id,$comment_id) {
+    public function delete_photo_comment($photo_id, $comment_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'deletePhotoComment');
-        $this->curl->post(array("photoId" => $photo_id,"commentId" => $comment_id));
+        $this->curl->post(array("photoId" => $photo_id, "commentId" => $comment_id));
         return $this->curl->execute();
     }
 
