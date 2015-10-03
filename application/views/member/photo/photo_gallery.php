@@ -54,21 +54,21 @@
                             <div class="row form-group">
                                 <div class="col-md-12">
                                     <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
-                                    <a href="#">37 people </a> like this.
+                                    <a href id="photo_like_list_id" onclick="open_modal_photo_like_list(angular.element(this).scope().photoInfo.photoId)">{{photoInfo.likeCounter}}people </a> like this.
                                 </div>
                             </div>
                             <div class="pagelet_divider"></div>
                             <div class="row form-group">
                                 <div class="col-md-12">
                                     <img src="<?php echo base_url(); ?>resources/images/share_icon.png" >
-                                    <a href="#">3 shares</a>
+                                    <a href="#">{{photoInfo.shareCounter}} shares</a>
                                 </div>
                             </div>
                             <div class="pagelet_divider"></div>
                             <div class="row form-group">
-                                <div class="col-md-12">
+                                <div class="col-md-12" id="more_photo_comment_id">
                                     <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
-                                    <a href="#">view 19 more comments</a>
+                                    <a href id="photo_more_comment" onclick="get_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
                                 </div>
                             </div>
                             <div class="row form-group" ng-repeat="comment in photoInfo.comment">
@@ -145,8 +145,10 @@
             </div>
             <div class="col-md-1"></div>
         </div>
+    <?php $this->load->view("modal/modal_liked_people_list"); ?>
     </div>
 </div>
+
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -159,6 +161,16 @@
         });
     });
 
+    function get_photo_comments(photoId) {
+        angular.element($('#photo_more_comment')).scope().getphotoComments(photoId, function () {
+            $('#more_photo_comment_id').hide();
+        });
+    }
+    function open_modal_photo_like_list(photoId) {
+        angular.element($('#photo_like_list_id')).scope().getPhotoLikeList(photoId, function () {
+            $('#modal_liked_people_list').modal('show');
+        });
+    }
     function add_photo_like(photoId) {
         angular.element($('#photo_like_' + photoId)).scope().addPhotoLike(photoId, function () {
             $("#photo_like_" + photoId).hide();

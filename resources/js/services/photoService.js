@@ -46,7 +46,7 @@ angular.module('services.Photo', []).
             photoService.addAlbumLike = function (albumId) {
                 return $http({
                     method: 'post',
-                    url: '../photos/add_album_like',
+                    url: '../../photos/add_album_like',
                     data: {
                         albumId: albumId
                     }
@@ -65,19 +65,28 @@ angular.module('services.Photo', []).
             photoService.getAlbumLikeList = function (albumId) {
                 return $http({
                     method: 'post',
-                    url: '../photos/get_album_like_list',
+                    url: '../../photos/get_album_like_list',
                     data: {
                         albumId: albumId,
                     }
                 });
             };
-            
+
             photoService.addAlbumComment = function (commentInfo) {
                 return $http({
                     method: 'post',
                     url: '../../photos/add_album_comment',
                     data: {
                         commentInfo: commentInfo
+                    }
+                });
+            };
+            photoService.getAlbumComments = function (albumId) {
+                return $http({
+                    method: 'post',
+                    url: '../../photos/get_album_comments',
+                    data: {
+                        albumId: albumId
                     }
                 });
             };
@@ -131,7 +140,7 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            
+
             photoService.addPhotos = function (photoInfo) {
                 return $http({
                     method: 'post',
@@ -141,7 +150,7 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            
+
             photoService.editPhoto = function (photoInfo) {
                 return $http({
                     method: 'post',
@@ -164,12 +173,22 @@ angular.module('services.Photo', []).
             photoService.addPhotoLike = function (photoId) {
                 return $http({
                     method: 'post',
-                    url: '../photos/add_photo_like',
+                    url: '../../photos/add_photo_like',
                     data: {
                         photoId: photoId
                     }
                 });
             };
+            photoService.getPhotoLikeList = function (photoId) {
+                return $http({
+                    method: 'post',
+                    url: '../../photos/get_photo_like_list',
+                    data: {
+                        photoId: photoId,
+                    }
+                });
+            };
+
             photoService.deletePhotoLike = function (photoId, likeId) {
                 return $http({
                     method: 'post',
@@ -183,9 +202,19 @@ angular.module('services.Photo', []).
             photoService.addPhotoComment = function (commentInfo) {
                 return $http({
                     method: 'post',
-                    url: '../photos/add_photo_comment',
+                    url: '../../photos/add_photo_comment',
                     data: {
                         commentInfo: commentInfo
+                    }
+                });
+            };
+
+            photoService.getPhotoComments = function (photoId) {
+                return $http({
+                    method: 'post',
+                    url: '../../photos/get_photo_comments',
+                    data: {
+                        photoId: photoId
                     }
                 });
             };

@@ -134,6 +134,11 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("albumId" => $album_id, "commentInfo" => json_encode($comment_info)));
         return $this->curl->execute();
     }
+    public function get_album_comments($album_id) {
+        $this->curl->create($this->SERVICE_PHOTO . 'getAlbumComments');
+        $this->curl->post(array("albumId" => $album_id));
+        return $this->curl->execute();
+    }
 
     /*
      * This method will edit album comment
@@ -254,6 +259,13 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
         return $this->curl->execute();
     }
 
+    
+     public function get_photo_like_list($photo_id) {
+        $this->curl->create($this->SERVICE_PHOTO . 'getPhotoLikeList');
+        $this->curl->post(array("photoId" => $photo_id));
+        return $this->curl->execute();
+    }
+    
     /*
      * This method will add photo like
      * @param $album_id,album id 
@@ -280,6 +292,11 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
         return $this->curl->execute();
     }
 
+      public function get_photo_comments($photo_id) {
+        $this->curl->create($this->SERVICE_PHOTO . 'getPhotoComments');
+        $this->curl->post(array("photoId" => $photo_id));
+        return $this->curl->execute();
+    }
     /*
      * This method will edit photo comment
      * @param $album_id,album id 

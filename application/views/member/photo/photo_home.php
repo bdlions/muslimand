@@ -78,8 +78,9 @@
                 </div>
                 <div class="pagelet_divider"></div>
                 <div class="row">
-                    <div class="col-md-9">
-                        <?php $this->load->view("member/pagelets/photo/sort_latest"); ?>
+                    <div class="col-md-9" ng-init="setUserAlbumList(<?php echo htmlspecialchars(json_encode($user_album_list)); ?>)" >
+                        <?php // $this->load->view("member/pagelets/photo/sort_latest"); ?>
+                         <?php $this->load->view("member/pagelets/photo/sort_view_my_albums"); ?>
                     </div>
                     <div class="col-md-3"></div>
                 </div>

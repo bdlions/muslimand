@@ -6,73 +6,14 @@
 <div class="pagelet_divider"></div>
 <div class="row form-group"></div>
 <div class="row form-group">
-    <div class="col-md-3">
-        <a href="" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/01.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/02.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/03.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/04.jpg" width="120" height="100">
-        </a>
-    </div>
+       <div class="col-md-3" ng-repeat=" in userAlbums">
+            <a href="<?php echo base_url(); ?>photos/get_photo/{{photo.photoId}}" >
+                <img style="border: 1px solid #703684;"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photo.image}}" width="120" height="100">
+            </a>
+        </div>
 </div>
+
 <div class="row form-group"></div>
-<div class="row form-group">
-    <div class="col-md-3">
-        <a href="" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/05.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/06.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/07.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/08.jpg" width="120" height="100">
-        </a>
-    </div>
-</div>
-<div class="row form-group"></div>
-<div class="row form-group">
-    <div class="col-md-3">
-        <a href="" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/09.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/10.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/11.jpg" width="120" height="100">
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="" >
-            <img style="border: 1px solid #703684;"src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/12.jpg" width="120" height="100">
-        </a>
-    </div>
-</div>
 <div class="row">
     <div class="col-md-4">
         <span>1-12 of 2,666 Results</span>
