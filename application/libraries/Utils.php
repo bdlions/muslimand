@@ -9,11 +9,12 @@ if (!defined('BASEPATH'))
  *
  */
 class Utils {
+
     public $attr_map = array();
     public $rev_attr_map = array();
-    
+
     public function __construct() {
-        $this->CI = & get_instance();        
+        $this->CI = & get_instance();
         $this->CI->load->config('ion_auth', TRUE);
         $this->attr_map = $this->CI->config->item('attr_map', 'ion_auth');
         $this->rev_attr_map = $this->CI->config->item('rev_attr_map', 'ion_auth');
@@ -24,6 +25,7 @@ class Utils {
      * @param $lendth, random string length
      * @author nazmul hasan on 19th August 2015
      */
+
     function generateRandomString($length = 10) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $randomString = '';
@@ -32,7 +34,7 @@ class Utils {
         }
         return $randomString;
     }
-    
+
     /*
      * this method return list of gender
      * @Rashida 17th May 2015
@@ -104,37 +106,87 @@ class Utils {
         }
         return $year_list;
     }
-    
+
     /*
      * This method will encode an object to a json string mapping attributes
      * @author nazmul hasan
      * @created on 18th september 2015
      */
-    public function json_encode_attr_map($value, $options = 0, $depth = 512)
-    {
+
+    public function json_encode_attr_map($value, $options = 0, $depth = 512) {
         $value = json_encode($value);
         $matches = array();
         preg_match_all('/\"(\w+)\":/', $value, $matches, PREG_SET_ORDER);
-        foreach($matches as $match)
-        {
-            $value = str_replace($match[0], "\"".$this->attr_map[$match[1]]."\":", $value);
+        foreach ($matches as $match) {
+            $value = str_replace($match[0], "\"" . $this->attr_map[$match[1]] . "\":", $value);
         }
         return $value;
     }
+
     /*
      * This method will decode a json string to an object mapping attributes
      * @author nazmul hasan
      * @created on 18th september 2015
      */
-    public function json_decode_attr_map($json, $assoc = false, $depth = 512, $options = 0)
-    {
+
+    public function json_decode_attr_map($json, $assoc = false, $depth = 512, $options = 0) {
         $matches = array();
         preg_match_all('/\"(\w+)\":/', $json, $matches, PREG_SET_ORDER);
-        foreach($matches as $match)
-        {
-            $json = str_replace($match[0], "\"".$this->rev_attr_map[$match[1]]."\":", $json);
+        foreach ($matches as $match) {
+            $json = str_replace($match[0], "\"" . $this->rev_attr_map[$match[1]] . "\":", $json);
         }
         return json_decode($json);
     }
+
+    public function upload_image($file_info, $uploaded_path) {
+        $result = array();
+        if (isset($file_info)) {
+            $config['image_library'] = 'gd2';
+            $config['upload_path'] = $uploaded_path;
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size'] = '10240';
+            $config['maintain_ratio'] = FALSE;
+
+            $this->CI = & get_instance();
+//            $this->CI->load->config('ion_auth', TRUE);
+            $this->CI->load->library('upload', $config);
+
+            if (!$this->CI->upload->do_upload()) {
+                $result['status'] = 0;
+                $result['message'] = $this->CI->upload->display_errors();
+            } else {
+                $upload_data = $this->CI->upload->data();
+                $result['status'] = 1;
+                $result['message'] = 'Image is uploaded successfully';
+                $result['upload_data'] = $upload_data;
+            }
+        }
+        return $result;
+    }
+    
+    public function upload_image_server($file_info, $uploaded_path) {
+        $result = array();
+        if (isset($file_info)) {
+            $config['image_library'] = 'gd2';
+            $config['upload_path'] = $uploaded_path;
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size'] = '10240';
+            $config['maintain_ratio'] = FALSE;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload()) {
+                $result['status'] = 0;
+                $result['message'] = $this->upload->display_errors();
+            } else {
+                $upload_data = $this->upload->data();
+                $result['status'] = 1;
+                $result['message'] = 'Image is uploaded successfully';
+                $result['upload_data'] = $upload_data;
+            }
+        }
+        return $result;
+    }
+ 
 
 }

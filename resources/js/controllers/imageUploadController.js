@@ -14,11 +14,7 @@
 
 (function () {
     'use strict';
-
-    var isOnGitHub = window.location.hostname === 'blueimp.github.io',
-        url = isOnGitHub ? '//jquery-file-upload.appspot.com/' : 'server/php/';
-
-    angular.module('demo', [
+    angular.module('controllers.Image', [
         'blueimp.fileupload'
     ])
         .config([
@@ -29,7 +25,7 @@
                     /\/[^\/]*$/,
                     '/cors/result.html?%s'
                 );
-                if (isOnGitHub) {
+//                if (isOnGitHub) {
                     // Demo settings:
                     angular.extend(fileUploadProvider.defaults, {
                         // Enable image resizing, except for Android and Opera,
@@ -40,19 +36,18 @@
                         maxFileSize: 999000,
                         acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
                     });
-                }
+//                }
             }
         ])
 
         .controller('DemoFileUploadController', [
             '$scope', '$http', '$filter', '$window',
             function ($scope, $http) {
-                $scope.options = {
-                    url: url
-                };
-                if (!isOnGitHub) {
-                    $scope.loadingFiles = true;
-                    $http.get(url)
+                $scope.setPath = function(url){
+                    $scope.options = {
+                        url: url
+                    };
+                    $http.get($scope.options.url)
                         .then(
                             function (response) {
                                 $scope.loadingFiles = false;
@@ -62,8 +57,10 @@
                                 $scope.loadingFiles = false;
                             }
                         );
-                }
+                };
+                $scope.loadingFiles = true;
             }
+            
         ])
 
         .controller('FileDestroyController', [

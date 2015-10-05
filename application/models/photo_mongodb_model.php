@@ -212,9 +212,9 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function add_photos($album_id, $photo_list) {
+    public function add_photos($photo_list) {
         $this->curl->create($this->SERVICE_PHOTO . 'addPhotos');
-        $this->curl->post(array("albumId" => $album_id, "photoList" => json_encode($photo_list)));
+        $this->curl->post(array("photoList" => json_encode($photo_list)));
         return $this->curl->execute();
     }
 

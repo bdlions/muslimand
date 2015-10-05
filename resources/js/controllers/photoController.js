@@ -22,7 +22,6 @@ angular.module('controllers.Photo', ['services.Photo']).
             };
             $scope.setUserAlbumList = function (userAlbumList) {
                 $scope.userAlbums = JSON.parse(userAlbumList);
-                co
             };
 
             $scope.setAlbumInfo = function (albumInfo) {
@@ -33,7 +32,7 @@ angular.module('controllers.Photo', ['services.Photo']).
             };
             $scope.setPhotoInfo = function (photoInfo) {
                 $scope.photoInfoList.push(JSON.parse(photoInfo));
-                console.log($scope.photoInfoList);
+//                console.log($scope.photoInfoList);
             };
 
             $scope.getAlbumLikeList = function (albumId, requestFunction) {
@@ -137,13 +136,14 @@ angular.module('controllers.Photo', ['services.Photo']).
 
             };
 
-            $scope.addPhotos = function () {
-                console.log($scope.photoInfo);
+            $scope.addPhotos = function (imageList, requestFunction) {
+                $scope.photoInfo.imageList = [];
+                $scope.photoInfo.imageList = imageList;
                 photoService.addPhotos($scope.photoInfo).
                         success(function (data, status, headers, config) {
-                            alert(data.message);
+                            console.log(data);
+                            requestFunction();
                         });
-                return false;
             };
 
             $scope.addPhotoLike = function (photoInfo) {
