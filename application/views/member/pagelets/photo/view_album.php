@@ -47,8 +47,12 @@
     <div class="pagelet pagelet_mg_custom">
         <div class="row form-group">
             <div class="col-md-12">
-                <a href style="color: #3B59A9;"  onclick="add_album_like(angular.element(this).scope().albumDetail.albumId)" id="album_like_id">Like</a>
-                <a href style="color: #3B59A9; display: none" id="album_dislike_id">unLike</a>
+                <span ng-if = "albumDetail.likeStatus != '1' ">
+                    <a href style="color: #3B59A9;"  onclick="add_album_like(angular.element(this).scope().albumDetail.albumId)" id="album_like_id">Like</a>
+                </span>
+                <span ng-if = "albumDetail.likeStatus === '1'">
+                    <a href style="color: #3B59A9;" id="album_dislike_id">unLike</a>
+                </span>
                 .
                 <a href style="color: #3B59A9;" id="album_comment_id_focus"> Comment</a>
                 .
@@ -59,6 +63,8 @@
         <div class="row form-group">
             <div class="col-md-12">
                 <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                <span id="your_like_id" style="display: none">You</span>
+                <span id="other_like_id" style="display: none">,and  {{albumDetail.likeCounter}} others</span>
                 <a class="cursor_holder_style" onclick="open_modal_like_list(angular.element(this).scope().albumDetail.albumId)"  id="like_list_id" >{{albumDetail.likeCounter}} people</a> like this.
             </div>
         </div>
@@ -117,6 +123,12 @@
         angular.element($('#album_like_id')).scope().addAlbumLike(albumId, function () {
             $("#album_like_id").hide();
             $("#album_dislike_id").show();
+            $("#your_like_id").show();
+            $("#like_list_id").hide();
+            if (angular.element($('#album_like_id')).scope().albumDetail.likeCounter > 0) {
+                $("#other_like_id").show();
+
+            }
         });
     }
     function open_modal_like_list(albumId) {

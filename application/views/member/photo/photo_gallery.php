@@ -1,3 +1,7 @@
+<!--<script src="<?php // echo base_url()      ?>jquery.Jcrop.js"></script>-->
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.Jcrop.js"></script>
+<link rel="stylesheet" href="<?php echo base_url() ?>resources/css/jquery.Jcrop.css" type="text/css" />
+
 
 <div ng-app="app.Photo">
     <div  ng-controller="photoController" ng-init="setPhotoInfo(<?php echo htmlspecialchars(json_encode($photo_info)); ?>)" >
@@ -27,13 +31,18 @@
                 <div class="row">
                     <div class="col-md-12"> 
                         <div class="border_style slider_body">
+                            <!--                            <div class="flipbook" onclick="get_next_photo(angular.element(this).scope().photoInfo)">-->
                             <div class="flipbook">
                                 <div class="slide">
-                                    <img src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photoInfo.image}}" /> 
-                                    <!--<div class="content"><a href="#">Flowers: What you didn't know</a></div>--> 
+                                    <img id="image-display" src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photoInfo.image}}"   /> 
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" id="x" name="x" />
+                        <input type="hidden" id="y" name="y" />
+                        <input type="hidden" id="w" name="w" />
+                        <input type="hidden" id="h" name="h" />
+                        <a id="anchor_finish_cropping" style="display: none" class="pull-right" onclick="crop_picture()" href="javascript: void(0)">Finished Cropping&nbsp;</a>                                
                     </div>
                 </div>
                 <div class="row form-group"></div>
@@ -42,8 +51,12 @@
                         <div class="col-md-9">
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                    <a href style="color: #3B59A9;"  onclick="add_photo_like(angular.element(this).scope().photoInfo.photoId)" id="photo_like_{{photoInfo.photoId}}">Like</a>
-                                    <a href style="color: #3B59A9; display: none" id="photo_dislike_{{photoInfo.photoId}}">unLike</a>
+                                    <span ng-if = "photoInfo.likeStatus != '1'">
+                                        <a href style="color: #3B59A9;"  onclick="add_photo_like(angular.element(this).scope().photoInfo.photoId)" id="photo_like_{{photoInfo.photoId}}">Like</a>
+                                    </span>
+                                    <span ng-if = "photoInfo.likeStatus === '1'">
+                                        <a href style="color: #3B59A9;" id="photo_dislike_{{photoInfo.photoId}}">unLike</a>
+                                    </span>
                                     .
                                     <a href style="color: #3B59A9;" id="photo_comment_id_focus"> Comment</a>
                                     .
@@ -68,7 +81,7 @@
                             <div class="row form-group">
                                 <div class="col-md-12" id="more_photo_comment_id">
                                     <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
-                                    <a href id="photo_more_comment" onclick="get_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
+                                    <a href id="photo_more_comment_show" onclick="get_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
                                 </div>
                             </div>
                             <div class="row form-group" ng-repeat="comment in photoInfo.comment">
@@ -132,10 +145,11 @@
                                 <div class="col-md-12">
                                     <ul class="gallery_ul">
                                         <a href=""><li>Download</li></a>
-                                        <a href=""><li>Make Profile Picture</li></a>
+                                        <!--<a href=""><li>Make Profile Picture</li></a>-->
+                                        <a id="anchor_make_profile_picture" onclick="make_profile_picture()" href="javascript: void(0)">Make profile picture&nbsp;</a>
                                         <a href=""><li>Make Cover Photo</li></a>
                                         <a href=""><li>Make Album Photo</li></a>
-                                        <a href=""><li>Delete This Photo</li></a>
+                                        <a href onclick="open_modal_delete_photo(angular.element(this).scope().photoInfo)"><li>Delete This Photo</li></a>
                                     </ul> 
                                 </div>
                             </div>
@@ -145,7 +159,8 @@
             </div>
             <div class="col-md-1"></div>
         </div>
-    <?php $this->load->view("modal/modal_liked_people_list"); ?>
+        <?php $this->load->view("modal/modal_liked_people_list"); ?>
+        <?php $this->load->view("common/common_delete_confirmation_modal"); ?>
     </div>
 </div>
 
@@ -162,13 +177,14 @@
     });
 
     function get_photo_comments(photoId) {
-        angular.element($('#photo_more_comment')).scope().getphotoComments(photoId, function () {
+        angular.element($('#photo_more_comment_show')).scope().getPhotoComments(photoId, function () {
             $('#more_photo_comment_id').hide();
         });
     }
     function open_modal_photo_like_list(photoId) {
         angular.element($('#photo_like_list_id')).scope().getPhotoLikeList(photoId, function () {
             $('#modal_liked_people_list').modal('show');
+
         });
     }
     function add_photo_like(photoId) {
@@ -177,4 +193,67 @@
             $("#photo_dislike_" + photoId).show();
         });
     }
+    function get_next_photo(photoInfo) {
+        var albumId = photoInfo.albumId;
+        var next = "1";
+        var photoId = photoInfo.photoId + next;
+        window.location = '<?php echo base_url(); ?>photos/get_photo/' + photoId;
+    }
+    function open_modal_delete_photo(photoInfo) {
+        var photoId = photoInfo.photoId;
+        var albumId = photoInfo.albumId;
+        var selectionInfo = " Photo ? ";
+        delete_confirmation(selectionInfo, function (response) {
+            if (response == '<?php echo MODAL_DELETE_YES; ?>') {
+                angular.element($('#delete_content_btn')).scope().deletePhoto(photoId, function () {
+                    $('#common_delete_confirmation_modal').modal('hide');
+                    window.location = '<?php echo base_url(); ?>photos/get_album/' + albumId;
+                });
+
+            } else {
+                $('#common_delete_confirmation_modal').modal('hide');
+            }
+            $("#content").html("");
+        });
+    }
+
+
+
+</script>
+<script>
+    function crop_picture()
+    {
+        imageInfo = new Array();
+        imageInfo['x'] = $('#x').val();
+        imageInfo['y'] = $('#y').val();
+        imageInfo['w'] = $('#w').val();
+        imageInfo['h'] = $('#h').val();
+        imageInfo['src'] = $("#image-display").attr("src");
+        imageInfo['src_w'] = $('#image-display').width();
+        imageInfo['src_h'] = $('#image-display').height();
+        angular.element($('#image-display')).scope().cropPicture(imageInfo, function () {
+
+            window.location = '<?php echo base_url(); ?>member/timeline';
+        });
+    }
+    function make_profile_picture()
+    {
+        $('#anchor_make_profile_picture').hide();
+        $('#anchor_finish_cropping').show();
+        $('#image-display').Jcrop({
+            aspectRatio: 1,
+            onSelect: updateCoords
+        });
+    }
+    function updateCoords(c)
+    {
+        $('#x').val(c.x);
+        $('#y').val(c.y);
+        $('#w').val(c.w);
+        $('#h').val(c.h);
+    }
+    ;
+
+
+
 </script>

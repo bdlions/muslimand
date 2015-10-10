@@ -105,24 +105,11 @@
                             <div class="col-md-2 " data-on="!!file.thumbnailUrl">
                                 <div class="preview" data-file-upload-preview="file"></div>
                             </div>
-                            <div class="col-md-6 ng-cloak">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <button type="button" class="btn btn-primary start" data-ng-click="file.$submit()" data-ng-hide="!file.$submit || options.autoUpload" data-ng-disabled="file.$state() == 'pending' || file.$state() == 'rejected'">
-                                            <i class="glyphicon glyphicon-upload"></i>
-                                            <span>Start select</span>
-                                        </button>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <button type="button" class="btn btn-warning cancel" data-ng-click="file.$cancel()" data-ng-hide="!file.$cancel">
-                                            <i class="glyphicon glyphicon-ban-circle"></i>
-                                            <span>Cancel</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                            <button type="button" class="btn btn-warning cancel" data-ng-click="file.$cancel()" data-ng-hide="!file.$cancel">
+                                <i class="glyphicon glyphicon-ban-circle"></i>
+                                <span>Cancel</span>
+                            </button>
+
                         </div>
                         <div class="row form-group">
                             <div class="col-md-3" data-ng-repeat="file in queue">
@@ -151,16 +138,15 @@
 
             <div class="col-md-2"></div>
         </div>
+        <?php $this->load->view("member/photo/modal_create_album"); ?>
     </div>
-    <?php $this->load->view("member/photo/modal_create_album"); ?>
 </div>
 <script type="text/javascript">
     function add_photos() {
         var image_list = [];
         image_list = get_image_list();
-        angular.element($('#add_photos_btn_id')).scope().addPhotos(image_list, function (data) {
+        angular.element($('#add_photos_btn_id')).scope().addPhotos(image_list, function () {
             window.location = '<?php echo base_url(); ?>photos';
-//            location.reload(true);
         });
     }
 

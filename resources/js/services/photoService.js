@@ -140,6 +140,22 @@ angular.module('services.Photo', []).
                     }
                 });
             };
+            photoService.cropPicture = function (imageInfo) {
+                console.log(imageInfo);
+                return $http({
+                    method: 'post',
+                    url: '../../photos/crop_picture',
+                    data: {
+                        x:imageInfo.x,
+                        y:imageInfo.y,
+                        w:imageInfo.w,
+                        h:imageInfo.h,
+                        src:imageInfo.src,
+                        src_w:imageInfo.src_w,
+                        src_h:imageInfo.src_h,
+                    }
+                });
+            };
 
             photoService.addPhotos = function (photoInfo) {
                 return $http({
@@ -163,7 +179,7 @@ angular.module('services.Photo', []).
             photoService.deletePhoto = function (photoId) {
                 return $http({
                     method: 'post',
-                    url: '../photos/delete_photo',
+                    url: '../../photos/delete_photo',
                     data: {
                         photoId: photoId
                     }

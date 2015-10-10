@@ -4,7 +4,6 @@ include './constants/template.php';
 include './constants/basic_profile.php';
 include './constants/user_photo.php';
 include './constants/status.php';
-include './constants/photo.php';
 include './constants/general.php';
 
 

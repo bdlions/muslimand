@@ -18,6 +18,7 @@ class Utils {
         $this->CI->load->config('ion_auth', TRUE);
         $this->attr_map = $this->CI->config->item('attr_map', 'ion_auth');
         $this->rev_attr_map = $this->CI->config->item('rev_attr_map', 'ion_auth');
+        $this->CI->load->library('image_lib');
     }
 
     /*
@@ -163,30 +164,42 @@ class Utils {
         }
         return $result;
     }
-    
-    public function upload_image_server($file_info, $uploaded_path) {
+
+
+
+    /*
+     * This method will resize an image
+     * @param $source_path, source image relative path
+     * @param $new_path, destination image relative path
+     * @param $height, height of destination image
+     * @param $width, width of destination image
+     * @Author 
+     */
+
+    public function resize_image($source_path, $new_path, $height, $width) {
         $result = array();
-        if (isset($file_info)) {
-            $config['image_library'] = 'gd2';
-            $config['upload_path'] = $uploaded_path;
-            $config['allowed_types'] = 'gif|jpg|png|jpeg';
-            $config['max_size'] = '10240';
-            $config['maintain_ratio'] = FALSE;
-
-            $this->load->library('upload', $config);
-
-            if (!$this->upload->do_upload()) {
-                $result['status'] = 0;
-                $result['message'] = $this->upload->display_errors();
-            } else {
-                $upload_data = $this->upload->data();
-                $result['status'] = 1;
-                $result['message'] = 'Image is uploaded successfully';
-                $result['upload_data'] = $upload_data;
-            }
+        $config = array(
+            'image_library' => 'gd2',
+            'source_image' => FCPATH . $source_path,
+            'new_image' => FCPATH . $new_path,
+            'maintain_ratio' => FALSE,
+            'overwrite' => TRUE,
+            'height' => $height,
+            'width' => $width
+        );
+        $image_absolute_path = FCPATH . dirname($new_path);
+        if (!is_dir($image_absolute_path)) {
+            mkdir($image_absolute_path, 0777, TRUE);
+        }
+        $this->CI->image_lib->clear();
+        $this->CI->image_lib->initialize($config);
+        if (!$this->CI->image_lib->resize()) {
+            $result['status'] = 0;
+            $result['message'] = $this->CI->image_lib->display_errors();
+        } else {
+            $result['status'] = 1;
         }
         return $result;
     }
- 
 
 }

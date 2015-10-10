@@ -29,10 +29,11 @@ class Welcome extends CI_Controller {
 //            die();
 //        }
         parent::__construct();
-//        $this->load->library('ion_auth');
-//        $this->load->library('form_validation');
+        $this->load->library('ion_auth');
+        $this->load->library('form_validation');
 //        $this->load->model('basic_profile_mongodb_model');
         $this->load->helper('url');
+        $this->load->library('utils');
 //
 //        // Load MongoDB library instead of native db driver if required
 //        $this->config->item('use_mongodb', 'ion_auth') ?
@@ -59,12 +60,58 @@ class Welcome extends CI_Controller {
     public function index() {
         $this->load->view("welcome_test");
     }
+
 //
-//    public function post() {
-//        $postdata = file_get_contents("php://input");
-//        $request = json_decode($postdata);
-//        var_dump($request);
-//    }
+    public function image_upload() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        $file = array();
+        $files = array();
+        if (isset($_FILES["userfile"])) {
+            $file_info = $_FILES["userfile"];
+            $result = $this->utils->upload_image($file_info, USER_ALMUB_IMAGE_PATH);
+            if ($result['status'] == 1) {
+                $picture = $result['upload_data']['file_name'];
+                $file = array(
+                    "name" => $picture,
+                    "type" => "image/jpeg",
+                    "url" => base_url() . USER_ALMUB_IMAGE_PATH . $picture,
+                    "thumbnailUrl" => base_url() . USER_ALMUB_IMAGE_PATH . $picture,
+                    "deleteUrl" => base_url() . USER_ALMUB_IMAGE_PATH . $picture,
+                    "size" => 100,
+                    "deleteType" => "DELETE"
+                );
+
+                $files[] = $file;
+                $response["files"] = $files;
+            } else {
+                $this->data['message'] = $result['message'];
+                echo json_encode($this->data);
+                return;
+            }
+            echo json_encode($response);
+            return;
+        }
+    }
+
+    public function image_crop() { 
+        $response = array();
+        $imageData = $this->input->post('imageData');
+        list($type, $data) = explode(';', $imageData);
+        list(, $data) = explode(',', $imageData);
+        $imageData = base64_decode($data);
+        $user_id = "2";
+	$file = TEMP_IMAGE_PATH . $user_id . '_' . now() . '.jpg';
+	$success = file_put_contents($file, $imageData);
+        if($success != null){
+            $response['message'] = "Image upload Successfully"; 
+        }else{
+            $response['message'] = "Sorry !! Please select again"; 
+        }
+        echo json_encode($response);
+        return;
+    }
 
 }
 

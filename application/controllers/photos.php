@@ -7,9 +7,10 @@ class Photos extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->lang->load('auth');
-        $this->load->library('upload');
+        //$this->load->library('upload');
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
+        $this->load->library('utils');
         $this->load->model('photo_mongodb_model');
         $this->load->helper(array('form', 'url'));
         $this->load->helper('language');
@@ -23,6 +24,7 @@ class Photos extends CI_Controller {
 
     function index() {
         $user_id = $this->session->userdata('user_id');
+
         $this->data['user_id'] = $user_id;
         $result = $this->photo_mongodb_model->get_user_albums($user_id);
         $result_array = json_decode($result);
@@ -30,7 +32,10 @@ class Photos extends CI_Controller {
             if (property_exists($result_array, "albumList")) {
                 $this->data['user_album_list'] = json_encode($result_array->albumList);
             }
+        } else {
+            $this->data['user_album_list'] = array();
         }
+
 //         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my_albums", $this->data);
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_home", $this->data);
     }
@@ -67,6 +72,10 @@ class Photos extends CI_Controller {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_gallery");
     }
 
+    function add_photo_test() {
+        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_add_test");
+    }
+
     function get_user_albums() {
         $this->data['user_album_list'] = array();
         $user_id = $this->session->userdata('user_id');
@@ -81,8 +90,9 @@ class Photos extends CI_Controller {
     }
 
     function get_album($album_id = 0) {
+        $user_id = $this->session->userData('user_id');
         $response = array();
-        $result = $this->photo_mongodb_model->get_photos($album_id);
+        $result = $this->photo_mongodb_model->get_photos($user_id, $album_id);
         $result_array = json_decode($result);
         if (!empty($result_array)) {
             if (property_exists($result_array, "photoList")) {
@@ -262,8 +272,9 @@ class Photos extends CI_Controller {
     }
 
     function get_photo($photo_id = 0) {
+        $user_id = $this->session->userdata('user_id');
         $response = array();
-        $result = $this->photo_mongodb_model->get_photo($photo_id);
+        $result = $this->photo_mongodb_model->get_photo($user_id, $photo_id);
         $result_array = json_decode($result);
         if (!empty($result_array)) {
             $this->data['photo_info'] = json_encode($result_array);
@@ -271,29 +282,124 @@ class Photos extends CI_Controller {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_gallery", $this->data);
     }
 
-    function add_photos() {
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        $result = array();
-        $result_ary = array();
-        $result_array = array();
-        $category_list = array();
-        $album_list = array();
+    /* public function image_upload() {
+      $response = array();
+      $postdata = file_get_contents("php://input");
+      $requestInfo = json_decode($postdata);
+      $file = array();
+      $files = array();
+      if (isset($_FILES["userfile"])) {
+      $file_info = $_FILES["userfile"];
+
+      //            var_dump($file_info);
+      $result = $this->utils->upload_image($file_info, USER_ALBUM_IMAGE_PATH);
+      if ($result['status'] == 1) {
+      $picture = $result['upload_data']['file_name'];
+      $file = array(
+      "name" => $picture,
+      "type" => "image/jpeg",
+      "url" => base_url() . USER_ALBUM_IMAGE_PATH . $picture,
+      "thumbnailUrl" => base_url() . USER_ALBUM_IMAGE_PATH . $picture,
+      "deleteUrl" => base_url() . USER_ALBUM_IMAGE_PATH . $picture,
+      "size" => 100,
+      "deleteType" => "DELETE"
+      );
+
+      $files[] = $file;
+      $response["files"] = $files;
+      } else {
+      $this->data['message'] = $result['message'];
+      echo json_encode($this->data);
+      return;
+      }
+      echo json_encode($response);
+      return;
+      }
+      } */
+
+    public function image_upload() {
         $response = array();
-        $user_id = $this->session->userdata('user_id');
-        if (!empty($request)) {
-            $photo_info = new stdClass();
-            $photo_info->photoId = "1"; //this need to autoincrement id ;
-            $photo_info->albumId = $request->albumId;
-            $photo_info->categoryId = $request->categoryId;
-            $photo_info->image = "beli.jpg";
-            $result_ary = $this->photo_mongodb_model->add_photos($photo_info);
-            if ($result_ary != null) {
-                $response["message"] = "Add Photos  Successfully";
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        $file = array();
+        $files = array();
+        if (isset($_FILES["userfile"])) {
+            $file_info = $_FILES["userfile"];
+            $result = $this->utils->upload_image($file_info, USER_ALBUM_IMAGE_PATH);
+            if ($result['status'] == 1) {
+                $picture = $result['upload_data']['file_name'];
+                $file = array(
+                    "name" => $picture,
+                    "type" => "image/jpeg",
+                    "url" => base_url() . USER_ALBUM_IMAGE_PATH . $picture,
+                    "thumbnailUrl" => base_url() . USER_ALBUM_IMAGE_PATH . $picture,
+                    "deleteUrl" => base_url() . USER_ALBUM_IMAGE_PATH . $picture,
+                    "size" => 100,
+                    "deleteType" => "DELETE"
+                );
+
+                $files[] = $file;
+                $response["files"] = $files;
+            } else {
+                $this->data['message'] = $result['message'];
+                echo json_encode($this->data);
+                return;
             }
             echo json_encode($response);
             return;
         }
+    }
+
+    function add_photos() {
+
+        $result = array();
+        $image_add_result = array();
+        $result_ary = array();
+        $result_array = array();
+        $category_list = array();
+        $album_list = array();
+        $image_list = array();
+        $user_image_list_info = array();
+        $response = array();
+        if (file_get_contents("php://input") != null) {
+            $postdata = file_get_contents("php://input");
+            $requestInfo = json_decode($postdata);
+            if (property_exists($requestInfo, "photoInfo") != FALSE) {
+                $request = $requestInfo->photoInfo;
+            }
+            if (!empty($request)) {
+                if (property_exists($request, "imageList") != FALSE) {
+                    $image_list = $request->imageList;
+                }
+                if (!empty($image_list)) {
+                    foreach ($image_list as $image) {
+                        $photo_info = new stdClass();
+                        $photo_info->photoId = $this->utils->generateRandomString(USER_PHOTO_ID_LENGTH);
+                        if (property_exists($request, "albumId") != FALSE) {
+                            $photo_info->albumId = $request->albumId;
+                            $album_id = $request->albumId;
+                        }
+                        if (property_exists($request, "categoryId") != FALSE) {
+                            $photo_info->categoryId = $request->categoryId;
+                        }
+                        $photo_info->image = $image;
+                        $user_image_list_info[] = $photo_info;
+                    }
+                    $image_add_result = $this->photo_mongodb_model->add_photos($album_id, $user_image_list_info);
+                    if ($image_add_result != null) {
+                        $response["message"] = "Image upload successful";
+                        echo json_encode($response);
+                    }
+                } else {
+                    $response["message"] = "Please Seelect at least one Picture";
+                    echo json_encode($response);
+                }
+            } else {
+                $response["message"] = "Error message";
+                echo json_encode($response);
+            }
+        }
+        $user_id = $this->session->userdata('user_id');
         $result = $this->photo_mongodb_model->get_albums_and_categories($user_id);
         if (!empty($result)) {
             $result_array = json_decode($result);
@@ -321,6 +427,16 @@ class Photos extends CI_Controller {
         if (property_exists($requestInfo, "photoId") != FALSE) {
             $photo_id = $requestInfo->photoId;
         }
+        $result = $this->photo_mongodb_model->delete_photo($photo_id);
+        $request_array = json_decode($result);
+        if (!empty($request_array)) {
+            if (property_exists($request_array, "responseCode") != FALSE) {
+                if ($request_array->responseCode == "100157") {
+                    $response["Message"] = "delete Photo Successfully";
+                }
+            }
+        }
+        echo json_encode($response);
     }
 
     function add_photo_like() {
@@ -343,7 +459,6 @@ class Photos extends CI_Controller {
         echo json_encode($response);
     }
 
-    
     function get_photo_like_list() {
         $response = array();
         $postdata = file_get_contents("php://input");
@@ -435,6 +550,88 @@ class Photos extends CI_Controller {
     function delete_photo_comment() {
         $response = array();
         $postdata = file_get_contents("php://input");
+    }
+
+    public function crop_picture() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "x") != FALSE) {
+            $image_x = $requestInfo->x;
+        }
+        if (property_exists($requestInfo, "y") != FALSE) {
+            $image_y = $requestInfo->y;
+        }
+        if (property_exists($requestInfo, "h") != FALSE) {
+            $image_h = $requestInfo->h;
+            $targ_h = $image_h;
+        }
+        if (property_exists($requestInfo, "w") != FALSE) {
+            $image_w = $requestInfo->w;
+            $targ_w = $image_w;
+        }
+        if (property_exists($requestInfo, "src") != FALSE) {
+            $src = $requestInfo->src;
+        }
+        if (property_exists($requestInfo, "src_w") != FALSE) {
+            $src_w = $requestInfo->src_w;
+        }
+        if (property_exists($requestInfo, "src_h") != FALSE) {
+            $src_h = $requestInfo->src_h;
+        }
+
+        $result = array();
+        $jpeg_quality = 100;
+        $user_id = $this->session->userdata('user_id');
+        $src_relative_path = str_replace(base_url(), '', $src);
+        $temp_src_name = $user_id . '_' . now() . '.jpg';
+        $temp_src_relative_path = TEMP_IMAGE_PATH . $temp_src_name;
+        $result = $this->utils->resize_image($src_relative_path, $temp_src_relative_path, $src_h, $src_w);
+        $img_r = imagecreatefromjpeg($temp_src_relative_path);
+        $dst_r = ImageCreateTrueColor($image_w, $image_h);
+        //resize and crop
+        imagecopyresampled($dst_r, $img_r, 0, 0, $image_x, $image_y, $targ_w, $targ_h, $image_w, $image_h);
+        imagejpeg($dst_r, USER_ALBUM_IMAGE_PATH . $temp_src_name, $jpeg_quality);
+        
+        //creating image destination directory if not exists
+//        if (!is_dir(ALBUM_IMAGE_PATH)) {
+//            mkdir(ALBUM_IMAGE_PATH, 0777, TRUE);
+//        }
+//        imagejpeg($dst_r, ALBUM_IMAGE_PATH . $temp_src_name, $jpeg_quality);
+//        $this->utils->resize_image(ALBUM_IMAGE_PATH . $temp_src_name, PROFILE_PICTURE_PATH_W100_H100 . $temp_src_name, PROFILE_PICTURE_H100, PROFILE_PICTURE_W100);
+//        $this->utils->resize_image(ALBUM_IMAGE_PATH . $temp_src_name, PROFILE_PICTURE_PATH_W50_H50 . $temp_src_name, PROFILE_PICTURE_H50, PROFILE_PICTURE_W50);
+//        $this->utils->resize_image(ALBUM_IMAGE_PATH . $temp_src_name, PROFILE_PICTURE_PATH_W32_H32 . $temp_src_name, PROFILE_PICTURE_H32, PROFILE_PICTURE_W32);
+//        //delete temp src image
+//        //update database related to profile picture
+//        $data = array(
+//            'photo' => $temp_src_name
+//        );
+//        $this->basic_profile->update_profile_info($data, $user_id);
+//        //adding this picture into profile picture album
+//        $photo_data = array(
+//            'img' => $temp_src_name
+//        );
+//        $photo_id = $this->albums->add_profile_picture($photo_data);
+//        //add status in user profile related to the change of profile picture
+//        $status_data = array(
+//            'user_id' => $user_id,
+//            'mapping_id' => $user_id,
+//            'status_type_id' => STATUS_TYPE_PROFILE_PIC_CHANGE,
+//            'status_category_id' => STATUS_CATEGORY_USER_PROFILE,
+//            'reference_id' => $photo_id,
+//            'created_on' => now(),
+//            'modified_on' => now()
+//        );
+     
+//        if ($this->statuses->post_status($status_data) !== FALSE) {
+//            $result['status'] = 1;
+//            $result['user_id'] = $user_id;
+//        } else {
+//            $result['status'] = 0;
+//            $result['user_id'] = $user_id;
+//        }
+
+        echo json_encode($result);
     }
 
 }
