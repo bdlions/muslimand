@@ -424,10 +424,13 @@ class Photos extends CI_Controller {
         $response = array();
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "albumId") != FALSE) {
+            $album_id = $requestInfo->albumId;
+        }
         if (property_exists($requestInfo, "photoId") != FALSE) {
             $photo_id = $requestInfo->photoId;
         }
-        $result = $this->photo_mongodb_model->delete_photo($photo_id);
+        $result = $this->photo_mongodb_model->delete_photo($album_id,$photo_id);
         $request_array = json_decode($result);
         if (!empty($request_array)) {
             if (property_exists($request_array, "responseCode") != FALSE) {

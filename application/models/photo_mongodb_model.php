@@ -239,9 +239,9 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function delete_photo($photo_id) {
+    public function delete_photo($album_id,$photo_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'deletePhoto');
-        $this->curl->post(array("photoId" => $photo_id));
+        $this->curl->post(array("albumId" => $album_id,"photoId" => $photo_id));
         return $this->curl->execute();
     }
 

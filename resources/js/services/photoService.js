@@ -176,11 +176,12 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.deletePhoto = function (photoId) {
+            photoService.deletePhoto = function (albumId,photoId) {
                 return $http({
                     method: 'post',
                     url: '../../photos/delete_photo',
                     data: {
+                        albumId: albumId,
                         photoId: photoId
                     }
                 });

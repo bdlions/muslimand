@@ -158,8 +158,10 @@ angular.module('controllers.Photo', ['services.Photo']).
                             requestFunction();
                         });
             };
-            $scope.deletePhoto = function (photoId, requestFunction) {
-                photoService.deletePhoto(photoId).
+            $scope.deletePhoto = function (photoInfo,requestFunction) {
+                var albumId = photoInfo.albumId;
+                var photoId = photoInfo.photoId;
+                photoService.deletePhoto(albumId,photoId).
                         success(function (data, status, headers, config) {
                             requestFunction();
                         });

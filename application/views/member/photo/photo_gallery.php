@@ -1,8 +1,6 @@
 <!--<script src="<?php // echo base_url()      ?>jquery.Jcrop.js"></script>-->
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.Jcrop.js"></script>
 <link rel="stylesheet" href="<?php echo base_url() ?>resources/css/jquery.Jcrop.css" type="text/css" />
-
-
 <div ng-app="app.Photo">
     <div  ng-controller="photoController" ng-init="setPhotoInfo(<?php echo htmlspecialchars(json_encode($photo_info)); ?>)" >
         <div class="row form-group"></div>
@@ -146,8 +144,9 @@
                                     <ul class="gallery_ul">
                                         <a href=""><li>Download</li></a>
                                         <!--<a href=""><li>Make Profile Picture</li></a>-->
-                                        <a id="anchor_make_profile_picture" onclick="make_profile_picture()" href="javascript: void(0)">Make profile picture&nbsp;</a>
-                                        <a href=""><li>Make Cover Photo</li></a>
+                                        <li> <a id="anchor_make_profile_picture" onclick="make_profile_picture()" href="javascript: void(0)">Make profile picture&nbsp;</a></li>
+                                        <li><a id="anchor_make_cover_picture" onclick="make_cover_picture()" href="javascript: void(0)"> Make Cover Picture&nbsp;</a></li>
+                                        <!--<a href=""><li>Make Cover Photo</li></a>-->
                                         <a href=""><li>Make Album Photo</li></a>
                                         <a href onclick="open_modal_delete_photo(angular.element(this).scope().photoInfo)"><li>Delete This Photo</li></a>
                                     </ul> 
@@ -200,12 +199,12 @@
         window.location = '<?php echo base_url(); ?>photos/get_photo/' + photoId;
     }
     function open_modal_delete_photo(photoInfo) {
-        var photoId = photoInfo.photoId;
+//        var photoId = photoInfo.photoId;
         var albumId = photoInfo.albumId;
         var selectionInfo = " Photo ? ";
         delete_confirmation(selectionInfo, function (response) {
             if (response == '<?php echo MODAL_DELETE_YES; ?>') {
-                angular.element($('#delete_content_btn')).scope().deletePhoto(photoId, function () {
+                angular.element($('#delete_content_btn')).scope().deletePhoto(photoInfo, function () {
                     $('#common_delete_confirmation_modal').modal('hide');
                     window.location = '<?php echo base_url(); ?>photos/get_album/' + albumId;
                 });
@@ -245,14 +244,22 @@
             onSelect: updateCoords
         });
     }
+    function make_cover_picture()
+    {
+        $('#anchor_make_cover_picture').hide();
+        $('#anchor_finish_cropping').show();
+        $('#image-display').Jcrop({
+            aspectRatio: 1,
+            onSelect: updateCoords
+        });
+    }
     function updateCoords(c)
     {
         $('#x').val(c.x);
         $('#y').val(c.y);
         $('#w').val(c.w);
         $('#h').val(c.h);
-    }
-    ;
+    };
 
 
 
