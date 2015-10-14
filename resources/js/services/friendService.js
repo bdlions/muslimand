@@ -2,15 +2,50 @@ angular.module('services.Friend', []).
         factory('friendService', function ($http) {
             var friendService = {};
 
-            friendService.addFriend = function () {
+            friendService.addFriend = function (friendId, url) {
                 return $http({
                     method: 'post',
-                    url: '../friend/add_friend',
+                    url: url + 'friend/add_friend',
                     data: {
-                        userId: "100157",
-                        friendId: "1003"
-                    },
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                        friendId: friendId
+                    }
+                });
+            };
+
+            friendService.blockRequest = function (friendId, statusType, url) {
+                return $http({
+                    method: 'post',
+                    url: url + 'friend/block_request',
+                    data: {
+                        friendId: friendId,
+                        statusType: statusType
+                    }
+                });
+            };
+            friendService.getPendingRequest = function (url) {
+                return $http({
+                    method: 'post',
+                    url: url + 'friend/get_pending_list',
+                    data: {
+                    }
+                });
+            };
+            friendService.approveRequest = function (friendId, url) {
+                return $http({
+                    method: 'post',
+                    url: url + 'friend/approve_request',
+                    data: {
+                        friendId: friendId
+                    }
+                });
+            };
+            friendService.deleteRequest = function (friendId, url) {
+                return $http({
+                    method: 'post',
+                    url: url + 'friend/delete_request',
+                    data: {
+                        friendId: friendId
+                    }
                 });
             };
 

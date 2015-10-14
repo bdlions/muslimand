@@ -122,34 +122,34 @@ class Auth extends CI_Controller {
                     'title' => $country_title,
                 );
                 $additional_data = array(
-                    $this->attr_map['first_name'] => $this->input->post('r_first_name'),
-                    $this->attr_map['last_name'] => $this->input->post('r_last_name'),
-                    $this->attr_map['country'] => $country
+                    'first_name' => $this->input->post('r_first_name'),
+                    'last_name' => $this->input->post('r_last_name'),
+                    'country' => $country
                 );
                 $gender = array(
-                    $this->attr_map['gender_id'] => $gender_id,
-                    $this->attr_map['title'] => $gender_title
+                    'gender_id' => $gender_id,
+                    'title' => $gender_title
                 );
                 $birth_date = array(
-                    $this->attr_map['birth_day'] => $this->input->post('birthday_day'),
-                    $this->attr_map['birth_month'] => $this->input->post('birthday_month'),
-                    $this->attr_map['birth_year'] => $this->input->post('birthday_year')
+                    'birth_day' => $this->input->post('birthday_day'),
+                    'birth_month' => $this->input->post('birthday_month'),
+                    'birth_year' => $this->input->post('birthday_year')
                 );
                 $basic_info = array(
-                    $this->attr_map['birth_date'] => $birth_date,
-                    $this->attr_map['gender'] => $gender
+                    'birth_date' => $birth_date,
+                    'gender' => $gender
                 );
                 $group_info = array(
-                    $this->attr_map['group_id'] => MEMBER_GROUP_ID,
-                    $this->attr_map['title'] => MEMBER_GROUP_TITLE
+                    'group_id' => MEMBER_GROUP_ID,
+                    'title' => MEMBER_GROUP_TITLE
                 );
                 $groups = array();
                 $groups[] = $group_info;
                 $id = $this->ion_auth->register($username, $password, $email, $additional_data, $groups);
                 if ($id != null) {
                     $additional_data = array(
-                        $this->attr_map['user_id'] => $id,
-                        $this->attr_map['basic_info'] => $basic_info,
+                        'user_id' => $id,
+                        'basic_info' => $basic_info,
                     );
                     $result = $this->basic_profile_mongodb_model->add_basic_info($id, $additional_data);
                     if ($result != null) {

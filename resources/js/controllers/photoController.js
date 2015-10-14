@@ -14,6 +14,7 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.photoCommentInfo = {};
             $scope.albumSharedInfo = {};
 
+
             $scope.setPhotoCategories = function (t) {
                 $scope.categoryList = JSON.parse(t);
             };
@@ -139,8 +140,13 @@ angular.module('controllers.Photo', ['services.Photo']).
 
             };
 
-            $scope.getPhoto = function () {
-                alert("Gfghh");
+            $scope.getNextPhoto = function (photoInfo, requestFunction) {
+                var photoId = photoInfo.photoId;
+                photoService.getNextPhoto(photoId).
+                        success(function (data, status, headers, config) {
+                            $scope.photoInfoList = data.photoInfo;
+                            requestFunction();
+                        });
 
             };
             $scope.cropPicture = function (imageInfo, requestFunction) {
@@ -158,10 +164,10 @@ angular.module('controllers.Photo', ['services.Photo']).
                             requestFunction();
                         });
             };
-            $scope.deletePhoto = function (photoInfo,requestFunction) {
+            $scope.deletePhoto = function (photoInfo, requestFunction) {
                 var albumId = photoInfo.albumId;
                 var photoId = photoInfo.photoId;
-                photoService.deletePhoto(albumId,photoId).
+                photoService.deletePhoto(albumId, photoId).
                         success(function (data, status, headers, config) {
                             requestFunction();
                         });

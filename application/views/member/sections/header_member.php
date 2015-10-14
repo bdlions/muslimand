@@ -1,9 +1,4 @@
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/typeahead/typeahead.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/typeahead/bloodhound.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/typeahead/angular-typeahead.min.js"></script>
-<!--<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/searchController.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/searchService.js "></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/searchApp.js "></script>-->
+
 
 <div class="row" style="padding-top: 15px;">
     <div class="col-xs-2  col-sm-2 col-md-offset-1 col-md-1 form-group">
@@ -11,14 +6,14 @@
             <img style="border-radius: 3px;"src="<?php echo base_url(); ?>resources/images/logo.png" height="30" width="30">
         </a>
     </div>
-<!--    <div class="col-xs-10 col-sm-4 col-md-4 form-group">
-        <div ng-app="app.Search">
-            <div ng-controller="searchController">
-                <input class='typeahead mm_input'  placeholder="Search for people, places and things" type="text" sf-typeahead options="exampleOptionsNonEditable" datasets="numbersDataset" ng-model="searchValue">
-                <input type="text" class="mm_input" placeholder="Search for people, places and things">
+    <!--    <div class="col-xs-10 col-sm-4 col-md-4 form-group">
+            <div ng-app="app.Search">
+                <div ng-controller="searchController">
+                    <input class='typeahead mm_input'  placeholder="Search for people, places and things" type="text" sf-typeahead options="exampleOptionsNonEditable" datasets="numbersDataset" ng-model="searchValue">
+                    <input type="text" class="mm_input" placeholder="Search for people, places and things">
+                </div>
             </div>
-        </div>
-    </div>-->
+        </div>-->
     <div class="col-xs-6 col-sm-3 col-md-offset-1 col-md-2 form-group">
         <a href="<?php echo base_url(); ?>member/timeline">
             <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
@@ -28,12 +23,18 @@
         </a>
     </div>
     <div class="col-xs-6 col-sm-3 col-md-3">
-        <div id="mm_friend_request" style="position: relative" onclick="friend_toggle()">
-            <a href="javascript:void(0)">
-                <img src="<?php echo base_url(); ?>resources/images/header_icons/friends.png">
-            </a>
-            <div id="mm_friend_request_box">
-                <?php $this->load->view("member/pagelets/notification_friend_request"); ?>
+        <div id="mm_friend_request" style="position: relative" >
+            <div ng-controller="friendController" ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">
+                <a href="javascript:void(0)" onclick="friend_toggle()">
+                    <img src="<?php echo base_url(); ?>resources/images/header_icons/friends.png">
+                </a>
+                <div>
+                    <div id="mm_friend_request_box"> 
+                        <div id="pending_list">
+                            <?php $this->load->view("member/pagelets/notification_friend_request"); ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -101,7 +102,9 @@
     });
 
     function friend_toggle() {
-        $('#mm_friend_request_box').show();
+        angular.element($('#mm_friend_request_box')).scope().getPendingRequest(function () {
+            $('#mm_friend_request_box').show();
+        });
     }
 
     function msg_toggle() {

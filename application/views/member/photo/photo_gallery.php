@@ -1,4 +1,4 @@
-<!--<script src="<?php // echo base_url()      ?>jquery.Jcrop.js"></script>-->
+<!--<script src="<?php // echo base_url()       ?>jquery.Jcrop.js"></script>-->
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.Jcrop.js"></script>
 <link rel="stylesheet" href="<?php echo base_url() ?>resources/css/jquery.Jcrop.css" type="text/css" />
 <div ng-app="app.Photo">
@@ -52,8 +52,8 @@
                                     <span ng-if = "photoInfo.likeStatus != '1'">
                                         <a href style="color: #3B59A9;"  onclick="add_photo_like(angular.element(this).scope().photoInfo.photoId)" id="photo_like_{{photoInfo.photoId}}">Like</a>
                                     </span>
-                                    <span ng-if = "photoInfo.likeStatus === '1'">
-                                        <a href style="color: #3B59A9;" id="photo_dislike_{{photoInfo.photoId}}">unLike</a>
+                                    <span ng-if = "photoInfo.likeStatus == '1'">
+                                        <a href style="color: #3B59A9;" id="photo_dislike_{{photoInfo.photoId}}">liked</a>
                                     </span>
                                     .
                                     <a href style="color: #3B59A9;" id="photo_comment_id_focus"> Comment</a>
@@ -65,6 +65,7 @@
                             <div class="row form-group">
                                 <div class="col-md-12">
                                     <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                                    
                                     <a href id="photo_like_list_id" onclick="open_modal_photo_like_list(angular.element(this).scope().photoInfo.photoId)">{{photoInfo.likeCounter}}people </a> like this.
                                 </div>
                             </div>
@@ -193,10 +194,8 @@
         });
     }
     function get_next_photo(photoInfo) {
-        var albumId = photoInfo.albumId;
-        var next = "1";
-        var photoId = photoInfo.photoId + next;
-        window.location = '<?php echo base_url(); ?>photos/get_photo/' + photoId;
+        angular.element($('#next')).scope().getNextPhoto(photoInfo, function () {
+                });
     }
     function open_modal_delete_photo(photoInfo) {
 //        var photoId = photoInfo.photoId;
@@ -215,6 +214,7 @@
             $("#content").html("");
         });
     }
+
 
 
 
@@ -259,7 +259,8 @@
         $('#y').val(c.y);
         $('#w').val(c.w);
         $('#h').val(c.h);
-    };
+    }
+    ;
 
 
 

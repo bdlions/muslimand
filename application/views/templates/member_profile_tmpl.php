@@ -17,11 +17,15 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/basicProfileController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/basicProfileService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/basicProfileApp.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/friendController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/friendService.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/friendApp.js "></script>
+
         <title>Muslimand</title>
     </head>
 
     <body>
-        <div style="position: relative; background-color: #E9EAED">
+        <div style="position: relative; background-color: #E9EAED" ng-app="<?php echo $app; ?>">
             <div style="position: fixed; top: 0; width: 100%; z-index: 20; box-shadow: 0 4px 4px -2px gray;">
                 <div class="container-fluid"  style="background-color: #703684; color: white; padding: 6px 9px">
                     <?php $this->load->view("member/sections/header_member"); ?>

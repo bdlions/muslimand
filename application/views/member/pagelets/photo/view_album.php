@@ -51,7 +51,7 @@
                     <a href style="color: #3B59A9;"  onclick="add_album_like(angular.element(this).scope().albumDetail.albumId)" id="album_like_id">Like</a>
                 </span>
                 <span ng-if = "albumDetail.likeStatus === '1'">
-                    <a href style="color: #3B59A9;" id="album_dislike_id">unLike</a>
+                    <a href style="color: #3B59A9;" id="album_dislike_id">Liked</a>
                 </span>
                 .
                 <a href style="color: #3B59A9;" id="album_comment_id_focus"> Comment</a>

@@ -1,6 +1,4 @@
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/friendController.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/friendService.js "></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/friendApp.js "></script>
+
 
 <style>
     .friendd{
@@ -10,10 +8,15 @@
         width: 100%;
     }
 </style>
-<div ng-app="app.Friend">
-    <div ng-controller="friendController"  ng-init="setFriendList(<?php echo htmlspecialchars(json_encode($friendList)); ?>)" >
+<div ng-controller="friendController">
+    <div class="row form-group">
+        <div class="col-md-12" ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">
+            <?php $this->load->view("member/timeline/profile_cover"); ?>
+        </div>
+    </div>
+    <div ng-init="setFriendList(<?php echo htmlspecialchars(json_encode($friendList)); ?>)" >
         <div class="row form-group">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="pagelet">
                     <div class="row form-group">
                         <div class="col-md-1">
@@ -49,7 +52,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

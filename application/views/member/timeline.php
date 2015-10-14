@@ -1,15 +1,15 @@
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/friendController.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/friendService.js "></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/friendApp.js "></script>
-<div ng-app="app.Friend">
+<!--
+<div ng-app="<?php echo $friend_app; ?>">-->
     <div ng-controller="friendController">
         <div class="row">
             <!--LEFT_COLUMN-->
-            <div class="col-md-10">
+            <div class="col-md-10" ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">
                 <!-- Cover Image -->
                 <?php $this->load->view("member/timeline/profile_cover"); ?>
 
-                <div class="row form-group"></div>
+                <div class="row form-group">
+                    
+                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <?php $this->load->view("member/timeline/add_request"); ?>
@@ -42,4 +42,4 @@
             </div>
         </div>
     </div>
-</div>
+<!--</div>-->

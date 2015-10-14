@@ -24,8 +24,15 @@
             </div>
         </div>
         <div class="col-md-3">
-            <button  class="addFriendRequestId btn btn-default pull-right form-control" style="background-color: #703684; color: white" ng-click="addFriend()" id="friendId" >Add Friend</button>
-            <button style="display: none" class=" FriendRequestSentId btn btn-default pull-right form-control" style="background-color: #703684; color: white" ng-click="" id="friendId" >Friend Request Sent</button>
+            <?php // if ($relation_ship_status == NON_RELATION_TYPE_ID) { ?>
+                <!--<button type="button" class=" btn btn-default" style="position: absolute; bottom: 20px; right:  160px; font-size: 80%" ng-click="addFriend()" >Add Friend</button>-->
+            <?php // } elseif ($relation_ship_status == FRIEND_RELATION_TYPE_ID) { ?>
+                <!--<button type="button" class=" btn btn-default" style="position: absolute; bottom: 20px; right:  160px; font-size: 80%" ng-click="addFriend()" >Friend</button>-->
+            <?php // } elseif ($relation_ship_status == PENDING_RELATION_TYPE_ID) { ?>
+                <!--<button type="button" class=" btn btn-default  " style=" position: absolute; bottom: 20px; right:  160px; font-size: 80%" ng-click="" >Friend Request Sent</button>-->    
+            <?php // } ?>
+<!--            <button  class="addFriendRequestId btn btn-default pull-right form-control" style="background-color: #703684; color: white" ng-click="addFriend()" id="friendId" >Add Friend</button>
+            <button style="display: none" class=" FriendRequestSentId btn btn-default pull-right form-control" style="background-color: #703684; color: white" ng-click="" id="friendId" >Friend Request Sent</button>-->
         </div>
     </div>
 </div>

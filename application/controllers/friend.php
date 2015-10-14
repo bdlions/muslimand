@@ -25,31 +25,143 @@ class Friend extends CI_Controller {
     function add_friend() {
         $response = array();
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        if ($request != null) {
-            $user_id = $request->userId;
-            $friend_id = $request->friendId;
-            $result = $this->friend_mongodb_model->add_friend($user_id, $friend_id);
-            if ($result != null) {
-                $response["message"] = "Add Successfully";
-            }
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "friendId") != FALSE) {
+            $friend_id = $requestInfo->friendId;
+        }
+        $user_id = $this->session->userdata('user_id');
+        $user_id = "2";
+        $type_id = PENDING_RELATION_TYPE_ID;
+        $result = $this->friend_mongodb_model->add_request($user_id, $friend_id, $type_id);
+        if ($result != null) {
+            $response["relation_ship_status"] = PENDING_RELATION_TYPE_ID;
+            $response["is_initiated"] = REQUEST_RECEIVER;
         }
 
         echo json_encode($response);
     }
 
-    function get_friend_list() {
-        $user_id = "100157";
-        $friend_list = array();
-        $result = $this->friend_mongodb_model->get_friend_list($user_id);
-        if (!empty($result)) {
-            $result = json_decode($result);
-            if (property_exists($result, "friendList") != false) {
-                $friend_list = $result->friendList;
-            }
+    function approve_request() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "friendId") != FALSE) {
+            $friend_id = $requestInfo->friendId;
         }
-        $this->data['friendList'] = json_encode($friend_list);
+        $user_id = $this->session->userdata('user_id');
+        $user_id = "3";
+        $type_id = FRIEND_RELATION_TYPE_ID;
+        $result = $this->friend_mongodb_model->change_relation_ship_status($user_id, $friend_id, $type_id);
+        if ($result != null) {
+            $response["relation_ship_status"] = FRIEND_RELATION_TYPE_ID;
+        }
+        echo json_encode($response);
+    }
+
+    function block_request($friend_id = 0) {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "friendId") != FALSE) {
+            $friend_id = $requestInfo->friendId;
+        }
+        if (property_exists($requestInfo, "statusType") != FALSE) {
+            $status_type = $requestInfo->statusType;
+        }
+        $user_id = $this->session->userdata('user_id');
+        $user_id = "3";
+        $type_id = BLOCKED_RELATION_TYPE_ID;
+        if ($status_type == NON_RELATION_TYPE_ID) {
+            $result = $this->friend_mongodb_model->add_request($user_id, $friend_id, $type_id);
+        } else {
+            $result = $this->friend_mongodb_model->change_relation_ship_status($user_id, $friend_id, $type_id);
+        }
+        if (!empty($result)) {
+
+            $response["message"] = "user is blocked successfully";
+        }
+        echo json_encode($response);
+    }
+
+    function delete_request() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "friendId") != FALSE) {
+            $friend_id = $requestInfo->friendId;
+        }
+        $user_id = $this->session->userdata('user_id');
+        $user_id = "2";
+        $result = $this->friend_mongodb_model->delete_request($user_id, $friend_id);
+        if ($result != null) {
+            $response["relation_ship_status"] = NON_RELATION_TYPE_ID;
+        }
+        echo json_encode($response);
+    }
+
+    function get_friend_list($friend_id = 0) {
+        $user_relation = array();
+        $user_id = $this->session->userdata('user_id');
+        $user_id = "2";
+        if ($friend_id != $user_id) {
+            $result = $this->friend_mongodb_model->get_relationship_status($user_id, $friend_id);
+            $result = json_decode($result);
+            if ($result != null) {
+                if (property_exists($result, "relationShipStatus") != FALSE) {
+                    $user_relation['relation_ship_status'] = $result->relationShipStatus;
+                }
+                if (property_exists($result, "isInitiated") != FALSE) {
+                    $user_relation['is_initiated'] = $result->isInitiated;
+                }
+            }
+        } else {
+            $user_relation['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
+        }
+        $relations = array(
+            "friend_relation_type_id" => FRIEND_RELATION_TYPE_ID,
+            "pending_relation_type_id" => PENDING_RELATION_TYPE_ID,
+            "blocked_relation_type_id" => BLOCKED_RELATION_TYPE_ID,
+            "non_friend_relation_type_id" => NON_RELATION_TYPE_ID,
+            "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
+            "request_sender" => REQUEST_SENDER,
+            "request_receiver" => REQUEST_RECEIVER,
+            "base_url" => base_url()
+        );
+        $this->data['constants'] = json_encode($relations);
+        $this->data['user_relation'] = json_encode($user_relation);
+        $this->data['user_id'] = $user_id;
+        $this->data['friend_id'] = $friend_id;
+        $this->data['app'] = "app.Friend";
+
+        if ($friend_id != 0) {
+            $user_id = $friend_id;
+        } else {
+            $user_id = "2"; //from session; 
+        }
+        $offset = 0;
+        $limit = 5;
+        $friend_list = array();
+        $status_type = FRIEND_RELATION_TYPE_ID;
+        $result = $this->friend_mongodb_model->get_friend_list($user_id, $offset, $limit, $status_type);
+        if (!empty($result)) {
+            $this->data['friendList'] = $result;
+        }
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/friends", $this->data);
+    }
+
+    function get_pending_list() {
+        $response = array();
+        $user_id = "2"; //from session; 
+        $offset = 0;
+        $limit = 5;
+        $friend_list = array();
+        $status_type = PENDING_RELATION_TYPE_ID;
+        $result = $this->friend_mongodb_model->get_friend_list($user_id, $offset, $limit, $status_type);
+        if (!empty($result)) {
+            $response["friend_list"] = json_decode($result);
+            $response["status_type"] = FRIEND_RELATION_TYPE_ID;
+        }
+        echo json_encode($response);
     }
 
 }
