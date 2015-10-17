@@ -8,7 +8,7 @@ angular.module('services.Status', []).
                     method: 'post',
                     url: '../status/add_status',
                     data: {
-                        description: statusInfo.description
+                        statusInfo: statusInfo
 
                     },
                 });

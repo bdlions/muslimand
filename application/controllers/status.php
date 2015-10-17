@@ -10,6 +10,7 @@ class Status extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model('status_mongodb_model');
         $this->load->helper('url');
+        $this->load->library('utils');
 
 // Load MongoDB library instead of native db driver if required
         $this->config->item('use_mongodb', 'ion_auth') ?
@@ -32,6 +33,39 @@ class Status extends CI_Controller {
         );
     }
 
+    
+     public function image_upload() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        $file = array();
+        $files = array();
+        if (isset($_FILES["userfile"])) {
+            $file_info = $_FILES["userfile"];
+            $result = $this->utils->upload_image($file_info, USER_TIMELINE_IMAGE_PATH);
+            if ($result['status'] == 1) {
+                $picture = $result['upload_data']['file_name'];
+                $file = array(
+                    "name" => $picture,
+                    "type" => "image/jpeg",
+                    "url" => base_url() . USER_TIMELINE_IMAGE_PATH . $picture,
+                    "thumbnailUrl" => base_url() . USER_TIMELINE_IMAGE_PATH . $picture,
+                    "deleteUrl" => base_url() . USER_TIMELINE_IMAGE_PATH . $picture,
+                    "size" => 100,
+                    "deleteType" => "DELETE"
+                );
+
+                $files[] = $file;
+                $response["files"] = $files;
+            } else {
+                $this->data['message'] = $result['message'];
+                echo json_encode($this->data);
+                return;
+            }
+            echo json_encode($response);
+            return;
+        }
+    }
     /**
      * this methord add a new status of a user 
      * @param userId and user status Info
@@ -39,10 +73,11 @@ class Status extends CI_Controller {
     function add_status() {
 
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
+        $requestInfo = json_decode($postdata);
+
         $response = array();
         $user_id = "100157";
-        if ($request != null) {
+        if ($requestInfo != null) {
             $user_info = new stdClass();
             $user_info->userId = $this->session->userdata('user_id');
             $user_info->fristName = "Shemin"; //get from session;
@@ -51,7 +86,23 @@ class Status extends CI_Controller {
             $status_info->userId = $this->session->userdata('user_id');
             $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
             $status_info->statusTypeId = POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID;
-            $status_info->description = $request->description;
+            if (property_exists($requestInfo, "statusInfo") != FALSE) {
+                $request = $requestInfo->statusInfo;
+            }
+            if (property_exists($request, "description") != FALSE) {
+                $status_info->description = $request->description;
+            }
+                $image = new stdClass();
+                $images = array();
+            if (property_exists($request, "imageList") != FALSE) {
+                $image_list = $request->imageList;
+               
+                foreach ($image_list as $imageInfo) {
+                   $image->image =  $imageInfo;
+                    $images[]=$image;
+                }
+            }
+            $status_info->images = $images;
             $status_info->userInfo = $user_info;
             $result = $this->status_mongodb_model->add_status($status_info);
             if ($result != null) {

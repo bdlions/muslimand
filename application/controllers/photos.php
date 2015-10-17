@@ -20,11 +20,22 @@ class Photos extends CI_Controller {
                         $this->load->database();
 
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+        $this->relations = $relations = array(
+            "friend_relation_type_id" => FRIEND_RELATION_TYPE_ID,
+            "pending_relation_type_id" => PENDING_RELATION_TYPE_ID,
+            "blocked_relation_type_id" => BLOCKED_RELATION_TYPE_ID,
+            "non_friend_relation_type_id" => NON_RELATION_TYPE_ID,
+            "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
+            "request_sender" => REQUEST_SENDER,
+            "request_receiver" => REQUEST_RECEIVER,
+            "base_url" => base_url()
+        );
     }
 
     function index() {
         $user_id = $this->session->userdata('user_id');
-
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Photos";
         $this->data['user_id'] = $user_id;
         $result = $this->photo_mongodb_model->get_user_albums($user_id);
         $result_array = json_decode($result);
@@ -77,6 +88,8 @@ class Photos extends CI_Controller {
     }
 
     function get_user_albums() {
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Photos";
         $this->data['user_album_list'] = array();
         $user_id = $this->session->userdata('user_id');
         $result = $this->photo_mongodb_model->get_user_albums($user_id);
@@ -90,6 +103,8 @@ class Photos extends CI_Controller {
     }
 
     function get_album($album_id = 0) {
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Photos";
         $user_id = $this->session->userData('user_id');
         $response = array();
         $result = $this->photo_mongodb_model->get_photos($user_id, $album_id);
@@ -272,6 +287,8 @@ class Photos extends CI_Controller {
     }
 
     function get_photo($photo_id = 0) {
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Photos";
         $user_id = $this->session->userdata('user_id');
         $response = array();
         $result = $this->photo_mongodb_model->get_photo($user_id, $photo_id);
@@ -351,6 +368,8 @@ class Photos extends CI_Controller {
     }
 
     function add_photos() {
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Photos";
 
         $result = array();
         $image_add_result = array();
@@ -430,7 +449,7 @@ class Photos extends CI_Controller {
         if (property_exists($requestInfo, "photoId") != FALSE) {
             $photo_id = $requestInfo->photoId;
         }
-        $result = $this->photo_mongodb_model->delete_photo($album_id,$photo_id);
+        $result = $this->photo_mongodb_model->delete_photo($album_id, $photo_id);
         $request_array = json_decode($result);
         if (!empty($request_array)) {
             if (property_exists($request_array, "responseCode") != FALSE) {
@@ -595,7 +614,7 @@ class Photos extends CI_Controller {
         //resize and crop
         imagecopyresampled($dst_r, $img_r, 0, 0, $image_x, $image_y, $targ_w, $targ_h, $image_w, $image_h);
         imagejpeg($dst_r, USER_ALBUM_IMAGE_PATH . $temp_src_name, $jpeg_quality);
-        
+
         //creating image destination directory if not exists
 //        if (!is_dir(ALBUM_IMAGE_PATH)) {
 //            mkdir(ALBUM_IMAGE_PATH, 0777, TRUE);
@@ -625,7 +644,6 @@ class Photos extends CI_Controller {
 //            'created_on' => now(),
 //            'modified_on' => now()
 //        );
-     
 //        if ($this->statuses->post_status($status_data) !== FALSE) {
 //            $result['status'] = 1;
 //            $result['user_id'] = $user_id;

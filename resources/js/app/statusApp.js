@@ -1,6 +1,6 @@
 angular.module("app.Status", [
+    'controllers.Header',
     'controllers.Status',
     'controllers.Image',
-    'controllers.Friend',
     'ui.bootstrap'
 ]);

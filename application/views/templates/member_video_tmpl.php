@@ -20,6 +20,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/videoController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/videoService.js "></script>
+                <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></scrip
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/videoApp.js "></script>
         <title>Muslimand</title>
     </head>

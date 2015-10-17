@@ -16,7 +16,7 @@
             <div class="modal-body">
                 <div class="row form-group">
                     <div class="col-md-12">
-                        <textarea rows="4" cols="70" ng-model="statusShareInfo.description"></textarea>
+                        <textarea rows="4" cols="50" ng-model="statusShareInfo.description"></textarea>
                         <input type="hidden" id="status_id">
                     </div>
                 </div>

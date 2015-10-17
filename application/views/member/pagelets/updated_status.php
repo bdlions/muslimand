@@ -33,7 +33,7 @@
                     <div style="float: right;">
                         <ul style="list-style-type: none;">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
+                                <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li ng-click="selectEditField(status.statusId)"><a >Edit</a></li>
                                     <li><a href="#">Report</a></li>
@@ -65,6 +65,12 @@
                         </form>
                     </div>
                 </div>
+            </div>
+            <div class="row from-group">
+                <div class="col-md-4" ng-repeat="image in status.images">
+                    <img style="border: 1px solid #703684;"src="<?php echo base_url() . USER_TIMELINE_IMAGE_PATH ?>{{image.image}}" width="120" height="100">
+                </div>
+                
             </div>
             <div class="row">
                 <div class=" col-md-11">

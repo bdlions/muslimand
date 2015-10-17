@@ -24,7 +24,7 @@
     </div>
     <div class="col-xs-6 col-sm-3 col-md-3">
         <div id="mm_friend_request" style="position: relative" >
-            <div ng-controller="friendController" ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">
+            <div ng-controller="headerController" ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">
                 <a href="javascript:void(0)" onclick="friend_toggle()">
                     <img src="<?php echo base_url(); ?>resources/images/header_icons/friends.png">
                 </a>

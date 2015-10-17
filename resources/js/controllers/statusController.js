@@ -14,19 +14,20 @@ angular.module('controllers.Status', ['services.Status']).
 
             $scope.setStatus = function (t) {
                 $scope.statuses = JSON.parse(t);
-                console.log($scope.statuses);
+//                console.log($scope.statuses);
             };
             /**
              * Add user status 
              * @Author Rashida Sultana
              * 
              * */
-            $scope.addStatus = function () {
+            $scope.addStatus = function (imageList, requestFunction) {
+                $scope.statusInfo.imageList = [];
+                $scope.statusInfo.imageList = imageList;
                 statusService.addStatus($scope.statusInfo).
                         success(function (data, status, headers, config) {
                             $scope.statuses.push(data.status_info);
-                            $("#updateStatusPagelet").show();
-                            $("#statusPostId").val('');
+                            requestFunction();
                         });
             };
 // update a status...............
@@ -53,7 +54,7 @@ angular.module('controllers.Status', ['services.Status']).
                         success(function (data, status, headers, config) {
                             angular.forEach($scope.statuses, function (value, key) {
                                 if (value.statusId == statusId) {
-                                    (value.likeList.push(data.status_like_info));
+                                   $scope.likeList.push(data.status_like_info);
                                     (value.likeStatus = "1");
                                     (value.likeCounter = "1");
                                 }

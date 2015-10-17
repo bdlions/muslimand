@@ -13,7 +13,6 @@
 /* global window, angular */
 
 (function () {
-    'use strict';
     angular.module('controllers.Image', [
         'blueimp.fileupload'
     ])

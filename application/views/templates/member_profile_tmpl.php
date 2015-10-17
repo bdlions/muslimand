@@ -12,6 +12,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
+        
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/basicProfileController.js"></script>
@@ -19,6 +20,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/basicProfileApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/friendController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/friendService.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/friendApp.js "></script>
 
         <title>Muslimand</title>

@@ -36,8 +36,10 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/photoController.js"></script>
-        <script src="<?php echo base_url(); ?>resources/js/controllers/imageUploadController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageUploadController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/photoService.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/photoApp.js "></script>
         <title>Muslimand</title>
     </head>
