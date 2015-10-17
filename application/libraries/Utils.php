@@ -165,8 +165,6 @@ class Utils {
         return $result;
     }
 
-
-
     /*
      * This method will resize an image
      * @param $source_path, source image relative path
@@ -200,6 +198,25 @@ class Utils {
             $result['status'] = 1;
         }
         return $result;
+    }
+
+      /*
+     * this method return relation type of a user
+     *  @Rashida
+     *  
+     *  */
+    function relation_ship_constants() {
+        $relations = array(
+            "friend_relation_type_id" => FRIEND_RELATION_TYPE_ID,
+            "pending_relation_type_id" => PENDING_RELATION_TYPE_ID,
+            "blocked_relation_type_id" => BLOCKED_RELATION_TYPE_ID,
+            "non_friend_relation_type_id" => NON_RELATION_TYPE_ID,
+            "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
+            "request_sender" => REQUEST_SENDER,
+            "request_receiver" => REQUEST_RECEIVER,
+            "base_url" => base_url()
+        );
+        return $relations;
     }
 
 }

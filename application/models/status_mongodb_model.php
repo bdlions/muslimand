@@ -15,9 +15,9 @@ class Status_mongodb_model extends Ion_auth_mongodb_model {
         return $this->curl->execute();
     }
 
-    public function get_statuses($user_id) {
+    public function get_statuses($user_id, $offset, $limit) {
         $this->curl->create($this->SERVICE_STATUS . 'getStatuses');
-        $this->curl->post(array("userId" => $user_id));
+        $this->curl->post(array("userId" => $user_id, "offset" => $offset, "limit" => $limit));
         return $this->curl->execute();
     }
 
@@ -41,9 +41,20 @@ class Status_mongodb_model extends Ion_auth_mongodb_model {
 
     public function share_status($status_id, $ref_user_info, $share_info) {
         $this->curl->create($this->SERVICE_STATUS . 'shareStatus');
-        $this->curl->post(array("statusId" => $status_id, 'refUserInfo' => json_encode($refUserInfo), 'shareInfo' => json_encode($share_info)));
+        $this->curl->post(array("statusId" => $status_id, 'refUserInfo' => json_encode($ref_user_info), 'shareInfo' => json_encode($share_info)));
         return $this->curl->execute();
     }
+     public function get_status_likes($status_id) {
+        $this->curl->create($this->SERVICE_STATUS . 'getStatusLikeList');
+        $this->curl->post(array("statusId" => $status_id));
+        return $this->curl->execute();
+    }
+    public function get_status_comments($status_id) {
+        $this->curl->create($this->SERVICE_STATUS . 'getStatusComments');
+        $this->curl->post(array("statusId" => $status_id));
+        return $this->curl->execute();
+    }
+   
     
        public function delete_status($status_id) {
         $this->curl->create($this->SERVICE_STATUS . 'deleteStatus');

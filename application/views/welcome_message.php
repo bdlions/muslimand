@@ -131,9 +131,9 @@
         <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload.js"></script>
         <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-process.js"></script>
         <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-image.js"></script>
-        <script src="js/jquery.fileupload-angular.js"></script>
+        <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-angular.js"></script>
+        <!--<script src="js/jquery.fileupload-angular.js"></script>-->
         <script src="js/app.js"></script>
-        <!--<script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-angular.js"></script>-->
          <!--<script src="<?php echo base_url(); ?>resources/js/image/app.js"></script>-->
         <!--<script src="js/load-image.all.min.js"></script>-->
         <!--<script src="js/jquery.fileupload.js"></script>-->

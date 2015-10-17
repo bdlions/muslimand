@@ -1,4 +1,5 @@
-<div style="display: none" id="updateStatusPagelet">
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/elif.js"></script>
+<div id="updateStatusPagelet">
     <div ng-repeat="status in statuses.slice().reverse()" class="form-group">
         <div class="pagelet" id="pagelet{{status.statusId}}">
             <div class="row form-group">
@@ -67,32 +68,52 @@
             </div>
             <div class="row">
                 <div class=" col-md-11">
-                    <a style="color: #3B59A9;" href id="statusLike{{status.statusId}}" ng-click="addLike(status.statusId)">Like,</a> 
-                    <a style="color: #3B59A9; display: none;" href id="statusUnLike{{status.statusId}}" ng-click="unLike(status.statusId)">UnLike,</a> 
+                    <span ng-if = "status.likeStatus != '1'">
+                        <a style="color: #3B59A9;" href id="statusLike{{status.statusId}}" ng-click="addLike(status.statusId)">Like,</a> 
+                    </span>
+                    <span ng-if = "status.likeStatus == '1'">
+                        <a style="color: #3B59A9;" href id="statusUnLike{{status.statusId}}" ng-click="unLike(status.statusId)">liked,</a> 
+                    </span>
                     <a style="color: #3B59A9;" href ng-click="selectCommentField(status.statusId)"> Comment,</a>
-                    <!--<a style="color: #3B59A9;" href ng-click="openModalShare(status.statusId)"> Share</a>-->
+                    <a style="color: #3B59A9;" href onclick="open_modal_share(angular.element(this).scope().status)"> Share</a>
                 </div>
             </div>
-
             <div class="pagelet">
                 <div class="row form-group">
                     <div class="col-md-12">
-                        <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
-                        <a style="color: #3B59A9;" href ><span id="statusLike{{status.statusId}}"> you</span> and 60 people </a> like this.
+                        <span ng-if = "status.likeCounter > 0">
+                            <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                            <a  id="like_list_id"  style="color: #3B59A9;" href onclick="open_modal_like_list(angular.element(this).scope().status.statusId)" >
+                                <span ng-if = "status.likeStatus === '1'">
+                                    <span  id="statusLike{{status.statusId}}"> you</span>
+                                </span>
+                                <span ng-if = "status.likeCounter > 1 && status.likeStatus === '1'">
+                                    and  {{status.likeCounter - 1}} people
+                                </span>
+                                <span ng-if ="status.likeCounter > 0 && status.likeStatus !== '1'">
+                                    {{status.likeCounter}} people
+                                </span>
+                                like this.
+                            </a> 
+                        </span>
                     </div>
                 </div>
-                <div class="pagelet_divider"></div>
-                <div class="row form-group">
-                    <div class="col-md-12">
-                        <img src="<?php echo base_url(); ?>resources/images/share_icon.png" >
-                        <a href="#">4 shares</a>
+                <span ng-if = "status.shareCounter > 0">
+                    <div class="pagelet_divider"></div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <img src="<?php echo base_url(); ?>resources/images/share_icon.png" >
+                            <a href="#">{{status.shareCounter}} shares</a>
+                        </div>
                     </div>
-                </div>
+                </span>
                 <div class="pagelet_divider"></div>
                 <div class="row form-group">
-                    <div class="col-md-12">
-                        <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
-                        <a href="#">view 21 more comments</a>
+                    <div class="col-md-12" id="more_comment_id">
+                        <span ng-if="status.commentCounter > 0">
+                            <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
+                            <a href  id="status_more_comment" onclick="get_album_comments(angular.element(this).scope().status.statusId)">view{{status.commentCounter}}more comments </a>
+                        </span>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -133,8 +154,8 @@
 
     </div>
 </div>
-
-
+<?php $this->load->view("modal/modal_liked_people_list"); ?>
+<?php $this->load->view("member/pagelets/modal_share_content"); ?>
 <script>
 //            $(function () {
 //            $("#editStatusId").on("click", function () {
@@ -150,8 +171,28 @@
 //            });
 //            });
 
-//            function openModalShare(){
-//            alert("fgdghfh");
-//            }
+    function get_album_comments(statusId) {
+        angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function () {
+            $('#more_comment_id').hide();
+        });
+    }
 
+    function open_modal_share(statusInfo) {
+        console.log(statusInfo);
+        $("#status_id").val(statusInfo.statusId);
+        $("#status_user_id").val(statusInfo.userInfo.userId);
+        $("#user_frist_name").val(statusInfo.userInfo.fristName);
+        $("#user_last_name").val(statusInfo.userInfo.lastName);
+        $("#old_description").val(statusInfo.description);
+        $("#user_frist_name").append(statusInfo.userInfo.fristName);
+        $("#user_last_name").append(statusInfo.userInfo.lastName);
+        $("#old_description").append(statusInfo.description);
+        $('#modal_share_content').modal('show');
+    }
+
+    function open_modal_like_list(statusId) {
+        angular.element($('#like_list_id')).scope().getStatusLikeList(statusId, function () {
+            $('#modal_liked_people_list').modal('show');
+        });
+    }
 </script>

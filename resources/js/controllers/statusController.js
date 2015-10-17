@@ -4,19 +4,18 @@ angular.module('controllers.Status', ['services.Status']).
 //            $scope.statuses.comments = [];
             $scope.status = {};
             $scope.statusInfo = {};
+            $scope.statusShareInfo = {};
 //            $scope.statuses.comments = [];
             $scope.commentInfo = {};
             $scope.newsfeeds = [];
+            $scope.likeList = [];
+            $scope.CommentList = [];
 
-//            var values = {name: 'misko', gender: 'male'};
-//            var log = [];
-//            angular.forEach(values, function (value, key) {
-//                if(value == 'misko'){
-//                this.push(key + ': ' + value);
-//                }
-//            }, log);
-//            console.log(log);
 
+            $scope.setStatus = function (t) {
+                $scope.statuses = JSON.parse(t);
+                console.log($scope.statuses);
+            };
             /**
              * Add user status 
              * @Author Rashida Sultana
@@ -55,8 +54,8 @@ angular.module('controllers.Status', ['services.Status']).
                             angular.forEach($scope.statuses, function (value, key) {
                                 if (value.statusId == statusId) {
                                     (value.likeList.push(data.status_like_info));
-                                    $("#statusLike" + statusId).hide();
-                                    $("#statusUnLike" + statusId).show();
+                                    (value.likeStatus = "1");
+                                    (value.likeCounter = "1");
                                 }
                             }, $scope.statuses);
 
@@ -75,7 +74,7 @@ angular.module('controllers.Status', ['services.Status']).
                                 if (value.statusId == statusId ? value.commentList.push(data.status_comment_info) : "") {
                                 }
                             }, $scope.statuses);
-                            $("#commentInputField" + statusId).val('');
+                            $scope.statusInfo.commentDes = "";
                         });
                 return false;
             };
@@ -90,15 +89,42 @@ angular.module('controllers.Status', ['services.Status']).
                         });
                 return false;
             };
+            $scope.shareStatus = function (oldStatusInfo, requestFunction) {
+                statusService.shareStatus(oldStatusInfo, $scope.statusShareInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.statuses.push(data.status_info);
+                            requestFunction();
+                        });
+            };
 
             $scope.setNewsfeeds = function (t) {
                 $scope.newsfeeds = JSON.parse(t);
             };
 
+            $scope.getStatusLikeList = function (statusId, requestFunction) {
+                statusService.getStatusLikeList(statusId).
+                        success(function (data, status, headers, config) {
+                            $scope.likeList = data.like_list;
+                            requestFunction();
+                        });
+                return false;
+            };
+            $scope.getStatusComments = function (statusId, requestFunction) {
+                statusService.getStatusComments(statusId).
+                        success(function (data, status, headers, config) {
+                            angular.forEach($scope.statuses, function (value, key) {
+                                if (value.statusId == statusId ? value.commentList = data.comment_list : '') {
+                                }
+                            }, $scope.statuses);
+                            requestFunction();
+                        });
+                return false;
+
+            };
             /**
              * Feild hde and show 
              * */
-            
+
             $scope.selectCommentField = function (statusId) {
                 $('#commentInputField' + statusId).focus();
             };

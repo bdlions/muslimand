@@ -20,6 +20,16 @@ class Status extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
+        $this->relations = $relations = array(
+            "friend_relation_type_id" => FRIEND_RELATION_TYPE_ID,
+            "pending_relation_type_id" => PENDING_RELATION_TYPE_ID,
+            "blocked_relation_type_id" => BLOCKED_RELATION_TYPE_ID,
+            "non_friend_relation_type_id" => NON_RELATION_TYPE_ID,
+            "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
+            "request_sender" => REQUEST_SENDER,
+            "request_receiver" => REQUEST_RECEIVER,
+            "base_url" => base_url()
+        );
     }
 
     /**
@@ -38,8 +48,8 @@ class Status extends CI_Controller {
             $user_info->fristName = "Shemin"; //get from session;
             $user_info->lastName = "Haque";
             $status_info = new stdClass();
-            $status_info->userId = '100157';
-            $status_info->statusId = '2';
+            $status_info->userId = $this->session->userdata('user_id');
+            $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
             $status_info->statusTypeId = POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID;
             $status_info->description = $request->description;
             $status_info->userInfo = $user_info;
@@ -64,24 +74,39 @@ class Status extends CI_Controller {
             $user_info->userId = $this->session->userdata('user_id');
             $user_info->fristName = "Shemin"; //get from session;
             $user_info->lastName = "Haque";
-            
+
             $ref_user_info = new StdClass(); //get from session;
-            $ref_user_info->userId = "100105";
-            $ref_user_info->fristName = "Keya";
-            $ref_user_info->lastName = "Moni";
+            if (property_exists($request, "userId")) {
+                $ref_user_info->userId = $request->userId;
+            }
+            if (property_exists($request, "fristName")) {
+                $ref_user_info->fristName = $request->fristName;
+            }
+            if (property_exists($request, "lastName")) {
+                $ref_user_info->lastName = $request->lastName;
+            }
             $ref_info = new stdClass();
-            $ref_info->description = $request->oldDescription;
+            if (property_exists($request, "description")) {
+                $ref_info->description = $request->description;
+            }
             $ref_info->userInfo = $ref_user_info;
-            
-            $status_id = $request->statusId;
+            if (property_exists($request, "statusId")) {
+                $status_id = $request->statusId;
+            }
+
+
+            $r_user_info = new stdClass();
+            $r_user_info->userInfo = $ref_user_info;
             $status_info = new stdClass();
-            $status_info->userId = '100157';
-            $status_info->statusTypeId = POST_STATUS_BY_USER_AT_FRIEND_PROFILE_TYPE_ID;
-            $status_info->description = $request->description;
+            $status_info->userId = $this->session->userdata('user_id');
+            $status_info->statusTypeId = SHARE_OTHER_STATUS;
+            $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
+            if (property_exists($request, "newDescription")) {
+                $status_info->description = $request->newDescription;
+            }
             $status_info->userInfo = $user_info;
             $status_info->referenceInfo = $ref_info;
-            
-            $result = $this->status_mongodb_model->share_status($status_id, $ref_user_info, $status_info);
+            $result = $this->status_mongodb_model->share_status($status_id, $r_user_info, $status_info);
             if ($result != null) {
                 $status_info->commentList = array();
                 $status_info->likeList = array();
@@ -89,12 +114,7 @@ class Status extends CI_Controller {
                 $response["status_info"] = $status_info;
             }
         }
-        $status_id = $request->statusId;
-
-        
-        if ($result != null) {
-            $response['share_info'] = $ref_user_info;
-        }
+        echo json_encode($response);
     }
 
     /**
@@ -126,7 +146,9 @@ class Status extends CI_Controller {
         $ref_user_info->userId = $this->session->userdata('user_id');
         $ref_user_info->fristName = "Keya";
         $ref_user_info->lastName = "Moni";
-        $status_id = $request->statusId;
+        if (property_exists($request, "statusId")) {
+            $status_id = $request->statusId;
+        }
         $status_like_info = new StdClass();
         $status_like_info->userInfo = $ref_user_info;
         $result = $this->status_mongodb_model->add_status_like($status_id, $status_like_info);
@@ -145,11 +167,14 @@ class Status extends CI_Controller {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
         $ref_user_info = new StdClass(); //get from session;
-        $ref_user_info->userId = $request->refUserId;
+        $ref_user_info->userId = $this->session->userdata('user_id');
         $ref_user_info->fristName = "Keya";
         $ref_user_info->lastName = "Moni";
-        $status_id = $request->statusId;
+        if (property_exists($request, "statusId")) {
+            $status_id = $request->statusId;
+        }
         $status_comment_info = new StdClass();
+        $status_comment_info->commentId = $this->utils->generateRandomString(STATUS_COMMENT_ID_LENGTH);
         $status_comment_info->description = $request->description;
         $status_comment_info->userInfo = $ref_user_info;
         $result = $this->status_mongodb_model->add_status_comment($status_id, $status_comment_info);
@@ -160,18 +185,18 @@ class Status extends CI_Controller {
     }
 
     function get_statuses() {
-        $user_id = "100157";
-//        $result = array();
-//        $result = $this->status_mongodb_model->get_statuses($user_id);
-//        if ($result != null) {
-//            $result1 = json_decode($result);
-//            $this->data["newsfeed"] = $result1->statusList;
-//        }
+        $response = array();
+        $user_id = $this->session->userdata('user_id');
+        $offset = 0;
+        $limit = 5;
         $result = array();
-        $result['newsfeed'] = $this->status_mongodb_model->get_statuses($user_id);
-//        $result['newsfeed'] = 'dsfsdfsdf';
-        $this->data = $result;
-
+        $result = $this->status_mongodb_model->get_statuses($user_id, $offset, $limit);
+        if ($result != null) {
+            $result = json_decode($result);
+            $this->data["status_list"] = $result;
+        }
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Status";
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed", $this->data);
     }
 
@@ -188,6 +213,39 @@ class Status extends CI_Controller {
         $result = $this->status_mongodb_model->delete_status($status_id);
         if ($result != null) {
             $response["message"] = "Status Delete Successfully";
+        }
+        echo json_encode($response);
+    }
+
+    function get_status_likes() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        if (property_exists($request, "statusId")) {
+            $status_id = $request->statusId;
+        }
+        $result = array();
+        $response = array();
+        $result = $this->status_mongodb_model->get_status_likes($status_id);
+        $result = json_decode($result);
+        if ($result != null) {
+            $response["like_list"] = $result->like;
+        }
+        echo json_encode($response);
+    }
+
+    function get_status_comments() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        if (property_exists($request, "statusId")) {
+
+            $status_id = $request->statusId;
+        }
+        $result = array();
+        $response = array();
+        $result = $this->status_mongodb_model->get_status_comments($status_id);
+        $result = json_decode($result);
+        if ($result != null) {
+            $response["comment_list"] = $result->comment;
         }
         echo json_encode($response);
     }

@@ -432,7 +432,6 @@ function set_image(image) {
     images.push(image);
 }
 function get_image_list() {
-    console.log(images);
     return images;
 
 }

@@ -7,18 +7,7 @@
         <div id="link" class="col-xs-2 col-sm-2"><span class="status_label_style">Link</span></div>
     </div>
     <div id="photo_details" style="display: none;">
-
-<!--        <div class="row">
-            <div class="col-md-6">
-                <input type="file" name="image[]" size="30">
-            </div>
-            <div class="col-md-offset-6"></div>
-        </div>
-        <div class="row form-group">
-            <div class="col-md-12">
-                <span style="font-size: 12px">Select a photo to upload</span>
-            </div>
-        </div>-->
+        
     </div>
     <div id="link_details" style="display: none;">
         <div class="row">

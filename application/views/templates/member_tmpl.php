@@ -5,29 +5,45 @@
         <meta name="description" content="Social">
         <meta name="keywords" content=""/>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="File Upload widget with multiple file selection, drag&amp;drop support, progress bars, validation and preview images, audio and video for AngularJS. Supports cross-domain, chunked and resumable file uploads and client-side image resizing. Works with any server-side platform (PHP, Python, Ruby on Rails, Java, Node.js, Go etc.) that supports standard HTML form file uploads.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/jquery.mCustomScrollbar.css"/>
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/jquery.fileupload.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/jquery.fileupload-ui.css">
 
 
         <!--scroll bar customize-->
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular-animate.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/elif.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ui-bootstrap-tpls-0.13.3.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/modernizr.2.5.3.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-latest.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="<?php echo base_url(); ?>resources/js/image/vendor/jquery.ui.widget.js"></script>
+        <script src="<?php echo base_url(); ?>resources/js/image/load-image.all.min.js"></script>
+        <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload.js"></script>
+        <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-process.js"></script>
+        <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-image.js"></script>
+        <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-angular.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload-shim.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/friendController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/friendService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/friendApp.js "></script>
+        <script src="<?php echo base_url(); ?>resources/js/controllers/imageUploadController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/statusController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/statusService.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/statusApp.js "></script>
         <title>Muslimand</title>
     </head>
 

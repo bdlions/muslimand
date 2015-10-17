@@ -9,9 +9,7 @@ angular.module('services.Status', []).
                     url: '../status/add_status',
                     data: {
                         description: statusInfo.description
-//                        statusType: statusTypeId,
-//                        userId : userId,
-//                        refId : refId
+
                     },
                 });
             };
@@ -23,8 +21,7 @@ angular.module('services.Status', []).
                     data: {
                         description: statusInfo.description,
                         statusId: statusInfo.statusId
-//                        userId : userId,
-//                        refId : refId
+
                     },
                 });
             };
@@ -35,8 +32,6 @@ angular.module('services.Status', []).
                     url: '../status/add_status_like',
                     data: {
                         statusId: statusId,
-//                        refUserId: "100105",
-//                        refId: refId
                     },
                 });
             };
@@ -68,6 +63,42 @@ angular.module('services.Status', []).
                     },
                 });
             };
+            /**
+             * Delete status..
+             * */
+            statusService.shareStatus = function (oldStatusInfo, statusInfo) {
+                return $http({
+                    method: 'post',
+                    url: '../status/share_status',
+                    data: {
+                        statusId: oldStatusInfo.statusId,
+                        userId: oldStatusInfo.statusUserId,
+                        fristName: oldStatusInfo.fristName,
+                        lastName: oldStatusInfo.lastName,
+                        description: oldStatusInfo.description,
+                        newDescription: statusInfo.description,
+                    },
+                });
+            };
 
+
+            statusService.getStatusLikeList = function (statusId) {
+                return $http({
+                    method: 'post',
+                    url: '../status/get_status_likes',
+                    data: {
+                        statusId: statusId
+                    },
+                });
+            };
+            statusService.getStatusComments = function (statusId) {
+                return $http({
+                    method: 'post',
+                    url: '../status/get_status_comments',
+                    data: {
+                        statusId: statusId
+                    },
+                });
+            };
             return statusService;
         });
