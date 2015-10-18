@@ -1,20 +1,30 @@
 angular.module('controllers.Status', ['services.Status']).
         controller('statusController', function ($scope, statusService) {
             $scope.statuses = [];
-//            $scope.statuses.comments = [];
+            $scope.statusTypes = {};
             $scope.status = {};
             $scope.statusInfo = {};
             $scope.statusShareInfo = {};
-//            $scope.statuses.comments = [];
             $scope.commentInfo = {};
+            $scope.sharedInfo = {};
             $scope.newsfeeds = [];
             $scope.likeList = [];
+            $scope.shareList = [];
             $scope.CommentList = [];
 
 
             $scope.setStatus = function (t) {
                 $scope.statuses = JSON.parse(t);
 //                console.log($scope.statuses);
+            };
+            $scope.setStatusTypeIds = function (t) {
+                $scope.statusTypes = JSON.parse(t);
+//                console.log($scope.statusTypes);
+            };
+            $scope.setSharedInfo = function (sharedInfo, requestFunction) {
+                $scope.sharedInfo = sharedInfo;
+//                console.log($scope.sharedInfo);
+                requestFunction();
             };
             /**
              * Add user status 
@@ -54,7 +64,7 @@ angular.module('controllers.Status', ['services.Status']).
                         success(function (data, status, headers, config) {
                             angular.forEach($scope.statuses, function (value, key) {
                                 if (value.statusId == statusId) {
-                                   $scope.likeList.push(data.status_like_info);
+                                    $scope.likeList.push(data.status_like_info);
                                     (value.likeStatus = "1");
                                     (value.likeCounter = "1");
                                 }
@@ -72,11 +82,16 @@ angular.module('controllers.Status', ['services.Status']).
                 statusService.addComment($scope.statusInfo).
                         success(function (data, status, headers, config) {
                             angular.forEach($scope.statuses, function (value, key) {
-                                if (value.statusId == statusId ? value.commentList.push(data.status_comment_info) : "") {
+                                if (value.statusId == statusId) {
+                                    if (typeof value.commentList === "undefined") {
+                                        value.commentList = new Array();
+                                    }
+                                    value.commentList.push(data.status_comment_info);
                                 }
                             }, $scope.statuses);
                             $scope.statusInfo.commentDes = "";
                         });
+
                 return false;
             };
             /**
@@ -90,10 +105,11 @@ angular.module('controllers.Status', ['services.Status']).
                         });
                 return false;
             };
-            $scope.shareStatus = function (oldStatusInfo, requestFunction) {
-                statusService.shareStatus(oldStatusInfo, $scope.statusShareInfo).
+            $scope.shareStatus = function (requestFunction) {
+                statusService.shareStatus($scope.sharedInfo, $scope.statusShareInfo).
                         success(function (data, status, headers, config) {
                             $scope.statuses.push(data.status_info);
+                            $scope.statusShareInfo.description = "";
                             requestFunction();
                         });
             };
@@ -106,6 +122,14 @@ angular.module('controllers.Status', ['services.Status']).
                 statusService.getStatusLikeList(statusId).
                         success(function (data, status, headers, config) {
                             $scope.likeList = data.like_list;
+                            requestFunction();
+                        });
+                return false;
+            };
+            $scope.getStatusShareList = function (statusId, requestFunction) {
+                statusService.getStatusShareList(statusId).
+                        success(function (data, status, headers, config) {
+                            $scope.shareList = data.share_list;
                             requestFunction();
                         });
                 return false;

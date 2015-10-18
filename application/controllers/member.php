@@ -35,9 +35,9 @@ class Member extends CI_Controller {
     }
 
     function newsfeed() {
-//        $id = $this->session->userdata('user_id');
-//        $this->template->load("member/newsfeed");
+
         $user_id = $this->session->userdata('user_id');
+
         $offset = 0;
         $limit = 5;
         $result = array();
@@ -46,23 +46,32 @@ class Member extends CI_Controller {
         $result = json_decode($result);
         if ($result != null) {
             foreach ($result as $resultInfo) {
-//                var_dump(json_decode($resultInfo->userInfo));
+
                 $resultInfo->userInfo = json_decode($resultInfo->userInfo);
-                $status_list[]=$resultInfo;
+                if (property_exists($resultInfo, "referenceInfo")) {
+                    $resultInfo->referenceInfo = json_decode($resultInfo->referenceInfo);
+                }
+                $status_list[] = $resultInfo;
             }
-            
-//            $result = json_decode($result);
+
             $this->data["status_list"] = json_encode($status_list);
+        } else {
+            $this->data["status_list"] = json_encode(array());
         }
+        $status_type_ids = array(
+            "post_status_by_user_at_his_profile_id" => POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID,
+            "post_status_by_user_at_friend_profile_id" => POST_STATUS_BY_USER_AT_FRIEND_PROFILE_TYPE_ID,
+            "change_profile_picture_id" => CHANCGE_PROFILE_PICTURE,
+            "share_other_status_id" => SHARE_OTHER_STATUS,
+            "share_other_photo_id" => SHARE_OTHER_PHOTO,
+            "share_other_video_id" => SHARE_OTHER_VIDEO,
+            "add_album_photos_id" => ADD_ALBUM_PHOTOS
+        );
+        $this->data["ststus_type_ids"] = json_encode($status_type_ids);
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Status";
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed", $this->data);
     }
-
-//    function profile($user_id = 0) {
-//        $this->data['user_id'] = $user_id;
-//        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/profile",$this->data);
-//    }
 
     function timeline($friend_id = 0) {
         $user_relation = array();
@@ -98,10 +107,6 @@ class Member extends CI_Controller {
     function account_settings() {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/account_settings");
     }
-
-//    function friends() {
-//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/friends");
-//    }
 
     function add_friends() {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/add_friends");

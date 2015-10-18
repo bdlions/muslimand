@@ -146,7 +146,7 @@
         var image_list = [];
         image_list = get_image_list();
         angular.element($('#add_photos_btn_id')).scope().addPhotos(image_list, function () {
-            window.location = '<?php echo base_url(); ?>photos';
+            window.location = '<?php echo base_url(); ?>member/newsfeed';
         });
     }
 

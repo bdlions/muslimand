@@ -4,7 +4,8 @@
     define("CHANCGE_PROFILE_PICTURE",                                           3);
     define("SHARE_OTHER_STATUS",                                                4);
     define("SHARE_OTHER_PHOTO",                                                 5);
-    define("SHARE_OTHER_VEDIO",                                                 6);
+    define("SHARE_OTHER_VIDEO",                                                 6);
+    define("ADD_ALBUM_PHOTOS",                                                  7);
     define("STATUS_ID_LENGTH",                                                  15);
     define("STATUS_COMMENT_ID_LENGTH",                                          15);
 

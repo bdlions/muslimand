@@ -9,6 +9,7 @@ class Status extends CI_Controller {
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         $this->load->model('status_mongodb_model');
+        $this->load->model('photo_mongodb_model');
         $this->load->helper('url');
         $this->load->library('utils');
 
@@ -33,8 +34,7 @@ class Status extends CI_Controller {
         );
     }
 
-    
-     public function image_upload() {
+    public function image_upload() {
         $response = array();
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
@@ -42,15 +42,15 @@ class Status extends CI_Controller {
         $files = array();
         if (isset($_FILES["userfile"])) {
             $file_info = $_FILES["userfile"];
-            $result = $this->utils->upload_image($file_info, USER_TIMELINE_IMAGE_PATH);
+            $result = $this->utils->upload_image($file_info, USER_ALBUM_IMAGE_PATH);
             if ($result['status'] == 1) {
                 $picture = $result['upload_data']['file_name'];
                 $file = array(
                     "name" => $picture,
                     "type" => "image/jpeg",
-                    "url" => base_url() . USER_TIMELINE_IMAGE_PATH . $picture,
-                    "thumbnailUrl" => base_url() . USER_TIMELINE_IMAGE_PATH . $picture,
-                    "deleteUrl" => base_url() . USER_TIMELINE_IMAGE_PATH . $picture,
+                    "url" => base_url() . USER_ALBUM_IMAGE_PATH . $picture,
+                    "thumbnailUrl" => base_url() . USER_ALBUM_IMAGE_PATH . $picture,
+                    "deleteUrl" => base_url() . USER_ALBUM_IMAGE_PATH . $picture,
                     "size" => 100,
                     "deleteType" => "DELETE"
                 );
@@ -66,6 +66,7 @@ class Status extends CI_Controller {
             return;
         }
     }
+
     /**
      * this methord add a new status of a user 
      * @param userId and user status Info
@@ -74,9 +75,9 @@ class Status extends CI_Controller {
 
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
-
+        $album_result = array();
         $response = array();
-        $user_id = "100157";
+        $user_id = $this->session->userdata('user_id');
         if ($requestInfo != null) {
             $user_info = new stdClass();
             $user_info->userId = $this->session->userdata('user_id');
@@ -84,7 +85,7 @@ class Status extends CI_Controller {
             $user_info->lastName = "Haque";
             $status_info = new stdClass();
             $status_info->userId = $this->session->userdata('user_id');
-            $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
+            $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
             $status_info->statusTypeId = POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID;
             if (property_exists($requestInfo, "statusInfo") != FALSE) {
                 $request = $requestInfo->statusInfo;
@@ -92,23 +93,24 @@ class Status extends CI_Controller {
             if (property_exists($request, "description") != FALSE) {
                 $status_info->description = $request->description;
             }
-                $image = new stdClass();
-                $images = array();
+            $image = new stdClass();
+            $images = array();
             if (property_exists($request, "imageList") != FALSE) {
                 $image_list = $request->imageList;
-               
+
                 foreach ($image_list as $imageInfo) {
-                   $image->image =  $imageInfo;
-                    $images[]=$image;
+                    $image->image = $imageInfo;
+                    $images[] = $image;
                 }
+                $album_id = TIMELINE_PHOTOS_ALBUM_ID;
+                $album_title = TIMELINE_PHOTOS_ALBUM_TITLE;
+                $user_id = $this->session->userdata('user_id');
+                $album_result = $this->album_add($user_id, $album_id, $album_title, $image_list);
             }
             $status_info->images = $images;
             $status_info->userInfo = $user_info;
             $result = $this->status_mongodb_model->add_status($status_info);
             if ($result != null) {
-                $status_info->commentList = array();
-                $status_info->likeList = array();
-                $status_info->shareList = array();
                 $response["status_info"] = $status_info;
             }
         }
@@ -119,49 +121,63 @@ class Status extends CI_Controller {
 
         $response = array();
         $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        if ($request != null) {
+        $requestInfo = json_decode($postdata);
+        if ($requestInfo != null) {
+            if (property_exists($requestInfo, "oldStatusInfo")) {
+                $old_status_info = $requestInfo->oldStatusInfo;
+            }
+            if (property_exists($requestInfo, "statusInfo")) {
+                $new_status_info = $requestInfo->statusInfo;
+            }
+
             $user_info = new stdClass();
             $user_info->userId = $this->session->userdata('user_id');
             $user_info->fristName = "Shemin"; //get from session;
             $user_info->lastName = "Haque";
 
-            $ref_user_info = new StdClass(); //get from session;
-            if (property_exists($request, "userId")) {
-                $ref_user_info->userId = $request->userId;
-            }
-            if (property_exists($request, "fristName")) {
-                $ref_user_info->fristName = $request->fristName;
-            }
-            if (property_exists($request, "lastName")) {
-                $ref_user_info->lastName = $request->lastName;
+            $ref_user_info = new StdClass();
+            if (property_exists($old_status_info, "userInfo")) {
+                $ref_user_info->userId = $old_status_info->userInfo->userId;
+                $ref_user_info->fristName = $old_status_info->userInfo->fristName;
+                $ref_user_info->lastName = $old_status_info->userInfo->lastName;
             }
             $ref_info = new stdClass();
-            if (property_exists($request, "description")) {
-                $ref_info->description = $request->description;
-            }
             $ref_info->userInfo = $ref_user_info;
-            if (property_exists($request, "statusId")) {
-                $status_id = $request->statusId;
+            if (property_exists($old_status_info, "images")) {
+                $image = new stdClass();
+                $images = array();
+                $image_list = $old_status_info->images;
+                foreach ($image_list as $imageInfo) {
+                    $image->image = $imageInfo->image;
+                    $images[] = $image;
+                }
+                $ref_info->img = $images;
+            }
+            if (property_exists($old_status_info, "description")) {
+                $ref_info->description = $old_status_info->description;
             }
 
-
+            if (property_exists($old_status_info, "statusId")) {
+                $status_id = $old_status_info->statusId;
+            }
             $r_user_info = new stdClass();
             $r_user_info->userInfo = $ref_user_info;
             $status_info = new stdClass();
             $status_info->userId = $this->session->userdata('user_id');
             $status_info->statusTypeId = SHARE_OTHER_STATUS;
-            $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
-            if (property_exists($request, "newDescription")) {
-                $status_info->description = $request->newDescription;
+            $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
+            if (property_exists($new_status_info, "description")) {
+                $status_info->description = $new_status_info->description;
             }
+            $referenceId = new stdClass();
+            $referenceId->statusId = $new_status_id;
+            $referenceList = array();
+            $referenceList[] = $referenceId;
+            $status_info->referenceList = $referenceList;
             $status_info->userInfo = $user_info;
             $status_info->referenceInfo = $ref_info;
             $result = $this->status_mongodb_model->share_status($status_id, $r_user_info, $status_info);
             if ($result != null) {
-                $status_info->commentList = array();
-                $status_info->likeList = array();
-                $status_info->shareList = array();
                 $response["status_info"] = $status_info;
             }
         }
@@ -284,6 +300,24 @@ class Status extends CI_Controller {
         echo json_encode($response);
     }
 
+    function get_status_shears() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        if (property_exists($request, "statusId")) {
+            $status_id = $request->statusId;
+        }
+        $result = array();
+        $response = array();
+        $result = $this->status_mongodb_model->get_status_shears($status_id);
+        $result = json_decode($result);
+        if ($result != null) {
+            if (property_exists($result, "share")) {
+                $response["share_list"] = $result->share;
+            }
+        }
+        echo json_encode($response);
+    }
+
     function get_status_comments() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -301,14 +335,26 @@ class Status extends CI_Controller {
         echo json_encode($response);
     }
 
-    function test_add() {
-//        $arr['firstName'] = "dklfjsdf";
-//        $arr['lastName'] = "fsdfsdf";
-//        $arr['firstName'] = $_POST['firstName'];
-//        $arr['lastName'] = $_POST['lastName'];
-
-        echo json_encode($this->input->post());
-//        var_dump($this->input->post('testArray'));
+    function album_add($user_id, $album_id, $type_title, $image_list) {
+        $user_image_list_info = array();
+        $response = array();
+        $result = $this->photo_mongodb_model->get_album_info($user_id, $album_id);
+        $result = json_decode($result);
+        if ($result->responseCode == UNSUCCESS_RESPONSE_CODE) {
+            $album_info = new stdClass();
+            $album_info->albumId = $album_id;
+            $album_info->userId = $user_id;
+            $album_info->title = $type_title;
+            $response = $this->photo_mongodb_model->create_album($album_info);
+        }
+        foreach ($image_list as $image) {
+            $photo_info = new stdClass();
+            $photo_info->photoId = $this->utils->generateRandomString(USER_PHOTO_ID_LENGTH);
+            $photo_info->albumId = $album_id;
+            $photo_info->image = $image;
+            $user_image_list_info[] = $photo_info;
+        }
+        $image_add_result = $this->photo_mongodb_model->add_photos($album_id, $user_image_list_info);
     }
 
 }

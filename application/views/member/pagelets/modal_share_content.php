@@ -18,6 +18,7 @@
                     <div class="col-md-12">
                         <textarea rows="4" cols="50" ng-model="statusShareInfo.description"></textarea>
                         <input type="hidden" id="status_id">
+                        <input type="hidden" id="image">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -78,15 +79,12 @@
 
 <script>
     function share_status() {
-        var oldStatusInfo = new Array();
-        oldStatusInfo['statusId'] = $("#status_id").val();
-        oldStatusInfo['statusUserId'] = $("#status_user_id").val();
-        oldStatusInfo['fristName'] = $("#user_frist_name").val();
-        oldStatusInfo['lastName'] = $("#user_last_name").val();
-        oldStatusInfo['description'] = $("#old_description").val();
-        angular.element($('#status_shared_add_id')).scope().shareStatus(oldStatusInfo, function () {
+
+        angular.element($('#status_shared_add_id')).scope().shareStatus(function () {
+            $("#user_frist_name").val("");
+            $("#user_last_name").val("");
+            $("#old_description").val("");
             $('#modal_share_content').modal('hide');
         });
-//        console.log(oldStatusInfo);
     }
 </script>

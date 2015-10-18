@@ -8,179 +8,28 @@
                         <h4 class="modal-title" id="myModalLabel">People Who Shared This</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="row modal_content_row_border_full">
+                        <div class="row modal_content_row_border_full" ng-repeat="sharedUser in shareList">
                             <div class="col-md-2">
                                 <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg"  width="30" height="30">
                             </div>
-                            <div class="col-md-10">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#" style="font-weight: bold;">Mohammad Rafique</a>
-                                        shared
-                                        <a href="#" style="color: #3B59A9;">Cricinfo</a>
-                                        's Page. 
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#">Like .</a>
-                                        <a href="#"> Comment .</a>
-                                        <a href="#"> Share</a>
-                                    </div>
-                                </div>
+                            <div class="col-md-7">
+                                {{sharedUser.userInfo.fristName}}&nbsp{{sharedUser.userInfo.lastName}}
                             </div>
-                        </div>
-                        <div class="row modal_content_row_border_full">
-                            <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-md-10">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#" style="font-weight: bold;">Sharmin Akter</a>
-                                        shared
-                                        <a href="#" style="color: #3B59A9;">Cricinfo</a>
-                                        's Page. 
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#">Like .</a>
-                                        <a href="#"> Comment .</a>
-                                        <a href="#"> Share</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row modal_content_row_border_full">
-                            <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-md-10">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#" style="font-weight: bold;">Dr. Belal</a>
-                                        shared
-                                        <a href="#" style="color: #3B59A9;">Cricinfo</a>
-                                        's Page. 
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#">Like .</a>
-                                        <a href="#"> Comment .</a>
-                                        <a href="#"> Share</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row modal_content_row_border_full">
-                            <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-md-10">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#" style="font-weight: bold;">Fatematul Kobra</a>
-                                        shared
-                                        <a href="#" style="color: #3B59A9;">Cricinfo</a>
-                                        's Page. 
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#">Like .</a>
-                                        <a href="#"> Comment .</a>
-                                        <a href="#"> Share</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row modal_content_row_border_full">
-                            <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-md-10">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#" style="font-weight: bold;">Barak Obama</a>
-                                        shared
-                                        <a href="#" style="color: #3B59A9;">Cricinfo</a>
-                                        's Page. 
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#">Like .</a>
-                                        <a href="#"> Comment .</a>
-                                        <a href="#"> Share</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row modal_content_row_border_full">
-                            <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-md-10">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#" style="font-weight: bold;">Jannatul Ferdaus</a>
-                                        shared
-                                        <a href="#" style="color: #3B59A9;">Cricinfo</a>
-                                        's Page. 
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#">Like .</a>
-                                        <a href="#"> Comment .</a>
-                                        <a href="#"> Share</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row modal_content_row_border_full">
-                            <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_9.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-md-10">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#" style="font-weight: bold;">Jhon Ibrahim</a>
-                                        shared
-                                        <a href="#" style="color: #3B59A9;">Cricinfo</a>
-                                        's Page. 
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#">Like .</a>
-                                        <a href="#"> Comment .</a>
-                                        <a href="#"> Share</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row modal_content_row_border_full">
-                            <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="30" height="30">
-                            </div>
-                            <div class="col-md-10">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#" style="font-weight: bold;">Maria Islam</a>
-                                        shared
-                                        <a href="#" style="color: #3B59A9;">Cricinfo</a>
-                                        's Page. 
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#">Like .</a>
-                                        <a href="#"> Comment .</a>
-                                        <a href="#"> Share</a>
-                                    </div>
+                            <div class="col-md-3">
+                                <input id="add_friend_id_1" type="button" class="default_button form-control form_control_custom_style" value="Add Friend" >
+                                <div id="friend_list_id_1" class="btn-group" role="group" style=" display: none;">
+                                    <button class="btn btn-default dropdown-toggle button-custom" aria-expanded="false" data-toggle="dropdown" type="button">
+                                        Friend
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a>Get notifications</a>
+                                        </li>
+                                        <li>
+                                            <a>Unfriend</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

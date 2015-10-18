@@ -44,19 +44,25 @@ class Status_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("statusId" => $status_id, 'refUserInfo' => json_encode($ref_user_info), 'shareInfo' => json_encode($share_info)));
         return $this->curl->execute();
     }
-     public function get_status_likes($status_id) {
+
+    public function get_status_likes($status_id) {
         $this->curl->create($this->SERVICE_STATUS . 'getStatusLikeList');
         $this->curl->post(array("statusId" => $status_id));
         return $this->curl->execute();
     }
+    public function get_status_shears($status_id) {
+        $this->curl->create($this->SERVICE_STATUS . 'getStatusShareList');
+        $this->curl->post(array("statusId" => $status_id));
+        return $this->curl->execute();
+    }
+
     public function get_status_comments($status_id) {
         $this->curl->create($this->SERVICE_STATUS . 'getStatusComments');
         $this->curl->post(array("statusId" => $status_id));
         return $this->curl->execute();
     }
-   
-    
-       public function delete_status($status_id) {
+
+    public function delete_status($status_id) {
         $this->curl->create($this->SERVICE_STATUS . 'deleteStatus');
         $this->curl->post(array("statusId" => $status_id));
         return $this->curl->execute();

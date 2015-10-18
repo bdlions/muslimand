@@ -47,6 +47,11 @@ class Photo_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id,"albumId" => $album_id));
         return $this->curl->execute();
     }
+    public function get_album_info($user_id,$album_id) {
+        $this->curl->create($this->SERVICE_PHOTO . 'getAlbumInfo');
+        $this->curl->post(array("userId" => $user_id,"albumId" => $album_id));
+        return $this->curl->execute();
+    }
 
     /*
      * This method will create user album  

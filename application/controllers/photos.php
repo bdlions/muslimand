@@ -12,6 +12,7 @@ class Photos extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('utils');
         $this->load->model('photo_mongodb_model');
+        $this->load->model('status_mongodb_model');
         $this->load->helper(array('form', 'url'));
         $this->load->helper('language');
         // Load MongoDB library instead of native db driver if required
@@ -381,6 +382,10 @@ class Photos extends CI_Controller {
         $user_image_list_info = array();
         $response = array();
         if (file_get_contents("php://input") != null) {
+            $user_info = new stdClass();
+            $user_info->userId = $this->session->userdata('user_id');
+            $user_info->fristName = "Shemin"; //get from session;
+            $user_info->lastName = "Haque";
             $postdata = file_get_contents("php://input");
             $requestInfo = json_decode($postdata);
             if (property_exists($requestInfo, "photoInfo") != FALSE) {
@@ -390,7 +395,9 @@ class Photos extends CI_Controller {
                 if (property_exists($request, "imageList") != FALSE) {
                     $image_list = $request->imageList;
                 }
+                $images = array();
                 if (!empty($image_list)) {
+                     $tempimage = new stdClass();
                     foreach ($image_list as $image) {
                         $photo_info = new stdClass();
                         $photo_info->photoId = $this->utils->generateRandomString(USER_PHOTO_ID_LENGTH);
@@ -401,14 +408,27 @@ class Photos extends CI_Controller {
                         if (property_exists($request, "categoryId") != FALSE) {
                             $photo_info->categoryId = $request->categoryId;
                         }
+                        $tempimage ->image = $image;
+                        $images[] = $tempimage;
                         $photo_info->image = $image;
                         $user_image_list_info[] = $photo_info;
                     }
                     $image_add_result = $this->photo_mongodb_model->add_photos($album_id, $user_image_list_info);
-                    if ($image_add_result != null) {
-                        $response["message"] = "Image upload successful";
-                        echo json_encode($response);
+                    $image_add_result = json_decode($image_add_result);
+                    if ($image_add_result->responseCode == SUCCESS_RESPONSE_CODE) {
+                        $status_info = new stdClass();
+                        $status_info->userId = $this->session->userdata('user_id');
+                        $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
+                        $status_info->statusTypeId = ADD_ALBUM_PHOTOS;
+                        $status_info->images = $images;
+                        $status_info->userInfo = $user_info;
+                        $status_result = $this->status_mongodb_model->add_status($status_info);
+                        $status_result = json_decode($status_result);
+                        if ($status_result->responseCode == SUCCESS_RESPONSE_CODE) {
+                            $response['message'] = "added successfullly";
+                        }
                     }
+                    echo json_encode($response);
                 } else {
                     $response["message"] = "Please Seelect at least one Picture";
                     echo json_encode($response);
@@ -574,7 +594,8 @@ class Photos extends CI_Controller {
         $postdata = file_get_contents("php://input");
     }
 
-    public function crop_picture() {
+    public
+            function crop_picture() {
         $response = array();
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);

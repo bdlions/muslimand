@@ -71,13 +71,9 @@ angular.module('services.Status', []).
                     method: 'post',
                     url: '../status/share_status',
                     data: {
-                        statusId: oldStatusInfo.statusId,
-                        userId: oldStatusInfo.statusUserId,
-                        fristName: oldStatusInfo.fristName,
-                        lastName: oldStatusInfo.lastName,
-                        description: oldStatusInfo.description,
-                        newDescription: statusInfo.description,
-                    },
+                        oldStatusInfo: oldStatusInfo,
+                        statusInfo: statusInfo
+                    }
                 });
             };
 
@@ -86,6 +82,15 @@ angular.module('services.Status', []).
                 return $http({
                     method: 'post',
                     url: '../status/get_status_likes',
+                    data: {
+                        statusId: statusId
+                    },
+                });
+            };
+            statusService.getStatusShareList = function (statusId) {
+                return $http({
+                    method: 'post',
+                    url: '../status/get_status_shears',
                     data: {
                         statusId: statusId
                     },
