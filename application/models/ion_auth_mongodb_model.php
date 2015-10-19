@@ -750,6 +750,7 @@ class Ion_auth_mongodb_model extends CI_Model {
         $data = array(
             $this->attr_map['username'] => $username,
             $this->attr_map['password'] => $password,
+            $this->attr_map['_id'] => $this->utils->generateRandomString($this->user_id_length),
             $this->attr_map['user_id'] => $user_id,
             $this->attr_map['email'] => $email,
             $this->attr_map['ip_address'] => $ip_address,

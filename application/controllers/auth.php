@@ -148,6 +148,7 @@ class Auth extends CI_Controller {
                 $id = $this->ion_auth->register($username, $password, $email, $additional_data, $groups);
                 if ($id != null) {
                     $additional_data = array(
+                        '_id' => $this->utils->generateRandomString(DB_ID_LENGTH),
                         'user_id' => $id,
                         'basic_info' => $basic_info,
                     );

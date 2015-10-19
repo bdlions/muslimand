@@ -1,4 +1,6 @@
 <?php
+    define("DB_ID_LENGTH",                                      "15");
+    
     define("MEMBER_GROUP_ID",                                   "3");
     define("MEMBER_GROUP_TITLE",                                "Member");
     
