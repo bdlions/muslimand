@@ -165,6 +165,25 @@ class Utils {
         return $result;
     }
 
+    public function rename_file_name() {
+
+        if (!$this->upload->do_upload()) {
+            return $this->upload->display_errors();
+        } else {
+            $res = $this->upload->data();
+
+            $file_path = $res['file_path'];
+            $file = $res['full_path'];
+            $file_ext = $res['file_ext'];
+
+            $final_file_name = time() . $file_ext;
+
+
+// here is the renaming functon
+            rename($file, $file_path . $final_file_name);
+        }
+    }
+
     /*
      * This method will resize an image
      * @param $source_path, source image relative path
@@ -200,11 +219,12 @@ class Utils {
         return $result;
     }
 
-      /*
+    /*
      * this method return relation type of a user
      *  @Rashida
      *  
      *  */
+
     function relation_ship_constants() {
         $relations = array(
             "friend_relation_type_id" => FRIEND_RELATION_TYPE_ID,

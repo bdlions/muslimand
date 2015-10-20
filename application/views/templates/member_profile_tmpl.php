@@ -12,7 +12,9 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
-        
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/image-crop-styles.css"/>
+        <link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/imageCrop.css">
+
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/basicProfileController.js"></script>
@@ -22,6 +24,11 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/friendService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image-crop.js"></script>
+        <!--<link rel="stylesheet" href="css/image-crop-styles.css">-->
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageCropController.js"></script>
+        <!--<script src="js/image-crop.js"></script>-->
+        <!--<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/imageCropperApp.js"></script>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/friendApp.js "></script>
 
         <title>Muslimand</title>

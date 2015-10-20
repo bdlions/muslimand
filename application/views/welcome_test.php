@@ -1,16 +1,16 @@
 <!doctype html>
-<html ng-app="myApp">
-
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
+<link rel="stylesheet" href="css/image-crop-styles.css">
+<link rel="stylesheet" href="resources/css/imageCrop.css">
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageCropController.js"></script>
+<script src="js/image-crop.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/imageCropperApp.js"></script>
+<html ng-app="app.ImageCopper">
     <head>
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-1.11.1.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
-        <script src="js/image-crop.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageCropController.js"></script>
-        <link rel="stylesheet" href="css/image-crop-styles.css">
-        <link rel="stylesheet" href="resources/css/imageCrop.css">
     <body>
         <div ng-controller="ImageCopperController">
             <div ng-show="imageCropStep == 1" class="fileinput-button">		
@@ -19,15 +19,15 @@
             </div>			
             <div ng-show="imageCropStep == 2">
                 <image-crop			 
-                    data-height="250"
-                    data-width="300"
+                    data-height="100"
+                    data-width="100"
                     data-shape="square"
                     data-step="imageCropStep"
                     src="imgSrc"
                     data-result="result"
                     data-result-blob="resultBlob"
                     crop="initCrop"
-                    padding="250"
+                    padding="100"
                     max-size="1024"
                     ></image-crop>		   
             </div>

@@ -13,5 +13,6 @@ angular.module('controllers.Header', ['services.Header']).
                             requestFunction();
                         });
             };
+            
 
         });

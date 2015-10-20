@@ -6,7 +6,6 @@
             <div class="col-md-10" ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">
                 <!-- Cover Image -->
                 <?php $this->load->view("member/timeline/profile_cover"); ?>
-
                 <div class="row form-group">
                     
                 </div>

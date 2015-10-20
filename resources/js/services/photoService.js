@@ -144,7 +144,7 @@ angular.module('services.Photo', []).
                 console.log(imageInfo);
                 return $http({
                     method: 'post',
-                    url: '../../photos/crop_picture',
+                    url: '../../photos/crop_add_profile_picture',
                     data: {
                         x:imageInfo.x,
                         y:imageInfo.y,

@@ -58,7 +58,7 @@ class Welcome extends CI_Controller {
 
 
     public function index() {
-        $this->load->view("welcome_message");
+        $this->load->view("welcome_test");
     }
 
 //
@@ -85,6 +85,7 @@ class Welcome extends CI_Controller {
 
                 $files[] = $file;
                 $response["files"] = $files;
+                $file_name = $_FILES['file_var_name']['name'];
             } else {
                 $this->data['message'] = $result['message'];
                 echo json_encode($this->data);
@@ -95,19 +96,48 @@ class Welcome extends CI_Controller {
         }
     }
 
-    public function image_crop() { 
+    public function image_crop() {
         $response = array();
         $imageData = $this->input->post('imageData');
         list($type, $data) = explode(';', $imageData);
         list(, $data) = explode(',', $imageData);
         $imageData = base64_decode($data);
         $user_id = "2";
-	$file = TEMP_IMAGE_PATH . $user_id . '_' . now() . '.jpg';
-	$success = file_put_contents($file, $imageData);
-        if($success != null){
-            $response['message'] = "Image upload Successfully"; 
-        }else{
-            $response['message'] = "Sorry !! Please select again"; 
+//        $temp_src_name = $user_id.'.jpg';
+        $file = TEMP_IMAGE_PATH . $user_id . '_' . now() . '.jpg';
+        $success = file_put_contents($file, $imageData);
+        $this->utils->resize_image($file, PROFILE_PICTURE_PATH_W100_H100 . $temp_src_name, PROFILE_PICTURE_H100, PROFILE_PICTURE_W100);
+        $this->utils->resize_image($file, PROFILE_PICTURE_PATH_W50_H50 . $temp_src_name, PROFILE_PICTURE_H50, PROFILE_PICTURE_W50);
+        $this->utils->resize_image($file, PROFILE_PICTURE_PATH_W32_H32 . $temp_src_name, PROFILE_PICTURE_H32, PROFILE_PICTURE_W32);
+        
+        $image_list = array();
+        $image = new stdClass();
+        $image->image = $temp_src_name;
+        $image_list[] = $image;
+        $album_id = PROFILE_PHOTOS_ALBUM_ID;
+        $album_title = PROFILE_PHOTOS_ALBUM_TITLE;
+        $album_result = $this->album_add($user_id, $album_id, $album_title, $image_list);
+        //add status in user profile related to the change of profile picture
+        $user_info = new stdClass();
+        $user_info->userId = $user_id;
+        $user_info->fristName = "Shemin"; //get from session;
+        $user_info->lastName = "Haque";
+        $status_info = new stdClass();
+        $status_info->userId = $user_id;
+        $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
+        $status_info->statusTypeId = CHANCGE_PROFILE_PICTURE;
+        $status_info->images = $image_list;
+        $status_info->userInfo = $user_info;
+        $result = $this->status_mongodb_model->add_status($status_info);
+        if ($result != null) {
+            $response["status_info"] = $status_info;
+        }
+        echo json_encode($response);
+        
+        if ($success != null) {
+            $response['message'] = "Image upload Successfully";
+        } else {
+            $response['message'] = "Sorry !! Please select again";
         }
         echo json_encode($response);
         return;

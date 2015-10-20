@@ -232,7 +232,7 @@
         imageInfo['src_h'] = $('#image-display').height();
         angular.element($('#image-display')).scope().cropPicture(imageInfo, function () {
 
-            window.location = '<?php echo base_url(); ?>member/timeline';
+            window.location = '<?php echo base_url(); ?>member/newsfeed';
         });
     }
     function make_profile_picture()

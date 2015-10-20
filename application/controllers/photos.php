@@ -397,7 +397,6 @@ class Photos extends CI_Controller {
                 }
                 $images = array();
                 if (!empty($image_list)) {
-                     $tempimage = new stdClass();
                     foreach ($image_list as $image) {
                         $photo_info = new stdClass();
                         $photo_info->photoId = $this->utils->generateRandomString(USER_PHOTO_ID_LENGTH);
@@ -408,7 +407,8 @@ class Photos extends CI_Controller {
                         if (property_exists($request, "categoryId") != FALSE) {
                             $photo_info->categoryId = $request->categoryId;
                         }
-                        $tempimage ->image = $image;
+                        $tempimage = new stdClass();
+                        $tempimage->image = $image;
                         $images[] = $tempimage;
                         $photo_info->image = $image;
                         $user_image_list_info[] = $photo_info;
@@ -594,8 +594,7 @@ class Photos extends CI_Controller {
         $postdata = file_get_contents("php://input");
     }
 
-    public
-            function crop_picture() {
+    function crop_add_profile_picture() {
         $response = array();
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
@@ -622,58 +621,120 @@ class Photos extends CI_Controller {
         if (property_exists($requestInfo, "src_h") != FALSE) {
             $src_h = $requestInfo->src_h;
         }
-
+        
         $result = array();
         $jpeg_quality = 100;
-        $user_id = $this->session->userdata('user_id');
         $src_relative_path = str_replace(base_url(), '', $src);
+        $user_id = $this->session->userdata('user_id');
+        $new_name = $user_id . '.jpg';
         $temp_src_name = $user_id . '_' . now() . '.jpg';
-        $temp_src_relative_path = TEMP_IMAGE_PATH . $temp_src_name;
-        $result = $this->utils->resize_image($src_relative_path, $temp_src_relative_path, $src_h, $src_w);
+        $temp_src_relative_path = USER_ALBUM_IMAGE_PATH . $temp_src_name;
+        $this->utils->resize_image($src_relative_path, $temp_src_relative_path, $src_h, $src_w);
         $img_r = imagecreatefromjpeg($temp_src_relative_path);
         $dst_r = ImageCreateTrueColor($image_w, $image_h);
-        //resize and crop
         imagecopyresampled($dst_r, $img_r, 0, 0, $image_x, $image_y, $targ_w, $targ_h, $image_w, $image_h);
+        imagejpeg($dst_r, TEMP_PROFILE_IMAGE_PATH . $new_name, $jpeg_quality);
         imagejpeg($dst_r, USER_ALBUM_IMAGE_PATH . $temp_src_name, $jpeg_quality);
 
-        //creating image destination directory if not exists
-//        if (!is_dir(ALBUM_IMAGE_PATH)) {
-//            mkdir(ALBUM_IMAGE_PATH, 0777, TRUE);
-//        }
-//        imagejpeg($dst_r, ALBUM_IMAGE_PATH . $temp_src_name, $jpeg_quality);
-//        $this->utils->resize_image(ALBUM_IMAGE_PATH . $temp_src_name, PROFILE_PICTURE_PATH_W100_H100 . $temp_src_name, PROFILE_PICTURE_H100, PROFILE_PICTURE_W100);
-//        $this->utils->resize_image(ALBUM_IMAGE_PATH . $temp_src_name, PROFILE_PICTURE_PATH_W50_H50 . $temp_src_name, PROFILE_PICTURE_H50, PROFILE_PICTURE_W50);
-//        $this->utils->resize_image(ALBUM_IMAGE_PATH . $temp_src_name, PROFILE_PICTURE_PATH_W32_H32 . $temp_src_name, PROFILE_PICTURE_H32, PROFILE_PICTURE_W32);
-//        //delete temp src image
-//        //update database related to profile picture
+        //resize and crop
+        $this->utils->resize_image(TEMP_PROFILE_IMAGE_PATH . $new_name, PROFILE_PICTURE_PATH_W100_H100 . $new_name, PROFILE_PICTURE_H100, PROFILE_PICTURE_W100);
+        $this->utils->resize_image(TEMP_PROFILE_IMAGE_PATH . $new_name, PROFILE_PICTURE_PATH_W50_H50 . $new_name, PROFILE_PICTURE_H50, PROFILE_PICTURE_W50);
+        $this->utils->resize_image(TEMP_PROFILE_IMAGE_PATH . $new_name, PROFILE_PICTURE_PATH_W32_H32 . $new_name, PROFILE_PICTURE_H32, PROFILE_PICTURE_W32);
+        //delete temp src image
+        //update database related to profile picture
 //        $data = array(
 //            'photo' => $temp_src_name
 //        );
 //        $this->basic_profile->update_profile_info($data, $user_id);
-//        //adding this picture into profile picture album
-//        $photo_data = array(
-//            'img' => $temp_src_name
-//        );
-//        $photo_id = $this->albums->add_profile_picture($photo_data);
-//        //add status in user profile related to the change of profile picture
-//        $status_data = array(
-//            'user_id' => $user_id,
-//            'mapping_id' => $user_id,
-//            'status_type_id' => STATUS_TYPE_PROFILE_PIC_CHANGE,
-//            'status_category_id' => STATUS_CATEGORY_USER_PROFILE,
-//            'reference_id' => $photo_id,
-//            'created_on' => now(),
-//            'modified_on' => now()
-//        );
-//        if ($this->statuses->post_status($status_data) !== FALSE) {
-//            $result['status'] = 1;
-//            $result['user_id'] = $user_id;
-//        } else {
-//            $result['status'] = 0;
-//            $result['user_id'] = $user_id;
-//        }
+        //adding this picture into profile picture album
 
-        echo json_encode($result);
+        $image_list = array();
+        $image = new stdClass();
+        $image->image = $temp_src_name;
+        $image_list[] = $image;
+        $album_id = PROFILE_PHOTOS_ALBUM_ID;
+        $album_title = PROFILE_PHOTOS_ALBUM_TITLE;
+        $album_result = $this->add_album_photos($user_id, $album_id, $album_title, $image_list);
+        //add status in user profile related to the change of profile picture
+        $user_info = new stdClass();
+        $user_info->userId = $user_id;
+        $user_info->fristName = "Shemin"; //get from session;
+        $user_info->lastName = "Haque";
+        $status_info = new stdClass();
+        $status_info->userId = $user_id;
+        $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
+        $status_info->statusTypeId = CHANCGE_PROFILE_PICTURE;
+        $status_info->images = $image_list;
+        $status_info->userInfo = $user_info;
+        $result = $this->status_mongodb_model->add_status($status_info);
+        if ($result != null) {
+            $response["status_info"] = $status_info;
+        }
+        echo json_encode($response);
+    }
+
+    public function add_profile_picture() {
+        $response = array();
+        $imageData = $this->input->post('imageData');
+        list($type, $data) = explode(';', $imageData);
+        list(, $data) = explode(',', $imageData);
+        $imageData = base64_decode($data);
+        $user_id = $this->session->userdata('user_id');
+        $new_name = $user_id . '.jpg';
+        $temp_src_name =  $user_id . '_' . now() . '.jpg';
+        $file_temp = TEMP_PROFILE_IMAGE_PATH . $new_name;
+        $file = USER_ALBUM_IMAGE_PATH .$user_id . '_' . now() . '.jpg';
+        file_put_contents($file, $imageData);
+        file_put_contents($file_temp, $imageData);
+        $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W100_H100 . $new_name, PROFILE_PICTURE_H100, PROFILE_PICTURE_W100);
+        $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W50_H50 . $new_name, PROFILE_PICTURE_H50, PROFILE_PICTURE_W50);
+        $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W32_H32 . $new_name, PROFILE_PICTURE_H32, PROFILE_PICTURE_W32);
+
+        $image_list = array();
+        $image = new stdClass();
+        $image->image = $temp_src_name;
+        $image_list[] = $image;
+        $album_id = PROFILE_PHOTOS_ALBUM_ID;
+        $album_title = PROFILE_PHOTOS_ALBUM_TITLE;
+        $album_result = $this->add_album_photos($user_id, $album_id, $album_title, $image_list);
+        //add status in user profile related to the change of profile picture
+        $user_info = new stdClass();
+        $user_info->userId = $user_id;
+        $user_info->fristName = "Shemin"; //get from session;
+        $user_info->lastName = "Haque";
+        $status_info = new stdClass();
+        $status_info->userId = $user_id;
+        $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
+        $status_info->statusTypeId = CHANCGE_PROFILE_PICTURE;
+        $status_info->images = $image_list;
+        $status_info->userInfo = $user_info;
+        $result = $this->status_mongodb_model->add_status($status_info);
+        if ($result != null) {
+            $response["status_info"] = $status_info;
+        }
+        echo json_encode($response);
+    }
+
+    function add_album_photos($user_id, $album_id, $type_title, $image_list) {
+        $user_image_list_info = array();
+        $response = array();
+        $result = $this->photo_mongodb_model->get_album_info($user_id, $album_id);
+        $result = json_decode($result);
+        if ($result->responseCode == UNSUCCESS_RESPONSE_CODE) {
+            $album_info = new stdClass();
+            $album_info->albumId = $album_id;
+            $album_info->userId = $user_id;
+            $album_info->title = $type_title;
+            $response = $this->photo_mongodb_model->create_album($album_info);
+        }
+        foreach ($image_list as $image) {
+            $photo_info = new stdClass();
+            $photo_info->photoId = $this->utils->generateRandomString(USER_PHOTO_ID_LENGTH);
+            $photo_info->albumId = $album_id;
+            $photo_info->image = $image->image;
+            $user_image_list_info[] = $photo_info;
+        }
+        $image_add_result = $this->photo_mongodb_model->add_photos($album_id, $user_image_list_info);
     }
 
 }

@@ -1,10 +1,4 @@
-
-
-var myApp = null;
-
-(function () {
-
-    angular.module('myApp', ['ImageCropper'])
+    angular.module('controllers.ImageCopper', ['ImageCropper'])
 
             .controller('ImageCopperController', ['$scope', function ($scope) {
 
@@ -30,4 +24,3 @@ var myApp = null;
 
                 }]);
 
-})();
