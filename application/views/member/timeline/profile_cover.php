@@ -10,8 +10,41 @@
 <div class="row">
     <div class="col-md-12">
         <div style="position: relative;">
+              <img src="<?php echo base_url() ?>resources/images/car.jpg" width="100%" height="250">
+            <div ng-controller="ImageCopperController" style="position: absolute; top: 20px; left: 10px; z-index: 101 ">
+                <div  ng-show="imageCropStep == 1" class="btn btn-success fileinput-button" >		
+                    <!--<img src="<?php echo base_url() ?>resources/images/car.jpg" width="100%" height="250">-->
+                            <!--<img src="<?php // echo base_url()   ?>resources/images/add_photo_album.jpg" alt="">-->
+                    upload cover picture
+                    <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
+                </div>			
+                <div ng-show="imageCropStep == 2">
+                    <image-crop			 
+                        data-height="250"
+                        data-width="600"
+                        data-shape="square"
+                        data-step="imageCropStep"
+                        src="imgSrc"
+                        data-result="result"
+                        data-result-blob="resultBlob"
+                        crop="initCrop"
+                        padding="50"
+                        max-size="1024"
+                        ></image-crop>		   
+                </div>
+
+                <div ng-show="imageCropStep == 2">
+                    <br/>
+                    <button ng-click="clear()">Cancel</button>
+                    <button ng-click="initCrop = true">Crop</button>		
+                </div>		  
+                <div ng-show="imageCropStep == 3">
+                    <img ng-src="{{result}}"></img>
+                    <button onclick="cover_picture_upload(angular.element(this).scope().result)">Save</button>	
+                    <button ng-click="clear()">Clear</button>	
+                </div>
+            </div>
             <?php // $this->load->view("member/timeline/add_cover_photo"); ?>
-            <img src="<?php echo base_url() ?>resources/images/car.jpg" width="100%" height="250">
             <!--<a class="profilePicThumb" href="#">-->
             <div ng-controller="ImageCopperController" style="border: 2px solid whitesmoke; position: absolute; bottom: 1px; left: 1px;">
                 <div ng-show="imageCropStep == 1" class="fileinput-button">
@@ -124,6 +157,19 @@
                 dataType: 'json',
                 type: "POST",
                 url: '<?php echo base_url(); ?>photos/add_profile_picture/',
+                data: {
+                    imageData: imageData
+                },
+                success: function (data) {
+                    window.location = '<?php echo base_url(); ?>member/newsfeed';
+                }
+            });
+        }
+        function cover_picture_upload(imageData) {
+            $.ajax({
+                dataType: 'json',
+                type: "POST",
+                url: '<?php echo base_url(); ?>photos/add_cover_picture/',
                 data: {
                     imageData: imageData
                 },

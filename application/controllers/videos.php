@@ -21,10 +21,22 @@ class Videos extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
+        $this->relations = $relations = array(
+            "friend_relation_type_id" => FRIEND_RELATION_TYPE_ID,
+            "pending_relation_type_id" => PENDING_RELATION_TYPE_ID,
+            "blocked_relation_type_id" => BLOCKED_RELATION_TYPE_ID,
+            "non_friend_relation_type_id" => NON_RELATION_TYPE_ID,
+            "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
+            "request_sender" => REQUEST_SENDER,
+            "request_receiver" => REQUEST_RECEIVER,
+            "base_url" => base_url()
+        );
     }
 
     function index() {
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/video_home");
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Status";
+        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/video_home",$this->data);
     }
 
     function videos_sort_most_discussed() {
@@ -67,7 +79,7 @@ class Videos extends CI_Controller {
             $video_info->categoryId = $request->categoryId;
             $video_info->userId = $user_id;
             $result = $this->video_mongodb_model->add_vedio($video_info);
-            if($result != null){
+            if ($result != null) {
                 $response["message"] = "Video add successfully";
             }
             echo json_encode($response);

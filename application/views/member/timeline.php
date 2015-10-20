@@ -1,6 +1,4 @@
 <!--
-<div ng-app="<?php echo $friend_app; ?>">-->
-    <div ng-controller="friendController">
         <div class="row">
             <!--LEFT_COLUMN-->
             <div class="col-md-10" ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">

@@ -61,7 +61,8 @@ class Member extends CI_Controller {
         $status_type_ids = array(
             "post_status_by_user_at_his_profile_id" => POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID,
             "post_status_by_user_at_friend_profile_id" => POST_STATUS_BY_USER_AT_FRIEND_PROFILE_TYPE_ID,
-            "change_profile_picture_id" => CHANCGE_PROFILE_PICTURE,
+            "change_profile_picture_id" => CHANGE_PROFILE_PICTURE,
+            "change_cover_picture_id" => CHANGE_COVER_PICTURE,
             "share_other_status_id" => SHARE_OTHER_STATUS,
             "share_other_photo_id" => SHARE_OTHER_PHOTO,
             "share_other_video_id" => SHARE_OTHER_VIDEO,

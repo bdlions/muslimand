@@ -1,4 +1,4 @@
-
+<?php $this->load->view("custom_typeahead/custom_typeahead"); ?>
 
 <div class="row" style="padding-top: 15px;">
     <div class="col-xs-2  col-sm-2 col-md-offset-1 col-md-1 form-group">
@@ -14,6 +14,13 @@
                 </div>
             </div>
         </div>-->
+    <div class="col-xs-10 col-sm-4 col-md-4 form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input id="typeahead" class="form-control" type="text" placeholder="Search for people and interests" />
+            <?php $this->load->view("custom_typeahead/typeahead_tmpl"); ?>
+        </div>
+    </div>
     <div class="col-xs-6 col-sm-3 col-md-offset-1 col-md-2 form-group">
         <a href="<?php echo base_url(); ?>member/timeline">
             <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
@@ -89,7 +96,7 @@
         var fr_container = $("#mm_friend_request_box");
         var container = $("#mm_notification_box");
         var msg_container = $("#mm_message_box");
-
+        var typeahead_container = $("#page_late_id");
         if (!fr_container.is(e.target) && fr_container.has(e.target).length === 0) {
             fr_container.hide();
         }
@@ -98,6 +105,9 @@
         }
         if (!container.is(e.target) && container.has(e.target).length === 0) {
             container.hide();
+        }
+        if (!typeahead_container.is(e.target) && typeahead_container.has(e.target).length === 0) {
+            typeahead_container.hide();
         }
     });
 

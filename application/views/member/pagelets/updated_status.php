@@ -25,6 +25,9 @@
                             <span ng-if="statusTypes.change_profile_picture_id == status.statusTypeId">
                                 update profile picture 
                             </span>
+                            <span ng-if="statusTypes.change_cover_picture_id == status.statusTypeId">
+                                update cover picture 
+                            </span>
                             <span ng-if="statusTypes.add_album_photos_id == status.statusTypeId">
                                 added a new photos 
                             </span>

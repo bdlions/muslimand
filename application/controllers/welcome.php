@@ -125,7 +125,7 @@ class Welcome extends CI_Controller {
         $status_info = new stdClass();
         $status_info->userId = $user_id;
         $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
-        $status_info->statusTypeId = CHANCGE_PROFILE_PICTURE;
+        $status_info->statusTypeId = CHANGE_PROFILE_PICTURE;
         $status_info->images = $image_list;
         $status_info->userInfo = $user_info;
         $result = $this->status_mongodb_model->add_status($status_info);
