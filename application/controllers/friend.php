@@ -30,7 +30,6 @@ class Friend extends CI_Controller {
             $friend_id = $requestInfo->friendId;
         }
         $user_id = $this->session->userdata('user_id');
-        $user_id = "2";
         $type_id = PENDING_RELATION_TYPE_ID;
         $result = $this->friend_mongodb_model->add_request($user_id, $friend_id, $type_id);
         if ($result != null) {
@@ -49,7 +48,6 @@ class Friend extends CI_Controller {
             $friend_id = $requestInfo->friendId;
         }
         $user_id = $this->session->userdata('user_id');
-        $user_id = "3";
         $type_id = FRIEND_RELATION_TYPE_ID;
         $result = $this->friend_mongodb_model->change_relation_ship_status($user_id, $friend_id, $type_id);
         if ($result != null) {
@@ -69,7 +67,6 @@ class Friend extends CI_Controller {
             $status_type = $requestInfo->statusType;
         }
         $user_id = $this->session->userdata('user_id');
-        $user_id = "3";
         $type_id = BLOCKED_RELATION_TYPE_ID;
         if ($status_type == NON_RELATION_TYPE_ID) {
             $result = $this->friend_mongodb_model->add_request($user_id, $friend_id, $type_id);
@@ -91,7 +88,6 @@ class Friend extends CI_Controller {
             $friend_id = $requestInfo->friendId;
         }
         $user_id = $this->session->userdata('user_id');
-        $user_id = "2";
         $result = $this->friend_mongodb_model->delete_request($user_id, $friend_id);
         if ($result != null) {
             $response["relation_ship_status"] = NON_RELATION_TYPE_ID;
@@ -102,7 +98,6 @@ class Friend extends CI_Controller {
     function get_friend_list($friend_id = 0) {
         $user_relation = array();
         $user_id = $this->session->userdata('user_id');
-        $user_id = "2";
         if ($friend_id != $user_id) {
             $result = $this->friend_mongodb_model->get_relationship_status($user_id, $friend_id);
             $result = json_decode($result);
@@ -136,7 +131,7 @@ class Friend extends CI_Controller {
         if ($friend_id != 0) {
             $user_id = $friend_id;
         } else {
-            $user_id = "2"; //from session; 
+            $user_id = $user_id;
         }
         $offset = 0;
         $limit = 5;
@@ -151,7 +146,7 @@ class Friend extends CI_Controller {
 
     function get_pending_list() {
         $response = array();
-        $user_id = "2"; //from session; 
+        $user_id = $this->session->userdata('user_id'); 
         $offset = 0;
         $limit = 5;
         $friend_list = array();

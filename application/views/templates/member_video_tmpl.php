@@ -20,13 +20,13 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/videoController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/videoService.js "></script>
-                <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></scrip
-        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/videoApp.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
+        <script type = "text/javascript" src = "<?php echo base_url(); ?>resources/js/app/videoApp.js " ></script>
         <title>Muslimand</title>
     </head>
 
-    <body>
+    <body ng-app="<?php echo $app; ?>">
         <div class="body_wrapper">
             <div class="header_wrapper">
                 <div class="container_wrapper">
@@ -38,7 +38,7 @@
             <div class="Padding_top"></div>
             <div class="container-fluid">
                 <div class="container_background">
-                    <div class="row">
+                    <div class="row" ng-controller="videoController">
                         <div class="col-md-offset-1 col-md-9">
                             <?php echo $contents; ?>                            
                         </div>

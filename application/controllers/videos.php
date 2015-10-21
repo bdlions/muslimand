@@ -35,39 +35,58 @@ class Videos extends CI_Controller {
 
     function index() {
         $this->data['constants'] = json_encode($this->relations);
-        $this->data['app'] = "app.Status";
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/video_home",$this->data);
+        $this->data['app'] = "app.Video";
+        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/video_home", $this->data);
     }
 
     function videos_sort_most_discussed() {
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_most_discussed");
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Video";
+        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_most_discussed", $this->data);
     }
 
     function videos_sort_most_viewed() {
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_most_viewed");
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Video";
+        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_most_viewed", $this->data);
     }
 
     function videos_sort_top_rated() {
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Video";
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_top_rated");
     }
 
     function videos_view_favorite() {
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_favorite");
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Video";
+        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_favorite", $this->data);
     }
 
     function videos_view_friend() {
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_friend");
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Video";
+        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_friend", $this->data);
     }
 
     function videos_view_my() {
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_my");
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Video";
+        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_my", $this->data);
     }
 
     function videos_iframe() {
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_iframe");
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Video";
+        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_iframe", $this->data);
     }
 
-    function video_add() {
+    /*
+     * This method share a video
+     * @created by rashida on 21 October
+     */
+
+    function add_video() {
         $response = array();
         $result = array();
         $user_id = "100157"; //from session
@@ -85,15 +104,183 @@ class Videos extends CI_Controller {
             echo json_encode($response);
             return;
         }
-        $album_info = new stdClass();
+        $video_info = new stdClass();
         $category_list = array();
         $category_list_array = $this->video_mongodb_model->get_video_categories();
         if (!empty($category_list_array)) {
             $category_list_array = json_decode($category_list_array);
             $category_list = $category_list_array->categoryList;
         }
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['app'] = "app.Video";
         $this->data["category_list"] = json_encode($category_list);
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/video_add", $this->data);
+    }
+
+    /*
+     * This method share a video
+     * @created by rashida on 21 October
+     */
+
+    function share_video() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "videoId") != FALSE) {
+            $video_id = $requestInfo->videoId;
+        }
+    }
+    /*
+     * This method delete a video
+     * @created by rashida on 21 October
+     */
+
+    function delete_video() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "videoId") != FALSE) {
+            $video_id = $requestInfo->videoId;
+        }
+    }
+
+    /*
+     * This method add a video like
+     * @created by rashida on 21 October
+     */
+
+    function add_video_like() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "videoId") != FALSE) {
+            $video_id = $requestInfo->videoId;
+        }
+        $user_info = new stdClass();
+        $user_info->userId = $this->session->userdata('user_id');
+        $user_info->fristName = "Rashida Sultana";
+        $user_info->lastName = "Shemin";
+        $like_info = new stdClass();
+        $like_info->userInfo = $user_info;
+        $result = $this->video_mongodb_model->add_video_like($video_id, $like_info);
+        if ($result != null) {
+            $response["like_info"] = $like_info;
+        }
+        echo json_encode($response);
+    }
+
+    /*
+     * This method delete a video like
+     * @created by rashida on 21 October
+     */
+
+    function delete_video_like() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "videoId") != FALSE) {
+            $video_id = $requestInfo->videoId;
+        }
+    }
+
+    /*
+     * This method return get a video likes
+     * @created by rashida on 21 October
+     */
+
+    function get_video_like_list() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "videoId") != FALSE) {
+            $video_id = $requestInfo->videoId;
+        }
+        $result = $this->video_mongodb_model->get_video_like_list($video_id);
+        $request_array = json_decode($result);
+        if (!empty($request_array)) {
+            if (property_exists($request_array, "like") != FALSE) {
+                $response["like_list"] = $request_array->like;
+            }
+        }
+        echo json_encode($response);
+    }
+
+    /*
+     * This method return gadd a video comment
+     * @created by rashida on 21 October
+     */
+
+    function add_video_comment() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "commentInfo") != FALSE) {
+            $request = $requestInfo->commentInfo;
+        }
+        if (property_exists($request, "videoId") != FALSE) {
+            $video_id = $request->videoId;
+        }
+        $user_info = new stdClass();
+        $user_info->userId = $this->session->userdata('user_id');
+        $user_info->fristName = "Rashida Sultana";
+        $user_info->lastName = "Shemin";
+        $comment_info = new stdClass();
+        if (property_exists($request, "comment") != FALSE) {
+            $comment_info->description = $request->comment;
+        }
+        $comment_info->userInfo = $user_info;
+        $result = $this->video_mongodb_model->add_video_comment($video_id, $comment_info);
+        if ($result != null) {
+            $response["comment"] = $comment_info;
+        }
+        echo json_encode($response);
+        return;
+    }
+
+    /*
+     * This method return comments of a video 
+     * @created by rashida on 21 October
+     */
+
+    function get_video_comments() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "videoId") != FALSE) {
+            $video_id = $requestInfo->videoId;
+        }
+        $result = $this->video_mongodb_model->get_video_comments($video_id);
+        $request_array = json_decode($result);
+        if (!empty($request_array)) {
+            if (property_exists($request_array, "comment") != FALSE) {
+                $response["comment_list"] = $request_array->comment;
+            }
+        }
+        echo json_encode($response);
+    }
+
+    /*
+     * This method return  edit comment of a video 
+     * @created by rashida on 21 October
+     */
+
+    function edit_video_comment() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "commentInfo") != FALSE) {
+            $request = $requestInfo->commentInfo;
+        }
+    }
+
+    /*
+     * This method return  delete comment of a video 
+     * @created by rashida on 21 October
+     */
+
+    function delete_video_comment() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
     }
 
 }

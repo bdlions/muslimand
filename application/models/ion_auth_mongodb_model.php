@@ -282,7 +282,8 @@ class Ion_auth_mongodb_model extends CI_Model {
 
         $document = $this->mongo_db
                 ->select(array($this->attr_map['password'], $this->attr_map['salt']))
-                ->where('_id', new MongoId($id))
+//                ->where('_id', new MongoId($id))
+                ->where('_id', $id)
                 ->limit(1)
                 ->get($this->collections['users']);
         $hash_password_db = (object) $document[0];
@@ -1498,7 +1499,8 @@ class Ion_auth_mongodb_model extends CI_Model {
         $this->trigger_events('extra_where');
 
         return $this->mongo_db
-                        ->where('_id', new MongoId($id))
+//                        ->where('_id', new MongoId($id))
+                        ->where('_id', $id)
                         ->set($this->attr_map['last_login'], time())
                         ->update($this->collections['users']);
     }

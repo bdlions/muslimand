@@ -12,6 +12,7 @@ angular.module('controllers.Friend', ['services.Friend']).
 
             $scope.setUserRelation = function (t) {
                 $scope.userRelation = JSON.parse(t);
+//                console.log($scope.userRelation);
             };
             $scope.setConstants = function (t) {
                 $scope.constants = JSON.parse(t);

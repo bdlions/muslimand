@@ -1,5 +1,6 @@
-<div ng-app="app.Video">
-    <div ng-controller="videoController">
+
+        <div class="row form-group"></div>
+        <div class="row form-group"></div>
         <div class="row form-group"></div>
         <div class="row">
             <div class="col-md-10">
@@ -81,5 +82,3 @@
             </div>
         </div>
         <?php $this->load->view("member/video/modal_suppoted_video"); ?>
-    </div>
-</div>
