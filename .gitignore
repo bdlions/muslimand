@@ -14,7 +14,7 @@ tmp/
 local.properties
 .classpath
 .settings/
-.loadpath
+
 
 # External tool builders
 .externalToolBuilders/
@@ -30,7 +30,7 @@ local.properties
 
 # Folder config file
 Desktop.ini
-resources/images/
+
 resources/uploads/
 
 #################
@@ -219,7 +219,7 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
-# Folder config file
+
 Desktop.ini
-resources/images/
+
 resources/uploads/

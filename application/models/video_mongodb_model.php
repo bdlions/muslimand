@@ -25,9 +25,33 @@ class Video_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Shemin on 21 October 2015
      */
 
-    public function add_vedio($video_info) {
+    public function add_video($video_info) {
         $this->curl->create($this->SERVICE_VIDEO . 'addVideo');
         $this->curl->post(array("videoInfo" => json_encode($video_info)));
+        return $this->curl->execute();
+    }
+
+    /*
+     * This method will all  videos of a user 
+     * @param $user_id, user id
+     * @author created by Shemin on 21 October 2015
+     */
+
+    public function get_videos($user_id) {
+        $this->curl->create($this->SERVICE_VIDEO . 'getVideos');
+        $this->curl->post(array("userId" => $user_id));
+        return $this->curl->execute();
+    }
+
+    /*
+     * This method will return a video info
+     * @param $video_id, video id
+     * @author created by Shemin on 21 October 2015
+     */
+
+    public function get_video($video_id) {
+        $this->curl->create($this->SERVICE_VIDEO . 'getVideo');
+        $this->curl->post(array("videoId" => $video_id));
         return $this->curl->execute();
     }
 

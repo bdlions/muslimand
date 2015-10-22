@@ -34,6 +34,10 @@ class Videos extends CI_Controller {
     }
 
     function index() {
+        $user_id = $this->session->userdata('user_id');
+        $this->data['user_id'] = $user_id;
+         $result = $this->video_mongodb_model->get_videos($user_id);
+         var_dump($result);exit;
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/video_home", $this->data);
@@ -89,21 +93,32 @@ class Videos extends CI_Controller {
     function add_video() {
         $response = array();
         $result = array();
-        $user_id = "100157"; //from session
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        if (!empty($request)) {
-            $video_info = new stdClass();
-            $video_info->url = $request->url;
-            $video_info->categoryId = $request->categoryId;
-            $video_info->userId = $user_id;
-            $result = $this->video_mongodb_model->add_vedio($video_info);
-            if ($result != null) {
-                $response["message"] = "Video add successfully";
+        $user_id = $this->session->userdata('user_id');
+        if (file_get_contents("php://input") != null) {
+            $postdata = file_get_contents("php://input");
+            $requestInfo = json_decode($postdata);
+            if (property_exists($requestInfo, "videoInfo")) {
+                $request = $requestInfo->videoInfo;
+                if (!empty($request)) {
+                    $user_info = new stdClass();
+                    $user_info->userId = $user_id;
+                    $user_info->firstName = "Rashida";
+                    $user_info->lastName = "Rashida";
+                    $video_info = new stdClass();
+                    $video_info->url = $request->url;
+                    $video_info->categoryId = $request->categoryId;
+                    $video_info->userId = $user_id;
+                    $video_info->userInfo = $user_info;
+                    $result = $this->video_mongodb_model->add_video($video_info);
+                    if ($result != null) {
+                        $response["message"] = "Video add successfully";
+                    }
+                    echo json_encode($response);
+                    return;
+                }
             }
-            echo json_encode($response);
-            return;
         }
+
         $video_info = new stdClass();
         $category_list = array();
         $category_list_array = $this->video_mongodb_model->get_video_categories();
@@ -130,6 +145,7 @@ class Videos extends CI_Controller {
             $video_id = $requestInfo->videoId;
         }
     }
+
     /*
      * This method delete a video
      * @created by rashida on 21 October

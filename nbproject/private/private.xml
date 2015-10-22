@@ -3,14 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/muslimand/resources/js/services/photoService.js</file>
-            <file>file:/C:/xampp/htdocs/muslimand/application/controllers/photos.php</file>
-            <file>file:/C:/xampp/htdocs/muslimand/application/views/modal/modal_liked_people_list.php</file>
-            <file>file:/C:/xampp/htdocs/muslimand/application/views/member/photo/modal_shared_album.php</file>
-            <file>file:/C:/xampp/htdocs/muslimand/application/models/photo_mongodb_model.php</file>
-            <file>file:/C:/xampp/htdocs/muslimand/resources/js/controllers/photoController.js</file>
-            <file>file:/C:/xampp/htdocs/muslimand/application/views/member/photo/photo_gallery.php</file>
-            <file>file:/C:/xampp/htdocs/muslimand/application/views/member/pagelets/photo/view_album.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/controllers/videos.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/models/video_mongodb_model.php</file>
         </group>
     </open-files>
 </project-private>

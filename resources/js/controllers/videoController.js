@@ -7,10 +7,10 @@ angular.module('controllers.Video', ['services.Video']).
                 $scope.categories = JSON.parse(t);
                 console.log($scope.categories);
             };
-            $scope.addVideo = function () {
+            $scope.addVideo = function (requestFunction) {
                 videoService.addVideo($scope.videoInfo).
                         success(function (data, status, headers, config) {
-                            alert(data.message);
+                            requestFunction();
                         });
             };
 

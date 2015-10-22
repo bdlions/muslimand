@@ -4,11 +4,10 @@ angular.module('services.Video', []).
             videoService.addVideo = function (videoInfo) {
                 return $http({
                     method: 'post',
-                    url: '../videos/video_add',
+                    url: '../videos/add_video',
                     data: {
-                        url: videoInfo.url,
-                        categoryId: videoInfo.categoryId,
-                    },
+                        videoInfo: videoInfo
+                    }
                 });
             };
             videoService.deleteVideo = function (videoId) {
