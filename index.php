@@ -8,6 +8,7 @@ include './constants/friend.php';
 include './constants/user_album.php';
 include './constants/response_code.php';
 include './constants/general.php';
+include './constants/video.php';
 
 
 /***************** Custom constant End **********************/

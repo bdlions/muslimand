@@ -2,7 +2,7 @@
     <div class="col-xs- 10 col-sm-10 col-md-10 col-lg-10">
         <div class="search_pagelet">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <div id="users_temp">
                         <div class="row form-group">
                             <div class="col-md-12">
@@ -24,13 +24,10 @@
                                                 <div class="col-md-9 font_style">
                                                     <div class="user_name">
                                                     </div>
-                                                    <div class=" ptpro_display pull-right">
-                                                        <div style="background-color: yellow; color: maroon; font-size: 16px; margin-top: -18px;"> PT</div>
-                                                    </div>
-                                                    <div class="home_town">
+<!--                                                    <div class="home_town">
                                                     </div>
                                                     <div class="country_name">
-                                                    </div>
+                                                    </div>-->
                                                 </div>
                                             </a> 
                                         </div>
@@ -40,11 +37,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+<!--                <div class="col-md-4">
                     <div id="news_temp">
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <!--<span class="pagelet_title">News</span>-->
+                                <span class="pagelet_title">News</span>
                                 <span class="pagelet_title">Pages</span>
                             </div>
                         </div>
@@ -68,12 +65,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
+                </div>-->
+<!--                <div class="col-md-4">
                     <div id="recipes_temp">
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <!--<span class="pagelet_title">Recipes</span>-->
+                                <span class="pagelet_title">Recipes</span>
                                 <span class="pagelet_title">Videos</span>
                             </div>
                         </div>
@@ -97,14 +94,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
-            <div class="row">
+<!--            <div class="row">
                 <div class="col-md-4">
                     <div id="b_users_temp">
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <!--<span class="pagelet_title">Business Groups</span>-->
+                                <span class="pagelet_title">Business Groups</span>
                                 <span class="pagelet_title">Library</span>
                             </div>
                         </div>
@@ -161,7 +158,7 @@
                     </div>
                 </div>
                 <div class="col-md-4"></div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

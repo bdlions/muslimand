@@ -19,8 +19,10 @@
     </div>    
 </div>
 <div class="row">
+
+    
     <!--LEFT_COLUMN-->
-     <?php $this->load->view("templates/sections/member_videos_left_pane"); ?>
+    <?php $this->load->view("templates/sections/member_videos_left_pane"); ?>
     <!--MIDDLE COLUMN-->
     <div class="col-md-9">
         <div class="row">
@@ -78,7 +80,7 @@
         </div>
         <div class="pagelet_divider"></div>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-9" ng-init="setVideos(<?php echo htmlspecialchars(json_encode($video_list)); ?>)">
                 <?php $this->load->view("member/pagelets/video/sort_latest"); ?>
             </div>
             <div class="col-md-3">
@@ -91,10 +93,13 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
+                <div class="row" ng-init="setVideos(<?php echo htmlspecialchars(json_encode($video_list)); ?>)">
+                    <div class="col-md-12" ng-repeat="video in videoList">
+                        <div ng-video> </div>{{video.url}}
+                        <!--html_entity_decode({{video->ur)}});-->
+                        
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-                            <img scrolling="no" src="http://img.youtube.com/vi/Xl1zLHd6gp8/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                            <img scrolling="no" src="{{video.url}}" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
                         <div class="font_11px">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">amazing child</a><br>
@@ -107,7 +112,7 @@
                 </div>
                 <div class="row form-group"></div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" >
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="http://img.youtube.com/vi/RDKbkBa03CE/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
@@ -121,7 +126,7 @@
                     </div>
                 </div>
                 <div class="row form-group"></div>
-                <div class="row">
+<!--                <div class="row">
                     <div class="col-md-12">
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="http://img.youtube.com/vi/OTUoExVeQNI/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
@@ -134,7 +139,7 @@
                             by <a href="">Maria Islam</a>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <div class="row form-group"></div>
                 <div class="row">
                     <div class="col-md-12">
@@ -170,10 +175,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
+
+                <div class="row" ng-init="setVideos(<?php echo htmlspecialchars(json_encode($video_list)); ?>)">
+                    <div class="col-md-12" ng-repeat="video in videoList">
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-                            <img scrolling="no" src="http://img.youtube.com/vi/Xl1zLHd6gp8/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
+                            <img scrolling="no" src="{{video.url}}" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
                         <div class="font_11px">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">amazing child</a><br>

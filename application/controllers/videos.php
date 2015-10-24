@@ -34,10 +34,18 @@ class Videos extends CI_Controller {
     }
 
     function index() {
+        $video_list = array();
         $user_id = $this->session->userdata('user_id');
         $this->data['user_id'] = $user_id;
-         $result = $this->video_mongodb_model->get_videos($user_id);
-         var_dump($result);exit;
+        $result = $this->video_mongodb_model->get_videos($user_id);
+        if ($result != null) {
+            $result = json_decode($result);
+            if (property_exists($result, "videoList")) {
+                $this->data["video_list"] = json_encode($result->videoList);
+            }
+        } else {
+            $this->data["video_list"] = json_encode(array());
+        }
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/video_home", $this->data);
@@ -79,7 +87,18 @@ class Videos extends CI_Controller {
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_my", $this->data);
     }
 
-    function videos_iframe() {
+    function videos_iframe($video_id = 0) {
+        
+        $user_id = $this->session->userdata('user_id');
+        $result = $this->video_mongodb_model->get_video($user_id,$video_id);
+        if ($result != null) {
+            $video_info = json_decode($result);
+            $video_info->url = html_entity_decode($video_info->url);
+            $this->data["video_url"] = $video_info->url ;
+            $this->data["video_info"] = json_encode($video_info);
+        } else {
+            $this->data["video_info"] = json_encode(array());
+        }
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_iframe", $this->data);
@@ -100,13 +119,22 @@ class Videos extends CI_Controller {
             if (property_exists($requestInfo, "videoInfo")) {
                 $request = $requestInfo->videoInfo;
                 if (!empty($request)) {
+                    if (property_exists($request, "url")) {
+                        list(, $uploaded_vedio_id) = explode('=', $request->url);
+                        $vedio_image_url = $this->generate_video_img($uploaded_vedio_id);
+                        $url = htmlentities($this->grabYoutubeVideo($request->url));
+                    }
                     $user_info = new stdClass();
                     $user_info->userId = $user_id;
                     $user_info->firstName = "Rashida";
-                    $user_info->lastName = "Rashida";
+                    $user_info->lastName = "Sultana";
                     $video_info = new stdClass();
-                    $video_info->url = $request->url;
-                    $video_info->categoryId = $request->categoryId;
+                    $video_info->videoId = $this->utils->generateRandomString(USER_VIDEO_ID_LENGTH);
+                    $video_info->url = $url;
+                    $video_info->imageUrl = $vedio_image_url;
+                    if (property_exists($request, "categoryId")) {
+                        $video_info->categoryId = $request->categoryId;
+                    }
                     $video_info->userId = $user_id;
                     $video_info->userInfo = $user_info;
                     $result = $this->video_mongodb_model->add_video($video_info);
@@ -119,7 +147,6 @@ class Videos extends CI_Controller {
             }
         }
 
-        $video_info = new stdClass();
         $category_list = array();
         $category_list_array = $this->video_mongodb_model->get_video_categories();
         if (!empty($category_list_array)) {
@@ -130,6 +157,36 @@ class Videos extends CI_Controller {
         $this->data['app'] = "app.Video";
         $this->data["category_list"] = json_encode($category_list);
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/video_add", $this->data);
+    }
+
+    function grabYoutubeVideo($sText) {
+        //$sText = "Check out my latest video here http://www.youtube.com/watch?v=Imh0vEnOMXU&feature=g-vrec Check out my latest video here http://www.youtube.com/watch?v=Imh0vEnOMXU&feature=g-vrec";
+        //$sText =  "http://www.youtube.com/watch?v=Imh0vEnOMXU&feature=g-vrec";
+        //return $sText;
+        if (preg_match_all('@https?://(www\.)?youtube.com/.[^\s.,"\']+@i', $sText, $aMatches)) {
+            //Need only the first youtube video link
+            //echo $aMatches[0][0];
+
+            $url = $aMatches[0][0];
+            //$url = 'http://www.youtube.com/watch?v=Imh0vEnOMXU&feature=g-vrec';    // some youtube url
+            $parsed_url = parse_url($url);
+            /*
+             * Do some checks on components if necessary
+             */
+            parse_str($parsed_url['query'], $parsed_query_string);
+            $v = $parsed_query_string['v'];
+
+            //return $v;
+            $width = '470';
+            $height = '400';
+            return '<object width="' . $width . '" height="' . $height . '"><param name="movie" value="http://www.youtube.com/v/' . $v . '&amp;hl=en_US&amp;fs=1?rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/' . $v . '" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="' . $width . '" height="' . $height . '"></embed></object>';
+        } else {
+            return $sText;
+        }
+    }
+
+    function generate_video_img($vedio_id) {
+        return $video_image = "http://img.youtube.com/vi/" . $vedio_id . "/1.jpg";
     }
 
     /*
@@ -179,6 +236,7 @@ class Videos extends CI_Controller {
         $like_info = new stdClass();
         $like_info->userInfo = $user_info;
         $result = $this->video_mongodb_model->add_video_like($video_id, $like_info);
+        var_dump($result);exit;
         if ($result != null) {
             $response["like_info"] = $like_info;
         }

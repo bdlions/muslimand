@@ -22,17 +22,34 @@ class Search extends CI_Controller {
         $this->load->helper('language');
     }
 
-    function get_users() {
+    function get_search_result() {
+        $temp_users = array();
         $response = array();
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-//        $search_value = $request->searchValue;
-        $search_value = "searchvalue";
-        $result = $this->search_mongodb_model->get_users($search_value);
-        var_dump(json_decode($result));exit;
-            $response["users_info"] = $result;
-        echo json_encode($response);
-    }
+        $search_value = $_POST['input_value'];
+        if ($search_value != null) {
+            $result_users = $this->search_mongodb_model->get_users($search_value);
+            if ($result_users != null) {
+                $users = json_decode($result_users);
+                foreach ($users as $user) {
 
+                    $user->value = $user->firstName . " " . $user->lastName;
+//                    $user->signature = "";
+                    $user->url = base_url() . 'member/timeline/' . $user->userId;
+                    if ($user->firstName != NULL && $user->firstName != "") {
+                        $user->signature = $user->firstName[0];
+                    }
+                    if ($user->lastName != NULL && $user->lastName != "") {
+                        $user->signature = $user->signature . $user->lastName[0];
+                    }
+//                    $user->user_image = base_url() . PROFILE_PICTURE_PATH_W32_H32 . $user->photo;
+                    array_push($temp_users, $user);
+                }
+                $response['users'] = $temp_users;
+            }
+            echo json_encode($response);
+        } else {
+            echo json_encode(array());
+        }
+    }
 
 }
