@@ -49,8 +49,14 @@
             <!--<a class="profilePicThumb" href="#">-->
             <div ng-controller="ImageCopperController" style="position: absolute; bottom: -20px; left: 10px; z-index: 1001;">
                 <div ng-show="imageCropStep == 1" class="fileinput-button">
-                    <img style="position: relative; bottom: 5px; left: -10px; "  id="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>"   /> 
-                    <img style="position: relative; bottom: 0; left: -25px;" src="<?php echo base_url() ?>resources/images/add_photo_album.jpg" alt="">
+<!--                    <img style="position: relative; bottom: 5px; left: -10px; "  id="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>"   /> 
+                    <img style="position: relative; bottom: 0; left: -25px;" src="<?php echo base_url() ?>resources/images/add_photo_album.jpg" alt="">-->
+                    
+                                                                                     
+                        <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>" onError="this.style.display = 'none'; this.parentNode.className='fileinput-button'; this.parentNode.getElementsByTagName('img')[1].style.visibility='visible'; "/>
+                        <img style="position: relative; bottom: 0; left: -25px; visibility:hidden;" src="<?php echo base_url() ?>resources/images/add_photo_album.jpg" alt="">
+                   
+
                     <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
                 </div>	
                 <div ng-show="imageCropStep == 2">
@@ -76,7 +82,7 @@
                     <div >
                         <img ng-src="{{result}}"></img>
                     </div>
-                    <!--<button class="btn btn-sm" style="position: absolute; bottom: 0; left: 0; background-color: #999; color: #fff; width: 100%;" onclick="imageUpload(angular.element(this).scope().result)">Save</button>-->	
+                    <button class="btn btn-sm" style="position: absolute; bottom: 0; left: 0; background-color: #999; color: #fff; width: 100%;" onclick="imageUpload(angular.element(this).scope().result)">Save</button>	
                     <!--<button ng-click="clear()">Clear</button>-->	
                 </div>
             </div>
