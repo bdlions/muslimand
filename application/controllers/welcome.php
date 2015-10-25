@@ -120,7 +120,7 @@ class Welcome extends CI_Controller {
         //add status in user profile related to the change of profile picture
         $user_info = new stdClass();
         $user_info->userId = $user_id;
-        $user_info->fristName = "Shemin"; //get from session;
+        $user_info->firstName = "Shemin"; //get from session;
         $user_info->lastName = "Haque";
         $status_info = new stdClass();
         $status_info->userId = $user_id;

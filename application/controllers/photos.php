@@ -415,7 +415,7 @@ class Photos extends CI_Controller {
                     }
                     $image_add_result = $this->photo_mongodb_model->add_photos($album_id, $user_image_list_info);
                     $image_add_result = json_decode($image_add_result);
-                    if ($image_add_result->responseCode == SUCCESS_RESPONSE_CODE) {
+                    if ($image_add_result->responseCode == CREATED_SUCCESSFULLY) {
                         $status_info = new stdClass();
                         $status_info->userId = $this->session->userdata('user_id');
                         $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
@@ -424,7 +424,7 @@ class Photos extends CI_Controller {
                         $status_info->userInfo = $user_info;
                         $status_result = $this->status_mongodb_model->add_status($status_info);
                         $status_result = json_decode($status_result);
-                        if ($status_result->responseCode == SUCCESS_RESPONSE_CODE) {
+                        if ($status_result->responseCode == CREATED_SUCCESSFULLY) {
                             $response['message'] = "added successfullly";
                         }
                     }
@@ -540,7 +540,7 @@ class Photos extends CI_Controller {
         }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
-        $user_info->fristName = "Rashida Sultana";
+        $user_info->firstName = "Rashida Sultana";
         $user_info->lastName = "Shemin";
         $comment_info = new stdClass();
         if (property_exists($request, "comment") != FALSE) {
@@ -580,14 +580,7 @@ class Photos extends CI_Controller {
         }
     }
 
-    function share_photo_comment() {
-        $response = array();
-        $postdata = file_get_contents("php://input");
-        $requestInfo = json_decode($postdata);
-        if (property_exists($requestInfo, "commentInfo") != FALSE) {
-            $request = $requestInfo->commentInfo;
-        }
-    }
+   
 
     function delete_photo_comment() {
         $response = array();
@@ -658,7 +651,7 @@ class Photos extends CI_Controller {
 //add status in user profile related to the change of profile picture
         $user_info = new stdClass();
         $user_info->userId = $user_id;
-        $user_info->fristName = "Shemin"; //get from session;
+        $user_info->firstName = "Shemin"; //get from session;
         $user_info->lastName = "Haque";
         $status_info = new stdClass();
         $status_info->userId = $user_id;
@@ -700,7 +693,7 @@ class Photos extends CI_Controller {
 //add status in user profile related to the change of profile picture
         $user_info = new stdClass();
         $user_info->userId = $user_id;
-        $user_info->fristName = "Shemin"; //get from session;
+        $user_info->firstName = "Shemin"; //get from session;
         $user_info->lastName = "Haque";
         $status_info = new stdClass();
         $status_info->userId = $user_id;
@@ -735,7 +728,7 @@ class Photos extends CI_Controller {
 //add status in user profile related to the change of profile picture
         $user_info = new stdClass();
         $user_info->userId = $user_id;
-        $user_info->fristName = "Shemin"; //get from session;
+        $user_info->firstName = "Shemin"; //get from session;
         $user_info->lastName = "Haque";
         $status_info = new stdClass();
         $status_info->userId = $user_id;

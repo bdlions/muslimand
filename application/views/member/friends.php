@@ -38,7 +38,7 @@
                                         </div>
                                         <div style="float: left; width: 180px; padding: 10px;">
                                             <div >
-                                                <a style="font-weight: bold;" href ><span ng-bind="friend.fristName"></span>&nbsp;<span ng-bind="friend.lastName"></span></a>
+                                                <a style="font-weight: bold;" href ><span ng-bind="friend.firstName"></span>&nbsp;<span ng-bind="friend.lastName"></span></a>
                                             </div>
                                             <div >
                                                 <span style="font-size: 12px">102 Mutual friends </span> 

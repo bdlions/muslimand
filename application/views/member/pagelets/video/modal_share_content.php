@@ -9,15 +9,15 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="modal-title" id="myModalLabel">Share This Status</h4>
+                        <h4 class="modal-title" id="myModalLabel">Share This Video</h4>
                     </div>
                 </div>
             </div>
             <div class="modal-body">
                 <div class="row form-group">
                     <div class="col-md-12">
-                        <textarea rows="4" cols="50" ng-model="statusShareInfo.description"></textarea>
-                        <input type="hidden" id="status_id">
+                        <textarea rows="4" cols="50" ng-model="videoShareInfo.description"></textarea>
+                        <input type="hidden" id="video_id">
                         <input type="hidden" id="image">
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                         </div>
                         <div style="float: left;">
                             <div>
-                                <a style="font-weight: bold;"href id="status_user_id"><span id="user_first_name"></span>&nbsp;<span id="user_last_name"></span></a>
+                                <a style="font-weight: bold;"href id="video_user_id"><span id="user_first_name"></span>&nbsp;<span id="user_last_name"></span></a>
                             </div>
                             <div>
                                 January 03, 2015 at 10:45am.
@@ -40,7 +40,6 @@
                     <div class="col-md-2">
                     </div>
                     <div class="col-md-10">
-                        <span id="old_description"></span>
                         <!--use when share a video-->
                         <img scrolling="no" id="src_id" src="" width="120" height="90" frameborder="0" allowfullscreen>
                     </div>
@@ -72,7 +71,7 @@
                         <input type="button" class="close modal_cancel_button_style" data-dismiss="modal" aria-hidden="true" value="Cancel">
                     </div>
                     <div class="col-md-3">
-                        <input type="button" id="status_shared_add_id" class="default_button form-control" value="Share" onclick="share_status()" >
+                        <input type="button" id="video_shared_add_id" class="default_button form-control" value="Share" onclick="share_video()" >
                     </div>
                 </div>
             </div>
@@ -81,9 +80,9 @@
 </div>
 
 <script>
-    function share_status() {
+    function share_video() {
 
-        angular.element($('#status_shared_add_id')).scope().shareStatus(function () {
+        angular.element($('#video_shared_add_id')).scope().shareVideo(function () {
             $("#user_first_name").val("");
             $("#user_last_name").val("");
             $("#old_description").val("");

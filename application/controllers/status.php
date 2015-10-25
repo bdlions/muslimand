@@ -81,7 +81,7 @@ class Status extends CI_Controller {
         if ($requestInfo != null) {
             $user_info = new stdClass();
             $user_info->userId = $this->session->userdata('user_id');
-            $user_info->fristName = "Shemin"; //get from session;
+            $user_info->firstName = "Shemin"; //get from session;
             $user_info->lastName = "Haque";
             $status_info = new stdClass();
             $status_info->userId = $this->session->userdata('user_id');
@@ -132,13 +132,13 @@ class Status extends CI_Controller {
 
             $user_info = new stdClass();
             $user_info->userId = $this->session->userdata('user_id');
-            $user_info->fristName = "Shemin"; //get from session;
+            $user_info->firstName = "Shemin"; //get from session;
             $user_info->lastName = "Haque";
 
             $ref_user_info = new StdClass();
             if (property_exists($old_status_info, "userInfo")) {
                 $ref_user_info->userId = $old_status_info->userInfo->userId;
-                $ref_user_info->fristName = $old_status_info->userInfo->fristName;
+                $ref_user_info->firstName = $old_status_info->userInfo->firstName;
                 $ref_user_info->lastName = $old_status_info->userInfo->lastName;
             }
             $ref_info = new stdClass();
@@ -211,7 +211,7 @@ class Status extends CI_Controller {
         $request = json_decode($postdata);
         $ref_user_info = new StdClass(); //get from session;
         $ref_user_info->userId = $this->session->userdata('user_id');
-        $ref_user_info->fristName = "Keya";
+        $ref_user_info->firstName = "Keya";
         $ref_user_info->lastName = "Moni";
         if (property_exists($request, "statusId")) {
             $status_id = $request->statusId;
@@ -235,7 +235,7 @@ class Status extends CI_Controller {
         $request = json_decode($postdata);
         $ref_user_info = new StdClass(); //get from session;
         $ref_user_info->userId = $this->session->userdata('user_id');
-        $ref_user_info->fristName = "Keya";
+        $ref_user_info->firstName = "Keya";
         $ref_user_info->lastName = "Moni";
         if (property_exists($request, "statusId")) {
             $status_id = $request->statusId;

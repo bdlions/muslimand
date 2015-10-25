@@ -46,8 +46,9 @@ class Member extends CI_Controller {
         $result = json_decode($result);
         if ($result != null) {
             foreach ($result as $resultInfo) {
-
-                $resultInfo->userInfo = json_decode($resultInfo->userInfo);
+                if (property_exists($resultInfo, "userInfo")) {
+                    $resultInfo->userInfo = json_decode($resultInfo->userInfo);
+                }
                 if (property_exists($resultInfo, "referenceInfo")) {
                     $resultInfo->referenceInfo = json_decode($resultInfo->referenceInfo);
                 }

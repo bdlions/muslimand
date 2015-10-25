@@ -64,7 +64,7 @@ angular.module('services.Status', []).
                 });
             };
             /**
-             * Delete status..
+             * share status..
              * */
             statusService.shareStatus = function (oldStatusInfo, statusInfo) {
                 return $http({

@@ -13,7 +13,7 @@ angular.module('services.Video', []).
             videoService.deleteVideo = function (videoId) {
                 return $http({
                     method: 'post',
-                    url: '../videos/delete_video',
+                    url: '../../videos/delete_video',
                     data: {
                         videoId: videoId
                     }
@@ -87,11 +87,12 @@ angular.module('services.Video', []).
                     }
                 });
             };
-            videoService.AddVideoShare = function (shareInfo) {
+            videoService.shareVideo = function (oldStatusInfo, shareInfo) {
                 return $http({
                     method: 'post',
-                    url: '../videos/delete_video_comment',
+                    url: '../videos/share_video',
                     data: {
+                        oldStatusInfo: oldStatusInfo,
                         shareInfo: shareInfo
                     }
                 });

@@ -13,7 +13,7 @@
                                 <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg"  width="30" height="30">
                             </div>
                             <div class="col-md-7">
-                                {{sharedUser.userInfo.fristName}}&nbsp{{sharedUser.userInfo.lastName}}
+                                {{sharedUser.userInfo.firstName}}&nbsp{{sharedUser.userInfo.lastName}}
                             </div>
                             <div class="col-md-3">
                                 <input id="add_friend_id_1" type="button" class="default_button form-control form_control_custom_style" value="Add Friend" >

@@ -9,7 +9,7 @@
                     </div>
                     <div style="float: left;">
                         <div>
-                            <a href="#" style="font-weight: bold;"><span ng-bind="status.userInfo.fristName"></span>&nbsp<span ng-bind="status.userInfo.lastName"></span></a>
+                            <a href="#" style="font-weight: bold;"><span ng-bind="status.userInfo.firstName"></span>&nbsp<span ng-bind="status.userInfo.lastName"></span></a>
                             <span ng-if="statusTypes.post_status_by_user_at_his_profile_id == status.statusTypeId">
                                 update his/her status
                             </span>
@@ -32,7 +32,7 @@
                                 added a new photos 
                             </span>
                             &nbsp;
-                            <a href="#" style="font-weight: bold;"> <span>{{status.referenceInfo.userInfo.fristName}}&nbsp;{{status.referenceInfo.userInfo.lastName}}</span></a>
+                            <a href="#" style="font-weight: bold;"> <span>{{status.referenceInfo.userInfo.firstName}}&nbsp;{{status.referenceInfo.userInfo.lastName}}</span></a>
                             <span ng-if="statusTypes.share_other_status_id == status.statusTypeId">
                                 status
                             </span>
@@ -167,7 +167,7 @@
                         <div class="col-md-11">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <a style="font-weight: bold;" href><span ng-bind="commentInfo.userInfo.fristName"></span>&nbsp<span ng-bind="commentInfo.userInfo.lastName"></span></a>
+                                    <a style="font-weight: bold;" href><span ng-bind="commentInfo.userInfo.firstName"></span>&nbsp<span ng-bind="commentInfo.userInfo.lastName"></span></a>
                                     <span ng-bind="commentInfo.description">
                                 </div>
                             </div>

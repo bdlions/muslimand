@@ -7,6 +7,10 @@
     define("SHARE_OTHER_VIDEO",                                                 6);
     define("ADD_ALBUM_PHOTOS",                                                  7);
     define("CHANGE_COVER_PICTURE",                                              8);
+    define("ADD_VIDEO_ID",                                                      9);
+    
+    
+    
     define("STATUS_ID_LENGTH",                                                  15);
     define("STATUS_COMMENT_ID_LENGTH",                                          15);
 

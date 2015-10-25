@@ -5,6 +5,8 @@ angular.module('controllers.Video', ['services.Video']).
             $scope.videoInfo = {};
             $scope.videoDetail = {};
             $scope.videoCommentInfo = {};
+            $scope.sharedInfo = {};
+            $scope.videoShareInfo = {};
             $scope.likeList = [];
 
             $scope.setVideoCategories = function (categoryList) {
@@ -33,28 +35,29 @@ angular.module('controllers.Video', ['services.Video']).
 
             };
 
-            $scope.deleteVideo = function (videoId) {
-
-
+            $scope.deleteVideo = function (videoId, requestFunction) {
+                videoService.deleteVideo(videoId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+                return false;
             };
 
 
 
-            $scope.deleteVideoLike = function (videoId, likeId) {
-
-
-            };
+//            $scope.deleteVideoLike = function (videoId, likeId) {
+//
+//
+//            };
 
             $scope.addVideoLike = function (videoId, requestFunction) {
                 videoService.addVideoLike(videoId).
                         success(function (data, status, headers, config) {
-                            angular.forEach($scope.vudeoDetail, function (value, key) {
-                                if (value.videoId == videoId) {
-                                    if (typeof value.likeStatus === "undefined") {
-                                        value.likeStatus = "1";
-                                    }
+                            if ($scope.videoDetail.videoId === videoId) {
+                                if (typeof $scope.videoDetail.likeStatus === "undefined") {
+                                    $scope.videoDetail.likeStatus = "1";
                                 }
-                            }, $scope.vudeoDetail);
+                            }
                             $scope.likeList.push(data.like_info);
                             requestFunction();
                         });
@@ -74,15 +77,12 @@ angular.module('controllers.Video', ['services.Video']).
                 $scope.videoCommentInfo.videoId = videoId;
                 videoService.addVideoComment($scope.videoCommentInfo).
                         success(function (data, status, headers, config) {
-                            angular.forEach($scope.vudeoDetail, function (value, key) {
-                                if (value.videoId == videoId) {
-                                    if (typeof value.comment === "undefined") {
-                                        value.comment = new Array();
-
-                                    }
-                                    value.comment.push(data.comment);
+                            if ($scope.videoDetail.videoId == videoId) {
+                                if (typeof $scope.videoDetail.comment === "undefined") {
+                                    $scope.videoDetail.comment = new Array();
                                 }
-                            }, $scope.vudeoDetail);
+                                $scope.videoDetail.comment.push(data.comment);
+                            }
                             $scope.videoCommentInfo.comment = "";
                         });
                 return false;
@@ -90,15 +90,12 @@ angular.module('controllers.Video', ['services.Video']).
             $scope.getVideoComments = function (videoId, requestFunction) {
                 videoService.getVideoComments(videoId).
                         success(function (data, status, headers, config) {
-                            angular.forEach($scope.vudeoDetail, function (value, key) {
-                                if (value.videoId == videoId ? value.comment = data.comment_list : '') {
-                                }
-                            }, $scope.vudeoDetail);
-                            $scope.videoCommentInfo.comment = "";
-                            requestFunction();
+                            if ($scope.videoDetail.videoId == videoId) {
+                                $scope.videoDetail.comment = data.comment_list;
+                                requestFunction();
+                            }
                         });
                 return false;
-
             };
             $scope.editVideoComment = function (commentInfo) {
 
@@ -110,14 +107,21 @@ angular.module('controllers.Video', ['services.Video']).
 
             };
 
-            $scope.AddVideoShare = function (videoId, requestFunction) {
-                $scope.videoSharedInfo.videoId = videoId;
-                videoService.AddVideoShare($scope.videoSharedInfo).
+            $scope.setSharedInfo = function (sharedInfo, requestFunction) {
+                $scope.sharedInfo = sharedInfo;
+//                console.log($scope.sharedInfo);
+                requestFunction();
+            };
+
+            $scope.shareVideo = function (requestFunction) {
+                videoService.shareVideo($scope.sharedInfo, $scope.videoShareInfo).
                         success(function (data, status, headers, config) {
+                            $scope.statuses.push(data.status_info);
+                            $scope.videoShareInfo.description = "";
                             requestFunction();
                         });
-
             };
+
 //            $scope.testController = function () {
 //                console.log("test Controler");
 //            };

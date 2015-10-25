@@ -138,8 +138,9 @@ class Videos extends CI_Controller {
                     }
                     $video_info->userId = $user_id;
                     $video_info->userInfo = $user_info;
-                    $result = $this->video_mongodb_model->add_video($video_info);
-                    if ($result != null) {
+                    $video_add_result = $this->video_mongodb_model->add_video($video_info);
+                    $video_add_result = json_decode($video_add_result);
+                    if ($video_add_result->responseCode == CREATED_SUCCESSFULLY) {
                         $response["message"] = "Video add successfully";
                     }
                     echo json_encode($response);
@@ -216,6 +217,8 @@ class Videos extends CI_Controller {
         if (property_exists($requestInfo, "videoId") != FALSE) {
             $video_id = $requestInfo->videoId;
         }
+        $result = $this->video_mongodb_model->delete_video($video_id);
+        var_dump($result);exit;
     }
 
     /*

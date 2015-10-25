@@ -89,7 +89,7 @@
             <div class="col-md-11">
                 <div class="row">
                     <div class="col-md-12">
-                        <a style="font-weight: bold;" href="#">{{comment.userInfo.fristName}}&nbsp{{comment.userInfo.lastName}}</a>
+                        <a style="font-weight: bold;" href="#">{{comment.userInfo.firstName}}&nbsp{{comment.userInfo.lastName}}</a>
                         {{comment.description}}
                     </div>
                 </div>

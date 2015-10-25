@@ -75,11 +75,11 @@
                 </div>
             </div>
         </div>
-        <div class="pagelet_divider"></div>
-        <div class="row form-group"></div>
-        <?php $this->load->view("member/pagelets/video/iframe"); ?>
-        <div class="row form-group"></div>
         <div ng-init="setVideoInfo(<?php echo htmlspecialchars(json_encode($video_info)); ?>)">
+            <div class="pagelet_divider"></div>
+            <div class="row form-group"></div>
+            <?php $this->load->view("member/pagelets/video/iframe"); ?>
+            <div class="row form-group"></div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="borber_box_full font_10px">
@@ -194,9 +194,9 @@
                 </div>
             </div>
             <?php $this->load->view("modal/modal_liked_people_list"); ?>
+            <?php $this->load->view("member/pagelets/video/modal_share_content"); ?>
         </div>
     </div>
-    <?php $this->load->view("member/pagelets/modal_share_content"); ?>
     <div class="row form-group"></div>
     <div class="row form-group"></div>
     <!--ADD COLUMN-->
@@ -233,29 +233,12 @@
         angular.element($('#share_add_id')).scope().setSharedInfo(videoDetail, function () {
             $("#user_first_name").html(videoDetail.userInfo.firstName);
             $("#user_last_name").html(videoDetail.userInfo.lastName);
-//             $(user_image).attr('src', data.users[count].user_image);
-            $("#src_id").attr('src',videoDetail.imsgeUrl);
+            $("#src_id").attr('src', videoDetail.imageUrl);
             $('#modal_share_content').modal('show');
         });
 
     }
-    function open_modal_delete_video(videoInfo) {
-//        var videoId = videoInfo.videoId;
-        var albumId = videoInfo.albumId;
-        var selectionInfo = " Video ? ";
-        delete_confirmation(selectionInfo, function (response) {
-            if (response == '<?php echo MODAL_DELETE_YES; ?>') {
-                angular.element($('#delete_content_btn')).scope().deleteVideo(videoInfo, function () {
-                    $('#common_delete_confirmation_modal').modal('hide');
-                    window.location = '<?php echo base_url(); ?>videos/get_album/' + albumId;
-                });
 
-            } else {
-                $('#common_delete_confirmation_modal').modal('hide');
-            }
-            $("#content").html("");
-        });
-    }
 
 
 

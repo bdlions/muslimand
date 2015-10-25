@@ -105,6 +105,7 @@ angular.module('controllers.Status', ['services.Status']).
                         });
                 return false;
             };
+            
             $scope.shareStatus = function (requestFunction) {
                 statusService.shareStatus($scope.sharedInfo, $scope.statusShareInfo).
                         success(function (data, status, headers, config) {

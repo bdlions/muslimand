@@ -1,7 +1,7 @@
 <div ng-app="app.Status">
     <div ng-controller="statusController"  ng-init="setNewsfeeds(<?php echo htmlspecialchars(json_encode($newsfeed)); ?>)" >
         <li ng-repeat="newsfeed in newsfeeds">
-           add hrer  {{newsfeed.userInfo.fristName + newsfeed.userInfo.lastName}}
+           add hrer  {{newsfeed.userInfo.firstName + newsfeed.userInfo.lastName}}
         </li>
         <div class="pagelet">
                 <div class="row form-group">
@@ -103,7 +103,7 @@
                         <div class="col-md-11">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <a style="font-weight: bold;" href="#"><span ng-bind="newsfeed.status_comment_info.userInfo.fristName"></span><span ng-bind="newsfeed.status_comment_info.userInfo.lastName"></span></a>
+                                    <a style="font-weight: bold;" href="#"><span ng-bind="newsfeed.status_comment_info.userInfo.firstName"></span><span ng-bind="newsfeed.status_comment_info.userInfo.lastName"></span></a>
                                     <span ng-bind="newsfeed.status_comment_info.description">
                                 </div>
                             </div>

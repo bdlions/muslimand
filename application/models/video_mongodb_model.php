@@ -75,7 +75,7 @@ class Video_mongodb_model extends Ion_auth_mongodb_model {
      * @author created by Shemin on 21 October 2015
      */
 
-    public function delete_video($user_id, $video_id) {
+    public function delete_video($video_id) {
         $this->curl->create($this->SERVICE_VIDEO . 'deleteVideo');
         $this->curl->post(array("videoId" => $video_id));
         return $this->curl->execute();

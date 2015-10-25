@@ -31,7 +31,7 @@
                 <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_9.jpg" width="40" height="40">
             </div>
             <div class="col-xs-4">
-                <a style="font-size: 12px; font-weight: bold;" href >{{pFriend.fristName}} &nbsp; {{pFriend.lastName}}</a>
+                <a style="font-size: 12px; font-weight: bold;" href >{{pFriend.firstName}} &nbsp; {{pFriend.lastName}}</a>
             </div>
             <div class="col-xs-6">
                 <div class="pull-right">
