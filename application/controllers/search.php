@@ -31,7 +31,6 @@ class Search extends CI_Controller {
             if ($result_users != null) {
                 
                 $users = json_decode($result_users);
-                var_dump($users);exit;
                 foreach ($users as $user) {
 
                     $user->value = $user->firstName . " " . $user->lastName;

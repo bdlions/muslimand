@@ -1,4 +1,4 @@
-<div class="row pixel_perfection pagelet_z_index" id="page_late_id" style="display: none; top: 30px">
+<div class="row pixel_perfection pagelet_z_index" id="page_late_id" style="display: none; top: 33px">
     <div class="col-xs- 10 col-sm-10 col-md-10 col-lg-10">
         <div class="search_pagelet">
             <div class="row">
@@ -22,7 +22,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-9 font_style">
-                                                    <div class="user_name">
+                                                    <div class="user_name" >
                                                     </div>
 <!--                                                    <div class="home_town">
                                                     </div>
