@@ -115,7 +115,9 @@ class Member extends CI_Controller {
     }
 
     function messages() {
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/messages");
+        $this->data['app'] = "app.Friend";
+        $this->data['constants'] = json_encode($this->relations);
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/messages", $this->data);
     }
 
     function notification_all() {
