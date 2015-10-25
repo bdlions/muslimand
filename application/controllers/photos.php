@@ -177,7 +177,7 @@ class Photos extends CI_Controller {
         }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
-        $user_info->fristName = "Rashida Sultana";
+        $user_info->firstName = "Rashida Sultana";
         $user_info->lastName = "Shemin";
         $like_info = new stdClass();
         $like_info->userInfo = $user_info;
@@ -226,7 +226,7 @@ class Photos extends CI_Controller {
         }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
-        $user_info->fristName = "Rashida Sultana";
+        $user_info->firstName = "Rashida Sultana";
         $user_info->lastName = "Shemin";
         $comment_info = new stdClass();
         if (property_exists($request, "comment") != FALSE) {
@@ -384,7 +384,7 @@ class Photos extends CI_Controller {
         if (file_get_contents("php://input") != null) {
             $user_info = new stdClass();
             $user_info->userId = $this->session->userdata('user_id');
-            $user_info->fristName = "Shemin"; //get from session;
+            $user_info->firstName = "Shemin"; //get from session;
             $user_info->lastName = "Haque";
             $postdata = file_get_contents("php://input");
             $requestInfo = json_decode($postdata);
@@ -490,7 +490,7 @@ class Photos extends CI_Controller {
         }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
-        $user_info->fristName = "Rashida Sultana";
+        $user_info->firstName = "Rashida Sultana";
         $user_info->lastName = "Shemin";
         $like_info = new stdClass();
         $like_info->userInfo = $user_info;

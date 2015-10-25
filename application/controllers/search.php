@@ -29,7 +29,9 @@ class Search extends CI_Controller {
         if ($search_value != null) {
             $result_users = $this->search_mongodb_model->get_users($search_value);
             if ($result_users != null) {
+                
                 $users = json_decode($result_users);
+                var_dump($users);exit;
                 foreach ($users as $user) {
 
                     $user->value = $user->firstName . " " . $user->lastName;

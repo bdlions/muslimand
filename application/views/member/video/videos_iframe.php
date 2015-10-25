@@ -118,12 +118,12 @@
                         <a href style="color: #3B59A9;"  onclick="add_video_like(angular.element(this).scope().videoDetail.videoId)" id="video_like_{{videoDetail.videoId}}">Like</a>
                     </span>
                     <span ng-if = "videoDetail.likeStatus == '1'">
-                        <a href style="color: #3B59A9;" id="video_liked_{{videoDetail.videoId}}">liked</a>
+                        <a href style="color: #3B59A9;" >liked</a>
                     </span>
                     .
                     <a href style="color: #3B59A9;" id="video_comment_id_focus"> Comment</a>
                     .
-                    <a href="#" style="color: #3B59A9;"> Share</a>
+                    <a style="color: #3B59A9;"  id="share_add_id" href onclick="open_modal_share(angular.element(this).scope().videoDetail)"> Share</a>
                 </div>
             </div>
             <div class="row form-group"></div>
@@ -144,16 +144,18 @@
                     <a href id="video_like_list_id" onclick="open_modal_video_like_list(angular.element(this).scope().videoDetail.videoId)">{{videoDetail.likeCounter}}people </a> like this.
                 </div>
             </div>
-            <div class="pagelet_divider"></div>
-            <div class="row form-group">
-                <div class="col-md-12">
-                    <img src="<?php echo base_url(); ?>resources/images/share_icon.png">
-                    <a href="#">{{videoDetail.shareCounter}} shares</a>
+            <span ng-if = "videoDetail.shareCounter > 0">
+                <div class="pagelet_divider"></div>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <img src="<?php echo base_url(); ?>resources/images/share_icon.png" >
+                        <a href id="shared_list_id" onclick="open_modal_shared_list(angular.element(this).scope().status.statusId)">{{status.shareCounter}} shares</a>
+                    </div>
                 </div>
-            </div>
+            </span>
             <div class="pagelet_divider"></div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12" id="video_more_comment_div">
                     <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
                     <a href id="video_more_comment_show" onclick="get_video_comments(angular.element(this).scope().videoDetail.videoId)">view {{videoDetail.commentCounter}} more comments</a>
                 </div>
@@ -191,8 +193,10 @@
                     </form>
                 </div>
             </div>
+            <?php $this->load->view("modal/modal_liked_people_list"); ?>
         </div>
     </div>
+    <?php $this->load->view("member/pagelets/modal_share_content"); ?>
     <div class="row form-group"></div>
     <div class="row form-group"></div>
     <!--ADD COLUMN-->
@@ -201,7 +205,7 @@
 </div>
 <script type="text/javascript">
 
-    
+
 
     $(function () {
         $("#video_comment_id_focus").on("click", function () {
@@ -211,7 +215,7 @@
 
     function get_video_comments(videoId) {
         angular.element($('#video_more_comment_show')).scope().getVideoComments(videoId, function () {
-            $('#more_video_comment_id').hide();
+            $('#video_more_comment_div').hide();
         });
     }
     function open_modal_video_like_list(videoId) {
@@ -222,11 +226,19 @@
     }
     function add_video_like(videoId) {
         angular.element($('#video_like_' + videoId)).scope().addVideoLike(videoId, function () {
-            $("#video_like_" + videoId).hide();
-            $("#video_liked_" + videoId).show();
+
         });
     }
-   
+    function open_modal_share(videoDetail) {
+        angular.element($('#share_add_id')).scope().setSharedInfo(videoDetail, function () {
+            $("#user_first_name").html(videoDetail.userInfo.firstName);
+            $("#user_last_name").html(videoDetail.userInfo.lastName);
+//             $(user_image).attr('src', data.users[count].user_image);
+            $("#src_id").attr('src',videoDetail.imsgeUrl);
+            $('#modal_share_content').modal('show');
+        });
+
+    }
     function open_modal_delete_video(videoInfo) {
 //        var videoId = videoInfo.videoId;
         var albumId = videoInfo.albumId;

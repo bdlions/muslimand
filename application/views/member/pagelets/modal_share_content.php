@@ -28,7 +28,7 @@
                         </div>
                         <div style="float: left;">
                             <div>
-                                <a style="font-weight: bold;"href id="status_user_id"><span id="user_frist_name"></span>&nbsp;<span id="user_last_name"></span></a>
+                                <a style="font-weight: bold;"href id="status_user_id"><span id="user_first_name"></span>&nbsp;<span id="user_last_name"></span></a>
                             </div>
                             <div>
                                 January 03, 2015 at 10:45am.
@@ -41,7 +41,9 @@
                     </div>
                     <div class="col-md-10">
                         <span id="old_description"></span>
+                        <img scrolling="no" id="src_id" src="" width="120" height="90" frameborder="0" allowfullscreen>
                     </div>
+
                 </div>
                 <div class="row form-group">
                     <div class="col-md-12 col-sm-12 col-xs-12">

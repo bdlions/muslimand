@@ -88,13 +88,14 @@ class Videos extends CI_Controller {
     }
 
     function videos_iframe($video_id = 0) {
-        
+
         $user_id = $this->session->userdata('user_id');
-        $result = $this->video_mongodb_model->get_video($user_id,$video_id);
+        $result = $this->video_mongodb_model->get_video($user_id, $video_id);
         if ($result != null) {
             $video_info = json_decode($result);
+            $video_info->userInfo = json_decode($video_info->userInfo);
             $video_info->url = html_entity_decode($video_info->url);
-            $this->data["video_url"] = $video_info->url ;
+            $this->data["video_url"] = $video_info->url;
             $this->data["video_info"] = json_encode($video_info);
         } else {
             $this->data["video_info"] = json_encode(array());
@@ -231,12 +232,12 @@ class Videos extends CI_Controller {
         }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
-        $user_info->fristName = "Rashida Sultana";
+        $user_info->firstName = "Rashida Sultana";
         $user_info->lastName = "Shemin";
         $like_info = new stdClass();
         $like_info->userInfo = $user_info;
+        $like_info->id = $this->utils->generateRandomString(USER_VIDEO_LIKE_ID_LENGTH);
         $result = $this->video_mongodb_model->add_video_like($video_id, $like_info);
-        var_dump($result);exit;
         if ($result != null) {
             $response["like_info"] = $like_info;
         }
@@ -296,13 +297,14 @@ class Videos extends CI_Controller {
         }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
-        $user_info->fristName = "Rashida Sultana";
+        $user_info->firstName = "Rashida Sultana";
         $user_info->lastName = "Shemin";
         $comment_info = new stdClass();
         if (property_exists($request, "comment") != FALSE) {
             $comment_info->description = $request->comment;
         }
         $comment_info->userInfo = $user_info;
+        $comment_info->id = $this->utils->generateRandomString(USER_VIDEO_COMMENT_ID_LENGTH);
         $result = $this->video_mongodb_model->add_video_comment($video_id, $comment_info);
         if ($result != null) {
             $response["comment"] = $comment_info;

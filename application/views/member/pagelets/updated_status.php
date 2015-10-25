@@ -223,7 +223,7 @@
 
     function open_modal_share(statusInfo) {
         angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function () {
-            $("#user_frist_name").append(statusInfo.userInfo.fristName);
+            $("#user_first_name").append(statusInfo.userInfo.firstName);
             $("#user_last_name").append(statusInfo.userInfo.lastName);
             $("#old_description").append(statusInfo.description);
             $('#modal_share_content').modal('show');
