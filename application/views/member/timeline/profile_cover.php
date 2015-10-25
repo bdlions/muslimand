@@ -1,7 +1,7 @@
 
 <script>
     function approve_request(friendId) {
-        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function () {
+        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function() {
 
         });
     }
@@ -10,46 +10,47 @@
 <div class="row">
     <div class="col-md-12">
         <div style="position: relative;">
-              <img src="<?php echo base_url() ?>resources/images/car.jpg" width="100%" height="250">
-            <div ng-controller="ImageCopperController" style="position: absolute; top: 20px; left: 10px; z-index: 101 ">
-                <div  ng-show="imageCropStep == 1" class="btn btn-success fileinput-button" >		
+            <img src="<?php echo base_url() ?>resources/images/car.jpg" width="100%" height="300">
+            <div ng-controller="ImageCopperController" style="position: absolute; top: 20px; left: 10px; z-index: 1 ">
+                <div  ng-show="imageCropStep == 1" class="fileinput-cover-button" style="margin-left: 20px; margin-top: 20px; border: 1px solid whitesmoke; padding: 2px;">		
                     <!--<img src="<?php echo base_url() ?>resources/images/car.jpg" width="100%" height="250">-->
-                            <!--<img src="<?php // echo base_url()   ?>resources/images/add_photo_album.jpg" alt="">-->
-                    upload cover picture
-                    <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
+                            <!--<img src="<?php // echo base_url()     ?>resources/images/add_photo_album.jpg" alt="">-->
+                    <img src="<?php echo base_url() ?>resources/images/car.jpg" width="25" height="25"></img>
+                    <span style="color: #333; background-color: transparent; padding: 5px; font-weight: bold;">Upload Cover Picture</span>
+                    <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)"/>
                 </div>			
-                <div ng-show="imageCropStep == 2">
+                <div style="position: relative; top: -13px; left: -25px; right: 0px; width: 1000px; z-index: 1001; margin: 0 15px;"  ng-show="imageCropStep == 2" >
                     <image-crop			 
-                        data-height="250"
-                        data-width="600"
+                        data-height="293"
+                        data-width="1012"
                         data-shape="square"
                         data-step="imageCropStep"
                         src="imgSrc"
                         data-result="result"
                         data-result-blob="resultBlob"
                         crop="initCrop"
-                        padding="50"
-                        max-size="1024"
+                        padding="0"
+                        max-size="1012"
                         ></image-crop>		   
                 </div>
 
-                <div ng-show="imageCropStep == 2">
+                <div ng-show="imageCropStep == 2" >
                     <br/>
-                    <button ng-click="clear()">Cancel</button>
-                    <button ng-click="initCrop = true">Crop</button>		
+                    <button class="btn btn-sm" style="position: absolute; bottom: 0; left: 42%; bottom: 35px; background-color: #999; color: #fff; z-index: 1001"  ng-click="clear()">Cancel</button>
+                    <button class="btn btn-sm" style="position: absolute; bottom: 0; right: 42%; bottom: 35px; background-color: #999; color: #fff; z-index: 1001" ng-click="initCrop = true">Crop</button>		
                 </div>		  
                 <div ng-show="imageCropStep == 3">
-                    <img ng-src="{{result}}"></img>
-                    <button onclick="cover_picture_upload(angular.element(this).scope().result)">Save</button>	
-                    <button ng-click="clear()">Clear</button>	
+                    <img style="position: absolute; top: -13px; left: -10px; right: 50px; width: 1012px;" ng-src="{{result}}"></img>
+                    <!--<button class="btn btn-sm" style="position: absolute; bottom: 0; left: 42%; background-color: #999; color: #fff;" onclick="cover_picture_upload(angular.element(this).scope().result)">Save</button>-->	
+                    <!--<button ng-click="clear()">Clear</button>-->	
                 </div>
             </div>
             <?php // $this->load->view("member/timeline/add_cover_photo"); ?>
             <!--<a class="profilePicThumb" href="#">-->
-            <div ng-controller="ImageCopperController" style="border: 2px solid whitesmoke; position: absolute; bottom: 1px; left: 1px;">
+            <div ng-controller="ImageCopperController" style="position: absolute; bottom: -20px; left: 10px; z-index: 1001;">
                 <div ng-show="imageCropStep == 1" class="fileinput-button">
-                    <img id="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>"   /> 
-                    <img src="<?php echo base_url() ?>resources/images/add_photo_album.jpg" alt="">
+                    <img style="position: relative; bottom: 5px; left: -10px; "  id="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>"   /> 
+                    <img style="position: relative; bottom: 0; left: -25px;" src="<?php echo base_url() ?>resources/images/add_photo_album.jpg" alt="">
                     <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
                 </div>	
                 <div ng-show="imageCropStep == 2">
@@ -68,14 +69,14 @@
                 </div>
                 <div ng-show="imageCropStep == 2">
                     <br/>
-                    <button ng-click="clear()">Cancel</button>
-                    <button ng-click="initCrop = true">Crop</button>		
+                    <button class="btn btn-sm" style="position: absolute; bottom: 0; right: 50px; background-color: #999; color: #fff; width: 25%;" ng-click="initCrop = true">Crop</button>		
+                    <button class="btn btn-sm" style="position: absolute; bottom: 0; left: 50px; background-color: #999; color: #fff; width: 25%;" ng-click="clear()">Cancel</button>
                 </div>		  
                 <div  ng-show="imageCropStep == 3">
                     <div >
                         <img ng-src="{{result}}"></img>
                     </div>
-                    <button onclick="imageUpload(angular.element(this).scope().result)">Save</button>	
+                    <!--<button class="btn btn-sm" style="position: absolute; bottom: 0; left: 0; background-color: #999; color: #fff; width: 100%;" onclick="imageUpload(angular.element(this).scope().result)">Save</button>-->	
                     <!--<button ng-click="clear()">Clear</button>-->	
                 </div>
             </div>
@@ -123,7 +124,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div style="background-color: whitesmoke">
+            <div style="background-color: whitesmoke; margin: 0 15px;">
                 <div class="btn-group" role="group" aria-label="...">
                     <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>member/timeline">Timeline</a>
                     <a class="btn btn-default get_over_view_class" style="font-size: 100%" onclick="getOverview('<?php echo $user_id; ?>')" href="<?php echo base_url(); ?>member/about">About</a>
@@ -146,7 +147,7 @@
 
     <script>
         function block_request(friendId) {
-            angular.element($('#block_friend_id')).scope().blockRequest(friendId, function () {
+            angular.element($('#block_friend_id')).scope().blockRequest(friendId, function() {
                 alert("user is blocked ");
             });
 
@@ -160,7 +161,7 @@
                 data: {
                     imageData: imageData
                 },
-                success: function (data) {
+                success: function(data) {
                     window.location = '<?php echo base_url(); ?>member/newsfeed';
                 }
             });
@@ -173,7 +174,7 @@
                 data: {
                     imageData: imageData
                 },
-                success: function (data) {
+                success: function(data) {
                     window.location = '<?php echo base_url(); ?>member/newsfeed';
                 }
             });
