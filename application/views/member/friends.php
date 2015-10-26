@@ -14,7 +14,7 @@
             <?php $this->load->view("member/timeline/profile_cover"); ?>
         </div>
     </div>
-    <div ng-init="setFriendList(<?php echo htmlspecialchars(json_encode($friendList)); ?>)" >
+    <div ng-init="setFriendList('<?php echo htmlspecialchars(json_encode($friendList)); ?>')">
         <div class="row form-group">
             <div class="col-md-12">
                 <div class="pagelet">

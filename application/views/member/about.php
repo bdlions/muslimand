@@ -2,7 +2,9 @@
     <div ng-controller="basicProfileController">
         <div class="row">
             <div class="col-md-10">
-                <?php $this->load->view("member/timeline/profile_cover"); ?>
+                <div ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">
+                    <?php $this->load->view("member/timeline/profile_cover"); ?>
+                </div>
                 <div class="row form-group"></div>
                 <div class="pagelet">
                     <div class="row">

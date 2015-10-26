@@ -4,7 +4,7 @@
         <div class="pagelet" id="pagelet{{status.statusId}}">
             <div class="row form-group">
                 <div class="col-md-12">
-                    <div style="float: left; padding-right: 10px;">
+                    <div style="float: left; padding-right: 10px;" >
                         <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg" width="40" height="40">
                     </div>
                     <div style="float: left;">
@@ -161,7 +161,7 @@
                 </div>
                 <div class="row form-group">
                     <div ng-repeat="commentInfo in status.commentList">
-                        <div class="col-md-1">
+                        <div class="col-md-1" profile_picture>
                             <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg" width="30" height="30">
                         </div>
                         <div class="col-md-11">
@@ -183,8 +183,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-1">
-                        <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="30" height="30">
+                    <div class="col-md-1" profile_picture>
+                        <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg'; ?>" onError="this.style.display = 'none'; this.parentNode.className='profile_picture'; this.parentNode.getElementsByTagName('img')[1].style.visibility='visible'; "/>
+                        <img style="visibility:hidden; height: 0 ;" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg" width="30" height="30">
                     </div>
                     <div class="col-md-11">
                         <form  ng-submit="addComment(status.statusId)">

@@ -1,3 +1,5 @@
+
+<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/search_bar_style.css"/>
 <?php $this->load->view("custom_typeahead/custom_typeahead"); ?>
 
 <div class="row" style="padding-top: 15px;">
@@ -13,10 +15,11 @@
             <?php $this->load->view("custom_typeahead/typeahead_tmpl"); ?>
         </div>
     </div>
-    <div class="col-xs-6 col-sm-3 col-md-offset-1 col-md-2 form-group">
+    <div class="col-xs-6 col-sm-3 col-md-offset-1 col-md-2 form-group profile_picture">
         <a href="<?php echo base_url(); ?>member/timeline">
             <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
-                <img style="height: 25px; width: 25px;" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg">
+                <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 . $user_id . '.jpg'; ?>" onError="this.style.display = 'none'; this.parentNode.className='profile_picture'; this.parentNode.getElementsByTagName('img')[1].style.visibility='visible'; "/>
+                <img style="height: 25px; width: 25px; visibility:hidden; height: 0 ;" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg">
                 &nbsp; <span id="profile_name" style="text-decoration: none" >Mohammad</span>
             </span>
         </a>
