@@ -580,8 +580,6 @@ class Photos extends CI_Controller {
         }
     }
 
-   
-
     function delete_photo_comment() {
         $response = array();
         $postdata = file_get_contents("php://input");
@@ -666,81 +664,107 @@ class Photos extends CI_Controller {
         echo json_encode($response);
     }
 
+    public function upload_picture($image_data, $image_name, $image_path) {
+        $response = array();
+        list(, $data) = explode(',', $image_data);
+        $final_image_data = base64_decode($data);
+        $file = $image_path . $image_name;
+        $result = file_put_contents($file, $final_image_data);
+        if ($result != null) {
+            $response['status'] = 1;
+        } else {
+            $response['status'] = 0;
+        }
+        return $response;
+    }
+
     public function add_profile_picture() {
         $response = array();
-        $imageData = $this->input->post('imageData');
-        list($type, $data) = explode(';', $imageData);
-        list(, $data) = explode(',', $imageData);
-        $imageData = base64_decode($data);
+        $image_data = $this->input->post('imageData');
         $user_id = $this->session->userdata('user_id');
-        $new_name = $user_id . '.jpg';
+        //temp picture upload to server for profile picture
+        $profile_picture_name = $user_id . '.jpg';
+        $profile_picture_temp_path = TEMP_PROFILE_IMAGE_PATH;
+        $result1 = $this->upload_picture($image_data, $profile_picture_name, $profile_picture_temp_path);
+        // image upload to user album for database save 
         $temp_src_name = $user_id . '_' . now() . '.jpg';
-        $file_temp = TEMP_PROFILE_IMAGE_PATH . $new_name;
-        $file = USER_ALBUM_IMAGE_PATH . $user_id . '_' . now() . '.jpg';
-        file_put_contents($file, $imageData);
-        file_put_contents($file_temp, $imageData);
-        $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W100_H100 . $new_name, PROFILE_PICTURE_H100, PROFILE_PICTURE_W100);
-        $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W50_H50 . $new_name, PROFILE_PICTURE_H50, PROFILE_PICTURE_W50);
-        $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W32_H32 . $new_name, PROFILE_PICTURE_H32, PROFILE_PICTURE_W32);
+        $user_image_path = USER_ALBUM_IMAGE_PATH;
+        $result2 = $this->upload_picture($image_data, $temp_src_name, $user_image_path);
 
-        $image_list = array();
-        $image = new stdClass();
-        $image->image = $temp_src_name;
-        $image_list[] = $image;
-        $album_id = PROFILE_PHOTOS_ALBUM_ID;
-        $album_title = PROFILE_PHOTOS_ALBUM_TITLE;
-        $album_result = $this->add_album_photos($user_id, $album_id, $album_title, $image_list);
-//add status in user profile related to the change of profile picture
-        $user_info = new stdClass();
-        $user_info->userId = $user_id;
-        $user_info->firstName = "Shemin"; //get from session;
-        $user_info->lastName = "Haque";
-        $status_info = new stdClass();
-        $status_info->userId = $user_id;
-        $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
-        $status_info->statusTypeId = CHANGE_PROFILE_PICTURE;
-        $status_info->images = $image_list;
-        $status_info->userInfo = $user_info;
-        $result = $this->status_mongodb_model->add_status($status_info);
-        if ($result != null) {
-            $response["status_info"] = $status_info;
+        if ($result1['status'] != 0 && $result2['status'] != 0) {
+            //resize profile picture 
+            $file_temp = $profile_picture_temp_path . $profile_picture_name;
+            $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W100_H100 . $profile_picture_name, PROFILE_PICTURE_H100, PROFILE_PICTURE_W100);
+            $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W50_H50 . $profile_picture_name, PROFILE_PICTURE_H50, PROFILE_PICTURE_W50);
+            $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W32_H32 . $profile_picture_name, PROFILE_PICTURE_H32, PROFILE_PICTURE_W32);
+            //create album if no album exsist for profile picture or add picture to profile picture album
+            $image_list = array();
+            $image = new stdClass();
+            $image->image = $temp_src_name;
+            $image_list[] = $image;
+            $album_id = PROFILE_PHOTOS_ALBUM_ID;
+            $album_title = PROFILE_PHOTOS_ALBUM_TITLE;
+            $album_result = $this->add_album_photos($user_id, $album_id, $album_title, $image_list);
+            //add status in user profile related to the change of profile picture
+            $user_info = new stdClass();
+            $user_info->userId = $user_id;
+            $user_info->firstName = "Shemin"; //get from session;
+            $user_info->lastName = "Haque";
+            $status_info = new stdClass();
+            $status_info->userId = $user_id;
+            $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
+            $status_info->statusTypeId = CHANGE_PROFILE_PICTURE;
+            $status_info->images = $image_list;
+            $status_info->userInfo = $user_info;
+            $result = $this->status_mongodb_model->add_status($status_info);
+            if ($result != null) {
+                $response["message"] = "Profile picture add successfully";
+                $response["status"] = "1";
+            }
         }
         echo json_encode($response);
+        return;
     }
 
     function add_cover_picture() {
         $response = array();
-        $imageData = $this->input->post('imageData');
-        list($type, $data) = explode(';', $imageData);
-        list(, $data) = explode(',', $imageData);
-        $imageData = base64_decode($data);
+        $image_data = $this->input->post('imageData');
         $user_id = $this->session->userdata('user_id');
+        //temp picture upload to server for cover picture
+        $cover_picture_image_name = $user_id . '.jpg';
+        $cover_image_temp_path = COVER_PICTURE_IMAGE_PATH;
+        $result1 = $this->upload_picture($image_data, $cover_picture_image_name, $cover_image_temp_path);
+        // image upload to user album for database save 
         $temp_src_name = $user_id . '_' . now() . '.jpg';
-        $file = USER_ALBUM_IMAGE_PATH . $user_id . '_' . now() . '.jpg';
-        file_put_contents($file, $imageData);
-        $image_list = array();
-        $image = new stdClass();
-        $image->image = $temp_src_name;
-        $image_list[] = $image;
-        $album_id = COVER_PHOTOS_ALBUM_ID;
-        $album_title = COVER_PHOTOS_ALBUM_TITLE;
-        $album_result = $this->add_album_photos($user_id, $album_id, $album_title, $image_list);
-//add status in user profile related to the change of profile picture
-        $user_info = new stdClass();
-        $user_info->userId = $user_id;
-        $user_info->firstName = "Shemin"; //get from session;
-        $user_info->lastName = "Haque";
-        $status_info = new stdClass();
-        $status_info->userId = $user_id;
-        $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
-        $status_info->statusTypeId = CHANGE_COVER_PICTURE;
-        $status_info->images = $image_list;
-        $status_info->userInfo = $user_info;
-        $result = $this->status_mongodb_model->add_status($status_info);
-        if ($result != null) {
-            $response["status_info"] = $status_info;
+        $user_image_path = USER_ALBUM_IMAGE_PATH;
+        $result2 = $this->upload_picture($image_data, $temp_src_name, $user_image_path);
+
+        if ($result1['status'] != 0 && $result2['status'] != 0) {
+            //create album if no album exsist for cover picture or add picture to cover picture album
+            $image_list = array();
+            $image = new stdClass();
+            $image->image = $temp_src_name;
+            $image_list[] = $image;
+            $album_id = COVER_PHOTOS_ALBUM_ID;
+            $album_title = COVER_PHOTOS_ALBUM_TITLE;
+            $album_result = $this->add_album_photos($user_id, $album_id, $album_title, $image_list);
+            //add status in user profile related to the change of cover picture
+            $user_info = new stdClass();
+            $user_info->userId = $user_id;
+            $user_info->firstName = "Shemin"; //get from session;
+            $user_info->lastName = "Haque";
+            $status_info = new stdClass();
+            $status_info->userId = $user_id;
+            $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
+            $status_info->statusTypeId = CHANGE_COVER_PICTURE;
+            $status_info->images = $image_list;
+            $status_info->userInfo = $user_info;
+            $result = $this->status_mongodb_model->add_status($status_info);
+            if ($result != null) {
+                $response["status_info"] = $status_info;
+            }
+            echo json_encode($response);
         }
-        echo json_encode($response);
     }
 
     function add_album_photos($user_id, $album_id, $type_title, $image_list) {
@@ -748,7 +772,7 @@ class Photos extends CI_Controller {
         $response = array();
         $result = $this->photo_mongodb_model->get_album_info($user_id, $album_id);
         $result = json_decode($result);
-        if ($result->responseCode == UNSUCCESS_RESPONSE_CODE) {
+        if ($result->responseCode == BAD_REQUSET) {
             $album_info = new stdClass();
             $album_info->albumId = $album_id;
             $album_info->userId = $user_id;

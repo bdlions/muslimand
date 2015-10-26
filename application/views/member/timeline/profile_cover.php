@@ -1,7 +1,7 @@
 
 <script>
     function approve_request(friendId) {
-        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function() {
+        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function () {
 
         });
     }
@@ -13,8 +13,7 @@
             <img src="<?php echo base_url() ?>resources/images/car.jpg" width="100%" height="300">
             <div ng-controller="ImageCopperController" style="position: absolute; top: 20px; left: 10px; z-index: 1 ">
                 <div  ng-show="imageCropStep == 1" class="fileinput-cover-button" style="margin-left: 20px; margin-top: 20px; border: 1px solid whitesmoke; padding: 2px;">		
-                    <!--<img src="<?php echo base_url() ?>resources/images/car.jpg" width="100%" height="250">-->
-                            <!--<img src="<?php // echo base_url()     ?>resources/images/add_photo_album.jpg" alt="">-->
+                   <img  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $user_id . '.jpg'; ?>"/>
                     <img src="<?php echo base_url() ?>resources/images/car.jpg" width="25" height="25"></img>
                     <span style="color: #333; background-color: transparent; padding: 5px; font-weight: bold;">Upload Cover Picture</span>
                     <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)"/>
@@ -31,6 +30,8 @@
                         crop="initCrop"
                         padding="0"
                         max-size="1012"
+                        imagepath="<?php echo base_url(); ?>photos/add_cover_picture/"
+                        reloadpath = "<?php echo base_url(); ?>member/timeline/"
                         ></image-crop>		   
                 </div>
 
@@ -41,22 +42,13 @@
                 </div>		  
                 <div ng-show="imageCropStep == 3">
                     <img style="position: absolute; top: -13px; left: -10px; right: 50px; width: 1012px;" ng-src="{{result}}"></img>
-                    <!--<button class="btn btn-sm" style="position: absolute; bottom: 0; left: 42%; background-color: #999; color: #fff;" onclick="cover_picture_upload(angular.element(this).scope().result)">Save</button>-->	
-                    <!--<button ng-click="clear()">Clear</button>-->	
                 </div>
             </div>
-            <?php // $this->load->view("member/timeline/add_cover_photo"); ?>
-            <!--<a class="profilePicThumb" href="#">-->
+           
             <div ng-controller="ImageCopperController" style="position: absolute; bottom: -20px; left: 10px; z-index: 1001;">
                 <div ng-show="imageCropStep == 1" class="fileinput-button">
-<!--                    <img style="position: relative; bottom: 5px; left: -10px; "  id="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>"   /> 
-                    <img style="position: relative; bottom: 0; left: -25px;" src="<?php echo base_url() ?>resources/images/add_photo_album.jpg" alt="">-->
-                    
-                                                                                     
-                        <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>" onError="this.style.display = 'none'; this.parentNode.className='fileinput-button'; this.parentNode.getElementsByTagName('img')[1].style.visibility='visible'; "/>
-                        <img style="position: relative; bottom: 0; left: -25px; visibility:hidden;" src="<?php echo base_url() ?>resources/images/add_photo_album.jpg" alt="">
-                   
-
+                    <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>" onError="this.style.display = 'none'; this.parentNode.className='fileinput-button'; this.parentNode.getElementsByTagName('img')[1].style.visibility='visible'; "/>
+                    <img style="position: relative; bottom: 0; left: -25px; visibility:hidden;" src="<?php echo base_url() ?>resources/images/add_photo_album.jpg" alt="">
                     <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
                 </div>	
                 <div ng-show="imageCropStep == 2">
@@ -71,23 +63,21 @@
                         crop="initCrop"
                         padding="100"
                         max-size="1024"
+                        imagepath = "<?php echo base_url(); ?>photos/add_profile_picture/"
+                        reloadpath = "<?php echo base_url(); ?>member/timeline/"
                         ></image-crop>		   
                 </div>
                 <div ng-show="imageCropStep == 2">
                     <br/>
-                    <button class="btn btn-sm" style="position: absolute; bottom: 0; right: 50px; background-color: #999; color: #fff; width: 25%;" ng-click="initCrop = true">Crop</button>		
+                    <button class="btn btn-sm" style="position: absolute; bottom: 0; right: 50px; background-color: #999; color: #fff; width: 25%;" ng-click="initCrop = true">Crop and Save</button>		
                     <button class="btn btn-sm" style="position: absolute; bottom: 0; left: 50px; background-color: #999; color: #fff; width: 25%;" ng-click="clear()">Cancel</button>
                 </div>		  
                 <div  ng-show="imageCropStep == 3">
                     <div >
                         <img ng-src="{{result}}"></img>
                     </div>
-                    <button class="btn btn-sm" style="position: absolute; bottom: 0; left: 0; background-color: #999; color: #fff; width: 100%;" onclick="imageUpload(angular.element(this).scope().result)">Save</button>	
-                    <!--<button ng-click="clear()">Clear</button>-->	
                 </div>
             </div>
-            <!--<img style="border: 6px solid whitesmoke; position: absolute; bottom: 1px; left: 1px;" class=" img-circle profilePic img" src="<?php echo base_url() ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="160px" height="160px">-->
-            <!--</a>-->
             <a style="position: absolute; bottom: 2px; left: 190px; color: white;"class="btn" href="">
                 <b>Mohammad Azhar Uddin</b>
             </a>
@@ -153,37 +143,11 @@
 
     <script>
         function block_request(friendId) {
-            angular.element($('#block_friend_id')).scope().blockRequest(friendId, function() {
+            angular.element($('#block_friend_id')).scope().blockRequest(friendId, function () {
                 alert("user is blocked ");
             });
 
 
         }
-        function imageUpload(imageData) {
-            $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>photos/add_profile_picture/',
-                data: {
-                    imageData: imageData
-                },
-                success: function(data) {
-                    window.location = '<?php echo base_url(); ?>member/newsfeed';
-                }
-            });
-        }
-        function cover_picture_upload(imageData) {
-            $.ajax({
-                dataType: 'json',
-                type: "POST",
-                url: '<?php echo base_url(); ?>photos/add_cover_picture/',
-                data: {
-                    imageData: imageData
-                },
-                success: function(data) {
-                    window.location = '<?php echo base_url(); ?>member/newsfeed';
-                }
-            });
-        }
-
+    
     </script>
