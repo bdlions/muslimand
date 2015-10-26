@@ -47,7 +47,7 @@
            
             <div ng-controller="ImageCopperController" style="position: absolute; bottom: -20px; left: 10px; z-index: 1001;">
                 <div ng-show="imageCropStep == 1" class="fileinput-button">
-                    <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>" onError="this.style.display = 'none'; this.parentNode.className='fileinput-button'; this.parentNode.getElementsByTagName('img')[1].style.visibility='visible'; "/>
+                    <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $user_id . '.jpg'; ?>" onError="this.style.display = 'none'; this.parentNode.className='fileinput-button'; this.parentNode.getElementsByTagName('img')[1].style.visibility='visible'; "/>
                     <img style="position: relative; bottom: 0; left: -25px; visibility:hidden;" src="<?php echo base_url() ?>resources/images/add_photo_album.jpg" alt="">
                     <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
                 </div>	

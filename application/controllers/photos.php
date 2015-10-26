@@ -694,6 +694,7 @@ class Photos extends CI_Controller {
         if ($result1['status'] != 0 && $result2['status'] != 0) {
             //resize profile picture 
             $file_temp = $profile_picture_temp_path . $profile_picture_name;
+            $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W150_H150 . $profile_picture_name, PROFILE_PICTURE_H150, PROFILE_PICTURE_W150);
             $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W100_H100 . $profile_picture_name, PROFILE_PICTURE_H100, PROFILE_PICTURE_W100);
             $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W50_H50 . $profile_picture_name, PROFILE_PICTURE_H50, PROFILE_PICTURE_W50);
             $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W32_H32 . $profile_picture_name, PROFILE_PICTURE_H32, PROFILE_PICTURE_W32);
