@@ -35,3 +35,9 @@
     height: 100%;
   }
 }
+
+ .preview canvas{
+    height: 100px;
+    width: 150px;
+    margin-left: 6px;
+}
