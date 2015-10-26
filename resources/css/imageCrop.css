@@ -45,7 +45,6 @@ hr {
     position: absolute;
     right: 0 !important;
     top: 0;
-    width: 100% !important;
 }
 
 
@@ -85,9 +84,9 @@ hr {
 /* After setup 1st time, profile picture */
 .profile_picture input, .profile_picture img{
     height: 100%;
-    right: 153px;
+    left: 0;
     top: 0;
-    width: 49.5% ;
+    width: 49.5%;
 }
 
 /* ------------------------ cover photo -----------------------------*/
