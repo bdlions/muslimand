@@ -5,9 +5,9 @@
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
             <div class="row form-group"></div>
             <div class="row">
-                <div class="col-xs-12" class="profile_picture">
-                    <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>" onError="this.style.display = 'none'; this.parentNode.className='profile_picture'; this.parentNode.getElementsByTagName('img')[1].style.visibility='visible'; "/>
-                    <img style="visibility:hidden; height: 0" class="img-circle" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="100" height="100">
+                <div class="col-xs-12" class="newsfeed_profile_picture" style="width: 100px; height: 100px">
+                    <img class="img-circle"  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>" onError="this.style.display = 'none'; this.parentNode.className='newsfeed_profile_picture'; this.parentNode.getElementsByTagName('img')[1].style.visibility='visible'; "/>
+                    <img style="visibility:hidden;" class="img-circle" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="100" height="100">
                 </div>
             </div>
             <div class="row">
