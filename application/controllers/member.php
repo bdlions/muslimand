@@ -35,9 +35,7 @@ class Member extends CI_Controller {
     }
 
     function newsfeed() {
-
         $user_id = $this->session->userdata('user_id');
-
         $offset = 0;
         $limit = 5;
         $result = array();
@@ -72,6 +70,7 @@ class Member extends CI_Controller {
         $this->data["ststus_type_ids"] = json_encode($status_type_ids);
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Status";
+        $this->data['user_id'] = $user_id;
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed", $this->data);
     }
 
@@ -100,9 +99,28 @@ class Member extends CI_Controller {
         $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/timeline", $this->data);
     }
 
-    function about($user_id = 0) {
+    function about($friend_id = 0) {
+
         $user_id = $this->session->userdata('user_id');
+        if ($friend_id != $user_id) {
+            $result = $this->friend_mongodb_model->get_relationship_status($user_id, $friend_id);
+            $result = json_decode($result);
+            if ($result != null) {
+                if (property_exists($result, "relationShipStatus") != FALSE) {
+                    $user_relation['relation_ship_status'] = $result->relationShipStatus;
+                }
+                if (property_exists($result, "isInitiated") != FALSE) {
+                    $user_relation['is_initiated'] = $result->isInitiated;
+                }
+            }
+        } else {
+            $user_relation['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
+        }
         $this->data['user_id'] = $user_id;
+        $this->data['constants'] = json_encode($this->relations);
+        $this->data['user_relation'] = json_encode($user_relation);
+        $this->data['friend_id'] = $friend_id;
+        $this->data['app'] = "app.BasicProfile";
         $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/about", $this->data);
     }
 
@@ -115,6 +133,7 @@ class Member extends CI_Controller {
     }
 
     function messages() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['app'] = "app.Friend";
         $this->data['constants'] = json_encode($this->relations);
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/messages", $this->data);

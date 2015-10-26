@@ -34,6 +34,11 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.aboutInfo = {};
             $scope.fQuote = {};
             $scope.fQuoteInfo = {};
+            
+            $scope.setConstants = function (t) {
+                $scope.constants = JSON.parse(t);
+                $scope.url = $scope.constants.base_url;
+            };
 
             // about  overview  ........................................      
             $scope.getOverview = function (userId, requestFunction) {
@@ -288,7 +293,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                         success(function (data, status, headers, config) {
                             if (data.basic_info !== "undefined") {
                                 if (data.basic_info !== "undefined") {
-                                    
+
                                     if (typeof data.basic_info.mobile_phones !== "undefined") {
                                         $scope.mobilePhones = data.basic_info.mobile_phones;
                                     }

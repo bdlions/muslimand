@@ -340,7 +340,7 @@ class Status extends CI_Controller {
         $response = array();
         $result = $this->photo_mongodb_model->get_album_info($user_id, $album_id);
         $result = json_decode($result);
-        if ($result->responseCode == UNSUCCESS_RESPONSE_CODE) {
+        if ($result->responseCode == BAD_REQUSET) {
             $album_info = new stdClass();
             $album_info->albumId = $album_id;
             $album_info->userId = $user_id;

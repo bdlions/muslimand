@@ -16,25 +16,54 @@ class Pages extends CI_Controller {
         $this->config->item('use_mongodb', 'ion_auth') ?
                         $this->load->library('mongo_db') :
                         $this->load->database();
+        $this->relations = $relations = array(
+            "friend_relation_type_id" => FRIEND_RELATION_TYPE_ID,
+            "pending_relation_type_id" => PENDING_RELATION_TYPE_ID,
+            "blocked_relation_type_id" => BLOCKED_RELATION_TYPE_ID,
+            "non_friend_relation_type_id" => NON_RELATION_TYPE_ID,
+            "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
+            "request_sender" => REQUEST_SENDER,
+            "request_receiver" => REQUEST_RECEIVER,
+            "base_url" => base_url()
+        );
 
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
     }
-    function index(){
-        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_home");
+
+    function index() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['constants'] = json_encode($this->relations);
+        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_home", $this->data);
     }
-    function pages_add(){
-        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_add");
+
+    function pages_add() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['constants'] = json_encode($this->relations);
+        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_add", $this->data);
     }
-     function pages_sort_view_my(){
-        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_view_my");
+
+    function pages_sort_view_my() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['constants'] = json_encode($this->relations);
+        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_view_my", $this->data);
     }
-    function pages_sort_view_friend(){
-        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_view_friend");
+
+    function pages_sort_view_friend() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['constants'] = json_encode($this->relations);
+        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_view_friend", $this->data);
     }
-    function pages_sort_most_liked(){
-        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_most_liked");
+
+    function pages_sort_most_liked() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['constants'] = json_encode($this->relations);
+        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_most_liked", $this->data);
     }
-    function pages_newsfeed(){
-        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_newsfeed");
+
+    function pages_newsfeed() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['constants'] = json_encode($this->relations);
+        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_newsfeed", $this->data);
     }
+
 }

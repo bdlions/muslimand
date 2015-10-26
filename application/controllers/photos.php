@@ -697,7 +697,8 @@ class Photos extends CI_Controller {
             $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W150_H150 . $profile_picture_name, PROFILE_PICTURE_H150, PROFILE_PICTURE_W150);
             $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W100_H100 . $profile_picture_name, PROFILE_PICTURE_H100, PROFILE_PICTURE_W100);
             $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W50_H50 . $profile_picture_name, PROFILE_PICTURE_H50, PROFILE_PICTURE_W50);
-            $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W32_H32 . $profile_picture_name, PROFILE_PICTURE_H32, PROFILE_PICTURE_W32);
+            $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W30_H30 . $profile_picture_name, PROFILE_PICTURE_H30, PROFILE_PICTURE_W30);
+            $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W25_H25 . $profile_picture_name, PROFILE_PICTURE_H25, PROFILE_PICTURE_W25);
             //create album if no album exsist for profile picture or add picture to profile picture album
             $image_list = array();
             $image = new stdClass();

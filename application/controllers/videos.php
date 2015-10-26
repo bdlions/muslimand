@@ -52,36 +52,42 @@ class Videos extends CI_Controller {
     }
 
     function videos_sort_most_discussed() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_most_discussed", $this->data);
     }
 
     function videos_sort_most_viewed() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_most_viewed", $this->data);
     }
 
     function videos_sort_top_rated() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_top_rated");
     }
 
     function videos_view_favorite() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_favorite", $this->data);
     }
 
     function videos_view_friend() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_friend", $this->data);
     }
 
     function videos_view_my() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_my", $this->data);
@@ -218,7 +224,8 @@ class Videos extends CI_Controller {
             $video_id = $requestInfo->videoId;
         }
         $result = $this->video_mongodb_model->delete_video($video_id);
-        var_dump($result);exit;
+        var_dump($result);
+        exit;
     }
 
     /*
