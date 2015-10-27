@@ -135,6 +135,13 @@
                     The file size limit is 2 Mb. If your upload does not work, try uploading a smaller picture. 
                 </div>
             </div>
+            <div class="row form-group"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-xs" id="add_photos_btn_id" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;"  onclick="add_photos()">Upload</button>
+                </div>
+                <div class="col-md-8"></div>
+            </div>
             <div class="col-md-2"></div>
         </div>
         <?php $this->load->view("member/photo/modal_create_album"); ?>
