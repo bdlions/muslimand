@@ -42,7 +42,16 @@ angular.module('services.Friend', []).
             friendService.deleteRequest = function (friendId, url) {
                 return $http({
                     method: 'post',
-                    url: url + 'friend/delete_request',
+                    url: url + 'friend/remove_friend_request',
+                    data: {
+                        friendId: friendId
+                    }
+                });
+            };
+            friendService.deleteRequest = function (friendId, url) {
+                return $http({
+                    method: 'post',
+                    url: url + 'friend/remove_friend_request',
                     data: {
                         friendId: friendId
                     }

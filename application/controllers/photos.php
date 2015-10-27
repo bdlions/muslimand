@@ -22,10 +22,10 @@ class Photos extends CI_Controller {
 
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
         $this->relations = $relations = array(
-            "friend_relation_type_id" => FRIEND_RELATION_TYPE_ID,
-            "pending_relation_type_id" => PENDING_RELATION_TYPE_ID,
-            "blocked_relation_type_id" => BLOCKED_RELATION_TYPE_ID,
-            "non_friend_relation_type_id" => NON_RELATION_TYPE_ID,
+            "relation_type_friend_id" => RELATION_TYPE_FRIEND_ID,
+            "relation_type_pending_id" => RELATION_TYPE_PENDING_ID,
+            "relation_type_block_id" => RELATION_TYPE_BLOCK_ID,
+            "non_relation_type_friend_id" => RELATION_TYPE_NON_FRIEND_ID,
             "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
             "request_sender" => REQUEST_SENDER,
             "request_receiver" => REQUEST_RECEIVER,
@@ -633,6 +633,7 @@ class Photos extends CI_Controller {
 //resize and crop
         $this->utils->resize_image(TEMP_PROFILE_IMAGE_PATH . $new_name, PROFILE_PICTURE_PATH_W100_H100 . $new_name, PROFILE_PICTURE_H100, PROFILE_PICTURE_W100);
         $this->utils->resize_image(TEMP_PROFILE_IMAGE_PATH . $new_name, PROFILE_PICTURE_PATH_W50_H50 . $new_name, PROFILE_PICTURE_H50, PROFILE_PICTURE_W50);
+        $this->utils->resize_image(TEMP_PROFILE_IMAGE_PATH . $new_name, PROFILE_PICTURE_PATH_W40_H40 . $new_name, PROFILE_PICTURE_H40, PROFILE_PICTURE_W40);
         $this->utils->resize_image(TEMP_PROFILE_IMAGE_PATH . $new_name, PROFILE_PICTURE_PATH_W32_H32 . $new_name, PROFILE_PICTURE_H32, PROFILE_PICTURE_W32);
 //delete temp src image
 //update database related to profile picture
@@ -700,6 +701,7 @@ class Photos extends CI_Controller {
             $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W150_H150 . $profile_picture_name, PROFILE_PICTURE_H150, PROFILE_PICTURE_W150);
             $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W100_H100 . $profile_picture_name, PROFILE_PICTURE_H100, PROFILE_PICTURE_W100);
             $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W50_H50 . $profile_picture_name, PROFILE_PICTURE_H50, PROFILE_PICTURE_W50);
+            $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W40_H40 . $profile_picture_name, PROFILE_PICTURE_H40, PROFILE_PICTURE_W40);
             $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W30_H30 . $profile_picture_name, PROFILE_PICTURE_H30, PROFILE_PICTURE_W30);
             $this->utils->resize_image($file_temp, PROFILE_PICTURE_PATH_W25_H25 . $profile_picture_name, PROFILE_PICTURE_H25, PROFILE_PICTURE_W25);
             //create album if no album exsist for profile picture or add picture to profile picture album

@@ -5,11 +5,12 @@
             <div class="row form-group">
                 <div class="col-md-12">
                     <div style="float: left; padding-right: 10px;" >
-                        <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg" width="40" height="40">
+                        <img src="<?php echo base_url().PROFILE_PICTURE_PATH_W150_H150; ?>{{status.userInfo.userId}}.jpg" width="40" height="40" onError="onImageUnavailable(this)">
+                        <img style="visibility:hidden; height: 0px" src="<?php echo base_url().PROFILE_PICTURE_PATH_W30_H30 ?>40x40.jpg">
                     </div>
                     <div style="float: left;">
                         <div>
-                            <a href="#" style="font-weight: bold;"><span ng-bind="status.userInfo.firstName"></span>&nbsp<span ng-bind="status.userInfo.lastName"></span></a>
+                            <a href="<?php echo base_url(); ?>member/timeline/{{status.userInfo.userId}}" style="font-weight: bold;"><span ng-bind="status.userInfo.firstName"></span>&nbsp<span ng-bind="status.userInfo.lastName"></span></a>
                             <span ng-if="statusTypes.post_status_by_user_at_his_profile_id == status.statusTypeId">
                                 update his/her status
                             </span>
@@ -106,13 +107,13 @@
                         </div>
                     </div>
                     <div class="col-md-4" ng-if="statusTypes.change_profile_picture_id != status.statusTypeId && statusTypes.change_cover_picture_id != status.statusTypeId">
-                        <img style="border: 1px solid #703684; height: 300px; "src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >
+                        <img style="border: 1px solid #703684;  height: 100px; width: 150px"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >
                     </div>
                 </div>
 
             </div>
             <div class="row from-group">
-                <div class="col-md-4" ng-repeat="image in status.referenceInfo.img">
+                <div class="col-md-4" ng-repeat="image in status.referenceInfo.images">
                     <img style="border: 1px solid #703684;"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" width="120" height="100">
                 </div>
             </div>
@@ -179,7 +180,7 @@
                         <div class="col-md-11">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <a style="font-weight: bold;" href><span ng-bind="commentInfo.userInfo.firstName"></span>&nbsp<span ng-bind="commentInfo.userInfo.lastName"></span></a>
+                                    <a style="font-weight: bold;" href></span><span ng-bind="commentInfo.userInfo.firstName"></span>&nbsp<span ng-bind="commentInfo.userInfo.lastName"></span></a>
                                     <span ng-bind="commentInfo.description">
                                 </div>
                             </div>
@@ -196,8 +197,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-1" profile_picture>
-                        <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg'; ?>" onError="onImageUnavailable(this)"/>
-                        <img style="visibility:hidden;" src="<?php echo base_url().PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
+                        <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time();  ?>" onError="onImageUnavailable(this)"/>
+                        <img style="visibility:hidden; height: 0px" src="<?php echo base_url().PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
                     </div>
                     <div class="col-md-11">
                         <form  ng-submit="addComment(status.statusId)">

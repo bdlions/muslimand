@@ -23,10 +23,10 @@ class Status extends CI_Controller {
         $this->lang->load('auth');
         $this->load->helper('language');
         $this->relations = $relations = array(
-            "friend_relation_type_id" => FRIEND_RELATION_TYPE_ID,
-            "pending_relation_type_id" => PENDING_RELATION_TYPE_ID,
-            "blocked_relation_type_id" => BLOCKED_RELATION_TYPE_ID,
-            "non_friend_relation_type_id" => NON_RELATION_TYPE_ID,
+            "relation_type_friend_id" => RELATION_TYPE_FRIEND_ID,
+            "relation_type_pending_id" => RELATION_TYPE_PENDING_ID,
+            "relation_type_block_id" => RELATION_TYPE_BLOCK_ID,
+            "non_relation_type_friend_id" => RELATION_TYPE_NON_FRIEND_ID,
             "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
             "request_sender" => REQUEST_SENDER,
             "request_receiver" => REQUEST_RECEIVER,
@@ -144,14 +144,14 @@ class Status extends CI_Controller {
             $ref_info = new stdClass();
             $ref_info->userInfo = $ref_user_info;
             if (property_exists($old_status_info, "images")) {
-                $image = new stdClass();
                 $images = array();
                 $image_list = $old_status_info->images;
                 foreach ($image_list as $imageInfo) {
+                    $image = new stdClass();
                     $image->image = $imageInfo->image;
                     $images[] = $image;
                 }
-                $ref_info->img = $images;
+                $ref_info->images = $images;
             }
             if (property_exists($old_status_info, "description")) {
                 $ref_info->description = $old_status_info->description;
@@ -236,8 +236,8 @@ class Status extends CI_Controller {
         $request = json_decode($postdata);
         $ref_user_info = new StdClass(); //get from session;
         $ref_user_info->userId = $this->session->userdata('user_id');
-        $ref_user_info->firstName = "Keya";
-        $ref_user_info->lastName = "Moni";
+        $ref_user_info->firstName = $this->session->userdata('first_name');
+        $ref_user_info->lastName = $this->session->userdata('last_name');
         if (property_exists($request, "statusId")) {
             $status_id = $request->statusId;
         }

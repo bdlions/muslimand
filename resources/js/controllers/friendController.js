@@ -10,12 +10,11 @@ angular.module('controllers.Friend', ['services.Friend']).
                 $scope.friends = JSON.parse(t);
             };
 
-            $scope.setUserRelation = function (t) {
-                $scope.userRelation = JSON.parse(t);
-//                console.log($scope.userRelation);
+            $scope.setUserRelation = function (userRelation) {
+                $scope.userRelation = JSON.parse(userRelation);
             };
-            $scope.setConstants = function (t) {
-                $scope.constants = JSON.parse(t);
+            $scope.setConstants = function (constants) {
+                $scope.constants = JSON.parse(constants);
                 $scope.url = $scope.constants.base_url;
             };
 
@@ -61,7 +60,7 @@ angular.module('controllers.Friend', ['services.Friend']).
                         });
             };
             //needed to change
-             $scope.imageCropStep = 1;
+            $scope.imageCropStep = 1;
             $scope.fileChanged = function (e) {
                 console.log(e);
 

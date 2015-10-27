@@ -66,7 +66,12 @@ angular.module('controllers.Status', ['services.Status']).
                                 if (value.statusId == statusId) {
                                     $scope.likeList.push(data.status_like_info);
                                     (value.likeStatus = "1");
-                                    (value.likeCounter = "1");
+                                    if (typeof value.likeCounter == "undefined") {
+                                        (value.likeCounter = 1);
+                                    }else{
+                                       (value.likeCounter = value.likeCounter +1 );  
+                                    }
+                                    console.log(value);
                                 }
                             }, $scope.statuses);
 
@@ -105,8 +110,9 @@ angular.module('controllers.Status', ['services.Status']).
                         });
                 return false;
             };
-            
+
             $scope.shareStatus = function (requestFunction) {
+                console.log($scope.sharedInfo);
                 statusService.shareStatus($scope.sharedInfo, $scope.statusShareInfo).
                         success(function (data, status, headers, config) {
                             $scope.statuses.push(data.status_info);

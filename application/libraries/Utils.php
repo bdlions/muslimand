@@ -227,10 +227,10 @@ class Utils {
 
     function relation_ship_constants() {
         $relations = array(
-            "friend_relation_type_id" => FRIEND_RELATION_TYPE_ID,
-            "pending_relation_type_id" => PENDING_RELATION_TYPE_ID,
-            "blocked_relation_type_id" => BLOCKED_RELATION_TYPE_ID,
-            "non_friend_relation_type_id" => NON_RELATION_TYPE_ID,
+            "relation_type_friend_id" => RELATION_TYPE_FRIEND_ID,
+            "relation_type_pending_id" => RELATION_TYPE_PENDING_ID,
+            "relation_type_block_id" => RELATION_TYPE_BLOCK_ID,
+            "non_relation_type_friend_id" => RELATION_TYPE_NON_FRIEND_ID,
             "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
             "request_sender" => REQUEST_SENDER,
             "request_receiver" => REQUEST_RECEIVER,

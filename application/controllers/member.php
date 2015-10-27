@@ -23,10 +23,10 @@ class Member extends CI_Controller {
         $this->lang->load('auth');
         $this->load->helper('language');
         $this->relations = $relations = array(
-            "friend_relation_type_id" => FRIEND_RELATION_TYPE_ID,
-            "pending_relation_type_id" => PENDING_RELATION_TYPE_ID,
-            "blocked_relation_type_id" => BLOCKED_RELATION_TYPE_ID,
-            "non_friend_relation_type_id" => NON_RELATION_TYPE_ID,
+            "relation_type_friend_id" => RELATION_TYPE_FRIEND_ID,
+            "relation_type_pending_id" => RELATION_TYPE_PENDING_ID,
+            "relation_type_block_id" => RELATION_TYPE_BLOCK_ID,
+            "non_relation_type_friend_id" => RELATION_TYPE_NON_FRIEND_ID,
             "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
             "request_sender" => REQUEST_SENDER,
             "request_receiver" => REQUEST_RECEIVER,
@@ -71,18 +71,20 @@ class Member extends CI_Controller {
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Status";
         $this->data['user_id'] = $user_id;
+        $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['last_name'] = $this->session->userdata('last_name');
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed", $this->data);
     }
 
-    function timeline($friend_id = 0) {
+    function timeline($friend_id = "0") {
         $user_relation = array();
         $user_id = $this->session->userdata('user_id');
-        if ($friend_id != $user_id && $friend_id != 0) {
+        if ($friend_id != $user_id && $friend_id != "0") {
             $result = $this->friend_mongodb_model->get_relationship_status($user_id, $friend_id);
             $result = json_decode($result);
             if ($result != null) {
-                if (property_exists($result, "relationShipStatus") != FALSE) {
-                    $user_relation['relation_ship_status'] = $result->relationShipStatus;
+                if (property_exists($result, "relationTypeId") != FALSE) {
+                    $user_relation['relation_ship_status'] = $result->relationTypeId;
                 }
                 if (property_exists($result, "isInitiated") != FALSE) {
                     $user_relation['is_initiated'] = $result->isInitiated;
@@ -106,8 +108,8 @@ class Member extends CI_Controller {
             $result = $this->friend_mongodb_model->get_relationship_status($user_id, $friend_id);
             $result = json_decode($result);
             if ($result != null) {
-                if (property_exists($result, "relationShipStatus") != FALSE) {
-                    $user_relation['relation_ship_status'] = $result->relationShipStatus;
+                if (property_exists($result, "relationTypeId") != FALSE) {
+                    $user_relation['relation_ship_status'] = $result->relationTypeId;
                 }
                 if (property_exists($result, "isInitiated") != FALSE) {
                     $user_relation['is_initiated'] = $result->isInitiated;

@@ -17,13 +17,13 @@
             <div class="row form-group"></div>
             <div class="row">
                 <div class="col-xs-12" class="newsfeed_profile_picture" style="width: 100px; height: 100px">
-                    <img class="img-circle"  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>" onError="onImageUnavailable(this)"/>
+                    <img class="img-circle"  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id .'.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
                     <img style="visibility:hidden; height: 0px;" class="img-circle" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100.jpg">
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <a style="color: black; font-size: 12px; font-weight: bold;" href="#">Mohammad Azhar Uddin</a>
+                    <a style="color: black; font-size: 12px; font-weight: bold;" href="<?php echo base_url()?>member/timeline"><?php echo $first_name; ?>&nbsp;<?php echo $last_name; ?></a>
                 </div>
             </div>
               <!--<textarea  ng-model="statusInfo.description" class="form-control form_control_custom_style textarea_custom_style"></textarea>-->

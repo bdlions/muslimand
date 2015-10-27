@@ -42,7 +42,6 @@
                     <div class="col-md-10">
                         <span id="old_description"></span>
                         <!--use when share a video-->
-                        <img scrolling="no" id="src_id" src="" width="120" height="90" frameborder="0" allowfullscreen>
                     </div>
 
                 </div>

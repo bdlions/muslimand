@@ -35,7 +35,7 @@
             </div>
             <div class="col-xs-6">
                 <div class="pull-right">
-                    <div ng-if="pFriend.relationTypeId == constants.pending_relation_type_id">
+                    <div ng-if="pFriend.relationTypeId == constants.RELATION_TYPE_PENDING_ID">
                         <button  id="confirm_friend_id_2" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="confirm_request(angular.element(this).scope().pFriend.userId)">Confirm</button>
                         <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white" ngclick="deleteRequest(pFriend.userId)">Delete Request</button>
                     </div>
