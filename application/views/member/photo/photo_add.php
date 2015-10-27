@@ -77,16 +77,13 @@
                     <div id="fileupload" method="POST" enctype="multipart/form-data" data-ng-app="demo" data-ng-controller="DemoFileUploadController" ng-init="setPath('<?php echo base_url(); ?>photos/image_upload')" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
                         <div class="row fileupload-buttonbar">
                             <div class="col-md-10">
-                                <span class="btn btn-success fileinput-button" ng-class="{disabled: disabled}">
+                                <span class="btn btn-sm btn-success fileinput-button" ng-class="{disabled: disabled}">
                                     <i class="glyphicon glyphicon-plus"></i>
                                     <span>Add files...</span>
                                     <input type="file" name="userfile" multiple ng-disabled="disabled">
                                 </span>
-                                <button type="button" class="btn btn-primary start" data-ng-click="submit()">
-                                    <i class="glyphicon glyphicon-upload"></i>
-                                    <span>upload files</span>
-                                </button>
-                                <button type="button" class="btn btn-warning cancel" data-ng-click="cancel()">
+
+                                <button type="button" class="btn btn-sm btn-danger cancel" data-ng-click="cancel()">
                                     <i class="glyphicon glyphicon-ban-circle"></i>
                                     <span>Cancel files upload </span>
                                 </button>
@@ -101,18 +98,29 @@
                                 <div class="progress-extended">&nbsp;</div>
                             </div>
                         </div>
-                        <div class="row form-group"  data-ng-repeat="file in queue" data-ng-class="{'processing': file.$processing()}">
-                            <div class="col-md-2 " data-on="!!file.thumbnailUrl">
+                        <div class="row"  data-ng-repeat="file in queue" data-ng-class="{'processing': file.$processing()}">
+                            <div class="col-md-4 " data-on="!!file.thumbnailUrl">
                                 <div class="preview" data-file-upload-preview="file"></div>
                             </div>
-                            <button type="button" class="btn btn-warning cancel" data-ng-click="file.$cancel()" data-ng-hide="!file.$cancel">
-                                <i class="glyphicon glyphicon-ban-circle"></i>
-                                <span>Cancel</span>
-                            </button>
-
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-sm btn-danger cancel" data-ng-click="file.$cancel()" data-ng-hide="!file.$cancel">
+                                    <i class="glyphicon glyphicon-ban-circle"></i>
+                                    <span>Cancel</span>
+                                </button>
+                            </div>
                         </div>
+
                         <div class="row form-group">
-                            <div class="col-md-3" data-ng-repeat="file in queue">
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-sm btn-primary start" data-ng-click="submit()">
+                                    <i class="glyphicon glyphicon-upload"></i>
+                                    <span>upload files</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-3 form-group" data-ng-repeat="file in queue">
                                 <a data-ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}" data-gallery><img class="image-size" data-ng-src="{{file.thumbnailUrl}}" alt=""></a>
                             </div> 
                         </div>
@@ -121,21 +129,12 @@
                 </div>
                 <div class="col-md-2"></div>
             </div>
-            <div class="row form-group"></div>
-            <div class="row">
+            <div class="row form-group">
                 <div class="col-md-12">
                     You can upload a JPG, GIF or PNG file.<br>
                     The file size limit is 2 Mb. If your upload does not work, try uploading a smaller picture. 
                 </div>
             </div>
-            <div class="row form-group"></div>
-            <div class="row">
-                <div class="col-md-4">
-                    <button class="btn btn-xs" id="add_photos_btn_id" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;"  onclick="add_photos()">Upload</button>
-                </div>
-                <div class="col-md-8"></div>
-            </div>
-
             <div class="col-md-2"></div>
         </div>
         <?php $this->load->view("member/photo/modal_create_album"); ?>
@@ -145,13 +144,13 @@
     function add_photos() {
         var image_list = [];
         image_list = get_image_list();
-        angular.element($('#add_photos_btn_id')).scope().addPhotos(image_list, function () {
+        angular.element($('#add_photos_btn_id')).scope().addPhotos(image_list, function() {
             window.location = '<?php echo base_url(); ?>member/newsfeed';
         });
     }
 
-    $(function () {
-        $("#createAlbumIdOnClick").on("click", function () {
+    $(function() {
+        $("#createAlbumIdOnClick").on("click", function() {
             $('#modal_create_album_box').modal('show');
         });
     });
