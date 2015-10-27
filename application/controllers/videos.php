@@ -133,8 +133,8 @@ class Videos extends CI_Controller {
                     }
                     $user_info = new stdClass();
                     $user_info->userId = $user_id;
-                    $user_info->firstName = "Rashida";
-                    $user_info->lastName = "Sultana";
+                    $user_info->firstName = $this->session->userdata('first_name');
+                    $user_info->lastName = $this->session->userdata('last_name');
                     $video_info = new stdClass();
                     $video_info->videoId = $this->utils->generateRandomString(USER_VIDEO_ID_LENGTH);
                     $video_info->url = $url;
@@ -242,8 +242,8 @@ class Videos extends CI_Controller {
         }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
-        $user_info->firstName = "Rashida Sultana";
-        $user_info->lastName = "Shemin";
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
         $like_info = new stdClass();
         $like_info->userInfo = $user_info;
         $like_info->id = $this->utils->generateRandomString(USER_VIDEO_LIKE_ID_LENGTH);
@@ -307,8 +307,8 @@ class Videos extends CI_Controller {
         }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
-        $user_info->firstName = "Rashida Sultana";
-        $user_info->lastName = "Shemin";
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
         $comment_info = new stdClass();
         if (property_exists($request, "comment") != FALSE) {
             $comment_info->description = $request->comment;

@@ -122,25 +122,25 @@ class Auth extends CI_Controller {
                     'title' => $country_title,
                 );
                 $additional_data = array(
-                    'first_name' => $this->input->post('r_first_name'),
-                    'last_name' => $this->input->post('r_last_name'),
+                    'firstName' => $this->input->post('r_first_name'),
+                    'lastName' => $this->input->post('r_last_name'),
                     'country' => $country
                 );
                 $gender = array(
-                    'gender_id' => $gender_id,
+                    'genderId' => $gender_id,
                     'title' => $gender_title
                 );
                 $birth_date = array(
-                    'birth_day' => $this->input->post('birthday_day'),
-                    'birth_month' => $this->input->post('birthday_month'),
-                    'birth_year' => $this->input->post('birthday_year')
+                    'birthDay' => $this->input->post('birthday_day'),
+                    'birthMonth' => $this->input->post('birthday_month'),
+                    'birthYear' => $this->input->post('birthday_year')
                 );
                 $basic_info = array(
-                    'birth_date' => $birth_date,
+                    'birthDate' => $birth_date,
                     'gender' => $gender
                 );
                 $group_info = array(
-                    'group_id' => MEMBER_GROUP_ID,
+                    'groupId' => MEMBER_GROUP_ID,
                     'title' => MEMBER_GROUP_TITLE
                 );
                 $groups = array();
@@ -149,8 +149,8 @@ class Auth extends CI_Controller {
                 if ($id != null) {
                     $additional_data = array(
                         '_id' => $this->utils->generateRandomString(DB_ID_LENGTH),
-                        'user_id' => $id,
-                        'basic_info' => $basic_info,
+                        'userId' => $id,
+                        'basicInfo' => $basic_info,
                     );
                     $result = $this->basic_profile_mongodb_model->add_basic_info($id, $additional_data);
                     if ($result != null) {

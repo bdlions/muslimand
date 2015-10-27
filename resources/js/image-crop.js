@@ -786,7 +786,6 @@
                         scope.shape = scope.shape || 'circle';
                         scope.imagepath = scope.imagepath || '/';
                         scope.reloadpath = scope.reloadpath || '/';
-
                         scope.width = parseInt(scope.width, 10) || 300;
                         scope.height = parseInt(scope.height, 10) || 300;
 
@@ -849,6 +848,10 @@
 
                                     var height = img.height;
                                     var width = img.width;
+                                    if( width < scope.width || height < scope.height ){
+                                    alert("Please choose an image that's at least " + scope.width + " pixels wide and at least " + scope.height + " pixels tall.");
+                                    return;
+                                    }
 
                                     //if the size is already ok, just return the image
                                     if (height <= maxSize && width <= maxSize) {

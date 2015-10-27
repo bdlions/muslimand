@@ -94,8 +94,16 @@
             </div>
 
             <div class="row from-group">
-                <div class="col-md-4" ng-repeat="image in status.images">
-                    <img style="border: 1px solid #703684;"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" width="120" height="100">
+                <div ng-repeat="image in status.images">
+                    <div ng-if="statusTypes.change_profile_picture_id == status.statusTypeId">
+                        <img style="border: 1px solid #703684;"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
+                    </div>
+                    <div ng-if="statusTypes.change_cover_picture_id == status.statusTypeId">
+                        <img  style="border: 1px solid #703684; width: 500px"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
+                    </div>
+                    <div class="col-md-4" ng-if="statusTypes.change_profile_picture_id != status.statusTypeId && statusTypes.change_cover_picture_id != status.statusTypeId">
+                        <img style="border: 1px solid #703684; height: 300px; "src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >
+                    </div>
                 </div>
 
             </div>
@@ -184,8 +192,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-1" profile_picture>
-                        <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg'; ?>" onError="this.style.display = 'none'; this.parentNode.className='profile_picture'; this.parentNode.getElementsByTagName('img')[1].style.visibility='visible'; "/>
-                        <img style="visibility:hidden; height: 0 ;" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg" width="30" height="30">
+                        <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg'; ?>" onError="onImageUnavailable(this)"/>
+                        <img style="visibility:hidden;" src="<?php echo base_url().PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
                     </div>
                     <div class="col-md-11">
                         <form  ng-submit="addComment(status.statusId)">
@@ -241,5 +249,14 @@
         angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function () {
             $('#modal_shared_people_list').modal('show');
         });
+    }
+
+    function onImageUnavailable(img) {
+        var div = img.parentNode;
+        var firstImage = img;
+        var secondImage = div.getElementsByTagName('img')[1];
+        firstImage.style.display = 'none';
+        secondImage.style.visibility = 'visible';
+        secondImage.style.height = '100%';
     }
 </script>

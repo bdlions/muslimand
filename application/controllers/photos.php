@@ -177,8 +177,8 @@ class Photos extends CI_Controller {
         }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
-        $user_info->firstName = "Rashida Sultana";
-        $user_info->lastName = "Shemin";
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
         $like_info = new stdClass();
         $like_info->userInfo = $user_info;
         $result = $this->photo_mongodb_model->add_album_like($album_id, $like_info);
@@ -226,8 +226,8 @@ class Photos extends CI_Controller {
         }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
-        $user_info->firstName = "Rashida Sultana";
-        $user_info->lastName = "Shemin";
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
         $comment_info = new stdClass();
         if (property_exists($request, "comment") != FALSE) {
             $comment_info->description = $request->comment;
@@ -384,8 +384,8 @@ class Photos extends CI_Controller {
         if (file_get_contents("php://input") != null) {
             $user_info = new stdClass();
             $user_info->userId = $this->session->userdata('user_id');
-            $user_info->firstName = "Shemin"; //get from session;
-            $user_info->lastName = "Haque";
+            $user_info->firstName = $this->session->userdata('first_name');
+            $user_info->lastName = $this->session->userdata('last_name');
             $postdata = file_get_contents("php://input");
             $requestInfo = json_decode($postdata);
             if (property_exists($requestInfo, "photoInfo") != FALSE) {
@@ -445,6 +445,7 @@ class Photos extends CI_Controller {
             $category_list = $result_array->categoryList;
             $album_list = $result_array->albumList;
         }
+        $this->data["user_id"] = $this->session->userdata('user_id');
         $this->data["album_lsit"] = json_encode($album_list);
         $this->data["category_list"] = json_encode($category_list);
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_add", $this->data);
@@ -490,8 +491,8 @@ class Photos extends CI_Controller {
         }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
-        $user_info->firstName = "Rashida Sultana";
-        $user_info->lastName = "Shemin";
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
         $like_info = new stdClass();
         $like_info->userInfo = $user_info;
         $result = $this->photo_mongodb_model->add_photo_like($photo_id, $like_info);
@@ -540,8 +541,8 @@ class Photos extends CI_Controller {
         }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
-        $user_info->firstName = "Rashida Sultana";
-        $user_info->lastName = "Shemin";
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
         $comment_info = new stdClass();
         if (property_exists($request, "comment") != FALSE) {
             $comment_info->description = $request->comment;
@@ -649,8 +650,8 @@ class Photos extends CI_Controller {
 //add status in user profile related to the change of profile picture
         $user_info = new stdClass();
         $user_info->userId = $user_id;
-        $user_info->firstName = "Shemin"; //get from session;
-        $user_info->lastName = "Haque";
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
         $status_info = new stdClass();
         $status_info->userId = $user_id;
         $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
@@ -710,8 +711,8 @@ class Photos extends CI_Controller {
             //add status in user profile related to the change of profile picture
             $user_info = new stdClass();
             $user_info->userId = $user_id;
-            $user_info->firstName = "Shemin"; //get from session;
-            $user_info->lastName = "Haque";
+            $user_info->firstName = $this->session->userdata('first_name');
+            $user_info->lastName = $this->session->userdata('last_name');
             $status_info = new stdClass();
             $status_info->userId = $user_id;
             $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
@@ -753,8 +754,8 @@ class Photos extends CI_Controller {
             //add status in user profile related to the change of cover picture
             $user_info = new stdClass();
             $user_info->userId = $user_id;
-            $user_info->firstName = "Shemin"; //get from session;
-            $user_info->lastName = "Haque";
+            $user_info->firstName = $this->session->userdata('first_name');
+            $user_info->lastName = $this->session->userdata('last_name');
             $status_info = new stdClass();
             $status_info->userId = $user_id;
             $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);

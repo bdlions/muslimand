@@ -81,8 +81,8 @@ class Status extends CI_Controller {
         if ($requestInfo != null) {
             $user_info = new stdClass();
             $user_info->userId = $this->session->userdata('user_id');
-            $user_info->firstName = "Shemin"; //get from session;
-            $user_info->lastName = "Haque";
+            $user_info->firstName = $this->session->userdata('first_name');
+            $user_info->lastName = $this->session->userdata('last_name');
             $status_info = new stdClass();
             $status_info->userId = $this->session->userdata('user_id');
             $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
@@ -132,8 +132,8 @@ class Status extends CI_Controller {
 
             $user_info = new stdClass();
             $user_info->userId = $this->session->userdata('user_id');
-            $user_info->firstName = "Shemin"; //get from session;
-            $user_info->lastName = "Haque";
+            $user_info->firstName = $this->session->userdata('first_name');
+            $user_info->lastName = $this->session->userdata('last_name');
 
             $ref_user_info = new StdClass();
             if (property_exists($old_status_info, "userInfo")) {
@@ -211,8 +211,9 @@ class Status extends CI_Controller {
         $request = json_decode($postdata);
         $ref_user_info = new StdClass(); //get from session;
         $ref_user_info->userId = $this->session->userdata('user_id');
-        $ref_user_info->firstName = "Keya";
-        $ref_user_info->lastName = "Moni";
+
+        $ref_user_info->firstName = $this->session->userdata('first_name');
+        $ref_user_info->lastName = $this->session->userdata('last_name');
         if (property_exists($request, "statusId")) {
             $status_id = $request->statusId;
         }

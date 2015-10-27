@@ -5,6 +5,17 @@
 
         });
     }
+    function onImageUnavailable(img){
+        var div = img.parentNode;
+        var firstImage = img;
+        var secondImage = div.getElementsByTagName('img')[1];
+        
+        firstImage.style.display = 'none'; 
+        div.className='fileinput-cover-button';
+        
+        secondImage.style.visibility='visible'; 
+        secondImage.style.height='100%';
+    }
 
 </script>
 <div class="row">
@@ -12,8 +23,8 @@
         <!--cover picture-->
             <div ng-controller="ImageCopperController" style="position: relative; ">
                 <div  ng-show="imageCropStep == 1" class="fileinput-cover-button">		
-                    <img  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $user_id . '.jpg'; ?>" onError="this.style.display = 'none'; this.parentNode.className='fileinput-cover-button'; this.parentNode.getElementsByTagName('img')[1].style.visibility='visible'; "/>
-                    <img style="visibility:hidden;" src="<?php echo base_url() ?>resources/images/cover.jpg" width="100%" height="300">
+                    <img  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $user_id . '.jpg?time='. time(); ?>" onError="onImageUnavailable(this)"/>
+                    <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() ?>resources/images/cover.jpg">
                     <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)"/>
 
                     <div style="border: 1px solid whitesmoke; position: absolute; top: 8%;  z-index: 101; left: 3%; padding: 0.5%;">
@@ -51,7 +62,7 @@
         <!--profile picture-->
             <div ng-controller="ImageCopperController" style="position: absolute; bottom: -15px; left: 25px; z-index: 1001;">
                 <div ng-show="imageCropStep == 1" class="fileinput-button profile_picture">
-                    <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $user_id . '.jpg'; ?>" onError="this.style.display = 'none'; this.parentNode.className='fileinput-button'; this.parentNode.getElementsByTagName('img')[1].style.visibility='visible'; "/>
+                    <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $user_id  . '.jpg?time='. time(); ?>" onError="onImageUnavailable(this)"/>
                     <img style="visibility:hidden;" src="<?php echo base_url() ?>resources/images/add_photo_album.jpg" alt="">
                     <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
                 </div>	
