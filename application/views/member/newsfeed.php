@@ -1,3 +1,14 @@
+<script>
+    function onImageUnavailable(img) {
+        var div = img.parentNode;
+        var firstImage = img;
+        var secondImage = div.getElementsByTagName('img')[1];
+
+        firstImage.style.display = 'none';
+        secondImage.style.visibility = 'visible';
+        secondImage.style.height = '100%';
+    }
+</script>
 
 <div ng-controller="statusController">
     <div class="row">
@@ -6,8 +17,8 @@
             <div class="row form-group"></div>
             <div class="row">
                 <div class="col-xs-12" class="newsfeed_profile_picture" style="width: 100px; height: 100px">
-                    <img class="img-circle"  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>" onError="this.style.display = 'none'; this.parentNode.className='newsfeed_profile_picture'; this.parentNode.getElementsByTagName('img')[1].style.visibility='visible'; "/>
-                    <img style="visibility:hidden;" class="img-circle" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="100" height="100">
+                    <img class="img-circle"  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>" onError="onImageUnavailable(this)"/>
+                    <img style="visibility:hidden; height: 0px;" class="img-circle" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100.jpg">
                 </div>
             </div>
             <div class="row">
