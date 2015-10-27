@@ -18,7 +18,7 @@
     background-color: #fff;
     padding: 15px;
     margin-bottom: 1px;
-    box-shadow: 6px 6px 3px #888888;
+    box-shadow: 1px 4px 3px #888888;
     border: 1px solid #79B7EA;
 }
 .pagelet_z_index{
@@ -38,7 +38,15 @@
 }
 .margin_style{
     margin-bottom: 8px;
+    border: 1px solid #703684;
+    padding: 5px;
+    margin-left: 8px;
 }
+.margin_style:hover{
+    background-color: lavender;
+}
+
+
 .profile_background_search_bar{
     height: 32px!important;
     width: 32px!important;
