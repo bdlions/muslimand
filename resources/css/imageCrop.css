@@ -88,6 +88,10 @@ hr {
     top: 0;
 }
 
+.timeline_profile_picture_custom input{
+    width: 99%;
+}
+
 
 /* ------------------------ cover photo -----------------------------*/
 .fileinput-cover-button input {

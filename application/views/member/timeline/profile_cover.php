@@ -61,7 +61,7 @@
         
         <!--profile picture-->
             <div ng-controller="ImageCopperController" style="position: absolute; bottom: -15px; left: 25px; z-index: 1001;">
-                <div ng-show="imageCropStep == 1" class="fileinput-button profile_picture">
+                <div ng-show="imageCropStep == 1" class="fileinput-button profile_picture timeline_profile_picture_custom">
                     <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $user_id  . '.jpg?time='. time(); ?>" onError="onImageUnavailable(this)"/>
                     <img style="visibility:hidden; height: 0px" src="<?php echo base_url() ?>resources/images/add_photo_album.jpg" alt="">
                     <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
