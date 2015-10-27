@@ -126,7 +126,8 @@
         var secondImage = span.getElementsByTagName('img')[1];
         firstImage.style.display = 'none';
         secondImage.style.visibility = 'visible';
-        secondImage.style.height = '100%';
+        secondImage.style.height = '25px';
+        secondImage.style.width = '25px';
     }
 </script>
 <style>

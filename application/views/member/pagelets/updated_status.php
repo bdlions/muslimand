@@ -96,10 +96,14 @@
             <div class="row from-group">
                 <div ng-repeat="image in status.images">
                     <div ng-if="statusTypes.change_profile_picture_id == status.statusTypeId">
+                        <div class="col-md-12">
                         <img style="border: 1px solid #703684;"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
+                        </div>
                     </div>
                     <div ng-if="statusTypes.change_cover_picture_id == status.statusTypeId">
+                        <div class="col-md-12">
                         <img  style="border: 1px solid #703684; width: 500px"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
+                        </div>
                     </div>
                     <div class="col-md-4" ng-if="statusTypes.change_profile_picture_id != status.statusTypeId && statusTypes.change_cover_picture_id != status.statusTypeId">
                         <img style="border: 1px solid #703684; height: 300px; "src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >

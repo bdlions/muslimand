@@ -77,7 +77,7 @@ class Member extends CI_Controller {
     function timeline($friend_id = 0) {
         $user_relation = array();
         $user_id = $this->session->userdata('user_id');
-        if ($friend_id != $user_id) {
+        if ($friend_id != $user_id && $friend_id != 0) {
             $result = $this->friend_mongodb_model->get_relationship_status($user_id, $friend_id);
             $result = json_decode($result);
             if ($result != null) {

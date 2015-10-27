@@ -118,6 +118,7 @@ class Photos extends CI_Controller {
                 $this->data['album_info'] = json_encode(json_decode($result_array->albumInfo));
             }
         }
+        $this->data['user_id'] =$user_id ;
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums_view", $this->data);
     }
 
@@ -297,6 +298,7 @@ class Photos extends CI_Controller {
         if (!empty($result_array)) {
             $this->data['photo_info'] = json_encode($result_array);
         }
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_gallery", $this->data);
     }
 
