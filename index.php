@@ -5,6 +5,7 @@ include './constants/basic_profile.php';
 include './constants/user_photo.php';
 include './constants/status.php';
 include './constants/friend.php';
+include './constants/notification.php';
 include './constants/user_album.php';
 include './constants/response_code.php';
 include './constants/general.php';

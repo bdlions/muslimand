@@ -144,9 +144,7 @@ class Member extends CI_Controller {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/messages", $this->data);
     }
 
-    function notification_all() {
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/notification_all");
-    }
+ 
 
     function privacy_settings() {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/privacy_settings");

@@ -1,3 +1,17 @@
+<script>
+    function onImageNotFound(img) {
+        var div = img.parentNode;
+        var firstImage = img;
+        var secondImage = div.getElementsByTagName('img')[1];
+
+        firstImage.style.display = 'none';
+
+        secondImage.style.visibility = 'visible';
+        secondImage.style.height = '100%';
+    }
+
+</script>
+
 <div class="pagelet">
     <div class="row">
         <div class="col-xs-6">
@@ -5,124 +19,46 @@
         </div>
         <div class="col-xs-6">
             <div style="text-align: right">
-            <a style="font-size: 11px;" href="#">Mark as Read</a> . 
-            <a style="font-size: 11px;" href="#">Settings</a>
+                <a style="font-size: 11px;" href="#">Mark as Read</a> . 
+                <a style="font-size: 11px;" href="#">Settings</a>
             </div>
         </div>
     </div>
 </div>
 <div style="max-height: 450px; overflow-x:hidden; overflow-y: scroll">
-        <div class="pagelet message_friends_box">
-            <div class="row">
+    <div class="pagelet message_friends_box" ng-repeat="notification in notificationList">
+        <div class="row">
+            <a  href="<?php echo base_url() ?>member/post/{{notification.referenceId}}">
                 <div class="col-xs-2">
-                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="50" height="50"> 
+                    <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50; ?>{{notification.userList[0].userId}}.jpg" onError="onImageNotFound(this)"> 
+                    <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50.jpg">
                 </div>
                 <div class="col-xs-10 ">
-                    <div>
-                        <span style="font-weight: bold">Dr. Belal, Sharmin Akter</span>
-                        and
-                        <span style="font-weight: bold"> Fatematul Kobra</span>
-                        post in
-                        <span style="font-weight: bold">Sapman IT</span>
-                    </div>
+                    <span ng-repeat="(key,user) in notification.userList">
+                        <span style="font-weight: bold" ng-if="key == 2">and</span>
+                        <span style="font-weight: bold" ng-if="key == 1" >,</span>
+                        {{user.firstName}}&nbsp;{{user.lastName}}
+                    </span>
+                    <span ng-if="notification.typeId == <?php echo NOTIFICATION_TYPE_POST_LIKE; ?>">
+                        <span ng-if="notification.userList.length >= 2"> likes</span>
+                        <span ng-if="notification.userList.length <= 1"> like</span> 
+                    </span>
+                    <span ng-if="notification.typeId == <?php echo NOTIFICATION_TYPE_POST_COMMENT; ?>">
+                        <span ng-if="notification.userList.length >= 2"> commented on </span>
+                        <span ng-if="notification.userList.length <= 1">also  commented on</span>
+                    </span>
+                    your status
                     <div>
                         15 mins
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
-        <div class="pagelet message_friends_box">
-            <div class="row">
-                <div class="col-xs-2">
-                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="50" height="50"> 
-                </div>
-                <div class="col-xs-10 ">
-                    <div>
-                        <span style="font-weight: bold">Fatematul Kobra</span>
-                        likes your comments: "May Allah bless you"
-                    </div>
-                    <div>
-                        45 mins
-                    </div>
-                </div>
-            </div>
-        </div>
-    <div class="pagelet message_friends_box">
+    </div>
+    <div style="border-top: 1px solid lightgray;"class="pagelet message_friends_box_1">
         <div class="row">
-            <div class="col-xs-2">
-                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="50" height="50"> 
-            </div>
-            <div class="col-xs-10">
-                <span style="font-weight: bold">Barak Obama</span>
-                posted in
-                <span>I LOve Allah</span>
-                <div>
-                2 hours
-                </div>
+            <div class="col-xs-12">
+                <div style="text-align: center; font-weight: bold;"><a href="<?php echo base_url(); ?>notification/get_all_notification">See All</a></div>
             </div>
         </div>
     </div>
-    <div class="pagelet message_friends_box">
-        <div class="row">
-            <div class="col-xs-2">
-                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg"  width="50" height="50"> 
-            </div>
-            <div class="col-xs-10">
-                <span style="font-weight: bold">Mohammad Rafique</span>
-                likes a photo.
-                <div>
-                4:15 pm
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="pagelet message_friends_box">
-        <div class="row">
-            <div class="col-xs-2">
-                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="50" height="50"> 
-            </div>
-            <div class="col-xs-10">
-                <span style="font-weight: bold">Jannatul Ferdaus</span>
-                posted a video.
-                <div>
-                1:45 pm
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="pagelet message_friends_box">
-        <div class="row">
-            <div class="col-xs-2">
-                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="50" height="50"> 
-            </div>
-            <div class="col-xs-10">
-                <span style="font-weight: bold">Maria Islam</span>
-                posted a status.              
-                <div>
-                10:15 am
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="pagelet message_friends_box">
-        <div class="row">
-            <div class="col-xs-2">
-                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="50" height="50"> 
-            </div>
-            <div class="col-xs-10">
-                <span style="font-weight: bold">Sharmin Akter</span>
-                shared a photo.              
-                <div>
-                yesterday at 6:30pm
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div style="border-top: 1px solid lightgray;"class="pagelet message_friends_box_1">
-    <div class="row">
-        <div class="col-xs-12">
-            <div style="text-align: center; font-weight: bold;"><a href="<?php echo base_url(); ?>member/notification_all">See All</a></div>
-        </div>
-    </div>
-</div>

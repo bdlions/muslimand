@@ -171,7 +171,6 @@ class Friend extends CI_Controller {
         $friend_list = array();
         $status_type = RELATION_TYPE_PENDING_ID;
         $result = $this->friend_mongodb_model->get_pending_list($user_id, $offset, $limit, $status_type);
-        var_dump($result);exit;
         if (!empty($result)) {
             $response["friend_list"] = json_decode($result);
             $response["status_type"] = RELATION_TYPE_FRIEND_ID;
