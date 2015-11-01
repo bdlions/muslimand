@@ -14,12 +14,12 @@ class Friend_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("fromUserId" => $user_id, "toUserId" => $friend_id ));
         return $this->curl->execute();
     }
-    public function block_non_friend($user_id, $friend_id, $type_id) {
+    public function block_non_friend($user_id, $friend_id) {
         $this->curl->create($this->SERVICE_FRIEND . 'blockNonFriend');
         $this->curl->post(array("fromUserId" => $user_id, "toUserId" => $friend_id ));
         return $this->curl->execute();
     }
-    public function block_friend($user_id, $friend_id, $type_id) {
+    public function block_friend($user_id, $friend_id) {
         $this->curl->create($this->SERVICE_FRIEND . 'blockFriend');
         $this->curl->post(array("fromUserId" => $user_id, "toUserId" => $friend_id ));
         return $this->curl->execute();
@@ -52,7 +52,12 @@ class Friend_mongodb_model extends Ion_auth_mongodb_model {
     }
     
 
-    public function get_friend_list($user_id,$offset,$limit,$status_type) {
+    public function get_friend_list($user_id,$status_type,$offset,$limit) {
+        $this->curl->create($this->SERVICE_FRIEND . 'getRelationList');
+        $this->curl->post(array("userId" => $user_id, "relationTypeId" => $status_type,"offset" => $offset,"limit" => $limit));
+        return $this->curl->execute();
+    }
+    public function get_pending_list($user_id,$status_type,$offset,$limit) {
         $this->curl->create($this->SERVICE_FRIEND . 'getRelationList');
         $this->curl->post(array("userId" => $user_id, "relationTypeId" => $status_type,"offset" => $offset,"limit" => $limit));
         return $this->curl->execute();

@@ -75,11 +75,10 @@ class Friend extends CI_Controller {
             $status_type = $requestInfo->statusType;
         }
         $user_id = $this->session->userdata('user_id');
-        $type_id = RELATION_TYPE_BLOCK_ID;
         if ($status_type == RELATION_TYPE_NON_FRIEND_ID) {
-            $result = $this->friend_mongodb_model->add_request($user_id, $friend_id, $type_id);
+            $result = $this->friend_mongodb_model->block_non_friend($user_id, $friend_id);
         } else {
-            $result = $this->friend_mongodb_model->change_relation_ship_status($user_id, $friend_id, $type_id);
+            $result = $this->friend_mongodb_model->block_friend($user_id, $friend_id);
         }
         if (!empty($result)) {
 
@@ -102,6 +101,7 @@ class Friend extends CI_Controller {
         }
         echo json_encode($response);
     }
+
     function cancel_friend_request() {
         $response = array();
         $postdata = file_get_contents("php://input");
@@ -122,7 +122,7 @@ class Friend extends CI_Controller {
         $user_id = $this->session->userdata('user_id');
         if ($friend_id != $user_id && $friend_id != "0") {
             $result = $this->friend_mongodb_model->get_relationship_status($user_id, $friend_id);
-            $result = json_decode($result); 
+            $result = json_decode($result);
             if ($result != null) {
                 if (property_exists($result, "relationTypeId") != FALSE) {
                     $user_relation['relation_ship_status'] = $result->relationTypeId;
@@ -144,13 +144,20 @@ class Friend extends CI_Controller {
         $offset = 0;
         $limit = 5;
         $friend_list = array();
-        $status_type = RELATION_TYPE_FRIEND_ID;
-        $result = $this->friend_mongodb_model->get_friend_list($user_id, $offset, $limit, $status_type);
-        var_dump($friend_list); exit;
-        $this->data['friendList'] = json_encode($result);
+        $status_type = "1";
+        $friend_list_result = $this->friend_mongodb_model->get_friend_list($user_id, $status_type, $offset, $limit);
+        if ($friend_list_result != null) {
+            $friend_list_result = json_decode($friend_list_result);
+            if (property_exists($friend_list_result, "result")) {
+                $friend_list = $friend_list_result->result;
+            }
+        }
+     
+        $this->data['friendList'] = $friend_list;
         $this->data['constants'] = json_encode($this->relations);
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['user_id'] = $user_id;
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['friend_id'] = $friend_id;
         $this->data['app'] = "app.Friend";
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/friends", $this->data);
@@ -163,7 +170,8 @@ class Friend extends CI_Controller {
         $limit = 5;
         $friend_list = array();
         $status_type = RELATION_TYPE_PENDING_ID;
-        $result = $this->friend_mongodb_model->get_friend_list($user_id, $offset, $limit, $status_type);
+        $result = $this->friend_mongodb_model->get_pending_list($user_id, $offset, $limit, $status_type);
+        var_dump($result);exit;
         if (!empty($result)) {
             $response["friend_list"] = json_decode($result);
             $response["status_type"] = RELATION_TYPE_FRIEND_ID;

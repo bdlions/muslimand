@@ -36,7 +36,7 @@ class Videos extends CI_Controller {
     function index() {
         $video_list = array();
         $user_id = $this->session->userdata('user_id');
-        $this->data['user_id'] = $user_id;
+
         $result = $this->video_mongodb_model->get_videos($user_id);
         if ($result != null) {
             $result = json_decode($result);
@@ -48,6 +48,8 @@ class Videos extends CI_Controller {
         }
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
+        $this->data['user_id'] = $user_id;
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/video_home", $this->data);
     }
 
@@ -55,6 +57,7 @@ class Videos extends CI_Controller {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_most_discussed", $this->data);
     }
 
@@ -62,6 +65,7 @@ class Videos extends CI_Controller {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_most_viewed", $this->data);
     }
 
@@ -69,6 +73,7 @@ class Videos extends CI_Controller {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_top_rated");
     }
 
@@ -76,6 +81,7 @@ class Videos extends CI_Controller {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_favorite", $this->data);
     }
 
@@ -83,6 +89,7 @@ class Videos extends CI_Controller {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_friend", $this->data);
     }
 
@@ -90,6 +97,7 @@ class Videos extends CI_Controller {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_my", $this->data);
     }
 
@@ -108,6 +116,7 @@ class Videos extends CI_Controller {
         }
         $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Video";
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_iframe", $this->data);
     }
 

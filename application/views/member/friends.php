@@ -34,14 +34,15 @@
                                 <div style="padding: 10px; display: inline-block;">
                                     <div class="friendd">
                                         <div style="float: left">
-                                            <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="100" height="100">
+                                            <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>{{friend.userId}}.jpg" onError="onImageUnavailable(this)"/>
+                                            <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100.jpg" alt="">
                                         </div>
                                         <div style="float: left; width: 180px; padding: 10px;">
                                             <div >
-                                                <a style="font-weight: bold;" href ><span ng-bind="friend.firstName"></span>&nbsp;<span ng-bind="friend.lastName"></span></a>
+                                                <a style="font-weight: bold;" href='<?php echo base_url();?>member/timeline/{{friend.userId}}' ><span ng-bind="friend.firstName"></span>&nbsp;<span ng-bind="friend.lastName"></span></a>
                                             </div>
                                             <div >
-                                                <span style="font-size: 12px">102 Mutual friends </span> 
+                                                <span style="font-size: 12px"> Mutual friends </span> 
                                             </div>
                                         </div>
                                         <div class="pull-right">

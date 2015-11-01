@@ -32,36 +32,42 @@ class Pages extends CI_Controller {
 
     function index() {
         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['constants'] = json_encode($this->relations);
         $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_home", $this->data);
     }
 
     function pages_add() {
         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['constants'] = json_encode($this->relations);
         $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_add", $this->data);
     }
 
     function pages_sort_view_my() {
         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['constants'] = json_encode($this->relations);
         $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_view_my", $this->data);
     }
 
     function pages_sort_view_friend() {
         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['constants'] = json_encode($this->relations);
         $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_view_friend", $this->data);
     }
 
     function pages_sort_most_liked() {
         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['constants'] = json_encode($this->relations);
         $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_most_liked", $this->data);
     }
 
     function pages_newsfeed() {
         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['constants'] = json_encode($this->relations);
         $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_newsfeed", $this->data);
     }

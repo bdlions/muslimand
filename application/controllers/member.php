@@ -96,6 +96,7 @@ class Member extends CI_Controller {
         $this->data['constants'] = json_encode($this->relations);
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['user_id'] = $user_id;
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['friend_id'] = $friend_id;
         $this->data['app'] = "app.Friend";
         $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/timeline", $this->data);
@@ -119,6 +120,7 @@ class Member extends CI_Controller {
             $user_relation['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
         }
         $this->data['user_id'] = $user_id;
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['constants'] = json_encode($this->relations);
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['friend_id'] = $friend_id;
@@ -135,6 +137,7 @@ class Member extends CI_Controller {
     }
 
     function messages() {
+        $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['app'] = "app.Friend";
         $this->data['constants'] = json_encode($this->relations);

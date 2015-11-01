@@ -68,10 +68,10 @@
             <div ng-show="imageCropStep == 1" class="fileinput-button profile_picture timeline_profile_picture_custom">
                 <?php if ($friend_id != "0" && $friend_id != $user_id) { ?>
                     <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $friend_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
-                    <img style="visibility:hidden; height: 0px" src="<?php echo base_url().PROFILE_PICTURE_PATH_W40_H40 ;?>150x150.jpg" alt="">
+                    <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>150x150.jpg" alt="">
                 <?php } else { ?>
                     <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
-                    <img style="visibility:hidden; height: 0px" src="<?php echo base_url().PROFILE_PICTURE_PATH_W150_H150 ;?>150x150.jpg" alt="">
+                    <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>150x150.jpg" alt="">
                     <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
                 <?php } ?>
             </div>	
@@ -106,12 +106,14 @@
         <a style="position: absolute; bottom: 2px; left: 190px; color: white; z-index: 1001"class="btn" href="">
             <b>Mohammad Azhar Uddin</b>
         </a>
-        
+
         <div ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)" >
             <div ng-if ="userRelation.relation_ship_status == constants.non_relation_type_friend_id">
                 <button type="button" class=" btn btn-default" style="position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" ng-click="addFriend('<?php echo $friend_id; ?>')" >Add Friend</button>   
+
             </div>
             <div ng-if ="userRelation.relation_ship_status == constants.relation_type_friend_id">
+                <button type="button" class=" btn btn-default" style="position: absolute; bottom: 20px; right:  120px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')" >Un Friend</button> 
                 <button type="button" class=" btn btn-default" style="position: absolute; bottom: 20px; right:  160px; font-size: 80%" ng-click="" >Friend</button>
             </div>
             <div ng-if ="userRelation.relation_ship_status == constants.relation_type_pending_id && userRelation.is_initiated == constants.request_receiver">

@@ -13,7 +13,7 @@
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/photo.css"/>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
-    
+
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/pictureflip.css"/>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/jquery.mCustomScrollbar.css"/>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/jquery.fileupload.css">
@@ -49,9 +49,14 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageUploadController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/statusController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/friendController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/statusService.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/friendService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/statusApp.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/friendApp.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image-crop.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageCropController.js"></script>
         <title>Muslimand</title>
     </head>
 
