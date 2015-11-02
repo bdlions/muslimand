@@ -20,7 +20,7 @@
             <div class="col-md-5">
                 <?php $this->load->view("member/timeline/brief_info"); ?>
                 <div class="row form-group"></div>
-                <?php // $this->load->view("member/timeline/friend_list"); ?>
+                <?php $this->load->view("member/timeline/friend_list"); ?>
                 <div class="row form-group"></div>
                 <?php $this->load->view("member/timeline/photo_list"); ?>
             </div>

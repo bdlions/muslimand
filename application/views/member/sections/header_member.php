@@ -30,9 +30,6 @@
     });
 </script>
 
-
-
-
 <div class="row" style="padding-top: 15px;">
     <div class="col-xs-2  col-sm-2 col-md-offset-1 col-md-1 form-group">
         <a href="<?php echo base_url(); ?>member/newsfeed">
@@ -55,40 +52,38 @@
             </span>
         </a>
     </div>
-    <div ng-controller="headerController" ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">
-        <div class="col-xs-6 col-sm-3 col-md-3">
-            <div id="mm_friend_request" style="position: relative" >
-                <div class="notification_counter" id="follower_counter_div" style="display: none"></div>
-                <a href="javascript:void(0)" onclick="friend_toggle()">
-                    <img src="<?php echo base_url(); ?>resources/images/header_icons/friends.png">
-                </a>
-                <div>
-                    <div id="mm_friend_request_box"> 
-                        <div id="pending_list">
-                            <?php $this->load->view("member/pagelets/notification_friend_request"); ?>
-                        </div>
+    <div class="col-xs-6 col-sm-3 col-md-3" ng-controller="headerController" ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">
+        <div id="mm_friend_request" style="position: relative" >
+            <div class="notification_counter" id="follower_counter_div" style="display: none"></div>
+            <a href="javascript:void(0)" onclick="friend_toggle()">
+                <img src="<?php echo base_url(); ?>resources/images/header_icons/friends.png">
+            </a>
+            <div>
+                <div id="mm_friend_request_box"> 
+                    <div id="pending_list">
+                        <?php $this->load->view("member/pagelets/notification_friend_request"); ?>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div id="mm_messages" style="position: relative" >
-                <div class="notification_counter" id="message_counter_div" style="display: none"></div>
-                <a href="javascript:void(0)" onclick="msg_toggle()">
-                    <img src="<?php echo base_url(); ?>resources/images/header_icons/messages.png">
-                </a>
-                <div id="mm_message_box">
-                    <?php $this->load->view("member/pagelets/notification_message"); ?>
-                </div>
+        <div id="mm_messages" style="position: relative" >
+            <div class="notification_counter" id="message_counter_div" style="display: none"></div>
+            <a href="javascript:void(0)" onclick="msg_toggle()">
+                <img src="<?php echo base_url(); ?>resources/images/header_icons/messages.png">
+            </a>
+            <div id="mm_message_box">
+                <?php $this->load->view("member/pagelets/notification_message"); ?>
             </div>
+        </div>
 
-            <div id="mm_notification" style="position: relative">
-                <div class="notification_counter" id="general_notification_counter_div" style="display: none"></div>
-                <a href="javascript:void(0)"  onclick="notf_toggle()">
-                    <img src="<?php echo base_url(); ?>resources/images/header_icons/notifications.png">
-                </a>
-                <div id="mm_notification_box">
-                    <?php $this->load->view("member/pagelets/notification_notification"); ?>
-                </div>
+        <div id="mm_notification" style="position: relative">
+            <div class="notification_counter" id="general_notification_counter_div" style="display: none"></div>
+            <a href="javascript:void(0)"  onclick="notf_toggle()">
+                <img src="<?php echo base_url(); ?>resources/images/header_icons/notifications.png">
+            </a>
+            <div id="mm_notification_box">
+                <?php $this->load->view("member/pagelets/notification_notification"); ?>
             </div>
         </div>
         <div id="mm_setting" style="position: relative;">
