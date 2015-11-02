@@ -23,6 +23,7 @@
                     </div>
                 </div>
             </div>
+            </div>
             <div class="Padding_top"></div>
             <div class="container-fluid">
                 <div class="container_backgroung">
@@ -38,6 +39,6 @@
                 </div>
             </div>
             </div>
-        </div>
+        
     </body>
 </html>

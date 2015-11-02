@@ -176,7 +176,7 @@
 </div>
 
 
-<div style="position: absolute; right: 95%; bottom: -13px; width: 260%; font-size: 10px;">
+<div style="position: absolute; right: 100%; top: 115%; width: 400%; font-size: 10px;">
     <div class="row" style="position: relative; margin: 5px;">
         <div class="col-md-4">
             <div id="msg_window_1" class="msg style_left_box" style="display: none;">
@@ -412,8 +412,8 @@
 </style>
 
 <script>
-    (function ($) {
-        $(window).load(function () {
+    (function($) {
+        $(window).load(function() {
             $("#ticker_notification .ticker").mCustomScrollbar({
                 setHeight: 300,
                 theme: "dark-3"
@@ -422,8 +422,8 @@
     })(jQuery);
 </script>
 <script>
-    (function ($) {
-        $(window).load(function () {
+    (function($) {
+        $(window).load(function() {
             $("#ticker_friend .ticker").mCustomScrollbar({
                 setHeight: 300,
                 theme: "dark-3"
@@ -432,7 +432,7 @@
     })(jQuery);
 </script>
 <script type="text/javascript">
-    $(function () {
+    $(function() {
         $(".chat_box_container").scrollTop($(".chat_box_container").height());
 
     });

@@ -1,7 +1,7 @@
 
 <script>
     function approve_request(friendId) {
-        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function () {
+        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function() {
 
         });
     }
@@ -24,11 +24,11 @@
         <div ng-controller="ImageCopperController" style="position: relative; ">
             <div  ng-show="imageCropStep == 1" class="fileinput-cover-button">	
                 <?php if ($friend_id != "0" && $friend_id != $user_id) { ?>
-                    <img  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $friend_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
-                    <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() ?>resources/images/cover.jpg">
+                    <img class="img-responsive"  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $friend_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
+                    <img class="img-responsive" style="visibility:hidden;height: 0px;" src="<?php echo base_url() ?>resources/images/cover.jpg">
                 <?php } else { ?>
-                    <img  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
-                    <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() ?>resources/images/cover.jpg">
+                    <img class="img-responsive"  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
+                    <img class="img-responsive" style="visibility:hidden;height: 0px;" src="<?php echo base_url() ?>resources/images/cover.jpg">
                     <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)"/>
                     <div style="border: 1px solid whitesmoke; position: absolute; top: 8%;  z-index: 101; left: 3%; padding: 0.5%;">
                         <img src="<?php echo base_url() ?>resources/images/car.jpg" width="25" height="25"/>
@@ -39,7 +39,7 @@
             <div style="position: relative; left: -13px; margin: 0 15px; right: 0; top: 0; width: 100%"  ng-show="imageCropStep == 2" >
                 <image-crop			 
                     data-height="300"
-                    data-width="1012"
+                    data-width="780"
                     data-shape="square"
                     data-step="imageCropStep"
                     src="imgSrc"
@@ -145,36 +145,37 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div style="background-color: whitesmoke; margin: 0 15px;">
-                <div class="btn-group" role="group" aria-label="...">
-                    <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>member/timeline">Timeline</a>
-                    <a class="btn btn-default get_over_view_class" style="font-size: 100%" onclick="getOverview('<?php echo $user_id; ?>')" href="<?php echo base_url(); ?>member/about">About</a>
-                    <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>photos">Photo</a>
-                    <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>friend/get_friend_list/<?php echo $friend_id; ?>">Friends</a>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            More
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Groups</a></li>
-                            <li><a href="#">Likes</a></li>
-                        </ul>
-                    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div style="background-color: whitesmoke;">
+            <div class="btn-group" role="group" aria-label="...">
+                <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>member/timeline">Timeline</a>
+                <a class="btn btn-default get_over_view_class" style="font-size: 100%" onclick="getOverview('<?php echo $user_id; ?>')" href="<?php echo base_url(); ?>member/about">About</a>
+                <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>photos">Photo</a>
+                <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>friend/get_friend_list/<?php echo $friend_id; ?>">Friends</a>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        More
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Groups</a></li>
+                        <li><a href="#">Likes</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        function block_request(friendId) {
-            angular.element($('#block_friend_id')).scope().blockRequest(friendId, function () {
-                alert("user is blocked ");
-            });
+<script>
+    function block_request(friendId) {
+        angular.element($('#block_friend_id')).scope().blockRequest(friendId, function() {
+            alert("user is blocked ");
+        });
 
 
-        }
+    }
 
-    </script>
+</script>

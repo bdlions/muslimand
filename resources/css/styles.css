@@ -65,29 +65,36 @@ html, body {
 }
 
 /*================================  SECTIONS  ================================*/
-#mm_friend_request {
+#mm_friend_request, #mm_messages, #mm_notification, #mm_setting {
     display: inline-block;
     cursor: pointer;
     margin-right: 10px;
 }
 
-#mm_messages {
-    display: inline-block;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-#mm_notification {
-    display: inline-block;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-#mm_setting {
-    display: inline-block;
-    cursor: pointer;
-}
-
+#mm_notification_box, #mm_message_box, #mm_friend_request_box{
+        display: none;
+        width: 400px;
+        position: absolute;
+        top: 40px;
+        right: 1px;
+        border: 1px solid darkgray;
+        border-radius: 4px;
+        box-shadow: 0 0 6px #491249;
+        background-color: white;
+        color: black;
+    }
+    
+    .profile_name_anchor a:hover{
+        text-decoration: none;
+        
+    }
+    
+    .notification_counter{
+        background-color: red;
+        margin: 3px;
+        border-radius: 2px;
+        text-align: center;
+    }
 
 /*================================  pagelets  ================================*/
 .comment_box{
@@ -232,7 +239,7 @@ html, body {
     padding: 10px 15px;
 }
 .padding_top{
-    padding-top: 70px;
+    /*padding-top: 70px;*/
 }
 .container_background{
     background-color: #E9EAED;

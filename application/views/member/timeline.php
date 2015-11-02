@@ -1,12 +1,12 @@
-
 <div ng-controller="friendController">
     <div ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">
 
         <!--LEFT_COLUMN
         <!-- Cover Image -->
         <div class="row form-group">
+            <div class="col-md-12">
             <?php $this->load->view("member/timeline/profile_cover"); ?>
-
+            </div>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -16,7 +16,7 @@
         <div class="row form-group"></div>
 
         <!--CARDS AFTER BANNER-->
-        <div class="row">
+        <div class="row form-group">
             <div class="col-md-5">
                 <?php $this->load->view("member/timeline/brief_info"); ?>
                 <div class="row form-group"></div>
@@ -34,10 +34,5 @@
         </div>
         <div class="row form-group"></div>
     </div>
-
-    <!--RIGHT COLUMN (CHATBOX COLUMN)-->
-    <div class="col-md-2">
-    </div>
-</div>
 </div>
 <!--</div>-->
