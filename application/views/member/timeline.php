@@ -1,6 +1,5 @@
 
 <div ng-controller="friendController">
-    <div ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">
 
         <!--LEFT_COLUMN
         <!-- Cover Image -->
@@ -33,7 +32,6 @@
             </div>
         </div>
         <div class="row form-group"></div>
-    </div>
 
     <!--RIGHT COLUMN (CHATBOX COLUMN)-->
     <div class="col-md-2">

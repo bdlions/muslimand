@@ -5,6 +5,7 @@ angular.module('controllers.Header', ['services.Header']).
             $scope.notificationList = [];
             $scope.allNotificationList = [];
             $scope.prndingFriends = [];
+            $scope.url = "../";
             $scope.setConstants = function (t) {
                 $scope.constants = JSON.parse(t);
                 $scope.url = $scope.constants.base_url;

@@ -21,16 +21,7 @@ class Photos extends CI_Controller {
                         $this->load->database();
 
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
-        $this->relations = $relations = array(
-            "relation_type_friend_id" => RELATION_TYPE_FRIEND_ID,
-            "relation_type_pending_id" => RELATION_TYPE_PENDING_ID,
-            "relation_type_block_id" => RELATION_TYPE_BLOCK_ID,
-            "non_relation_type_friend_id" => RELATION_TYPE_NON_FRIEND_ID,
-            "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
-            "request_sender" => REQUEST_SENDER,
-            "request_receiver" => REQUEST_RECEIVER,
-            "base_url" => base_url()
-        );
+      
     }
 
     function index() {
@@ -45,7 +36,6 @@ class Photos extends CI_Controller {
         } else {
             $this->data['user_album_list'] = array();
         }
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Photos";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
@@ -55,7 +45,6 @@ class Photos extends CI_Controller {
     }
 
     function photos_view_my() {
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Photos";
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
@@ -67,7 +56,6 @@ class Photos extends CI_Controller {
     }
 
     function photos_view_friend() {
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Photos";
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
@@ -75,7 +63,6 @@ class Photos extends CI_Controller {
     }
 
     function photos_albums() {
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Photos";
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
@@ -112,7 +99,6 @@ class Photos extends CI_Controller {
                 $this->data['user_album_list'] = json_encode($result_array->albumList);
             }
         }
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Photos";
         $this->data['user_id'] = $user_id;
         $this->data['user_album_list'] = array();
@@ -133,7 +119,6 @@ class Photos extends CI_Controller {
                 $this->data['album_info'] = json_encode(json_decode($result_array->albumInfo));
             }
         }
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Photos";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
@@ -315,7 +300,6 @@ class Photos extends CI_Controller {
         if (!empty($result_array)) {
             $this->data['photo_info'] = json_encode($result_array);
         }
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Photos";
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
@@ -466,7 +450,6 @@ class Photos extends CI_Controller {
             $category_list = $result_array->categoryList;
             $album_list = $result_array->albumList;
         }
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Photos";
         $this->data["user_id"] = $user_id;
         $this->data["first_name"] = $this->session->userdata('first_name');

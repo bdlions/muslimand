@@ -10,7 +10,7 @@
 </style>
 <div ng-controller="friendController">
     <div class="row form-group">
-        <div class="col-md-12" ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">
+        <div class="col-md-12">
             <?php $this->load->view("member/timeline/profile_cover"); ?>
         </div>
     </div>

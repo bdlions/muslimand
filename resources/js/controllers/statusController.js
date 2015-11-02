@@ -17,10 +17,7 @@ angular.module('controllers.Status', ['services.Status']).
                 $scope.statuses = JSON.parse(t);
 //                console.log($scope.statuses);
             };
-            $scope.setStatusTypeIds = function (t) {
-                $scope.statusTypes = JSON.parse(t);
-//                console.log($scope.statusTypes);
-            };
+  
             $scope.setSharedInfo = function (sharedInfo, requestFunction) {
                 $scope.sharedInfo = sharedInfo;
 //                console.log($scope.sharedInfo);

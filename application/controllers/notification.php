@@ -91,7 +91,6 @@ class Notification extends CI_Controller {
         $this->data["notification_list"] = json_encode($this->notification_mongodb_model->get_general_notifications($user_id, $offset, $limit));
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['user_id'] = $this->session->userdata('user_id');
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Friend";
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/notification_all", $this->data);
     }

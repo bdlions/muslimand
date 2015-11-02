@@ -35,10 +35,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.fQuote = {};
             $scope.fQuoteInfo = {};
             
-            $scope.setConstants = function (t) {
-                $scope.constants = JSON.parse(t);
-                $scope.url = $scope.constants.base_url;
-            };
+        
 
             // about  overview  ........................................      
             $scope.getOverview = function (userId, requestFunction) {

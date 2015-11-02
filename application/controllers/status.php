@@ -22,16 +22,7 @@ class Status extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
-        $this->relations = $relations = array(
-            "relation_type_friend_id" => RELATION_TYPE_FRIEND_ID,
-            "relation_type_pending_id" => RELATION_TYPE_PENDING_ID,
-            "relation_type_block_id" => RELATION_TYPE_BLOCK_ID,
-            "non_relation_type_friend_id" => RELATION_TYPE_NON_FRIEND_ID,
-            "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
-            "request_sender" => REQUEST_SENDER,
-            "request_receiver" => REQUEST_RECEIVER,
-            "base_url" => base_url()
-        );
+   
     }
 
     public function image_upload() {
@@ -263,7 +254,6 @@ class Status extends CI_Controller {
             $result = json_decode($result);
             $this->data["status_list"] = $result;
         }
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Status";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');

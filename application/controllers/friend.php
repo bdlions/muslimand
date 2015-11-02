@@ -154,7 +154,6 @@ class Friend extends CI_Controller {
         }
      
         $this->data['friendList'] = $friend_list;
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');

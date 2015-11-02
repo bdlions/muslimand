@@ -22,16 +22,7 @@ class Member extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
-        $this->relations = $relations = array(
-            "relation_type_friend_id" => RELATION_TYPE_FRIEND_ID,
-            "relation_type_pending_id" => RELATION_TYPE_PENDING_ID,
-            "relation_type_block_id" => RELATION_TYPE_BLOCK_ID,
-            "non_relation_type_friend_id" => RELATION_TYPE_NON_FRIEND_ID,
-            "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
-            "request_sender" => REQUEST_SENDER,
-            "request_receiver" => REQUEST_RECEIVER,
-            "base_url" => base_url()
-        );
+     
     }
 
     function newsfeed() {
@@ -68,7 +59,6 @@ class Member extends CI_Controller {
             "add_album_photos_id" => ADD_ALBUM_PHOTOS
         );
         $this->data["ststus_type_ids"] = json_encode($status_type_ids);
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['app'] = "app.Status";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
@@ -93,7 +83,6 @@ class Member extends CI_Controller {
         } else {
             $user_relation['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
         }
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
@@ -121,7 +110,6 @@ class Member extends CI_Controller {
         }
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->data['constants'] = json_encode($this->relations);
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['friend_id'] = $friend_id;
         $this->data['app'] = "app.BasicProfile";
@@ -140,7 +128,6 @@ class Member extends CI_Controller {
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['app'] = "app.Friend";
-        $this->data['constants'] = json_encode($this->relations);
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/messages", $this->data);
     }
 

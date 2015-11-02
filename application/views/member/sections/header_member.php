@@ -52,7 +52,7 @@
             </span>
         </a>
     </div>
-    <div class="col-xs-6 col-sm-3 col-md-3" ng-controller="headerController" ng-init="setConstants(<?php echo htmlspecialchars(json_encode($constants)); ?>)">
+    <div class="col-xs-6 col-sm-3 col-md-3" >
         <div id="mm_friend_request" style="position: relative" >
             <div class="notification_counter" id="follower_counter_div" style="display: none"></div>
             <a href="javascript:void(0)" onclick="friend_toggle()">

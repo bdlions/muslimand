@@ -13,10 +13,6 @@ angular.module('controllers.Friend', ['services.Friend']).
             $scope.setUserRelation = function (userRelation) {
                 $scope.userRelation = JSON.parse(userRelation);
             };
-            $scope.setConstants = function (constants) {
-                $scope.constants = JSON.parse(constants);
-                $scope.url = $scope.constants.base_url;
-            };
 
             $scope.getPendingRequest = function (requestFunction) {
                 friendService.getPendingRequest($scope.url).

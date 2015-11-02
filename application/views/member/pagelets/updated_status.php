@@ -1,5 +1,5 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/elif.js"></script>
-<div id="updateStatusPagelet" ng-init="setStatusTypeIds(<?php echo htmlspecialchars(json_encode($ststus_type_ids)); ?>)">
+<div id="updateStatusPagelet" >
     <div ng-repeat="status in statuses.slice().reverse()" class="form-group">
         <div class="pagelet" id="pagelet{{status.statusId}}">
             <div class="row form-group">
@@ -11,30 +11,30 @@
                     <div style="float: left;">
                         <div>
                             <a href="<?php echo base_url(); ?>member/timeline/{{status.userInfo.userId}}" style="font-weight: bold;"><span ng-bind="status.userInfo.firstName"></span>&nbsp<span ng-bind="status.userInfo.lastName"></span></a>
-                            <span ng-if="statusTypes.post_status_by_user_at_his_profile_id == status.statusTypeId">
+                            <span ng-if="<?php echo POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID ;?> == status.statusTypeId">
                                 update his/her status
                             </span>
-                            <span ng-if="statusTypes.share_other_status_id == status.statusTypeId">
+                            <span ng-if="<?php echo SHARE_OTHER_STATUS; ?> == status.statusTypeId">
                                 shared 
                             </span>
-                            <span ng-if="statusTypes.share_other_photo_id == status.statusTypeId">
+                            <span ng-if="<?php echo SHARE_OTHER_PHOTO ;?> == status.statusTypeId">
                                 shared photos 
                             </span>
-                            <span ng-if="statusTypes.share_other_video_id == status.statusTypeId">
+                            <span ng-if="<?php echo SHARE_OTHER_VIDEO; ?> == status.statusTypeId">
                                 shared video  
                             </span>
-                            <span ng-if="statusTypes.change_profile_picture_id == status.statusTypeId">
+                            <span ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> == status.statusTypeId">
                                 update profile picture 
                             </span>
-                            <span ng-if="statusTypes.change_cover_picture_id == status.statusTypeId">
+                            <span ng-if="<?php echo CHANGE_COVER_PICTURE; ?> == status.statusTypeId">
                                 update cover picture 
                             </span>
-                            <span ng-if="statusTypes.add_album_photos_id == status.statusTypeId">
+                            <span ng-if="<?php echo ADD_ALBUM_PHOTOS; ?> == status.statusTypeId">
                                 added a new photos 
                             </span>
                             &nbsp;
                             <a href="#" style="font-weight: bold;"> <span>{{status.referenceInfo.userInfo.firstName}}&nbsp;{{status.referenceInfo.userInfo.lastName}}</span></a>
-                            <span ng-if="statusTypes.share_other_status_id == status.statusTypeId">
+                            <span ng-if="<?php echo SHARE_OTHER_STATUS; ?> == status.statusTypeId">
                                 status
                             </span>
                             <ul style="list-style-type: none; float: right;">
@@ -96,17 +96,17 @@
 
             <div class="row from-group">
                 <div ng-repeat="image in status.images">
-                    <div ng-if="statusTypes.change_profile_picture_id == status.statusTypeId">
+                    <div ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> == status.statusTypeId">
                         <div class="col-md-12">
                         <img style="border: 1px solid #703684;"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
                         </div>
                     </div>
-                    <div ng-if="statusTypes.change_cover_picture_id == status.statusTypeId">
+                    <div ng-if="<?php echo CHANGE_COVER_PICTURE; ?> == status.statusTypeId">
                         <div class="col-md-12">
                         <img  style="border: 1px solid #703684; width: 500px"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
                         </div>
                     </div>
-                    <div class="col-md-4" ng-if="statusTypes.change_profile_picture_id != status.statusTypeId && statusTypes.change_cover_picture_id != status.statusTypeId">
+                    <div class="col-md-4" ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> != status.statusTypeId && <?php echo CHANGE_COVER_PICTURE; ?> != status.statusTypeId">
                         <img style="border: 1px solid #703684;  height: 100px; width: 150px"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >
                     </div>
                 </div>
