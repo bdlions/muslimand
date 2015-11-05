@@ -86,6 +86,7 @@
                 <?php $this->load->view("member/pagelets/notification_notification"); ?>
             </div>
         </div>
+    </div>
         <div id="mm_setting" style="position: relative;">
             <a data-toggle="dropdown" id="dropdownMenuRight">
                 <img src="<?php echo base_url(); ?>resources/images/header_icons/menu.png">
@@ -103,7 +104,6 @@
             </ul>
         </div>
     </div>
-</div>
 
 <script>
     $(function () {

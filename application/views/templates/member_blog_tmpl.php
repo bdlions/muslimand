@@ -25,31 +25,32 @@
                     </div>
                 </div>
             </div>
-            <div class="Padding_top"></div>
-            <div class="container-fluid">
-                <div class="container_background">
-                    <div class="row">
-                        <div class="col-md-offset-1 col-md-9">
-                            <?php echo $contents; ?>                            
-                        </div>
-                        <div class="col-md-2">
-                            <div class="ticker_friends_wrapper">
-                                <?php $this->load->view("member/sections/right_column_ticker_friends"); ?>
-                            </div>
+        </div>
+        <div class="Padding_top"></div>
+        <div class="container-fluid">
+            <div class="container_background">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-9">
+                        <?php echo $contents; ?>                            
+                    </div>
+                    <div class="col-md-2">
+                        <div class="ticker_friends_wrapper">
+                            <?php $this->load->view("member/sections/right_column_ticker_friends"); ?>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-11">
-                            <div id="footer">
-                                <?php $this->load->view("auth/sections/footer"); ?>
-                            </div>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
-                    <div class="row form-group"></div>
-                    <div class="row form-group"></div>
                 </div>
+                <div class="row">
+                    <div class="col-md-11">
+                        <div id="footer">
+                            <?php $this->load->view("auth/sections/footer"); ?>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row form-group"></div>
+                <div class="row form-group"></div>
             </div>
         </div>
+
     </body>
 </html>

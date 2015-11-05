@@ -3,13 +3,13 @@
     <div ng-repeat="status in statuses.slice().reverse()" class="form-group">
         <div class="pagelet" id="pagelet{{status.statusId}}">
             <div class="row form-group">
-                <div class="col-md-12">
-                    <div style="float: left; padding-right: 10px;" >
-                        <img src="<?php echo base_url().PROFILE_PICTURE_PATH_W150_H150; ?>{{status.userInfo.userId}}.jpg" width="40" height="40" onError="onImageUnavailable(this)">
-                        <img style="visibility:hidden; height: 0px" src="<?php echo base_url().PROFILE_PICTURE_PATH_W30_H30 ?>40x40.jpg">
-                    </div>
-                    <div style="float: left;">
-                        <div>
+                <div class="col-md-1">
+                    <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>{{status.userInfo.userId}}.jpg" width="40" height="40" onError="onImageUnavailable(this)">
+                    <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>40x40.jpg">
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-12">
                             <a href="<?php echo base_url(); ?>member/timeline/{{status.userInfo.userId}}" style="font-weight: bold;"><span ng-bind="status.userInfo.firstName"></span>&nbsp<span ng-bind="status.userInfo.lastName"></span></a>
                             <span ng-if="<?php echo POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID ;?> == status.statusTypeId">
                                 update his/her status
@@ -36,10 +36,16 @@
                             <a href="#" style="font-weight: bold;"> <span>{{status.referenceInfo.userInfo.firstName}}&nbsp;{{status.referenceInfo.userInfo.lastName}}</span></a>
                             <span ng-if="<?php echo SHARE_OTHER_STATUS; ?> == status.statusTypeId">
                                 status
-                            </span>
-                            <ul style="list-style-type: none; float: right;">
+                            </span> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                                January 8, 2015 at 12.15am.
+                        </div>
+                        <div class="col-md-5">
+                            <ul style="list-style-type: none; padding: 0;">
                                 <li class="dropdown">
-                                    <div>
                                         <img src="<?php echo base_url(); ?>resources/images/friends_icon.png" width="15" height="15">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
@@ -49,28 +55,27 @@
                                             <li><a href="#">Only Me</a></li>
                                             <li><a href="#">Custom</a></li>
                                         </ul>
-                                    </div>
                                 </li>
                             </ul>
                         </div>
-                        <div style="float: left;">
-                            January 8, 2015 at 12.15am.
-                        </div>
-                    </div>
-                    <div style="float: right;">
-                        <ul style="list-style-type: none;">
-                            <li class="dropdown">
-                                <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li ng-click="selectEditField(status.statusId)"><a >Edit</a></li>
-                                    <li><a href="#">Report</a></li>
-                                    <li><a href  ng-click="deleteStatus(status.statusId)">Delete</a></li>
-                                </ul>
-                            </li>
-                        </ul>
                     </div>
                 </div>
+                <div class="col-md-1">
+                    <ul style="list-style-type: none; padding: 0;">
+                        <li class="dropdown">
+                            <input type="hidden">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-click="selectEditField(status.statusId)"><a >Edit</a></li>
+                                <li><a href="#">Report</a></li>
+                                <li><a href  ng-click="deleteStatus(status.statusId)">Delete</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
+
+
             <div class="row form-group">
                 <div class="col-md-12">
                     <div id="displayStatus{{status.statusId}}" ng-bind="status.description"></div>
@@ -98,12 +103,12 @@
                 <div ng-repeat="image in status.images">
                     <div ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> == status.statusTypeId">
                         <div class="col-md-12">
-                        <img style="border: 1px solid #703684;"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
+                            <img style="border: 1px solid #703684;"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
                         </div>
                     </div>
                     <div ng-if="<?php echo CHANGE_COVER_PICTURE; ?> == status.statusTypeId">
                         <div class="col-md-12">
-                        <img  style="border: 1px solid #703684; width: 500px"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
+                            <img  style="border: 1px solid #703684; width: 500px"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
                         </div>
                     </div>
                     <div class="col-md-4" ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> != status.statusTypeId && <?php echo CHANGE_COVER_PICTURE; ?> != status.statusTypeId">
@@ -197,8 +202,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-1" profile_picture>
-                        <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time();  ?>" onError="onImageUnavailable(this)"/>
-                        <img style="visibility:hidden; height: 0px" src="<?php echo base_url().PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
+                        <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
+                        <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
                     </div>
                     <div class="col-md-11">
                         <form  ng-submit="addComment(status.statusId)">
@@ -230,13 +235,13 @@
 //            });
 
     function get_album_comments(statusId) {
-        angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function () {
+        angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function() {
             $('#more_comment_id').hide();
         });
     }
 
     function open_modal_share(statusInfo) {
-        angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function () {
+        angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function() {
             $("#user_first_name").append(statusInfo.userInfo.firstName);
             $("#user_last_name").append(statusInfo.userInfo.lastName);
             $("#old_description").append(statusInfo.description);
@@ -246,12 +251,12 @@
     }
 
     function open_modal_like_list(statusId) {
-        angular.element($('#like_list_id')).scope().getStatusLikeList(statusId, function () {
+        angular.element($('#like_list_id')).scope().getStatusLikeList(statusId, function() {
             $('#modal_liked_people_list').modal('show');
         });
     }
     function open_modal_shared_list(statusId) {
-        angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function () {
+        angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function() {
             $('#modal_shared_people_list').modal('show');
         });
     }

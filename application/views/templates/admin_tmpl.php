@@ -24,19 +24,19 @@
                     <?php $this->load->view("auth/sections/header_with_logo"); ?>
                 </div>
             </div>
-            <div style="padding-top: 60px"></div>
-            <div class="container-fluid" style="background-color: #E9EAED;">
-                <div class="row">
-                    <div class="col-md-offset-1 col-md-10">
-                        <div class="row padding_top_over_row_70px">
-                            <div class="col-md-12">
-                                <div class="text_center font_25px pagelet_title">Welcome Admin</div>
-                            </div>
+        </div>
+        <div style="padding-top: 60px"></div>
+        <div class="container-fluid" style="background-color: #E9EAED;">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10">
+                    <div class="row padding_top_over_row_70px">
+                        <div class="col-md-12">
+                            <div class="text_center font_25px pagelet_title">Welcome Admin</div>
                         </div>
-                        <?php echo $contents; ?>                            
                     </div>
-                    <div class="col-md-offset-1"></div>
+                    <?php echo $contents; ?>                            
                 </div>
+                <div class="col-md-offset-1"></div>
             </div>
         </div>
     </body>
