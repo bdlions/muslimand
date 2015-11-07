@@ -52,10 +52,14 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/statusController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/friendController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/MessageController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/statusService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/friendService.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/messageService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/statusApp.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/friendApp.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/messageApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image-crop.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageCropController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/friendApp.js "></script>

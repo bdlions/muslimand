@@ -56,8 +56,8 @@ angular.module('controllers.Status', ['services.Status']).
              * add status like
              * parameter statusId 
              * */
-            $scope.addLike = function (statusId) {
-                statusService.addLike(statusId).
+            $scope.addLike = function (userId,statusId) {
+                statusService.addLike(userId, statusId).
                         success(function (data, status, headers, config) {
                             angular.forEach($scope.statuses, function (value, key) {
                                 if (value.statusId == statusId) {
@@ -79,7 +79,8 @@ angular.module('controllers.Status', ['services.Status']).
              * Status comment Add
              * 
              * */
-            $scope.addComment = function (statusId) {
+            $scope.addComment = function (userId, statusId) {
+                $scope.statusInfo.userId = userId;
                 $scope.statusInfo.statusId = statusId;
                 statusService.addComment($scope.statusInfo).
                         success(function (data, status, headers, config) {

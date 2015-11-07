@@ -26,12 +26,13 @@ angular.module('services.Status', []).
                 });
             };
 
-            statusService.addLike = function (statusId) {
+            statusService.addLike = function (userId, statusId) {
                 return $http({
                     method: 'post',
                     url: '../status/add_status_like',
                     data: {
-                        statusId: statusId,
+                        userId:userId,
+                        statusId: statusId
                     },
                 });
             };
@@ -46,7 +47,7 @@ angular.module('services.Status', []).
                     url: '../status/add_status_comment',
                     data: {
                         statusId: statusInfo.statusId,
-                        refUserId: "100105",
+                        userId: statusInfo.userId,
                         description: statusInfo.commentDes
                     },
                 });

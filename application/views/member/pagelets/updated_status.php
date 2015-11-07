@@ -10,6 +10,8 @@
                 <div class="col-md-9">
                     <div class="row">
                         <div class="col-md-12">
+                    <div style="float: left;">
+                        <div>
                             <a href="<?php echo base_url(); ?>member/timeline/{{status.userInfo.userId}}" style="font-weight: bold;"><span ng-bind="status.userInfo.firstName"></span>&nbsp<span ng-bind="status.userInfo.lastName"></span></a>
                             <span ng-if="<?php echo POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID ;?> == status.statusTypeId">
                                 update his/her status
@@ -130,7 +132,7 @@
             <div class="row">
                 <div class=" col-md-11">
                     <span ng-if = "status.likeStatus != '1'">
-                        <a style="color: #3B59A9;" href id="statusLike{{status.statusId}}" ng-click="addLike(status.statusId)">Like,</a> 
+                        <a style="color: #3B59A9;" href id="statusLike{{status.statusId}}" ng-click="addLike(status.userInfo.userId, status.statusId )">Like,</a> 
                     </span>
                     <span ng-if = "status.likeStatus == '1'">
                         <a style="color: #3B59A9;" href id="statusUnLike{{status.statusId}}" ng-click="unLike(status.statusId)">liked,</a> 
@@ -206,7 +208,7 @@
                         <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
                     </div>
                     <div class="col-md-11">
-                        <form  ng-submit="addComment(status.statusId)">
+                        <form  ng-submit="addComment(status.userInfo.userId, status.statusId)">
                             <input  id="commentInputField{{status.statusId}}" type ="text" class="form-control" placeholder="Write a comment" ng-model="statusInfo.commentDes">
                         </form>
                     </div>

@@ -1,4 +1,16 @@
-<div class="row">
+<script>
+
+    function onImageUnavailable(img) {
+        var div = img.parentNode;
+        var firstImage = img;
+        var secondImage = div.getElementsByTagName('img')[1];
+        firstImage.style.display = 'none';
+        secondImage.style.visibility = 'visible';
+        secondImage.style.height = '100%';
+    }
+</script>
+
+<div class="row" ng-controller="messageController" ng-init="setMessageSummery('<?php echo htmlspecialchars(json_encode($message_summery_list)); ?>')">
     <div class="col-md-10">
         <div class="pagelet">
             <div class="row">
@@ -52,65 +64,25 @@
                             </div>  
                         </div>  
                     </div>
-                    <div class="pagelet message_friends_box">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30"> 
+                    <div class="pagelet message_friends_box" ng-repeat="messageSummery in messageSummeryList">
+                        <div class="row" ng-click="getMessageList(messageSummery.groupId)"> 
+                            <div class="col-md-3"> 
+                                <span ng-repeat= "userInfo in messageSummery.userList" >
+                                    <span ng-if="userInfo.userId != '<?php echo $user_id; ?>'">
+                                        <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{userInfo.userId}}.jpg" width="30" height="30" onError="onImageUnavailable(this)"> 
+                                        <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
+                                    </span>
+                                </span>
                             </div>
-                            <div class="col-md-9 ">
-                                <span style="font-weight: bold;">Dr. Belal</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pagelet message_friends_box">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="30" height="30"> 
-                            </div>
-                            <div class="col-md-9">
-                                <span style="font-weight: bold;">Sharmin Akter</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pagelet message_friends_box">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg"  width="30" height="30"> 
-                            </div>
-                            <div class="col-md-9">
-                                <span style="font-weight: bold;">Mohammad Rafique</span>
+                            <div class="col-md-9"> 
+                                <span ng-repeat= "userInfo in messageSummery.userList" >
+                                    <span ng-if="userInfo.userId != '<?php echo $user_id; ?>'">
+                                        <span style="font-weight: bold;">{{userInfo.firstName}} &nbsp; {{userInfo.lastName}}</span> 
+                                    </span>
+                                </span>
+                                {{messageSummery.latestMessage}}
                             </div>
                         </div>
-                    </div>
-                    <div class="pagelet message_friends_box">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="30" height="30"> 
-                            </div>
-                            <div class="col-md-9">
-                                <span style="font-weight: bold;">Fatematul Kobra</b></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pagelet message_friends_box">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="30" height="30"> 
-                            </div>
-                            <div class="col-md-9">
-                                <span style="font-weight: bold;">Barak Obama</span>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="pagelet message_friends_box">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30"> 
-                            </div>
-                            <div class="col-md-9">
-                                <span style="font-weight: bold;">Jannatul Ferdaus</span>
-                            </div>
-                        </div> 
                     </div>
                     <div class="pagelet message_friends_box">
                         <div class="row">
@@ -125,20 +97,21 @@
                 </div>
                 <div class="col-md-8">
                     <div class="message_friends_divider_full">
-                        <div class="row">
+                        <div class="row" ng-repeat="messageInfo in messageInformation.messages">
                             <div class="user_comment">
                                 <div class="col-md-1">
-                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30"> 
+                                    <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg" width="30" height="30" onError="onImageUnavailable(this)"> 
+                                    <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <a style="font-weight: bold;" href="#">Dr. Belal</a>
+                                            <a style="font-weight: bold;" href="#">{{messageInfo.senderInfo.firstName}} &nbsp;{{messageInfo.senderInfo.lastName}}</a>
                                         </div>  
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <span>As salamualaikim, vai. How are you? How your days going on?</span>
+                                            <span>{{messageInfo.message}}</span>
                                         </div> 
                                     </div>
                                 </div>
@@ -147,55 +120,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="user_comment">
-                                <div class="col-md-1">
-                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg"  width="30" height="30"> 
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <a style="font-weight: bold;" href="#">Mohammad Azhar Uddin</a>
-                                        </div> 
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            Walaikum As salam, vai. Alhamdulillah, valo achi. Apni kemon achen?
-                                        </div>   
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    24/12, 11.17pm 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="user_comment">
-                                <div class="col-md-1">
-                                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30"> 
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <a style="font-weight: bold;" href="#">Dr. Belal</a>
-                                        </div>  
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            As salamualaikim, vai. How are you? How your days going on?
-                                        </div> 
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <span>24/12, 11.15pm</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="message_friends_divider_others">
                         <div class="row">
-                            <div class="col-md-12">
-                                <input type ="text" class="form-control" placeholder="Write a reply">
+                            <div class="col-md-12" ng-submit="addMessage(messageInformation.groupId)">
+                                <input type ="text" class="form-control" placeholder="Write a reply" ng-model="message.message">
                             </div>
                         </div>
                         <div class="row">

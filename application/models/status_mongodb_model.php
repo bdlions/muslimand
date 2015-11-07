@@ -27,21 +27,21 @@ class Status_mongodb_model extends Ion_auth_mongodb_model {
         return $this->curl->execute();
     }
 
-    public function add_status_like($status_id, $like_info) {
+    public function add_status_like($user_id, $status_id, $like_info) {
         $this->curl->create($this->SERVICE_STATUS . 'addStatusLike');
-        $this->curl->post(array("statusId" => $status_id, 'likeInfo' => json_encode($like_info)));
+        $this->curl->post(array("userId" => $user_id, "statusId" => $status_id, 'likeInfo' => json_encode($like_info)));
         return $this->curl->execute();
     }
 
-    public function add_status_comment($status_id, $comment_info) {
+    public function add_status_comment($user_id, $status_id, $comment_info) {
         $this->curl->create($this->SERVICE_STATUS . 'addStatusComment');
-        $this->curl->post(array("statusId" => $status_id, 'commentInfo' => json_encode($comment_info)));
+        $this->curl->post(array("userId" => $user_id, "statusId" => $status_id, 'commentInfo' => json_encode($comment_info)));
         return $this->curl->execute();
     }
 
-    public function share_status($status_id, $ref_user_info, $share_info) {
+    public function share_status($user_id, $status_id, $ref_user_info, $share_info) {
         $this->curl->create($this->SERVICE_STATUS . 'shareStatus');
-        $this->curl->post(array("statusId" => $status_id, 'refUserInfo' => json_encode($ref_user_info), 'shareInfo' => json_encode($share_info)));
+        $this->curl->post(array("userId" => $user_id, "statusId" => $status_id, 'refUserInfo' => json_encode($ref_user_info), 'shareInfo' => json_encode($share_info)));
         return $this->curl->execute();
     }
 

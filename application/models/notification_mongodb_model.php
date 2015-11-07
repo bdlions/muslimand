@@ -8,9 +8,9 @@ class Notification_mongodb_model extends CI_Model
         $this->SERVICE_NOTIFICATION = SERVICE_PATH . "notification/";
     } 
     
-    public function get_notification_counter(){
+    public function get_notification_counter($user_id){
         $this->curl->create($this->SERVICE_NOTIFICATION . 'getNotificationCounter');
-        $this->curl->post(array());
+        $this->curl->post(array("userId" => $user_id));
         return json_decode($this->curl->execute());
     }
     public function update_status_get_general_notifications($user_id, $status_type_id, $offset, $limit){

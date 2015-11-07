@@ -11,6 +11,7 @@ class Member extends CI_Controller {
         $this->load->model('basic_profile_mongodb_model');
         $this->load->model('friend_mongodb_model');
         $this->load->model('status_mongodb_model');
+        $this->load->model('message_mongodb_model');
         $this->load->helper('url');
 
         // Load MongoDB library instead of native db driver if required
@@ -22,7 +23,6 @@ class Member extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
-     
     }
 
     function newsfeed() {
@@ -125,13 +125,17 @@ class Member extends CI_Controller {
     }
 
     function messages() {
+
+        $limit = 5;
+        $offset = 0;
+        $user_id = $this->session->userdata('user_id');
+        $result = $this->message_mongodb_model->get_message_summary_list($user_id, $offset, $limit);
+        $this->data["message_summery_list"] = $result;
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->data['user_id'] = $this->session->userdata('user_id');
-        $this->data['app'] = "app.Friend";
+        $this->data['user_id'] = $user_id;
+        $this->data['app'] = "app.Message";
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/messages", $this->data);
     }
-
- 
 
     function privacy_settings() {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/privacy_settings");

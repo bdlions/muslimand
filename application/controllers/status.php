@@ -128,7 +128,7 @@ class Status extends CI_Controller {
 
             $ref_user_info = new StdClass();
             if (property_exists($old_status_info, "userInfo")) {
-                $ref_user_info->userId = $old_status_info->userInfo->userId;
+              $user_id = $ref_user_info->userId = $old_status_info->userInfo->userId;
                 $ref_user_info->firstName = $old_status_info->userInfo->firstName;
                 $ref_user_info->lastName = $old_status_info->userInfo->lastName;
             }
@@ -167,7 +167,7 @@ class Status extends CI_Controller {
             $status_info->referenceList = $referenceList;
             $status_info->userInfo = $user_info;
             $status_info->referenceInfo = $ref_info;
-            $result = $this->status_mongodb_model->share_status($status_id, $r_user_info, $status_info);
+            $result = $this->status_mongodb_model->share_status($user_id, $status_id, $r_user_info, $status_info);
             if ($result != null) {
                 $response["status_info"] = $status_info;
             }
@@ -208,9 +208,12 @@ class Status extends CI_Controller {
         if (property_exists($request, "statusId")) {
             $status_id = $request->statusId;
         }
+        if (property_exists($request, "userId")) {
+            $user_id = $request->userId;
+        }
         $status_like_info = new StdClass();
         $status_like_info->userInfo = $ref_user_info;
-        $result = $this->status_mongodb_model->add_status_like($status_id, $status_like_info);
+        $result = $this->status_mongodb_model->add_status_like($user_id,$status_id, $status_like_info);
         if ($result != null) {
             $response["status_like_info"] = $status_like_info;
         }
@@ -232,11 +235,14 @@ class Status extends CI_Controller {
         if (property_exists($request, "statusId")) {
             $status_id = $request->statusId;
         }
+        if (property_exists($request, "userId")) {
+            $user_id = $request->userId;
+        }
         $status_comment_info = new StdClass();
         $status_comment_info->commentId = $this->utils->generateRandomString(STATUS_COMMENT_ID_LENGTH);
         $status_comment_info->description = $request->description;
         $status_comment_info->userInfo = $ref_user_info;
-        $result = $this->status_mongodb_model->add_status_comment($status_id, $status_comment_info);
+        $result = $this->status_mongodb_model->add_status_comment($user_id, $status_id, $status_comment_info);
         if ($result != null) {
             $response["status_comment_info"] = $status_comment_info;
         }
