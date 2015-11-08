@@ -22,7 +22,6 @@ class Status extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
-   
     }
 
     public function image_upload() {
@@ -84,12 +83,12 @@ class Status extends CI_Controller {
             if (property_exists($request, "description") != FALSE) {
                 $status_info->description = $request->description;
             }
-            $image = new stdClass();
             $images = array();
             if (property_exists($request, "imageList") != FALSE) {
                 $image_list = $request->imageList;
 
                 foreach ($image_list as $imageInfo) {
+                    $image = new stdClass();
                     $image->image = $imageInfo;
                     $images[] = $image;
                 }
@@ -128,7 +127,7 @@ class Status extends CI_Controller {
 
             $ref_user_info = new StdClass();
             if (property_exists($old_status_info, "userInfo")) {
-              $user_id = $ref_user_info->userId = $old_status_info->userInfo->userId;
+                $user_id = $ref_user_info->userId = $old_status_info->userInfo->userId;
                 $ref_user_info->firstName = $old_status_info->userInfo->firstName;
                 $ref_user_info->lastName = $old_status_info->userInfo->lastName;
             }
@@ -213,7 +212,7 @@ class Status extends CI_Controller {
         }
         $status_like_info = new StdClass();
         $status_like_info->userInfo = $ref_user_info;
-        $result = $this->status_mongodb_model->add_status_like($user_id,$status_id, $status_like_info);
+        $result = $this->status_mongodb_model->add_status_like($user_id, $status_id, $status_like_info);
         if ($result != null) {
             $response["status_like_info"] = $status_like_info;
         }
@@ -264,6 +263,18 @@ class Status extends CI_Controller {
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed", $this->data);
+    }
+
+    function get_status_details() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        if (property_exists($request, "statusId")) {
+            $status_id = $request->statusId;
+        }
+        $status_id = "135ZjKetRtqR7lS";
+        $result = $this->status_mongodb_model->get_status_details($status_id);
+        var_dump($result);
     }
 
     /**

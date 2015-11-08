@@ -2,11 +2,12 @@ angular.module('services.Message', []).
         factory('messageService', function ($http) {
             var messageService = {};
 
-            messageService.addMessage = function () {
+            messageService.addMessage = function (userMessage) {
                 return $http({
                     method: 'post',
                     url: '../message/add_mesage',
                     data: {
+                      userMessage:userMessage  
                     }
                 });
             };

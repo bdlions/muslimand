@@ -1,8 +1,8 @@
 angular.module('controllers.Message', ['services.Message']).
         controller('messageController', function ($scope, messageService) {
-         $scope.messageSummeryList = [];
-         $scope.messageInformation = {};
-         $scope.message = {};
+            $scope.messageSummeryList = [];
+            $scope.messageInformation = {};
+            $scope.userMessage = {};
 
             $scope.setMessageSummery = function (messageSummeryList) {
                 $scope.messageSummeryList = JSON.parse(messageSummeryList);
@@ -10,10 +10,11 @@ angular.module('controllers.Message', ['services.Message']).
             };
 
             $scope.addMessage = function (groupId) {
-                console.log($scope.message);
-                
-                messageService.addMessage().
+                $scope.userMessage.groupId = groupId;
+                messageService.addMessage($scope.userMessage).
                         success(function (data, status, headers, config) {
+                            $scope.messageInformation.messages.push(data.message_info);
+                            $scope.userMessage.message = "";
                         });
             };
             $scope.getMessageList = function (groupId) {

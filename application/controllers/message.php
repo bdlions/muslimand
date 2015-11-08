@@ -24,7 +24,39 @@ class Message extends CI_Controller {
     }
 
     function add_mesage() {
-        
+
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if(property_exists($requestInfo, "userMessage")){
+            $result = $requestInfo->userMessage;
+        }
+        if (property_exists($result, "groupId")) {
+            $group_id = $result->groupId;
+        }
+        if (property_exists($result, "message")) {
+            $message = $result->message;
+        }
+        $sender_id = $this->session->userdata('user_id');
+        $user_id_list = array();
+        $user_id_list[] = "mqQ06eko9TqYYul";
+        $user_id_list[] = $sender_id;
+        function cmp($a, $b) {
+            return strcmp($a, $b);
+        }
+        usort($user_id_list, "cmp");
+        $result = $this->message_mongodb_model->add_message($user_id_list, $sender_id, $message);
+        if($result->responseCode == REQUEST_SUCCESSFULL){
+            $user_info = new stdClass();
+            $user_info->firstName = $this->session->userdata('first_name');
+            $user_info->lastName = $this->session->userdata('last_name');
+            $user_info->userId = $sender_id;
+            $messageInfo = new stdClass();
+            $messageInfo->senderInfo = $user_info;
+            $messageInfo->message = $message;
+            $response["message_info"] = $messageInfo;
+        }
+        echo json_encode($response);
     }
 
     function get_message_summary_list() {
@@ -45,7 +77,7 @@ class Message extends CI_Controller {
         $limit = 5;
         $offset = 0;
         $result = $this->message_mongodb_model->get_message_list($group_id, $offset, $limit);
-       echo json_encode($result);
+        echo json_encode($result);
         return;
     }
 

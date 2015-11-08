@@ -27,7 +27,7 @@
             </div>
             <div ng-repeat="notification in allNotificationList">
                 <div class="pagelet_divider"></div>
-                <div class="row">
+                <div class="row" ng-click="statusDetails(notification.statusId)">
                     <div class="col-md-1">
                         <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50; ?>{{notification.userList[0].userId}}.jpg" onError="onImageNotFound(this)"> 
                         <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50.jpg">

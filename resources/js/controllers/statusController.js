@@ -23,6 +23,12 @@ angular.module('controllers.Status', ['services.Status']).
 //                console.log($scope.sharedInfo);
                 requestFunction();
             };
+            $scope.statusDetails = function (statusId) {
+                 statusService.statusDetails(statusId).
+                        success(function (data, status, headers, config) {
+                            console.log(data);
+                        });
+            };
             /**
              * Add user status 
              * @Author Rashida Sultana

@@ -20,6 +20,11 @@ class Status_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id, "offset" => $offset, "limit" => $limit));
         return $this->curl->execute();
     }
+    public function get_status_details($status_id) {
+        $this->curl->create($this->SERVICE_STATUS . 'getStatusDetails');
+        $this->curl->post(array("statusId" => $status_id));
+        return $this->curl->execute();
+    }
 
     public function update_status($status_id, $status_info) {
         $this->curl->create($this->SERVICE_STATUS . 'updateStatus');

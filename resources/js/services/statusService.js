@@ -25,6 +25,16 @@ angular.module('services.Status', []).
                     },
                 });
             };
+            statusService.statusDetails = function (statusId) {
+                return $http({
+                    method: 'post',
+                    url: '../status/get_status_details',
+                    data: {
+                        statusId: statusId
+
+                    },
+                });
+            };
 
             statusService.addLike = function (userId, statusId) {
                 return $http({

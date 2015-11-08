@@ -66,6 +66,7 @@
                     </div>
                     <div class="pagelet message_friends_box" ng-repeat="messageSummery in messageSummeryList">
                         <div class="row" ng-click="getMessageList(messageSummery.groupId)"> 
+
                             <div class="col-md-3"> 
                                 <span ng-repeat= "userInfo in messageSummery.userList" >
                                     <span ng-if="userInfo.userId != '<?php echo $user_id; ?>'">
@@ -100,7 +101,8 @@
                         <div class="row" ng-repeat="messageInfo in messageInformation.messages">
                             <div class="user_comment">
                                 <div class="col-md-1">
-                                    <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg" width="30" height="30" onError="onImageUnavailable(this)"> 
+                                    <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
+                                    <!--<img src="<?php // echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg" width="30" height="30" onError="onImageUnavailable(this)">--> 
                                     <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
                                 </div>
                                 <div class="col-md-8">
@@ -123,8 +125,10 @@
                     </div>
                     <div class="message_friends_divider_others">
                         <div class="row">
-                            <div class="col-md-12" ng-submit="addMessage(messageInformation.groupId)">
-                                <input type ="text" class="form-control" placeholder="Write a reply" ng-model="message.message">
+                            <div class="col-md-12"> 
+                                <form  ng-submit="addMessage(messageInformation.groupId)">
+                                    <input type ="text" class="form-control" placeholder="Write a reply" ng-model="userMessage.message">
+                                </form>
                             </div>
                         </div>
                         <div class="row">
