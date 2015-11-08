@@ -18,6 +18,7 @@
     }
 
 </script>
+<div class="profile_mrg">
 <div class="row">
     <div class="col-md-12">
         <!--cover picture-->
@@ -29,8 +30,8 @@
                 <?php } else { ?>
                     <img class="img-responsive"  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
                     <img class="img-responsive" style="visibility:hidden;height: 0px;" src="<?php echo base_url() ?>resources/images/cover.jpg">
-                    <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)"/>
-                    <div style="border: 1px solid whitesmoke; position: absolute; top: 8%;  z-index: 101; left: 3%; padding: 0.5%;">
+                    <input style="z-index: 1005;" type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)"/>
+                    <div style="border: 1px solid whitesmoke; position: absolute; top: 8%;  z-index: 1004; left: 3%; padding: 0.5%;">
                         <img src="<?php echo base_url() ?>resources/images/car.jpg" width="25" height="25"/>
                         <span style="color: #333; background-color: transparent; padding: 5px; font-weight: bold;">Upload Cover Picture</span>
                     </div>
@@ -38,7 +39,7 @@
             </div>			
             <div style="position: relative; left: -13px; margin: 0 15px; right: 0; top: 0; width: 100%"  ng-show="imageCropStep == 2" >
                 <image-crop			 
-                    data-height="300"
+                    data-height="272"
                     data-width="780"
                     data-shape="square"
                     data-step="imageCropStep"
@@ -103,8 +104,8 @@
         </div>
 
 
-        <a style="position: absolute; bottom: 2px; left: 190px; color: white; z-index: 1001"class="btn" href="">
-            <b>Mohammad Azhar Uddin</b>
+        <a style="position: absolute; bottom: 2px; left: 190px; color: white; font-weight: bold; text-shadow:5px 5px 10px black; z-index: 1001"class="btn" href="">
+            Mohammad Azhar Uddin
         </a>
 
         <div ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)" >
@@ -167,6 +168,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script>

@@ -77,7 +77,9 @@ hr {
     border: 1px solid whitesmoke;
 }
 
-
+.profile_mrg{
+    margin: 0 15px;
+}
 
 
 /* ------------------------profile picture -----------------------------*/
@@ -103,7 +105,9 @@ hr {
     margin: 0;
     opacity: 0;
     position: absolute;
-    top: 25px;
-    width: 16.5%;
+    top: 22px;
+    width: 26%;
     z-index: 102;
 }
+
+
