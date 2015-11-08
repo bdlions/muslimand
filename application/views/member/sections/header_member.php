@@ -3,12 +3,12 @@
 <?php $this->load->view("custom_typeahead/custom_typeahead"); ?>
 
 <script type="text/javascript">
-    $(function () {
+    $(function() {
         $.ajax({
             dataType: 'json',
             type: "POST",
             url: '<?php echo base_url(); ?>' + "notification/get_notification_counter",
-            success: function (data) {
+            success: function(data) {
                 if (data.notification_counters.friend > 0) {
                     $("#follower_counter_div").show();
                     $("#follower_counter_div").val(data.notification_counters.friend);
@@ -34,17 +34,17 @@
     <div class="col-xs-2  col-sm-2 col-md-offset-1 col-md-1 form-group">
         <a href="<?php echo base_url(); ?>member/newsfeed">
             <!--<img style="border-radius: 3px;"src="<?php echo base_url(); ?>resources/images/logo.png" height="30" width="30">-->
-            <img style="border-radius: 3px;"src="<?php echo base_url(); ?>resources/images/muslimand_logo_s.png" height="30" width="30">
+            <img style="border-radius: 3px; margin-left: 40px;"src="<?php echo base_url(); ?>resources/images/logo.png">
         </a>
     </div>
-    <div class="col-xs-10 col-sm-4 col-md-4 form-group">
-        <div class="input-group">
+    <div class="col-xs-10 col-sm-4 col-md-offset-1 col-md-4 form-group">
+        <div class="input-group" style="margin-left: -20px;">
             <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
             <input id="typeahead" class="form-control" type="text" placeholder="Search for people and interests" />
             <?php $this->load->view("custom_typeahead/typeahead_tmpl"); ?>
         </div>
     </div>
-    <div class="col-xs-6 col-sm-3 col-md-offset-1 col-md-2 form-group profile_picture">
+    <div class="col-xs-6 col-sm-3 col-md-2 form-group profile_picture">
         <a href="<?php echo base_url(); ?>member/timeline">
             <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
                 <img style="height: 25px; width: 25px;" alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailableHeader(this)"/>
@@ -88,26 +88,26 @@
             </div>
         </div>
     </div>
-        <div id="mm_setting" style="position: relative;">
-            <a data-toggle="dropdown" id="dropdownMenuRight">
-                <img src="<?php echo base_url(); ?>resources/images/header_icons/menu.png">
-            </a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuRight">
-                <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="<?php echo base_url() ?>member/account_settings">Account settings</a>
-                </li>
-                <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="<?php echo base_url() ?>member/privacy_settings">Privacy settings</a>
-                </li>
-                <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="<?php echo base_url() ?>auth/logout">Log out</a>
-                </li>
-            </ul>
-        </div>
+    <div id="mm_setting" style="position: relative;">
+        <a data-toggle="dropdown" id="dropdownMenuRight">
+            <img src="<?php echo base_url(); ?>resources/images/header_icons/menu.png">
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuRight">
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="<?php echo base_url() ?>member/account_settings">Account settings</a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="<?php echo base_url() ?>member/privacy_settings">Privacy settings</a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="<?php echo base_url() ?>auth/logout">Log out</a>
+            </li>
+        </ul>
     </div>
+</div>
 
 <script>
-    $(function () {
+    $(function() {
         //var title = $("#profile_name").attr("value");
         var title = $("#profile_name").text();
         var shortText = jQuery.trim(title).substring(0, 10)
@@ -117,7 +117,7 @@
 
 
 <script>
-    $(document).mouseup(function (e) {
+    $(document).mouseup(function(e) {
         var fr_container = $("#mm_friend_request_box");
         var container = $("#mm_notification_box");
         var msg_container = $("#mm_message_box");
@@ -139,7 +139,7 @@
 
     function friend_toggle() {
         var counterValue = $("#follower_counter_div").val();
-        angular.element($('#mm_friend_request_box')).scope().updateStatusGetFriendNotifications(counterValue, function () {
+        angular.element($('#mm_friend_request_box')).scope().updateStatusGetFriendNotifications(counterValue, function() {
             $('#mm_friend_request_box').show();
         });
     }
@@ -153,7 +153,7 @@
 
     function notf_toggle() {
         var counterValue = $("#general_notification_counter_div").val();
-        angular.element($('#mm_friend_request_box')).scope().updateStatusGetGeneralNotifications(counterValue, function () {
+        angular.element($('#mm_friend_request_box')).scope().updateStatusGetGeneralNotifications(counterValue, function() {
             $('#mm_notification_box').show();
         });
     }
@@ -168,17 +168,3 @@
         secondImage.style.width = '25px';
     }
 </script>
-<style>
-    #mm_notification_box, #mm_message_box, #mm_friend_request_box{
-        display: none;
-        width: 400px;
-        position: absolute;
-        top: 40px;
-        right: 1px;
-        border: 1px solid darkgray;
-        border-radius: 4px;
-        box-shadow: 0 0 6px #491249;
-        background-color: white;
-        color: black;
-    }
-</style>

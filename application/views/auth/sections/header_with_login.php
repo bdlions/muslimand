@@ -4,7 +4,7 @@
         <div class="col-md-4">
             <div align="center" style="text-align: center; padding-top: 10px; padding-left: 10px;">
                 <img src="<?php echo base_url(); ?>resources/images/logo.png" style="margin: 0px 10px 22px 0px; border-radius: 3px;">
-                <span style="font-size: 42px; font-weight: bold; line-height: 40px;">Muslimand</span>
+                <span style="font-size: 42px; font-weight: bold; line-height: 40px;">Sadiik.com</span>
                 <!--<br>Hello Muslims! Keep updated with Muslimand-->
             </div>
         </div>

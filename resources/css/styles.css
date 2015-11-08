@@ -88,6 +88,19 @@ html, body {
     cursor: pointer;
 }
 
+#mm_notification_box, #mm_message_box, #mm_friend_request_box{
+        display: none;
+        width: 400px;
+        position: absolute;
+        top: 40px;
+        right: 1px;
+        border: 1px solid darkgray;
+        border-radius: 4px;
+        box-shadow: 0 0 6px #491249;
+        background-color: white;
+        color: black;
+    }
+
 
 /*================================  pagelets  ================================*/
 .comment_box{
@@ -559,7 +572,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     color: #fff;
     border: 1px solid #703684;
     border-radius: 3px;
-    height: 24px;
+    padding: 4px 8px;
     line-height: 16px;
 }
 
@@ -809,3 +822,15 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     font-weight: bold;
 }
 
+
+.notification_counter{
+    font-size: 10px;
+    font-weight: bold;
+    position: absolute;
+    bottom:  10px;
+    left: 10px;
+    text-align: center;
+    background-color: red;
+    border-radius: 2px;
+    padding: 1px 3px;
+}
