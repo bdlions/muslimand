@@ -6,7 +6,7 @@
                 <div class="row" style="float: left">
                     <div class="col-md-2" >
                         <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>{{status.userInfo.userId}}.jpg" width="40" height="40" onError="onImageUnavailable(this)">
-                        <img style="border: 1px solid lightgray" style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40.jpg">
+                        <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40.jpg">
                     </div>
                     <div class="col-md-10">
                         <div class="row">
@@ -186,8 +186,8 @@
 
                     </div>
                 </div>
-                <div class="pagelet_divider"></div>
                 <span ng-if = "status.shareCounter > 0">
+                    <div class="pagelet_divider"></div>
                     <div class="row form-group">
                         <div class="col-md-12">
                             <div style="float: left;">
@@ -197,45 +197,49 @@
                         </div>
                     </div>
                 </span>
-                <div class="pagelet_divider"></div>
-                <div class="row form-group">
-                    <div class="col-md-12" id="more_comment_id">
-                        <div style="float: left;">
-                            <span ng-if="status.commentCounter > 0">
+                <span ng-if="status.commentCounter > 0">
+                    <div class="pagelet_divider" id='pagelet_id_1'></div>
+                    <div class="row form-group">
+                        <div class="col-md-12" id="more_comment_id">
+                            <div style="float: left;">
+
                                 <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
                                 <a href  id="status_more_comment" onclick="get_album_comments(angular.element(this).scope().status.statusId)">view {{status.commentCounter}} more comments </a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pagelet_divider"></div>
-                <div class="row form-group">
-                    <div ng-repeat="commentInfo in status.commentList">
-                        <div class="col-md-1" profile_picture>
-                            <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg" width="30" height="30">
-                        </div>
-                        <div class="col-md-11">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div style="float: left">
-                                        <a style="font-weight: bold;" href></span><span ng-bind="commentInfo.userInfo.firstName"></span>&nbsp<span ng-bind="commentInfo.userInfo.lastName"></span></a>
-                                        <span ng-bind="commentInfo.description">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div style="float: left">
-                                        January 9, 2015 at 10:15pm. 
-                                        <a>like</a>
-                                        <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
-                                        . <a>15</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </span>
+
+                <span ng-if="status.commentList != null">
+                    <div class="pagelet_divider" id='pagelet_id_2'></div>
+                    <div class="row form-group">
+                        <div ng-repeat="commentInfo in status.commentList">
+                            <div class="col-md-1" profile_picture>
+                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg" width="30" height="30">
+                            </div>
+                            <div class="col-md-11">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="float: left">
+                                            <a style="font-weight: bold;" href></span><span ng-bind="commentInfo.userInfo.firstName"></span>&nbsp<span ng-bind="commentInfo.userInfo.lastName"></span></a>
+                                            <span ng-bind="commentInfo.description">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="float: left">
+                                            January 9, 2015 at 10:15pm. 
+                                            <a>like</a>
+                                            <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
+                                            . <a>15</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
                 <div class="row">
                     <div class="col-md-1" profile_picture>
                         <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
@@ -273,13 +277,15 @@
     //            });
 
     function get_album_comments(statusId) {
-        angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function() {
+        angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function () {
             $('#more_comment_id').hide();
+            $('#pagelet_id_1').hide();
+            $('#pagelet_id_2').hide();
         });
     }
 
     function open_modal_share(statusInfo) {
-        angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function() {
+        angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function () {
             $("#user_first_name").append(statusInfo.userInfo.firstName);
             $("#user_last_name").append(statusInfo.userInfo.lastName);
             $("#old_description").append(statusInfo.description);
@@ -289,12 +295,12 @@
     }
 
     function open_modal_like_list(statusId) {
-        angular.element($('#like_list_id')).scope().getStatusLikeList(statusId, function() {
+        angular.element($('#like_list_id')).scope().getStatusLikeList(statusId, function () {
             $('#modal_liked_people_list').modal('show');
         });
     }
     function open_modal_shared_list(statusId) {
-        angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function() {
+        angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function () {
             $('#modal_shared_people_list').modal('show');
         });
     }
