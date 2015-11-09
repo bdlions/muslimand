@@ -3,14 +3,14 @@
     <div ng-repeat="status in statuses.slice().reverse()" class="form-group">
         <div class="pagelet" id="pagelet{{status.statusId}}">
             <div class="pagelet">
-                <div class="row" style="float: left">
+                <div class="row">
                     <div class="col-md-2" >
                         <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>{{status.userInfo.userId}}.jpg" width="40" height="40" onError="onImageUnavailable(this)">
                         <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40.jpg">
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10" >
                         <div class="row">
-                            <div class="col-md-11">
+                            <div class="col-md-11 mrg_left">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: left;">

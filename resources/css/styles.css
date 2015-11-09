@@ -494,6 +494,12 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     .padding_style{
         padding-bottom: 15px;
     }
+    
+}
+@media all and (min-width: 992px){
+    .mrg_left{
+        margin-left: -7%;
+    }
 }
 
 /*================================  Admin Panel  ================================*/
