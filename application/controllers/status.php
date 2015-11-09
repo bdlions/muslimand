@@ -77,6 +77,7 @@ class Status extends CI_Controller {
             $status_info->userId = $this->session->userdata('user_id');
             $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
             $status_info->statusTypeId = POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID;
+            $status_info->mappingId = $user_id;
             if (property_exists($requestInfo, "statusInfo") != FALSE) {
                 $request = $requestInfo->statusInfo;
             }
@@ -263,6 +264,51 @@ class Status extends CI_Controller {
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed", $this->data);
+    }
+
+    function get_user_profile_status_test() {
+        $response = array();
+        $mapping_id = $_POST['profileId'];
+        $user_id = $this->session->userdata('user_id');
+        $offset = 0;
+        $limit = 5;
+        $result = array();
+        $status_list = array();
+        $result = $this->status_mongodb_model->get_user_profile_status($user_id, $mapping_id, $offset, $limit);
+        if ($result != null) {
+            $result = json_decode($result);
+            foreach ($result as $status) {
+                if (property_exists($status, "userInfo")) {
+                    $status->userInfo = json_decode($status->userInfo);
+                    $status_list[] = $status;
+                }
+            }
+            $response["status_list"] = $status_list;
+        }
+        echo json_encode($response);
+    }
+    function get_user_profile_status() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $mapping_id = $request->profileId;
+        $response = array();
+        $user_id = $this->session->userdata('user_id');
+        $offset = 0;
+        $limit = 5;
+        $result = array();
+        $status_list = array();
+        $result = $this->status_mongodb_model->get_user_profile_status($user_id, $mapping_id, $offset, $limit);
+        if ($result != null) {
+            $result = json_decode($result);
+            foreach ($result as $status) {
+                if (property_exists($status, "userInfo")) {
+                    $status->userInfo = json_decode($status->userInfo);
+                    $status_list[] = $status;
+                }
+            }
+            $response["status_list"] = $status_list;
+        }
+        echo json_encode($response);
     }
 
     function get_status_details() {

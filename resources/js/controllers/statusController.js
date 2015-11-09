@@ -12,19 +12,30 @@ angular.module('controllers.Status', ['services.Status']).
             $scope.shareList = [];
             $scope.CommentList = [];
 
-
-            $scope.setStatus = function (t) {
-                $scope.statuses = JSON.parse(t);
+            $scope.setStatus = function (userStatus) {
+                $scope.statuses = JSON.parse(userStatus);
 //                console.log($scope.statuses);
             };
-  
+          
+            $scope.setProfileStatus = function (userProfileStatus) {
+//                $scope.statuses = userProfileStatus;
+//                console.log($scope.statuses);
+            };
+            $scope.getProfileStatus = function (profileId) {
+                statusService.getProfileStatus(profileId).
+                        success(function (data, status, headers, config) {
+//                            console.log(data);
+                            $scope.statuses =data.status_list;
+                        });
+            };
+
             $scope.setSharedInfo = function (sharedInfo, requestFunction) {
                 $scope.sharedInfo = sharedInfo;
 //                console.log($scope.sharedInfo);
                 requestFunction();
             };
             $scope.statusDetails = function (statusId) {
-                 statusService.statusDetails(statusId).
+                statusService.statusDetails(statusId).
                         success(function (data, status, headers, config) {
                             console.log(data);
                         });
@@ -62,7 +73,7 @@ angular.module('controllers.Status', ['services.Status']).
              * add status like
              * parameter statusId 
              * */
-            $scope.addLike = function (userId,statusId) {
+            $scope.addLike = function (userId, statusId) {
                 statusService.addLike(userId, statusId).
                         success(function (data, status, headers, config) {
                             angular.forEach($scope.statuses, function (value, key) {
@@ -71,8 +82,8 @@ angular.module('controllers.Status', ['services.Status']).
                                     (value.likeStatus = "1");
                                     if (typeof value.likeCounter == "undefined") {
                                         (value.likeCounter = 1);
-                                    }else{
-                                       (value.likeCounter = value.likeCounter +1 );  
+                                    } else {
+                                        (value.likeCounter = value.likeCounter + 1);
                                     }
                                     console.log(value);
                                 }

@@ -31,8 +31,8 @@
             <!--cover picture-->
             <div ng-controller="ImageCopperController" style="position: relative; ">
                 <div  ng-show="imageCropStep == 1" class="fileinput-cover-button">	
-                    <?php if ($friend_id != "0" && $friend_id != $user_id) { ?>
-                        <img class="img-responsive"  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $friend_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
+                    <?php if ($profile_id != "0" && $profile_id != $user_id) { ?>
+                        <img class="img-responsive"  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $profile_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
                         <img class="img-responsive" style="visibility:hidden;height: 0px;" src="<?php echo base_url() ?>resources/images/cover.jpg">
                     <?php } else { ?>
                         <img class="img-responsive"  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
@@ -72,8 +72,8 @@
             <!--profile picture-->
             <div ng-controller="ImageCopperController" style="position: absolute; bottom: -15px; left: 25px; z-index: 1001;">
                 <div ng-show="imageCropStep == 1" class="fileinput-button profile_picture timeline_profile_picture_custom">
-                    <?php if ($friend_id != "0" && $friend_id != $user_id) { ?>
-                        <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $friend_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
+                    <?php if ($profile_id != "0" && $profile_id != $user_id) { ?>
+                        <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $profile_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
                         <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>150x150.jpg" alt="">
                     <?php } else { ?>
                         <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
@@ -112,13 +112,13 @@
             </a>
             <div ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)" >
                 <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_NON_FRIEND_ID; ?>">
-                    <button type="button" class=" button-custom" style="position: absolute; bottom: 20px; right:  140px; font-size: 80%; z-index: 1001" ng-click="addFriend('<?php echo $friend_id; ?>')" >Add Friend</button>   
+                    <button type="button" class=" button-custom" style="position: absolute; bottom: 20px; right:  140px; font-size: 80%; z-index: 1001" ng-click="addFriend('<?php echo $profile_id; ?>')" >Add Friend</button>   
                 </div>
                 <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_FRIEND_ID ?>">
                     <div class="dropdown dropdown_addFriend_style">
                         <button type="button" class="button-custom dropdown-toggle" ng-click="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Friend <span class="caret"></span></button>    
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $friend_id; ?>')" >Un Friend</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $profile_id; ?>')" >Un Friend</a></li>
                         </ul>
                     </div>
                 </div>
@@ -126,8 +126,8 @@
                     <div class="dropdown dropdown_addFriend_style">
                         <button type="button" class="button-custom dropdown-toggle" ng-click="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Response to Friend Request<span class="caret"></span></button>    
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" id="request_accept_id" onclick="approve_request('<?php echo $friend_id; ?>')">Confirm</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $friend_id; ?>')">Delete Request</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" id="request_accept_id" onclick="approve_request('<?php echo $profile_id; ?>')">Confirm</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $profile_id; ?>')">Delete Request</a></li>
                         </ul>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
                     <div class="dropdown dropdown_addFriend_style">
                         <button type="button" class="button-custom dropdown-toggle" ng-click="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Sent Friend Request<span class="caret"></span></button>    
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $friend_id; ?>')">Cancel Friend Request</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $profile_id; ?>')">Cancel Friend Request</a></li>
                         </ul>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Report</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" id="block_friend_id" href onclick="block_request('<?php echo $friend_id; ?>')">Block</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" id="block_profile_id" href onclick="block_request('<?php echo $profile_id; ?>')">Block</a></li>
                         </ul>
                     </div>
                 </div>
@@ -165,7 +165,7 @@
                     <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>member/timeline">Timeline</a>
                     <a class="btn btn-default get_over_view_class" style="font-size: 100%" onclick="getOverview('<?php echo $user_id; ?>')" href="<?php echo base_url(); ?>member/about">About</a>
                     <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>photos">Photo</a>
-                    <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>friend/get_friend_list/<?php echo $friend_id; ?>">Friends</a>
+                    <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>friend/get_friend_list/<?php echo $profile_id; ?>">Friends</a>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             More
@@ -181,3 +181,4 @@
         </div>
     </div>
 </div>
+

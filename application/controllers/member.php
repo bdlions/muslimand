@@ -66,11 +66,11 @@ class Member extends CI_Controller {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed", $this->data);
     }
 
-    function timeline($friend_id = "0") {
+    function timeline($profile_id = "0") {
         $user_relation = array();
         $user_id = $this->session->userdata('user_id');
-        if ($friend_id != $user_id && $friend_id != "0") {
-            $result = $this->friend_mongodb_model->get_relationship_status($user_id, $friend_id);
+        if ($profile_id != $user_id && $profile_id != "0") {
+            $result = $this->friend_mongodb_model->get_relationship_status($user_id, $profile_id);
             $result = json_decode($result);
             if ($result != null) {
                 if (property_exists($result, "relationTypeId") != FALSE) {
@@ -86,8 +86,8 @@ class Member extends CI_Controller {
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->data['friend_id'] = $friend_id;
-        $this->data['app'] = "app.Friend";
+        $this->data['profile_id'] = $profile_id;
+        $this->data['app'] = "app.MemberProfile";
         $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/timeline", $this->data);
     }
 

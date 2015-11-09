@@ -6,7 +6,7 @@ angular.module('services.Status', []).
             statusService.addStatus = function (statusInfo) {
                 return $http({
                     method: 'post',
-                    url: '../status/add_status',
+                    url:  'http://localhost/muslimand/status/add_status',
                     data: {
                         statusInfo: statusInfo
 
@@ -17,7 +17,7 @@ angular.module('services.Status', []).
             statusService.updateStatus = function (statusInfo) {
                 return $http({
                     method: 'post',
-                    url: '../status/update_status',
+                    url: 'http://localhost/muslimand/status/update_status',
                     data: {
                         description: statusInfo.description,
                         statusId: statusInfo.statusId
@@ -28,7 +28,7 @@ angular.module('services.Status', []).
             statusService.statusDetails = function (statusId) {
                 return $http({
                     method: 'post',
-                    url: '../status/get_status_details',
+                    url:  'http://localhost/muslimand/status/get_status_details',
                     data: {
                         statusId: statusId
 
@@ -39,7 +39,7 @@ angular.module('services.Status', []).
             statusService.addLike = function (userId, statusId) {
                 return $http({
                     method: 'post',
-                    url: '../status/add_status_like',
+                    url:  'http://localhost/muslimand/status/add_status_like',
                     data: {
                         userId:userId,
                         statusId: statusId
@@ -54,7 +54,7 @@ angular.module('services.Status', []).
             statusService.addComment = function (statusInfo) {
                 return $http({
                     method: 'post',
-                    url: '../status/add_status_comment',
+                    url:  'http://localhost/muslimand/status/add_status_comment',
                     data: {
                         statusId: statusInfo.statusId,
                         userId: statusInfo.userId,
@@ -68,7 +68,7 @@ angular.module('services.Status', []).
             statusService.deleteStatus = function (statusId) {
                 return $http({
                     method: 'post',
-                    url: '../status/delete_status',
+                    url:  'http://localhost/muslimand/status/delete_status',
                     data: {
                         statusId: statusId
                     },
@@ -80,7 +80,7 @@ angular.module('services.Status', []).
             statusService.shareStatus = function (oldStatusInfo, statusInfo) {
                 return $http({
                     method: 'post',
-                    url: '../status/share_status',
+                    url:  'http://localhost/muslimand/status/share_status',
                     data: {
                         oldStatusInfo: oldStatusInfo,
                         statusInfo: statusInfo
@@ -92,7 +92,7 @@ angular.module('services.Status', []).
             statusService.getStatusLikeList = function (statusId) {
                 return $http({
                     method: 'post',
-                    url: '../status/get_status_likes',
+                    url:  'http://localhost/muslimand/status/get_status_likes',
                     data: {
                         statusId: statusId
                     },
@@ -101,7 +101,7 @@ angular.module('services.Status', []).
             statusService.getStatusShareList = function (statusId) {
                 return $http({
                     method: 'post',
-                    url: '../status/get_status_shears',
+                    url:  'http://localhost/muslimand/status/get_status_shears',
                     data: {
                         statusId: statusId
                     },
@@ -110,9 +110,18 @@ angular.module('services.Status', []).
             statusService.getStatusComments = function (statusId) {
                 return $http({
                     method: 'post',
-                    url: '../status/get_status_comments',
+                    url:  'http://localhost/muslimand/status/get_status_comments',
                     data: {
                         statusId: statusId
+                    },
+                });
+            };
+            statusService.getProfileStatus = function (profileId) {
+                return $http({
+                    method: 'post',
+                    url: 'http://localhost/muslimand/status/get_user_profile_status',
+                    data: {
+                        profileId: profileId
                     },
                 });
             };
