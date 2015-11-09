@@ -109,32 +109,54 @@
 
             <div ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)" >
                 <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_NON_FRIEND_ID; ?>">
-                    <button type="button" class=" btn btn-default" style="position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" ng-click="addFriend('<?php echo $friend_id; ?>')" >Add Friend</button>   
+                    <button type="button" class=" button-custom" style="position: absolute; bottom: 20px; right:  140px; font-size: 80%; z-index: 1001" ng-click="addFriend('<?php echo $friend_id; ?>')" >Add Friend</button>   
 
                 </div>
                 <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_FRIEND_ID ?>">
-                    <!--<button type="button" class=" btn btn-default" style="position: absolute; bottom: 20px; right:  120px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')" >Un Friend</button>--> 
-                    <button type="button" class=" btn btn-default" style="position: absolute; bottom: 20px; right:  160px; font-size: 80%" ng-click="" >Friend</button>
+                    <!--<button type="button" class=" button-custom" style="position: absolute; bottom: 20px; right:  120px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')" >Un Friend</button>--> 
+                    <button type="button" class=" button-custom" style="position: absolute; bottom: 20px; right:  160px; font-size: 80%" ng-click="" >Friend</button>
                 </div>
                 <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_PENDING_ID; ?> && userRelation.is_initiated == <?php echo REQUEST_RECEIVER; ?>">
-                    <button id="request_accept_id" type="button" class=" btn btn-default  " style=" position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" onclick="approve_request('<?php echo $friend_id; ?>')">Confirm</button>    
-                    <button type="button" class=" btn btn-default  " style=" position: absolute; bottom: 20px; right:  230px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')">Delete Request</button>    
+                    <button id="request_accept_id" type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" onclick="approve_request('<?php echo $friend_id; ?>')">Confirm</button>    
+                    <button type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  230px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')">Delete Request</button>    
                 </div>
 
+<!--                <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_PENDING_ID; ?> && userRelation.is_initiated == <?php echo REQUEST_SENDER; ?>">
+                    <button type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" ng-click="" >Friend Request Sent</button>    
+                    <button type="button" class="button-custom " style=" position: absolute; bottom: 20px; right:  300px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')" >Cancel Friend Request</button>    
+                    <div class="dropdown dropdown_addFriend_style">
+                        <button type="button" class="button-custom dropdown-toggle" ng-click="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Friend Request Sent <span class="caret"></span></button>    
+                        <button type="button" class="button-custom dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $friend_id; ?>')">Cancel Friend Request</a></li>
+                        </ul>
+                    </div>
+                </div>-->
                 <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_PENDING_ID; ?> && userRelation.is_initiated == <?php echo REQUEST_SENDER; ?>">
-                    <button type="button" class=" btn btn-default  " style=" position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" ng-click="" >Friend Request Sent</button>    
-                    <button type="button" class=" btn btn-default  " style=" position: absolute; bottom: 20px; right:  300px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')" >Cancel Friend Request</button>    
-
+                    <!--<button type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" ng-click="" >Friend Request Sent</button>-->    
+                    <!--<button type="button" class="button-custom " style=" position: absolute; bottom: 20px; right:  300px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')" >Cancel Friend Request</button>-->    
+                    <div class="dropdown dropdown_addFriend_style">
+                        <button type="button" class="button-custom dropdown-toggle" ng-click="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Response to Friend Request<span class="caret"></span></button>    
+<!--                        <button type="button" class="button-custom dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                            <span class="caret"></span>
+                        </button>-->
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" >Confirm</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $friend_id; ?>')">Cancel Friend Request</a></li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div ng-if ="userRelation.relation_ship_status == <?php echo YOUR_RELATION_TYPE_ID; ?>">
-                    <button type="button" class="btn btn-default" style="position: absolute; bottom: 20px; right:  140px; font-size: 80%; z-index: 1001">Update Info</button>
-                    <button type="button" class="btn btn-default" style="position: absolute; bottom: 20px; right:  20px; font-size: 80%; z-index: 1001">View Activity Log</button>
+                    <button type="button" class="button-custom" style="position: absolute; bottom: 20px; right:  140px; font-size: 80%; z-index: 1001">Update Info</button>
+                    <button type="button" class="button-custom" style="position: absolute; bottom: 20px; right:  30px; font-size: 80%; z-index: 1001">View Activity Log</button>
                 </div>
                 <div ng-if ="userRelation.relation_ship_status != <?php echo YOUR_RELATION_TYPE_ID; ?>">
-                    <button type="button" class="btn btn-default" style="position: absolute; bottom: 20px; right:  80px; font-size: 80%; z-index: 1001">Message</button>
+                    <button type="button" class="button-custom" style="position: absolute; bottom: 20px; right:  70px; font-size: 80%; z-index: 1001">Message</button>
                     <div class="dropdown dropdown_style">
-                        <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                        <button type="button" class="button-custom dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -148,7 +170,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div style="background-color: whitesmoke;">
+            <div style="background-color: whitesmoke; text-align: center;">
                 <div class="btn-group" role="group" aria-label="...">
                     <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>member/timeline">Timeline</a>
                     <a class="btn btn-default get_over_view_class" style="font-size: 100%" onclick="getOverview('<?php echo $user_id; ?>')" href="<?php echo base_url(); ?>member/about">About</a>

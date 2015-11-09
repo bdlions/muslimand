@@ -523,10 +523,18 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 /*--------------------------------------Non Friend Profile----------------------------------*/
 .dropdown_style{
-    position: absolute; 
-    bottom: 20px; 
-    right:  35px; 
+    position: absolute!important; 
+    bottom: 15px; 
+    right:  30px; 
     font-size: 80%;
+    margin: 5px;
+}
+.dropdown_addFriend_style{
+    position: absolute!important; 
+    bottom: 15px; 
+    right:  140px; 
+    font-size: 80%;
+    margin: 5px;
 }
 .btn_style {
     padding: 4px 12px;
