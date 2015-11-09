@@ -1,13 +1,11 @@
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
+<div class="padding_top_30px"></div>
 <div class="row">
     <div class="col-md-6">
         <span style="font-size: 25px; font-weight: bold;">Video</span>
     </div>
     <div class="col-md-3"></div>
     <div class="col-md-2">
-        <a  href="<?php echo base_url(); ?>videos/add_video"><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 28px;">Share a Video</button></a>
+        <a  href="<?php echo base_url(); ?>Videos/add_video"><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 28px;">Share a Video</button></a>
     </div>
     <div class="col-md-1"></div>
 </div>
@@ -19,8 +17,6 @@
     </div>    
 </div>
 <div class="row">
-
-    
     <!--LEFT_COLUMN-->
     <?php $this->load->view("templates/sections/member_videos_left_pane"); ?>
     <!--MIDDLE COLUMN-->

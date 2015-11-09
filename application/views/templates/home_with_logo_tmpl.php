@@ -12,7 +12,7 @@
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/template.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
-        <title>Muslimand</title>
+        <title>Sadiik.com</title>
         <style>
             html,
             body {

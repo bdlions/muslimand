@@ -34,7 +34,7 @@
     <div class="col-xs-2  col-sm-2 col-md-offset-1 col-md-1 form-group">
         <a href="<?php echo base_url(); ?>member/newsfeed">
             <!--<img style="border-radius: 3px;"src="<?php echo base_url(); ?>resources/images/logo.png" height="30" width="30">-->
-            <img style="border-radius: 3px; margin-left: 40px;"src="<?php echo base_url(); ?>resources/images/logo.png">
+            <img style="border-radius: 3px; margin-left: 5px;"src="<?php echo base_url(); ?>resources/images/logo.png">
         </a>
     </div>
     <div class="col-xs-10 col-sm-4 col-md-offset-1 col-md-4 form-group">

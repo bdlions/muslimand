@@ -14,7 +14,7 @@
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/video.css"/>
         <!--<link rel="stylesheet" href="resources/css/jquery.navgoco.css"/>-->
-        <title>Muslimand</title>
+        <title>Sadiik.com</title>
     </head>
 
     <body>

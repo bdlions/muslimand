@@ -1,5 +1,4 @@
-<div class="row form-group"></div>
-<div class="row">
+<div class="row padding_top_30px">
     <div class="col-md-6">
         <span style="font-size: 25px; font-weight: bold;">Library</span>
     </div>

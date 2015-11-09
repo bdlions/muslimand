@@ -12,7 +12,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
-        <title>Muslimand</title>
+        <title>Sadiik.com</title>
     </head>
     <body>
         <div class="header_wrapper">

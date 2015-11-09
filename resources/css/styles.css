@@ -24,10 +24,10 @@ html, body {
     position:relative;
 }
 #footer {
-    background-color: #fff;
+    background-color: #E9EAED;
     width:100%;
     height: 60px;
-    position:relative;
+    position: relative;
     bottom:0;
     left:0;
 }
@@ -89,17 +89,17 @@ html, body {
 }
 
 #mm_notification_box, #mm_message_box, #mm_friend_request_box{
-        display: none;
-        width: 400px;
-        position: absolute;
-        top: 40px;
-        right: 1px;
-        border: 1px solid darkgray;
-        border-radius: 4px;
-        box-shadow: 0 0 6px #491249;
-        background-color: white;
-        color: black;
-    }
+    display: none;
+    width: 400px;
+    position: absolute;
+    top: 40px;
+    right: 1px;
+    border: 1px solid darkgray;
+    border-radius: 4px;
+    box-shadow: 0 0 6px #491249;
+    background-color: white;
+    color: black;
+}
 
 
 /*================================  pagelets  ================================*/
@@ -242,21 +242,27 @@ html, body {
 .container_wrapper{
     background-color: #703684; 
     color: white; 
-    padding: 10px 15px;
+    padding: 6px 9px
 }
 .padding_top{
-    padding-top: 70px;
+    padding-top: 76px;
+}
+.padding_top_30px{
+    padding-top: 30px;
+}
+.padding_top_20px{
+    padding-top: 20px;
+}
+.padding_top_10px{
+    padding-top: 10px;
 }
 .container_background{
     background-color: #E9EAED;
 }
 .ticker_friends_wrapper{
     position: fixed; 
-    right: 0; 
-    top: 60px; 
-    z-index: 19; 
-    height: 90%;
-    width: 18%;
+    height: 300px;
+    z-index: 1001;
 }
 
 /*================================  font size ================================*/
@@ -316,7 +322,7 @@ html, body {
     font-size: 10px;
 }
 .video_ul a,.category_ul a{
-    text-decoration: none;
+    text-decoration: none!important;
     color: black;
 }
 
@@ -328,9 +334,11 @@ html, body {
     color: white!important;
     padding-left: 4px;
     font-weight: bold;
+    
 }
 .video_ul a li:hover{
     border-radius: 3px;
+    text-decoration: none;
 }
 
 
@@ -536,6 +544,19 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     font-size: 80%;
     margin: 5px;
 }
+
+.dropdown-menu{
+    font-size: 12px!important;
+}
+
+.dropdown-menu > li > a {
+    padding: 1px 10px!important;
+}
+.dropdown-menu > li > a:hover {
+    color: #fff!important;
+    background-color: #703684!important;
+}
+
 .btn_style {
     padding: 4px 12px;
 }

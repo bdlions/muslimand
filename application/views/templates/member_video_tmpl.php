@@ -23,41 +23,35 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
         <script type = "text/javascript" src = "<?php echo base_url(); ?>resources/js/app/videoApp.js " ></script>
-        <title>Muslimand</title>
+        <title>Sadiik.com</title>
     </head>
-
     <body ng-app="<?php echo $app; ?>">
-        <div class="body_wrapper">
+         <div class="body_wrapper">
             <div class="header_wrapper">
-                <div class="container_wrapper">
-                    <div class="container-fluid">
-                        <?php $this->load->view("member/sections/header_member"); ?>
-                    </div>
+                <div class="container-fluid container_wrapper">
+                    <?php $this->load->view("member/sections/header_member"); ?>
                 </div>
             </div>
-            <div class="Padding_top"></div>
+        </div>
+        <div class="padding_top"></div>
+        <div class="container_background">
             <div class="container-fluid">
-                <div class="container_background">
-                    <div class="row" ng-controller="videoController">
-                        <div class="col-md-offset-1 col-md-9">
-                            <?php echo $contents; ?>                            
-                        </div>
-                        <div class="col-md-2">
-                            <div class="ticker_friends_wrapper">
-                                <?php $this->load->view("member/sections/right_column_ticker_friends"); ?>
-                            </div>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-9">
+                        <?php echo $contents; ?>                            
+                    </div>
+                    <div class="col-md-2">
+                        <div class="ticker_friends_wrapper">
+                            <?php $this->load->view("member/sections/right_column_ticker_friends"); ?>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="footer">
-                                <?php $this->load->view("auth/sections/footer"); ?>
-                            </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="footer">
+                            <?php $this->load->view("auth/sections/footer"); ?>
                         </div>
-                        <div class="col-md-2"></div>
                     </div>
-                    <div class="row form-group"></div>
-                    <div class="row form-group"></div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-<div class="row padding_top_over_row">
+<div class="row padding_top_30px">
     <div class="col-md-3">
         <a style="font-size: 25px; font-weight: bold; text-decoration: none; cursor: pointer;" href="<?php echo base_url(); ?>fund/"><img src="<?php echo base_url(); ?>resources/images/fund/icon/fund.png">Fund Rising</a>
     </div>

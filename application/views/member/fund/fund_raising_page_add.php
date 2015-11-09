@@ -1,4 +1,4 @@
-<div class="row padding_top_over_row">
+<div class="row padding_top_30px">
     <div class="col-md-10">
         <a href="<?php echo base_url(); ?>fund/"><img src="<?php echo base_url(); ?>resources/images/fund/icon/fund.png"></a>
         <a  class="anchor_property_change" href="<?php echo base_url(); ?>fund/"><span style="text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold;">Fund Rising</span></a>

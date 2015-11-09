@@ -36,7 +36,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/friendApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
 
-        <title>Muslimand</title>
+        <title>Sadiik.com</title>
     </head>
 
     <body ng-app="<?php echo $app; ?>">

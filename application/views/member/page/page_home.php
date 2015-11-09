@@ -1,19 +1,14 @@
-<div class="row form-group"></div>
-<div class="row">
+<div class="row padding_top_30px">
     <div class="col-md-6">
         <span style="font-size: 25px; font-weight: bold;">Pages</span>
     </div>
-    <div class="col-md-3"></div>
-    <div class="col-md-2">
+    <div class="col-md-offset-3 col-md-2">
         <a  href="<?php echo base_url(); ?>pages/pages_add"><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 28px;">Create a Page</button></a>
     </div>
-    <div class="col-md-1"></div>
 </div>
 <div class="row">
     <div class="col-md-11">
         <div class="pagelet_divider"></div>
-    </div>    
-    <div class="col-md-1">
     </div>    
 </div>
 <div class="row">
@@ -29,15 +24,12 @@
                 </ul> 
             </div>
         </div>
-        <div class="row form-group"></div>
-        <div class="row form-group"></div>
-        <div class="row">
+        <div class="row padding_top_30px">
             <div class="col-md-12">
                 <span style="color: black; font-size: 16px; font-weight: bold; opacity: .6;" href="">Categories</span>
             </div>
         </div>
-        <div class="row form-group"></div>
-        <div class="row">
+        <div class="row padding_top_10px">
             <div class="col-md-12">
                 <ul class="category_ul">
                     <a href=""><li>Brand</li></a>
@@ -64,23 +56,19 @@
                     <div class="category_divider"></div>
                     <a href=""><li>Public Figure</li></a>
                     <div class="category_divider"></div>
-
                 </ul> 
             </div>
         </div>
-        <div class="row form-group"></div>
-        <div class="row">
+        <div class="row padding_top_30px">
             <div class="col-md-12">
                 <span style="color: black; font-size: 16px; font-weight: bold; opacity: .6;" href="">Main</span>
             </div>
         </div>
-        <div class="row form-group"></div>
-        <div class="row">
+        <div class="row padding_top_10px">
             <div class="col-md-12">
                 <?php $this->load->view("member/sections/menu/menu_link"); ?>
             </div>
         </div>
-        <div class="row form-group"></div>
     </div>
     <!--MIDDLE COLUMN-->
     <div class="col-md-9">
@@ -131,16 +119,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-1"></div>
         </div>
         <div class="pagelet_divider"></div>
         <div class="row">
             <div class="col-md-9">
                 <?php $this->load->view("member/pagelets/page/sort_latest"); ?>
             </div>
-            <div class="col-md-3">
-            </div>
         </div>
-        <div class="col-md-1"></div>
     </div>
 </div>

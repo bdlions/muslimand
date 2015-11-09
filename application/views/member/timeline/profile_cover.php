@@ -1,4 +1,3 @@
-
 <script>
     function approve_request(friendId) {
         angular.element($('#request_accept_id')).scope().approveRequest(friendId, function() {
@@ -15,6 +14,14 @@
 
         secondImage.style.visibility = 'visible';
         secondImage.style.height = '100%';
+    }
+
+</script>
+<script>
+    function block_request(friendId) {
+        angular.element($('#block_friend_id')).scope().blockRequest(friendId, function() {
+            alert("user is blocked ");
+        });
     }
 
 </script>
@@ -53,7 +60,6 @@
                         reloadpath = "<?php echo base_url(); ?>member/timeline/"
                         ></image-crop>		   
                 </div>
-
                 <div ng-show="imageCropStep == 2" >
                     <button class="btn btn-sm" style="position: absolute; bottom: 0; left: 42%; bottom: 35px; background-color: #999; color: #fff; z-index: 1001"  ng-click="clear()">Cancel</button>
                     <button class="btn btn-sm" style="position: absolute; bottom: 0; right: 42%; bottom: 35px; background-color: #999; color: #fff; z-index: 1001" ng-click="initCrop = true">Crop</button>		
@@ -62,7 +68,6 @@
                     <img style="position: relative; left: -13px; margin: 0 15px; right: 0; top: 0; width: 100%" ng-src="{{result}}"/>
                 </div>
             </div>
-
 
             <!--profile picture-->
             <div ng-controller="ImageCopperController" style="position: absolute; bottom: -15px; left: 25px; z-index: 1001;">
@@ -102,49 +107,38 @@
                     </div>
                 </div>
             </div>
-
             <a class="timeline_profile_name" href="">
                 Mohammad Azhar Uddin
             </a>
-
             <div ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)" >
                 <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_NON_FRIEND_ID; ?>">
                     <button type="button" class=" button-custom" style="position: absolute; bottom: 20px; right:  140px; font-size: 80%; z-index: 1001" ng-click="addFriend('<?php echo $friend_id; ?>')" >Add Friend</button>   
-
                 </div>
                 <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_FRIEND_ID ?>">
-                    <!--<button type="button" class=" button-custom" style="position: absolute; bottom: 20px; right:  120px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')" >Un Friend</button>--> 
-                    <button type="button" class=" button-custom" style="position: absolute; bottom: 20px; right:  160px; font-size: 80%" ng-click="" >Friend</button>
+                    <div class="dropdown dropdown_addFriend_style">
+                        <button type="button" class="button-custom dropdown-toggle" ng-click="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Friend <span class="caret"></span></button>    
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $friend_id; ?>')" >Un Friend</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_PENDING_ID; ?> && userRelation.is_initiated == <?php echo REQUEST_RECEIVER; ?>">
                     <div class="dropdown dropdown_addFriend_style">
                         <button type="button" class="button-custom dropdown-toggle" ng-click="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Response to Friend Request<span class="caret"></span></button>    
-<!--                        <button type="button" class="button-custom dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                            <span class="caret"></span>
-                        </button>-->
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <li role="presentation"><a role="menuitem" tabindex="-1" id="request_accept_id" onclick="approve_request('<?php echo $friend_id; ?>')">Confirm</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $friend_id; ?>')">Delete Request</a></li>
                         </ul>
                     </div>
-<!--                    <button id="request_accept_id" type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" onclick="approve_request('<?php //echo $friend_id; ?>')">Confirm</button>    
-                    <button type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  230px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php //echo $friend_id; ?>')">Delete Request</button>    -->
                 </div>
-
                 <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_PENDING_ID; ?> && userRelation.is_initiated == <?php echo REQUEST_SENDER; ?>">
-                    <!--<button type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" ng-click="" >Friend Request Sent</button>-->    
-                    <!--<button type="button" class="button-custom " style=" position: absolute; bottom: 20px; right:  300px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')" >Cancel Friend Request</button>-->    
                     <div class="dropdown dropdown_addFriend_style">
                         <button type="button" class="button-custom dropdown-toggle" ng-click="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Sent Friend Request<span class="caret"></span></button>    
-<!--                        <button type="button" class="button-custom dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                            <span class="caret"></span>
-                        </button>-->
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $friend_id; ?>')">Cancel Friend Request</a></li>
                         </ul>
                     </div>
                 </div>
-
                 <div ng-if ="userRelation.relation_ship_status == <?php echo YOUR_RELATION_TYPE_ID; ?>">
                     <button type="button" class="button-custom" style="position: absolute; bottom: 20px; right:  140px; font-size: 80%; z-index: 1001">Update Info</button>
                     <button type="button" class="button-custom" style="position: absolute; bottom: 20px; right:  30px; font-size: 80%; z-index: 1001">View Activity Log</button>
@@ -187,14 +181,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    function block_request(friendId) {
-        angular.element($('#block_friend_id')).scope().blockRequest(friendId, function() {
-            alert("user is blocked ");
-        });
-
-
-    }
-
-</script>

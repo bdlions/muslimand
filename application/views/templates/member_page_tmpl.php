@@ -8,26 +8,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-1.11.1.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
-        <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
+
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/page.css"/>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
-        <title>Muslimand</title>
-    </head>
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/jquery.mCustomScrollbar.css"/>
+        <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
 
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
+        <title>Sadiik.com</title>
+    </head>
     <body>
-        <div class="header_wrapper">
-            <div class="container_wrapper">
-                <div class="container-fluid">
+        <div class="body_wrapper">
+            <div class="header_wrapper">
+                <div class="container-fluid container_wrapper">
                     <?php $this->load->view("member/sections/header_member"); ?>
                 </div>
             </div>
         </div>
+        <div class="padding_top"></div>
         <div class="container_background">
             <div class="container-fluid">
-                <div class="Padding_top"></div>
-                <div class="row padding_top_over_row">
+                <div class="row">
                     <div class="col-md-offset-1 col-md-9">
                         <?php echo $contents; ?>                            
                     </div>
@@ -37,13 +40,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="footer">
+                            <?php $this->load->view("auth/sections/footer"); ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-            <div class="row">
-                <div class="col-md-10">
-                        <?php $this->load->view("auth/sections/footer"); ?>
-                </div>
-                <div class="col-md-2"></div>
-            </div>
     </body>
 </html>

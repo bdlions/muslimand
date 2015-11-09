@@ -66,9 +66,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageCropController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/friendApp.js "></script>
 
-        <title>Muslimand</title>
+        <title>Sadiik.com</title>
     </head>
-
     <body ng-app="<?php echo $app; ?>">
         <div style="position: relative; background-color: #E9EAED" >
             <div style="position: fixed; top: 0; width: 100%; z-index: 10000; box-shadow: 0 4px 4px -2px gray;">

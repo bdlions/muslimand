@@ -149,7 +149,7 @@ and open the template in the editor.
 .container_wrapper{
     background-color: #703684; 
     color: white; 
-    padding: 10px 15px;
+    padding: 6px 9px
 }
 .Padding_top{
     padding-top: 60px;
@@ -159,11 +159,8 @@ and open the template in the editor.
 }
 .ticker_friends_wrapper{
     position: fixed; 
-    right: 0; 
-    top: 60px; 
-    z-index: 19; 
-    height: 90%;
-    width: 18%;
+    height: 300px;
+    z-index: 1001;
 }
 
 /*================================  Member video right section ================================*/
