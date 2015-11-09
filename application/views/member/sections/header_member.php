@@ -45,7 +45,7 @@
         </div>
     </div>
     <div class="col-xs-6 col-sm-3 col-md-2 form-group profile_picture">
-        <a href="<?php echo base_url(); ?>member/timeline">
+        <a style="text-decoration: none;" href="<?php echo base_url(); ?>member/timeline">
             <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
                 <img style="height: 25px; width: 25px;" alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailableHeader(this)"/>
                 <img style="visibility:hidden;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25; ?>25x25.jpg">
