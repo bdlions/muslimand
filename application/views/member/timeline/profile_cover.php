@@ -117,33 +117,29 @@
                     <button type="button" class=" button-custom" style="position: absolute; bottom: 20px; right:  160px; font-size: 80%" ng-click="" >Friend</button>
                 </div>
                 <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_PENDING_ID; ?> && userRelation.is_initiated == <?php echo REQUEST_RECEIVER; ?>">
-                    <button id="request_accept_id" type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" onclick="approve_request('<?php echo $friend_id; ?>')">Confirm</button>    
-                    <button type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  230px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')">Delete Request</button>    
-                </div>
-
-<!--                <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_PENDING_ID; ?> && userRelation.is_initiated == <?php echo REQUEST_SENDER; ?>">
-                    <button type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" ng-click="" >Friend Request Sent</button>    
-                    <button type="button" class="button-custom " style=" position: absolute; bottom: 20px; right:  300px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')" >Cancel Friend Request</button>    
-                    <div class="dropdown dropdown_addFriend_style">
-                        <button type="button" class="button-custom dropdown-toggle" ng-click="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Friend Request Sent <span class="caret"></span></button>    
-                        <button type="button" class="button-custom dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $friend_id; ?>')">Cancel Friend Request</a></li>
-                        </ul>
-                    </div>
-                </div>-->
-                <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_PENDING_ID; ?> && userRelation.is_initiated == <?php echo REQUEST_SENDER; ?>">
-                    <!--<button type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" ng-click="" >Friend Request Sent</button>-->    
-                    <!--<button type="button" class="button-custom " style=" position: absolute; bottom: 20px; right:  300px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')" >Cancel Friend Request</button>-->    
                     <div class="dropdown dropdown_addFriend_style">
                         <button type="button" class="button-custom dropdown-toggle" ng-click="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Response to Friend Request<span class="caret"></span></button>    
 <!--                        <button type="button" class="button-custom dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                             <span class="caret"></span>
                         </button>-->
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" >Confirm</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" onclick="approve_request('<?php echo $friend_id; ?>')">Confirm</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $friend_id; ?>')">Delete Request</a></li>
+                        </ul>
+                    </div>
+<!--                    <button id="request_accept_id" type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" onclick="approve_request('<?php //echo $friend_id; ?>')">Confirm</button>    
+                    <button type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  230px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php //echo $friend_id; ?>')">Delete Request</button>    -->
+                </div>
+
+                <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_PENDING_ID; ?> && userRelation.is_initiated == <?php echo REQUEST_SENDER; ?>">
+                    <!--<button type="button" class=" button-custom  " style=" position: absolute; bottom: 20px; right:  160px; font-size: 80%; z-index: 1001" ng-click="" >Friend Request Sent</button>-->    
+                    <!--<button type="button" class="button-custom " style=" position: absolute; bottom: 20px; right:  300px; font-size: 80%; z-index: 1001" ng-click="deleteRequest('<?php echo $friend_id; ?>')" >Cancel Friend Request</button>-->    
+                    <div class="dropdown dropdown_addFriend_style">
+                        <button type="button" class="button-custom dropdown-toggle" ng-click="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Sent Friend Request<span class="caret"></span></button>    
+<!--                        <button type="button" class="button-custom dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                            <span class="caret"></span>
+                        </button>-->
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRequest('<?php echo $friend_id; ?>')">Cancel Friend Request</a></li>
                         </ul>
                     </div>
