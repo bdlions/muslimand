@@ -52,8 +52,10 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/statusController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/friendController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/rightController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/MessageController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/rightService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/statusService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/friendService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/messageService.js "></script>

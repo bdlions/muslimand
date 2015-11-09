@@ -20,16 +20,6 @@ class Friend extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
-        $this->relations = $relations = array(
-            "relation_type_friend_id" => RELATION_TYPE_FRIEND_ID,
-            "relation_type_pending_id" => RELATION_TYPE_PENDING_ID,
-            "relation_type_block_id" => RELATION_TYPE_BLOCK_ID,
-            "non_relation_type_friend_id" => RELATION_TYPE_NON_FRIEND_ID,
-            "your_relation_type_id" => YOUR_RELATION_TYPE_ID,
-            "request_sender" => REQUEST_SENDER,
-            "request_receiver" => REQUEST_RECEIVER,
-            "base_url" => base_url()
-        );
     }
 
     function add_friend() {
@@ -119,6 +109,7 @@ class Friend extends CI_Controller {
 
     function get_friend_list($friend_id = "0") {
         $user_relation = array();
+        $friend_list = array();
         $user_id = $this->session->userdata('user_id');
         if ($friend_id != $user_id && $friend_id != "0") {
             $result = $this->friend_mongodb_model->get_relationship_status($user_id, $friend_id);
@@ -141,18 +132,7 @@ class Friend extends CI_Controller {
         } else {
             $user_id = $user_id;
         }
-        $offset = 0;
-        $limit = 5;
-        $friend_list = array();
-        $status_type = "1";
-        $friend_list_result = $this->friend_mongodb_model->get_friend_list($user_id, $status_type, $offset, $limit);
-        if ($friend_list_result != null) {
-            $friend_list_result = json_decode($friend_list_result);
-            if (property_exists($friend_list_result, "result")) {
-                $friend_list = $friend_list_result->result;
-            }
-        }
-     
+        $friend_list = $this->get_friend_list_info($user_id);
         $this->data['friendList'] = $friend_list;
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['user_id'] = $user_id;
@@ -160,6 +140,28 @@ class Friend extends CI_Controller {
         $this->data['friend_id'] = $friend_id;
         $this->data['app'] = "app.Friend";
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/friends", $this->data);
+    }
+
+    function get_chat_friend_list() {
+        $response = array();
+        $user_id = $this->session->userdata('user_id');
+        $response['friend_list'] = $this->get_friend_list_info($user_id);
+        echo json_encode($response);
+    }
+
+    function get_friend_list_info($user_id) {
+        $offset = 0;
+        $limit = 5;
+        $friend_list = array();
+        $status_type = RELATION_TYPE_FRIEND_ID;
+        $friend_list_result = $this->friend_mongodb_model->get_friend_list($user_id, $status_type, $offset, $limit);
+        if ($friend_list_result != null) {
+            $friend_list_result = json_decode($friend_list_result);
+            if (property_exists($friend_list_result, "result")) {
+                $friend_list = $friend_list_result->result;
+            }
+        }
+        return $friend_list;
     }
 
     function get_pending_list() {
