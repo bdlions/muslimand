@@ -1,6 +1,4 @@
 
-
-
 <script type="text/javascript">
     $(function () {
         var profileId = '<?php echo $profile_id; ?>';
@@ -35,7 +33,7 @@
         <?php $this->load->view("member/timeline/photo_list"); ?>
     </div>
     <div class="col-md-7" ng-controller="statusController" id='status_set_id' >
-        <?php $this->load->view("member/timeline/post_status"); ?>
+        <?php $this->load->view("member/pagelets/post_status"); ?>
         <div class="row form-group"></div>
             <?php $this->load->view("member/pagelets/updated_status"); ?>
         <?php // $this->load->view("member/timeline/shared_link"); ?>

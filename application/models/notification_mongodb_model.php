@@ -23,9 +23,9 @@ class Notification_mongodb_model extends CI_Model
         $this->curl->post(array("userId" => $user_id, "offset" => $offset, "limit" => $limit));
         return json_decode($this->curl->execute());
     }
-      public function update_status_get_friend_notification($user_id, $status_type_id, $offset, $limit){
+      public function update_status_get_friend_notification($user_id,  $offset, $limit){
         $this->curl->create($this->SERVICE_NOTIFICATION . 'updateStatusGetFriendNotifications');
-        $this->curl->post(array("userId" => $user_id, "statusTypeId" => $status_type_id, "offset" => $offset, "limit" => $limit));
+        $this->curl->post(array("userId" => $user_id,  "offset" => $offset, "limit" => $limit));
         return json_decode($this->curl->execute());
     }
       public function get_friend_notifications($user_id, $offset, $limit){

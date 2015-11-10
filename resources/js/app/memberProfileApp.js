@@ -4,5 +4,6 @@ angular.module("app.MemberProfile", [
     'controllers.Right',
     'controllers.Status',
     'controllers.Friend',
+    'controllers.Image',
     'ui.bootstrap'
 ]);

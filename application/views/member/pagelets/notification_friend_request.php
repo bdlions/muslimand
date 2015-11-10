@@ -44,7 +44,7 @@
             </div>
             <div class="col-xs-6">
                 <div class="pull-right">
-                    <div ng-if="pFriend.relationTypeId == <?php echo RELATION_TYPE_FRIEND_ID; ?>">
+                    <div>
                         <button  id="confirm_pending_friend_{{pFriend.userId}}" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="confirm_request(angular.element(this).scope().pFriend.userId)">Confirm</button>
                         <button id="delete_pending_request_{{pFriend.userId}}" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="delete_request(angular.element(this).scope().pFriend.userId)">Delete Request</button>
                     </div>

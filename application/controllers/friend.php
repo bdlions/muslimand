@@ -107,12 +107,12 @@ class Friend extends CI_Controller {
         echo json_encode($response);
     }
 
-    function get_friend_list($friend_id = "0") {
+    function get_friend_list($profile_id = "0") {
         $user_relation = array();
         $friend_list = array();
         $user_id = $this->session->userdata('user_id');
-        if ($friend_id != $user_id && $friend_id != "0") {
-            $result = $this->friend_mongodb_model->get_relationship_status($user_id, $friend_id);
+        if ($profile_id != $user_id && $profile_id != "0") {
+            $result = $this->friend_mongodb_model->get_relationship_status($user_id, $profile_id);
             $result = json_decode($result);
             if ($result != null) {
                 if (property_exists($result, "relationTypeId") != FALSE) {
@@ -121,14 +121,22 @@ class Friend extends CI_Controller {
                 if (property_exists($result, "isInitiated") != FALSE) {
                     $user_relation['is_initiated'] = $result->isInitiated;
                 }
+                if (property_exists($result, "firstName") != FALSE) {
+                    $this->data['profile_first_name'] = $result->firstName;
+                }
+                if (property_exists($result, "lastName") != FALSE) {
+                    $this->data['profile_last_name'] = $result->lastName;
+                }
             }
         } else {
+            $this->data['profile_first_name'] = $this->session->userdata('first_name');
+            $this->data['profile_last_name'] = $this->session->userdata('last_name');
             $user_relation['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
         }
 
 //get friend list either user itself or friend's 
-        if ($friend_id != "0") {
-            $user_id = $friend_id;
+        if ($profile_id != "0") {
+            $user_id = $profile_id;
         } else {
             $user_id = $user_id;
         }
@@ -137,7 +145,7 @@ class Friend extends CI_Controller {
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->data['friend_id'] = $friend_id;
+        $this->data['profile_id'] = $profile_id;
         $this->data['app'] = "app.Friend";
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/friends", $this->data);
     }

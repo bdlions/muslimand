@@ -64,11 +64,10 @@ class Notification extends CI_Controller {
         }
         $response = array();
         $user_id = $this->session->userdata('user_id');
-        $status_type_id = RELATION_TYPE_PENDING_ID;
         $offset = 0;
         $limit = 5;
         if ($counter_value > 0) {
-            $response["friend_list"] = $this->notification_mongodb_model->update_status_get_friend_notification($user_id, $status_type_id, $offset, $limit);
+            $response["friend_list"] = $this->notification_mongodb_model->update_status_get_friend_notification($user_id, $offset, $limit);
         } else {
             $response["friend_list"] = $this->notification_mongodb_model->get_friend_notifications($user_id, $offset, $limit);
         }

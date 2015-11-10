@@ -14,7 +14,7 @@ angular.module('controllers.Status', ['services.Status']).
 
             $scope.setStatus = function (userStatus) {
                 $scope.statuses = JSON.parse(userStatus);
-//                console.log($scope.statuses);
+                console.log($scope.statuses);
             };
           
             $scope.setProfileStatus = function (userProfileStatus) {
@@ -24,7 +24,7 @@ angular.module('controllers.Status', ['services.Status']).
             $scope.getProfileStatus = function (profileId) {
                 statusService.getProfileStatus(profileId).
                         success(function (data, status, headers, config) {
-//                            console.log(data);
+                            console.log(data.status_list);
                             $scope.statuses =data.status_list;
                         });
             };
@@ -45,9 +45,12 @@ angular.module('controllers.Status', ['services.Status']).
              * @Author Rashida Sultana
              * 
              * */
-            $scope.addStatus = function (imageList, requestFunction) {
+            $scope.addStatus = function (imageList, profileUserInfo, requestFunction) {
                 $scope.statusInfo.imageList = [];
                 $scope.statusInfo.imageList = imageList;
+                $scope.statusInfo.profileId = profileUserInfo.profileId;
+                $scope.statusInfo.profileFirstName = profileUserInfo.profileFirstName;
+                $scope.statusInfo.profileLastName = profileUserInfo.profileLastName;
                 statusService.addStatus($scope.statusInfo).
                         success(function (data, status, headers, config) {
                             $scope.statuses.push(data.status_info);

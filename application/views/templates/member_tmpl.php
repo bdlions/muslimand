@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta name="author" content="Nazmul Hasan, Alamgir Kabir, Ridoy, Tanveer Ahmed, Rashida">
+        <meta name="author" content="Nazmul Hasan, Alamgir Kabir, Ridoy, Tanveer Ahmed, Rashida Sultana">
         <meta name="description" content="Social">
         <meta name="keywords" content=""/>
         <meta charset="UTF-8">
@@ -37,7 +37,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
 
-<!--<image upload>-->
+       <!--<image upload>-->
         <script src="<?php echo base_url(); ?>resources/js/image/vendor/jquery.ui.widget.js"></script>
         <script src="<?php echo base_url(); ?>resources/js/image/load-image.all.min.js"></script>
         <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload.js"></script>
@@ -54,11 +54,13 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/friendController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/rightController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/MessageController.js"></script>
+        
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/rightService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/statusService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/friendService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/messageService.js "></script>
+        
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/statusApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/friendApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/messageApp.js "></script>

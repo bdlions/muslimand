@@ -41,6 +41,9 @@ class Member extends CI_Controller {
                 if (property_exists($resultInfo, "referenceInfo")) {
                     $resultInfo->referenceInfo = json_decode($resultInfo->referenceInfo);
                 }
+                if (property_exists($resultInfo, "mappingUserInfo")) {
+                    $resultInfo->mappingUserInfo = json_decode($resultInfo->mappingUserInfo);
+                }
                 $status_list[] = $resultInfo;
             }
 
@@ -79,9 +82,17 @@ class Member extends CI_Controller {
                 if (property_exists($result, "isInitiated") != FALSE) {
                     $user_relation['is_initiated'] = $result->isInitiated;
                 }
+                if (property_exists($result, "firstName") != FALSE) {
+                    $this->data['profile_first_name'] = $result->firstName;
+                }
+                if (property_exists($result, "lastName") != FALSE) {
+                    $this->data['profile_last_name'] = $result->lastName;
+                }
             }
         } else {
             $user_relation['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
+            $this->data['profile_first_name'] = $this->session->userdata('first_name');
+            $this->data['profile_last_name'] = $this->session->userdata('last_name');
         }
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['user_id'] = $user_id;

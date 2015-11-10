@@ -1,6 +1,6 @@
 <script>
     function approve_request(friendId) {
-        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function() {
+        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function () {
 
         });
     }
@@ -19,7 +19,7 @@
 </script>
 <script>
     function block_request(friendId) {
-        angular.element($('#block_friend_id')).scope().blockRequest(friendId, function() {
+        angular.element($('#block_friend_id')).scope().blockRequest(friendId, function () {
             alert("user is blocked ");
         });
     }
@@ -108,7 +108,7 @@
                 </div>
             </div>
             <a class="timeline_profile_name" href="">
-                Mohammad Azhar Uddin
+                <?php echo $profile_first_name; ?>&nbsp;<?php echo $profile_last_name; ?>
             </a>
             <div ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)" >
                 <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_NON_FRIEND_ID; ?>">
@@ -165,7 +165,11 @@
                     <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>member/timeline">Timeline</a>
                     <a class="btn btn-default get_over_view_class" style="font-size: 100%" onclick="getOverview('<?php echo $user_id; ?>')" href="<?php echo base_url(); ?>member/about">About</a>
                     <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>photos">Photo</a>
-                    <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>friend/get_friend_list/<?php echo $profile_id; ?>">Friends</a>
+                    <?php if ($profile_id != "0") { ?>
+                        <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>friend/get_friend_list/<?php echo $profile_id; ?>">Friends</a>
+                    <?php } else { ?>
+                        <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>friend/get_friend_list">Friends</a>
+                    <?php } ?>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             More

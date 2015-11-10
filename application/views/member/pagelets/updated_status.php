@@ -1,5 +1,6 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/elif.js"></script>
 <div id="updateStatusPagelet" >
+    <!--<div ng-repeat="status in statuses" class="form-group">-->
     <div ng-repeat="status in statuses.slice().reverse()" class="form-group">
         <div class="pagelet" id="pagelet{{status.statusId}}">
             <div class="pagelet">
@@ -14,9 +15,16 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: left;">
-                                            <a href="<?php echo base_url(); ?>member/timeline/{{status.userInfo.userId}}" style="font-weight: bold;"><span ng-bind="status.userInfo.firstName"></span>&nbsp<span ng-bind="status.userInfo.lastName"></span></a>
+                                            <a href="<?php echo base_url(); ?>member/timeline/{{status.userInfo.userId}}" style="font-weight: bold;"><span ng-bind="status.userInfo.firstName"></span>&nbsp<span ng-bind="status.userInfo.lastName"></span></a> 
+                                            <span ng-if="status.mappingUserInfo != null">
+                                                to 
+                                            <a href="<?php echo base_url(); ?>member/timeline/{{status.mappingUserInfo.userId}}" style="font-weight: bold;">{{status.mappingUserInfo.firstName}}&nbsp;{{status.mappingUserInfo.lastName}}</a> 
+                                            </span>
                                             <span ng-if="<?php echo POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID; ?> == status.statusTypeId">
                                                 update his/her status
+                                            </span>
+                                            <span ng-if="<?php echo POST_STATUS_BY_USER_AT_FRIEND_PROFILE_TYPE_ID; ?> == status.statusTypeId">
+                                              
                                             </span>
                                             <span ng-if="<?php echo SHARE_OTHER_STATUS; ?> == status.statusTypeId">
                                                 shared 

@@ -70,16 +70,27 @@ class Status extends CI_Controller {
         $user_id = $this->session->userdata('user_id');
         if ($requestInfo != null) {
             $user_info = new stdClass();
-            $user_info->userId = $this->session->userdata('user_id');
+            $user_info->userId = $user_id;
             $user_info->firstName = $this->session->userdata('first_name');
             $user_info->lastName = $this->session->userdata('last_name');
             $status_info = new stdClass();
-            $status_info->userId = $this->session->userdata('user_id');
+            $status_info->userId = $user_id;
             $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
-            $status_info->statusTypeId = POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID;
-            $status_info->mappingId = $user_id;
+
             if (property_exists($requestInfo, "statusInfo") != FALSE) {
                 $request = $requestInfo->statusInfo;
+            }
+            if (property_exists($request, "profileId") != FALSE) {
+
+                $profile_id = $request->profileId;
+            }
+
+            if ($user_id != $profile_id && $profile_id != "") {
+                $status_info->mappingId = $profile_id;
+                $status_info->statusTypeId = POST_STATUS_BY_USER_AT_FRIEND_PROFILE_TYPE_ID;
+            } else {
+                $status_info->mappingId = $user_id;
+                $status_info->statusTypeId = POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID;
             }
             if (property_exists($request, "description") != FALSE) {
                 $status_info->description = $request->description;
@@ -95,13 +106,24 @@ class Status extends CI_Controller {
                 }
                 $album_id = TIMELINE_PHOTOS_ALBUM_ID;
                 $album_title = TIMELINE_PHOTOS_ALBUM_TITLE;
-                $user_id = $this->session->userdata('user_id');
                 $album_result = $this->album_add($user_id, $album_id, $album_title, $image_list);
             }
             $status_info->images = $images;
             $status_info->userInfo = $user_info;
             $result = $this->status_mongodb_model->add_status($status_info);
             if ($result != null) {
+                if ($user_id != $profile_id && $profile_id != "") {
+                    $maping_user_info = new stdClass();
+                    $maping_user_info->userId = $profile_id;
+                    if (property_exists($request, "profileFirstName") != FALSE) {
+                        $maping_user_info->firstName = $request->profileFirstName;
+                    }
+                    if (property_exists($request, "profileLastName") != FALSE) {
+                        $maping_user_info->lastName = $request->profileLastName;
+                    }
+                    $profile_id = $status_info->mappingId = $request->profileId;
+                    $status_info->mappingUserInfo = $maping_user_info;
+                }
                 $response["status_info"] = $status_info;
             }
         }
@@ -258,6 +280,9 @@ class Status extends CI_Controller {
         $result = $this->status_mongodb_model->get_statuses($user_id, $offset, $limit);
         if ($result != null) {
             $result = json_decode($result);
+            if (property_exists($result, "mappingUserInfo")) {
+                $result->mappingUserInfo = json_decode($result->mappingUserInfo);
+            }
             $this->data["status_list"] = $result;
         }
         $this->data['app'] = "app.Status";
@@ -287,6 +312,7 @@ class Status extends CI_Controller {
         }
         echo json_encode($response);
     }
+
     function get_user_profile_status() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -303,8 +329,11 @@ class Status extends CI_Controller {
             foreach ($result as $status) {
                 if (property_exists($status, "userInfo")) {
                     $status->userInfo = json_decode($status->userInfo);
-                    $status_list[] = $status;
                 }
+                if (property_exists($status, "mappingUserInfo")) {
+                    $status->mappingUserInfo = json_decode($status->mappingUserInfo);
+                }
+                $status_list[] = $status;
             }
             $response["status_list"] = $status_list;
         }
