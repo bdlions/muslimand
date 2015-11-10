@@ -485,10 +485,9 @@
     </div>
     <div class="row" style="position: absolute; margin: 5px; top: 198px; left: -25px; background-color: #E5E5E5; padding: 5px 0; ">
         <div class="col-md-12">
-            <div class="dropup" style="cursor: pointer;">
+            <div class="dropup pull-right" style="cursor: pointer;">
                 <div class="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="msg_box_counter" id="msg_box_counter_div" style="">15</div>
-                            <!--<span class="caret"></span>-->
                     <img src="<?php echo base_url(); ?>resources/images/comment_icon.png">
                 </div>
                 <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenu2">

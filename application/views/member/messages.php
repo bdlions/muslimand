@@ -9,10 +9,20 @@
         secondImage.style.height = '100%';
     }
 </script>
-
+<script>
+    (function($) {
+        $(window).load(function() {
+            $("#full_msg_box_container .ticker").mCustomScrollbar({
+                setHeight: 300,
+                theme: "dark-3"
+            });
+        });
+    })(jQuery);
+</script>
 <div class="row" ng-controller="messageController" ng-init="setMessageSummery('<?php echo htmlspecialchars(json_encode($message_summery_list)); ?>')">
-    <div class="col-md-10">
+    <div class="col-md-12">
         <div class="pagelet">
+            <div class="padding_top_10px"></div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="row">
@@ -28,7 +38,7 @@
                         </div>
                         <div class="col-md-offset-2 col-md-6">
                             <div class="btn-group">
-                                <button class="btn btn-default btn-xs dropdown-toggle" aria-expanded="false" data-toggle="dropdown" type="button">
+                                <button class="button-custom btn-xs dropdown-toggle" aria-expanded="false" data-toggle="dropdown" type="button">
                                     More <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
@@ -45,9 +55,14 @@
                             <a style="color: black; font-weight: bold; font-size: 18px;" href="#">Mohammad Azhar Uddin</a>
                         </div>
                         <div class="col-md-6">
-                            <div class="pull-right">
-                                <button class="btn btn-default" type="button">New Message</button>
-                                <button class="btn btn-default" type="button">Action</button>
+                            <div class="dropdown pull-right">
+                                <button class="button-custom dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Action
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Block Messages</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -55,6 +70,7 @@
             </div>
         </div>  
         <div class="pagelet">
+            <div class="padding_top_10px"></div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="pagelet">
@@ -97,12 +113,12 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div class="message_friends_divider_full">
+                    <div class="border_without_bottom padding_top_5px">
                         <div class="row" ng-repeat="messageInfo in messageInformation.messages">
                             <div class="user_comment">
                                 <div class="col-md-1">
                                     <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
-                                    <!--<img src="<?php // echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg" width="30" height="30" onError="onImageUnavailable(this)">--> 
+                                    <!--<img src="<?php // echo base_url() . PROFILE_PICTURE_PATH_W30_H30;  ?>{{messageInfo.senderInfo.userId}}.jpg" width="30" height="30" onError="onImageUnavailable(this)">--> 
                                     <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
                                 </div>
                                 <div class="col-md-8">
@@ -124,18 +140,48 @@
                         </div>
                     </div>
                     <div class="message_friends_divider_others">
+                        <div id="full_msg_box_container">
+                            <div class="ticker">
+                                <div class="row ">
+                                    <div class="col-md-12"> 
+                                        <div class="border_without_bottom padding_5px" >
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                            content here <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-12"> 
                                 <form  ng-submit="addMessage(messageInformation.groupId)">
-                                    <input type ="text" class="form-control" placeholder="Write a reply" ng-model="userMessage.message">
+                                    <textarea type ="text" class="form-control textarea-custom" placeholder="Write a reply" ng-model="userMessage.message"></textarea>
                                 </form>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8">
-                                <div class="message_text user_comment">
-                                    <button class="btn btn-default" type="button">Add files</button>
-                                    <button class="btn btn-default" type="button">Add photos</button>
+                                <div class="user_comment">
+                                    <button class="button-custom" type="button">Add files</button>
+                                    <button class="button-custom" type="button">Add photos</button>
                                 </div>
                             </div>  
                             <div class="col-md-4">
@@ -149,15 +195,4 @@
             </div>
         </div>
     </div>
-    <div class="col-md-2"></div>
 </div>
-
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
