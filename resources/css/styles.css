@@ -167,6 +167,11 @@ html, body {
 .message_friends_divider_full{
     border-top: 1px solid lightgray;
 }
+.border_without_bottom{
+     border-top: 1px solid lightgray;
+     border-left: 1px solid lightgray;
+     border-right: 1px solid lightgray;
+}
 
 /*================================  Left Menu  ================================*/
 .video_ul{
@@ -256,6 +261,15 @@ html, body {
 .padding_top_10px{
     padding-top: 10px;
 }
+.padding_top_5px{
+    padding-top: 5px;
+}
+.padding_5px{
+    padding: 5px;
+}
+.padding_10px{
+    padding: 10px;
+}
 .container_background{
     background-color: #E9EAED;
 }
@@ -264,6 +278,13 @@ html, body {
     height: 300px;
     z-index: 1001;
 }
+
+.textarea-custom{
+    resize: none; 
+    border-radius: 0;
+}
+
+
 
 /*================================  font size ================================*/
 .font_10px{
