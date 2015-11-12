@@ -38,16 +38,16 @@
             }
         });
 
-        $(".common_box_header").each(function() {
-            $(this).click(function() {
-                var newElem = $(this).parent(".common_box").find(".chat_box_hidden_container");
-                newElem.hide();
-                $(this).css("background-color", "#703684");
-//                $(this).find(".common_box_header").css("top","115%");
-//                $(this).find(".common_box_header").css("bottom",$(window).height());
-                //console.log($(window).scrollTop() + $(window).height());
-            });
-        });
+//        $(".common_box_header").each(function() {
+//            $(this).click(function() {
+//                var newElem = $(this).parent(".common_box").find(".chat_box_hidden_container");
+//                newElem.hide();
+//                $(this).css("background-color", "#703684");
+////                $(this).find(".common_box_header").css("top","115%");
+////                $(this).find(".common_box_header").css("bottom",$(window).height());
+//                //console.log($(window).scrollTop() + $(window).height());
+//            });
+//        });
     });
     function close_message_window_1() {
         $("#msg_window_1").hide();

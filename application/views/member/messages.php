@@ -1,5 +1,4 @@
 <script>
-
     function onImageUnavailable(img) {
         var div = img.parentNode;
         var firstImage = img;
@@ -140,36 +139,6 @@
                         </div>
                     </div>
                     <div class="message_friends_divider_others">
-                        <div id="full_msg_box_container">
-                            <div class="ticker">
-                                <div class="row ">
-                                    <div class="col-md-12"> 
-                                        <div class="border_without_bottom padding_5px" >
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                            content here <br>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-md-12"> 
                                 <form  ng-submit="addMessage(messageInformation.groupId)">
