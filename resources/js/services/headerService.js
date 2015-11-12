@@ -1,19 +1,20 @@
 angular.module('services.Header', []).
-        factory('headerService', function ($http) {
+        factory('headerService', function ($http, $location) {
             var headerService = {};
-            headerService.updateStatusGetFriendNotifications = function (counterValue, url) {
+            var $app_name = "/muslimand";
+            headerService.updateStatusGetFriendNotifications = function (counterValue) {
                 return $http({
                     method: 'post',
-                    url: url + 'notification/update_status_get_friend_notification',
+                    url: $location.path() + $app_name  + '/notification/update_status_get_friend_notification',
                     data: {
                         counterValue: counterValue
                     }
                 });
             };
-            headerService.updateStatusGetGeneralNotifications = function (counterValue, url) {
+            headerService.updateStatusGetGeneralNotifications = function (counterValue) {
                 return $http({
                     method: 'post',
-                    url: url + 'notification/update_status_get_general_notifications',
+                    url: $location.path() + $app_name  + '/notification/update_status_get_general_notifications',
                     data: {
                         counterValue: counterValue
                     }
@@ -21,19 +22,19 @@ angular.module('services.Header', []).
             };
 
 
-            headerService.approveRequest = function (friendId, url) {
+            headerService.approveRequest = function (friendId) {
                 return $http({
                     method: 'post',
-                    url: url + 'friend/approve_request',
+                    url: $location.path() + $app_name  + '/friend/approve_request',
                     data: {
                         friendId: friendId
                     }
                 });
             };
-            headerService.deleteRequest = function (friendId, url) {
+            headerService.deleteRequest = function (friendId) {
                 return $http({
                     method: 'post',
-                    url: url + 'friend/remove_friend_request',
+                    url: $location.path() + $app_name  + '/friend/remove_friend_request',
                     data: {
                         friendId: friendId
                     }

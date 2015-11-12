@@ -2,7 +2,7 @@ angular.module('controllers.Header', ['services.Header']).
         controller('headerController', function ($scope, headerService) {
             $scope.constants = {};
             $scope.counter = 0;
-            $scope.notificationList = [];
+            $scope.generalNotification = {};
             $scope.allNotificationList = [];
             $scope.prndingFriends = [];
             $scope.url = "../";
@@ -12,7 +12,7 @@ angular.module('controllers.Header', ['services.Header']).
             };
 
             $scope.updateStatusGetFriendNotifications = function (counterValue, requestFunction) {
-                headerService.updateStatusGetFriendNotifications(counterValue, $scope.url).
+                headerService.updateStatusGetFriendNotifications(counterValue).
                         success(function (data, status, headers, config) {
                             $scope.prndingFriends = data.friend_list;
                             requestFunction();
@@ -25,16 +25,16 @@ angular.module('controllers.Header', ['services.Header']).
             };
 
             $scope.updateStatusGetGeneralNotifications = function (counterValue, requestFunction) {
-                headerService.updateStatusGetGeneralNotifications(counterValue, $scope.url).
+                headerService.updateStatusGetGeneralNotifications(counterValue).
                         success(function (data, status, headers, config) {
-                            $scope.notificationList = data.notification_list;
+                            $scope.generalNotification = data.general_notification;
                             console.log(data);
                             requestFunction();
                         });
             };
 
             $scope.approveRequest = function (friendId, reuestFunction) {
-                headerService.approveRequest(friendId, $scope.url).
+                headerService.approveRequest(friendId).
                         success(function (data, status, headers, config) {
 //                            $scope.userRelation = data;
 //                            angular.forEach($scope.prndingFriends, function (value, key) {
@@ -46,7 +46,7 @@ angular.module('controllers.Header', ['services.Header']).
                         });
             };
             $scope.deleteRequest = function (friendId, reuestFunction) {
-                headerService.deleteRequest(friendId, $scope.url).
+                headerService.deleteRequest(friendId).
                         success(function (data, status, headers, config) {
                             reuestFunction();
                         });

@@ -28,7 +28,7 @@ class Member extends CI_Controller {
     function newsfeed() {
         $user_id = $this->session->userdata('user_id');
         $offset = 0;
-        $limit = 5;
+        $limit = 10;
         $result = array();
         $status_list = array();
         $result = $this->status_mongodb_model->get_statuses($user_id, $offset, $limit);
@@ -137,7 +137,7 @@ class Member extends CI_Controller {
 
     function messages() {
 
-        $limit = 5;
+        $limit = 10;
         $offset = 0;
         $user_id = $this->session->userdata('user_id');
         $result = $this->message_mongodb_model->get_message_summary_list($user_id, $offset, $limit);

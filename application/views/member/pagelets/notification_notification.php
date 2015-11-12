@@ -26,7 +26,7 @@
     </div>
 </div>
 <div style="max-height: 450px; overflow-x:hidden; overflow-y: scroll">
-    <div class="pagelet message_friends_box" ng-repeat="notification in notificationList">
+    <div class="pagelet message_friends_box" ng-repeat="notification in generalNotification.generalNotifications">
         <div class="row">
             <a  href="<?php echo base_url() ?>member/post/{{notification.referenceId}}">
                 <div class="col-xs-2">
@@ -37,7 +37,12 @@
                     <span ng-repeat="(key,user) in notification.userList">
                         <span style="font-weight: bold" ng-if="key == 2">and</span>
                         <span style="font-weight: bold" ng-if="key == 1" >,</span>
-                        {{user.firstName}}&nbsp;{{user.lastName}}
+                        <span ng-if="user.userId != '<?php echo $user_id; ?>'">
+                            {{user.firstName}}&nbsp;{{user.lastName}}
+                        </span>
+                        <span ng-if="user.userId == '<?php echo $user_id; ?>'">
+                            you
+                        </span>
                     </span>
                     <span ng-if="notification.typeId == <?php echo NOTIFICATION_TYPE_POST_LIKE; ?>">
                         <span ng-if="notification.userList.length >= 2"> likes</span>
@@ -47,7 +52,14 @@
                         <span ng-if="notification.userList.length >= 2"> commented on </span>
                         <span ng-if="notification.userList.length <= 1">also  commented on</span>
                     </span>
-                    your status
+                        <span ng-if="generalNotification.userId != '<?php echo $user_id; ?>'">
+                            <!--{{user.firstName}}&nbsp;{{user.lastName}}-->
+                            some one
+                        </span>
+                        <span ng-if="generalNotification.userId == '<?php echo $user_id; ?>'">
+                            your 
+                        </span>
+                    status
                     <div>
                         15 mins
                     </div>

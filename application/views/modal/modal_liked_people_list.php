@@ -10,13 +10,16 @@
                     <div class="modal-body">
                         <div class="row modal_content_row_border_full" ng-repeat="likedUser in likeList">
                             <div class="col-md-2">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg"  width="30" height="30">
+                                <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{likedUser.userInfo.userId}}.jpg?time=' . time()" width="30" height="30" >
+                                <!--<img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{likedUser.userInfo.userId}}.jpg?time=' . time()" width="30" height="30" onError="onImageError(this)">-->
+                                <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
                             </div>
                             <div class="col-md-7">
-                               {{likedUser.userInfo.firstName}}&nbsp{{likedUser.userInfo.lastName}}
+                                <a href="<?php echo base_url(); ?>member/timeline/{{likedUser.userInfo.userId}}" >
+                                    {{likedUser.userInfo.firstName}}&nbsp{{likedUser.userInfo.lastName}}</a>
                             </div>
                             <div class="col-md-3">
-                                <input id="add_friend_id_1" type="button" class="default_button form-control form_control_custom_style" value="Add Friend" >
+                                <input id="add_friend_id_1" type="button" class="default_button form-control form_control_custom_style" value="Friend" >
                                 <div id="friend_list_id_1" class="btn-group" role="group" style=" display: none;">
                                     <button class="btn btn-default dropdown-toggle button-custom" aria-expanded="false" data-toggle="dropdown" type="button">
                                         Friend

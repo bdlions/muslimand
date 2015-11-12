@@ -6,7 +6,7 @@
             <div class="pagelet">
                 <div class="row">
                     <div class="col-md-2" >
-                        <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>{{status.userInfo.userId}}.jpg" width="40" height="40" onError="onImageUnavailable(this)">
+                        <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time=' . time()" width="40" height="40" onError="onImageUnavailable(this)">
                         <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40.jpg">
                     </div>
                     <div class="col-md-10" >
@@ -18,13 +18,13 @@
                                             <a href="<?php echo base_url(); ?>member/timeline/{{status.userInfo.userId}}" style="font-weight: bold;"><span ng-bind="status.userInfo.firstName"></span>&nbsp<span ng-bind="status.userInfo.lastName"></span></a> 
                                             <span ng-if="status.mappingUserInfo != null">
                                                 to 
-                                            <a href="<?php echo base_url(); ?>member/timeline/{{status.mappingUserInfo.userId}}" style="font-weight: bold;">{{status.mappingUserInfo.firstName}}&nbsp;{{status.mappingUserInfo.lastName}}</a> 
+                                                <a href="<?php echo base_url(); ?>member/timeline/{{status.mappingUserInfo.userId}}" style="font-weight: bold;">{{status.mappingUserInfo.firstName}}&nbsp;{{status.mappingUserInfo.lastName}}</a> 
                                             </span>
                                             <span ng-if="<?php echo POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID; ?> == status.statusTypeId">
                                                 update his/her status
                                             </span>
                                             <span ng-if="<?php echo POST_STATUS_BY_USER_AT_FRIEND_PROFILE_TYPE_ID; ?> == status.statusTypeId">
-                                              
+
                                             </span>
                                             <span ng-if="<?php echo SHARE_OTHER_STATUS; ?> == status.statusTypeId">
                                                 shared 
@@ -220,16 +220,18 @@
 
                 <span ng-if="status.commentList != null">
                     <div class="pagelet_divider" id='pagelet_id_2'></div>
-                    <div class="row form-group">
-                        <div ng-repeat="commentInfo in status.commentList">
+                    <div ng-repeat="commentInfo in status.commentList">
+                        <div class="row">
                             <div class="col-md-1" profile_picture>
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg" width="30" height="30">
+                                <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time=' . time()" width="30" height="30">
+                                <!--<img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time=' . time()" width="30" height="30" onError="onImageError(this)">-->
+                                <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
                             </div>
                             <div class="col-md-11">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: left">
-                                            <a style="font-weight: bold;" href></span><span ng-bind="commentInfo.userInfo.firstName"></span>&nbsp<span ng-bind="commentInfo.userInfo.lastName"></span></a>
+                                            <a style="font-weight: bold;" href='<?php echo base_url(); ?>member/timeline/{{commentInfo.userInfo.userId}}'></span><span ng-bind="commentInfo.userInfo.firstName"></span>&nbsp<span ng-bind="commentInfo.userInfo.lastName"></span></a>
                                             <span ng-bind="commentInfo.description">
                                         </div>
                                     </div>
@@ -321,4 +323,13 @@
         secondImage.style.visibility = 'visible';
         secondImage.style.height = '100%';
     }
+    function onImageError(img) {
+        var div = img.parentNode;
+        var firstImage = img;
+        var secondImage = div.getElementsByTagName('img')[1];
+        firstImage.style.display = 'none';
+        secondImage.style.visibility = 'visible';
+        secondImage.style.height = '100%';
+    }
+    
 </script>

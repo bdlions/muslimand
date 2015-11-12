@@ -99,6 +99,7 @@ class Videos extends CI_Controller {
             $this->data["video_info"] = json_encode(array());
         }
         $this->data['app'] = "app.Video";
+        $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_iframe", $this->data);
     }

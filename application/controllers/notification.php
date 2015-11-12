@@ -48,9 +48,9 @@ class Notification extends CI_Controller {
         $limit = 5;
         $notification_list = array();
         if ($counter_value > 0) {
-            $response["notification_list"] = $this->notification_mongodb_model->update_status_get_general_notifications($user_id, $status_type_id, $offset, $limit);
+            $response["general_notification"]= $this->notification_mongodb_model->update_status_get_general_notifications($user_id, $status_type_id, $offset, $limit);
         } else {
-            $response["notification_list"] = $this->notification_mongodb_model->get_general_notifications($user_id, $offset, $limit);
+            $response["general_notification"] = $this->notification_mongodb_model->get_general_notifications($user_id, $offset, $limit);
         }
         echo json_encode($response);
         return;

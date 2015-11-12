@@ -275,7 +275,7 @@ class Status extends CI_Controller {
         $response = array();
         $user_id = $this->session->userdata('user_id');
         $offset = 0;
-        $limit = 5;
+        $limit = 10;
         $result = array();
         $result = $this->status_mongodb_model->get_statuses($user_id, $offset, $limit);
         if ($result != null) {
@@ -296,7 +296,7 @@ class Status extends CI_Controller {
         $mapping_id = $_POST['profileId'];
         $user_id = $this->session->userdata('user_id');
         $offset = 0;
-        $limit = 5;
+        $limit = 10;
         $result = array();
         $status_list = array();
         $result = $this->status_mongodb_model->get_user_profile_status($user_id, $mapping_id, $offset, $limit);
@@ -320,7 +320,7 @@ class Status extends CI_Controller {
         $response = array();
         $user_id = $this->session->userdata('user_id');
         $offset = 0;
-        $limit = 5;
+        $limit = 10;
         $result = array();
         $status_list = array();
         $result = $this->status_mongodb_model->get_user_profile_status($user_id, $mapping_id, $offset, $limit);

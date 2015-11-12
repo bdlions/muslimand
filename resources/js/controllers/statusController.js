@@ -14,7 +14,6 @@ angular.module('controllers.Status', ['services.Status']).
 
             $scope.setStatus = function (userStatus) {
                 $scope.statuses = JSON.parse(userStatus);
-                console.log($scope.statuses);
             };
           
             $scope.setProfileStatus = function (userProfileStatus) {
@@ -24,20 +23,17 @@ angular.module('controllers.Status', ['services.Status']).
             $scope.getProfileStatus = function (profileId) {
                 statusService.getProfileStatus(profileId).
                         success(function (data, status, headers, config) {
-                            console.log(data.status_list);
                             $scope.statuses =data.status_list;
                         });
             };
 
             $scope.setSharedInfo = function (sharedInfo, requestFunction) {
                 $scope.sharedInfo = sharedInfo;
-//                console.log($scope.sharedInfo);
                 requestFunction();
             };
             $scope.statusDetails = function (statusId) {
                 statusService.statusDetails(statusId).
                         success(function (data, status, headers, config) {
-                            console.log(data);
                         });
             };
             /**
@@ -88,7 +84,6 @@ angular.module('controllers.Status', ['services.Status']).
                                     } else {
                                         (value.likeCounter = value.likeCounter + 1);
                                     }
-                                    console.log(value);
                                 }
                             }, $scope.statuses);
 
@@ -130,7 +125,6 @@ angular.module('controllers.Status', ['services.Status']).
             };
 
             $scope.shareStatus = function (requestFunction) {
-                console.log($scope.sharedInfo);
                 statusService.shareStatus($scope.sharedInfo, $scope.statusShareInfo).
                         success(function (data, status, headers, config) {
                             $scope.statuses.push(data.status_info);

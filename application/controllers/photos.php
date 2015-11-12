@@ -639,7 +639,8 @@ class Photos extends CI_Controller {
         $this->utils->resize_image(TEMP_PROFILE_IMAGE_PATH . $new_name, PROFILE_PICTURE_PATH_W100_H100 . $new_name, PROFILE_PICTURE_H100, PROFILE_PICTURE_W100);
         $this->utils->resize_image(TEMP_PROFILE_IMAGE_PATH . $new_name, PROFILE_PICTURE_PATH_W50_H50 . $new_name, PROFILE_PICTURE_H50, PROFILE_PICTURE_W50);
         $this->utils->resize_image(TEMP_PROFILE_IMAGE_PATH . $new_name, PROFILE_PICTURE_PATH_W40_H40 . $new_name, PROFILE_PICTURE_H40, PROFILE_PICTURE_W40);
-        $this->utils->resize_image(TEMP_PROFILE_IMAGE_PATH . $new_name, PROFILE_PICTURE_PATH_W32_H32 . $new_name, PROFILE_PICTURE_H32, PROFILE_PICTURE_W32);
+        $this->utils->resize_image(TEMP_PROFILE_IMAGE_PATH . $new_name, PROFILE_PICTURE_PATH_W30_H30 . $new_name, PROFILE_PICTURE_H30, PROFILE_PICTURE_W30);
+        $this->utils->resize_image(TEMP_PROFILE_IMAGE_PATH . $new_name, PROFILE_PICTURE_PATH_W25_H25 . $new_name, PROFILE_PICTURE_H25, PROFILE_PICTURE_W25);
 //delete temp src image
 //update database related to profile picture
 //        $data = array(
@@ -728,6 +729,7 @@ class Photos extends CI_Controller {
             $status_info->statusTypeId = CHANGE_PROFILE_PICTURE;
             $status_info->images = $image_list;
             $status_info->userInfo = $user_info;
+            $status_info->mappingId = $user_id;
             $result = $this->status_mongodb_model->add_status($status_info);
             if ($result != null) {
                 $response["message"] = "Profile picture add successfully";
@@ -771,6 +773,7 @@ class Photos extends CI_Controller {
             $status_info->statusTypeId = CHANGE_COVER_PICTURE;
             $status_info->images = $image_list;
             $status_info->userInfo = $user_info;
+            $status_info->mappingId = $user_id;
             $result = $this->status_mongodb_model->add_status($status_info);
             if ($result != null) {
                 $response["status_info"] = $status_info;
