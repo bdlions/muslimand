@@ -99,6 +99,7 @@
         if (profileId === "0") {
             profileId = '<?php echo $user_id; ?>';
         }
+      
         var profileUserInfo = [];
         profileUserInfo['profileId'] = profileId;
         profileUserInfo['profileFirstName'] = '<?php  if(isset($profile_first_name)){echo $profile_first_name ; } ; ?>';

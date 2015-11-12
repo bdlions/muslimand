@@ -36,7 +36,7 @@ class Photos extends CI_Controller {
         } else {
             $this->data['user_album_list'] = array();
         }
-        $this->data['app'] = "app.Photos";
+        $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
 

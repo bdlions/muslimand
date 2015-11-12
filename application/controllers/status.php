@@ -111,7 +111,8 @@ class Status extends CI_Controller {
             $status_info->images = $images;
             $status_info->userInfo = $user_info;
             $result = $this->status_mongodb_model->add_status($status_info);
-            if ($result != null) {
+            $result = json_decode($result);
+            if ($result->responseCode == REQUEST_SUCCESSFULL) {
                 if ($user_id != $profile_id && $profile_id != "") {
                     $maping_user_info = new stdClass();
                     $maping_user_info->userId = $profile_id;

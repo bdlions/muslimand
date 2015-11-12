@@ -49,7 +49,7 @@ angular.module('controllers.Status', ['services.Status']).
                 $scope.statusInfo.profileLastName = profileUserInfo.profileLastName;
                 statusService.addStatus($scope.statusInfo).
                         success(function (data, status, headers, config) {
-                            $scope.statuses.push(data.status_info);
+                            $scope.statuses.unshift(data.status_info);
                             requestFunction();
                         });
             };

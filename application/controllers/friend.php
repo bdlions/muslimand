@@ -122,15 +122,15 @@ class Friend extends CI_Controller {
                     $user_relation['is_initiated'] = $result->isInitiated;
                 }
                 if (property_exists($result, "firstName") != FALSE) {
-                    $this->data['profile_first_name'] = $result->firstName;
+                    $user_relation['profile_first_name'] = $result->firstName;
                 }
                 if (property_exists($result, "lastName") != FALSE) {
-                    $this->data['profile_last_name'] = $result->lastName;
+                    $user_relation['profile_last_name'] = $result->lastName;
                 }
             }
         } else {
-            $this->data['profile_first_name'] = $this->session->userdata('first_name');
-            $this->data['profile_last_name'] = $this->session->userdata('last_name');
+            $user_relation['profile_first_name'] = $this->session->userdata('first_name');
+            $user_relation['profile_last_name'] = $this->session->userdata('last_name');
             $user_relation['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
         }
 

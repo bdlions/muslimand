@@ -25,6 +25,40 @@ class Member extends CI_Controller {
         $this->load->helper('language');
     }
 
+    /**
+     * this method return user relation and profile info
+     * 
+     */
+    
+    
+    function get_user_relation_info($profile_id = "0") {
+        $user_relation_info = array();
+        $user_id = $this->session->userdata('user_id');
+        if ($profile_id != $user_id && $profile_id != "0") {
+            $result = $this->friend_mongodb_model->get_relationship_status($user_id, $profile_id);
+            $result = json_decode($result);
+            if ($result != null) {
+                if (property_exists($result, "relationTypeId") != FALSE) {
+                    $user_relation_info['relation_ship_status'] = $result->relationTypeId;
+                }
+                if (property_exists($result, "isInitiated") != FALSE) {
+                    $user_relation_info['is_initiated'] = $result->isInitiated;
+                }
+                if (property_exists($result, "firstName") != FALSE) {
+                    $user_relation_info['profile_first_name'] = $result->firstName;
+                }
+                if (property_exists($result, "lastName") != FALSE) {
+                    $user_relation_info['profile_last_name'] = $result->lastName;
+                }
+            }
+        } else {
+            $user_relation_info['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
+            $user_relation_info['profile_first_name'] = $this->session->userdata('first_name');
+            $user_relation_info['profile_last_name'] = $this->session->userdata('last_name');
+        }
+        return $user_relation_info;
+    }
+
     function newsfeed() {
         $user_id = $this->session->userdata('user_id');
         $offset = 0;
@@ -72,28 +106,9 @@ class Member extends CI_Controller {
     function timeline($profile_id = "0") {
         $user_relation = array();
         $user_id = $this->session->userdata('user_id');
-        if ($profile_id != $user_id && $profile_id != "0") {
-            $result = $this->friend_mongodb_model->get_relationship_status($user_id, $profile_id);
-            $result = json_decode($result);
-            if ($result != null) {
-                if (property_exists($result, "relationTypeId") != FALSE) {
-                    $user_relation['relation_ship_status'] = $result->relationTypeId;
-                }
-                if (property_exists($result, "isInitiated") != FALSE) {
-                    $user_relation['is_initiated'] = $result->isInitiated;
-                }
-                if (property_exists($result, "firstName") != FALSE) {
-                    $this->data['profile_first_name'] = $result->firstName;
-                }
-                if (property_exists($result, "lastName") != FALSE) {
-                    $this->data['profile_last_name'] = $result->lastName;
-                }
-            }
-        } else {
-            $user_relation['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
-            $this->data['profile_first_name'] = $this->session->userdata('first_name');
-            $this->data['profile_last_name'] = $this->session->userdata('last_name');
-        }
+        $user_relation = $this->get_user_relation_info($profile_id);
+        $this->data['profile_first_name'] = $user_relation['profile_first_name'];
+        $this->data['profile_last_name'] = $user_relation['profile_last_name'];
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
@@ -102,33 +117,25 @@ class Member extends CI_Controller {
         $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/timeline", $this->data);
     }
 
-    function about($friend_id = 0) {
+    function about($profile_id = 0) {
 
         $user_id = $this->session->userdata('user_id');
-        if ($friend_id != $user_id) {
-            $result = $this->friend_mongodb_model->get_relationship_status($user_id, $friend_id);
-            $result = json_decode($result);
-            if ($result != null) {
-                if (property_exists($result, "relationTypeId") != FALSE) {
-                    $user_relation['relation_ship_status'] = $result->relationTypeId;
-                }
-                if (property_exists($result, "isInitiated") != FALSE) {
-                    $user_relation['is_initiated'] = $result->isInitiated;
-                }
-            }
-        } else {
-            $user_relation['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
-        }
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->data['user_relation'] = json_encode($user_relation);
-        $this->data['friend_id'] = $friend_id;
+        $this->data['user_relation'] = json_encode($this->get_user_relation_info($profile_id));
+        $this->data['profile_id'] = $profile_id;
         $this->data['app'] = "app.BasicProfile";
         $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/about", $this->data);
     }
 
-    function account_settings() {
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/account_settings");
+    function account_settings($profile_id = "0") {
+        $user_id = $this->session->userdata('user_id');
+        $this->data['user_relation'] = json_encode($this->get_user_relation_info($profile_id));
+        $this->data['user_id'] = $user_id;
+        $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['profile_id'] = $profile_id;
+        $this->data['app'] = "app.Status";
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/account_settings", $this->data);
     }
 
     function add_friends() {
@@ -148,8 +155,14 @@ class Member extends CI_Controller {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/messages", $this->data);
     }
 
-    function privacy_settings() {
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/privacy_settings");
+    function privacy_settings($profile_id = "0") {
+        $user_id = $this->session->userdata('user_id');
+        $this->data['user_relation'] = json_encode($this->get_user_relation_info($profile_id));
+        $this->data['user_id'] = $user_id;
+        $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['profile_id'] = $profile_id;
+        $this->data['app'] = "app.Status";
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/privacy_settings", $this->data);
     }
 
     function zakat() {

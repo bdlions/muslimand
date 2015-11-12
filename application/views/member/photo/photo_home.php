@@ -1,4 +1,4 @@
-<div ng-app="app.Photo">
+
     <div ng-controller="photoController">
         <div class="row form-group"></div>
         <div class="row">
@@ -88,4 +88,3 @@
             </div>
         </div>
     </div>
-</div>

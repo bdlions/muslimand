@@ -1,7 +1,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/elif.js"></script>
 <div id="updateStatusPagelet" >
-    <!--<div ng-repeat="status in statuses" class="form-group">-->
-    <div ng-repeat="status in statuses.slice().reverse()" class="form-group">
+    <div ng-repeat="status in statuses" class="form-group">
+    <!--<div ng-repeat="status in statuses.slice().reverse()" class="form-group">-->
         <div class="pagelet" id="pagelet{{status.statusId}}">
             <div class="pagelet">
                 <div class="row">

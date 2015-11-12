@@ -35,7 +35,9 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.fQuote = {};
             $scope.fQuoteInfo = {};
             
-        
+          $scope.setUserRelation = function (userRelation) {
+                $scope.userRelation = JSON.parse(userRelation);
+            };
 
             // about  overview  ........................................      
             $scope.getOverview = function (userId, requestFunction) {

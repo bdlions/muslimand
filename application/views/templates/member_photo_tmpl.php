@@ -43,7 +43,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/photoApp.js "></script>
         <title>Sadiik.com</title>
     </head>
-    <body>
+     <body ng-app="<?php echo $app; ?>">
         <div class="body_wrapper">
             <div class="header_wrapper">
                 <div class="container-fluid container_wrapper">
