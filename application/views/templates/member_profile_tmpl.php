@@ -59,6 +59,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/basicProfileController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/friendController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/photoController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/statusController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/rightController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageCropController.js"></script>
@@ -67,6 +68,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/basicProfileService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/friendService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/photoService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/statusService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/rightService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/basicProfileApp.js "></script>

@@ -25,9 +25,9 @@ class Status_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id,"mappingId" =>$mapping_id, "offset" => $offset, "limit" => $limit));
         return $this->curl->execute();
     }
-    public function get_status_details($status_id) {
+    public function get_status_details($user_id, $status_id) {
         $this->curl->create($this->SERVICE_STATUS . 'getStatusDetails');
-        $this->curl->post(array("statusId" => $status_id));
+        $this->curl->post(array("userId" => $user_id, "statusId" => $status_id));
         return $this->curl->execute();
     }
 
@@ -42,10 +42,15 @@ class Status_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id, "statusId" => $status_id, 'likeInfo' => json_encode($like_info)));
         return $this->curl->execute();
     }
+    public function add_status_comment_like($status_id, $comment_id, $like_info) {
+        $this->curl->create($this->SERVICE_STATUS . 'addStatusCommentLike');
+        $this->curl->post(array("statusId" => $status_id, "commentId" => $comment_id, 'likeInfo' => json_encode($like_info)));
+        return $this->curl->execute();
+    }
 
-    public function add_status_comment($user_id, $status_id, $comment_info) {
+    public function add_status_comment($reference_user_info, $status_id, $comment_info) {
         $this->curl->create($this->SERVICE_STATUS . 'addStatusComment');
-        $this->curl->post(array("userId" => $user_id, "statusId" => $status_id, 'commentInfo' => json_encode($comment_info)));
+        $this->curl->post(array("referenceUserInfo" => json_encode($reference_user_info), "statusId" => $status_id, 'commentInfo' => json_encode($comment_info)));
         return $this->curl->execute();
     }
 

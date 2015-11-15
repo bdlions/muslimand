@@ -1,7 +1,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/elif.js"></script>
 <div id="updateStatusPagelet" >
     <div ng-repeat="status in statuses" class="form-group">
-    <!--<div ng-repeat="status in statuses.slice().reverse()" class="form-group">-->
+        <!--<div ng-repeat="status in statuses.slice().reverse()" class="form-group">-->
         <div class="pagelet" id="pagelet{{status.statusId}}">
             <div class="pagelet">
                 <div class="row">
@@ -239,8 +239,11 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: left">
+                                            <!--<span ng-if = "status.likeStatus != '1'">-->
+                                            <!--</span>-->
                                             January 9, 2015 at 10:15pm. 
-                                            <a>like</a>
+                                                <a style="color: #3B59A9;" href id="statusCommentLike{{commentInfo.commentId}}" ng-click="addStatusCommentLike(status.statusId,commentInfo.commentId)">Like,</a> 
+                                            <!--<a>like</a>-->
                                             <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
                                             . <a>15</a>
                                         </div>
@@ -256,7 +259,7 @@
                         <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
                     </div>
                     <div class="col-md-11">
-                        <form  ng-submit="addComment(status.userInfo.userId, status.statusId)">
+                        <form  ng-submit="addComment(status.userInfo, status.statusId)">
                             <input  id="commentInputField{{status.statusId}}" type ="text" class="form-control" placeholder="Write a comment" ng-model="statusInfo.commentDes">
                         </form>
                     </div>
@@ -331,5 +334,5 @@
         secondImage.style.visibility = 'visible';
         secondImage.style.height = '100%';
     }
-    
+
 </script>

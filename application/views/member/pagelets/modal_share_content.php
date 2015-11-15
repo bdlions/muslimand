@@ -87,6 +87,7 @@
             $("#user_last_name").val("");
             $("#old_description").val("");
             $('#modal_share_content').modal('hide');
+            window.location = '<?php echo base_url(); ?>member/newsfeed';
         });
     }
 </script>

@@ -21,15 +21,16 @@ class Notification extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
-    
     }
 
     function get_notification_counter() {
         $response = array();
         $user_id = $this->session->userdata('user_id');
         $notification_counters = $this->notification_mongodb_model->get_notification_counter($user_id);
-        if (property_exists($notification_counters, "notificationCounter")) {
-            $response['notification_counters'] = json_decode($notification_counters->notificationCounter);
+        if (!empty($notification_counters)) {
+            if (property_exists($notification_counters, "notificationCounter")) {
+                $response['notification_counters'] = json_decode($notification_counters->notificationCounter);
+            }
         }
         echo json_encode($response);
         return;
@@ -48,7 +49,7 @@ class Notification extends CI_Controller {
         $limit = 5;
         $notification_list = array();
         if ($counter_value > 0) {
-            $response["general_notification"]= $this->notification_mongodb_model->update_status_get_general_notifications($user_id, $status_type_id, $offset, $limit);
+            $response["general_notification"] = $this->notification_mongodb_model->update_status_get_general_notifications($user_id, $status_type_id, $offset, $limit);
         } else {
             $response["general_notification"] = $this->notification_mongodb_model->get_general_notifications($user_id, $offset, $limit);
         }
@@ -85,5 +86,7 @@ class Notification extends CI_Controller {
         $this->data['app'] = "app.Friend";
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/notification_all", $this->data);
     }
+
+  
 
 }

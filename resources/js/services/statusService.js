@@ -47,6 +47,16 @@ angular.module('services.Status', []).
                     }
                 });
             };
+            statusService.addStatusCommentLike = function (statusId, commentId) {
+                return $http({
+                    method: 'post',
+                    url:  $location.path() + $app_name +'/status/add_status_comment_like',
+                    data: {
+                        statusId: statusId,
+                        commentId:commentId
+                    }
+                });
+            };
             /*
              * comment Add 
              * 
@@ -57,9 +67,8 @@ angular.module('services.Status', []).
                     method: 'post',
                     url:  $location.path() + $app_name +'/status/add_status_comment',
                     data: {
-                        statusId: statusInfo.statusId,
-                        userId: statusInfo.userId,
-                        description: statusInfo.commentDes
+                        statusInfo: statusInfo,
+                       
                     },
                 });
             };

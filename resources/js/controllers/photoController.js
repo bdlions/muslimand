@@ -35,6 +35,12 @@ angular.module('controllers.Photo', ['services.Photo']).
                 $scope.photoInfoList.push(JSON.parse(photoInfo));
 //                console.log($scope.photoInfoList);
             };
+            $scope.getUserAlbumList = function (profileId) {
+                photoService.getUserAlbumList(profileId).
+                        success(function (data, status, headers, config) {
+                            $scope.albumList = data.album_list;
+                        });
+            };
 
             $scope.getAlbumLikeList = function (albumId, requestFunction) {
                 photoService.getAlbumLikeList(albumId).

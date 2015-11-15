@@ -179,6 +179,7 @@ class Status extends CI_Controller {
             $status_info = new stdClass();
             $status_info->userId = $this->session->userdata('user_id');
             $status_info->statusTypeId = SHARE_OTHER_STATUS;
+            $status_info->mappingId = $this->session->userdata('user_id');
             $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
             if (property_exists($new_status_info, "description")) {
                 $status_info->description = $new_status_info->description;
@@ -242,6 +243,35 @@ class Status extends CI_Controller {
         }
         echo json_encode($response);
     }
+    /**
+     * this methord add a new status of a user 
+     * @param userId and user status Info
+     *  */
+    function add_status_comment_like() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $ref_user_info = new StdClass(); //get from session;
+        $ref_user_info->userId = $this->session->userdata('user_id');
+
+        $ref_user_info->firstName = $this->session->userdata('first_name');
+        $ref_user_info->lastName = $this->session->userdata('last_name');
+        if (property_exists($request, "statusId")) {
+            $status_id = $request->statusId;
+        }
+        if (property_exists($request, "commentId")) {
+            $comment_id = $request->commentId;
+        }
+        $status_like_info = new StdClass();
+        $status_like_info->userInfo = $ref_user_info;
+        $result = $this->status_mongodb_model->add_status_comment_like($status_id, $comment_id, $status_like_info);
+       
+        var_dump($result);exit;
+        if ($result != null) {
+            $response["status_like_info"] = $status_like_info;
+        }
+        echo json_encode($response);
+    }
 
     /**
      * this methord add status comment
@@ -251,21 +281,31 @@ class Status extends CI_Controller {
         $response = array();
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
-        $ref_user_info = new StdClass(); //get from session;
-        $ref_user_info->userId = $this->session->userdata('user_id');
-        $ref_user_info->firstName = $this->session->userdata('first_name');
-        $ref_user_info->lastName = $this->session->userdata('last_name');
-        if (property_exists($request, "statusId")) {
-            $status_id = $request->statusId;
+
+        $user_info = new StdClass(); //get from session;
+        $user_info->userId = $this->session->userdata('user_id');
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
+        if (property_exists($request, "statusInfo")) {
+            $status_info = $request->statusInfo;
         }
-        if (property_exists($request, "userId")) {
-            $user_id = $request->userId;
+        if (property_exists($status_info, "statusId")) {
+            $status_id = $status_info->statusId;
+        }
+        $ref_user_info = new stdClass();
+        if (property_exists($status_info, "referenceUserInfo")) {
+            $reference_user_info = $status_info->referenceUserInfo;
+            $ref_user_info->userId = $reference_user_info->userId;
+            $ref_user_info->firstName = $reference_user_info->firstName;
+            $ref_user_info->lastName = $reference_user_info->lastName;
         }
         $status_comment_info = new StdClass();
         $status_comment_info->commentId = $this->utils->generateRandomString(STATUS_COMMENT_ID_LENGTH);
-        $status_comment_info->description = $request->description;
-        $status_comment_info->userInfo = $ref_user_info;
-        $result = $this->status_mongodb_model->add_status_comment($user_id, $status_id, $status_comment_info);
+        if (property_exists($status_info, "commentDes")) {
+            $status_comment_info->description = $status_info->commentDes;
+        }
+        $status_comment_info->userInfo = $user_info;
+        $result = $this->status_mongodb_model->add_status_comment($ref_user_info, $status_id, $status_comment_info);
         if ($result != null) {
             $response["status_comment_info"] = $status_comment_info;
         }
@@ -306,6 +346,7 @@ class Status extends CI_Controller {
             foreach ($result as $status) {
                 if (property_exists($status, "userInfo")) {
                     $status->userInfo = json_decode($status->userInfo);
+                    $status->referenceInfo = json_decode($status->referenceInfo);
                     $status_list[] = $status;
                 }
             }
@@ -334,6 +375,9 @@ class Status extends CI_Controller {
                 if (property_exists($status, "mappingUserInfo")) {
                     $status->mappingUserInfo = json_decode($status->mappingUserInfo);
                 }
+                if (property_exists($status, "referenceInfo")) {
+                     $status->referenceInfo = json_decode($status->referenceInfo);
+                }
                 $status_list[] = $status;
             }
             $response["status_list"] = $status_list;
@@ -341,16 +385,23 @@ class Status extends CI_Controller {
         echo json_encode($response);
     }
 
-    function get_status_details() {
-        $response = array();
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        if (property_exists($request, "statusId")) {
-            $status_id = $request->statusId;
+    function get_status_details($status_id) {
+        $user_id = $this->session->userdata('user_id');
+        $result = $this->status_mongodb_model->get_status_details($user_id, $status_id);
+        if ($result != null) {
+            $result = json_decode($result);
+            foreach ($result as $status) {
+                if (property_exists($status, "userInfo")) {
+                    $status->userInfo = json_decode($status->userInfo);
+                    $status_list[] = $status;
+                }
+            }
+            $this->data["status_list"] = $status_list;
         }
-        $status_id = "135ZjKetRtqR7lS";
-        $result = $this->status_mongodb_model->get_status_details($status_id);
-        var_dump($result);
+        $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['user_id'] = $user_id;
+        $this->data['app'] = "app.Status";
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/status_details", $this->data);
     }
 
     /**

@@ -14,6 +14,12 @@ angular.module('controllers.Friend', ['services.Friend']).
                 $scope.userRelation = JSON.parse(userRelation);
             };
 
+            $scope.getFriendList = function (profileId) {
+                friendService.getFriendList(profileId).
+                        success(function (data, status, headers, config) {
+                            $scope.friends = data.friend_list;
+                        });
+            };
             $scope.getPendingRequest = function (requestFunction) {
                 friendService.getPendingRequest($scope.url).
                         success(function (data, status, headers, config) {

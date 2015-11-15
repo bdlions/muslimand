@@ -3,9 +3,12 @@
     $(function () {
         var profileId = '<?php echo $profile_id; ?>';
         if (profileId === "0") {
-            profileId = '<?php echo $user_id; ?>' ;
+            profileId = '<?php echo $user_id; ?>';
         }
         angular.element($('#status_set_id')).scope().getProfileStatus(profileId);
+        angular.element($('#sort_friend_list_set_id')).scope().getFriendList(profileId);
+        angular.element($('#photo_set_id')).scope().getUserAlbumList(profileId);
+
     });
 </script>
 
@@ -28,17 +31,18 @@
     <div class="col-md-5">
         <?php $this->load->view("member/timeline/brief_info"); ?>
         <div class="row form-group"></div>
-        <?php $this->load->view("member/timeline/friend_list"); ?>
+        <span ng-controller="friendController" id="sort_friend_list_set_id">
+            <?php $this->load->view("member/timeline/friend_list"); ?>
+        </span>
         <div class="row form-group"></div>
+        <span ng-controller="photoController" id="photo_set_id">
         <?php $this->load->view("member/timeline/photo_list"); ?>
+        </span>
     </div>
     <div class="col-md-7" ng-controller="statusController" id='status_set_id' >
         <?php $this->load->view("member/pagelets/post_status"); ?>
         <div class="row form-group"></div>
-            <?php $this->load->view("member/pagelets/updated_status"); ?>
-        <?php // $this->load->view("member/timeline/shared_link"); ?>
-        <div class="row form-group"></div>
-        <?php // $this->load->view("member/timeline/shared_status"); ?>
+        <?php $this->load->view("member/pagelets/updated_status"); ?>
     </div>
 </div>
 <div class="row form-group"></div>

@@ -21,7 +21,6 @@ class Photos extends CI_Controller {
                         $this->load->database();
 
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
-      
     }
 
     function index() {
@@ -45,7 +44,7 @@ class Photos extends CI_Controller {
     }
 
     function photos_view_my() {
-        $this->data['app'] = "app.Photos";
+        $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my", $this->data);
@@ -56,14 +55,14 @@ class Photos extends CI_Controller {
     }
 
     function photos_view_friend() {
-        $this->data['app'] = "app.Photos";
+        $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_friend", $this->data);
     }
 
     function photos_albums() {
-        $this->data['app'] = "app.Photos";
+        $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums", $this->data);
@@ -89,6 +88,21 @@ class Photos extends CI_Controller {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_add_test");
     }
 
+    function get_user_short_album_list() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "profileId") != FALSE) {
+            $profile_id = $requestInfo->profileId;
+        }
+        $result = $this->photo_mongodb_model->get_user_albums($profile_id);
+        if($result != null){
+            $result = json_decode($result);
+            $response["album_list"] = $result->albumList;
+        }
+        echo json_encode($response);
+    }
+
     function get_user_albums() {
 
         $user_id = $this->session->userdata('user_id');
@@ -99,7 +113,7 @@ class Photos extends CI_Controller {
                 $this->data['user_album_list'] = json_encode($result_array->albumList);
             }
         }
-        $this->data['app'] = "app.Photos";
+        $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $user_id;
         $this->data['user_album_list'] = array();
         $this->data['first_name'] = $this->session->userdata('first_name');
@@ -119,7 +133,7 @@ class Photos extends CI_Controller {
                 $this->data['album_info'] = json_encode(json_decode($result_array->albumInfo));
             }
         }
-        $this->data['app'] = "app.Photos";
+        $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums_view", $this->data);
@@ -300,7 +314,7 @@ class Photos extends CI_Controller {
         if (!empty($result_array)) {
             $this->data['photo_info'] = json_encode($result_array);
         }
-        $this->data['app'] = "app.Photos";
+        $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_gallery", $this->data);

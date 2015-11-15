@@ -1,11 +1,22 @@
 angular.module('services.Friend', []).
-        factory('friendService', function ($http) {
+        factory('friendService', function ($http, $location) {
             var friendService = {};
+            var $app_name = "/muslimand";
+            friendService.getFriendList = function (profileId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name +'/friend/get_short_friend_list',
+                    data: {
+                        profileId: profileId
+                    }
+                });
+            };
+
 
             friendService.addFriend = function (friendId, url) {
                 return $http({
                     method: 'post',
-                    url: url + 'friend/add_friend',
+                    url: $location.path() + $app_name + '/friend/add_friend',
                     data: {
                         friendId: friendId
                     }
@@ -15,7 +26,7 @@ angular.module('services.Friend', []).
             friendService.blockRequest = function (friendId, statusType, url) {
                 return $http({
                     method: 'post',
-                    url: url + 'friend/block_request',
+                    url: $location.path() + $app_name  + '/friend/block_request',
                     data: {
                         friendId: friendId,
                         statusType: statusType
@@ -25,7 +36,7 @@ angular.module('services.Friend', []).
             friendService.getPendingRequest = function (url) {
                 return $http({
                     method: 'post',
-                    url: url + 'friend/get_pending_list',
+                    url: $location.path() + $app_name  + '/friend/get_pending_list',
                     data: {
                     }
                 });
@@ -33,7 +44,7 @@ angular.module('services.Friend', []).
             friendService.approveRequest = function (friendId, url) {
                 return $http({
                     method: 'post',
-                    url: url + 'friend/approve_request',
+                    url: $location.path() + $app_name  + '/friend/approve_request',
                     data: {
                         friendId: friendId
                     }
@@ -42,7 +53,7 @@ angular.module('services.Friend', []).
             friendService.deleteRequest = function (friendId, url) {
                 return $http({
                     method: 'post',
-                    url: url + 'friend/remove_friend_request',
+                    url: $location.path() + $app_name  + '/friend/remove_friend_request',
                     data: {
                         friendId: friendId
                     }
@@ -51,7 +62,7 @@ angular.module('services.Friend', []).
             friendService.deleteRequest = function (friendId, url) {
                 return $http({
                     method: 'post',
-                    url: url + 'friend/remove_friend_request',
+                    url: $location.path() + $app_name  + '/friend/remove_friend_request',
                     data: {
                         friendId: friendId
                     }

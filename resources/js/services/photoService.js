@@ -4,6 +4,15 @@ angular.module('services.Photo', []).
 
 
 
+            photoService.getUserAlbumList = function (profileId) {
+                return $http({
+                    method: 'post',
+                    url: '../photos/get_user_short_album_list',
+                    data: {
+                        profileId: profileId
+                    }
+                });
+            };
             photoService.getAlbum = function (albumId) {
                 return $http({
                     method: 'post',

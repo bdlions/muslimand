@@ -156,6 +156,17 @@ class Friend extends CI_Controller {
         $response['friend_list'] = $this->get_friend_list_info($user_id);
         echo json_encode($response);
     }
+    function get_short_friend_list() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "profileId") != FALSE) {
+            $profile_id= $requestInfo->profileId;
+        }
+        $response['friend_list'] = $this->get_friend_list_info($profile_id);
+        echo json_encode($response);
+    }
+    
 
     function get_friend_list_info($user_id) {
         $offset = 0;

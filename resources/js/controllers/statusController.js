@@ -1,6 +1,7 @@
 angular.module('controllers.Status', ['services.Status']).
         controller('statusController', function ($scope, statusService) {
             $scope.statuses = [];
+            $scope.statusDetails = {};
             $scope.statusTypes = {};
             $scope.status = {};
             $scope.statusInfo = {};
@@ -15,15 +16,16 @@ angular.module('controllers.Status', ['services.Status']).
             $scope.setStatus = function (userStatus) {
                 $scope.statuses = JSON.parse(userStatus);
             };
-          
-            $scope.setProfileStatus = function (userProfileStatus) {
-//                $scope.statuses = userProfileStatus;
-//                console.log($scope.statuses);
+
+
+            $scope.setStatusDetails = function (statusDetails) {
+                $scope.statuses = JSON.parse(statusDetails);
             };
+            
             $scope.getProfileStatus = function (profileId) {
                 statusService.getProfileStatus(profileId).
                         success(function (data, status, headers, config) {
-                            $scope.statuses =data.status_list;
+                            $scope.statuses = data.status_list;
                         });
             };
 
@@ -91,11 +93,33 @@ angular.module('controllers.Status', ['services.Status']).
                 return false;
             };
             /**
+             * add status like
+             * parameter statusId 
+             * */
+            $scope.addStatusCommentLike = function (statusId, commentId) {
+                statusService.addStatusCommentLike(statusId, commentId).
+                        success(function (data, status, headers, config) {
+//                            angular.forEach($scope.statuses, function (value, key) {
+//                                if (value.statusId == statusId) {
+//                                    $scope.likeList.push(data.status_like_info);
+//                                    (value.likeStatus = "1");
+//                                    if (typeof value.likeCounter == "undefined") {
+//                                        (value.likeCounter = 1);
+//                                    } else {
+//                                        (value.likeCounter = value.likeCounter + 1);
+//                                    }
+//                                }
+//                            }, $scope.statuses);
+
+                        });
+                return false;
+            };
+            /**
              * Status comment Add
              * 
              * */
-            $scope.addComment = function (userId, statusId) {
-                $scope.statusInfo.userId = userId;
+            $scope.addComment = function (referenceUserInfo, statusId) {
+                $scope.statusInfo.referenceUserInfo = referenceUserInfo;
                 $scope.statusInfo.statusId = statusId;
                 statusService.addComment($scope.statusInfo).
                         success(function (data, status, headers, config) {
