@@ -24,6 +24,10 @@ class Status extends CI_Controller {
         $this->load->helper('language');
     }
 
+    /**
+     * this method upload image at server
+     * @ param file info
+     *  */
     public function image_upload() {
         $response = array();
         $postdata = file_get_contents("php://input");
@@ -125,12 +129,19 @@ class Status extends CI_Controller {
                     $profile_id = $status_info->mappingId = $request->profileId;
                     $status_info->mappingUserInfo = $maping_user_info;
                 }
+                $status_info->timeDiff = "1sec ago";
                 $response["status_info"] = $status_info;
             }
         }
         echo json_encode($response);
     }
 
+    /**
+     * this methord share status of a user 
+     * @param userId userId
+     * @param oldStatusInfo  old status info
+     * @pram statusInfo new status info 
+     *  */
     function share_status() {
 
         $response = array();
@@ -193,6 +204,7 @@ class Status extends CI_Controller {
             $status_info->referenceInfo = $ref_info;
             $result = $this->status_mongodb_model->share_status($user_id, $status_id, $r_user_info, $status_info);
             if ($result != null) {
+                $status_info->timeDiff = "1sec ago";
                 $response["status_info"] = $status_info;
             }
         }
@@ -200,8 +212,9 @@ class Status extends CI_Controller {
     }
 
     /**
-     * this methord add a new status of a user 
-     * @param userId and user status Info
+     * this methord update status 
+     * @param statusId status id
+     * @param description new description
      *  */
     function update_status() {
         $response = array();
@@ -217,8 +230,9 @@ class Status extends CI_Controller {
     }
 
     /**
-     * this methord add a new status of a user 
-     * @param userId and user status Info
+     * this methord add status like
+     * @param userId and user id
+     * @param status id
      *  */
     function add_status_like() {
         $response = array();
@@ -243,9 +257,11 @@ class Status extends CI_Controller {
         }
         echo json_encode($response);
     }
+
     /**
-     * this methord add a new status of a user 
-     * @param userId and user status Info
+     * this methord add like of a comment of a status
+     * @param statusId status id
+     * @ commentId comment id
      *  */
     function add_status_comment_like() {
         $response = array();
@@ -265,8 +281,6 @@ class Status extends CI_Controller {
         $status_like_info = new StdClass();
         $status_like_info->userInfo = $ref_user_info;
         $result = $this->status_mongodb_model->add_status_comment_like($status_id, $comment_id, $status_like_info);
-       
-        var_dump($result);exit;
         if ($result != null) {
             $response["status_like_info"] = $status_like_info;
         }
@@ -312,49 +326,42 @@ class Status extends CI_Controller {
         echo json_encode($response);
     }
 
-    function get_statuses() {
-        $response = array();
-        $user_id = $this->session->userdata('user_id');
-        $offset = 0;
-        $limit = 10;
-        $result = array();
-        $result = $this->status_mongodb_model->get_statuses($user_id, $offset, $limit);
-        if ($result != null) {
-            $result = json_decode($result);
-            if (property_exists($result, "mappingUserInfo")) {
-                $result->mappingUserInfo = json_decode($result->mappingUserInfo);
-            }
-            $this->data["status_list"] = $result;
-        }
-        $this->data['app'] = "app.Status";
-        $this->data['user_id'] = $user_id;
-        $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed", $this->data);
+    function time_convert() {
+        $timestamp = 1447650340;
+//        $timezone = 'UTC';
+//        $datetime = new DateTime($timestamp, new DateTimeZone($timezone));
+//        $formattedDate = $datetime->format(" MMM d, yyyy - HH.mm a");
+//        $formate = date(" M,d-y ,H.m a", $timestamp);
+//        var_dump($formattedDate);
+//        var_dump($formate);
+//        $now = time();
+//        echo timezones("UP8");
+
+
+        $timezone = 'UM8';
+        $timezone1 = 'UTC';
+        $daylight_saving = TRUE;
+
+        $localTime = gmt_to_local($timestamp, $timezone, $daylight_saving);
+//        $localTime1 = gmt_to_local($timestamp, $timezone1, $daylight_saving);
+//        var_dump($localTime);
+//        var_dump($localTime1);
+//        $post_date = '1079621429';
+        $now = time();
+
+        echo timespan($localTime, $now);
+
+//        echo unix_to_human($now); // U.S. time, no seconds
+//        echo unix_to_human($timestamp, TRUE, 'us'); // U.S. time with seconds
+//        echo unix_to_human($timestamp, TRUE, 'eu'); // Euro time with seconds
+//        echo unix_to_human($timestamp, TRUE, 'bd'); // Euro time with seconds
     }
 
-    function get_user_profile_status_test() {
-        $response = array();
-        $mapping_id = $_POST['profileId'];
-        $user_id = $this->session->userdata('user_id');
-        $offset = 0;
-        $limit = 10;
-        $result = array();
-        $status_list = array();
-        $result = $this->status_mongodb_model->get_user_profile_status($user_id, $mapping_id, $offset, $limit);
-        if ($result != null) {
-            $result = json_decode($result);
-            foreach ($result as $status) {
-                if (property_exists($status, "userInfo")) {
-                    $status->userInfo = json_decode($status->userInfo);
-                    $status->referenceInfo = json_decode($status->referenceInfo);
-                    $status_list[] = $status;
-                }
-            }
-            $response["status_list"] = $status_list;
-        }
-        echo json_encode($response);
-    }
-
+    /**
+     * this methord return a user timline status
+     * @param userId
+     * @mapping id
+     *  */
     function get_user_profile_status() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -368,7 +375,13 @@ class Status extends CI_Controller {
         $result = $this->status_mongodb_model->get_user_profile_status($user_id, $mapping_id, $offset, $limit);
         if ($result != null) {
             $result = json_decode($result);
-            foreach ($result as $status) {
+            if (property_exists($result, "userCurrentTime")) {
+                $user_current_time = $result->userCurrentTime;
+            }
+            if (property_exists($result, "statusInfoList")) {
+                $status_info_list = $result->statusInfoList;
+            }
+            foreach ($status_info_list as $status) {
                 if (property_exists($status, "userInfo")) {
                     $status->userInfo = json_decode($status->userInfo);
                 }
@@ -376,31 +389,63 @@ class Status extends CI_Controller {
                     $status->mappingUserInfo = json_decode($status->mappingUserInfo);
                 }
                 if (property_exists($status, "referenceInfo")) {
-                     $status->referenceInfo = json_decode($status->referenceInfo);
+                    $status->referenceInfo = json_decode($status->referenceInfo);
+                }
+                if (property_exists($status, "commentList")) {
+                    $commentList = $status->commentList;
+                    $commentListInfo = array();
+                    foreach ($commentList as $comment) {
+                        $comment->userInfo = json_decode($comment->userInfo);
+                        $commentListInfo[] = $comment;
+                    }
+                    $status->commentList = $commentListInfo;
                 }
                 $status_list[] = $status;
             }
             $response["status_list"] = $status_list;
+            $response["user_current_time"] = $user_current_time;
         }
         echo json_encode($response);
     }
 
+    /**
+     * this methord return a specific status detail
+     * @param userId
+     * @mapping id
+     *  */
     function get_status_details($status_id) {
         $user_id = $this->session->userdata('user_id');
         $result = $this->status_mongodb_model->get_status_details($user_id, $status_id);
         if ($result != null) {
             $result = json_decode($result);
-            foreach ($result as $status) {
+            if (property_exists($result, "userCurrentTime")) {
+                $user_current_time = $result->userCurrentTime;
+            }
+            if (property_exists($result, "statusInfoList")) {
+                $status_info_list = $result->statusInfoList;
+            }
+            foreach ($status_info_list as $status) {
                 if (property_exists($status, "userInfo")) {
                     $status->userInfo = json_decode($status->userInfo);
-                    $status_list[] = $status;
                 }
+                if (property_exists($status, "commentList")) {
+                    $commentList = $status->commentList;
+                    $commentListInfo = array();
+                    foreach ($commentList as $comment) {
+                        $comment->userInfo = json_decode($comment->userInfo);
+                        $commentListInfo[] = $comment;
+                    }
+                    $status->commentList = $commentListInfo;
+                }
+                $status_list[] = $status;
+//              
             }
             $this->data["status_list"] = $status_list;
         }
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['user_id'] = $user_id;
         $this->data['app'] = "app.Status";
+        $this->data['user_current_time'] = $user_current_time;
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/status_details", $this->data);
     }
 
@@ -421,6 +466,11 @@ class Status extends CI_Controller {
         echo json_encode($response);
     }
 
+    /**
+     * this methord return status liked users
+     * @param userId 
+     * @param status id
+     *  */
     function get_status_likes() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -437,6 +487,11 @@ class Status extends CI_Controller {
         echo json_encode($response);
     }
 
+    /**
+     * this methord return status shared users
+     * @param userId 
+     * @param status id
+     *  */
     function get_status_shears() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -455,6 +510,11 @@ class Status extends CI_Controller {
         echo json_encode($response);
     }
 
+    /**
+     * this methord return status comments
+     * @param userId 
+     * @param status id
+     *  */
     function get_status_comments() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -472,6 +532,12 @@ class Status extends CI_Controller {
         echo json_encode($response);
     }
 
+    /**
+     * this methord use for create new album and add photos for this album
+     * use for timeline, cover and profile picture add
+     * @param userId 
+     * @param status id
+     *  */
     function album_add($user_id, $album_id, $type_title, $image_list) {
         $user_image_list_info = array();
         $response = array();

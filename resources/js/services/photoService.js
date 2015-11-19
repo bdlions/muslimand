@@ -1,13 +1,13 @@
 angular.module('services.Photo', []).
-        factory('photoService', function ($http) {
+        factory('photoService', function ($http, $location) {
             var photoService = {};
-
+            var $app_name = "/muslimand";
 
 
             photoService.getUserAlbumList = function (profileId) {
                 return $http({
                     method: 'post',
-                    url: '../photos/get_user_short_album_list',
+                    url: $location.path() + $app_name + '/photos/get_user_short_album_list',
                     data: {
                         profileId: profileId
                     }
@@ -16,7 +16,7 @@ angular.module('services.Photo', []).
             photoService.getAlbum = function (albumId) {
                 return $http({
                     method: 'post',
-                    url: '../photos/get_album',
+                    url: $location.path() + $app_name + '/photos/get_album',
                     data: {
                         albumId: albumId
                     }
@@ -26,7 +26,7 @@ angular.module('services.Photo', []).
             photoService.createAlbum = function (albumInfo) {
                 return $http({
                     method: 'post',
-                    url: '../photos/create_album',
+                    url: $location.path() + $app_name + '/photos/create_album',
                     data: {
                         albumInfo: albumInfo
                     }
@@ -36,7 +36,7 @@ angular.module('services.Photo', []).
             photoService.editAlbum = function (albumInfo) {
                 return $http({
                     method: 'post',
-                    url: '../photos/edit_album',
+                    url: $location.path() + $app_name + '/photos/edit_album',
                     data: {
                         albumInfo: albumInfo
                     }
@@ -45,7 +45,7 @@ angular.module('services.Photo', []).
             photoService.deleteAlbum = function (albumId) {
                 return $http({
                     method: 'post',
-                    url: '../photos/delete_album',
+                    url: $location.path() + $app_name + '/photos/delete_album',
                     data: {
                         albumId: albumId
                     }
@@ -55,7 +55,7 @@ angular.module('services.Photo', []).
             photoService.addAlbumLike = function (albumId) {
                 return $http({
                     method: 'post',
-                    url: '../../photos/add_album_like',
+                    url: $location.path() + $app_name + '/photos/add_album_like',
                     data: {
                         albumId: albumId
                     }
@@ -64,7 +64,7 @@ angular.module('services.Photo', []).
             photoService.deleteAlbumLike = function (albumId, likeId) {
                 return $http({
                     method: 'post',
-                    url: '../photos/delete_album_like',
+                    url: $location.path() + $app_name +'/photos/delete_album_like',
                     data: {
                         albumId: albumId,
                         likeId: likeId
@@ -74,7 +74,7 @@ angular.module('services.Photo', []).
             photoService.getAlbumLikeList = function (albumId) {
                 return $http({
                     method: 'post',
-                    url: '../../photos/get_album_like_list',
+                    url: $location.path() + $app_name + '/photos/get_album_like_list',
                     data: {
                         albumId: albumId,
                     }
@@ -84,7 +84,7 @@ angular.module('services.Photo', []).
             photoService.addAlbumComment = function (commentInfo) {
                 return $http({
                     method: 'post',
-                    url: '../../photos/add_album_comment',
+                    url: $location.path() + $app_name + '/photos/add_album_comment',
                     data: {
                         commentInfo: commentInfo
                     }
@@ -93,7 +93,7 @@ angular.module('services.Photo', []).
             photoService.getAlbumComments = function (albumId) {
                 return $http({
                     method: 'post',
-                    url: '../../photos/get_album_comments',
+                    url: $location.path() + $app_name + '/photos/get_album_comments',
                     data: {
                         albumId: albumId
                     }
@@ -102,7 +102,7 @@ angular.module('services.Photo', []).
             photoService.editAlbumComment = function (commentInfo) {
                 return $http({
                     method: 'post',
-                    url: '../photos/edit_album_comment',
+                    url: $location.path() + $app_name + '/photos/edit_album_comment',
                     data: {
                         commentInfo: commentInfo
                     }
@@ -112,7 +112,7 @@ angular.module('services.Photo', []).
             photoService.deleteAlbumComment = function (albumId, commentId) {
                 return $http({
                     method: 'post',
-                    url: '../photos/delete_album_comment',
+                    url: $location.path() + $app_name + '/photos/delete_album_comment',
                     data: {
                         albumId: albumId,
                         commentId: commentId
@@ -122,7 +122,7 @@ angular.module('services.Photo', []).
             photoService.AddAlbumShare = function (shareInfo) {
                 return $http({
                     method: 'post',
-                    url: '../photos/delete_album_comment',
+                    url: $location.path() + $app_name + '/photos/delete_album_comment',
                     data: {
                         shareInfo: shareInfo
                     }
@@ -133,7 +133,7 @@ angular.module('services.Photo', []).
             photoService.getPhotos = function (albumId) {
                 return $http({
                     method: 'post',
-                    url: '../photos/get_photos',
+                    url: $location.path() + $app_name + '/photos/get_photos',
                     data: {
                         albumId: albumId
                     }
@@ -142,7 +142,7 @@ angular.module('services.Photo', []).
             photoService.getPhoto = function (albumId, photoId) {
                 return $http({
                     method: 'post',
-                    url: '../photos/get_photo',
+                    url: $location.path() + $app_name + '/photos/get_photo',
                     data: {
                         albumId: albumId,
                         photoId: photoId
@@ -153,15 +153,15 @@ angular.module('services.Photo', []).
                 console.log(imageInfo);
                 return $http({
                     method: 'post',
-                    url: '../../photos/crop_add_profile_picture',
+                    url: $location.path() + $app_name + '/photos/crop_add_profile_picture',
                     data: {
-                        x:imageInfo.x,
-                        y:imageInfo.y,
-                        w:imageInfo.w,
-                        h:imageInfo.h,
-                        src:imageInfo.src,
-                        src_w:imageInfo.src_w,
-                        src_h:imageInfo.src_h,
+                        x: imageInfo.x,
+                        y: imageInfo.y,
+                        w: imageInfo.w,
+                        h: imageInfo.h,
+                        src: imageInfo.src,
+                        src_w: imageInfo.src_w,
+                        src_h: imageInfo.src_h,
                     }
                 });
             };
@@ -169,7 +169,7 @@ angular.module('services.Photo', []).
             photoService.addPhotos = function (photoInfo) {
                 return $http({
                     method: 'post',
-                    url: '../photos/add_photos',
+                    url: $location.path() + $app_name + '/photos/add_photos',
                     data: {
                         photoInfo: photoInfo
                     }
@@ -179,16 +179,16 @@ angular.module('services.Photo', []).
             photoService.editPhoto = function (photoInfo) {
                 return $http({
                     method: 'post',
-                    url: '../photos/edit_photo',
+                    url: $location.path() + $app_name + '/photos/edit_photo',
                     data: {
                         photoInfo: photoInfo
                     }
                 });
             };
-            photoService.deletePhoto = function (albumId,photoId) {
+            photoService.deletePhoto = function (albumId, photoId) {
                 return $http({
                     method: 'post',
-                    url: '../../photos/delete_photo',
+                    url: $location.path() + $app_name + 'photos/delete_photo',
                     data: {
                         albumId: albumId,
                         photoId: photoId
@@ -199,7 +199,7 @@ angular.module('services.Photo', []).
             photoService.addPhotoLike = function (photoId) {
                 return $http({
                     method: 'post',
-                    url: '../../photos/add_photo_like',
+                    url: $location.path() + $app_name + 'photos/add_photo_like',
                     data: {
                         photoId: photoId
                     }
@@ -208,7 +208,7 @@ angular.module('services.Photo', []).
             photoService.getPhotoLikeList = function (photoId) {
                 return $http({
                     method: 'post',
-                    url: '../../photos/get_photo_like_list',
+                    url: $location.path() + $app_name +'/photos/get_photo_like_list',
                     data: {
                         photoId: photoId,
                     }
@@ -218,7 +218,7 @@ angular.module('services.Photo', []).
             photoService.deletePhotoLike = function (photoId, likeId) {
                 return $http({
                     method: 'post',
-                    url: '../photos/delete_photo_like',
+                    url: $location.path() + $app_name + '/photos/delete_photo_like',
                     data: {
                         photoId: photoId,
                         likeId: likeId
@@ -228,7 +228,7 @@ angular.module('services.Photo', []).
             photoService.addPhotoComment = function (commentInfo) {
                 return $http({
                     method: 'post',
-                    url: '../../photos/add_photo_comment',
+                    url: $location.path() + $app_name +'photos/add_photo_comment',
                     data: {
                         commentInfo: commentInfo
                     }
@@ -238,7 +238,7 @@ angular.module('services.Photo', []).
             photoService.getPhotoComments = function (photoId) {
                 return $http({
                     method: 'post',
-                    url: '../../photos/get_photo_comments',
+                    url: $location.path() + $app_name +'/photos/get_photo_comments',
                     data: {
                         photoId: photoId
                     }
@@ -247,7 +247,7 @@ angular.module('services.Photo', []).
             photoService.editPhotoComment = function (commentInfo) {
                 return $http({
                     method: 'post',
-                    url: '../photos/edit_photo_comment',
+                    url: $location.path() + $app_name + '/photos/edit_photo_comment',
                     data: {
                         commentInfo: commentInfo
                     }
@@ -257,7 +257,7 @@ angular.module('services.Photo', []).
             photoService.deletePhotoComment = function (photoId, commentId) {
                 return $http({
                     method: 'post',
-                    url: '../photos/delete_photo_comment',
+                    url: $location.path() + $app_name + '/photos/delete_photo_comment',
                     data: {
                         photoId: photoId,
                         commentId: commentId
@@ -267,7 +267,7 @@ angular.module('services.Photo', []).
             photoService.AddPhotoShare = function (shareInfo) {
                 return $http({
                     method: 'post',
-                    url: '../photos/share_photo_comment',
+                    url: $location.path() + $app_name +'/photos/share_photo_comment',
                     data: {
                         shareInfo: shareInfo
                     }

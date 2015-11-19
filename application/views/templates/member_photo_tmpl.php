@@ -31,6 +31,8 @@
         <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-process.js"></script>
         <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-image.js"></script>
         <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-angular.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/moment.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/Utils.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload-shim.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -43,7 +45,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/photoApp.js "></script>
         <title>Sadiik.com</title>
     </head>
-     <body ng-app="<?php echo $app; ?>">
+    <body ng-app="<?php echo $app; ?>">
         <div class="body_wrapper">
             <div class="header_wrapper">
                 <div class="container-fluid container_wrapper">

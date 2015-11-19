@@ -23,10 +23,12 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
         <script type = "text/javascript" src = "<?php echo base_url(); ?>resources/js/app/videoApp.js " ></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/moment.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/Utils.js"></script>
         <title>Sadiik.com</title>
     </head>
     <body ng-app="<?php echo $app; ?>">
-         <div class="body_wrapper">
+        <div class="body_wrapper">
             <div class="header_wrapper">
                 <div class="container-fluid container_wrapper">
                     <?php $this->load->view("member/sections/header_member"); ?>

@@ -50,7 +50,7 @@
                     </span>
                     <span ng-if="notification.typeId == <?php echo NOTIFICATION_TYPE_POST_COMMENT; ?>">
                         <span ng-if="notification.userList.length >= 2"> commented on </span>
-                        <span ng-if="notification.userList.length == 1">also  commented on</span>
+                        <span ng-if="notification.userList.length == 1"> commented on</span>
                         <span ng-if="notification.userList.length < 1"> commented on</span>
                     </span>
                     <span ng-if="notification.referenceUserInfo.userId != '<?php echo $user_id; ?>'">

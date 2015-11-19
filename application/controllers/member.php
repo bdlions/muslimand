@@ -29,8 +29,6 @@ class Member extends CI_Controller {
      * this method return user relation and profile info
      * 
      */
-    
-    
     function get_user_relation_info($profile_id = "0") {
         $user_relation_info = array();
         $user_id = $this->session->userdata('user_id');
@@ -68,7 +66,13 @@ class Member extends CI_Controller {
         $result = $this->status_mongodb_model->get_statuses($user_id, $offset, $limit);
         $result = json_decode($result);
         if ($result != null) {
-            foreach ($result as $resultInfo) {
+            if (property_exists($result, "userCurrentTime")) {
+                $user_current_time = $result->userCurrentTime;
+            }
+            if (property_exists($result, "statusInfoList")) {
+                $status_info_list = $result->statusInfoList;
+            }
+            foreach ($status_info_list as $resultInfo) {
                 if (property_exists($resultInfo, "userInfo")) {
                     $resultInfo->userInfo = json_decode($resultInfo->userInfo);
                 }
@@ -78,9 +82,17 @@ class Member extends CI_Controller {
                 if (property_exists($resultInfo, "mappingUserInfo")) {
                     $resultInfo->mappingUserInfo = json_decode($resultInfo->mappingUserInfo);
                 }
+                if (property_exists($resultInfo, "commentList")) {
+                    $commentList = $resultInfo->commentList;
+                    $commentListInfo = array();
+                    foreach ($commentList as $comment) {
+                        $comment->userInfo = json_decode($comment->userInfo);
+                        $commentListInfo[] = $comment;
+                    }
+                    $resultInfo->commentList = $commentListInfo;
+                }
                 $status_list[] = $resultInfo;
             }
-
             $this->data["status_list"] = json_encode($status_list);
         } else {
             $this->data["status_list"] = json_encode(array());
@@ -100,6 +112,7 @@ class Member extends CI_Controller {
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['last_name'] = $this->session->userdata('last_name');
+        $this->data['user_current_time'] = $user_current_time;
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed", $this->data);
     }
 

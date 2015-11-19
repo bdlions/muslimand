@@ -56,7 +56,7 @@
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div style="float: left;">
-                                            January 8, 2015 at 12.15am.
+                                            {{status.timeDiff}}
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -221,10 +221,9 @@
                 <span ng-if="status.commentList != null">
                     <div class="pagelet_divider" id='pagelet_id_2'></div>
                     <div ng-repeat="commentInfo in status.commentList">
-                        <div class="row">
-                            <div class="col-md-1" profile_picture>
-                                <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time=' . time()" width="30" height="30">
-                                <!--<img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time=' . time()" width="30" height="30" onError="onImageError(this)">-->
+                        <div class="row form-group">
+                            <div class="col-md-1" profile_picture >
+                                <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time=' . time()" width="30" height="30" onerror="onImageError(this)">
                                 <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
                             </div>
                             <div class="col-md-11">
@@ -239,13 +238,17 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: left">
-                                            <!--<span ng-if = "status.likeStatus != '1'">-->
-                                            <!--</span>-->
-                                            January 9, 2015 at 10:15pm. 
-                                                <a style="color: #3B59A9;" href id="statusCommentLike{{commentInfo.commentId}}" ng-click="addStatusCommentLike(status.statusId,commentInfo.commentId)">Like,</a> 
-                                            <!--<a>like</a>-->
-                                            <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
-                                            . <a>15</a>
+                                            {{commentInfo.commentTimeDiff}}
+                                            <span ng-if = "commentInfo.CommentlikeStatus != '1'">
+                                                <a style="color: #3B59A9;" href id="statusCommentLike{{commentInfo.commentId}}" ng-click="addStatusCommentLike(status.statusId, commentInfo.commentId)">Like,</a> 
+                                            </span>
+                                            <span ng-if = "commentInfo.CommentlikeStatus == '1'">
+                                                <a style="color: #3B59A9;" href id="statusUnLike{{commentInfo.commentId}}" ng-click="unLike(status.statusId)">liked,</a> 
+                                            </span><!--<a>like</a>-->
+                                            <a ng-if="commentInfo.commentlikeCounter > 0">
+                                                <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
+                                                {{commentInfo.commentlikeCounter}}
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

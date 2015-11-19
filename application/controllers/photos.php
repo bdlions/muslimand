@@ -464,7 +464,7 @@ class Photos extends CI_Controller {
             $category_list = $result_array->categoryList;
             $album_list = $result_array->albumList;
         }
-        $this->data['app'] = "app.Photos";
+        $this->data['app'] = "app.Photo";
         $this->data["user_id"] = $user_id;
         $this->data["first_name"] = $this->session->userdata('first_name');
         $this->data["album_lsit"] = json_encode($album_list);

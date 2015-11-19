@@ -1,4 +1,7 @@
-<script>
+
+<!--<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/moment.min.js"></script>-->
+<script type="text/javascript" src="<?php // echo base_url(); ?>resources/js/Utils.js"></script>
+<script type="text/javascript">
     function onImageUnavailable(img) {
         var div = img.parentNode;
         var firstImage = img;
@@ -10,7 +13,7 @@
     }
 </script>
 
-<div ng-controller="statusController">
+<div ng-controller="statusController" ng-init="setUserCurrentTimeStamp((<?php echo htmlspecialchars(json_encode($user_current_time)); ?>))">
     <div class="row">
         <!--LEFT_COLUMN-->
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">

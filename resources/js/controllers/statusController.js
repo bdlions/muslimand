@@ -1,5 +1,5 @@
-angular.module('controllers.Status', ['services.Status']).
-        controller('statusController', function ($scope, statusService) {
+angular.module('controllers.Status', ['services.Status', 'services.Timezone']).
+        controller('statusController', function ($scope, statusService, utilsTimezone) {
             $scope.statuses = [];
             $scope.statusDetails = {};
             $scope.statusTypes = {};
@@ -12,20 +12,51 @@ angular.module('controllers.Status', ['services.Status']).
             $scope.likeList = [];
             $scope.shareList = [];
             $scope.CommentList = [];
+            $scope.userCurrentTimeStamp = 0;
+            $scope.timeDifferent = 0;
+
+            $scope.setUserCurrentTimeStamp = function (userCurrentTimeStamp) {
+                $scope.userCurrentTimeStamp = userCurrentTimeStamp;
+            };
 
             $scope.setStatus = function (userStatus) {
                 $scope.statuses = JSON.parse(userStatus);
-            };
+                angular.forEach($scope.statuses, function (status, key) {
+                    if (typeof status.timeDiff == "undefined") {
+                        status.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, status.createdOn);
+                    } else {
+                        status.timeDiff = "1sec ago ";
+                    }
+                    if (typeof status.commentList != "undefined") {
+                        angular.forEach(status.commentList, function (comment, key) {
+                            if (typeof comment.commentTimeDiff == "undefined") {
+                                comment.commentTimeDiff = utilsTimezone.convertDateToFullTime($scope.userCurrentTimeStamp, comment.createdOn);
+                            } else {
+                                comment.commentTimeDiff = "1sec ago ";
+                            }
+                        });
 
+                    }
+                }, $scope.statuses);
+                console.log($scope.statuses);
+            };
 
             $scope.setStatusDetails = function (statusDetails) {
                 $scope.statuses = JSON.parse(statusDetails);
             };
-            
+
             $scope.getProfileStatus = function (profileId) {
                 statusService.getProfileStatus(profileId).
                         success(function (data, status, headers, config) {
                             $scope.statuses = data.status_list;
+                            $scope.userCurrentTimeStamp = data.user_current_time;
+                            angular.forEach($scope.statuses, function (value, key) {
+                                if (typeof value.timeDiff == "undefined") {
+                                    value.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, value.createdOn);
+                                } else {
+                                    value.timeDiff = "1sec ago ";
+                                }
+                            }, $scope.statuses);
                         });
             };
 
@@ -99,17 +130,18 @@ angular.module('controllers.Status', ['services.Status']).
             $scope.addStatusCommentLike = function (statusId, commentId) {
                 statusService.addStatusCommentLike(statusId, commentId).
                         success(function (data, status, headers, config) {
-//                            angular.forEach($scope.statuses, function (value, key) {
-//                                if (value.statusId == statusId) {
-//                                    $scope.likeList.push(data.status_like_info);
-//                                    (value.likeStatus = "1");
-//                                    if (typeof value.likeCounter == "undefined") {
-//                                        (value.likeCounter = 1);
-//                                    } else {
-//                                        (value.likeCounter = value.likeCounter + 1);
-//                                    }
-//                                }
-//                            }, $scope.statuses);
+                            angular.forEach($scope.statuses, function (value1, key) {
+                                angular.forEach(value1.commentList, function (value, key) {
+                                    if (value.commentId == commentId) {
+                                        (value.likeStatus = "1");
+                                        if (typeof value.likeCounter == "undefined") {
+                                            (value.likeCounter = 1);
+                                        } else {
+                                            (value.likeCounter = value.likeCounter + 1);
+                                        }
+                                    }
+                                }, value1);
+                            }, $scope.statuses);
 
                         });
                 return false;

@@ -70,6 +70,7 @@ class Auth extends CI_Controller {
         $this->data['title'] = "Login";
         $country_list = array();
         $religion_list = array();
+        $country_time_zone = array();
         $gender_list = array();
         $country_and_relisionList = $this->landing_page_model->get_countries_religions();
         $gender = $this->utils->get_gender();
@@ -84,6 +85,7 @@ class Auth extends CI_Controller {
             if (property_exists($country_and_relisionList, "countryList") != FALSE) {
                 foreach ($country_and_relisionList->countryList as $country_info) {
                     $country_list[$country_info->code] = $country_info->title;
+                    $country_time_zone[$country_info->code] = $country_info->gmtOffset;
                 }
             }
             if (property_exists($country_and_relisionList, "religionList") != FALSE) {
@@ -113,6 +115,7 @@ class Auth extends CI_Controller {
                 $gender_id = $this->input->post('gender_list');
                 if ($country_code != null) {
                     $country_title = $country_list[$country_code];
+                    $gmt_offset = $country_time_zone[$country_code];
                 }
                 if ($gender_id != null) {
                     $gender_title = $gender_list[$gender_id];
@@ -120,6 +123,7 @@ class Auth extends CI_Controller {
                 $country = array(
                     'code' => $country_code,
                     'title' => $country_title,
+                    'gmtOffset' =>$gmt_offset
                 );
                 $additional_data = array(
                     'firstName' => $this->input->post('r_first_name'),

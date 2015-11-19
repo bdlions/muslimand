@@ -1,5 +1,6 @@
 
 <script type="text/javascript">
+
     $(function () {
         var profileId = '<?php echo $profile_id; ?>';
         if (profileId === "0") {
@@ -9,8 +10,7 @@
         angular.element($('#sort_friend_list_set_id')).scope().getFriendList(profileId);
         angular.element($('#photo_set_id')).scope().getUserAlbumList(profileId);
 
-    });
-</script>
+    });</script>
 
 
 
@@ -36,10 +36,10 @@
         </span>
         <div class="row form-group"></div>
         <span ng-controller="photoController" id="photo_set_id">
-        <?php $this->load->view("member/timeline/photo_list"); ?>
+            <?php $this->load->view("member/timeline/photo_list"); ?>
         </span>
     </div>
-    <div class="col-md-7" ng-controller="statusController" id='status_set_id' >
+    <div class="col-md-7" ng-controller="statusController" id='status_set_id' ng-init="" >
         <?php $this->load->view("member/pagelets/post_status"); ?>
         <div class="row form-group"></div>
         <?php $this->load->view("member/pagelets/updated_status"); ?>

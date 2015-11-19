@@ -32,7 +32,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-latest.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.pictureflip.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/lib/hash.js"></script>
-
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/moment.min.js"></script>
 
         <!--<angular>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
@@ -63,6 +63,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/statusController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/rightController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageCropController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/Utils.js"></script>
 
         <!--<angular services>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/basicProfileService.js "></script>
