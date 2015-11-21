@@ -35,7 +35,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone']).
                                 comment.commentTimeDiff = "1sec ago ";
                             }
                         });
-
                     }
                 }, $scope.statuses);
                 console.log($scope.statuses);
@@ -130,17 +129,17 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone']).
             $scope.addStatusCommentLike = function (statusId, commentId) {
                 statusService.addStatusCommentLike(statusId, commentId).
                         success(function (data, status, headers, config) {
-                            angular.forEach($scope.statuses, function (value1, key) {
-                                angular.forEach(value1.commentList, function (value, key) {
+                            angular.forEach($scope.statuses, function (status, key) {
+                                angular.forEach(status.commentList, function (value, key) {
                                     if (value.commentId == commentId) {
-                                        (value.likeStatus = "1");
-                                        if (typeof value.likeCounter == "undefined") {
-                                            (value.likeCounter = 1);
+                                        (value.CommentlikeStatus = "1");
+                                        if (typeof value.commentlikeCounter == "undefined") {
+                                            (value.commentlikeCounter = 1);
                                         } else {
-                                            (value.likeCounter = value.likeCounter + 1);
+                                            (value.commentlikeCounter = value.commentlikeCounter + 1);
                                         }
                                     }
-                                }, value1);
+                                }, status);
                             }, $scope.statuses);
 
                         });
@@ -212,8 +211,17 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone']).
             $scope.getStatusComments = function (statusId, requestFunction) {
                 statusService.getStatusComments(statusId).
                         success(function (data, status, headers, config) {
-                            angular.forEach($scope.statuses, function (value, key) {
-                                if (value.statusId == statusId ? value.commentList = data.comment_list : '') {
+                            angular.forEach($scope.statuses, function (status, key) {
+                                if (status.statusId == statusId ? status.commentList = data.comment_list : '') {
+                                }
+                                if (typeof status.commentList != "undefined") {
+                                    angular.forEach(status.commentList, function (comment, key) {
+                                        if (typeof comment.commentTimeDiff == "undefined") {
+                                            comment.commentTimeDiff = utilsTimezone.convertDateToFullTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                        } else {
+                                            comment.commentTimeDiff = "1sec ago ";
+                                        }
+                                    });
                                 }
                             }, $scope.statuses);
                             requestFunction();
@@ -228,9 +236,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone']).
             $scope.selectCommentField = function (statusId) {
                 $('#commentInputField' + statusId).focus();
             };
-            $scope.selectEditField = function (statusId) {
-                $("#displayStatus" + statusId).hide();
-                $("#updateStatus" + statusId).show();
-            };
+         
 
         });

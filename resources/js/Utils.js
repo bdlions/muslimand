@@ -143,7 +143,7 @@ angular.module('services.Timezone', []).
         diff -= hours * (1000 * 60 * 60);
         var mins = Math.floor(diff / (1000 * 60));
         diff -= mins * (1000 * 60);
-        var seconds = Math.floor(diff / (1000 * 60))
+        var seconds = Math.floor(diff / (1000));
         var formatedTime = "";
         if (years > 0) {
             formatedTime = formatedTime + years + " years ";

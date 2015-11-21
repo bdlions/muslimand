@@ -82,7 +82,7 @@
                                         <input type="hidden">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li ng-click="selectEditField(status.statusId)"><a >Edit</a></li>
+                                            <li onclick="select_edit_field(angular.element(this).scope().status.statusId)"><a >Edit</a></li>
                                             <li><a href="#">Report</a></li>
                                             <li><a href  ng-click="deleteStatus(status.statusId)">Delete</a></li>
                                         </ul>
@@ -226,12 +226,31 @@
                                 <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time=' . time()" width="30" height="30" onerror="onImageError(this)">
                                 <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
                             </div>
-                            <div class="col-md-11">
-                                <div class="row">
+                            <div class="col-md-9">
+                                <div class="row" >
                                     <div class="col-md-12">
                                         <div style="float: left">
                                             <a style="font-weight: bold;" href='<?php echo base_url(); ?>member/timeline/{{commentInfo.userInfo.userId}}'></span><span ng-bind="commentInfo.userInfo.firstName"></span>&nbsp<span ng-bind="commentInfo.userInfo.lastName"></span></a>
-                                            <span ng-bind="commentInfo.description">
+                                            <span ng-bind="commentInfo.description" id="displayStatusComment_{{commentInfo.commentId}}">
+
+
+                                                <span id="updateStatusComment_{{commentInfo.commentId}}" style="display: none;">
+                                                    <form ng-submit="updateStatusComment(commentInfo)" >
+                                                        <div class="row form-group">
+                                                            <div class="col-md-12">
+                                                                <textarea class="form-control form_control_custom_style textarea_custom_style" ng-model="commentInfo.description"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-offset-8 col-md-2">
+                                                                <input id="statusUpdateCancel{{commentInfo.commentId}}" type="button" class="button-custom" value="Cancel">
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <input type="submit" id="submit" value="Done" class="button-custom">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </span>
                                         </div>
                                     </div>
                                 </div>
@@ -252,6 +271,23 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-2">
+                                <ul id="single_comment_line_edit_or_delete_{{commentInfo.commentId}}" style="list-style-type: none;">
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle cursor_holder_style" aria-expanded="false" role="button" data-toggle="dropdown" data-toggle="tooltip" title="Edit">
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a id="edit_option_comment_line_{{commentInfo.commentId}}" onclick="select_edit_comment_field(angular.element(this).scope().commentInfo.commentId)">Edit</a>
+                                            </li>
+                                            <li>
+                                                <a id="delete_option_comment_line_{{commentInfo.commentId}}" >Delete</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -319,6 +355,15 @@
         angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function () {
             $('#modal_shared_people_list').modal('show');
         });
+    }
+    function select_edit_field(statusId) {
+        $("#displayStatus" + statusId).hide();
+        $("#updateStatus" + statusId).show();
+    }
+    function select_edit_comment_field(commentId) {
+        alert("fdgfg");
+        $("#displayStatusComment_" + commentId).hide();
+        $("#updateStatusComment_" + commentId).show();
     }
 
     function onImageUnavailable(img) {

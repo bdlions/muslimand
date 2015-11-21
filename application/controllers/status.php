@@ -282,7 +282,10 @@ class Status extends CI_Controller {
         $status_like_info->userInfo = $ref_user_info;
         $result = $this->status_mongodb_model->add_status_comment_like($status_id, $comment_id, $status_like_info);
         if ($result != null) {
-            $response["status_like_info"] = $status_like_info;
+            $result = json_decode($result);
+            if ($result == REQUEST_SUCCESSFULL) {
+                $response["status_like_info"] = $status_like_info;
+            }
         }
         echo json_encode($response);
     }
@@ -523,11 +526,17 @@ class Status extends CI_Controller {
             $status_id = $request->statusId;
         }
         $result = array();
+        $comment_list_info = array();
         $response = array();
-        $result = $this->status_mongodb_model->get_status_comments($status_id);
-        $result = json_decode($result);
+        $user_id = $this->session->userdata('user_id');
+        $result = $this->status_mongodb_model->get_status_comments($user_id, $status_id);
         if ($result != null) {
-            $response["comment_list"] = $result->comment;
+            $comment_list = json_decode($result);
+            foreach ($comment_list as $comment) {
+                $comment->userInfo = json_decode($comment->userInfo);
+                $comment_list_info[] = $comment;
+            }
+            $response["comment_list"] = $comment_list_info;
         }
         echo json_encode($response);
     }

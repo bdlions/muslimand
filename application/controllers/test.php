@@ -45,5 +45,11 @@ class Test extends CI_Controller {
         print_r($result2);
     }
   
+    function testTime(){
+//        $time = unix_to_human(now());
+        echo now();
+        echo '</br>';
+        echo unix_to_human(now());
+    }
 
 }

@@ -68,6 +68,7 @@ class Member extends CI_Controller {
         if ($result != null) {
             if (property_exists($result, "userCurrentTime")) {
                 $user_current_time = $result->userCurrentTime;
+                $this->data['user_current_time'] = $user_current_time;
             }
             if (property_exists($result, "statusInfoList")) {
                 $status_info_list = $result->statusInfoList;
@@ -112,7 +113,6 @@ class Member extends CI_Controller {
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['last_name'] = $this->session->userdata('last_name');
-        $this->data['user_current_time'] = $user_current_time;
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed", $this->data);
     }
 

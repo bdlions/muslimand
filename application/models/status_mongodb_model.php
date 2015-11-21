@@ -71,9 +71,9 @@ class Status_mongodb_model extends Ion_auth_mongodb_model {
         return $this->curl->execute();
     }
 
-    public function get_status_comments($status_id) {
+    public function get_status_comments($user_id, $status_id) {
         $this->curl->create($this->SERVICE_STATUS . 'getStatusComments');
-        $this->curl->post(array("statusId" => $status_id));
+        $this->curl->post(array("userId" => $user_id, "statusId" => $status_id));
         return $this->curl->execute();
     }
 
