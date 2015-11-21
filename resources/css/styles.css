@@ -535,8 +535,8 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 /*-------------------------------------Header (Auth)--------------------------------------*/
 
 .margin_style{
-    margin-left: -12px;
-    margin-right: 12px;
+/*    margin-left: -12px;
+    margin-right: 12px;*/
 }
 @media all and (max-width: 991px){
     .margin_style{
@@ -947,4 +947,8 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     background-color: red;
     border-radius: 2px;
     padding: 1px 3px;
+}
+
+.custom_form_group{
+    margin-bottom: 5px!important
 }

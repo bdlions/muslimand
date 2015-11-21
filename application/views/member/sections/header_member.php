@@ -1,4 +1,3 @@
-
 <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/search_bar_style.css"/>
 <?php $this->load->view("custom_typeahead/custom_typeahead"); ?>
 
@@ -30,21 +29,20 @@
     });
 </script>
 
-<div class="row" style="padding-top: 15px;" ng-controller="headerController">
-    <div class="col-xs-2  col-sm-2 col-md-offset-1 col-md-1 form-group">
-        <a href="<?php echo base_url(); ?>member/newsfeed">
-            <!--<img style="border-radius: 3px;"src="<?php echo base_url(); ?>resources/images/logo.png" height="30" width="30">-->
-            <img style="border-radius: 3px; margin-left: 5px;"src="<?php echo base_url(); ?>resources/images/logo.png">
+<div class="row" style="padding-top: 5px;" ng-controller="headerController">
+    <div class="col-xs-2  col-sm-2 col-md-offset-1 col-md-1 form-group custom_form_group">
+        <a target="_self" href="<?php echo base_url(); ?>member/newsfeed">
+            <img style="border-radius: 3px; margin-left: 5px;" src="<?php echo base_url(); ?>resources/images/logo.png">
         </a>
     </div>
-    <div class="col-xs-10 col-sm-4 col-md-offset-1 col-md-4 form-group">
+    <div class="col-xs-10 col-sm-4 col-md-offset-1 col-md-4 form-group custom_form_group">
         <div class="input-group" style="margin-left: -20px;">
             <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
             <input id="typeahead" class="form-control" type="text" placeholder="Search for people and interests" />
             <?php $this->load->view("custom_typeahead/typeahead_tmpl"); ?>
         </div>
     </div>
-    <div class="col-xs-6 col-sm-3 col-md-2 form-group profile_picture">
+    <div class="col-xs-6 col-sm-3 col-md-2 form-group custom_form_group profile_picture">
         <a style="text-decoration: none;" href="<?php echo base_url(); ?>member/timeline">
             <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
                 <img style="height: 25px; width: 25px;" alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailableHeader(this)"/>

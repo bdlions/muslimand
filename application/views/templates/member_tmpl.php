@@ -80,7 +80,7 @@
                 </div>
             </div>
         </div>
-        <div style="padding-top: 76px"></div>
+        <div style="padding-top: 55px"></div>
         <div class="container-fluid" style="background-color: #E9EAED;">
             <div class="row">
                 <div class="col-xs-8 col-sm-8 col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 ">
