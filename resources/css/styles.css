@@ -250,7 +250,7 @@ html, body {
     padding: 6px 9px
 }
 .padding_top{
-    padding-top: 76px;
+    padding-top: 49px;
 }
 .padding_top_30px{
     padding-top: 30px;
@@ -538,6 +538,8 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 /*    margin-left: -12px;
     margin-right: 12px;*/
 }
+
+
 @media all and (max-width: 991px){
     .margin_style{
         margin-left: 0!important;
@@ -681,14 +683,33 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 
 /*------------------------------------------- Admin --------------------------------- */
-.button-custom {
-    background-color: #703684;
+.button-custom, .button-custom:hover,.button-primary-custom,.button-primary-custom, .button-danger-custom, .button-danger-custom:hover {
     color: #fff;
-    border: 1px solid #703684;
     border-radius: 3px;
     padding: 4px 8px;
     line-height: 16px;
 }
+.button-custom, .button-custom:hover {
+    background-color: #703684;
+    border: 1px solid #703684;
+}
+.button-primary-custom{
+    background-color: #428bca;
+    border: 1px solid #357ebd;
+}
+.button-primary-custom:hover {
+    background-color: #3071a9;
+    border: 1px solid #285e8e;
+}
+.button-danger-custom{
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+.button-danger-custom:hover {
+   background-color: #c9302c;
+    border-color: #ac2925;
+}
+
 
 /*------------------------------------------- Member (About) --------------------------------- */
 
@@ -951,4 +972,8 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 .custom_form_group{
     margin-bottom: 5px!important
+}
+
+.progress_custom{
+     margin-bottom: 5px!important;
 }

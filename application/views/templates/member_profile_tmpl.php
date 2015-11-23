@@ -81,16 +81,15 @@
 
         <title>Sadiik.com</title>
     </head>
-
     <body ng-app="<?php echo $app; ?>">
-        <div style="position: relative; background-color: #E9EAED" >
+        <div style="position: relative; background-color: #E9EAED;" >
             <div style="position: fixed; top: 0; width: 100%; z-index: 10000; box-shadow: 0 4px 4px -2px gray;">
-                <div class="container-fluid"  style="background-color: #703684; color: white; padding: 6px 9px">
+                <div class="container-fluid"  style="background-color: #703684; color: white; height: 48px;">
                     <?php $this->load->view("member/sections/header_member"); ?>
                 </div>
             </div>
         </div>
-        <div style="padding-top: 76px"></div>
+        <div class="padding_top"></div>
         <div class="container-fluid" style="background-color: #E9EAED;">
             <div class="row">
                 <div class="col-xs-8 col-sm-8 col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 ">

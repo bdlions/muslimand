@@ -24,7 +24,7 @@
         </div>
         <div class="container_background">
             <div class="container-fluid">
-                <div class="row Padding_top">
+                <div class="row padding_top">
                     <div class="col-md-offset-1 col-md-9">
                         <?php echo $contents; ?>                            
                     </div>

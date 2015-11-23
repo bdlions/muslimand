@@ -1,6 +1,6 @@
 <script>
     function approve_request(friendId) {
-        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function () {
+        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function() {
 
         });
     }
@@ -19,7 +19,7 @@
 </script>
 <script>
     function block_request(friendId) {
-        angular.element($('#block_friend_id')).scope().blockRequest(friendId, function () {
+        angular.element($('#block_friend_id')).scope().blockRequest(friendId, function() {
             alert("user is blocked ");
         });
     }

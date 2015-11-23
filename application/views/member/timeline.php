@@ -1,7 +1,7 @@
 
 <script type="text/javascript">
 
-    $(function () {
+    $(function() {
         var profileId = '<?php echo $profile_id; ?>';
         if (profileId === "0") {
             profileId = '<?php echo $user_id; ?>';
@@ -14,10 +14,11 @@
 
 
 
-<!--LEFT_COLUMN
 <!-- Cover Image -->
 <div class="row form-group" ng-controller="friendController">
-    <?php $this->load->view("member/timeline/profile_cover"); ?>
+    <div class="col-md-12">
+        <?php $this->load->view("member/timeline/profile_cover"); ?>
+    </div>
 </div>
 <div class="row">
     <div class="col-md-12">
@@ -45,10 +46,5 @@
         <?php $this->load->view("member/pagelets/updated_status"); ?>
     </div>
 </div>
-<div class="row form-group"></div>
 
-<!--RIGHT COLUMN (CHATBOX COLUMN)-->
-<div class="col-md-2">
-</div>
-<!--</div>-->
-<!--</div>-->
+
