@@ -11,19 +11,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-
-
-
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/image-crop-styles.css"/>
-        <link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/imageCrop.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/imageCrop.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/jquery.mCustomScrollbar.css"/>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/pictureflip.css"/>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/jquery.fileupload.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/jquery.fileupload-ui.css">
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
-
-
 
         <!--<jQuer and Javascript>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/modernizr.js"></script>
@@ -83,7 +78,7 @@
     </head>
     <body ng-app="<?php echo $app; ?>">
         <div style="position: relative; background-color: #E9EAED;" >
-            <div style="position: fixed; top: 0; width: 100%; z-index: 10000; box-shadow: 0 4px 4px -2px gray;">
+            <div style="position: fixed; top: 0; width: 100%; z-index: 10000;">
                 <div class="container-fluid"  style="background-color: #703684; color: white; height: 48px;">
                     <?php $this->load->view("member/sections/header_member"); ?>
                 </div>

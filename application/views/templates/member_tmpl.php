@@ -75,8 +75,8 @@
     </head>
     <body ng-app="<?php echo $app; ?>">
         <div style="position: relative; background-color: #E9EAED; " >
-            <div style="position: fixed; top: 0; width: 100%; z-index: 10000; box-shadow: 0 4px 4px -2px gray; height: 48px;">
-                <div class="container-fluid"  style="background-color: #703684; color: white; padding: 6px 9px">
+            <div style="position: fixed; top: 0; width: 100%; z-index: 10000;">
+                <div class="container-fluid"  style="background-color: #703684; color: white; height: 48px;">
                     <?php $this->load->view("member/sections/header_member"); ?>
                 </div>
             </div>

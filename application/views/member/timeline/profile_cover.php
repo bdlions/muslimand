@@ -44,10 +44,10 @@
                         </div>
                     <?php } ?>
                 </div>			
-                <div style="position: relative; left: -13px; margin: 0 15px; right: 0; top: 0; width: 100%"  ng-show="imageCropStep == 2" >
+                <div style="position: relative; left: -16px; margin: 0 15px; right: 0; top: 0; width: 100%"  ng-show="imageCropStep == 2" >
                     <image-crop			 
                         data-height="272"
-                        data-width="780"
+                        data-width="760"
                         data-shape="square"
                         data-step="imageCropStep"
                         src="imgSrc"
@@ -71,13 +71,13 @@
 
             <!--profile picture-->
             <div ng-controller="ImageCopperController" style="position: absolute; bottom: -15px; left: 25px; z-index: 1001;">
-                <div ng-show="imageCropStep == 1" class="fileinput-button profile_picture timeline_profile_picture_custom">
+                <div ng-show="imageCropStep == 1" class="fileinput-button profile_picture timeline_profile_picture_custom" style="height: 150px!important; width: 150px!important;">
                     <?php if ($profile_id != "0" && $profile_id != $user_id) { ?>
-                        <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $profile_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
-                        <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>150x150.jpg" alt="">
+                        <img class="cursor_holder_style"  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $profile_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
+                        <img class="cursor_holder_style" style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>150x150.jpg" alt="">
                     <?php } else { ?>
-                        <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
-                        <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>150x150.jpg" alt="">
+                        <img class="cursor_holder_style"  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
+                        <img class="cursor_holder_style" style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>150x150.jpg" alt="">
                         <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
                     <?php } ?>
                 </div>	
