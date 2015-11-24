@@ -7,25 +7,28 @@
             dataType: 'json',
             type: "POST",
             url: '<?php echo base_url(); ?>' + "notification/get_notification_counter",
-            success: function(data) {
-                if (typeof data.notificationInfo != 'undefined') {
-                    if (data.notificationInfo.friend > 0) {
+            success: function (data) {
+                if (typeof data.user_initiation_info != 'undefined') {
+                    if (data.user_initiation_info.friend > 0) {
                         $("#follower_counter_div").show();
-                        $("#follower_counter_div").val(data.notificationInfo.friend);
-                        $("#follower_counter_div").html(data.notificationInfo.friend);
+                        $("#follower_counter_div").val(data.user_initiation_info.friend);
+                        $("#follower_counter_div").html(data.user_initiation_info.friend);
                     }
-                    if (data.notificationInfo.message > 0) {
+                    if (data.user_initiation_info.message > 0) {
                         $("#message_counter_div").show();
-                        $("#message_counter_div").val(data.notificationInfo.message);
-                        $("#message_counter_div").html(data.notificationInfo.message);
+                        $("#message_counter_div").val(data.user_initiation_info.message);
+                        $("#message_counter_div").html(data.user_initiation_info.message);
                     }
-                    if (data.notificationInfo.general > 0) {
+                    if (data.user_initiation_info.general > 0) {
                         $("#general_notification_counter_div").show();
-                        $("#general_notification_counter_div").val(data.notificationInfo.general);
-                        $("#general_notification_counter_div").html(data.notificationInfo.general);
+                        $("#general_notification_counter_div").val(data.user_initiation_info.general);
+                        $("#general_notification_counter_div").html(data.user_initiation_info.general);
                     }
-                    if (typeof data.notificationInfo.userCurrentTimeStamp != "undefiend") {
-                        angular.element($('#set_user_current_time_id')).scope().setUserCurrentTime(data.notificationInfo.userCurrentTimeStamp);
+<                   if(typeof data.user_initiation_info.userCurrentTimeStamp != "undefiend"){
+                         angular.element($('#set_user_current_time_id')).scope().setUserCurrentTime(data.user_initiation_info.userCurrentTimeStamp);
+                    }
+                    if(typeof data.user_initiation_info.genderId != "undefiend"){
+                         angular.element($('#set_user_current_time_id')).scope().setUserGender(data.user_initiation_info.genderId);
                     }
                 }
             }
@@ -114,7 +117,7 @@
         <a style="text-decoration: none;" href="<?php echo base_url(); ?>member/timeline">
             <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
                 <img style="height: 25px; width: 25px;" alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailableHeader(this)"/>
-                <img style="visibility:hidden;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25; ?>25x25.jpg">
+                <img style="visibility:hidden;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25; ?>25x25_{{userGenderId}}.jpg?time=' . time()">
                 &nbsp; <span id="profile_name" style="text-decoration: none" ><?php echo $first_name; ?></span>
             </span>
         </a>
