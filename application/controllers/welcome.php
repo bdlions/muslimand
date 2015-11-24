@@ -142,6 +142,67 @@ class Welcome extends CI_Controller {
         echo json_encode($response);
         return;
     }
+    
+    
+    function infinity_call_test(){
+     $array1 = array(
+         "id " => "1",
+         "name" => "shaemin1"
+     );
+     $array2 = array(
+         "id " => "1",
+         "name" => "shaemin2"
+     );
+     $array3 = array(
+         "id " => "1",
+         "name" => "shaemin3"
+     );
+     $array4 = array(
+         "id " => "1",
+         "name" => "shaemin4"
+     );
+     
+     $array5 = array(
+         "id " => "1",
+         "name" => "shaemin5"
+     );
+     
+     $array6 = array(
+         "id " => "1",
+         "name" => "shaemin6"
+     );
+     
+     $array7 = array(
+         "id " => "1",
+         "name" => "shaemin7"
+     );
+     $response = array();
+     $response[] = $array1;
+     $response[] = $array2;
+     $response[] = $array3;
+     $response[] = $array4;
+     $response[] = $array5;
+     $response[] = $array6;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     $response[] = $array7;
+     
+     echo json_encode($response);
+     return ;
+    }
 
 }
 

@@ -2,12 +2,12 @@ angular.module('services.Status', []).
         factory('statusService', function ($http, $location) {
             var $app_name = "/muslimand";
             var statusService = {};
-
+           
 
             statusService.addStatus = function (statusInfo) {
                 return $http({
                     method: 'post',
-                    url:  $location.path() + $app_name +'/status/add_status',
+                    url: $location.path() + $app_name + '/status/add_status',
                     data: {
                         statusInfo: statusInfo
 
@@ -18,7 +18,7 @@ angular.module('services.Status', []).
             statusService.updateStatus = function (statusInfo) {
                 return $http({
                     method: 'post',
-                    url: $location.path() + $app_name +'/status/update_status',
+                    url: $location.path() + $app_name + '/status/update_status',
                     data: {
                         description: statusInfo.description,
                         statusId: statusInfo.statusId
@@ -29,10 +29,19 @@ angular.module('services.Status', []).
             statusService.statusDetails = function (statusId) {
                 return $http({
                     method: 'post',
-                    url:  $location.path() + $app_name +'/status/get_status_details',
+                    url: $location.path() + $app_name + '/status/get_status_details',
                     data: {
                         statusId: statusId
 
+                    }
+                });
+            };
+            statusService.getStatusList = function (statusInfo) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/status/get_status_list',
+                    data: {
+                        statusInfo: statusInfo
                     }
                 });
             };
@@ -40,9 +49,9 @@ angular.module('services.Status', []).
             statusService.addLike = function (userId, statusId) {
                 return $http({
                     method: 'post',
-                    url:  $location.path() + $app_name +'/status/add_status_like',
+                    url: $location.path() + $app_name + '/status/add_status_like',
                     data: {
-                        userId:userId,
+                        userId: userId,
                         statusId: statusId
                     }
                 });
@@ -50,10 +59,10 @@ angular.module('services.Status', []).
             statusService.addStatusCommentLike = function (statusId, commentId) {
                 return $http({
                     method: 'post',
-                    url:  $location.path() + $app_name +'/status/add_status_comment_like',
+                    url: $location.path() + $app_name + '/status/add_status_comment_like',
                     data: {
                         statusId: statusId,
-                        commentId:commentId
+                        commentId: commentId
                     }
                 });
             };
@@ -65,10 +74,9 @@ angular.module('services.Status', []).
             statusService.addComment = function (statusInfo) {
                 return $http({
                     method: 'post',
-                    url:  $location.path() + $app_name +'/status/add_status_comment',
+                    url: $location.path() + $app_name + '/status/add_status_comment',
                     data: {
                         statusInfo: statusInfo,
-                       
                     },
                 });
             };
@@ -90,7 +98,7 @@ angular.module('services.Status', []).
             statusService.shareStatus = function (oldStatusInfo, statusInfo) {
                 return $http({
                     method: 'post',
-                    url:  $location.path() + $app_name +'/status/share_status',
+                    url: $location.path() + $app_name + '/status/share_status',
                     data: {
                         oldStatusInfo: oldStatusInfo,
                         statusInfo: statusInfo
@@ -120,9 +128,38 @@ angular.module('services.Status', []).
             statusService.getStatusComments = function (statusId) {
                 return $http({
                     method: 'post',
-                    url:  $location.path() + $app_name + '/status/get_status_comments',
+                    url: $location.path() + $app_name + '/status/get_status_comments',
                     data: {
                         statusId: statusId
+                    }
+                });
+            };
+            statusService.updateStatusComment = function (commentInfo) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/status/update_status_comment',
+                    data: {
+                        commentInfo: commentInfo
+                    }
+                });
+            };
+            statusService.deleteStatusComment = function (statusId, commentId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/status/delete_status_comment',
+                    data: {
+                        statusId: statusId,
+                        commentId: commentId
+                    }
+                });
+            };
+            statusService.getStatusCommentLikeList = function (statusId, commentId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/status/get_status_comment_like_list',
+                    data: {
+                        statusId: statusId,
+                        commentId: commentId
                     }
                 });
             };

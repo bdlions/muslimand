@@ -57,10 +57,10 @@ class Member extends CI_Controller {
         return $user_relation_info;
     }
 
-    function newsfeed() {
+    function newsfeed($offset = 0, $limit = 0) {
         $user_id = $this->session->userdata('user_id');
-        $offset = 0;
-        $limit = 10;
+        $limit = STATUS_LIMIT_PER_REQUEST;
+        $offset = STATUS_INITIAL_OFFSET;
         $result = array();
         $status_list = array();
         $result = $this->status_mongodb_model->get_statuses($user_id, $offset, $limit);
@@ -68,7 +68,6 @@ class Member extends CI_Controller {
         if ($result != null) {
             if (property_exists($result, "userCurrentTime")) {
                 $user_current_time = $result->userCurrentTime;
-                $this->data['user_current_time'] = $user_current_time;
             }
             if (property_exists($result, "statusInfoList")) {
                 $status_info_list = $result->statusInfoList;
@@ -98,17 +97,11 @@ class Member extends CI_Controller {
         } else {
             $this->data["status_list"] = json_encode(array());
         }
-        $status_type_ids = array(
-            "post_status_by_user_at_his_profile_id" => POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID,
-            "post_status_by_user_at_friend_profile_id" => POST_STATUS_BY_USER_AT_FRIEND_PROFILE_TYPE_ID,
-            "change_profile_picture_id" => CHANGE_PROFILE_PICTURE,
-            "change_cover_picture_id" => CHANGE_COVER_PICTURE,
-            "share_other_status_id" => SHARE_OTHER_STATUS,
-            "share_other_photo_id" => SHARE_OTHER_PHOTO,
-            "share_other_video_id" => SHARE_OTHER_VIDEO,
-            "add_album_photos_id" => ADD_ALBUM_PHOTOS
-        );
-        $this->data["ststus_type_ids"] = json_encode($status_type_ids);
+        if (isset($user_current_time)) {
+            $this->data['user_current_time'] = $user_current_time;
+        } else {
+            $this->data['user_current_time'] = now();
+        }
         $this->data['app'] = "app.Status";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');

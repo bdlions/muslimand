@@ -329,37 +329,6 @@ class Status extends CI_Controller {
         echo json_encode($response);
     }
 
-    function time_convert() {
-        $timestamp = 1447650340;
-//        $timezone = 'UTC';
-//        $datetime = new DateTime($timestamp, new DateTimeZone($timezone));
-//        $formattedDate = $datetime->format(" MMM d, yyyy - HH.mm a");
-//        $formate = date(" M,d-y ,H.m a", $timestamp);
-//        var_dump($formattedDate);
-//        var_dump($formate);
-//        $now = time();
-//        echo timezones("UP8");
-
-
-        $timezone = 'UM8';
-        $timezone1 = 'UTC';
-        $daylight_saving = TRUE;
-
-        $localTime = gmt_to_local($timestamp, $timezone, $daylight_saving);
-//        $localTime1 = gmt_to_local($timestamp, $timezone1, $daylight_saving);
-//        var_dump($localTime);
-//        var_dump($localTime1);
-//        $post_date = '1079621429';
-        $now = time();
-
-        echo timespan($localTime, $now);
-
-//        echo unix_to_human($now); // U.S. time, no seconds
-//        echo unix_to_human($timestamp, TRUE, 'us'); // U.S. time with seconds
-//        echo unix_to_human($timestamp, TRUE, 'eu'); // Euro time with seconds
-//        echo unix_to_human($timestamp, TRUE, 'bd'); // Euro time with seconds
-    }
-
     /**
      * this methord return a user timline status
      * @param userId
@@ -371,8 +340,8 @@ class Status extends CI_Controller {
         $mapping_id = $request->profileId;
         $response = array();
         $user_id = $this->session->userdata('user_id');
-        $offset = 0;
-        $limit = 10;
+        $offset = STATUS_INITIAL_OFFSET;
+        $limit = STATUS_LIMIT_PER_REQUEST;
         $result = array();
         $status_list = array();
         $result = $this->status_mongodb_model->get_user_profile_status($user_id, $mapping_id, $offset, $limit);
@@ -383,30 +352,52 @@ class Status extends CI_Controller {
             }
             if (property_exists($result, "statusInfoList")) {
                 $status_info_list = $result->statusInfoList;
-            }
-            foreach ($status_info_list as $status) {
-                if (property_exists($status, "userInfo")) {
-                    $status->userInfo = json_decode($status->userInfo);
-                }
-                if (property_exists($status, "mappingUserInfo")) {
-                    $status->mappingUserInfo = json_decode($status->mappingUserInfo);
-                }
-                if (property_exists($status, "referenceInfo")) {
-                    $status->referenceInfo = json_decode($status->referenceInfo);
-                }
-                if (property_exists($status, "commentList")) {
-                    $commentList = $status->commentList;
-                    $commentListInfo = array();
-                    foreach ($commentList as $comment) {
-                        $comment->userInfo = json_decode($comment->userInfo);
-                        $commentListInfo[] = $comment;
-                    }
-                    $status->commentList = $commentListInfo;
-                }
-                $status_list[] = $status;
+
+                $status_list = $this->get_status_information($status_info_list);
             }
             $response["status_list"] = $status_list;
             $response["user_current_time"] = $user_current_time;
+        }
+        echo json_encode($response);
+    }
+
+    function get_status_list() {
+        $status_list = array();
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        if (property_exists($request, "statusInfo")) {
+            $status_info = $request->statusInfo;
+            if (property_exists($status_info, "offset")) {
+                $offset = $status_info->offset;
+            }
+            if (property_exists($status_info, "profileId")) {
+                $mapping_id = $status_info->profileId;
+            }
+        }
+        if (!isset($offset)) {
+            $offset = STATUS_INITIAL_OFFSET;
+        }
+        $limit = STATUS_LIMIT_PER_REQUEST;
+        $user_id = $this->session->userdata('user_id');
+        if (isset($mapping_id)) {
+            $result = $this->status_mongodb_model->get_user_profile_status($user_id, $mapping_id, $offset, $limit);
+        } else {
+            $result = $this->status_mongodb_model->get_statuses($user_id, $offset, $limit);
+        }
+        if ($request != null) {
+            $result = json_decode($result);
+            if (property_exists($result, "userCurrentTime")) {
+                $user_current_time = $result->userCurrentTime;
+                $response["user_current_time"] = $user_current_time;
+            }
+            if (property_exists($result, "statusInfoList")) {
+                $status_info_list = $result->statusInfoList;
+                $status_list = $this->get_status_information($status_info_list);
+                if (!empty($status_list)) {
+                    $response["status_list"] = $status_list;
+                } 
+            }
         }
         echo json_encode($response);
     }
@@ -426,22 +417,7 @@ class Status extends CI_Controller {
             }
             if (property_exists($result, "statusInfoList")) {
                 $status_info_list = $result->statusInfoList;
-            }
-            foreach ($status_info_list as $status) {
-                if (property_exists($status, "userInfo")) {
-                    $status->userInfo = json_decode($status->userInfo);
-                }
-                if (property_exists($status, "commentList")) {
-                    $commentList = $status->commentList;
-                    $commentListInfo = array();
-                    foreach ($commentList as $comment) {
-                        $comment->userInfo = json_decode($comment->userInfo);
-                        $commentListInfo[] = $comment;
-                    }
-                    $status->commentList = $commentListInfo;
-                }
-                $status_list[] = $status;
-//              
+                $status_list = $this->get_status_information($status_info_list);
             }
             $this->data["status_list"] = $status_list;
         }
@@ -450,6 +426,32 @@ class Status extends CI_Controller {
         $this->data['app'] = "app.Status";
         $this->data['user_current_time'] = $user_current_time;
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/status_details", $this->data);
+    }
+
+    function get_status_information($status_info_list) {
+        $status_list = array();
+        foreach ($status_info_list as $status) {
+            if (property_exists($status, "userInfo")) {
+                $status->userInfo = json_decode($status->userInfo);
+            }
+            if (property_exists($status, "mappingUserInfo")) {
+                $status->mappingUserInfo = json_decode($status->mappingUserInfo);
+            }
+            if (property_exists($status, "referenceInfo")) {
+                $status->referenceInfo = json_decode($status->referenceInfo);
+            }
+            if (property_exists($status, "commentList")) {
+                $commentList = $status->commentList;
+                $commentListInfo = array();
+                foreach ($commentList as $comment) {
+                    $comment->userInfo = json_decode($comment->userInfo);
+                    $commentListInfo[] = $comment;
+                }
+                $status->commentList = $commentListInfo;
+            }
+            $status_list[] = $status;
+        }
+        return $status_list;
     }
 
     /**
@@ -537,6 +539,74 @@ class Status extends CI_Controller {
                 $comment_list_info[] = $comment;
             }
             $response["comment_list"] = $comment_list_info;
+        }
+        echo json_encode($response);
+    }
+
+    function update_status_comment() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        if (property_exists($request, "commentInfo")) {
+            $comment = $request->commentInfo;
+            $status_id = $comment->statusId;
+            $comment_id = $comment->commentId;
+            $description = $comment->description;
+            $result = $this->status_mongodb_model->update_status_comment($status_id, $comment_id, $description);
+            if ($result != null) {
+                $result = json_decode($result);
+                if ($result->responseCode == REQUEST_SUCCESSFULL) {
+                    $response["status"] = "1";
+                } else {
+                    $response["status"] = "0";
+                }
+            }
+        }
+        echo json_encode($response);
+    }
+
+    function delete_status_comment() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        if (property_exists($request, "statusId")) {
+            $status_id = $request->statusId;
+        }
+        if (property_exists($request, "commentId")) {
+            $comment_id = $request->commentId;
+        }
+        $result = $this->status_mongodb_model->delete_status_comment($status_id, $comment_id);
+        if ($result != null) {
+            $result = json_decode($result);
+            if ($result->responseCode == REQUEST_SUCCESSFULL) {
+                $response["status"] = "1";
+            } else {
+                $response["status"] = "0";
+            }
+        }
+        echo json_encode($response);
+    }
+
+    /**
+     * this methord return status liked users
+     * @param userId 
+     * @param status id
+     *  */
+    function get_status_comment_like_list() {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        if (property_exists($request, "statusId")) {
+            $status_id = $request->statusId;
+        }
+        if (property_exists($request, "commentId")) {
+            $comment_id = $request->commentId;
+        }
+        $result = array();
+        $response = array();
+        $result = $this->status_mongodb_model->get_status_comment_like_list($status_id, $comment_id);
+        if ($result != null) {
+            $result = json_decode($result);
+            $response["like_list"] = $result;
         }
         echo json_encode($response);
     }

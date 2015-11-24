@@ -1,6 +1,5 @@
-
-<!--<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/moment.min.js"></script>-->
-<script type="text/javascript" src="<?php // echo base_url(); ?>resources/js/Utils.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.jscroll.min.js"></script>
+<!--<script type="text/javascript" src="<?php // echo base_url();      ?>resources/js/Utils.js"></script>-->
 <script type="text/javascript">
     function onImageUnavailable(img) {
         var div = img.parentNode;
@@ -11,6 +10,7 @@
         secondImage.style.visibility = 'visible';
         secondImage.style.height = '100%';
     }
+
 </script>
 
 <div ng-controller="statusController" ng-init="setUserCurrentTimeStamp((<?php echo htmlspecialchars(json_encode($user_current_time)); ?>))">
@@ -62,7 +62,7 @@
             <div class="row form-group"></div>
             <?php // $this->load->view("member/pagelets/updated_profile_pic"); ?>
             <div class="row form-group"></div>
-            <?php $this->load->view("member/pagelets/shared_status"); ?>
+            <?php // $this->load->view("member/pagelets/shared_status"); ?>
             <div class="row form-group"></div>
         </div>
         <!--ADD COLUMN-->

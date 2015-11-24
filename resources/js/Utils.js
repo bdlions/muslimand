@@ -99,7 +99,7 @@ angular.module('services.Timezone', []).
                 else {
                     var days = Math.floor(hours / 24);
                     if (days <= 1) {
-                        return days + " day ago.";
+                        return "yesterday";
                     }
                     else if (days > 1 && days < 30) {
                         return days + " days ago.";
@@ -113,8 +113,7 @@ angular.module('services.Timezone', []).
                             return months + " months ago.";
                         }
                         else {
-                            var years = Math.floor(months / 12);
-                            return years + " years ago.";
+                            return date;
                         }
                     }
                 }

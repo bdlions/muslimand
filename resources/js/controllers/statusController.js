@@ -1,4 +1,4 @@
-angular.module('controllers.Status', ['services.Status', 'services.Timezone']).
+angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'infinite-scroll']).
         controller('statusController', function ($scope, statusService, utilsTimezone) {
             $scope.statuses = [];
             $scope.statusDetails = {};
@@ -10,10 +10,34 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone']).
             $scope.sharedInfo = {};
             $scope.newsfeeds = [];
             $scope.likeList = [];
+            $scope.commentLikeList = [];
             $scope.shareList = [];
             $scope.CommentList = [];
             $scope.userCurrentTimeStamp = 0;
             $scope.timeDifferent = 0;
+            $scope.busy = false;
+            $scope.getStatusList = function () {
+                if ($scope.busy)
+                    return;
+                $scope.busy = true;
+                var statusInfo = {};
+                var offset = $scope.statuses.length;
+                statusInfo.offset = offset;
+                statusService.getStatusList(statusInfo).
+                        success(function (data, status, headers, config) {
+                            if (typeof data.status_list == "undefined") {
+                                $scope.busy = true;
+                            } else {
+                                var counter = data.status_list.length;
+                                for (var i = 0; i < counter; i++) {
+                                    $scope.statuses.push(data.status_list[i]);
+                                }
+                                $scope.getStatusInformation();
+                                $scope.busy = false;
+                            }
+                        }.bind($scope));
+            };
+
 
             $scope.setUserCurrentTimeStamp = function (userCurrentTimeStamp) {
                 $scope.userCurrentTimeStamp = userCurrentTimeStamp;
@@ -21,27 +45,44 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone']).
 
             $scope.setStatus = function (userStatus) {
                 $scope.statuses = JSON.parse(userStatus);
+                $scope.getStatusInformation();
+                console.log($scope.statuses);
+            };
+
+            $scope.getStatusInformation = function () {
                 angular.forEach($scope.statuses, function (status, key) {
                     if (typeof status.timeDiff == "undefined") {
                         status.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, status.createdOn);
-                    } else {
-                        status.timeDiff = "1sec ago ";
                     }
                     if (typeof status.commentList != "undefined") {
                         angular.forEach(status.commentList, function (comment, key) {
                             if (typeof comment.commentTimeDiff == "undefined") {
-                                comment.commentTimeDiff = utilsTimezone.convertDateToFullTime($scope.userCurrentTimeStamp, comment.createdOn);
-                            } else {
-                                comment.commentTimeDiff = "1sec ago ";
+                                comment.commentTimeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
                             }
                         });
                     }
                 }, $scope.statuses);
-                console.log($scope.statuses);
-            };
+            }
+
+
+
+
+            $scope.getProfileStatusList = function (profileId) {
+                var statusInfo = {};
+                var offset = $scope.statuses.length;
+                statusInfo.offset = offset;
+                statusInfo.profileId = profileId;
+                statusService.getStatusList(statusInfo).
+                        success(function (data, status, headers, config) {
+                            $scope.statuses.push(data.status_list);
+                            $scope.getStatusInformation();
+                        });
+            }
+
 
             $scope.setStatusDetails = function (statusDetails) {
                 $scope.statuses = JSON.parse(statusDetails);
+                $scope.getStatusInformation();
             };
 
             $scope.getProfileStatus = function (profileId) {
@@ -49,13 +90,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone']).
                         success(function (data, status, headers, config) {
                             $scope.statuses = data.status_list;
                             $scope.userCurrentTimeStamp = data.user_current_time;
-                            angular.forEach($scope.statuses, function (value, key) {
-                                if (typeof value.timeDiff == "undefined") {
-                                    value.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, value.createdOn);
-                                } else {
-                                    value.timeDiff = "1sec ago ";
-                                }
-                            }, $scope.statuses);
+                            $scope.getStatusInformation();
                         });
             };
 
@@ -87,7 +122,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone']).
             };
 // update a status...............
             $scope.updateStatus = function (status) {
-                statusId = status.statusId;
+                var statusId = status.statusId;
                 statusService.updateStatus(status).
                         success(function (data, status, headers, config) {
                             angular.forEach($scope.statuses, function (value, key) {
@@ -159,7 +194,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone']).
                                     if (typeof value.commentList === "undefined") {
                                         value.commentList = new Array();
                                     }
-                                    value.commentList.push(data.status_comment_info);
+                                    value.commentList.unshift(data.status_comment_info);
                                 }
                             }, $scope.statuses);
                             $scope.statusInfo.commentDes = "";
@@ -196,6 +231,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone']).
                 statusService.getStatusLikeList(statusId).
                         success(function (data, status, headers, config) {
                             $scope.likeList = data.like_list;
+                            console.log($scope.likeList);
                             requestFunction();
                         });
                 return false;
@@ -229,13 +265,39 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone']).
                 return false;
 
             };
-            /**
-             * Feild hde and show 
-             * */
 
-            $scope.selectCommentField = function (statusId) {
-                $('#commentInputField' + statusId).focus();
+            $scope.updateStatusComment = function (statusId, comment) {
+                var commentId = comment.commentId;
+                var commentInfo = {};
+                commentInfo.statusId = statusId;
+                commentInfo.commentId = commentId;
+                commentInfo.description = comment.description;
+                statusService.updateStatusComment(commentInfo).
+                        success(function (data, status, headers, config) {
+                            $("#displayStatusComment_" + commentId).show();
+                            $("#updateStatusComment_" + commentId).hide();
+
+                        });
             };
-         
+            $scope.deleteStatusComment = function (statusId, commentId, requestFunction) {
+                statusService.deleteStatusComment(statusId, commentId).
+                        success(function (data, status, headers, config) {
+                            if (data.status == "1") {
+                                requestFunction(data.status);
+                            }
+
+                        });
+            };
+
+            $scope.getStatusCommentLikeList = function (statusId, commentId, requestFunction) {
+                statusService.getStatusCommentLikeList(statusId, commentId).
+                        success(function (data, status, headers, config) {
+                            $scope.commentLikeList = data.like_list;
+                            requestFunction();
+                        });
+                return false;
+            };
+
+
 
         });

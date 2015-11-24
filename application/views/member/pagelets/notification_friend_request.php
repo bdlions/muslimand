@@ -1,14 +1,14 @@
    
 <script>
     function confirm_request(friendId) {
-        angular.element($('#confirm_pending_friend_'+friendId)).scope().approveRequest(friendId, function () {
+        angular.element($('#confirm_pending_friend_' + friendId)).scope().approveRequest(friendId, function () {
             $("#confirm_pending_friend_" + friendId).hide();
             $("#delete_pending_request_" + friendId).hide();
-            $("#friend_request_accept_" +friendId).show();
+            $("#friend_request_accept_" + friendId).show();
         });
     }
     function delete_request(friendId) {
-        angular.element($('#delete_pending_request_'+friendId)).scope().deleteRequest(friendId, function () {
+        angular.element($('#delete_pending_request_' + friendId)).scope().deleteRequest(friendId, function () {
             $("#confirm_pending_friend_" + friendId).hide();
             $("#delete_pending_request_" + friendId).hide();
             $("#request_spam_" + friendId).show();
@@ -33,27 +33,33 @@
         </div>
     </div>
 
-    <div class="pagelet" ng-repeat="pFriend in prndingFriends">
-        <div class="row">
+    <div class="pagelet" ng-repeat="notification in friendNotifications">
+        <div class="row" ng-if="notification.typeId == '<?php echo NOTIFICATION_TYPE_PENDING_REQUEST; ?>'" >
             <div class="col-xs-2">
-                <img src="<?php echo base_url().PROFILE_PICTURE_PATH_W40_H40; ?>{{pFriend.userId}}.jpg" onError="onImageNotFound(this)">
+                <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{notification.userInfo.userId}}.jpg" onError="onImageNotFound(this)">
                 <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50.jpg">
             </div>
             <div class="col-xs-4">
-                <a style="font-size: 12px; font-weight: bold;" href >{{pFriend.firstName}} &nbsp; {{pFriend.lastName}}</a>
+                <a href="<?php echo base_url(); ?>member/timeline/{{notification.userInfo.userId}} style="font-size: 12px; font-weight: bold;" >{{notification.userInfo.firstName}} &nbsp; {{notification.userInfo.lastName}}</a>
             </div>
             <div class="col-xs-6">
                 <div class="pull-right">
                     <div>
-                        <button  id="confirm_pending_friend_{{pFriend.userId}}" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="confirm_request(angular.element(this).scope().pFriend.userId)">Confirm</button>
-                        <button id="delete_pending_request_{{pFriend.userId}}" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="delete_request(angular.element(this).scope().pFriend.userId)">Delete Request</button>
+                        <button  id="confirm_pending_friend_{{notification.userInfo.userId}}" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="confirm_request(angular.element(this).scope().notification.userInfo.userId)">Confirm</button>
+                        <button id="delete_pending_request_{{notification.userInfo.userId}}" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="delete_request(angular.element(this).scope().notification.userInfo.userId)">Delete Request</button>
                     </div>
                     <div>
-                        <button   id="friend_request_accept_{{pFriend.userId}}" style="display: none" type="button" class=" btn btn-default">Friend</button>   
-                        <button  id="request_spam_{{pFriend.userId}}" style="display: none" type="button" class=" btn btn-default">Mark as Spam</button>   
+                        <button   id="friend_request_accept_{{notification.userInfo.userId}}" style="display: none" type="button" class=" btn btn-default">Friend</button>   
+                        <button  id="request_spam_{{notification.userInfo.userId}}" style="display: none" type="button" class=" btn btn-default">Mark as Spam</button>   
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row" ng-if="notification.typeId == '<?php echo NOTIFICATION_TYPE_ACCEPT_REQUEST; ?>'" >
+             <div class="col-md-offset-1 col-md-10">
+            <a href="<?php echo base_url(); ?>member/timeline/{{notification.userInfo.userId}}">{{notification.userInfo.firstName}}&nbsp;{{notification.userInfo.lastName}} </a>
+            Accept your Friend Request
+             </div>
         </div>
     </div>
     <div class="pagelet">

@@ -1,5 +1,5 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/elif.js"></script>
-<div id="updateStatusPagelet" >
+<div ng-cloak class="scroll" id="updateStatusPagelet" infinite-scroll='getStatusList()' infinite-scroll-disabled='busy' infinite-scroll-distance='1'>
     <div ng-repeat="status in statuses" class="form-group">
         <!--<div ng-repeat="status in statuses.slice().reverse()" class="form-group">-->
         <div class="pagelet" id="pagelet{{status.statusId}}">
@@ -82,9 +82,13 @@
                                         <input type="hidden">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li onclick="select_edit_field(angular.element(this).scope().status.statusId)"><a >Edit</a></li>
+                                            <span ng-if="status.mappingId == '<?php echo $user_id; ?>'">
+                                                <li onclick="select_edit_field(angular.element(this).scope().status.statusId)"><a >Edit</a></li>
+                                            </span>
                                             <li><a href="#">Report</a></li>
-                                            <li><a href  ng-click="deleteStatus(status.statusId)">Delete</a></li>
+                                            <span ng-if="status.mappingId == '<?php echo $user_id; ?>' || status.userId == '<?php echo $user_id; ?>'">
+                                                <li><a href  ng-click="deleteStatus(status.statusId)">Delete</a></li>
+                                            </span>
                                         </ul>
                                     </li>
                                 </ul>
@@ -159,7 +163,7 @@
                                 <span ng-if = "status.likeStatus == '1'">
                                     <a style="color: #3B59A9;" href id="statusUnLike{{status.statusId}}" ng-click="unLike(status.statusId)">liked,</a> 
                                 </span>
-                                <a style="color: #3B59A9;" href ng-click="selectCommentField(status.statusId)"> Comment,</a>
+                                <a style="color: #3B59A9;" href onclick="select_comment_field(angular.element(this).scope().status.statusId)"> Comment,</a>
                                 <a style="color: #3B59A9;"  id="share_add_id" href onclick="open_modal_share(angular.element(this).scope().status)"> Share</a>
                             </div>
                         </div>
@@ -216,8 +220,8 @@
 
                 <span ng-if="status.commentList != null">
                     <div class="pagelet_divider" id='pagelet_id_2'></div>
-                    <div ng-repeat="commentInfo in status.commentList">
-                        <div class="row form-group">
+                    <div ng-repeat="commentInfo in status.commentList.slice().reverse()">
+                        <div class="row form-group" id="comment_{{commentInfo.commentId}}">
                             <div class="col-md-1" profile_picture >
                                 <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time=' . time()" width="30" height="30" onerror="onImageError(this)">
                                 <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
@@ -227,26 +231,12 @@
                                     <div class="col-md-12">
                                         <div style="float: left">
                                             <a style="font-weight: bold;" href='<?php echo base_url(); ?>member/timeline/{{commentInfo.userInfo.userId}}'></span><span ng-bind="commentInfo.userInfo.firstName"></span>&nbsp<span ng-bind="commentInfo.userInfo.lastName"></span></a>
-                                            <span ng-bind="commentInfo.description" id="displayStatusComment_{{commentInfo.commentId}}">
-
-
-                                                <span id="updateStatusComment_{{commentInfo.commentId}}" style="display: none;">
-                                                    <form ng-submit="updateStatusComment(commentInfo)" >
-                                                        <div class="row form-group">
-                                                            <div class="col-md-12">
-                                                                <textarea class="form-control form_control_custom_style textarea_custom_style" ng-model="commentInfo.description"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-offset-8 col-md-2">
-                                                                <input id="statusUpdateCancel{{commentInfo.commentId}}" type="button" class="button-custom" value="Cancel">
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <input type="submit" id="submit" value="Done" class="button-custom">
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </span>
+                                            <span ng-bind="commentInfo.description" id="displayStatusComment_{{commentInfo.commentId}}"></span>
+                                            <span id="updateStatusComment_{{commentInfo.commentId}}" style="display: none;">
+                                                <form ng-submit="updateStatusComment(status.statusId, commentInfo)" >
+                                                    <input class="form-control" ng-model="commentInfo.description" />
+                                                </form>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -260,7 +250,7 @@
                                             <span ng-if = "commentInfo.CommentlikeStatus == '1'">
                                                 <a style="color: #3B59A9;" href id="statusUnLike{{commentInfo.commentId}}" ng-click="unLike(status.statusId)">liked,</a> 
                                             </span><!--<a>like</a>-->
-                                            <a ng-if="commentInfo.commentlikeCounter > 0">
+                                            <a id="comment_like_{{commentInfo.commentId}}" onclick="get_comment_like_list(angular.element(this).scope().status.statusId, angular.element(this).scope().commentInfo.commentId)" ng-if="commentInfo.commentlikeCounter > 0">
                                                 <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
                                                 {{commentInfo.commentlikeCounter}}
                                             </a>
@@ -268,18 +258,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2" >
                                 <ul id="single_comment_line_edit_or_delete_{{commentInfo.commentId}}" style="list-style-type: none;">
                                     <li class="dropdown">
                                         <a class="dropdown-toggle cursor_holder_style" aria-expanded="false" role="button" data-toggle="dropdown" data-toggle="tooltip" title="Edit">
                                             <span class="caret"></span>
                                         </a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li>
+                                            <li ng-if="commentInfo.userInfo.userId == '<?php echo $user_id; ?>'">
                                                 <a id="edit_option_comment_line_{{commentInfo.commentId}}" onclick="select_edit_comment_field(angular.element(this).scope().commentInfo.commentId)">Edit</a>
                                             </li>
-                                            <li>
-                                                <a id="delete_option_comment_line_{{commentInfo.commentId}}" >Delete</a>
+                                            <li ng-if="commentInfo.userInfo.userId == '<?php echo $user_id; ?>' || status.mappingId == '<?php echo $user_id; ?>'">
+                                                <a id="delete_option_comment_line_{{commentInfo.commentId}}" onclick="delete_status_comment(angular.element(this).scope().status.statusId, angular.element(this).scope().commentInfo.commentId)" >Delete</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -303,23 +293,12 @@
         </div>
     </div>
 </div>
+<div ng-show='busy'>Loading data...</div>
 <?php $this->load->view("member/pagelets/modal_share_content"); ?>
 <?php $this->load->view("modal/modal_liked_people_list"); ?>
+<?php $this->load->view("modal/modal_comment_liked_people_list"); ?>
 <?php $this->load->view("modal/modal_shared_people_list"); ?>
 <script>
-    //            $(function () {
-    //            $("#editStatusId").on("click", function () {
-    //            $("#displayStatusId").hide();
-    //                    $("#updateStatus").show();
-    //            });
-    //        $("#statusCommentId").on("click", function () {
-    //            $('#commentInputField').focus();
-    //        });
-    //                    $("#statusUpdateCancelId").on("click", function () {
-    //            $('#updateStatus').hide();
-    //                    $("#displayStatusId").show();
-    //            });
-    //            });
 
     function get_album_comments(statusId) {
         angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function () {
@@ -354,10 +333,25 @@
         $("#updateStatus" + statusId).show();
     }
     function select_edit_comment_field(commentId) {
-        alert("fdgfg");
         $("#displayStatusComment_" + commentId).hide();
         $("#updateStatusComment_" + commentId).show();
     }
+    function delete_status_comment(statusId, commentId) {
+        angular.element($('#delete_option_comment_line_' + commentId)).scope().deleteStatusComment(statusId, commentId, function (response) {
+            if (response == "1") {
+                $("#comment_" + commentId).hide();
+            }
+        });
+    }
+    function get_comment_like_list(statusId, commentId) {
+        angular.element($('#comment_like_' + commentId)).scope().getStatusCommentLikeList(statusId, commentId, function () {
+            $('#modal_comment_liked_people_list').modal('show');
+        });
+    }
+    function select_comment_field(statusId) {
+        $('#commentInputField' + statusId).focus();
+    }
+    ;
 
     function onImageUnavailable(img) {
         var div = img.parentNode;
@@ -375,5 +369,12 @@
         secondImage.style.visibility = 'visible';
         secondImage.style.height = '100%';
     }
-
+    function onLikeUserImageError(img) {
+        var div = img.parentNode;
+        var firstImage = img;
+        var secondImage = div.getElementsByTagName('img')[1];
+        firstImage.style.display = 'none';
+        secondImage.style.visibility = 'visible';
+        secondImage.style.height = '100%';
+    }
 </script>

@@ -26,10 +26,10 @@ class Notification extends CI_Controller {
     function get_notification_counter() {
         $response = array();
         $user_id = $this->session->userdata('user_id');
-        $notification_counters = $this->notification_mongodb_model->get_notification_counter($user_id);
-        if (!empty($notification_counters)) {
-            if (property_exists($notification_counters, "notificationCounter")) {
-                $response['notification_counters'] = json_decode($notification_counters->notificationCounter);
+        $notification_counters_info = $this->notification_mongodb_model->get_notification_counter($user_id);
+        if (!empty($notification_counters_info)) {
+            if (property_exists($notification_counters_info, "notificationInfo")) {
+                $response['notificationInfo'] = json_decode($notification_counters_info->notificationInfo);
             }
         }
         echo json_encode($response);

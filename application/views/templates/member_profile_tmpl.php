@@ -52,7 +52,7 @@
         <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-angular.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload-shim.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload.min.js"></script>
-
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/ng-infinite-scroll.min.js"></script>
 
         <!--<angular controllers>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageUploadController.js"></script>

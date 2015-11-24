@@ -13,5 +13,7 @@
     
     define("STATUS_ID_LENGTH",                                                  15);
     define("STATUS_COMMENT_ID_LENGTH",                                          15);
-
+    define("STATUS_LIMIT_PER_REQUEST",                                          5);
+    define("STATUS_INITIAL_OFFSET",                                             0);
+ 
     
