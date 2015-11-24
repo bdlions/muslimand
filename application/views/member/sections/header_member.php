@@ -97,7 +97,7 @@
     }
 </script>
 
-<div class="row" style="padding-top: 5px;" ng-controller="headerController">
+<div class="row" id="set_user_current_time_id" style="padding-top: 5px;" ng-controller="headerController">
     <div class="col-xs-2  col-sm-2 col-md-offset-1 col-md-1">
         <a target="_self" href="<?php echo base_url(); ?>member/newsfeed">
             <img style="border-radius: 3px; margin-left: 5px;" src="<?php echo base_url(); ?>resources/images/logo.png">
