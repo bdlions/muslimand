@@ -1,5 +1,5 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.jscroll.min.js"></script>
-<!--<script type="text/javascript" src="<?php // echo base_url();      ?>resources/js/Utils.js"></script>-->
+<!--<script type="text/javascript" src="<?php // echo base_url();       ?>resources/js/Utils.js"></script>-->
 <script type="text/javascript">
     function onImageUnavailable(img) {
         var div = img.parentNode;
@@ -9,6 +9,9 @@
         firstImage.style.display = 'none';
         secondImage.style.visibility = 'visible';
         secondImage.style.height = '100%';
+    }
+    function onImageNotFound() {
+
     }
 
 </script>

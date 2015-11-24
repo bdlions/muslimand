@@ -7,7 +7,7 @@
             dataType: 'json',
             type: "POST",
             url: '<?php echo base_url(); ?>' + "notification/get_notification_counter",
-            success: function (data) {
+            success: function(data) {
                 if (typeof data.notificationInfo != 'undefined') {
                     if (data.notificationInfo.friend > 0) {
                         $("#follower_counter_div").show();
@@ -24,8 +24,8 @@
                         $("#general_notification_counter_div").val(data.notificationInfo.general);
                         $("#general_notification_counter_div").html(data.notificationInfo.general);
                     }
-                    if(typeof data.notificationInfo.userCurrentTimeStamp != "undefiend"){
-                         angular.element($('#set_user_current_time_id')).scope().setUserCurrentTime(data.notificationInfo.userCurrentTimeStamp);
+                    if (typeof data.notificationInfo.userCurrentTimeStamp != "undefiend") {
+                        angular.element($('#set_user_current_time_id')).scope().setUserCurrentTime(data.notificationInfo.userCurrentTimeStamp);
                     }
                 }
             }
@@ -97,20 +97,20 @@
     }
 </script>
 
-<div class="row" id="set_user_current_time_id" style="padding-top: 5px;" ng-controller="headerController">
-    <div class="col-xs-2  col-sm-2 col-md-offset-1 col-md-1">
+<div class="row" id="set_user_current_time_id" style="padding-top: 11px;" ng-controller="headerController">
+    <div class="col-md-offset-1 col-md-1">
         <a target="_self" href="<?php echo base_url(); ?>member/newsfeed">
             <img style="border-radius: 3px; margin-left: 5px;" src="<?php echo base_url(); ?>resources/images/logo.png">
         </a>
     </div>
-    <div class="col-xs-10 col-sm-4 col-md-offset-1 col-md-4">
+    <div class="col-md-offset-1 col-md-4">
         <div class="input-group" style="margin-left: -20px;">
             <span class="input-group-addon" style="margin-bottom: 10px; padding: 3px 12px!important;"><i class="glyphicon glyphicon-search"></i></span>
             <input style="height: 26px; padding: 3px 8px!important; " id="typeahead" class="form-control" type="text" placeholder="Search for people and interests" />
             <?php $this->load->view("custom_typeahead/typeahead_tmpl"); ?>
         </div>
     </div>
-    <div class="col-xs-6 col-sm-3 col-md-2 profile_picture">
+    <div class="col-md-2 profile_picture">
         <a style="text-decoration: none;" href="<?php echo base_url(); ?>member/timeline">
             <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
                 <img style="height: 25px; width: 25px;" alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailableHeader(this)"/>
@@ -119,17 +119,15 @@
             </span>
         </a>
     </div>
-    <div class="col-xs-6 col-sm-3 col-md-3" >
+    <div class="col-md-3" >
         <div id="mm_friend_request" style="position: relative" >
             <div class="notification_counter" id="follower_counter_div" style="display: none"></div>
             <a href="javascript:void(0)" onclick="friend_toggle()">
                 <img src="<?php echo base_url(); ?>resources/images/header_icons/friends.png">
             </a>
-            <div>
-                <div id="mm_friend_request_box"> 
-                    <div id="pending_list">
-                        <?php $this->load->view("member/pagelets/notification_friend_request"); ?>
-                    </div>
+            <div id="mm_friend_request_box"> 
+                <div id="pending_list">
+                    <?php $this->load->view("member/pagelets/notification_friend_request"); ?>
                 </div>
             </div>
         </div>
@@ -170,7 +168,6 @@
                 </li>
             </ul>
         </div>
-        
     </div>
 </div>
 

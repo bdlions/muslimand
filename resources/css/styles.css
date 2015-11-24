@@ -168,9 +168,9 @@ html, body {
     border-top: 1px solid lightgray;
 }
 .border_without_bottom{
-     border-top: 1px solid lightgray;
-     border-left: 1px solid lightgray;
-     border-right: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
 }
 
 /*================================  Left Menu  ================================*/
@@ -535,8 +535,8 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 /*-------------------------------------Header (Auth)--------------------------------------*/
 
 .margin_style{
-/*    margin-left: -12px;
-    margin-right: 12px;*/
+    /*    margin-left: -12px;
+        margin-right: 12px;*/
 }
 
 
@@ -706,7 +706,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     border-color: #d43f3a;
 }
 .button-danger-custom:hover {
-   background-color: #c9302c;
+    background-color: #c9302c;
     border-color: #ac2925;
 }
 
@@ -975,5 +975,5 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 
 .progress_custom{
-     margin-bottom: 5px!important;
+    margin-bottom: 5px!important;
 }

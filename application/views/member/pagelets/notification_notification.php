@@ -73,6 +73,7 @@
             </a>
         </div>
     </div>
+    
     <div style="border-top: 1px solid lightgray;"class="pagelet message_friends_box_1">
         <div class="row">
             <div class="col-xs-12">
@@ -80,3 +81,4 @@
             </div>
         </div>
     </div>
+</div>
