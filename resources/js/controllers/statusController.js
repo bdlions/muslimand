@@ -15,6 +15,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             $scope.CommentList = [];
             $scope.userCurrentTimeStamp = 0;
             $scope.timeDifferent = 0;
+            $scope.userGenderId = "";
             $scope.busy = false;
             $scope.getStatusList = function () {
                 if ($scope.busy)
@@ -43,6 +44,11 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 $scope.userCurrentTimeStamp = userCurrentTimeStamp;
             };
 
+            $scope.setUserGender = function (genderId) {
+                $scope.userGenderId = genderId;
+                console.log($scope.userGenderId);
+
+            };
             $scope.setStatus = function (userStatus) {
                 $scope.statuses = JSON.parse(userStatus);
                 $scope.getStatusInformation();
@@ -67,17 +73,51 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
 
 
 
+//            $scope.getProfileStatusList = function (profileId) {
+//                var statusInfo = {};
+//                var offset = $scope.statuses.length;
+//                statusInfo.offset = offset;
+//                statusInfo.profileId = profileId;
+//                statusService.getStatusList(statusInfo).
+//                        success(function (data, status, headers, config) {
+//                            $scope.statuses.push(data.status_list);
+//                            $scope.getStatusInformation();
+//                        });
+//            }
+
             $scope.getProfileStatusList = function (profileId) {
+                if ($scope.busy)
+                    return;
+                $scope.busy = true;
                 var statusInfo = {};
                 var offset = $scope.statuses.length;
                 statusInfo.offset = offset;
                 statusInfo.profileId = profileId;
                 statusService.getStatusList(statusInfo).
                         success(function (data, status, headers, config) {
-                            $scope.statuses.push(data.status_list);
-                            $scope.getStatusInformation();
-                        });
-            }
+                            $scope.userCurrentTimeStamp = data.user_current_time;
+                            $scope.userGenderId = data.user_gender_id;
+                            if (typeof data.status_list == "undefined") {
+                                $scope.busy = true;
+                            } else {
+                                var counter = data.status_list.length;
+                                for (var i = 0; i < counter; i++) {
+                                    if (typeof data.status_list[i].timeDiff == "undefined") {
+                                        data.status_list[i].timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, data.status_list[i].createdOn);
+                                    }
+                                    if (typeof data.status_list[i].commentList != "undefined") {
+                                        angular.forEach(data.status_list[i].commentList, function (comment, key) {
+                                            if (typeof comment.commentTimeDiff == "undefined") {
+                                                comment.commentTimeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                            }
+                                        });
+                                    }
+                                    $scope.statuses.push(data.status_list[i]);
+                                }
+                                $scope.busy = false;
+                            }
+                        }.bind($scope));
+            };
 
 
             $scope.setStatusDetails = function (statusDetails) {
@@ -90,6 +130,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                         success(function (data, status, headers, config) {
                             $scope.statuses = data.status_list;
                             $scope.userCurrentTimeStamp = data.user_current_time;
+                            $scope.userGenderId = data.user_gender_id;
                             $scope.getStatusInformation();
                         });
             };

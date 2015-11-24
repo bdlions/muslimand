@@ -12,7 +12,7 @@
                             <div class="col-md-2">
                                 <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{likedUser.userInfo.userId}}.jpg?time=' . time()" width="30" height="30" onerror="onLikeUserImageError(this)">
                                 <!--<img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{likedUser.userInfo.userId}}.jpg?time=' . time()" width="30" height="30" onError="onImageError(this)">-->
-                                <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30.jpg">
+                                <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg">
                             </div>
                             <div class="col-md-7">
                                 <a href="<?php echo base_url(); ?>member/timeline/{{likedUser.userInfo.userId}}" ng-if="likedUser.userInfo.userId != '<?php echo $user_id; ?>'" >

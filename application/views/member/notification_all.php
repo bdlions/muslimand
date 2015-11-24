@@ -30,7 +30,7 @@
                     <a  href="<?php echo base_url() ?>status/get_status_details/{{notification.referenceId}}">
                         <div class="col-md-1">
                             <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50; ?>{{notification.userList[0].userId}}.jpg" onError="onImageNotFound(this)"> 
-                            <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50.jpg">
+                            <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{userGenderId}}.jpg?time=' . time()">
                         </div>
                         <div class="col-md-11 ">
                             <div>

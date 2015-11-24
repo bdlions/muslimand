@@ -6,7 +6,7 @@
         if (profileId === "0") {
             profileId = '<?php echo $user_id; ?>';
         }
-        angular.element($('#status_set_id')).scope().getProfileStatus(profileId);
+//        angular.element($('#status_set_id')).scope().getProfileStatus(profileId);
         angular.element($('#sort_friend_list_set_id')).scope().getFriendList(profileId);
         angular.element($('#photo_set_id')).scope().getUserAlbumList(profileId);
 

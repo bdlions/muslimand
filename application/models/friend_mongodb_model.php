@@ -67,5 +67,10 @@ class Friend_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("fromUserId" => $user_id, "toUserId" => $friend_id));
         return $this->curl->execute();
     }
+    public function get_user_gender_info($user_id) {
+        $this->curl->create($this->SERVICE_FRIEND . 'getUserGenderInfo');
+        $this->curl->post(array("userId" => $user_id));
+        return $this->curl->execute();
+    }
 
 }

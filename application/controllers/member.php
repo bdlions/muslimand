@@ -35,21 +35,27 @@ class Member extends CI_Controller {
         if ($profile_id != $user_id && $profile_id != "0") {
             $result = $this->friend_mongodb_model->get_relationship_status($user_id, $profile_id);
             $result = json_decode($result);
-            if ($result != null) {
-                if (property_exists($result, "relationTypeId") != FALSE) {
-                    $user_relation_info['relation_ship_status'] = $result->relationTypeId;
+            if (property_exists($result, "relationInfo")) {
+                $relation_info =json_decode($result->relationInfo);
+                if (property_exists($relation_info, "relationTypeId") != FALSE) {
+                    $user_relation_info['relation_ship_status'] = $relation_info->relationTypeId;
                 }
-                if (property_exists($result, "isInitiated") != FALSE) {
-                    $user_relation_info['is_initiated'] = $result->isInitiated;
+                if (property_exists($relation_info, "isInitiated") != FALSE) {
+                    $user_relation_info['is_initiated'] = $relation_info->isInitiated;
                 }
-                if (property_exists($result, "firstName") != FALSE) {
-                    $user_relation_info['profile_first_name'] = $result->firstName;
+                if (property_exists($relation_info, "firstName") != FALSE) {
+                    $user_relation_info['profile_first_name'] = $relation_info->firstName;
                 }
-                if (property_exists($result, "lastName") != FALSE) {
-                    $user_relation_info['profile_last_name'] = $result->lastName;
+                if (property_exists($relation_info, "lastName") != FALSE) {
+                    $user_relation_info['profile_last_name'] = $relation_info->lastName;
                 }
             }
+            if (property_exists($result, "userGenderId")) {
+                $user_gender_id = json_decode($result->userGenderId);
+                $user_relation_info['gender_id'] = $user_gender_id ;
+            }
         } else {
+            $user_relation_info['gender_id'] =  $this->friend_mongodb_model->get_user_gender_info($user_id);
             $user_relation_info['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
             $user_relation_info['profile_first_name'] = $this->session->userdata('first_name');
             $user_relation_info['profile_last_name'] = $this->session->userdata('last_name');
@@ -68,6 +74,10 @@ class Member extends CI_Controller {
         if ($result != null) {
             if (property_exists($result, "userCurrentTime")) {
                 $user_current_time = $result->userCurrentTime;
+            }
+            if (property_exists($result, "userGenderId")) {
+                $user_gender_id = $result->userGenderId;
+                $this->data['user_gender_id'] = $user_gender_id;
             }
             if (property_exists($result, "statusInfoList")) {
                 $status_info_list = $result->statusInfoList;

@@ -2,6 +2,7 @@ angular.module('controllers.Friend', ['services.Friend']).
         controller('friendController', function ($scope, friendService) {
             $scope.friends = [];
             $scope.prndingFriends = [];
+            $scope.userGenderId = "";
             $scope.userRelation = {};
             $scope.constants = {};
             $scope.statusTypeFriend = "";
@@ -12,6 +13,7 @@ angular.module('controllers.Friend', ['services.Friend']).
 
             $scope.setUserRelation = function (userRelation) {
                 $scope.userRelation = JSON.parse(userRelation);
+                $scope.userGenderId = $scope.userRelation.gender_id;
             };
 
             $scope.getFriendList = function (profileId) {

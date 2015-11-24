@@ -350,9 +350,12 @@ class Status extends CI_Controller {
             if (property_exists($result, "userCurrentTime")) {
                 $user_current_time = $result->userCurrentTime;
             }
+            if (property_exists($result, "userGenderId")) {
+                $user_gender_id = $result->userGenderId;
+                $response['user_gender_id'] = $user_gender_id;
+            }
             if (property_exists($result, "statusInfoList")) {
                 $status_info_list = $result->statusInfoList;
-
                 $status_list = $this->get_status_information($status_info_list);
             }
             $response["status_list"] = $status_list;
@@ -362,6 +365,7 @@ class Status extends CI_Controller {
     }
 
     function get_status_list() {
+        $user_id = $this->session->userdata('user_id');
         $status_list = array();
         $response = array();
         $postdata = file_get_contents("php://input");
@@ -373,13 +377,15 @@ class Status extends CI_Controller {
             }
             if (property_exists($status_info, "profileId")) {
                 $mapping_id = $status_info->profileId;
+                if($mapping_id == "0"){
+                    $mapping_id = $user_id;
+                }
             }
         }
         if (!isset($offset)) {
             $offset = STATUS_INITIAL_OFFSET;
         }
         $limit = STATUS_LIMIT_PER_REQUEST;
-        $user_id = $this->session->userdata('user_id');
         if (isset($mapping_id)) {
             $result = $this->status_mongodb_model->get_user_profile_status($user_id, $mapping_id, $offset, $limit);
         } else {
@@ -391,12 +397,16 @@ class Status extends CI_Controller {
                 $user_current_time = $result->userCurrentTime;
                 $response["user_current_time"] = $user_current_time;
             }
+            if (property_exists($result, "userGenderId")) {
+                $user_gender_id = $result->userGenderId;
+                $response["user_gender_id"] = $user_gender_id;
+            }
             if (property_exists($result, "statusInfoList")) {
                 $status_info_list = $result->statusInfoList;
                 $status_list = $this->get_status_information($status_info_list);
                 if (!empty($status_list)) {
                     $response["status_list"] = $status_list;
-                } 
+                }
             }
         }
         echo json_encode($response);
