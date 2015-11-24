@@ -123,17 +123,19 @@ class Auth extends CI_Controller {
                 $country = array(
                     'code' => $country_code,
                     'title' => $country_title,
-                    'gmtOffset' =>$gmt_offset
-                );
-                $additional_data = array(
-                    'firstName' => $this->input->post('r_first_name'),
-                    'lastName' => $this->input->post('r_last_name'),
-                    'country' => $country
+                    'gmtOffset' => $gmt_offset
                 );
                 $gender = array(
                     'genderId' => $gender_id,
                     'title' => $gender_title
                 );
+                $additional_data = array(
+                    'firstName' => $this->input->post('r_first_name'),
+                    'lastName' => $this->input->post('r_last_name'),
+                    'country' => $country,
+                    'gender' => $gender
+                );
+
                 $birth_date = array(
                     'birthDay' => $this->input->post('birthday_day'),
                     'birthMonth' => $this->input->post('birthday_month'),

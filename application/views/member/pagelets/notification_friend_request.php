@@ -37,7 +37,7 @@
         <div class="row" ng-if="notification.typeId == '<?php echo NOTIFICATION_TYPE_PENDING_REQUEST; ?>'" >
             <div class="col-xs-2">
                 <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{notification.userInfo.userId}}.jpg" onError="onImageNotFound(this)">
-                <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50.jpg">
+                <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{userGenderId}}.jpg?time=' . time()">
             </div>
             <div class="col-xs-4">
                 <a href="<?php echo base_url(); ?>member/timeline/{{notification.userInfo.userId}} style="font-size: 12px; font-weight: bold;" >{{notification.userInfo.firstName}} &nbsp; {{notification.userInfo.lastName}}</a>

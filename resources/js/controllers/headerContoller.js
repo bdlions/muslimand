@@ -7,6 +7,7 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
             $scope.friendNotifications = [];
             $scope.url = "../";
             $scope.userCurrentTimeStamp = 0;
+            $scope.userGenderId = "";
             $scope.setConstants = function (t) {
                 $scope.constants = JSON.parse(t);
                 $scope.url = $scope.constants.base_url;
@@ -40,6 +41,10 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
 
             $scope.setUserCurrentTime = function (userCurrentTimeStamp) {
                 $scope.userCurrentTimeStamp = userCurrentTimeStamp;
+
+            };
+            $scope.setUserGender = function (genderId) {
+                $scope.userGenderId = genderId;
 
             };
 

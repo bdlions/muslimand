@@ -31,7 +31,7 @@
                             <div class="friendd">
                                 <div style="float: left">
                                     <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>{{friend.userId}}.jpg" onError="onImageUnavailable(this)"/>
-                                    <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100.jpg" alt="">
+                                    <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>50x50_{{userGenderId}}.jpg?time=' . time()" alt="">
                                 </div>
                                 <div style="float: left; width: 180px; padding: 10px;">
                                     <div >

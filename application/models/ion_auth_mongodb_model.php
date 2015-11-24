@@ -780,7 +780,6 @@ class Ion_auth_mongodb_model extends CI_Model {
 //        }
         // Filter out any data passed that doesn't have a matching column in the
         // user document and merge the set user data with the passed additional data
-
         $data = array_merge($this->_filter_data($this->collections['users'], $additional_data), $data);
         $this->trigger_events('extra_set');
         // Insert new document and store the _id value
@@ -810,7 +809,7 @@ class Ion_auth_mongodb_model extends CI_Model {
 
         $document = $this->mongo_db
 //                ->select(array($this->identity_column, '_id', $this->attr_map['user_id'], $this->attr_map['username'], $this->attr_map['email'], $this->attr_map['password'], $this->attr_map['account_status_id'], $this->attr_map['last_login']))
-                ->select(array($this->identity_column, '_id', 'userId', 'firstName','lastName', $this->attr_map['email'], $this->attr_map['password'], $this->attr_map['account_status_id'], $this->attr_map['last_login']))
+                ->select(array($this->identity_column, '_id', 'userId', 'firstName', 'lastName', $this->attr_map['email'], $this->attr_map['password'], $this->attr_map['account_status_id'], $this->attr_map['last_login']))
                 // MongoDB is vulnerable to SQL Injection like attacks (in PHP at least), in MongoDB
                 // PHP driver we use objects to make queries and as we know PHP allows us to submit
                 // objects via GET, POST, etc. and so getting user input like password[$ne]=1 is possible
@@ -1977,7 +1976,7 @@ class Ion_auth_mongodb_model extends CI_Model {
         $filtered_data = $columns = array();
         // Define field dictionaries
         if ($collection == $this->collections['users']) {
-            $columns = array('_id', 'ip_address', 'username', 'password', 'salt', 'email', 'activation_code', 'forgotten_password_code', 'forgotten_password_time', 'remember_code', 'created_on', 'last_login', 'active', 'firstName', 'lastName', 'company', 'phone', $this->attr_map['country']);
+            $columns = array('_id', 'ip_address', 'username', 'password', 'salt', 'email', 'activation_code', 'forgotten_password_code', 'forgotten_password_time', 'remember_code', 'created_on', 'last_login', 'active', 'firstName', 'lastName', 'company', 'phone', $this->attr_map['country'], 'gender');
         } else if ($collection == $this->collections['user_profiles']) {
             $columns = array();
         } else {
