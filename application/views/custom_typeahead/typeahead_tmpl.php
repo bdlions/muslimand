@@ -15,8 +15,9 @@
                                     <a class= "user_anchor" href="" >
                                         <div class="col-md-2">
                                             <div class="profile-background profile_background_search_bar user_image_id">                                                                    
-                                                <img  alt="" src="" class="user_image img-responsive profile-photo" onError="this.style.display = 'none'; this.parentNode.className='profile-background profile_background_search_bar'; this.parentNode.getElementsByTagName('div')[0].style.visibility='visible'; "/>
-                                                <div class="signature_id" style="visibility:hidden;height:0px"></div>
+                                                <img  alt="" src="" class="user_image img-responsive profile-photo" onError="userImageOnError(this)"/>
+                                                <!--<div class="signature_id" style="visibility:hidden;height:0px"></div>-->
+                                                <img style="visibility:hidden;height: 0px;" src="" class="user_on_error_image img-responsive on-error-profile-photo" alt="" >
                                             </div>
                                         </div>
                                         <div class="col-md-10 font_style">
@@ -33,3 +34,15 @@
         </div>
     </div>
 </div>
+<script>
+
+    function userImageOnError(img) {
+        var div = img.parentNode;
+        var firstImage = img;
+        var secondImage = div.getElementsByTagName('img')[1];
+        firstImage.style.display = 'none';
+        secondImage.style.visibility = 'visible';
+        secondImage.style.height = '100%';
+    }
+
+</script>

@@ -32,7 +32,6 @@ class Search extends CI_Controller {
                 
                 $users = json_decode($result_users);
                 foreach ($users as $user) {
-
                     $user->value = $user->firstName . " " . $user->lastName;
 //                    $user->signature = "";
                     $user->url = base_url() . 'member/timeline/' . $user->userId;
@@ -42,7 +41,8 @@ class Search extends CI_Controller {
                     if ($user->lastName != NULL && $user->lastName != "") {
                         $user->signature = $user->signature . $user->lastName[0];
                     }
-//                    $user->user_image = base_url() . PROFILE_PICTURE_PATH_W32_H32 . $user->photo;
+                    $user->user_image = base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user->userId;
+                    $user->user_on_error_image = base_url() . PROFILE_PICTURE_PATH_W30_H30 ."30x30_".$user->gender->genderId .".jpg";
                     array_push($temp_users, $user);
                 }
                 $response['users'] = $temp_users;

@@ -51,16 +51,17 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
             $scope.updateStatusGetGeneralNotifications = function (counterValue, requestFunction) {
                 headerService.updateStatusGetGeneralNotifications(counterValue).
                         success(function (data, status, headers, config) {
-                            $scope.generalNotifications = data.general_notification.generalNotifications;
-                            angular.forEach($scope.generalNotifications, function (notification, key) {
-                                console.log(notification.createdOn);
-                                if (typeof notification.timeDiff == "undefined") {
-                                    notification.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, notification.createdOn);
-                                } else {
-                                    notification.timeDiff = "1sec ago ";
-                                }
-                            }, $scope.generalNotifications);
-                            console.log($scope.generalNotifications);
+                            if (data.general_notification != null) {
+                                $scope.generalNotifications = data.general_notification.generalNotifications;
+                                angular.forEach($scope.generalNotifications, function (notification, key) {
+                                    console.log(notification.createdOn);
+                                    if (typeof notification.timeDiff == "undefined") {
+                                        notification.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, notification.createdOn);
+                                    } else {
+                                        notification.timeDiff = "1sec ago ";
+                                    }
+                                }, $scope.generalNotifications);
+                            }
                             requestFunction();
                         });
             };

@@ -82,6 +82,7 @@
                                             var user_name = $(this).find(".user_name");
                                             var user_anchor = $(this).find(".user_anchor");
                                             var user_image = $(this).find(".user_image");
+                                            var user_on_error_image = $(this).find(".user_on_error_image");
 //                                            var ptpro_display = $(this).find(".ptpro_display");
 //                                            var home_town = $(this).find(".home_town");
 //                                            var country_name = $(this).find(".country_name");
@@ -89,6 +90,7 @@
                                             $(user_anchor).attr('href', data.users[count].url);
                                             $(user_image).attr('alt', data.users[count].signature);
                                             $(user_image).attr('src', data.users[count].user_image);
+                                            $(user_on_error_image).attr('src', data.users[count].user_on_error_image);
 //                                            $(ptpro_display).css('display', data.users[count].ptpro_display);
                                             $(signature_id).html(data.users[count].signature);
                                             $(user_name).html(data.users[count].firstName+' '+data.users[count].lastName);
