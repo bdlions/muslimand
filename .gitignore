@@ -30,7 +30,7 @@ local.properties
 
 # Folder config file
 Desktop.ini
-resources/images/
+
 resources/uploads/
 
 #################

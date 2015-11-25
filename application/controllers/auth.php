@@ -160,11 +160,13 @@ class Auth extends CI_Controller {
                     );
                     $result = $this->basic_profile_mongodb_model->add_basic_info($id, $additional_data);
                     if ($result != null) {
+
                         $this->ion_auth->set_message('account_creation_successful');
-                        $this->data['image'] = "success_img.png";
                     }
                     //check to see if we are creating the user
                     //redirect them back to the admin page
+                    $success_image = base_url() . "resources/images/success_img.png";
+                    $this->session->set_flashdata('success_image', $success_image);
                     $this->session->set_flashdata('message', $this->ion_auth->messages());
                 } else {
                     $this->session->set_flashdata('message', "Unsuccessful to register a user.");
@@ -233,6 +235,7 @@ class Auth extends CI_Controller {
             //the user is not logging in so display the login page
             //set the flash data error message if there is one
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+            $this->data['success_image'] =  $this->session->flashdata('success_image');
 
             $this->data['identity'] = array('name' => 'identity',
                 'id' => 'identity',
@@ -255,7 +258,8 @@ class Auth extends CI_Controller {
             $this->data['month_list'] = $this->utils->get_month_list();
             $this->data["date_list"] = $this->utils->get_date_list();
             $this->data["year_list"] = $this->utils->get_year_list();
-
+//            var_dump($this->data);
+//            exit;
             $this->template->load("templates/home_tmpl", LOGIN_VIEW, $this->data);
             //$this->_render_page('auth/login', $this->data);
         }

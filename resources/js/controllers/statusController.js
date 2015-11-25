@@ -46,13 +46,11 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
 
             $scope.setUserGender = function (genderId) {
                 $scope.userGenderId = genderId;
-                console.log($scope.userGenderId);
 
             };
             $scope.setStatus = function (userStatus) {
                 $scope.statuses = JSON.parse(userStatus);
                 $scope.getStatusInformation();
-                console.log($scope.statuses);
             };
 
             $scope.getStatusInformation = function () {
@@ -70,20 +68,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 }, $scope.statuses);
             }
 
-
-
-
-//            $scope.getProfileStatusList = function (profileId) {
-//                var statusInfo = {};
-//                var offset = $scope.statuses.length;
-//                statusInfo.offset = offset;
-//                statusInfo.profileId = profileId;
-//                statusService.getStatusList(statusInfo).
-//                        success(function (data, status, headers, config) {
-//                            $scope.statuses.push(data.status_list);
-//                            $scope.getStatusInformation();
-//                        });
-//            }
 
             $scope.getProfileStatusList = function (profileId) {
                 if ($scope.busy)
@@ -225,7 +209,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
              * Status comment Add
              * 
              * */
-            $scope.addComment = function (referenceUserInfo, statusId) {
+            $scope.addComment = function (genderId, referenceUserInfo, statusId) {
                 $scope.statusInfo.referenceUserInfo = referenceUserInfo;
                 $scope.statusInfo.statusId = statusId;
                 statusService.addComment($scope.statusInfo).
@@ -234,6 +218,12 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                 if (value.statusId == statusId) {
                                     if (typeof value.commentList === "undefined") {
                                         value.commentList = new Array();
+                                    }
+                                    if (typeof data.status_comment_info.userGenderId === "undefined") {
+                                        data.status_comment_info.userGenderId = genderId ;
+                                    }
+                                    if (typeof data.status_comment_info.commentTimeDiff === "undefined") {
+                                        data.status_comment_info.commentTimeDiff = "1 sec ago" ;
                                     }
                                     value.commentList.unshift(data.status_comment_info);
                                 }

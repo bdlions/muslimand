@@ -24,11 +24,11 @@
                         $("#general_notification_counter_div").val(data.user_initiation_info.general);
                         $("#general_notification_counter_div").html(data.user_initiation_info.general);
                     }
-<                   if(typeof data.user_initiation_info.userCurrentTimeStamp != "undefiend"){
-                         angular.element($('#set_user_current_time_id')).scope().setUserCurrentTime(data.user_initiation_info.userCurrentTimeStamp);
+                   if(typeof data.user_initiation_info.userCurrentTimeStamp != "undefiend"){
+                         angular.element($('#set_user_initiation_info_id')).scope().setUserCurrentTime(data.user_initiation_info.userCurrentTimeStamp);
                     }
                     if(typeof data.user_initiation_info.genderId != "undefiend"){
-                         angular.element($('#set_user_current_time_id')).scope().setUserGender(data.user_initiation_info.genderId);
+                         angular.element($('#set_user_initiation_info_id')).scope().setUserGender(data.user_initiation_info.genderId);
                     }
                 }
             }
@@ -100,7 +100,7 @@
     }
 </script>
 
-<div class="row" id="set_user_current_time_id" style="padding-top: 11px;" ng-controller="headerController">
+<div class="row" id="set_user_initiation_info_id" style="padding-top: 11px;" ng-controller="headerController">
     <div class="col-md-offset-1 col-md-1">
         <a target="_self" href="<?php echo base_url(); ?>member/newsfeed">
             <img style="border-radius: 3px; margin-left: 5px;" src="<?php echo base_url(); ?>resources/images/logo.png">

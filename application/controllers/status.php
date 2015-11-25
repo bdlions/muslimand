@@ -328,12 +328,7 @@ class Status extends CI_Controller {
         }
         echo json_encode($response);
     }
-
-    /**
-     * this methord return a user timline status
-     * @param userId
-     * @mapping id
-     *  */
+//not user discard after test
     function get_user_profile_status() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -364,6 +359,12 @@ class Status extends CI_Controller {
         echo json_encode($response);
     }
 
+    /**
+     * this methord return a user timline or newfeed  status
+     * @param userId
+     * @param profileId
+     * @param offset
+     *  */
     function get_status_list() {
         $user_id = $this->session->userdata('user_id');
         $status_list = array();
@@ -377,7 +378,7 @@ class Status extends CI_Controller {
             }
             if (property_exists($status_info, "profileId")) {
                 $mapping_id = $status_info->profileId;
-                if($mapping_id == "0"){
+                if ($mapping_id == "0") {
                     $mapping_id = $user_id;
                 }
             }
@@ -630,15 +631,6 @@ class Status extends CI_Controller {
     function album_add($user_id, $album_id, $type_title, $image_list) {
         $user_image_list_info = array();
         $response = array();
-        $result = $this->photo_mongodb_model->get_album_info($user_id, $album_id);
-        $result = json_decode($result);
-        if ($result->responseCode == BAD_REQUSET) {
-            $album_info = new stdClass();
-            $album_info->albumId = $album_id;
-            $album_info->userId = $user_id;
-            $album_info->title = $type_title;
-            $response = $this->photo_mongodb_model->create_album($album_info);
-        }
         foreach ($image_list as $image) {
             $photo_info = new stdClass();
             $photo_info->photoId = $this->utils->generateRandomString(USER_PHOTO_ID_LENGTH);
@@ -646,7 +638,7 @@ class Status extends CI_Controller {
             $photo_info->image = $image;
             $user_image_list_info[] = $photo_info;
         }
-        $image_add_result = $this->photo_mongodb_model->add_photos($album_id, $user_image_list_info);
+        $image_add_result = $this->photo_mongodb_model->add_photos($user_id, $album_id, $user_image_list_info);
     }
 
 }
