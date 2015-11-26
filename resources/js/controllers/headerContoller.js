@@ -8,10 +8,10 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
             $scope.url = "../";
             $scope.userCurrentTimeStamp = 0;
             $scope.userGenderId = "";
-            $scope.setConstants = function (t) {
-                $scope.constants = JSON.parse(t);
-                $scope.url = $scope.constants.base_url;
-            };
+//            $scope.setConstants = function (t) {
+//                $scope.constants = JSON.parse(t);
+//                $scope.url = $scope.constants.base_url;
+//            };
 
             $scope.updateStatusGetFriendNotifications = function (counterValue, requestFunction) {
                 headerService.updateStatusGetFriendNotifications(counterValue).
@@ -45,6 +45,7 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
             };
             $scope.setUserGender = function (genderId) {
                 $scope.userGenderId = genderId;
+                console.log( $scope.userGenderId);
 
             };
 

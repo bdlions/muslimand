@@ -17,9 +17,15 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
+        < <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/Utils.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/headerApp.js "></script>
         <title>Sadiik.com</title>
     </head>
-    <body>
+    <body ng-app="<?php echo $app; ?>">
         <div class="body_wrapper">
             <div class="header_wrapper">
                 <div class="container-fluid container_wrapper">

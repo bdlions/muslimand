@@ -24,42 +24,49 @@ class Library extends CI_Controller {
     function index() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_LIBRARY_IN_TEMPLATE, "member/library/library_home", $this->data);
     }
 
     function library_add() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_LIBRARY_IN_TEMPLATE, "member/library/library_add", $this->data);
     }
 
     function library_newsfeed() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_LIBRARY_IN_TEMPLATE, "member/library/library_newsfeed", $this->data);
     }
 
     function library_sort_view_my() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_LIBRARY_IN_TEMPLATE, "member/library/library_sort_view_my", $this->data);
     }
 
     function library_sort_view_friend() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_LIBRARY_IN_TEMPLATE, "member/library/library_sort_view_friend", $this->data);
     }
 
     function library_most_view() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_LIBRARY_IN_TEMPLATE, "member/library/library_most_view", $this->data);
     }
 
     function library_most_discussed() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_LIBRARY_IN_TEMPLATE, "member/library/library_most_discussed", $this->data);
     }
 

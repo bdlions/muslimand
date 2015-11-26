@@ -111,27 +111,33 @@ class Friend extends CI_Controller {
         $user_relation = array();
         $friend_list = array();
         $user_id = $this->session->userdata('user_id');
-        if ($profile_id != $user_id && $profile_id != "0") {
+         if ($profile_id != $user_id && $profile_id != "0") {
             $result = $this->friend_mongodb_model->get_relationship_status($user_id, $profile_id);
             $result = json_decode($result);
-            if ($result != null) {
-                if (property_exists($result, "relationTypeId") != FALSE) {
-                    $user_relation['relation_ship_status'] = $result->relationTypeId;
+            if (property_exists($result, "relationInfo")) {
+                $relation_info = json_decode($result->relationInfo);
+                if (property_exists($relation_info, "relationTypeId") != FALSE) {
+                    $user_relation['relation_ship_status'] = $relation_info->relationTypeId;
                 }
-                if (property_exists($result, "isInitiated") != FALSE) {
-                    $user_relation['is_initiated'] = $result->isInitiated;
+                if (property_exists($relation_info, "isInitiated") != FALSE) {
+                    $user_relation['is_initiated'] = $relation_info->isInitiated;
                 }
-                if (property_exists($result, "firstName") != FALSE) {
-                    $user_relation['profile_first_name'] = $result->firstName;
+                if (property_exists($relation_info, "firstName") != FALSE) {
+                    $user_relation['profile_first_name'] = $relation_info->firstName;
                 }
-                if (property_exists($result, "lastName") != FALSE) {
-                    $user_relation['profile_last_name'] = $result->lastName;
+                if (property_exists($relation_info, "lastName") != FALSE) {
+                    $user_relation['profile_last_name'] = $relation_info->lastName;
                 }
             }
+            if (property_exists($result, "userGenderId")) {
+                $user_gender_id = json_decode($result->userGenderId);
+                $user_relation['gender_id'] = $user_gender_id;
+            }
         } else {
+            $user_relation['gender_id'] = $this->friend_mongodb_model->get_user_gender_info($user_id);
+            $user_relation['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
             $user_relation['profile_first_name'] = $this->session->userdata('first_name');
             $user_relation['profile_last_name'] = $this->session->userdata('last_name');
-            $user_relation['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
         }
 
 //get friend list either user itself or friend's 

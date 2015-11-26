@@ -34,9 +34,11 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.aboutInfo = {};
             $scope.fQuote = {};
             $scope.fQuoteInfo = {};
-            
-          $scope.setUserRelation = function (userRelation) {
+            $scope.userGenderId ="" ;
+
+            $scope.setUserRelation = function (userRelation) {
                 $scope.userRelation = JSON.parse(userRelation);
+                $scope.userGenderId = $scope.userRelation.gender_id;
             };
 
             // about  overview  ........................................      

@@ -2,7 +2,7 @@
     <div ng-controller="basicProfileController">
         <div class="row">
             <div class="col-md-12">
-                    <?php $this->load->view("member/timeline/profile_cover"); ?>
+                     <?php $this->load->view("member/timeline/profile_cover"); ?>
                 <div class="row form-group"></div>
                 <div class="pagelet" style="margin: 0 15px">
                     <div class="row">

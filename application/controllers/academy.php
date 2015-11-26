@@ -24,54 +24,63 @@ class Academy extends CI_Controller {
     function index() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_ACADEMY_IN_TEMPLATE, "member/academy/academy_home", $this->data);
     }
 
     function course_add() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_ACADEMY_IN_TEMPLATE, "member/academy/academy_course_add", $this->data);
     }
 
     function academy_course_home() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_ACADEMY_IN_TEMPLATE, "member/academy/academy_course_home", $this->data);
     }
 
     function academy_course_lecture() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_ACADEMY_IN_TEMPLATE, "member/academy/academy_course_lecture", $this->data);
     }
 
     function academy_course_students() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_ACADEMY_IN_TEMPLATE, "member/academy/academy_course_students", $this->data);
     }
 
     function academy_course_realted_ques() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_ACADEMY_IN_TEMPLATE, "member/academy/academy_course_realted_ques", $this->data);
     }
 
     function academy_sort_view_my() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_ACADEMY_IN_TEMPLATE, "member/academy/academy_sort_view_my", $this->data);
     }
 
     function academy_sort_view_my_published() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_ACADEMY_IN_TEMPLATE, "member/academy/academy_sort_view_my_published", $this->data);
     }
 
     function academy_sort_view_friend() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_ACADEMY_IN_TEMPLATE, "member/academy/academy_sort_view_friend", $this->data);
     }
 

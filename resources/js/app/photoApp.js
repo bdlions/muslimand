@@ -1,6 +1,6 @@
 angular.module("app.Photo", [
+    'controllers.Header',
     'controllers.Photo',
     'controllers.Image',
-    'controllers.Header',
     'ui.bootstrap'
 ]);

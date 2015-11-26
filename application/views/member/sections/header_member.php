@@ -2,7 +2,7 @@
 <?php $this->load->view("custom_typeahead/custom_typeahead"); ?>
 
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $.ajax({
             dataType: 'json',
             type: "POST",
@@ -24,11 +24,12 @@
                         $("#general_notification_counter_div").val(data.user_initiation_info.general);
                         $("#general_notification_counter_div").html(data.user_initiation_info.general);
                     }
-                   if(typeof data.user_initiation_info.userCurrentTimeStamp != "undefiend"){
-                         angular.element($('#set_user_initiation_info_id')).scope().setUserCurrentTime(data.user_initiation_info.userCurrentTimeStamp);
+                    if (typeof data.user_initiation_info.userCurrentTimeStamp != "undefiend") {
+                        angular.element($('#set_user_initiation_info_id')).scope().setUserCurrentTime(data.user_initiation_info.userCurrentTimeStamp);
                     }
-                    if(typeof data.user_initiation_info.genderId != "undefiend"){
-                         angular.element($('#set_user_initiation_info_id')).scope().setUserGender(data.user_initiation_info.genderId);
+                    if (typeof data.user_initiation_info.genderId != "undefiend") {
+                        $("#user_profile_picture_on_error").attr('src', "<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25; ?>" + "25x25_" + data.user_initiation_info.genderId + ".jpg");
+                        angular.element($('#set_user_initiation_info_id')).scope().setUserGender(data.user_initiation_info.genderId);
                     }
                 }
             }
@@ -36,7 +37,7 @@
     });
 </script>
 <script>
-    $(function() {
+    $(function () {
         //var title = $("#profile_name").attr("value");
         var title = $("#profile_name").text();
         var shortText = jQuery.trim(title).substring(0, 10)
@@ -46,7 +47,7 @@
 
 
 <script>
-    $(document).mouseup(function(e) {
+    $(document).mouseup(function (e) {
         var fr_container = $("#mm_friend_request_box");
         var container = $("#mm_notification_box");
         var msg_container = $("#mm_message_box");
@@ -68,7 +69,7 @@
 
     function friend_toggle() {
         var counterValue = $("#follower_counter_div").val();
-        angular.element($('#mm_friend_request_box')).scope().updateStatusGetFriendNotifications(counterValue, function() {
+        angular.element($('#mm_friend_request_box')).scope().updateStatusGetFriendNotifications(counterValue, function () {
             $("#follower_counter_div").hide();
             $('#mm_friend_request_box').show();
         });
@@ -83,7 +84,7 @@
 
     function notf_toggle() {
         var counterValue = $("#general_notification_counter_div").val();
-        angular.element($('#mm_friend_request_box')).scope().updateStatusGetGeneralNotifications(counterValue, function() {
+        angular.element($('#mm_friend_request_box')).scope().updateStatusGetGeneralNotifications(counterValue, function () {
             $("#general_notification_counter_div").hide();
             $('#mm_notification_box').show();
         });
@@ -117,7 +118,7 @@
         <a style="text-decoration: none;" href="<?php echo base_url(); ?>member/timeline">
             <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
                 <img style="height: 25px; width: 25px;" alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailableHeader(this)"/>
-                <img style="visibility:hidden;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25; ?>25x25_{{userGenderId}}.jpg?time=' . time()">
+                <img style="visibility:hidden;" id="user_profile_picture_on_error" src="">
                 &nbsp; <span id="profile_name" style="text-decoration: none" ><?php echo $first_name; ?></span>
             </span>
         </a>

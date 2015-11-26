@@ -36,7 +36,7 @@ class Member extends CI_Controller {
             $result = $this->friend_mongodb_model->get_relationship_status($user_id, $profile_id);
             $result = json_decode($result);
             if (property_exists($result, "relationInfo")) {
-                $relation_info =json_decode($result->relationInfo);
+                $relation_info = json_decode($result->relationInfo);
                 if (property_exists($relation_info, "relationTypeId") != FALSE) {
                     $user_relation_info['relation_ship_status'] = $relation_info->relationTypeId;
                 }
@@ -52,10 +52,10 @@ class Member extends CI_Controller {
             }
             if (property_exists($result, "userGenderId")) {
                 $user_gender_id = json_decode($result->userGenderId);
-                $user_relation_info['gender_id'] = $user_gender_id ;
+                $user_relation_info['gender_id'] = $user_gender_id;
             }
         } else {
-            $user_relation_info['gender_id'] =  $this->friend_mongodb_model->get_user_gender_info($user_id);
+            $user_relation_info['gender_id'] = $this->friend_mongodb_model->get_user_gender_info($user_id);
             $user_relation_info['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
             $user_relation_info['profile_first_name'] = $this->session->userdata('first_name');
             $user_relation_info['profile_last_name'] = $this->session->userdata('last_name');
@@ -77,7 +77,6 @@ class Member extends CI_Controller {
             }
             if (property_exists($result, "userGenderId")) {
                 $user_gender_id = $result->userGenderId;
-                $this->data['user_gender_id'] = $user_gender_id;
             }
             if (property_exists($result, "statusInfoList")) {
                 $status_info_list = $result->statusInfoList;
@@ -112,6 +111,12 @@ class Member extends CI_Controller {
         } else {
             $this->data['user_current_time'] = now();
         }
+        if (isset($user_gender_id)) {
+            $this->data['user_gender_id'] = $user_gender_id;
+        } else {
+            $this->data['user_gender_id'] = "";
+        }
+
         $this->data['app'] = "app.Status";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
