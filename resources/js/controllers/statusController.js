@@ -105,8 +105,12 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
 
 
             $scope.setStatusDetails = function (statusDetails) {
-                $scope.statuses = JSON.parse(statusDetails);
+               var statusInfo = JSON.parse(statusDetails);
+                $scope.userCurrentTimeStamp = statusInfo.user_current_time;
+                $scope.userGenderId = statusInfo.user_gender_id;
+                $scope.statuses = statusInfo.status_list;
                 $scope.getStatusInformation();
+                console.log($scope.statuses);
             };
 
             $scope.getProfileStatus = function (profileId) {

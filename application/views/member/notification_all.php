@@ -24,7 +24,7 @@
                     <span style="font-weight: bold;">Today</span>
                 </div>
             </div>
-            <div ng-repeat="notification in allNotificationList.generalNotifications">
+            <div ng-repeat="notification in allNotificationList.generalNotifications.slice().reverse()">
                 <div class="pagelet_divider"></div>
                 <div class="row">
                     <a  href="<?php echo base_url() ?>status/get_status_details/{{notification.referenceId}}">
@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-md-11 ">
                             <div>
-                                <span ng-repeat="(key,user) in notification.userList">
+                                <span ng-repeat="(key,user) in notification.userList.slice.reverse ">
                                     <span style="font-weight: bold" ng-if="key == 2">and</span>
                                     <span style="font-weight: bold" ng-if="key == 1" >,</span>
                                     <span ng-if="user.userId != '<?php echo $user_id; ?>'">

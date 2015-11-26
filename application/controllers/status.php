@@ -328,6 +328,7 @@ class Status extends CI_Controller {
         }
         echo json_encode($response);
     }
+
 //not user discard after test
     function get_user_profile_status() {
         $postdata = file_get_contents("php://input");
@@ -419,6 +420,7 @@ class Status extends CI_Controller {
      * @mapping id
      *  */
     function get_status_details($status_id) {
+        $status_info = array();
         $user_id = $this->session->userdata('user_id');
         $result = $this->status_mongodb_model->get_status_details($user_id, $status_id);
         if ($result != null) {
@@ -430,12 +432,19 @@ class Status extends CI_Controller {
                 $status_info_list = $result->statusInfoList;
                 $status_list = $this->get_status_information($status_info_list);
             }
-            $this->data["status_list"] = $status_list;
+            if (property_exists($result, "userGenderId")) {
+                $user_gender_id = $result->userGenderId;
+//                $response["user_gender_id"] = $user_gender_id;
+            }
+            $status_info['user_gender_id'] = $user_gender_id;
+            $status_info['status_list'] = $status_list;
+            $status_info['user_current_time'] = $user_current_time;
         }
+        $this->data["status_list_info"] = $status_info;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['user_id'] = $user_id;
         $this->data['app'] = "app.Status";
-        $this->data['user_current_time'] = $user_current_time;
+//        $this->data['user_current_time'] = $user_current_time;
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/status_details", $this->data);
     }
 

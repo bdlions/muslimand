@@ -26,7 +26,7 @@
     </div>
 </div>
 <div style="max-height: 450px; overflow-x:hidden; overflow-y: scroll">
-    <div class="pagelet message_friends_box" ng-repeat="notification in generalNotifications">
+    <div class="pagelet message_friends_box" ng-repeat="notification in generalNotifications.slice().reverse()">
         <div class="row">
             <a  href="<?php echo base_url() ?>status/get_status_details/{{notification.referenceId}}">
                 <div class="col-xs-2">

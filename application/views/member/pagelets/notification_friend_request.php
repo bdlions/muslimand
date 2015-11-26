@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div class="pagelet" ng-repeat="notification in friendNotifications">
+    <div class="pagelet" ng-repeat="notification in friendNotifications.slice().reverse()">
         <div class="row" ng-if="notification.typeId == '<?php echo NOTIFICATION_TYPE_PENDING_REQUEST; ?>'" >
             <div class="col-xs-2">
                 <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{notification.userInfo.userId}}.jpg" onError="onImageUnavailableHeader(this)">

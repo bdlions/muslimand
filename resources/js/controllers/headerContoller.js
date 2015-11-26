@@ -45,7 +45,7 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
             };
             $scope.setUserGender = function (genderId) {
                 $scope.userGenderId = genderId;
-                console.log( $scope.userGenderId);
+                console.log($scope.userGenderId);
 
             };
 
@@ -55,7 +55,9 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
                             if (data.general_notification != null) {
                                 $scope.generalNotifications = data.general_notification.generalNotifications;
                                 angular.forEach($scope.generalNotifications, function (notification, key) {
-                                    console.log(notification.createdOn);
+                                    var userList = new Array();
+                                    userList = notification.userList;
+                                    notification.userList.reverse();
                                     if (typeof notification.timeDiff == "undefined") {
                                         notification.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, notification.createdOn);
                                     } else {
