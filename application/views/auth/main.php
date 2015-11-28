@@ -14,7 +14,7 @@
             <div class="col-md-offset-1 col-md-5">
                 <div class="row form-group">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <span style="color: #703684; font: italic bold 20px/1px Georgia, serif ;">Be a part of worldwide family, share life with us</span>
+                        <p style="color: #703684; font: italic bold 20px Georgia, serif ;">Be a part of worldwide family, share life with us</p>
                     </div>
                 </div>
                 <div class="row form-group"></div>
@@ -28,9 +28,9 @@
                 <?php echo form_open("auth/login"); ?>
                 <?php if (isset($message) && ($message != NULL)) {
                     ?>
-                    <div class="alert alert-dismissible" style="background-color: #703684;color: #ffffff">
+                    <div class="alert alert-dismissible fadeOut" style="background-color: #703684;color: #ffffff">
                         <?php if (isset($success_image) && ($success_image != NULL)) { ?>
-                            <img class="img-responsive" src="<?php echo $success_image; ?>">
+                        <img class="img-responsive" src="<?php echo $success_image; ?>">
                         <?php } ?>
                         <?php echo $message; ?>
                     </div>
@@ -671,9 +671,6 @@
                     </div>
                 </div>
             </div>
-
-
-
             <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
         </div>
 
@@ -702,5 +699,6 @@
                 $(brand_single_cover_image).show();
             }
         });
+        $(".fadeOut").fadeOut(7000);
     });
 </script>
