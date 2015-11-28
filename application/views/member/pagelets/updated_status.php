@@ -15,7 +15,7 @@
                         </div>
                         <div class="col-md-10" >
                             <div class="row">
-                                <div class="col-md-11 mrg_left">
+                                <div class="col-md-10 mrg_left">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div style="float: left;">
@@ -80,7 +80,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <ul style="list-style-type: none; padding: 0;">
                                         <li class="dropdown">
                                             <input type="hidden">
@@ -112,7 +112,7 @@
                                         <form ng-submit="updateStatus(status)" >
                                             <div class="row form-group">
                                                 <div class="col-md-12">
-                                                    <textarea class="form-control form_control_custom_style textarea_custom_style" ng-model="status.description"></textarea>
+                                                    <textarea class="form-control textarea_custom_style" ng-model="status.description"></textarea>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -162,13 +162,17 @@
                             <div class="row from-group" style="float: left;">
                                 <div class="col-md-12">
                                     <span ng-if = "status.likeStatus != '1'">
-                                        <a style="color: #3B59A9;" href id="statusLike{{status.statusId}}" ng-click="addLike(status.userInfo.userId, status.statusId)">Like,</a> 
+                                        <a style="color: #3B59A9;" href id="statusLike{{status.statusId}}" ng-click="addLike(status.userInfo.userId, status.statusId)">
+                                            <img src="<?php echo base_url();?>resources/images/like_icon.png"> Like </a>.
                                     </span>
                                     <span ng-if = "status.likeStatus == '1'">
-                                        <a style="color: #3B59A9;" href id="statusUnLike{{status.statusId}}" ng-click="unLike(status.statusId)">liked,</a> 
+                                        <a style="color: #3B59A9;" href id="statusUnLike{{status.statusId}}" ng-click="unLike(status.statusId)">
+                                            <img src="<?php echo base_url();?>resources/images/like_icon.png"> liked </a>. 
                                     </span>
-                                    <a style="color: #3B59A9;" href onclick="select_comment_field(angular.element(this).scope().status.statusId)"> Comment,</a>
-                                    <a style="color: #3B59A9;"  id="share_add_id" href onclick="open_modal_share(angular.element(this).scope().status)"> Share</a>
+                                    <a style="color: #3B59A9;" href onclick="select_comment_field(angular.element(this).scope().status.statusId)">
+                                        <img src="<?php echo base_url();?>resources/images/comment_icon.png"> Comment </a>.
+                                    <a style="color: #3B59A9;"  id="share_add_id" href onclick="open_modal_share(angular.element(this).scope().status)">
+                                        <img src="<?php echo base_url();?>resources/images/share_icon.png"> Share</a>
                                 </div>
                             </div>
                         </div>
@@ -249,10 +253,10 @@
                                             <div style="float: left">
                                                 {{commentInfo.commentTimeDiff}}
                                                 <span ng-if = "commentInfo.CommentlikeStatus != '1'">
-                                                    <a style="color: #3B59A9;" href id="statusCommentLike{{commentInfo.commentId}}" ng-click="addStatusCommentLike(status.statusId, commentInfo.commentId)">Like,</a> 
+                                                    <a style="color: #3B59A9;" href id="statusCommentLike{{commentInfo.commentId}}" ng-click="addStatusCommentLike(status.statusId, commentInfo.commentId)"> Like</a> 
                                                 </span>
                                                 <span ng-if = "commentInfo.CommentlikeStatus == '1'">
-                                                    <a style="color: #3B59A9;" href id="statusUnLike{{commentInfo.commentId}}" ng-click="unLike(status.statusId)">liked,</a> 
+                                                    <a style="color: #3B59A9;" href id="statusUnLike{{commentInfo.commentId}}" ng-click="unLike(status.statusId)"> liked</a> 
                                                 </span><!--<a>like</a>-->
                                                 <a id="comment_like_{{commentInfo.commentId}}" onclick="get_comment_like_list(angular.element(this).scope().status.statusId, angular.element(this).scope().commentInfo.commentId)" ng-if="commentInfo.commentlikeCounter > 0">
                                                     <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >

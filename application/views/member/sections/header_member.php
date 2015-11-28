@@ -102,12 +102,13 @@
 </script>
 
 <div class="row" id="set_user_initiation_info_id" style="padding-top: 11px;" ng-controller="headerController">
-    <div class="col-md-offset-1 col-md-1">
+    <div class="col-md-offset-1 col-md-2">
         <a target="_self" href="<?php echo base_url(); ?>member/newsfeed">
-            <img style="border-radius: 3px; margin-left: 5px;" src="<?php echo base_url(); ?>resources/images/logo.png">
+            <img class="img-circle" src="<?php echo base_url(); ?>resources/images/logo.png">
+            <img src="<?php echo base_url(); ?>resources/images/sadiik.png">
         </a>
     </div>
-    <div class="col-md-offset-1 col-md-4">
+    <div class="col-md-4">
         <div class="input-group" style="margin-left: -20px;">
             <span class="input-group-addon" style="margin-bottom: 10px; padding: 3px 12px!important;"><i class="glyphicon glyphicon-search"></i></span>
             <input style="height: 26px; padding: 3px 8px!important; " id="typeahead" class="form-control" type="text" placeholder="Search for people and interests" />

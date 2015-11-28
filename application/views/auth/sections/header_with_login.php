@@ -2,11 +2,9 @@
     <div class="row">
         <?php echo form_open("auth/login"); ?>
         <div class="col-md-4">
-            <div align="center" style="text-align: center; padding-top: 10px; padding-left: 10px;">
-                <img src="<?php echo base_url(); ?>resources/images/logo.png" style="margin: 0px 10px 22px 0px; border-radius: 3px;">
-                <img src="<?php echo base_url(); ?>resources/images/sadiik.png" style="margin: 0px 10px 22px 0px; border-radius: 3px;">
-                <!--<span style="font-size: 42px; font-weight: bold; line-height: 40px;">Sa</span>-->
-                <!--<br>Hello Muslims! Keep updated with Muslimand-->
+            <div align="center" style="text-align: center; padding-top: 14px; padding-left: 50px;">
+                <img class="img-circle" src="<?php echo base_url(); ?>resources/images/logo.png" style="margin: 0px 3px 20px 0px;">
+                <img src="<?php echo base_url(); ?>resources/images/sadiik.com.png" style="margin: 0px 10px 22px 0px; border-radius: 3px;">
             </div>
         </div>
         <div class="col-md-2 form-group" style="padding-top: 20px">

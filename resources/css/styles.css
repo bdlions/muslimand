@@ -160,7 +160,7 @@ html, body {
     opacity: 0.7;
 }
 .message_friends_divider_full,.message_friends_divider_others{
-    padding: 5px 8px;
+    padding: 2px 4px;
     border: 1px solid lightgray;
     border-top: 0px;
 }
@@ -238,16 +238,15 @@ html, body {
     background-color: #E9EAED;
 }
 .header_wrapper{
-    position: fixed; 
-    top: 0; 
-    width: 100%; 
-    z-index: 20; 
-    box-shadow: 0 4px 4px -2px gray;
+   position: fixed; 
+   top: 0; 
+   width: 100%; 
+   z-index: 10000;
 }
 .container_wrapper{
     background-color: #703684; 
     color: white; 
-    padding: 6px 9px
+    height: 48px;
 }
 .padding_top{
     padding-top: 49px;
@@ -421,17 +420,16 @@ html, body {
 .textarea_background_style{
     border: 1px solid lightgray; 
     padding-top: 5px; 
-    padding-bottom: 5px;
 }
 .chatting_textarea_box_1, .chatting_textarea_box_2, .chatting_textarea_box_3{
     background-color: #fff;
-    border: 1px solid #703684;
+    border: 2px solid #703684;
     border-radius: 3px;
     box-shadow: none;
-    resize: none;
-    width: 165px!important;
+    height: 22px!important;
     overflow-y: scroll;
-    height: 32px;
+    resize: none;
+    width: 165px !important;
 }
 
 .message_owner_content_style, .message_friend_content_style {
@@ -636,13 +634,21 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     margin-top: 0px;
 }
 
-.dropdown-menu > li > a {
+.dropdown-menu > span > li > a {
     padding: 1px 10px!important;
+    text-decoration: none;
+    color: #703684;
 }
-.dropdown-menu > li > a:hover {
-    color: #fff!important;
-    background-color: #703684!important;
+.dropdown-menu > span > li > a:hover {
+    text-decoration: none;
+   
 }
+.dropdown-menu > span > li:hover {
+    background-color: lavender;
+   
+}
+
+
 
 .btn_style {
     padding: 4px 12px;
@@ -682,32 +688,33 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     padding-bottom: 10px;
 }
 
-/*------------------------------------------- Admin --------------------------------- */
-.button-custom, .button-custom:hover,.button-primary-custom,.button-primary-custom, .button-danger-custom, .button-danger-custom:hover {
-    color: #fff;
-    border-radius: 3px;
-    padding: 4px 8px;
-    line-height: 16px;
+/*------------------------------------------- Random --------------------------------- */
+.button-custom, .button-primary-custom,.button-primary-custom, .button-danger-custom, .button-danger-custom:hover {
+    color: #fff!important; 
+    border-radius: 3px!important; 
+    padding: 4px 8px!important; 
+    line-height: 16px!important; 
 }
 .button-custom, .button-custom:hover {
-    background-color: #703684;
-    border: 1px solid #703684;
+    background-color: #703684!important; 
+    border: 1px solid #703684!important; 
+    color: #fff!important; 
 }
 .button-primary-custom{
-    background-color: #428bca;
-    border: 1px solid #357ebd;
+    background-color: #428bca!important; 
+    border: 1px solid #357ebd!important; 
 }
 .button-primary-custom:hover {
-    background-color: #3071a9;
-    border: 1px solid #285e8e;
+    background-color: #3071a9!important; 
+    border: 1px solid #285e8e!important; 
 }
 .button-danger-custom{
-    background-color: #d9534f;
-    border-color: #d43f3a;
+    background-color: #d9534f!important; 
+    border-color: #d43f3a!important; 
 }
 .button-danger-custom:hover {
-    background-color: #c9302c;
-    border-color: #ac2925;
+    background-color: #c9302c!important; 
+    border-color: #ac2925!important; 
 }
 
 
@@ -822,9 +829,9 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 /* ------------------------- newsfeed ----------------------------*/
 
 .dropdown-menu {
-    font-size: 11px;
-    min-width: 80px;
-    cursor: pointer;
+    font-size: 11px!important;
+    min-width: 80px!important;
+    cursor: pointer!important;
 }
 
 .default_button{
@@ -857,8 +864,8 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 
 .form_control_custom_style{
-    height: 30px;
-    padding: 3px;
+    height: 30px!important; 
+    padding: 3px!important; 
 }
 
 .well {

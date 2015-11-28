@@ -20,7 +20,7 @@
                 <div class="row form-group"></div>
                 <div class="row form-group">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/banner.jpg">
+                        <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/banner.png">
                     </div>
                 </div>
             </div>

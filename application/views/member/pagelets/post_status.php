@@ -65,7 +65,7 @@
     </div>
     <div id="category_status" class="row form-group">
         <div class="col-md-12">
-            <textarea id="statusPostId" ng-model="statusInfo.description" class="form-control form_control_custom_style textarea_custom_style" placeholder="What's on Your Mind?"></textarea>
+            <textarea id="statusPostId" ng-model="statusInfo.description" class="form-control textarea_custom_style" placeholder="What's on Your Mind?"></textarea>
         </div>
     </div>
     <div id="status_privacy" style="display: none;">

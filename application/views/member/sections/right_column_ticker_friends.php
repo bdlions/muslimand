@@ -256,7 +256,7 @@
                 <div class="message_friends_divider_full common_box_header">
                     <div class="row">
                         <div class="col-md-2">
-                            <img class="img-responsive" style="margin-top: 3px;" src="<?php echo base_url() ?>resources/images/online.png">
+                            <img class="img-responsive" style="margin-top: 5px;" src="<?php echo base_url() ?>resources/images/online.png">
                         </div>
                         <div class="col-md-6">
                             <a style="color:#fff; vertical-align: middle;" href="<?php echo base_url(); ?>member/profile">Dr. Belal</a>
@@ -313,7 +313,7 @@
                                 <div class="col-md-12"><textarea class="chatting_textarea_box_1" rows="1"></textarea></div>
                             </div>
                             <div class="col-md-2">
-                                <form action="upload.php" method="post" style="margin-left: 5px; margin-top: 5px;">
+                                <form action="upload.php" method="post" style="margin-left: 5px; ">
                                     <label for="fileToUpload">
                                         <img style="cursor: pointer;" src="<?php echo base_url() ?>resources/images/camera.png" />
                                     </label>
@@ -321,7 +321,7 @@
                                 </form>
                             </div>
                             <div class="col-md-2">
-                                <img style="cursor: pointer; margin-left: -12px; margin-top: 5px;" src="<?php echo base_url() ?>resources/images/emotion.png" />
+                                <img style="cursor: pointer; margin-left: -12px; " src="<?php echo base_url() ?>resources/images/emotion.png" />
                             </div>
                         </div>
                     </div>
@@ -333,7 +333,7 @@
                 <div class="message_friends_divider_full common_box_header">
                     <div class="row">
                         <div class="col-md-2">
-                            <img class="img-responsive" style="margin-top: 3px;" src="<?php echo base_url() ?>resources/images/online.png">
+                            <img class="img-responsive" style="margin-top: 5px;" src="<?php echo base_url() ?>resources/images/online.png">
                         </div>
                         <div class="col-md-6">
                             <a style="color:#fff; vertical-align: middle;" href="<?php echo base_url(); ?>member/profile">Sharmin Akter</a>
@@ -390,7 +390,7 @@
                                 <div class="col-md-12"><textarea class="chatting_textarea_box_2" rows="1"></textarea></div>
                             </div>
                             <div class="col-md-2">
-                                <form action="upload.php" method="post" style="margin-left: 5px; margin-top: 5px;">
+                                <form action="upload.php" method="post" style="margin-left: 5px; ">
                                     <label for="fileToUpload">
                                         <img style="cursor: pointer;" src="<?php echo base_url() ?>resources/images/camera.png" />
                                     </label>
@@ -398,7 +398,7 @@
                                 </form>
                             </div>
                             <div class="col-md-2">
-                                <img style="cursor: pointer; margin-left: -12px; margin-top: 5px;" src="<?php echo base_url() ?>resources/images/emotion.png" />
+                                <img style="cursor: pointer; margin-left: -12px; " src="<?php echo base_url() ?>resources/images/emotion.png" />
                             </div>
                         </div>
                     </div>
@@ -410,7 +410,7 @@
                 <div class="message_friends_divider_full common_box_header">
                     <div class="row">
                         <div class="col-md-2">
-                            <img class="img-responsive" style="margin-top: 3px;" src="<?php echo base_url() ?>resources/images/online.png">
+                            <img class="img-responsive" style="margin-top: 5px;" src="<?php echo base_url() ?>resources/images/online.png">
                         </div>
                         <div class="col-md-6">
                             <a style="color:#fff; vertical-align: middle;" href="<?php echo base_url(); ?>member/profile">Mohammad Rafique</a>
@@ -467,7 +467,7 @@
                                 <div class="col-md-12"><textarea class="chatting_textarea_box_3" rows="1"></textarea></div>
                             </div>
                             <div class="col-md-2">
-                                <form action="upload.php" method="post" style="margin-left: 5px; margin-top: 5px;">
+                                <form action="upload.php" method="post" style="margin-left: 5px; ">
                                     <label for="fileToUpload">
                                         <img style="cursor: pointer;" src="<?php echo base_url() ?>resources/images/camera.png" />
                                     </label>
@@ -475,7 +475,7 @@
                                 </form>
                             </div>
                             <div class="col-md-2">
-                                <img style="cursor: pointer; margin-left: -12px; margin-top: 5px;" src="<?php echo base_url() ?>resources/images/emotion.png" />
+                                <img style="cursor: pointer; margin-left: -12px; " src="<?php echo base_url() ?>resources/images/emotion.png" />
                             </div>
                         </div>
                     </div>

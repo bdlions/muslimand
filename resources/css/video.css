@@ -135,25 +135,8 @@ and open the template in the editor.
 
 
 /*================================  Member video templete ================================*/
-.body_wrapper{
-    position: relative; 
-    background-color: #E9EAED;
-}
-.header_wrapper{
-    position: fixed; 
-    top: 0; 
-    width: 100%; 
-    z-index: 20; 
-    box-shadow: 0 4px 4px -2px gray;
-}
-.container_wrapper{
-    background-color: #703684; 
-    color: white; 
-    padding: 6px 9px
-}
-.Padding_top{
-    padding-top: 60px;
-}
+
+
 .container_background{
     background-color: #E9EAED;
 }
