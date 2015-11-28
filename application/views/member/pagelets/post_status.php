@@ -31,19 +31,19 @@
                 </div>
             </div>
             <div class="row form-group"  data-ng-repeat="file in queue" data-ng-class="{'processing': file.$processing()}">
-                <div class="col-md-6" style="margin-top: -20px;" data-on="!file.thumbnailUrl">
+                <div class="col-md-6" data-on="!file.thumbnailUrl">
                     <a data-ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}" data-gallery>
                         <img style="margin-left: 6px;" class="image-size" data-ng-src="{{file.thumbnailUrl}}" alt="">
                     </a>
                     <div class="preview" data-file-upload-preview="file"></div>
                 </div>
-                <div class="col-md-3">
-                    <button type="button" class="btn button-primary-custom btn-sm start" data-ng-click="file.$submit()" data-ng-hide="!file.$submit || options.autoUpload" data-ng-disabled="file.$state() == 'pending' || file.$state() == 'rejected'">
+                <div class="col-md-3" style="margin-top: 20px;">
+                    <button type="button" class="button-custom start" data-ng-click="file.$submit()" data-ng-hide="!file.$submit || options.autoUpload" data-ng-disabled="file.$state() == 'pending' || file.$state() == 'rejected'">
                         <span>Upload</span>
                     </button>
                 </div>
-                <div class="col-md-3">
-                    <button type="button" class="btn button-danger-custom btn-sm cancel" data-ng-click="file.$cancel()" data-ng-hide="!file.$cancel">
+                <div class="col-md-3" style="margin-top: 20px;">
+                    <button type="button" class="button-custom cancel" data-ng-click="file.$cancel()" data-ng-hide="!file.$cancel">
                         <span>Cancel</span>
                     </button>
                 </div>

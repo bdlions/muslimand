@@ -1,4 +1,3 @@
-   
 <script>
     function confirm_request(friendId) {
         angular.element($('#confirm_pending_friend_' + friendId)).scope().approveRequest(friendId, function () {
@@ -36,18 +35,18 @@
 
     <div class="pagelet" ng-repeat="notification in friendNotifications.slice().reverse()">
         <div class="row" ng-if="notification.friendNotification.typeId == '<?php echo NOTIFICATION_TYPE_PENDING_REQUEST; ?>'" >
-            <div class="col-xs-2">
+            <div class="col-md-2">
                 <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{notification.userInfo.userId}}.jpg" onError="onImageUnavailableHeader(this)">
                 <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{notification.genderId}}.jpg">
             </div>
-            <div class="col-xs-4">
+            <div class="col-md-4">
                 <a href="<?php echo base_url(); ?>member/timeline/{{notification.friendNotification.userInfo.userId}} style="font-size: 12px; font-weight: bold;" >{{notification.friendNotification.userInfo.firstName}} &nbsp; {{notification.friendNotification.userInfo.lastName}}</a>
             </div>
-            <div class="col-xs-6">
+            <div class="col-md-6">
                 <div class="pull-right">
                     <div>
-                        <button  id="confirm_pending_friend_{{notification.friendNotification.userInfo.userId}}" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="confirm_request(angular.element(this).scope().notification.friendNotification.userInfo.userId)">Confirm</button>
-                        <button id="delete_pending_request_{{notification.friendNotification.userInfo.userId}}" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="delete_request(angular.element(this).scope().notification.friendNotification.userInfo.userId)">Delete Request</button>
+                        <button  id="confirm_pending_friend_{{notification.friendNotification.userInfo.userId}}" type="submit" class="button-custom" style="background-color: #703684; color: white" onclick="confirm_request(angular.element(this).scope().notification.friendNotification.userInfo.userId)">Confirm</button>
+                        <button id="delete_pending_request_{{notification.friendNotification.userInfo.userId}}" type="submit" class="button-custom" style="background-color: #703684; color: white" onclick="delete_request(angular.element(this).scope().notification.friendNotification.userInfo.userId)">Delete Request</button>
                     </div>
                     <div>
                         <button   id="friend_request_accept_{{notification.friendNotification.userInfo.userId}}" style="display: none" type="button" class=" btn btn-default">Friend</button>   
@@ -81,7 +80,7 @@
             </div>
             <div class="col-xs-4">
                 <div class="pull-right">
-                    <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white">Add Friend</button>
+                    <button type="submit" class="button-custom" style="background-color: #703684; color: white">Add Friend</button>
                 </div>
             </div>
         </div>
@@ -97,7 +96,7 @@
             </div>
             <div class="col-xs-4">
                 <div class="pull-right">
-                    <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white">Add Friend</button>
+                    <button type="submit" class="button-custom" style="background-color: #703684; color: white">Add Friend</button>
                 </div>
             </div>
         </div>
@@ -112,7 +111,7 @@
             </div>
             <div class="col-xs-4">
                 <div class="pull-right">
-                    <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white">Add Friend</button>
+                    <button type="submit" class="button-custom" style="background-color: #703684; color: white">Add Friend</button>
                 </div>
             </div>
         </div>
@@ -128,7 +127,7 @@
             </div>
             <div class="col-xs-4">
                 <div class="pull-right">
-                    <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white">Add Friend</button>
+                    <button type="submit" class="button-custom" style="background-color: #703684; color: white">Add Friend</button>
                 </div>
             </div>
         </div>
@@ -143,7 +142,7 @@
             </div>
             <div class="col-xs-4">
                 <div class="pull-right">
-                    <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white">Add Friend</button>
+                    <button type="submit" class="button-custom" style="background-color: #703684; color: white">Add Friend</button>
                 </div>
             </div>
         </div>
@@ -159,7 +158,7 @@
             </div>
             <div class="col-xs-4">
                 <div class="pull-right">
-                    <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white">Add Friend</button>
+                    <button type="submit" class="button-custom" style="background-color: #703684; color: white">Add Friend</button>
                 </div>
             </div>
         </div>
@@ -174,7 +173,7 @@
             </div>
             <div class="col-xs-4">
                 <div class="pull-right">
-                    <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white">Add Friend</button>
+                    <button type="submit" class="button-custom" style="background-color: #703684; color: white">Add Friend</button>
                 </div>
             </div>
         </div>

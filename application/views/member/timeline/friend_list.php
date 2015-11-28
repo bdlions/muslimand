@@ -10,8 +10,8 @@
         <div class="col-md-4" ng-repeat="friend in friends">
             <div class="friend_list_img_style">
                 <a href='<?php echo base_url(); ?>member/timeline/{{friend.userId}}' >
-                    <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>{{friend.userId}}.jpg" onError="onImageUnavailable(this)"/>
-                    <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>50x50_{{userGenderId}}.jpg?time=' . time()" alt="">
+                    <img class="img-responsive"  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>{{friend.userId}}.jpg" onError="onImageUnavailable(this)"/>
+                    <img class="img-responsive" style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>50x50_{{userGenderId}}.jpg?time=' . time()" alt="">
                     <span class="img_caption">{{friend.firstName}}&nbsp;{{friend.lastName}}</span>
                 </a>
             </div>
