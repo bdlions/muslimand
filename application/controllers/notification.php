@@ -48,11 +48,11 @@ class Notification extends CI_Controller {
         $offset = 0;
         $limit = 5;
         $notification_list = array();
-        if ($counter_value > 0) {
+//        if ( $counter_value > 0) {
             $response["general_notification"] = $this->notification_mongodb_model->update_status_get_general_notifications($user_id, $status_type_id, $offset, $limit);
-        } else {
-            $response["general_notification"] = $this->notification_mongodb_model->get_general_notifications($user_id, $offset, $limit);
-        }
+//        } else {
+//            $response["general_notification"] = $this->notification_mongodb_model->get_general_notifications($user_id, $offset, $limit);
+//        }
         echo json_encode($response);
         return;
     }
@@ -67,11 +67,18 @@ class Notification extends CI_Controller {
         $user_id = $this->session->userdata('user_id');
         $offset = 0;
         $limit = 5;
-        if ($counter_value > 0) {
-            $response["friend_list"] = $this->notification_mongodb_model->update_status_get_friend_notification($user_id, $offset, $limit);
-        } else {
-            $response["friend_list"] = $this->notification_mongodb_model->get_friend_notifications($user_id, $offset, $limit);
+        $counter_value = 0;
+//        if ($counter_value > 0) {
+            $result = $this->notification_mongodb_model->update_status_get_friend_notification($user_id, $offset, $limit);
+//        } else {
+//            $result = $this->notification_mongodb_model->get_friend_notifications($user_id, $offset, $limit);
+//        }
+        $friend_notification_list = array();
+        foreach ($result as $notification) {
+            $notification->friendNotification = json_decode($notification->friendNotification);
+            $friend_notification_list[] = $notification;
         }
+        $response['friend_notification_list'] = $friend_notification_list;
         echo json_encode($response);
         return;
     }
@@ -86,7 +93,5 @@ class Notification extends CI_Controller {
         $this->data['app'] = "app.Friend";
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/notification_all", $this->data);
     }
-
-  
 
 }

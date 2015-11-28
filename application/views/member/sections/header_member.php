@@ -84,7 +84,7 @@
 
     function notf_toggle() {
         var counterValue = $("#general_notification_counter_div").val();
-        angular.element($('#mm_friend_request_box')).scope().updateStatusGetGeneralNotifications(counterValue, function () {
+        angular.element($('#mm_notification_box')).scope().updateStatusGetGeneralNotifications(counterValue, function () {
             $("#general_notification_counter_div").hide();
             $('#mm_notification_box').show();
         });

@@ -105,7 +105,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
 
 
             $scope.setStatusDetails = function (statusDetails) {
-               var statusInfo = JSON.parse(statusDetails);
+                var statusInfo = JSON.parse(statusDetails);
                 $scope.userCurrentTimeStamp = statusInfo.user_current_time;
                 $scope.userGenderId = statusInfo.user_gender_id;
                 $scope.statuses = statusInfo.status_list;
@@ -145,6 +145,9 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 $scope.statusInfo.profileLastName = profileUserInfo.profileLastName;
                 statusService.addStatus($scope.statusInfo).
                         success(function (data, status, headers, config) {
+                            if (typeof data.status_info.genderId === "undefined") {
+                                data.status_info.genderId = $scope.userGenderId;
+                            }
                             $scope.statuses.unshift(data.status_info);
                             requestFunction();
                         });
@@ -215,6 +218,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
              * */
             $scope.addComment = function (genderId, referenceUserInfo, statusId) {
                 $scope.statusInfo.referenceUserInfo = referenceUserInfo;
+//                $scope.statusInfo.referenceUserInfo.genderId = $scope.userGenderId;
                 $scope.statusInfo.statusId = statusId;
                 statusService.addComment($scope.statusInfo).
                         success(function (data, status, headers, config) {
@@ -224,10 +228,10 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                         value.commentList = new Array();
                                     }
                                     if (typeof data.status_comment_info.userGenderId === "undefined") {
-                                        data.status_comment_info.userGenderId = genderId ;
+                                        data.status_comment_info.userGenderId = genderId;
                                     }
                                     if (typeof data.status_comment_info.commentTimeDiff === "undefined") {
-                                        data.status_comment_info.commentTimeDiff = "1 sec ago" ;
+                                        data.status_comment_info.commentTimeDiff = "1 sec ago";
                                     }
                                     value.commentList.unshift(data.status_comment_info);
                                 }

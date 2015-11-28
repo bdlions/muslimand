@@ -52,7 +52,7 @@ angular.module('services.Status', []).
                     url: $location.path() + $app_name + '/status/add_status_like',
                     data: {
                         userId: userId,
-                        statusId: statusId
+                        statusId: statusId,
                     }
                 });
             };

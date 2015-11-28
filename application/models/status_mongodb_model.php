@@ -97,5 +97,10 @@ class Status_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("statusId" => $status_id));
         return $this->curl->execute();
     }
+    public function get_recent_activities($user_id, $offset, $limit) {
+        $this->curl->create($this->SERVICE_STATUS . 'getRecentActivities');
+        $this->curl->post(array("userId" => $user_id, "offset" => $offset, "limit" => $limit));
+        return $this->curl->execute();
+    }
 
 }

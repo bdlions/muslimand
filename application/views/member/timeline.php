@@ -10,7 +10,9 @@
         angular.element($('#sort_friend_list_set_id')).scope().getFriendList(profileId);
         angular.element($('#photo_set_id')).scope().getUserAlbumList(profileId);
 
-    });</script>
+    });
+    
+    </script>
 
 
 

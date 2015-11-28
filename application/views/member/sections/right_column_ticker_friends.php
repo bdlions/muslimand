@@ -1,6 +1,6 @@
 <script>
-    (function($) {
-        $(window).load(function() {
+    (function ($) {
+        $(window).load(function () {
             $("#ticker_notification .ticker").mCustomScrollbar({
                 setHeight: 300,
                 theme: "dark-3"
@@ -9,8 +9,8 @@
     })(jQuery);
 </script>
 <script>
-    (function($) {
-        $(window).load(function() {
+    (function ($) {
+        $(window).load(function () {
             $("#ticker_friend .ticker").mCustomScrollbar({
                 setHeight: 300,
                 theme: "dark-3"
@@ -19,18 +19,18 @@
     })(jQuery);
 </script>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $(".chat_box_container").scrollTop($(".chat_box_container").height());
 
 
-        $(".common_box").each(function() {
-            $(this).click(function() {
+        $(".common_box").each(function () {
+            $(this).click(function () {
                 $(this).css("background", "#842D80");
                 $(".common_box").not(this).css("background-color", "#703684");
             });
         });
 
-        $(document).click(function(e) {
+        $(document).click(function (e) {
             if (!$(e.target).hasClass("common_box")
                     && $(e.target).parents(".common_box").length === 0)
             {
@@ -70,90 +70,121 @@
 
 
 </script>
+<script>
+    $(function () {
+        angular.element($('#ticker_notification')).scope().getRecentActivities();
+    });
 
-<div id="ticker_notification" >
+</script>
+
+<div id="ticker_notification" ng-controller="rightController">
     <div class="ticker">
-        <div class="ticker_friends message_friends_divider_full">
-            <div class="row">
-                <div class="col-xs-3 col-sm-3 col-md-3">
-                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg"  width="30" height="30"> 
-                </div>
-                <div class="col-xs-9 col-sm-9 col-md-9">
-                    <b>Jannatul Ferdaus</b></a> shared a video.
-                </div>
-            </div>
-        </div>
-        <div class="ticker_friends message_friends_divider_others">
-            <div class="row">
-                <div class="col-xs-3 col-sm-3 col-md-3">
-                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30"> 
-                </div>
-                <div class="col-xs-9 col-sm-9 col-md-9">
-                    <b>Jannatul Ferdaus</b></a> changed her profile pic.
-                </div>
-            </div>
-        </div>
-        <div class="ticker_friends message_friends_divider_others">
-            <div class="row">
-                <div class="col-xs-3 col-sm-3 col-md-3">
-                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="30" height="30"> 
-                </div>
-                <div class="col-xs-9 col-sm-9 col-md-9">
-                    <b>Sharmin Akter</b></a> likes your comment.
-                </div>
-            </div>
-        </div>
-        <div class="ticker_friends message_friends_divider_others">
-            <div class="row">
-                <div class="col-xs-3 col-sm-3 col-md-3">
-                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30"> 
-                </div>
-                <div class="col-xs-9 col-sm-9 col-md-9">
-                    <b>Dr. Belal</b></a> shared a video.
-                </div>
-            </div>
-        </div>
-        <div class="ticker_friends message_friends_divider_others">
-            <div class="row">
-                <div class="col-xs-3 col-sm-3 col-md-3">
-                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="30" height="30"> 
-                </div>
-                <div class="col-xs-9 col-sm-9 col-md-9">
-                    <b>Maria Islam</b></a> likes your photos. 
-                </div>
-            </div>
-        </div>
-        <div class="ticker_friends message_friends_divider_others">
-            <div class="row">
-                <div class="col-xs-3 col-sm-3 col-md-3">
-                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="30" height="30"> 
-                </div>
-                <div class="col-xs-9 col-sm-9 col-md-9">
-                    <b>Barak Obama</b></a> likes your photos. 
-                </div>
-            </div> 
-        </div>
-        <div class="ticker_friends message_friends_divider_others">
-            <div class="row">
-                <div class="col-xs-3 col-sm-3 col-md-3">
-                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="30" height="30"> 
-                </div>
-                <div class="col-xs-9 col-sm-9 col-md-9">
-                    <b>Fatematul Kobra</b></a> likes your comments. 
-                </div>
-            </div> 
-        </div>
-        <div class="ticker_friends message_friends_divider_others">
-            <div class="row">
-                <div class="col-xs-3 col-sm-3 col-md-3">
-                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_9.jpg"  width="30" height="30"> 
-                </div>
-                <div class="col-xs-9 col-sm-9 col-md-9">
-                    <b>John Ibrahim</b></a> likes your comments. 
-                </div>
-            </div> 
+        <div class="ticker_friends message_friends_divider_full" ng-repeat="recentActivity in recentActivityList">
+            <a  href="<?php echo base_url() ?>status/get_status_details/{{recentActivity.statusId}}">
+                <div class="row from-group">
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <img  src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{recentActivity.userInfo.userId}}.jpg" width="30" height="30" onError="onImageUnavailable(this)">
+                        <img style=" visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{recentActivity.genderId}}.jpg">
+                    </div>
+                    <div class="col-xs-9 col-sm-9 col-md-9">
+                        <a  style="font-weight: bold;"><b>{{recentActivity.userInfo.firstName}}&nbsp;{{recentActivity.userInfo.lastName}}</b></a> 
+                        <span ng-if="<?php echo POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID; ?> == recentActivity.typeId">
+                            update
+                            <span ng-if="<?php echo Male; ?> == recentActivity.genderId">his</span>
+                            <span ng-if="<?php echo Female; ?> == recentActivity.genderId">her</span>
+                            status
+                        </span>
+                        <span ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> == recentActivity.typeId">
+                            update profile picture 
+                        </span>
+                        <span ng-if="<?php echo CHANGE_COVER_PICTURE; ?> == recentActivity.typeId">
+                            update cover picture 
+                        </span>
+                        <span ng-if="<?php echo COMMENTED_ON_ID; ?> == recentActivity.typeId">
+                            commented on
+                        </span>
+                        <span ng-if="<?php echo LIKED_ON_ID; ?> == recentActivity.typeId">
+                            liked 
+                        </span>
+                        <span ng-if="recentActivity.referenceUserInfo != null">
+                            <a style="font-weight: bold;"> <span>{{recentActivity.referenceUserInfo.firstName}}&nbsp;{{recentActivity.referenceUserInfo.lastName}}</span></a>
+                            status
+                        </span>
+                    </div>
+            </a>
         </div>
     </div>
+    <div class="ticker_friends message_friends_divider_others">
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30"> 
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9">
+                <b>Jannatul Ferdaus</b></a> changed her profile pic.
+            </div>
+        </div>
+    </div>
+    <div class="ticker_friends message_friends_divider_others">
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg"  width="30" height="30"> 
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9">
+                <b>Sharmin Akter</b></a> likes your comment.
+            </div>
+        </div>
+    </div>
+    <div class="ticker_friends message_friends_divider_others">
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_1.jpg"  width="30" height="30"> 
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9">
+                <b>Dr. Belal</b></a> shared a video.
+            </div>
+        </div>
+    </div>
+    <div class="ticker_friends message_friends_divider_others">
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="30" height="30"> 
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9">
+                <b>Maria Islam</b></a> likes your photos. 
+            </div>
+        </div>
+    </div>
+    <div class="ticker_friends message_friends_divider_others">
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg"  width="30" height="30"> 
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9">
+                <b>Barak Obama</b></a> likes your photos. 
+            </div>
+        </div> 
+    </div>
+    <div class="ticker_friends message_friends_divider_others">
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg"  width="30" height="30"> 
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9">
+                <b>Fatematul Kobra</b></a> likes your comments. 
+            </div>
+        </div> 
+    </div>
+    <div class="ticker_friends message_friends_divider_others">
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_9.jpg"  width="30" height="30"> 
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9">
+                <b>John Ibrahim</b></a> likes your comments. 
+            </div>
+        </div> 
+    </div>
+</div>
 </div>
 
 

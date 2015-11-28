@@ -35,30 +35,30 @@
     </div>
 
     <div class="pagelet" ng-repeat="notification in friendNotifications.slice().reverse()">
-        <div class="row" ng-if="notification.typeId == '<?php echo NOTIFICATION_TYPE_PENDING_REQUEST; ?>'" >
+        <div class="row" ng-if="notification.friendNotification.typeId == '<?php echo NOTIFICATION_TYPE_PENDING_REQUEST; ?>'" >
             <div class="col-xs-2">
                 <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{notification.userInfo.userId}}.jpg" onError="onImageUnavailableHeader(this)">
-                <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{userGenderId}}.jpg">
+                <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{notification.genderId}}.jpg">
             </div>
             <div class="col-xs-4">
-                <a href="<?php echo base_url(); ?>member/timeline/{{notification.userInfo.userId}} style="font-size: 12px; font-weight: bold;" >{{notification.userInfo.firstName}} &nbsp; {{notification.userInfo.lastName}}</a>
+                <a href="<?php echo base_url(); ?>member/timeline/{{notification.friendNotification.userInfo.userId}} style="font-size: 12px; font-weight: bold;" >{{notification.friendNotification.userInfo.firstName}} &nbsp; {{notification.friendNotification.userInfo.lastName}}</a>
             </div>
             <div class="col-xs-6">
                 <div class="pull-right">
                     <div>
-                        <button  id="confirm_pending_friend_{{notification.userInfo.userId}}" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="confirm_request(angular.element(this).scope().notification.userInfo.userId)">Confirm</button>
-                        <button id="delete_pending_request_{{notification.userInfo.userId}}" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="delete_request(angular.element(this).scope().notification.userInfo.userId)">Delete Request</button>
+                        <button  id="confirm_pending_friend_{{notification.friendNotification.userInfo.userId}}" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="confirm_request(angular.element(this).scope().notification.friendNotification.userInfo.userId)">Confirm</button>
+                        <button id="delete_pending_request_{{notification.friendNotification.userInfo.userId}}" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="delete_request(angular.element(this).scope().notification.friendNotification.userInfo.userId)">Delete Request</button>
                     </div>
                     <div>
-                        <button   id="friend_request_accept_{{notification.userInfo.userId}}" style="display: none" type="button" class=" btn btn-default">Friend</button>   
-                        <button  id="request_spam_{{notification.userInfo.userId}}" style="display: none" type="button" class=" btn btn-default">Mark as Spam</button>   
+                        <button   id="friend_request_accept_{{notification.friendNotification.userInfo.userId}}" style="display: none" type="button" class=" btn btn-default">Friend</button>   
+                        <button  id="request_spam_{{notification.friendNotification.userInfo.userId}}" style="display: none" type="button" class=" btn btn-default">Mark as Spam</button>   
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row" ng-if="notification.typeId == '<?php echo NOTIFICATION_TYPE_ACCEPT_REQUEST; ?>'" >
+        <div class="row" ng-if="notification.friendNotification.typeId == '<?php echo NOTIFICATION_TYPE_ACCEPT_REQUEST; ?>'" >
              <div class="col-md-offset-1 col-md-10">
-            <a href="<?php echo base_url(); ?>member/timeline/{{notification.userInfo.userId}}">{{notification.userInfo.firstName}}&nbsp;{{notification.userInfo.lastName}} </a>
+            <a href="<?php echo base_url(); ?>member/timeline/{{notification.friendNotification.userInfo.userId}}">{{notification.friendNotification.userInfo.firstName}}&nbsp;{{notification.friendNotification.userInfo.lastName}} </a>
             Accept your Friend Request
              </div>
         </div>

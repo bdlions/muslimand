@@ -249,6 +249,7 @@ class Status extends CI_Controller {
         if (property_exists($request, "userId")) {
             $user_id = $request->userId;
         }
+       
         $status_like_info = new StdClass();
         $status_like_info->userInfo = $ref_user_info;
         $result = $this->status_mongodb_model->add_status_like($user_id, $status_id, $status_like_info);
@@ -648,6 +649,29 @@ class Status extends CI_Controller {
             $user_image_list_info[] = $photo_info;
         }
         $image_add_result = $this->photo_mongodb_model->add_photos($user_id, $album_id, $user_image_list_info);
+    }
+
+    function get_recent_activities() {
+        $limit = RECENT_ACTIVITY_LIMIT_PER_REQUEST;
+        $offset = RECENT_ACTIVITY_INITIAL_OFFSET;
+        $user_id = $this->session->userdata('user_id');
+        $recent_activity_list = array();
+        $result = $this->status_mongodb_model->get_recent_activities($user_id, $offset, $limit);
+        $recent_activity_list = json_decode($result);
+        $recent_activities = array();
+        if (!empty($recent_activity_list)) {
+            foreach ($recent_activity_list as $recent_activity) {
+                if (property_exists($recent_activity, "userInfo")) {
+                    $recent_activity->userInfo = json_decode($recent_activity->userInfo);
+                }
+                if (property_exists($recent_activity, "referenceUserInfo")) {
+                    $recent_activity->referenceUserInfo = json_decode($recent_activity->referenceUserInfo);
+                }
+                $recent_activities[] = $recent_activity;
+            }
+        }
+        echo json_encode($recent_activities);
+        return;
     }
 
 }

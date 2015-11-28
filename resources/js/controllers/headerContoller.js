@@ -16,8 +16,7 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
             $scope.updateStatusGetFriendNotifications = function (counterValue, requestFunction) {
                 headerService.updateStatusGetFriendNotifications(counterValue).
                         success(function (data, status, headers, config) {
-                            $scope.friendNotifications = data.friend_list;
-                            console.log($scope.friendNotifications);
+                            $scope.friendNotifications = data.friend_notification_list;
                             requestFunction();
                         });
             };
