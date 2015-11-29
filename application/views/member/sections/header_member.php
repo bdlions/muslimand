@@ -26,6 +26,7 @@
                     }
                     if (typeof data.user_initiation_info.userCurrentTimeStamp != "undefiend") {
                         angular.element($('#set_user_initiation_info_id')).scope().setUserCurrentTime(data.user_initiation_info.userCurrentTimeStamp);
+                        $("#set_user_initiation_info_id").val(data.user_initiation_info.userCurrentTimeStamp);
                     }
                     if (typeof data.user_initiation_info.genderId != "undefiend") {
                         $("#user_profile_picture_on_error").attr('src', "<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25; ?>" + "25x25_" + data.user_initiation_info.genderId + ".jpg");

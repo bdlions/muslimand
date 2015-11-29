@@ -49,7 +49,16 @@ class Notification extends CI_Controller {
         $limit = 5;
         $notification_list = array();
 //        if ( $counter_value > 0) {
-            $response["general_notification"] = $this->notification_mongodb_model->update_status_get_general_notifications($user_id, $status_type_id, $offset, $limit);
+        $general_notificatons = $this->notification_mongodb_model->update_status_get_general_notifications($user_id, $status_type_id, $offset, $limit);
+        foreach ($general_notificatons as $notification) {
+            $notification->notification = json_decode($notification->notification);
+            $notification_list[] = $notification;
+        }
+        $response['general_notification'] = $notification_list;
+
+
+//             $result = json_decode($result);
+//            $response["general_notification"] = $this->notification_mongodb_model->update_status_get_general_notifications($user_id, $status_type_id, $offset, $limit);
 //        } else {
 //            $response["general_notification"] = $this->notification_mongodb_model->get_general_notifications($user_id, $offset, $limit);
 //        }
@@ -69,7 +78,7 @@ class Notification extends CI_Controller {
         $limit = 5;
         $counter_value = 0;
 //        if ($counter_value > 0) {
-            $result = $this->notification_mongodb_model->update_status_get_friend_notification($user_id, $offset, $limit);
+        $result = $this->notification_mongodb_model->update_status_get_friend_notification($user_id, $offset, $limit);
 //        } else {
 //            $result = $this->notification_mongodb_model->get_friend_notifications($user_id, $offset, $limit);
 //        }
@@ -87,7 +96,13 @@ class Notification extends CI_Controller {
         $user_id = $this->session->userdata('user_id');
         $offset = 0;
         $limit = 5;
-        $this->data["notification_list"] = json_encode($this->notification_mongodb_model->get_general_notifications($user_id, $offset, $limit));
+        $result = $this->notification_mongodb_model->get_general_notifications($user_id, $offset, $limit);
+        $friend_notification_list = array();
+        foreach ($result as $notification) {
+            $notification->notification = json_decode($notification->notification);
+            $friend_notification_list[] = $notification;
+        }
+        $this->data['notification_list'] = json_encode($friend_notification_list);
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['app'] = "app.Friend";

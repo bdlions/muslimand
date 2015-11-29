@@ -22,6 +22,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/Utils.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/rightController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/rightService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/headerApp.js "></script>
         <title>Sadiik.com</title>
     </head>
@@ -29,7 +31,7 @@
         <div class="body_wrapper">
             <div class="header_wrapper">
                 <div class="container-fluid container_wrapper">
-                     <?php $this->load->view("member/sections/header_member"); ?>
+                    <?php $this->load->view("member/sections/header_member"); ?>
                 </div>
             </div>
         </div>

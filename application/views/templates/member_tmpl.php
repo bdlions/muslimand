@@ -63,6 +63,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/friendService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/messageService.js "></script>
 
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/headerApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/statusApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/friendApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/messageApp.js "></script>

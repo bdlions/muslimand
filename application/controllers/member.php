@@ -187,7 +187,11 @@ class Member extends CI_Controller {
     }
 
     function zakat() {
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/zakat");
+        $user_id = $this->session->userdata('user_id');
+        $this->data['user_id'] = $user_id;
+        $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
+        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/zakat", $this->data);
     }
 
     function invite() {

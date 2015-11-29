@@ -249,7 +249,7 @@ class Status extends CI_Controller {
         if (property_exists($request, "userId")) {
             $user_id = $request->userId;
         }
-       
+
         $status_like_info = new StdClass();
         $status_like_info->userInfo = $ref_user_info;
         $result = $this->status_mongodb_model->add_status_like($user_id, $status_id, $status_like_info);
@@ -394,7 +394,7 @@ class Status extends CI_Controller {
         } else {
             $result = $this->status_mongodb_model->get_statuses($user_id, $offset, $limit);
         }
-        if ($request != null) {
+        if ($result != null) {
             $result = json_decode($result);
             if (property_exists($result, "userCurrentTime")) {
                 $user_current_time = $result->userCurrentTime;

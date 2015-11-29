@@ -13,6 +13,12 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
 //                $scope.url = $scope.constants.base_url;
 //            };
 
+
+            $scope.setUserCurrentTime = function (userCurrentTimeStamp) {
+                $scope.userCurrentTimeStamp = userCurrentTimeStamp;
+
+            };
+
             $scope.updateStatusGetFriendNotifications = function (counterValue, requestFunction) {
                 headerService.updateStatusGetFriendNotifications(counterValue).
                         success(function (data, status, headers, config) {
@@ -23,7 +29,17 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
 
             $scope.setNotificationList = function (notificationList) {
                 $scope.allNotificationList = JSON.parse(notificationList);
-//                console.log($scope.allNotificationList);
+                angular.forEach($scope.allNotificationList, function (notification, key) {
+                    console.log($scope.userCurrentTimeStamp);
+                    var userList = new Array();
+                    userList = notification.notification.userList;
+                    notification.notification.userList.reverse();
+                    if (typeof notification.notification.timeDiff == "undefined") {
+                        notification.notification.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, notification.notification.createdOn);
+                    }
+                }, $scope.allNotificationList);
+
+                console.log($scope.allNotificationList);
             };
 
 
@@ -38,10 +54,7 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
                 }, $scope.statuses);
             }
 
-            $scope.setUserCurrentTime = function (userCurrentTimeStamp) {
-                $scope.userCurrentTimeStamp = userCurrentTimeStamp;
 
-            };
             $scope.setUserGender = function (genderId) {
                 $scope.userGenderId = genderId;
                 console.log($scope.userGenderId);
@@ -52,15 +65,15 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
                 headerService.updateStatusGetGeneralNotifications(counterValue).
                         success(function (data, status, headers, config) {
                             if (data.general_notification != null) {
-                                $scope.generalNotifications = data.general_notification.generalNotifications;
+                                $scope.generalNotifications = data.general_notification;
                                 angular.forEach($scope.generalNotifications, function (notification, key) {
                                     var userList = new Array();
-                                    userList = notification.userList;
-                                    notification.userList.reverse();
-                                    if (typeof notification.timeDiff == "undefined") {
-                                        notification.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, notification.createdOn);
+                                    userList = notification.notification.userList;
+                                    notification.notification.userList.reverse();
+                                    if (typeof notification.notification.timeDiff == "undefined") {
+                                        notification.notification.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, notification.notification.createdOn);
                                     } else {
-                                        notification.timeDiff = "1sec ago ";
+                                        notification.notification.timeDiff = "1sec ago ";
                                     }
                                 }, $scope.generalNotifications);
                             }

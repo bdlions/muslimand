@@ -24,17 +24,17 @@
                     <span style="font-weight: bold;">Today</span>
                 </div>
             </div>
-            <div ng-repeat="notification in allNotificationList.generalNotifications.slice().reverse()">
+            <div ng-repeat="notification in allNotificationList.slice().reverse()">
                 <div class="pagelet_divider"></div>
                 <div class="row">
-                    <a  href="<?php echo base_url() ?>status/get_status_details/{{notification.referenceId}}">
-                        <div class="col-md-1">
-                            <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50; ?>{{notification.userList[0].userId}}.jpg" onError="onImageNotFound(this)"> 
-                            <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{userGenderId}}.jpg">
+                    <a  href="<?php echo base_url() ?>status/get_status_details/{{notification.notification.referenceId}}">
+                        <div class="col-xs-2">
+                            <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50; ?>{{notification.notification.userList[0].userId}}.jpg" onError="onImageUnavailableHeader(this)"> 
+                            <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{notification.genderId}}.jpg" alt="">
                         </div>
-                        <div class="col-md-11 ">
+                        <div class="col-xs-10 ">
                             <div>
-                                <span ng-repeat="(key,user) in notification.userList.slice.reverse ">
+                                <span ng-repeat="(key,user) in notification.notification.userList">
                                     <span style="font-weight: bold" ng-if="key == 2">and</span>
                                     <span style="font-weight: bold" ng-if="key == 1" >,</span>
                                     <span ng-if="user.userId != '<?php echo $user_id; ?>'">
@@ -44,27 +44,29 @@
                                         you
                                     </span>
                                 </span>
-                                <span ng-if="notification.typeId == <?php echo NOTIFICATION_TYPE_POST_LIKE; ?>">
-                                    <span ng-if="notification.userList.length >= 2"> likes</span>
-                                    <span ng-if="notification.userList.length <= 1"> like</span> 
+                                <span ng-if="notification.notification.typeId == <?php echo NOTIFICATION_TYPE_POST_LIKE; ?>">
+                                    <span ng-if="notification.notification.userList.length >= 2"> likes</span>
+                                    <span ng-if="notification.notification.userList.length <= 1"> like</span> 
+                                    your
                                 </span>
-                                <span ng-if="notification.typeId == <?php echo NOTIFICATION_TYPE_POST_COMMENT; ?>">
-                                    <span ng-if="notification.userList.length >= 2"> commented on </span>
-                                    <span ng-if="notification.userList.length <= 1">also  commented on</span>
+                                <span ng-if="notification.notification.typeId == <?php echo NOTIFICATION_TYPE_POST_COMMENT; ?>">
+                                    <span ng-if="notification.notification.userList.length >= 2"> commented on </span>
+                                    <span ng-if="notification.notification.userList.length == 1"> commented on</span>
+                                    <span ng-if="notification.notification.userList.length < 1"> commented on</span>
                                 </span>
-                                <span ng-if="notification.typeId == <?php echo NOTIFICATION_TYPE_POST_SHARE; ?>">
+                                <span ng-if="notification.notification.typeId == <?php echo NOTIFICATION_TYPE_POST_SHARE; ?>">
                                     shared  your
                                 </span>
-                                <span ng-if="notification.referenceUserInfo.userId != '<?php echo $user_id; ?>'">
-                                    {{notification.referenceUserInfo.firstName}}&nbsp;{{notification.referenceUserInfo.lastName}}
+                                <span ng-if="notification.notification.referenceUserInfo.userId != '<?php echo $user_id; ?>'">
+                                    {{notification.notification.referenceUserInfo.firstName}}&nbsp;{{notification.notification.referenceUserInfo.lastName}}
                                 </span>
-                                <span ng-if="notification.referenceUserInfo.userId == '<?php echo $user_id; ?>'">
+                                <span ng-if="notification.notification.referenceUserInfo.userId == '<?php echo $user_id; ?>'">
                                     your 
                                 </span>
                                 status
                             </div>
                             <div>
-                                {{notification.timeDiff}}
+                                {{notification.notification.timeDiff}}
                             </div>
                         </div>
                     </a>
@@ -73,3 +75,9 @@
         </div>
     </div>
 </div>
+<script>
+
+    function onImageUnavailable(img) {
+
+    }
+</script>

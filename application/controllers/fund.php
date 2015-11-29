@@ -22,60 +22,70 @@ class Fund extends CI_Controller {
     function index() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_FUND_IN_TEMPLATE, "member/fund/fund_home", $this->data);
     }
 
     function fund_newsfeed() {
-         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_FUND_IN_TEMPLATE, "member/fund/fund_newsfeed", $this->data);
     }
 
     function fund_raising_page_add() {
-         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_FUND_IN_TEMPLATE, "member/fund/fund_raising_page_add", $this->data);
     }
 
     function fund_sort_view_my() {
-         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_FUND_IN_TEMPLATE, "member/fund/fund_sort_view_my", $this->data);
     }
 
     function fund_sort_view_friend() {
-         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_FUND_IN_TEMPLATE, "member/fund/fund_sort_view_friend", $this->data);
     }
 
     function fund_sort_view_my_donated() {
-         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_FUND_IN_TEMPLATE, "member/fund/fund_sort_view_my_donated", $this->data);
     }
 
     function fund_sort_view_featured() {
-         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_FUND_IN_TEMPLATE, "member/fund/fund_sort_view_featured", $this->data);
     }
 
     function fund_sort_view_reached() {
-         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_FUND_IN_TEMPLATE, "member/fund/fund_sort_view_reached", $this->data);
     }
 
     function fund_sort_view_expired() {
-         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_FUND_IN_TEMPLATE, "member/fund/fund_sort_view_expired", $this->data);
     }
 
     function fund_sort_view_closed() {
-         $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_FUND_IN_TEMPLATE, "member/fund/fund_sort_view_closed", $this->data);
     }
+
 }

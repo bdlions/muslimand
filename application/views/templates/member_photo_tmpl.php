@@ -40,8 +40,11 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/photoController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageUploadController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/headerContoller.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/rightController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/rightService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/photoService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
+
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/photoApp.js "></script>
         <title>Sadiik.com</title>
     </head>
