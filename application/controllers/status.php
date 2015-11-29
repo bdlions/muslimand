@@ -330,7 +330,13 @@ class Status extends CI_Controller {
         echo json_encode($response);
     }
 
-//not user discard after test
+
+    /**
+     * this methord return a user timline status
+     * @param userId
+     * @mapping id
+     *  */
+
     function get_user_profile_status() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -410,10 +416,13 @@ class Status extends CI_Controller {
                 if (!empty($status_list)) {
                     $response["status_list"] = $status_list;
                 }
+
+                $status_list = $this->get_status_information($status_info_list);
             }
         }
         echo json_encode($response);
     }
+
 
     /**
      * this methord return a specific status detail
@@ -436,6 +445,7 @@ class Status extends CI_Controller {
             if (property_exists($result, "userGenderId")) {
                 $user_gender_id = $result->userGenderId;
 //                $response["user_gender_id"] = $user_gender_id;
+
             }
             $status_info['user_gender_id'] = $user_gender_id;
             $status_info['status_list'] = $status_list;

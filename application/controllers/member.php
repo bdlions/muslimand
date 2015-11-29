@@ -116,7 +116,6 @@ class Member extends CI_Controller {
         } else {
             $this->data['user_gender_id'] = "";
         }
-
         $this->data['app'] = "app.Status";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');

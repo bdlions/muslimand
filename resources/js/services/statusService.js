@@ -53,6 +53,7 @@ angular.module('services.Status', []).
                     data: {
                         userId: userId,
                         statusId: statusId,
+
                     }
                 });
             };

@@ -30,7 +30,6 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
             $scope.setNotificationList = function (notificationList) {
                 $scope.allNotificationList = JSON.parse(notificationList);
                 angular.forEach($scope.allNotificationList, function (notification, key) {
-                    console.log($scope.userCurrentTimeStamp);
                     var userList = new Array();
                     userList = notification.notification.userList;
                     notification.notification.userList.reverse();

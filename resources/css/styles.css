@@ -537,11 +537,20 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
         margin-right: 12px;*/
 }
 
+.fadeOut > img{
+    margin-bottom: -20px;
+}
+.fadeOut > p{
+    padding-left: 30px;
+}
 
 @media all and (max-width: 991px){
     .margin_style{
         margin-left: 0!important;
         margin-right: 0!important;
+    }
+    .padding_top_20px{
+        padding-top: 0!important;
     }
 }
 @media all and (max-width: 767px){
@@ -553,6 +562,14 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 @media all and (min-width: 992px){
     .mrg_left{
         margin-left: -7%;
+    }
+    .auth_logo{
+        text-align: center; 
+        padding-top: 14px; 
+        padding-left: 50px;
+    }
+    .padding_top_20px{
+        padding-top: 20px;
     }
 }
 

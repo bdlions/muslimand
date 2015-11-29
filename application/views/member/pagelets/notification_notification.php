@@ -62,6 +62,7 @@
                             {{notification.notification.referenceUserInfo.firstName}}&nbsp;{{notification.notification.referenceUserInfo.lastName}}
                         </span>
                         <span ng-if="notification.notification.referenceUserInfo.userId == '<?php echo $user_id; ?>'">
+
                             your 
                         </span>
                         status
