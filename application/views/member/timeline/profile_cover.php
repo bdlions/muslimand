@@ -1,6 +1,6 @@
 <script>
     function approve_request(friendId) {
-        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function() {
+        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function () {
 
         });
     }
@@ -19,7 +19,7 @@
 </script>
 <script>
     function block_request(friendId) {
-        angular.element($('#block_friend_id')).scope().blockRequest(friendId, function() {
+        angular.element($('#block_friend_id')).scope().blockRequest(friendId, function () {
             alert("user is blocked ");
         });
     }
@@ -165,12 +165,16 @@
         <div class="col-md-12">
             <div style="background-color: whitesmoke; text-align: center;">
                 <div class="btn-group" role="group" aria-label="...">
-                    <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>member/timeline">Timeline</a>
-                    <a class="btn btn-default get_over_view_class" style="font-size: 100%" onclick="getOverview('<?php echo $user_id; ?>')" href="<?php echo base_url(); ?>member/about">About</a>
-                    <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>photos">Photo</a>
+
                     <?php if ($profile_id != "0") { ?>
+                        <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>member/timeline/<?php echo $profile_id; ?>">Timeline</a>
+                        <a class="btn btn-default get_over_view_class" style="font-size: 100%" onclick="getOverview('<?php echo $user_id; ?>')" href="<?php echo base_url(); ?>member/about/<?php echo $profile_id?>">About</a>
+                        <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>photos/get_home_photos/<?php echo $profile_id; ?>">Photo</a>
                         <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>friend/get_friend_list/<?php echo $profile_id; ?>">Friends</a>
                     <?php } else { ?>
+                        <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>member/timeline">Timeline</a>
+                        <a class="btn btn-default get_over_view_class" style="font-size: 100%" onclick="getOverview('<?php echo $user_id; ?>')" href="<?php echo base_url(); ?>member/about">About</a>
+                        <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>photos">Photo</a>
                         <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>friend/get_friend_list">Friends</a>
                     <?php } ?>
                     <div class="btn-group" role="group">

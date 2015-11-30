@@ -809,7 +809,7 @@ class Ion_auth_mongodb_model extends CI_Model {
 
         $document = $this->mongo_db
 //                ->select(array($this->identity_column, '_id', $this->attr_map['user_id'], $this->attr_map['username'], $this->attr_map['email'], $this->attr_map['password'], $this->attr_map['account_status_id'], $this->attr_map['last_login']))
-                ->select(array($this->identity_column, '_id', 'userId', 'firstName', 'lastName', $this->attr_map['email'], $this->attr_map['password'], $this->attr_map['account_status_id'], $this->attr_map['last_login']))
+                ->select(array($this->identity_column, '_id', 'groups', 'userId', 'firstName', 'lastName', $this->attr_map['email'], $this->attr_map['password'], $this->attr_map['account_status_id'], $this->attr_map['last_login']), 'groups')
                 // MongoDB is vulnerable to SQL Injection like attacks (in PHP at least), in MongoDB
                 // PHP driver we use objects to make queries and as we know PHP allows us to submit
                 // objects via GET, POST, etc. and so getting user input like password[$ne]=1 is possible
@@ -835,15 +835,16 @@ class Ion_auth_mongodb_model extends CI_Model {
 
                 // Set user session data
                 $session_data = array(
-                    'identity' => $user->{$this->identity_column},
+                'identity' => $user->{$this->identity_column},
 //                    'username' => $user->{$this->attr_map['username']},
-                    'first_name' => $user->firstName,
-                    'last_name' => $user->lastName,
+                'first_name' => $user->firstName,
+                'last_name' => $user->lastName,
 //                    'username' => $user->{$this->attr_map['username']},
-                    'email' => $user->{$this->attr_map['email']},
+                'email' => $user->{$this->attr_map['email']},
 //                    'user_id' => $user->{$this->attr_map['user_id']},
-                    'user_id' => $user->userId,
-                    'old_last_login' => $user->{$this->attr_map['last_login']}
+                'user_id' => $user->userId,
+                'group_id' => $user->groups[0]['groupId'],
+                'old_last_login' => $user->{$this->attr_map['last_login']}
                 );
 
                 $this->session->set_userdata($session_data);

@@ -111,7 +111,7 @@ class Friend extends CI_Controller {
         $user_relation = array();
         $friend_list = array();
         $user_id = $this->session->userdata('user_id');
-         if ($profile_id != $user_id && $profile_id != "0") {
+        if ($profile_id != $user_id && $profile_id != "0") {
             $result = $this->friend_mongodb_model->get_relationship_status($user_id, $profile_id);
             $result = json_decode($result);
             if (property_exists($result, "relationInfo")) {
@@ -141,19 +141,20 @@ class Friend extends CI_Controller {
         }
 
 //get friend list either user itself or friend's 
-        if ($profile_id != "0") {
-            $user_id = $profile_id;
+        if ($profile_id != "0" && $profile_id != $user_id) {
+            $friend_list = $this->get_friend_list_info($profile_id);
         } else {
-            $user_id = $user_id;
+            $friend_list = $this->get_friend_list_info($user_id);
         }
-        $friend_list = $this->get_friend_list_info($user_id);
         $this->data['friendList'] = $friend_list;
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['profile_id'] = $profile_id;
         $this->data['app'] = "app.Friend";
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/friends", $this->data);
+        $this->template->load(null, "member/friends", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/friends", $this->data);
+//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/friends", $this->data);
     }
 
     function get_chat_friend_list() {
@@ -162,17 +163,17 @@ class Friend extends CI_Controller {
         $response['friend_list'] = $this->get_friend_list_info($user_id);
         echo json_encode($response);
     }
+
     function get_short_friend_list() {
         $response = array();
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
         if (property_exists($requestInfo, "profileId") != FALSE) {
-            $profile_id= $requestInfo->profileId;
+            $profile_id = $requestInfo->profileId;
         }
         $response['friend_list'] = $this->get_friend_list_info($profile_id);
         echo json_encode($response);
     }
-    
 
     function get_friend_list_info($user_id) {
         $offset = 0;

@@ -106,7 +106,9 @@ class Notification extends CI_Controller {
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['app'] = "app.Friend";
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/notification_all", $this->data);
+        $this->template->load(null, "member/notification_all", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/notification_all", $this->data);
+//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/notification_all", $this->data);
     }
 
 }

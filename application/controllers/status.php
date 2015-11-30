@@ -416,8 +416,6 @@ class Status extends CI_Controller {
                 if (!empty($status_list)) {
                     $response["status_list"] = $status_list;
                 }
-
-                $status_list = $this->get_status_information($status_info_list);
             }
         }
         echo json_encode($response);
@@ -456,7 +454,9 @@ class Status extends CI_Controller {
         $this->data['user_id'] = $user_id;
         $this->data['app'] = "app.Status";
 //        $this->data['user_current_time'] = $user_current_time;
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/status_details", $this->data);
+        $this->template->load(null, "member/status_details", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/status_details", $this->data);
+//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/status_details", $this->data);
     }
 
     function get_status_information($status_info_list) {

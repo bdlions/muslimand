@@ -25,7 +25,6 @@ class Photos extends CI_Controller {
 
     function index() {
         $user_id = $this->session->userdata('user_id');
-
         $result = $this->photo_mongodb_model->get_user_albums($user_id);
         $result_array = json_decode($result);
         if (!empty($result_array)) {
@@ -38,14 +37,40 @@ class Photos extends CI_Controller {
         $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_home", $this->data);
+        $this->template->load(null, "member/photo/photo_home", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/photo/photo_home", $this->data);
+//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_home", $this->data);
+    }
+
+    function get_home_photos($profile_id = "0") {
+        $user_id = $this->session->userdata('user_id');
+        if ($profile_id != "0" && $profile_id != $user_id) {
+            $result = $this->photo_mongodb_model->get_user_albums($profile_id);
+        } else {
+            $result = $this->photo_mongodb_model->get_user_albums($user_id);
+        }
+
+        $result_array = json_decode($result);
+        if (!empty($result_array)) {
+            if (property_exists($result_array, "albumList")) {
+                $this->data['user_album_list'] = json_encode($result_array->albumList);
+            }
+        } else {
+            $this->data['user_album_list'] = array();
+        }
+        $this->data['app'] = "app.Photo";
+        $this->data['user_id'] = $user_id;
+        $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->template->load(null, "member/photo/photo_home", $this->data);
     }
 
     function photos_view_my() {
         $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my", $this->data);
+        $this->template->load(null, "member/photo/photos_view_my", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/photo/photos_view_my", $this->data);
+//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my", $this->data);
     }
 
     function photos_view_albums_pic() {
@@ -56,14 +81,18 @@ class Photos extends CI_Controller {
         $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_friend", $this->data);
+        $this->template->load(null, "member/photo/photos_view_friend", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/photo/photos_view_friend", $this->data);
+//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_friend", $this->data);
     }
 
     function photos_albums() {
         $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums", $this->data);
+        $this->template->load(null, "member/photo/photos_albums", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/photo/photos_albums", $this->data);
+//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums", $this->data);
     }
 
     function photos_sort_most_viewed() {
@@ -115,7 +144,9 @@ class Photos extends CI_Controller {
         $this->data['user_id'] = $user_id;
         $this->data['user_album_list'] = array();
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my_albums", $this->data);
+        $this->template->load(null, "member/photo/photos_view_my_albums", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/photo/photos_view_my_albums", $this->data);
+//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my_albums", $this->data);
     }
 
     function get_album($album_id = 0) {
@@ -134,7 +165,9 @@ class Photos extends CI_Controller {
         $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums_view", $this->data);
+        $this->template->load(null, "member/photo/photos_albums_view", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/photo/photos_albums_view", $this->data);
+//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums_view", $this->data);
     }
 
     function create_album() {
@@ -316,7 +349,9 @@ class Photos extends CI_Controller {
         $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_gallery", $this->data);
+        $this->template->load(null, "member/photo/photo_gallery", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/photo/photo_gallery", $this->data);
+//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_gallery", $this->data);
     }
 
     /* public function image_upload() {
@@ -467,7 +502,8 @@ class Photos extends CI_Controller {
         $this->data["first_name"] = $this->session->userdata('first_name');
         $this->data["album_lsit"] = json_encode($album_list);
         $this->data["category_list"] = json_encode($category_list);
-        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_add", $this->data);
+        $this->template->load(null, "member/photo/photo_add", $this->data);
+//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_add", $this->data);
     }
 
     function edit_photo() {

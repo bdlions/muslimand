@@ -40,20 +40,25 @@ class Videos extends CI_Controller {
         $this->data['app'] = "app.Video";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/video_home", $this->data);
+        $this->template->load(null, "member/video/video_home", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/video/video_home", $this->data);
+//        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/video_home", $this->data);
     }
 
     function videos_sort_most_discussed() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['app'] = "app.Video";
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_most_discussed", $this->data);
+        $this->template->load(null, "member/video/videos_sort_most_discussed", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/video/videos_sort_most_discussed", $this->data);
+//        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_most_discussed", $this->data);
     }
 
     function videos_sort_most_viewed() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['app'] = "app.Video";
         $this->data['first_name'] = $this->session->userdata('first_name');
+//        $this->template->load(MEMBER_TEMPLATE, "member/video/videos_sort_most_viewed", $this->data);
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_most_viewed", $this->data);
     }
 
@@ -61,6 +66,7 @@ class Videos extends CI_Controller {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['app'] = "app.Video";
         $this->data['first_name'] = $this->session->userdata('first_name');
+//        $this->template->load(MEMBER_TEMPLATE, "member/video/videos_sort_top_rated");
         $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_sort_top_rated");
     }
 
@@ -68,21 +74,27 @@ class Videos extends CI_Controller {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['app'] = "app.Video";
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_favorite", $this->data);
+        $this->template->load(null, "member/video/videos_view_favorite", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/video/videos_view_favorite", $this->data);
+//        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_favorite", $this->data);
     }
 
     function videos_view_friend() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['app'] = "app.Video";
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_friend", $this->data);
+        $this->template->load(null, "member/video/videos_view_friend", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/video/videos_view_friend", $this->data);
+//        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_friend", $this->data);
     }
 
     function videos_view_my() {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['app'] = "app.Video";
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_my", $this->data);
+        $this->template->load(null, "member/video/videos_view_my", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/video/videos_view_my", $this->data);
+//        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_view_my", $this->data);
     }
 
     function videos_iframe($video_id = 0) {
@@ -101,7 +113,9 @@ class Videos extends CI_Controller {
         $this->data['app'] = "app.Video";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_iframe", $this->data);
+        $this->template->load(null, "member/video/videos_iframe", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/video/videos_iframe", $this->data);
+//        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/videos_iframe", $this->data);
     }
 
     /*
@@ -158,7 +172,8 @@ class Videos extends CI_Controller {
         $this->data['first_name'] =$this->session->userdata('first_name');
         $this->data['app'] = "app.Video";
         $this->data["category_list"] = json_encode($category_list);
-        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/video_add", $this->data);
+        $this->template->load(null, "member/video/video_add", $this->data);
+//        $this->template->load(MEMBER_VIDEO_IN_TEMPLATE, "member/video/video_add", $this->data);
     }
 
     function grabYoutubeVideo($sText) {

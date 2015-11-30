@@ -72,26 +72,27 @@ class Auth extends CI_Controller {
         $religion_list = array();
         $country_time_zone = array();
         $gender_list = array();
-        $country_and_relisionList = $this->landing_page_model->get_countries_religions();
+        $user_list = array();
+        $landing_page_info = $this->landing_page_model->get_landing_page_info();
         $gender = $this->utils->get_gender();
-//        $country_list = $countryAndRelisionList->countryList;
-//        $religion_list = $countryAndRelisionList->religionList;
-//        
-
         foreach ($gender as $key => $gender_info) {
             $gender_list[$key] = $gender_info;
         }
-        if (!empty($country_and_relisionList)) {
-            if (property_exists($country_and_relisionList, "countryList") != FALSE) {
-                foreach ($country_and_relisionList->countryList as $country_info) {
+        if (!empty($landing_page_info)) {
+            if (property_exists($landing_page_info, "countryList") != FALSE) {
+                foreach ($landing_page_info->countryList as $country_info) {
                     $country_list[$country_info->code] = $country_info->title;
                     $country_time_zone[$country_info->code] = $country_info->gmtOffset;
                 }
             }
-            if (property_exists($country_and_relisionList, "religionList") != FALSE) {
-                foreach ($country_and_relisionList->religionList as $religion_info) {
+            if (property_exists($landing_page_info, "religionList") != FALSE) {
+                foreach ($landing_page_info->religionList as $religion_info) {
                     $religion_list[$religion_info->religionId] = $religion_info->title;
                 }
+            }
+            if (property_exists($landing_page_info, "userList") != FALSE) {
+                $user_list = $landing_page_info->userList;
+                $this->data['user_list'] = json_encode($user_list);
             }
         }
         if ($this->input->post('register_btn') != null) {

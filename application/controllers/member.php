@@ -120,7 +120,9 @@ class Member extends CI_Controller {
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['last_name'] = $this->session->userdata('last_name');
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed", $this->data);
+        $this->template->load(null, "member/newsfeed", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/newsfeed", $this->data);
+//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed", $this->data);
     }
 
     function timeline($profile_id = "0") {
@@ -134,7 +136,10 @@ class Member extends CI_Controller {
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['profile_id'] = $profile_id;
         $this->data['app'] = "app.MemberProfile";
-        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/timeline", $this->data);
+        $this->template->load(null, "member/timeline", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/timeline", $this->data);
+//        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/timeline", $this->data);
+//        $this->template->load(null, "member/timeline", $this->data);
     }
 
     function about($profile_id = 0) {
@@ -145,7 +150,9 @@ class Member extends CI_Controller {
         $this->data['user_relation'] = json_encode($this->get_user_relation_info($profile_id));
         $this->data['profile_id'] = $profile_id;
         $this->data['app'] = "app.BasicProfile";
-        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/about", $this->data);
+        $this->template->load(null, "member/about", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/about", $this->data);
+//        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/about", $this->data);
     }
 
     function account_settings($profile_id = "0") {
@@ -155,7 +162,9 @@ class Member extends CI_Controller {
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['profile_id'] = $profile_id;
         $this->data['app'] = "app.Status";
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/account_settings", $this->data);
+        $this->template->load(null, "member/account_settings", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/account_settings", $this->data);
+//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/account_settings", $this->data);
     }
 
     function add_friends() {
@@ -172,7 +181,9 @@ class Member extends CI_Controller {
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['user_id'] = $user_id;
         $this->data['app'] = "app.Message";
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/messages", $this->data);
+        $this->template->load(null, "member/messages", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/messages", $this->data);
+//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/messages", $this->data);
     }
 
     function privacy_settings($profile_id = "0") {
@@ -182,7 +193,9 @@ class Member extends CI_Controller {
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['profile_id'] = $profile_id;
         $this->data['app'] = "app.Status";
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/privacy_settings", $this->data);
+        $this->template->load(null, "member/privacy_settings", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/privacy_settings", $this->data);
+//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/privacy_settings", $this->data);
     }
 
     function zakat() {
@@ -190,7 +203,9 @@ class Member extends CI_Controller {
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['app'] = "app.Header";
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/zakat", $this->data);
+        $this->template->load(null, "member/zakat", $this->data);
+//        $this->template->load(MEMBER_TEMPLATE, "member/zakat", $this->data);
+//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/zakat", $this->data);
     }
 
     function invite() {

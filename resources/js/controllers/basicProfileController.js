@@ -45,30 +45,32 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.getOverview = function (userId, requestFunction) {
                 basicProfileService.getOverviews(userId).
                         success(function (data, status, headers, config) {
-                            if (data.workPlace !== "undefined") {
-                                $scope.overview.workPlace = data.workPlace;
-                            }
-                            if (data.university !== "undefined") {
-                                $scope.overview.university = data.university;
-                            }
-                            if (data.city !== "undefined") {
-                                $scope.overview.city = data.city;
-                            }
-                            if (data.mobilePhone !== "undefined") {
-                                $scope.overview.mobilePhone = data.mobilePhone;
-                            }
-                            if (data.email !== "undefined") {
-                                $scope.overview.email = data.email;
-                            }
-                            if (data.address !== "undefined") {
-                                $scope.overview.address = data.address;
-                            }
-                            if (data.website !== "undefined") {
-                                $scope.overview.website = data.website;
-                            }
-                            if (data.bDate !== "undefined") {
-                                $scope.overview.birthDate = data.bDate;
-                            }
+                            
+                            
+//                            if (data.workPlace !== "undefined") {
+//                                $scope.overview.workPlace = data.workPlace;
+//                            }
+//                            if (data.university !== "undefined") {
+//                                $scope.overview.university = data.university;
+//                            }
+//                            if (data.city !== "undefined") {
+//                                $scope.overview.city = data.city;
+//                            }
+//                            if (data.mobilePhone !== "undefined") {
+//                                $scope.overview.mobilePhone = data.mobilePhone;
+//                            }
+//                            if (data.email !== "undefined") {
+//                                $scope.overview.email = data.email;
+//                            }
+//                            if (data.address !== "undefined") {
+//                                $scope.overview.address = data.address;
+//                            }
+//                            if (data.website !== "undefined") {
+//                                $scope.overview.website = data.website;
+//                            }
+//                            if (data.bDate !== "undefined") {
+//                                $scope.overview.birthDate = data.bDate;
+//                            }
                             requestFunction(data)
                         });
             };
@@ -104,7 +106,8 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 $scope.workInfo.userId = userId;
                 basicProfileService.addWorkPlace($scope.workInfo).
                         success(function (data, status, headers, config) {
-                            $scope.workPlaces.push(data.work_place);
+                            console.log(data);
+//                            $scope.workPlaces.push(data.work_place);
                             $scope.workInfo = "";
                             requestFunction();
                         });
