@@ -4,8 +4,8 @@
             <span class="header_label_style">About You</span>
         </div>
     </div>
-    <div class="pagelet_divider"></div>
-    <div class="row">
+    <div class="pagelet_divider"></div> 
+    <div class="row"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/details/add_about"); ?>
         </div>
@@ -24,7 +24,7 @@
                     <div class="col-md-12"> </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
                 <div class="pull-right">
                     <button id="dropdownMenu1" class="btn btn_style btn-default dropdown-toggle" aria-expanded="true" data-toggle="dropdown" type="button">
                         <span class="caret"></span>
@@ -42,8 +42,8 @@
         </div>
     </div>
 
+    <div class="row"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
     <div class="pagelet_divider"></div>
-    <div class="row">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/details/add_favourite_quote"); ?>
         </div>
@@ -62,7 +62,7 @@
                     <div class="col-md-12"> </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
                 <div class="pull-right">
                     <button id="dropdownMenu1" class="btn btn_style btn-default dropdown-toggle" aria-expanded="true" data-toggle="dropdown" type="button">
                         <span class="caret"></span>

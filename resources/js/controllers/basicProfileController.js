@@ -19,14 +19,16 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.address = {};
             $scope.addressInfo = {};
             $scope.websiteInfo = {};
+            $scope.phoneInfo = {};
+            $scope.emailInfo = {};
             $scope.emails = [];
             $scope.languages = [];
             $scope.religion = {};
-            $scope.city = {};
+            $scope.city = null;
             $scope.birthDate = {};
             $scope.gender = {};
             $scope.website = {};
-            $scope.town = {};
+            $scope.town = null;
             $scope.rStatus = {};
             $scope.rStatusInfo = {};
             $scope.fMemebers = [];
@@ -34,43 +36,54 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.aboutInfo = {};
             $scope.fQuote = {};
             $scope.fQuoteInfo = {};
-            $scope.userGenderId ="" ;
+            $scope.userGenderId = "";
+            $scope.profileId = "";
+            $scope.userId = "";
 
             $scope.setUserRelation = function (userRelation) {
                 $scope.userRelation = JSON.parse(userRelation);
                 $scope.userGenderId = $scope.userRelation.gender_id;
             };
+            $scope.setUserId = function (userId) {
+                $scope.userId = userId;
+                console.log($scope.userId);
+            };
+            $scope.setProfileId = function (profileId) {
+                $scope.profileId = profileId;
+                console.log($scope.profileId);
+
+            };
 
             // about  overview  ........................................      
+
+
             $scope.getOverview = function (userId, requestFunction) {
                 basicProfileService.getOverviews(userId).
                         success(function (data, status, headers, config) {
-                            
-                            
-//                            if (data.workPlace !== "undefined") {
-//                                $scope.overview.workPlace = data.workPlace;
-//                            }
-//                            if (data.university !== "undefined") {
-//                                $scope.overview.university = data.university;
-//                            }
-//                            if (data.city !== "undefined") {
-//                                $scope.overview.city = data.city;
-//                            }
-//                            if (data.mobilePhone !== "undefined") {
-//                                $scope.overview.mobilePhone = data.mobilePhone;
-//                            }
-//                            if (data.email !== "undefined") {
-//                                $scope.overview.email = data.email;
-//                            }
-//                            if (data.address !== "undefined") {
-//                                $scope.overview.address = data.address;
-//                            }
-//                            if (data.website !== "undefined") {
-//                                $scope.overview.website = data.website;
-//                            }
-//                            if (data.bDate !== "undefined") {
-//                                $scope.overview.birthDate = data.bDate;
-//                            }
+                            if (typeof data.workPlace !== "undefined") {
+                                $scope.overview.workPlace = data.workPlace;
+                            }
+                            if (typeof data.university !== "undefined") {
+                                $scope.overview.university = data.university;
+                            }
+                            if (typeof data.city !== "undefined") {
+                                $scope.overview.city = data.city;
+                            }
+                            if (typeof data.mobilePhone !== "undefined") {
+                                $scope.overview.mobilePhone = data.mobilePhone;
+                            }
+                            if (typeof data.email !== "undefined") {
+                                $scope.overview.email = data.email;
+                            }
+                            if (typeof data.address !== "undefined") {
+                                $scope.overview.address = data.address;
+                            }
+                            if (typeof data.website !== "undefined") {
+                                $scope.overview.website = data.website;
+                            }
+                            if (typeof data.birthDate !== "undefined") {
+                                $scope.overview.birthDate = data.birthDate;
+                            }
                             requestFunction(data)
                         });
             };
@@ -81,19 +94,19 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 basicProfileService.getWorksEducation(userId).
                         success(function (data, status, headers, config) {
                             $scope.yearList = data.year_list;
-                            if (data.work_places != "undefined") {
+                            if (typeof data.work_places != "undefined" && data.work_places != "") {
                                 $scope.workPlaces = data.work_places;
                             }
-                            if (data.p_skills != "undefined") {
+                            if (typeof data.p_skills != "undefined" && data.p_skills != "") {
                                 $scope.pSkills = data.p_skills;
                             }
-                            if (data.universities != "undefined") {
+                            if (typeof data.universities != "undefined" && data.universities != "") {
                                 $scope.universities = data.universities;
                             }
-                            if (data.colleges != "undefined") {
+                            if (typeof data.colleges != "undefined" && data.colleges != "") {
                                 $scope.colleges = data.colleges;
                             }
-                            if (data.schools != "undefined") {
+                            if (typeof data.schools != "undefined" && data.schools != "") {
                                 $scope.schools = data.schools;
                             }
                             requestFunction(data);
@@ -106,8 +119,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 $scope.workInfo.userId = userId;
                 basicProfileService.addWorkPlace($scope.workInfo).
                         success(function (data, status, headers, config) {
-                            console.log(data);
-//                            $scope.workPlaces.push(data.work_place);
+                            $scope.workPlaces.push(data.work_place);
                             $scope.workInfo = "";
                             requestFunction();
                         });
@@ -231,10 +243,10 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.getCityTown = function (userId, requestFunction) {
                 basicProfileService.getCityTown(userId).
                         success(function (data, status, headers, config) {
-                            if (data.city_town.city != "undefined") {
+                            if (typeof data.city_town.city != "undefined") {
                                 $scope.city = data.city_town.city;
                             }
-                            if (data.city_town.town != "undefined") {
+                            if (typeof data.city_town.town != "undefined") {
                                 $scope.town = data.city_town.town;
                             }
                             requestFunction(data);
@@ -295,34 +307,33 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.getContactBasicInfo = function (userId, requestFunction) {
                 basicProfileService.getContactBasicInfo(userId).
                         success(function (data, status, headers, config) {
-                            if (data.basic_info !== "undefined") {
-                                if (data.basic_info !== "undefined") {
 
-                                    if (typeof data.basic_info.mobile_phones !== "undefined") {
-                                        $scope.mobilePhones = data.basic_info.mobile_phones;
-                                    }
-                                    if (data.basic_info.addresses !== "undefined") {
+                            if (typeof data.basic_info !== "undefined") {
 
-                                        $scope.address = data.basic_info.addresses;
-                                    }
-                                    if (data.basic_info.website !== "undefined") {
-                                        $scope.website = data.basic_info.website;
-                                    }
-                                    if (data.basic_info.emails !== "undefined") {
-                                        $scope.emails = data.basic_info.emails;
-                                    }
-                                    if (data.basic_info.birth_date !== "undefined") {
-                                        $scope.birthDate = data.basic_info.birth_date;
-                                    }
-                                    if (data.basic_info.gender !== "undefined") {
-                                        $scope.gender = data.basic_info.gender;
-                                    }
-                                    if (data.basic_info.language !== "undefined") {
-                                        $scope.languages = data.basic_info.language;
-                                    }
-                                    if (data.basic_info.religions !== "undefined") {
-                                        $scope.religion = data.basic_info.religions;
-                                    }
+                                if (typeof data.basic_info.mobilePhones !== "undefined") {
+                                    $scope.mobilePhones = data.basic_info.mobilePhones;
+                                }
+                                if (typeof data.basic_info.addresses !== "undefined") {
+                                    $scope.address = data.basic_info.addresses;
+                                }
+                                if (typeof data.basic_info.website !== "undefined") {
+                                    $scope.website = data.basic_info.website;
+                                }
+                                if (typeof data.basic_info.emails !== "undefined") {
+                                    $scope.emails = data.basic_info.emails;
+                                }
+                                if (typeof data.basic_info.birthDate !== "undefined") {
+                                    $scope.birthDate = data.basic_info.birthDate;
+                                }
+                                if (typeof data.basic_info.gender !== "undefined") {
+                                    $scope.gender = data.basic_info.gender;
+                                }
+                                if (typeof data.basic_info.language !== "undefined") {
+                                    $scope.languages = data.basic_info.language;
+                                }
+                                if (typeof data.basic_info.religions !== "undefined") {
+                                    $scope.religion = data.basic_info.religions;
+                                    console.log($scope.religion)
                                 }
                             }
                             requestFunction(data);
@@ -340,7 +351,6 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             };
 
             $scope.editMobilePhone = function (phoneInfo, requestFunction) {
-                console.log(phoneInfo);
                 basicProfileService.editMobilePhone(phoneInfo).
                         success(function (data, status, headers, config) {
                             $scope.phoneInfo = "";
@@ -410,18 +420,31 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             $("#add_email").show();
                         });
             };
+            $scope.editEmail = function (emailInfo, requestFunction) {
+                basicProfileService.editEmail(emailInfo).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+            };
+            $scope.deleteEmail = function (emailId, requestFunction) {
+                basicProfileService.deleteEmail(emailId).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+            };
 
 //................ Family and Relation..............
             $scope.getFamilyRelation = function (userId, requestFunction) {
                 basicProfileService.getFamilyRelation(userId).
                         success(function (data, status, headers, config) {
-                            if (data.family_relations != "undefined") {
-                                if (data.family_relations.bInfo != "undefined") {
-                                    if (data.family_relations.bInfo.relationshipStatus != "undefined") {
-                                        $scope.rStatus = data.family_relations.bInfo.relationshipStatus;
+                            if (typeof data.family_relations != "undefined") {
+                                if (typeof data.family_relations != "undefined") {
+                                    if (typeof data.family_relations.relationshipStatus != "undefined") {
+                                        $scope.rStatus = data.family_relations.relationshipStatus;
+                                        console.log($scope.rStatus);
                                     }
-                                    if (data.family_relations.bInfo.familyMember != "undefined") {
-                                        $scope.fMemebers = data.family_relations.bInfo.familyMember;
+                                    if (typeof data.family_relations.familyMember != "undefined") {
+                                        $scope.fMemebers = data.family_relations.familyMember;
                                     }
                                 }
                             }
@@ -442,61 +465,46 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             ;
                         });
             };
+            $scope.editRStatus = function (relationStatus, requestFunction) {
+                basicProfileService.editRStatus(relationStatus).
+                        success(function (data, status, headers, config) {
+                            requestFunction();
+                        });
+            };
             //......................About Yourself....................
 
-            $scope.getAboutFQuote = function (userId) {
+            $scope.getAboutFQuote = function (userId, requestFunction) {
                 basicProfileService.getAboutFQuote(userId).
                         success(function (data, status, headers, config) {
-                            if (data.about_fquote != "undefined") {
-                                if (data.about_fquote.about != "undefined") {
-                                    $('#aboutId').show();
+                            if (typeof data.about_fquote != "undefined") {
+                                if (typeof data.about_fquote.about != "undefined") {
                                     $scope.about = data.about_fquote.about;
-                                    console.log($scope.about);
                                 }
-                                if (data.about_fquote.fQuote != "undefined") {
-                                    $('#fQuoteId').show();
+                                if (typeof data.about_fquote.fQuote != "undefined") {
                                     $scope.fQuote = data.about_fquote.fQuote;
-                                    console.log($scope.fQuote);
                                 }
                             }
-                            $('#about_overview').hide();
-                            $('#about_career').hide();
-                            $('#place').hide();
-                            $('#about_contact_info').hide();
-                            $('#about_family_relation').hide();
-                            $("#about_own").hide();
-                            $("#favorite_quote").hide();
-                            $('#about_details').show();
-                            $("#add_about_own").show();
-                            $("#add_favorite_quote").show();
+                            requestFunction(data);
 
                         });
             };
 
-            $scope.addAbout = function (userId) {
+            $scope.addAbout = function (userId, requestFunction) {
                 $scope.aboutInfo.userId = userId;
                 basicProfileService.addAbout($scope.aboutInfo).
                         success(function (data, status, headers, config) {
                             $scope.about = data.about;
-                            $('#aboutId').show();
-                            $("#add_about_own").show();
-                            $("#about_own").hide();
                             $scope.aboutInfo = "";
-
-                            ;
+                            requestFunction();
                         });
             };
-            $scope.addFQuote = function (userId) {
+            $scope.addFQuote = function (userId, requestFunction) {
                 $scope.fQuoteInfo.userId = userId;
                 basicProfileService.addFQuote($scope.fQuoteInfo).
                         success(function (data, status, headers, config) {
                             $scope.fQuote = data.f_quote;
-                            $('#fQuoteId').show();
-                            $("#add_favorite_quote").show();
-                            $("#favorite_quote").hide();
                             $scope.fQuoteInfo = "";
-
-                            ;
+                            requestFunction();
                         });
             };
 

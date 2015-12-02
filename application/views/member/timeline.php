@@ -1,20 +1,34 @@
 
 <script type="text/javascript">
 
-    $(function() {
+    $(function () {
         var profileId = '<?php echo $profile_id; ?>';
         if (profileId === "0") {
             profileId = '<?php echo $user_id; ?>';
         }
-//        angular.element($('#status_set_id')).scope().getProfileStatus(profileId);
+        angular.element($('#brief_info_set')).scope().getOverview(profileId, function (data) {
+            if (typeof data.workPlace !== "undefined") {
+                $('#brif_work_id').show();
+            }
+            if (typeof data.university !== "undefined") {
+                $('#brif_uv_id').show();
+            }
+            if (typeof data.city !== "undefined") {
+                $('#brif_city_id').show();
+            }
+          
+            if (typeof data.address !== "undefined") {
+                $('#brif_address_id').show();
+            }
+        });
         angular.element($('#sort_friend_list_set_id')).scope().getFriendList(profileId);
         angular.element($('#photo_set_id')).scope().getUserAlbumList(profileId);
 
     });
-    
-   
-    
-    </script>
+
+
+
+</script>
 
 
 
@@ -34,7 +48,9 @@
 <!--CARDS AFTER BANNER-->
 <div class="row">
     <div class="col-md-5">
-        <?php $this->load->view("member/timeline/brief_info"); ?>
+        <span ng-controller="basicProfileController" id="brief_info_set">
+            <?php $this->load->view("member/timeline/brief_info"); ?>
+        </span>
         <div class="row form-group"></div>
         <span ng-controller="friendController" id="sort_friend_list_set_id">
             <?php $this->load->view("member/timeline/friend_list"); ?>

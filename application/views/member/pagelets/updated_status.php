@@ -26,8 +26,8 @@
                                                 </span>
                                                 <span ng-if="<?php echo POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID; ?> == status.statusTypeId">
                                                     update 
-                                                    <span ng-if="<?php echo Male; ?> == status.genderId ">his</span>
-                                                    <span ng-if="<?php echo Female; ?> == status.genderId ">her</span>
+                                                    <span ng-if="<?php echo Male; ?> == status.genderId">his</span>
+                                                    <span ng-if="<?php echo Female; ?> == status.genderId">her</span>
                                                     <!--his/her--> 
                                                     status
                                                 </span>
@@ -167,16 +167,16 @@
                                 <div class="col-md-12">
                                     <span ng-if = "status.likeStatus != '1'">
                                         <a style="color: #3B59A9;" href id="statusLike{{status.statusId}}" ng-click="addLike(status.userInfo.userId, status.statusId)">
-                                            <img src="<?php echo base_url();?>resources/images/like_icon.png"> Like </a>.
+                                            <img src="<?php echo base_url(); ?>resources/images/like_icon.png"> Like </a>.
                                     </span>
                                     <span ng-if = "status.likeStatus == '1'">
                                         <a style="color: #3B59A9;" href id="statusUnLike{{status.statusId}}" ng-click="unLike(status.statusId)">
-                                            <img src="<?php echo base_url();?>resources/images/like_icon.png"> liked </a>. 
+                                            <img src="<?php echo base_url(); ?>resources/images/like_icon.png"> liked </a>. 
                                     </span>
                                     <a style="color: #3B59A9;" href onclick="select_comment_field(angular.element(this).scope().status.statusId)">
-                                        <img src="<?php echo base_url();?>resources/images/comment_icon.png"> Comment </a>.
+                                        <img src="<?php echo base_url(); ?>resources/images/comment_icon.png"> Comment </a>.
                                     <a style="color: #3B59A9;"  id="share_add_id" href onclick="open_modal_share(angular.element(this).scope().status)">
-                                        <img src="<?php echo base_url();?>resources/images/share_icon.png"> Share</a>
+                                        <img src="<?php echo base_url(); ?>resources/images/share_icon.png"> Share</a>
                                 </div>
                             </div>
                         </div>
@@ -305,7 +305,9 @@
             </div>
         </div>
     </div>
-    <div ng-show='busy'>Loading data...</div>
+    <span ng-if="busy == false">
+        <div>Loading data...</div>
+    </span>
     <?php $this->load->view("member/pagelets/modal_share_content"); ?>
     <?php $this->load->view("modal/modal_liked_people_list"); ?>
     <?php $this->load->view("modal/modal_comment_liked_people_list"); ?>

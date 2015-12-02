@@ -113,11 +113,16 @@ class Auth extends CI_Controller {
                 $email = $this->input->post('r_email');
                 $password = $this->input->post('r_password');
                 $country_code = $this->input->post('country_list');
+                $religion_id = $this->input->post('religion_list');
                 $gender_id = $this->input->post('gender_list');
                 if ($country_code != null) {
                     $country_title = $country_list[$country_code];
                     $gmt_offset = $country_time_zone[$country_code];
                 }
+                if ($religion_id != null) {
+                    $religion_title = $religion_list[$religion_id];
+                }
+                
                 if ($gender_id != null) {
                     $gender_title = $gender_list[$gender_id];
                 }
@@ -126,6 +131,11 @@ class Auth extends CI_Controller {
                     'title' => $country_title,
                     'gmtOffset' => $gmt_offset
                 );
+                $religion = array(
+                    'id' => $religion_id,
+                    'title' => $religion_title,
+                );
+               
                 $gender = array(
                     'genderId' => $gender_id,
                     'title' => $gender_title
@@ -144,7 +154,8 @@ class Auth extends CI_Controller {
                 );
                 $basic_info = array(
                     'birthDate' => $birth_date,
-                    'gender' => $gender
+                    'gender' => $gender,
+                    'religions' => $religion,
                 );
                 $group_info = array(
                     'groupId' => MEMBER_GROUP_ID,

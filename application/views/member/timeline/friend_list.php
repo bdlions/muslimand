@@ -1,7 +1,9 @@
 <div class="pagelet" style="border: 1px solid #fff;">
     <div class="row">
         <div class="col-md-12">
-            <a class="non_friend_pagelet_header_anchor_style" href="">Friends</a> ·  <a class="non_friend_pagelet_header_anchor_style" href="">207</a>  <a class="non_friend_pagelet_header_anchor_style" href="">(1 Mutual)</a>
+            <a class="non_friend_pagelet_header_anchor_style" href="">Friends</a> 
+<!--            ·  <a class="non_friend_pagelet_header_anchor_style" href="">207</a>  
+            <a class="non_friend_pagelet_header_anchor_style" href="">(1 Mutual)</a>-->
         </div>
     </div>
 </div>

@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div class="row">
+    <div class="row" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/work_education/add_work_place"); ?>
         </div>
@@ -19,9 +19,9 @@
                 <div class="col-md-10">
                     <div class="row">
                         <div class="col-md-8">
-                            <a href=""><span ng-bind="workPlace.cmp"></span></a>
+                            <a href=""><span ng-bind="workPlace.company"></span></a>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
                             <div class="pull-right">
                                 <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                                     <span class="caret"></span>
@@ -29,15 +29,15 @@
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                     <!--<li role="presentation"><a role="menuitem" tabindex="-1" href ng-click="selectEditField(workPlace.id)">Edit</a></li>-->
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href onclick="show_work_place(this)" id="{{workPlace.id}}">Edit</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href onclick="open_modal_work_Place_delete(this)" id="{{workPlace.id}}">Delete</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href onclick="opennclick="sh_modal_work_Place_delete(this)" id="{{workPlace.id}}">Delete</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <span ng-bind="workPlace.pos"></span>,<span ng-bind="workPlace.ct"></span> .
-                            <span ng-bind="workPlace.desc"></span>
+                            <span ng-bind="workPlace.position"></span>,<span ng-bind="workPlace.city"></span> .
+                            <span ng-bind="workPlace.description"></span>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div class="row">
+    <div class="row" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/work_education/add_professional_skill"); ?>
         </div>
@@ -63,9 +63,9 @@
         <div class="row from-group" ng-repeat="pSkill in pSkills.slice().reverse()">
             <div id="p_skill_{{pSkill.id}}">
                 <div class="col-md-8">
-                    <a style="font-weight: bold" href=""><span ng-bind="pSkill.ps"></span></a>
+                    <a style="font-weight: bold" href=""><span ng-bind="pSkill.pSkill"></span></a>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
                     <div class="pull-right">
                         <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                             <span class="caret"></span>
@@ -89,7 +89,7 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div class="row">
+    <div class="row" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/work_education/add_university"); ?>
         </div>
@@ -103,9 +103,9 @@
                 <div class="col-md-10">
                     <div class="row">
                         <div class="col-md-8">
-                            <a href=""><span ng-bind="university.uni"></span></a>
+                            <a href=""><span ng-bind="university.university"></span></a>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
                             <div class="pull-right">
                                 <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                                     <span class="caret"></span>
@@ -119,9 +119,9 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <span ng-bind="university.sd">-</span><span ng-bind="university.ed"></span>
-                            <span ng-bind="university.uni"></span>.
-                            <span ng-bind="university.desc"></span>
+                            <span ng-bind="university.startDate">-</span><span ng-bind="university.endDate"></span>
+                            <!--<span ng-bind="university.uni"></span>.-->
+                            <span ng-bind="university.description"></span>
                         </div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div class="row">
+    <div class="row" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/work_education/add_college"); ?>
         </div>
@@ -151,9 +151,9 @@
                 <div class="col-md-10">
                     <div class="row">
                         <div class="col-md-8">
-                            <a href=""><span ng-bind="college.clg"></span></a>
+                            <a href=""><span ng-bind="college.college"></span></a>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
                             <div class="pull-right">
                                 <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                                     <span class="caret"></span>
@@ -167,8 +167,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <span ng-bind="college.sd">-</span><span ng-bind="college.ed"></span>
-                            <span ng-bind="college.desc"></span>
+                            <span ng-bind="college.startDate">-</span><span ng-bind="college.endDate"></span>
+                            <span ng-bind="college.description"></span>
                         </div>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div class="row">
+    <div class="row" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/work_education/add_school"); ?>
         </div>
@@ -200,7 +200,7 @@
                 <div class="col-md-10">
                     <div class="row">
                         <div class="col-md-8">
-                            <a href=""><span ng-bind="school.sch"></span></a>
+                            <a href=""><span ng-bind="school.school"></span></a>
                         </div>
                         <div class="col-md-4">
                             <div class="pull-right">
@@ -216,8 +216,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <span ng-bind="school.sd">-</span><span ng-bind="school.ed"></span>
-                            <span ng-bind="school.desc"></span>
+                            <span ng-bind="school.startDate">-</span><span ng-bind="school.endDate"></span>
+                            <span ng-bind="school.description"></span>
                         </div>
                     </div>
                 </div>
@@ -247,7 +247,6 @@
         $('#edit_university_' + uvId).show();
     }
     function show_college_edit_place(e) {
-        alert("adsd");
         var collegeId = $(e).attr('id');
         $('#college_' + collegeId).hide();
         $('#edit_college_' + collegeId).show();

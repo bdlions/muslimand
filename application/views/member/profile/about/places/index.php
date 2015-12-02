@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div class="row form-group">
+    <div class="row form-group"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/places/add_current_city"); ?>
         </div>
@@ -21,7 +21,7 @@
                     <div class="col-md-8">
                         <a href=""><span ng-bind="city.cityName"></span><span ng-bind="city.country.title"></span></a>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
                         <div class="pull-right">
                             <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                                 <span class="caret"></span>
@@ -45,8 +45,8 @@
         <?php $this->load->view("member/profile/about/places/edit_current_city"); ?>
     </div>
 
-    <div class="pagelet_divider"></div>
-    <div class="row form-group">
+    <span ng-if="town != null "><div class="pagelet_divider"></div></span>
+    <div class="row form-group"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/places/add_home_town"); ?>
         </div>
@@ -62,7 +62,7 @@
                     <div class="col-md-8">
                         <a href=""><span ng-bind="town.townName"></span>,<span ng-bind="town.country.title"></span></a>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
                         <div class="pull-right">
                             <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                                 <span class="caret"></span>

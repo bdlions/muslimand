@@ -121,11 +121,10 @@ class Member extends CI_Controller {
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['last_name'] = $this->session->userdata('last_name');
         $this->template->load(null, "member/newsfeed", $this->data);
-//        $this->template->load(MEMBER_TEMPLATE, "member/newsfeed", $this->data);
-//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/newsfeed", $this->data);
     }
 
     function timeline($profile_id = "0") {
+
         $user_relation = array();
         $user_id = $this->session->userdata('user_id');
         $user_relation = $this->get_user_relation_info($profile_id);
@@ -136,10 +135,11 @@ class Member extends CI_Controller {
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['profile_id'] = $profile_id;
         $this->data['app'] = "app.MemberProfile";
-        $this->template->load(null, "member/timeline", $this->data);
-//        $this->template->load(MEMBER_TEMPLATE, "member/timeline", $this->data);
-//        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/timeline", $this->data);
-//        $this->template->load(null, "member/timeline", $this->data);
+        if ($user_id == FALSE) {
+            $this->template->load(null, "non_member/timeline", $this->data);
+        } else {
+            $this->template->load(null, "member/timeline", $this->data);
+        }
     }
 
     function about($profile_id = 0) {
@@ -150,7 +150,11 @@ class Member extends CI_Controller {
         $this->data['user_relation'] = json_encode($this->get_user_relation_info($profile_id));
         $this->data['profile_id'] = $profile_id;
         $this->data['app'] = "app.BasicProfile";
-        $this->template->load(null, "member/about", $this->data);
+        if ($user_id == FALSE) {
+            $this->template->load(null, "non_member/about", $this->data);
+        } else {
+            $this->template->load(null, "member/about", $this->data);
+        }
 //        $this->template->load(MEMBER_TEMPLATE, "member/about", $this->data);
 //        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/about", $this->data);
     }

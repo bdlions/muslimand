@@ -10,8 +10,8 @@
             <label>Contact Information</label>
         </div>
     </div>
+    <div class="row form-group" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
     <div class="pagelet_divider"></div>
-    <div class="row form-group">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/contact_basic_info/add_mobile_phone"); ?>
         </div>
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="col-md-4"></div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
                             <div class="pull-right">
                                 <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                                     <span class="caret"></span>
@@ -53,8 +53,8 @@
             </div>
         </div>
     </div>
-    <div class="pagelet_divider"></div>
-    <div class="row form-group">
+    <div class="row form-group" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
+     <div class="pagelet_divider"></div>
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/contact_basic_info/add_address"); ?>
         </div>
@@ -70,7 +70,7 @@
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-12">
-                                <span ng-bind="address.address"></span>,<span ng-bind="address.city"></span>,<span ng-bind="address.zip"></span>,<span ng-bind="address.post_code"></span>
+                                <span ng-bind="address.address"></span>,<span ng-bind="address.city"></span>,<span ng-bind="address.zip"></span>,<span ng-bind="address.postCode"></span>
                             </div>
                         </div>
                         <div class="row">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="col-md-2"></div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
                         <div class="pull-right">
                             <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                                 <span class="caret"></span>
@@ -98,8 +98,8 @@
         <?php $this->load->view("member/profile/about/contact_basic_info/edit_address"); ?>
     </div>
 
-    <div class="pagelet_divider"></div>
-    <div class="row form-group">
+    <div class="row form-group" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
+        <div class="pagelet_divider"></div>
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/contact_basic_info/add_email"); ?>
         </div>
@@ -117,7 +117,7 @@
                             <span  ng-bind="email.email"></span>
                         </div>
                         <div class="col-md-2"></div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
                             <div class="pull-right">
                                 <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                                     <span class="caret"></span>
@@ -131,11 +131,19 @@
                     </div>
                 </div>
             </div>
+            <div id="email_edit_id_{{email.id}}" style="display: none">
+                <?php $this->load->view("member/profile/about/contact_basic_info/edit_email"); ?>
+            </div>
         </div>
     </div>
-    <div class="pagelet_divider"></div>
+
+
+
+
+    <!--<span ng-if="website != null"><div class="pagelet_divider"></div></span>-->
     <div class="row form-group">
-        <div class="col-md-12">
+        <div class="pagelet_divider"></div>
+        <div class="col-md-12" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
             <?php $this->load->view("member/profile/about/contact_basic_info/add_website"); ?>
         </div>
     </div>
@@ -156,7 +164,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
                 <div class="pull-right">
                     <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                         <span class="caret"></span>
@@ -172,13 +180,13 @@
     <div id="website_edit_id" style="display: none">
         <?php $this->load->view("member/profile/about/contact_basic_info/edit_website"); ?>
     </div>
-    <div class="pagelet_divider"></div>
+    <span ng-if="birthDate != null"><div class="pagelet_divider"></div></span>
     <div class="row form-group">
         <div class="col-md-12">
             <label>Basic Information</label>
         </div>
     </div>
-    <div class="pagelet_divider"></div>
+    <span ng-if="birthDate != null"><div class="pagelet_divider"></div></span>
 
     <!--Show updated birthDay-->
     <div id="birthday_id">
@@ -189,19 +197,19 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-6">
-                        <span ng-bind="birthDate.birth_day"></span>-<span ng-bind="birthDate.birth_month"></span>-<span ng-bind="birthDate.birth_year"></span>
+                        <span ng-bind="birthDate.birthDay"></span>-<span ng-bind="birthDate.birthMonth"></span>-<span ng-bind="birthDate.birthYear"></span>
                     </div>
                     <div class="col-md-2"></div>
                     <div class="col-md-4">
-                        <div class="pull-right">
-                            <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                            </ul>
-                        </div>
+                        <!--                        <div class="pull-right">
+                                                    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                                                    </ul>
+                                                </div>-->
                     </div>
                 </div>
             </div>
@@ -233,15 +241,15 @@
                         </div>
                     </div>
                     <div class="col-md-offset-4 col-md-4">
-                        <div class="pull-right">
-                            <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                            </ul>
-                        </div>
+                        <!--                        <div class="pull-right">
+                                                    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                                                    </ul>
+                                                </div>-->
                     </div>
                 </div>
             </div>
@@ -266,19 +274,19 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-6">
-                        <span ng-bind="religion.tilte"></span>
+                        <span ng-bind="religion.title"></span>
                     </div>
                     <div class="col-md-2"></div>
                     <div class="col-md-4">
-                        <div class="pull-right">
-                            <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                            </ul>
-                        </div>
+                        <!--                        <div class="pull-right">
+                                                    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                                                    </ul>
+                                                </div>-->
                     </div>
                 </div>
             </div>
@@ -307,15 +315,15 @@
                     </div>
                     <div class="col-md-2"></div>
                     <div class="col-md-4">
-                        <div class="pull-right">
-                            <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
-                            </ul>
-                        </div>
+                        <!--                        <div class="pull-right">
+                                                    <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                                                    </ul>
+                                                </div>-->
                     </div>
                 </div>
             </div>
@@ -326,7 +334,7 @@
             </div>
         </div>
     </div>
-    <div class="row form-group">
+    <div class="row form-group"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/contact_basic_info/add_language"); ?>
         </div>
@@ -347,6 +355,12 @@
         $('#website_id').hide();
         $('#website_edit_id').show();
     }
+    function show_email_edit_place(e) {
+        var emailId = $(e).attr('id');
+        $('#email_id').show();
+        $('#email_show_' + emailId).hide();
+        $('#email_edit_id_' + emailId).show();
+    }
     function open_modal_delete_mobile_phone(e) {
         var mobilePId = $(e).attr('id');
         var selectionInfo = " Mobile Phone ? ";
@@ -355,6 +369,22 @@
                 angular.element($('#delete_content_btn')).scope().deleteMobilePhone(mobilePId, function () {
                     $('#common_delete_confirmation_modal').modal('hide');
                     $('#mobile_phone_' + mobilePId).hide();
+                });
+
+            } else {
+                $('#common_delete_confirmation_modal').modal('hide');
+            }
+            $("#content").html("");
+        });
+    }
+    function open_modal_delete_emails(e) {
+        var emailId = $(e).attr('id');
+        var selectionInfo = " Email ? ";
+        delete_confirmation(selectionInfo, function (response) {
+            if (response == "<?php echo MODAL_DELETE_YES; ?>") {
+                angular.element($('#delete_content_btn')).scope().deleteEmail(emailId, function () {
+                    $('#common_delete_confirmation_modal').modal('hide');
+                    $('#email_show_' + emailId).hide();
                 });
 
             } else {

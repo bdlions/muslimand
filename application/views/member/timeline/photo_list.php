@@ -12,7 +12,7 @@
                 <a href="<?php echo base_url(); ?>photos/get_album/{{album.albumId}}" >
                     <img class="img-responsive"  src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{album.defaultImg}}">
                 </a>
-                <a href="" > <span ng-bind="album.title"></span></a><br>
+                <a href="<?php echo base_url(); ?>photos/get_album/{{album.albumId}}" > <span ng-bind="album.title"></span></a><br>
                 <span ng-bind="album.totalImg"></span> photos
             </div>
         </div>
