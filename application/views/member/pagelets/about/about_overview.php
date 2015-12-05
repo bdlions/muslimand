@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="row form-group" id="about_overview_workplace" style="display:none">
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="40" height="40"> 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/work.png"> 
             </div>
             <div class="col-md-10">
                 Works at <a href ><span ng-bind="overview.workPlace.company"></span></a>

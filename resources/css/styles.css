@@ -14,10 +14,37 @@ and open the template in the editor.
 
 /*================================  tmpl  ================================*/
 
-html, body {
+@font-face {
+  font-family: 'OpenSans-Bold';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans-Bold'), url(../fonts/OpenSans-Bold.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: 'OpenSans-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans-Regular'), url(../fonts/OpenSans-Regular.ttf) format('ttf');
+}
+@font-face {
+  font-family: 'OpenSans-Semibold';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans-Semibold'), url(../fonts/OpenSans-Semibold.ttf) format('ttf');
+}
+@font-face {
+  font-family: 'OpenSans-Light';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans-Light'), url(../fonts/OpenSans-Light.ttf) format('ttf');
+}
+
+body {
     margin:0;
     padding:0;
     height:100%;
+    font-family: OpenSans-Regular!important;
 }
 #wrapper {
     min-height:100%;
@@ -238,10 +265,10 @@ html, body {
     background-color: #E9EAED;
 }
 .header_wrapper{
-   position: fixed; 
-   top: 0; 
-   width: 100%; 
-   z-index: 10000;
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+	z-index: 10000;
 }
 .container_wrapper{
     background-color: #703684; 
@@ -375,22 +402,15 @@ html, body {
 
 
 /*-------------------------------------msg box--------------------------------------*/
-/*.msg_box_1{
-        background-color: #703684;
-    }
-.msg_box_2{
-        background-color: #842D80;
-        background-color: #581072;
-        background-color: #703684;
-    }
-.msg_box_3{
-        background-color: #703684;
-    }*/
 
 .common_box{
     background-color: #703684;
 }
-
+.msg_box{
+    position: absolute;
+    width: 260px;
+   
+}
 
 .msg_box_counter{
     font-size: 10px;
@@ -409,27 +429,41 @@ html, body {
 
 }
 
-.style_left_box{
-    margin-left: 30px;
-    margin-right: -30px;
-}
-.style_middle_box{
-    margin-left: 20px;
-    margin-right: -12px;
-}
 .textarea_background_style{
     border: 1px solid lightgray; 
     padding-top: 5px; 
+    padding-bottom: 5px;
 }
 .chatting_textarea_box_1, .chatting_textarea_box_2, .chatting_textarea_box_3{
     background-color: #fff;
-    border: 2px solid #703684;
+    border: 1px solid #703684;
     border-radius: 3px;
     box-shadow: none;
-    height: 22px!important;
-    overflow-y: scroll;
     resize: none;
-    width: 165px !important;
+    width: 165px!important;
+    overflow-y: scroll;
+    height: 32px;
+}
+.chatting_input_area{
+    background-color: #fff;
+    border: 1px solid #703684;
+    border-radius: 3px;
+    box-shadow: none;
+    resize: none;
+    width: 165px!important;
+    overflow-y: scroll;
+    height: 32px;
+    margin-left: 5px;
+}
+
+.MiniBoxesUser > a{
+    text-decoration: none;
+}
+.MiniBoxesUser{
+    width: 115%;
+}
+.MiniBoxesUser:hover{
+    background-color: #703684;
 }
 
 .message_owner_content_style, .message_friend_content_style {
@@ -479,6 +513,15 @@ html, body {
     top: 8px;
     transform: rotate(45deg);
     width: 10px;
+}
+
+.counterPosition{
+    position: absolute; 
+    background-color: #E5E5E5; 
+    padding: 5px 0; 
+    font-size: 10px!important;
+    right: 1215px;
+    top: 195px;
 }
 
 /*-------------------------------------CK editor--------------------------------------*/
@@ -537,20 +580,11 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
         margin-right: 12px;*/
 }
 
-.fadeOut > img{
-    margin-bottom: -20px;
-}
-.fadeOut > p{
-    padding-left: 30px;
-}
 
 @media all and (max-width: 991px){
     .margin_style{
         margin-left: 0!important;
         margin-right: 0!important;
-    }
-    .padding_top_20px{
-        padding-top: 0!important;
     }
 }
 @media all and (max-width: 767px){
@@ -562,14 +596,6 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 @media all and (min-width: 992px){
     .mrg_left{
         margin-left: -7%;
-    }
-    .auth_logo{
-        text-align: center; 
-        padding-top: 14px; 
-        padding-left: 50px;
-    }
-    .padding_top_20px{
-        padding-top: 20px;
     }
 }
 
@@ -651,21 +677,13 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     margin-top: 0px;
 }
 
-.dropdown-menu > span > li > a {
+.dropdown-menu > li > a {
     padding: 1px 10px!important;
-    text-decoration: none;
-    color: #703684;
 }
-.dropdown-menu > span > li > a:hover {
-    text-decoration: none;
-   
+.dropdown-menu > li > a:hover {
+    color: #fff!important;
+    background-color: #703684!important;
 }
-.dropdown-menu > span > li:hover {
-    background-color: lavender;
-   
-}
-
-
 
 .btn_style {
     padding: 4px 12px;
@@ -705,7 +723,18 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     padding-bottom: 10px;
 }
 
-/*------------------------------------------- Random --------------------------------- */
+/*------------------------------------------- Custom Buttons --------------------------------- */
+
+.btn-default-custom {
+    background-color: #fff!important; 
+    border-color: #fff!important; 
+    color: #333;
+}
+.btn-default-custom:hover, .btn-default-custom:focus, .btn-default-custom.focus, .btn-default-custom:active, .btn-default-custom.active, .open > .dropdown-toggle.btn-default-custom {
+    background-color: #fff!important; 
+    border-color: #fff!important; 
+    color: #333;
+}
 .button-custom, .button-primary-custom,.button-primary-custom, .button-danger-custom, .button-danger-custom:hover {
     color: #fff!important; 
     border-radius: 3px!important; 
@@ -734,6 +763,10 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     border-color: #ac2925!important; 
 }
 
+/*------------------------------------------- Admin --------------------------------- */
+
+
+
 
 /*------------------------------------------- Member (About) --------------------------------- */
 
@@ -745,8 +778,9 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 .holder_style{
     margin-left: 8px;
-    font-size: 16px;
+    font-size: 14px;
     vertical-align: middle;
+    font-weight: bold;
 }
 .holder_style:hover{
     text-decoration: none;
@@ -941,7 +975,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     vertical-align: middle!important;
 }
 .display_hidden{
-    display: none;
+    /*display: none;*/
 }
 
 .member_about_save_button,.member_about_save_button:hover,.member_about_save_button:focus,.member_about_save_button:active{

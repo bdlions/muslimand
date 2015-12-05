@@ -2,16 +2,16 @@
     <div class="col-md-6">
         <div class="row form-group" id="about_overview_workplace" style="display:none">
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="40" height="40"> 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/work.png"> 
             </div>
             <div class="col-md-10">
-                Works at <a href ><span ng-bind="overview.workPlace.company"></span></a>
+                <div> Works at <a href ><span ng-bind="overview.workPlace.company"></span></a></div>
             </div>
         </div>
 <!--        <div class="row form-group" id="about_overview_add_work_place" onclick="getWorksEducation('<?php echo $user_id ;?>')">
             <div class="col-md-12">
                 <div class="cursor_holder_style">
-                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <img style="border: 1px solid lightpink;" src="<?php //echo base_url(); ?>resources/images/plus.png">
                     <a class="holder_style">Add a workplace</a>
                 </div>
             </div>
@@ -19,7 +19,7 @@
         <div class="row form-group" id="about_overview_uiversity" style="display: none">
         <div class="pagelet_divider"></div>
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/Food.jpg"  width="40" height="40"> 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/institution.png"> 
             </div>
             <div class="col-md-10">
                 Studied at <a href="#"> <span ng-bind="overview.university.university"></span></a>
@@ -28,7 +28,7 @@
 <!--        <div class="row form-group" id="about_overview_add_university" ng-click="getWorksEducation('<?php echo $user_id ;?>')">
             <div class="col-md-12">
                 <div class="cursor_holder_style">
-                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <img style="border: 1px solid lightpink;" src="<?php //echo base_url(); ?>resources/images/plus.png">
                     <a class="holder_style">Add Your University</a>
                 </div>
             </div>
@@ -36,7 +36,7 @@
         <div class="row form-group" id="about_overview_city" style="display: none"> 
         <div class="pagelet_divider"></div>
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="40" height="40"> 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/livingPlace.png"> 
             </div>
             <div class="col-md-10">
                 Lives in <a href="#"> <span ng-bind="overview.city.cityName"></span></a>
@@ -45,7 +45,7 @@
 <!--        <div class="row form-group" id="about_overview_add_city"  ng-click="getCityTown('<?php echo $user_id ;?>')">
             <div class="col-md-12">
                 <div class="cursor_holder_style">
-                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                    <img style="border: 1px solid lightpink;" src="<?php //echo base_url(); ?>resources/images/plus.png">
                     <a class="holder_style">Add Current City</a>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/website.png"  > 
             </div>
             <div class="col-md-10">
-                <a href="#"><span ng-bind="overview.website.website"></span></a>
+                <a href="{{overview.website.website}}" target="_blank" ng-bind="overview.website.website"></a>
             </div>
         </div>
         <div class="row form-group" id="about_overview_birthDate" style="display: none">
