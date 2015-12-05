@@ -5,3 +5,4 @@ angular.module("app.Message", [
     'controllers.Right',
     'ui.bootstrap'
 ]);
+

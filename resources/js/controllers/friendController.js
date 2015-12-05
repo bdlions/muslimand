@@ -42,7 +42,9 @@ angular.module('controllers.Friend', ['services.Friend']).
             $scope.addFriend = function (friendId) {
                 friendService.addFriend(friendId, $scope.url).
                         success(function (data, status, headers, config) {
-                            $scope.userRelation = data;
+                            $scope.userRelation.is_initiated = data.is_initiated ;
+                            $scope.userRelation.relation_ship_status = data.relation_ship_status;
+//                            $scope.userRelation = data;
                         });
             };
             $scope.approveRequest = function (friendId, reuestFunction) {

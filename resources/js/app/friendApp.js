@@ -3,5 +3,6 @@ angular.module("app.Friend", [
     'controllers.Friend',
     'controllers.Header',
     'controllers.Right',
+    'controllers.Message',
     'ui.bootstrap'
 ]);

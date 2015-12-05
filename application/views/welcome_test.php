@@ -12,7 +12,7 @@
 <html ng-app="app.ImageCopper">
     <head>
     <body>
-        <div ng-controller="ImageCopperController">
+        <div ng-controller="ImageCopperController" ng-clock>
             <div  ng-show="imageCropStep == 1" class="btn btn-success fileinput-button">		
                 <img src="<?php // echo base_url() ?>resources/images/add_photo_album.jpg" alt="">
                 <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />

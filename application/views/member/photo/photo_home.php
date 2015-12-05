@@ -1,5 +1,5 @@
 
-    <div ng-controller="photoController">
+    <div ng-controller="photoController" ng-clock>
         <div class="row form-group"></div>
         <div class="row">
             <div class="col-md-6">

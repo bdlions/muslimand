@@ -172,7 +172,7 @@
                     <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
                 </div>-->
 
-        <div class="row form-group" ng-app="app.Landing" ng-controller="landingController" ng-init="setUserList(<?php echo htmlspecialchars(json_encode($user_list)); ?>)">
+        <div class="row form-group" ng-app="app.Landing" ng-controller="landingController" ng-clock ng-init="setUserList(<?php echo htmlspecialchars(json_encode($user_list)); ?>)">
             <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
 
 

@@ -6,7 +6,7 @@
         width: 100%;
     }
 </style>
-<div ng-controller="friendController">
+<div ng-controller="friendController" ng-clock>
     <div class="row form-group">
         <div class="col-md-12">
             <?php $this->load->view("member/timeline/profile_cover"); ?>

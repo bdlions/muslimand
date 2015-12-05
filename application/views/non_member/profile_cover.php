@@ -29,7 +29,7 @@
     <div class="row">
         <div class="col-md-12">
             <!--cover picture-->
-            <div ng-controller="ImageCopperController" style="position: relative; ">
+            <div ng-controller="ImageCopperController" ng-clock style="position: relative; ">
                 <div  ng-show="imageCropStep == 1" class="fileinput-cover-button">	
                     <?php if ($profile_id != "0" && $profile_id != $user_id) { ?>
                         <img class="img-responsive"  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $profile_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>

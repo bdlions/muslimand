@@ -18,7 +18,7 @@
         });
     })(jQuery);
 </script>
-<div class="row" ng-controller="messageController" ng-init="setMessageSummery('<?php echo htmlspecialchars(json_encode($message_summery_list)); ?>')">
+<div class="row" ng-controller="messageController" ng-cloak  ng-init="setMessageSummery('<?php echo htmlspecialchars(json_encode($message_summery_list)); ?>')">
     <div class="col-md-12">
         <div class="pagelet">
             <div class="padding_top_10px"></div>
@@ -86,7 +86,7 @@
                                 <span ng-repeat= "userInfo in messageSummery.userList" >
                                     <span ng-if="userInfo.userId != '<?php echo $user_id; ?>'">
                                         <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{userInfo.userId}}.jpg" width="30" height="30" onError="onImageUnavailable(this)"> 
-                                        <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg">
+                                        <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userInfo.genderId}}.jpg">
                                     </span>
                                 </span>
                             </div>
@@ -118,7 +118,7 @@
                                 <div class="col-md-1">
                                     <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
                                     <!--<img src="<?php // echo base_url() . PROFILE_PICTURE_PATH_W30_H30;  ?>{{messageInfo.senderInfo.userId}}.jpg" width="30" height="30" onError="onImageUnavailable(this)">--> 
-                                    <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg">
+                                    <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{messageInfo.senderInfo.genderId}}.jpg">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="row">
@@ -142,7 +142,7 @@
                         <div class="row">
                             <div class="col-md-12"> 
                                 <form  ng-submit="addMessage(messageInformation.groupId)">
-                                    <textarea type ="text" class="form-control textarea-custom" placeholder="Write a reply" ng-model="userMessage.message"></textarea>
+                                    <input type ="text" class="form-control textarea-custom" placeholder="Write a reply" ng-model="userMessage.message" />
                                 </form>
                             </div>
                         </div>

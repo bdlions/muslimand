@@ -4,5 +4,6 @@ angular.module("app.BasicProfile", [
     'controllers.Header',
     'controllers.Right',
     'controllers.Friend',
+    'controllers.Message',
     'ui.bootstrap'
 ]);

@@ -1,45 +1,47 @@
-angular.module('controllers.Message', ['services.Message']).
-        controller('messageController', function ($scope, messageService) {
-
-            //<chat >
+angular.module('message.controller', ['services.chat'])
+        .controller('chatWidgetContoller', function ($scope, chatService) {
             $scope.chatBoxes = [];
             $scope.miniBoxes = [];
             $scope.chatBoxStartPos = 375;
             $scope.miniBoxesStartPos = 940;
             $scope.chatBoxWidth = 260;
             $scope.chatBoxGap = 15;
-            $scope.friendList = [];
+            $scope.friend_list = [];
             $scope.chatUserList = [];
             $scope.userInfo = {};
-            $scope.messageHistory = {};
+
             $scope.userId = "";
             $scope.message = {};
 
             $scope.getFriendList = function () {
-                messageService.getFriendList().
-                        success(function (data, status, headers, config) {
-                            $scope.friendList = data.friend_list;
-                            $scope.userInfo = data.user_info;
-                        });
+                $scope.friend_list = [
+                    {"userId": "u2", "firstName": "Alamgir", "lastName": "Kabir", "genderId": "1"},
+                    {"userId": "u3", "firstName": "Nazrul", "lastName": "Islam", "genderId": "1"},
+                    {"userId": "u4", "firstName": "Salma", "lastName": "Khatun", "genderId": "2"},
+                    {"userId": "u5", "firstName": "Keya", "lastName": "Moni", "genderId": "2"},
+                    {"userId": "u6", "firstName": "Sabuj", "lastName": "Gope", "genderId": "1"}
+                ];
+                $scope.userInfo = {"userId": "u1", "firstName": "Rashida", "lastName": "Sultana", "genderId": "2"};
             };
 
 
             $scope.getChatInitialInfo = function (chatUserInfo) {
                 var userId = chatUserInfo.userId;
-                messageService.getMessagehistory(userId).
-                        success(function (data, status, headers, config) {
-                            if (typeof data.message_history != "undefined") {
-                                $scope.messageHistory = data.message_history;
-                                console.log(data.message_history);
+                $scope.chatInfo = {
+                    "groupId": "_u1_" + userId + "_",
+                    "messages": [
+                        {"message": "hello", "senderInfo": {"userId": "u1", "firstName": "Rashida", "lastName": "Sultana"}
+                        },
+                        {"message": "hi", "senderInfo": {"userId": userId, "firstName": "Alamgir", "lastName": "Kabir"}
+                        }
+                    ]}
 
-                                $scope.messageHistory.userId = chatUserInfo.userId;
-                                $scope.messageHistory.firstName = chatUserInfo.firstName;
-                                $scope.messageHistory.lastName = chatUserInfo.lastName;
-                                var userObject = $scope.messageHistory;
-                                $scope.addUserToChatUserList(userObject);
-                                $scope.reOrganizeChatBoxes();
-                            }
-                        });
+                $scope.chatInfo.userId = chatUserInfo.userId;
+                $scope.chatInfo.firstName = chatUserInfo.firstName;
+                $scope.chatInfo.lastName = chatUserInfo.lastName;
+                var userObject = $scope.chatInfo;
+                $scope.addUserToChatUserList(userObject);
+                $scope.reOrganizeChatBoxes();
             };
 
 
@@ -53,7 +55,6 @@ angular.module('controllers.Message', ['services.Message']).
                 if (userExistStatus != 1) {
                     $scope.chatUserList.push(userObject);
                 }
-                console.log($scope.chatUserList);
             };
 
             $scope.getChatBoxes = function () {
@@ -74,23 +75,15 @@ angular.module('controllers.Message', ['services.Message']).
                 }
                 $scope.chatBoxes = tempChatBoxes;
                 $scope.miniBoxes = tempMiniBoxes;
-                console.log($scope.chatBoxes);
             };
 
 
-            $scope.sendMessage = function (chatUserDetails) {
-                var messageSize = chatUserDetails.messages.length;
-                if (messageSize > 0) {
-                    $scope.userMessage.groupId = chatUserDetails.groupId;
-                } else {
-                    $scope.userMessage.rUserId = chatUserDetails.userId;
+            $scope.sendMessage = function (event, chatUserDetails) {
+                if (event.keyCode === 13) {
+                    chatUserDetails.messages.push({"message": chatUserDetails.writtenMsg, "senderInfo": $scope.userInfo});
+                    chatUserDetails.writtenMsg = "";
                 }
-                $scope.userMessage.message = chatUserDetails.writtenMsg;
-                messageService.addMessage($scope.userMessage).
-                        success(function (data, status, headers, config) {
-                            chatUserDetails.messages.push({"message": chatUserDetails.writtenMsg, "senderInfo": $scope.userInfo});
-                            chatUserDetails.writtenMsg = "";
-                        });
+                ;
             };
 
             $scope.removeUser = function (userObject) {
@@ -160,47 +153,6 @@ angular.module('controllers.Message', ['services.Message']).
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // message 
-
-
-            $scope.messageSummeryList = [];
-            $scope.messageInformation = {};
-            $scope.messageInformation.message = [];
-            $scope.userMessage = {};
-
-            $scope.setMessageSummery = function (messageSummeryList) {
-                $scope.messageSummeryList = JSON.parse(messageSummeryList);
-                console.log($scope.messageSummeryList);
-            };
-
-            $scope.addMessage = function (groupId) {
-                $scope.userMessage.groupId = groupId;
-                messageService.addMessage($scope.userMessage).
-                        success(function (data, status, headers, config) {
-                            $scope.messageInformation.messages.push(data.message_info);
-                            $scope.userMessage.message = "";
-                        });
-            };
-            $scope.getMessageList = function (groupId) {
-                messageService.getMessageList(groupId).
-                        success(function (data, status, headers, config) {
-                            $scope.messageInformation = data;
-//                            console.log(data);
-                        });
-            };
 
 
 

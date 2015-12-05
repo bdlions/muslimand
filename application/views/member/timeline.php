@@ -33,7 +33,7 @@
 
 
 <!-- Cover Image -->
-<div class="row form-group" ng-controller="friendController">
+<div class="row form-group" ng-controller="friendController" ng-cloak >
     <div class="col-md-12">
         <?php $this->load->view("member/timeline/profile_cover"); ?>
     </div>
@@ -48,19 +48,19 @@
 <!--CARDS AFTER BANNER-->
 <div class="row">
     <div class="col-md-5">
-        <span ng-controller="basicProfileController" id="brief_info_set">
+        <span ng-controller="basicProfileController" ng-cloak id="brief_info_set">
             <?php $this->load->view("member/timeline/brief_info"); ?>
         </span>
         <div class="row form-group"></div>
-        <span ng-controller="friendController" id="sort_friend_list_set_id">
+        <span ng-controller="friendController" ng-cloak id="sort_friend_list_set_id">
             <?php $this->load->view("member/timeline/friend_list"); ?>
         </span>
         <div class="row form-group"></div>
-        <span ng-controller="photoController" id="photo_set_id">
+        <span ng-controller="photoController"  ng-cloak id="photo_set_id">
             <?php $this->load->view("member/timeline/photo_list"); ?>
         </span>
     </div>
-    <div class="col-md-7" ng-controller="statusController" id='status_set_id' ng-init="" >
+    <div class="col-md-7" ng-controller="statusController"  ng-cloak id='status_set_id' ng-init="" >
         <?php $this->load->view("member/pagelets/post_status"); ?>
         <div class="row form-group"></div>
         <?php $this->load->view("member/pagelets/updated_status"); ?>

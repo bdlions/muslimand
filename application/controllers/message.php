@@ -25,38 +25,88 @@ class Message extends CI_Controller {
 
     function add_mesage() {
 
+        $sender_id = $this->session->userdata('user_id');
         $response = array();
+        $user_id_list = array();
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
-        if(property_exists($requestInfo, "userMessage")){
+        if (property_exists($requestInfo, "userMessage")) {
             $result = $requestInfo->userMessage;
+            if (property_exists($result, "groupId")) {
+                $group_id = $result->groupId;
+            }
+            if (property_exists($result, "message")) {
+                $message = $result->message;
+            }
+            if (property_exists($result, "rUserId")) {
+                $r_user_id = $result->rUserId;
+                $user_id_list[] = $r_user_id;
+            }
         }
-        if (property_exists($result, "groupId")) {
-            $group_id = $result->groupId;
-        }
-        if (property_exists($result, "message")) {
-            $message = $result->message;
-        }
-        $sender_id = $this->session->userdata('user_id');
-        $user_id_list = array();
-        $user_id_list[] = "mqQ06eko9TqYYul";
+
         $user_id_list[] = $sender_id;
-        function cmp($a, $b) {
-            return strcmp($a, $b);
+
+        $user_info = new stdClass();
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
+        $user_info->userId = $sender_id;
+
+        if (isset($r_user_id)) {
+            $result = $this->message_mongodb_model->add_message($user_id_list, $sender_id, $message);
+        } else {
+            $result = $this->message_mongodb_model->add_message_by_group_id($group_id, $user_info, $message);
         }
-        usort($user_id_list, "cmp");
-        $result = $this->message_mongodb_model->add_message($user_id_list, $sender_id, $message);
-        if($result->responseCode == REQUEST_SUCCESSFULL){
-            $user_info = new stdClass();
-            $user_info->firstName = $this->session->userdata('first_name');
-            $user_info->lastName = $this->session->userdata('last_name');
-            $user_info->userId = $sender_id;
+        if ($result->responseCode == REQUEST_SUCCESSFULL) {
             $messageInfo = new stdClass();
             $messageInfo->senderInfo = $user_info;
             $messageInfo->message = $message;
             $response["message_info"] = $messageInfo;
         }
         echo json_encode($response);
+    }
+
+    function get_gender_id($user_id_list) {
+
+        function cmp($a, $b) {
+            return strcmp($a, $b);
+        }
+
+        usort($user_id_list, "cmp");
+        $gender_id = "_";
+        foreach ($user_id_list as $user) {
+            $gender_id = $gender_id . $user . "_";
+            ;
+        }
+
+        return $gender_id;
+    }
+
+    function get_message_history() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "userId")) {
+            $chat_user_id = $requestInfo->userId;
+        }
+        $sender_user_id = $this->session->userdata('user_id');
+        $user_id_list = array();
+        $user_id_list[] = $chat_user_id;
+        $user_id_list[] = $sender_user_id;
+        $gender_id = $this->get_gender_id($user_id_list);
+        $limit = 5;
+        $offset = 0;
+        $result = $this->message_mongodb_model->get_message_list($gender_id, $offset, $limit);
+        if ($result != null) {
+            $response['message_history'] = $result;
+        } else {
+            $chat_initial_info = new stdClass();
+            $chat_initial_info->groupId = $gender_id;
+            $chat_initial_info->messages = array();
+            $response['message_history']   = $chat_initial_info;
+            
+        }
+        echo json_encode($response);
+        return;
     }
 
     function get_message_summary_list() {

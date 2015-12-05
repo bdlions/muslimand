@@ -2,7 +2,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.Jcrop.js"></script>
 <link rel="stylesheet" href="<?php echo base_url() ?>resources/css/jquery.Jcrop.css" type="text/css" />
 <div ng-app="app.Photo">
-    <div  ng-controller="photoController" ng-init="setPhotoInfo(<?php echo htmlspecialchars(json_encode($photo_info)); ?>)" >
+    <div  ng-controller="photoController" ng-clock ng-init="setPhotoInfo(<?php echo htmlspecialchars(json_encode($photo_info)); ?>)" >
         <div class="row form-group"></div>
         <div class="row">
             <div class="col-md-6">

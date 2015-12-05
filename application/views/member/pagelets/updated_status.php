@@ -10,7 +10,7 @@
                 <div class="pagelet">
                     <div class="row">
                         <div class="col-md-2" >
-                            <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time=time()" width="40" height="40" onError="onImageUnavailable(this)">
+                            <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time= <?php echo time(); ?>" width="40" height="40" alt="" onError="onImageUnavailable(this)">
                             <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{status.genderId}}.jpg">
                         </div>
                         <div class="col-md-10" >
@@ -25,7 +25,7 @@
                                                     <a href="<?php echo base_url(); ?>member/timeline/{{status.mappingUserInfo.userId}}" style="font-weight: bold;">{{status.mappingUserInfo.firstName}}&nbsp;{{status.mappingUserInfo.lastName}}</a> 
                                                 </span>
                                                 <span ng-if="<?php echo POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID; ?> == status.statusTypeId">
-                                                    update 
+                                                    updated 
                                                     <span ng-if="<?php echo Male; ?> == status.genderId">his</span>
                                                     <span ng-if="<?php echo Female; ?> == status.genderId">her</span>
                                                     <!--his/her--> 
@@ -44,10 +44,17 @@
                                                     shared video  
                                                 </span>
                                                 <span ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> == status.statusTypeId">
-                                                    update profile picture 
+
+                                                    updated 
+                                                    <span ng-if="<?php echo Male; ?> == status.genderId">his</span>
+                                                    <span ng-if="<?php echo Female; ?> == status.genderId">her</span>
+                                                    profile picture 
                                                 </span>
                                                 <span ng-if="<?php echo CHANGE_COVER_PICTURE; ?> == status.statusTypeId">
-                                                    update cover picture 
+                                                    updated 
+                                                    <span ng-if="<?php echo Male; ?> == status.genderId">his</span>
+                                                    <span ng-if="<?php echo Female; ?> == status.genderId">her</span>
+                                                    cover picture 
                                                 </span>
                                                 <span ng-if="<?php echo ADD_ALBUM_PHOTOS; ?> == status.statusTypeId">
                                                     added a new photos 
@@ -235,8 +242,8 @@
                         <div ng-repeat="commentInfo in status.commentList.slice().reverse()">
                             <div class="row form-group" id="comment_{{commentInfo.commentId}}">
                                 <div class="col-md-1" profile_picture >
-                                    <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time=' . time()" width="30" height="30" onerror="onImageError(this)">
-                                    <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg">
+                                    <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time= <?php echo time(); ?> " width="30" height="30" onError="onImageError(this)">
+                                    <img style="border: 1px solid lightgray; visibility:hidden; height: 0px " src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg">
                                 </div>
                                 <div class="col-md-9">
                                     <div class="row" >
@@ -368,12 +375,15 @@
         ;
 
         function onImageUnavailable(img) {
-            var div = img.parentNode;
-            var firstImage = img;
-            var secondImage = div.getElementsByTagName('img')[1];
-            firstImage.style.display = 'none';
-            secondImage.style.visibility = 'visible';
-            secondImage.style.height = '100%';
+            setTimeout(function () {
+                var div = img.parentNode;
+                var firstImage = img;
+                var secondImage = div.getElementsByTagName('img')[1];
+                firstImage.style.display = 'none';
+                secondImage.style.visibility = 'visible';
+                secondImage.style.height = '100%';
+            }, 1000);
+
         }
         function onImageError(img) {
             var div = img.parentNode;

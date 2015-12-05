@@ -41,7 +41,7 @@
         <div class="container_background">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-offset-1 col-md-9" ng-controller="videoController">
+                    <div class="col-md-offset-1 col-md-9" ng-controller="videoController" ng-clock>
                         <?php echo $contents; ?>                            
                     </div>
                     <div class="col-md-2">

@@ -4,7 +4,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/basicProfileService.js "></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/basicProfileApp.js "></script>
 <div ng-app="app.BasicProfile">
-    <div  id="login" ng-controller="basicProfileController">
+    <div  id="login" ng-controller="basicProfileController" ng-clock>
 <!--
         <form method="post" action="welcome/post">
             <input type="text" name="input" />-->

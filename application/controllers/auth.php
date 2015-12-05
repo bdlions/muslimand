@@ -943,8 +943,6 @@ class Auth extends CI_Controller {
                 $this->session->unset_userdata('request_token_secret');
 
                 $profile_info = $this->connection->get('users/show', array("screen_name" => $access_token['screen_name']));
-                print_r($profile_info);
-                exit();
                 $code = $profile_info->id;
                 $user_id = $this->social_network_mongodb_model->is_user_mapped_to_social_network(SOCIAL_NETWORK_ID_TWITTER, $code);
                 if ($user_id === FALSE) {

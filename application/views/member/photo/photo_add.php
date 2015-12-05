@@ -8,7 +8,7 @@
         <div class="col-md-2">
         </div>
     </div>
-    <div class="row" ng-controller="photoController">
+    <div class="row" ng-controller="photoController" ng-clock>
         <div class="col-md-10">
             <div class="pagelet_divider"></div>
             <div class="row">

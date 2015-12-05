@@ -171,8 +171,8 @@ class Member extends CI_Controller {
 //        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/account_settings", $this->data);
     }
 
-    function add_friends() {
-        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/add_friends");
+    function chat_tmpl_load() {
+        $this->load->view('chat/friend_ticker');
     }
 
     function messages() {

@@ -1,4 +1,4 @@
-<div class="row" ng-controller="headerController" ng-init="setNotificationList(<?php echo htmlspecialchars(json_encode($notification_list)); ?>)">
+<div class="row" ng-controller="headerController" ng-clock ng-init="setNotificationList(<?php echo htmlspecialchars(json_encode($notification_list)); ?>)">
     <div class="col-md-10">
         <div class="pagelet">
             <div class="row">

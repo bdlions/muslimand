@@ -3,5 +3,6 @@ angular.module("app.Photo", [
     'controllers.Right',
     'controllers.Photo',
     'controllers.Image',
+    'controllers.Message',
     'ui.bootstrap'
 ]);

@@ -34,7 +34,7 @@ class Social_network_mongodb_model extends Ion_auth_mongodb_model {
     public function login_via_social_network($identity)
     {
         $document = $this->mongo_db
-                ->select(array('_id', 'userId', 'firstName', 'lastName', 'email', 'password', 'account_status_id', 'last_login'))
+                ->select(array('_id', 'groups','userId', 'firstName', 'lastName', 'email', 'password', 'account_status_id', 'last_login'))
                 ->where('userId', (string) $identity)
                 ->limit(1)
                 ->get($this->collections['users']);
@@ -49,6 +49,7 @@ class Social_network_mongodb_model extends Ion_auth_mongodb_model {
                 'last_name' => $user->lastName,
                 'email' => $user->email,
                 'user_id' => $user->userId,
+                'group_id' => $user->groups[0]['groupId'],
                 'old_last_login' => $user->last_login
             );
 

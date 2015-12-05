@@ -10,8 +10,7 @@
                     <div class="modal-body">
                         <div class="row modal_content_row_border_full" ng-repeat="sharedUser in shareList">
                            <div class="col-md-2">
-                                <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{sharedUser.userInfo.userId}}.jpg?time=' . time()" width="30" height="30" onerror="onLikeUserImageError(this)">
-                                <!--<img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{sharedUser.userInfo.userId}}.jpg?time=' . time()" width="30" height="30" onError="onImageError(this)">-->
+                                <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{sharedUser.userInfo.userId}}.jpg?time= <?php echo time(); ?>" width="30" height="30" onerror="onLikeUserImageError(this)">
                                 <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg">
                             </div>
                             <div class="col-md-7">

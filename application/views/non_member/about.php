@@ -47,7 +47,7 @@
 
 
 <div ng-app="app.BasicProfile">
-    <div ng-controller="basicProfileController" id="about_overview_" ng-init="setUserId(('<?php echo $user_id; ?>'))">
+    <div ng-controller="basicProfileController" ng-clock id="about_overview_" ng-init="setUserId(('<?php echo $user_id; ?>'))">
         <div class="row"  ng-init="setProfileId(('<?php echo $profile_id; ?>'))">
             <div class="col-md-12">
                 <?php $this->load->view("non_member/profile_cover"); ?>

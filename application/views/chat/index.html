@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chat Box</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type='text/css' rel="stylesheet" href="resources/css/jquery.mCustomScrollbar.css">
+        <link type='text/css' rel="stylesheet" href="resources/css/styles.css">
+        <link type='text/css' rel="stylesheet" href="resources/css/bootstrap.min.css">
+        <script type="text/javascript" src="resources/js/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="resources/js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script type="text/javascript" src="resources/js/angular.min.js"></script>
+        <script type="text/javascript" src="resources/js/ui-bootstrap.min.js"></script>
+        <script type="text/javascript" src="resources/js/chatRenderingTmpl.js"></script>
+        <script type="text/javascript" src="resources/js/chatWidgetContoller.js"></script>
+        <script type="text/javascript" src="resources/js/chatService.js"></script>
+        <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+
+        <script>
+            (function ($) {
+                $(window).load(function () {
+                    $("#ticker_notification .ticker").mCustomScrollbar({
+                        setHeight: 300,
+                        theme: "dark-3"
+                    });
+                });
+            })(jQuery);
+        </script>
+        <script>
+            (function ($) {
+                $(window).load(function () {
+                    $("#ticker_friend .ticker").mCustomScrollbar({
+                        setHeight: 300,
+                        theme: "dark-3"
+                    });
+                });
+            })(jQuery);
+        </script>
+        <script type="text/javascript">
+            $(function () {
+
+                $(".common_box").each(function () {
+                    $(this).click(function () {
+                        $(this).css("background", "#842D80");
+                        $(".common_box").not(this).css("background-color", "#703684");
+                    });
+                });
+
+                $(document).click(function (e) {
+                    if (!$(e.target).hasClass("common_box")
+                            && $(e.target).parents(".common_box").length === 0)
+                    {
+                        $(".common_box").css("background-color", "#703684");
+                    }
+                });
+
+            });
+
+        </script>
+
+
+    </head>
+
+    <!--<body ng-app="MyApp">-->
+    <body >
+        <div ng-app="Message.app" ng-controller="chatWidgetContoller" ng-clock>
+            <div ng-repeat="chatUserDetails in chatBoxes">
+                <chat-box  ng-init="userId = chatUserDetails.userId"></chat-box>
+            </div>
+
+            <div class="row counterPosition" ng-if="miniBoxes.length > 0" style="right:{{chatUserDetails.rightPos}}px">
+                <div class="col-md-12">
+                    <div class="dropup pull-right" style="cursor: pointer;" >
+                        <div role="presentation" class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div  class="msg_box_counter" >{{ miniBoxes.length}}</div>
+                            <img src="resources/images/comment_icon.png">
+                        </div>
+                        <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenu2">
+                            <div class="row" ng-repeat="chatUserDetails in miniBoxes">
+                                <div class="col-md-10">
+                                    <li class="MiniBoxesUser" ng-click="openMiniBoxesUser(chatUserDetails)"><a>{{chatUserDetails.firstName + " " + chatUserDetails.lastName}}</a></li>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="close" aria-label="Close" ng-click="removeMiniBoxesUser(item)" ><span aria-hidden="true">&times;</span></button>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="row" ng-init="getFriendList()" style="padding-left: 1100px">
+                <div class="col-md-12"  ng-repeat="friend in friend_list">
+                    <span ng-click="getChatInitialInfo(friend)">  
+                        <a href > {{friend.firstName}}&nbsp;{{friend.lastName}}</a> 
+                    </span>
+                </div>
+            </div>
+
+
+        </div>
+    </body>
+
+
+</html>

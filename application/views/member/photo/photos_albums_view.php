@@ -77,7 +77,7 @@
                 <div class="col-md-1"></div>
             </div>
             <div class="pagelet_divider"></div>
-            <div class="row" ng-controller="photoController">
+            <div class="row" ng-controller="photoController" ng-clock>
                 <div ng-init="setAlbumPhotoList(<?php echo htmlspecialchars(json_encode($photo_list)); ?>)" >
                     <div class="col-md-9" ng-init="setAlbumInfo(<?php echo htmlspecialchars(json_encode($album_info)); ?>)" >
                         <?php $this->load->view("member/pagelets/photo/view_album"); ?>

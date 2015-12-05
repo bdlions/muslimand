@@ -161,8 +161,15 @@ class Friend extends CI_Controller {
         $response = array();
         $user_id = $this->session->userdata('user_id');
         $response['friend_list'] = $this->get_friend_list_info($user_id);
+        $user_info = new stdClass();
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
+        $user_info->userId = $this->session->userdata('user_id');
+        $response['user_info'] = $user_info;
         echo json_encode($response);
     }
+    
+    
 
     function get_short_friend_list() {
         $response = array();

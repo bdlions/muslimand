@@ -15,15 +15,15 @@
 
 </script>
 
-<div ng-controller="statusController" ng-init="setUserGender(<?php echo htmlspecialchars(json_encode($user_gender_id)); ?>)">
-    <div class="row" ng-init="setUserCurrentTimeStamp(<?php echo htmlspecialchars(json_encode($user_current_time)); ?>)">
+<div ng-controller="statusController" ng-clock ng-init="setUserGender(<?php echo htmlspecialchars(json_encode($user_gender_id)); ?>)">
+    <div class="row"  ng-cloak ng-init="setUserCurrentTimeStamp(<?php echo htmlspecialchars(json_encode($user_current_time)); ?>)">
         <!--LEFT_COLUMN-->
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
             <div class="row form-group"></div>
             <div class="row">
                 <div class="col-xs-12" class="newsfeed_profile_picture" style="margin-left: 0;">
                     <img class="img-circle"  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
-                    <img style="visibility:hidden; height: 0px;" class="img-circle" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100_{{userGenderId}}.jpg?time=' . time()">
+                    <img style="visibility:hidden; height: 0px;" class="img-circle" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100_{{userGenderId}}.jpg?time= <?php echo time();?>">
                 </div>
             </div>
             <div class="row">

@@ -102,15 +102,16 @@ class Status extends CI_Controller {
             $images = array();
             if (property_exists($request, "imageList") != FALSE) {
                 $image_list = $request->imageList;
-
-                foreach ($image_list as $imageInfo) {
-                    $image = new stdClass();
-                    $image->image = $imageInfo;
-                    $images[] = $image;
+                if (!empty($image_list)) {
+                    foreach ($image_list as $imageInfo) {
+                        $image = new stdClass();
+                        $image->image = $imageInfo;
+                        $images[] = $image;
+                    }
+                    $album_id = TIMELINE_PHOTOS_ALBUM_ID;
+                    $album_title = TIMELINE_PHOTOS_ALBUM_TITLE;
+                    $album_result = $this->album_add($user_id, $album_id, $album_title, $image_list);
                 }
-                $album_id = TIMELINE_PHOTOS_ALBUM_ID;
-                $album_title = TIMELINE_PHOTOS_ALBUM_TITLE;
-                $album_result = $this->album_add($user_id, $album_id, $album_title, $image_list);
             }
             $status_info->images = $images;
             $status_info->userInfo = $user_info;
@@ -330,13 +331,11 @@ class Status extends CI_Controller {
         echo json_encode($response);
     }
 
-
     /**
      * this methord return a user timline status
      * @param userId
      * @mapping id
      *  */
-
     function get_user_profile_status() {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -421,7 +420,6 @@ class Status extends CI_Controller {
         echo json_encode($response);
     }
 
-
     /**
      * this methord return a specific status detail
      * @param userId
@@ -443,7 +441,6 @@ class Status extends CI_Controller {
             if (property_exists($result, "userGenderId")) {
                 $user_gender_id = $result->userGenderId;
 //                $response["user_gender_id"] = $user_gender_id;
-
             }
             $status_info['user_gender_id'] = $user_gender_id;
             $status_info['status_list'] = $status_list;

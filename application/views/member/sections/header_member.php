@@ -119,7 +119,7 @@
         <a style="text-decoration: none;" href="<?php echo base_url(); ?>member/timeline">
             <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
                 <img style="height: 25px; width: 25px;" alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailableHeader(this)"/>
-                <img style="visibility:hidden;" id="user_profile_picture_on_error" src="">
+                <img style="visibility:hidden; height: 0px; width: 0px;" id="user_profile_picture_on_error" src="">
                 &nbsp; <span id="profile_name" style="text-decoration: none" ><?php echo $first_name; ?></span>
             </span>
         </a>

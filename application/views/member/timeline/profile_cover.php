@@ -29,7 +29,7 @@
     <div class="row">
         <div class="col-md-12">
             <!--cover picture-->
-            <div ng-controller="ImageCopperController" style="position: relative; ">
+            <div ng-controller="ImageCopperController" style="position: relative;">
                 <div  ng-show="imageCropStep == 1" class="fileinput-cover-button">	
                     <?php if ($profile_id != "0" && $profile_id != $user_id) { ?>
                         <img class="img-responsive"  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $profile_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
@@ -70,7 +70,7 @@
             </div>
 
             <!--profile picture-->
-            <div ng-controller="ImageCopperController" style="position: absolute; bottom: -15px; left: 25px; z-index: 1001;">
+            <div ng-controller="ImageCopperController" ng-clock style="position: absolute; bottom: -15px; left: 25px; z-index: 1001;">
                 <div ng-show="imageCropStep == 1" class="fileinput-button profile_picture timeline_profile_picture_custom" style="height: 150px!important; width: 150px!important;">
                     <?php if ($profile_id != "0" && $profile_id != $user_id) { ?>
                         <img  class="cursor_holder_style" alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $profile_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
@@ -107,8 +107,8 @@
                     </div>
                 </div>
             </div>
-            <span ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)" >
-                <a class="timeline_profile_name" href="">
+            <span ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)" ng-clock>
+                <a class="timeline_profile_name" href="" ng-cloak>
                     <?php // echo $profile_first_name; ?>&nbsp;<?php // echo $profile_last_name; ?>
                     {{userRelation.profile_first_name}} {{userRelation.profile_last_name}}
                 </a>

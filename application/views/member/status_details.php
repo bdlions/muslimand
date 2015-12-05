@@ -1,5 +1,5 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/elif.js"></script>
-<span ng-controller="statusController">
+<span ng-controller="statusController" ng-clock>
     <div id="updateStatusPagelet"  ng-init="setStatusDetails('<?php echo htmlspecialchars(json_encode($status_list_info)); ?>')">
         <div ng-repeat="status in statuses" class="form-group">
             <!--<div ng-repeat="status in statuses.slice().reverse()" class="form-group">-->
@@ -9,7 +9,7 @@
                     <div class="pagelet">
                         <div class="row">
                             <div class="col-md-2" >
-                                <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time=time()" width="40" height="40" onError="onImageUnavailable(this)">
+                                <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time= <?php echo time(); ?>" width="40" height="40" onError="onImageUnavailable(this)">
                                 <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{userGenderId}}.jpg">
                             </div>
                             <div class="col-md-10" >
@@ -230,7 +230,7 @@
                             <div ng-repeat="commentInfo in status.commentList.slice().reverse()">
                                 <div class="row form-group" id="comment_{{commentInfo.commentId}}">
                                     <div class="col-md-1" profile_picture >
-                                        <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time=' . time()" width="30" height="30" onerror="onImageError(this)">
+                                        <img style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time=<?php echo time(); ?>" width="30" height="30" onerror="onImageError(this)">
                                         <img style="border: 1px solid lightgray; visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg">
                                     </div>
                                     <div class="col-md-9">
