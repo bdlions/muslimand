@@ -37,6 +37,7 @@ $config['collections']['login_attempts'] = 'login_attempts';
 $config['collections']['countries'] = 'countries';
 $config['collections']['user_profiles'] = 'user_profiles';
 $config['collections']['religions'] = 'religions';
+$config['collections']['users_social_networks'] = 'users_social_networks';
 //$config['attr_map']['_id'] = "_id";
 //$config['attr_map']['address'] = "adrs";
 //$config['attr_map']['addresses'] = "adrses";

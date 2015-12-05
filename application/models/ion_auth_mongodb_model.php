@@ -365,7 +365,8 @@ class Ion_auth_mongodb_model extends CI_Model {
         else {
             $this->trigger_events('extra_where');
             $updated = $this->mongo_db
-                    ->where('_id', new MongoId($id))
+                    //->where('_id', new MongoId($id))
+                    ->where('userId', $id)
                     ->set(array('activation_code' => NULL, 'active' => 1))
                     ->update($this->collections['users']);
         }
@@ -400,7 +401,8 @@ class Ion_auth_mongodb_model extends CI_Model {
         $this->trigger_events('extra_where');
 
         $updated = $this->mongo_db
-                ->where('_id', new MongoId($id))
+                //->where('_id', new MongoId($id))
+                ->where('userId', $id)
                 ->set(array('activation_code' => $activation_code, 'active' => 0))
                 ->update($this->collections['users']);
 
@@ -758,6 +760,7 @@ class Ion_auth_mongodb_model extends CI_Model {
             $this->attr_map['ip_address'] => $ip_address,
             $this->attr_map['created_on'] => time(),
             $this->attr_map['last_login'] => time(),
+            "active" => 1,
             $this->attr_map['account_status_id'] => ($manual_activation === FALSE ? ACCOUNT_STATUS_ID_ACTIVE : ACCOUNT_STATUS_ID_INACTIVE),
             $this->attr_map['groups'] => array(),
         );
@@ -809,7 +812,7 @@ class Ion_auth_mongodb_model extends CI_Model {
 
         $document = $this->mongo_db
 //                ->select(array($this->identity_column, '_id', $this->attr_map['user_id'], $this->attr_map['username'], $this->attr_map['email'], $this->attr_map['password'], $this->attr_map['account_status_id'], $this->attr_map['last_login']))
-                ->select(array($this->identity_column, '_id', 'groups', 'userId', 'firstName', 'lastName', $this->attr_map['email'], $this->attr_map['password'], $this->attr_map['account_status_id'], $this->attr_map['last_login']), 'groups')
+                ->select(array($this->identity_column, '_id', 'active' , 'groups', 'userId', 'firstName', 'lastName', $this->attr_map['email'], $this->attr_map['password'], $this->attr_map['account_status_id'], $this->attr_map['last_login']), 'groups')
                 // MongoDB is vulnerable to SQL Injection like attacks (in PHP at least), in MongoDB
                 // PHP driver we use objects to make queries and as we know PHP allows us to submit
                 // objects via GET, POST, etc. and so getting user input like password[$ne]=1 is possible
@@ -827,7 +830,7 @@ class Ion_auth_mongodb_model extends CI_Model {
 
             if ($password === TRUE) {
                 // Not yet activated?
-                if ($user->{$this->attr_map['account_status_id']} == 0) {
+                if ($user->active == 0) {
                     $this->trigger_events('post_login_unsuccessful');
                     $this->set_error('login_unsuccessful_not_active');
                     return FALSE;
@@ -1230,7 +1233,8 @@ class Ion_auth_mongodb_model extends CI_Model {
 
         // Set query parameters
         $this->limit(1);
-        $this->where('_id', new MongoId($id));
+        //$this->where('_id', new MongoId($id));
+        $this->where('userId', $id);
 
         // Build and execute the query
         $this->users();
@@ -1255,7 +1259,8 @@ class Ion_auth_mongodb_model extends CI_Model {
         // Load user's group IDs array
         $user = $this->mongo_db
                 ->select(array('groups'))
-                ->where('_id', new MongoId($id))
+                //->where('_id', new MongoId($id))
+                ->where('userId', $id)
                 ->limit(1)
                 ->get($this->collections['users']);
 
@@ -1266,10 +1271,13 @@ class Ion_auth_mongodb_model extends CI_Model {
 
         // Buildup user groups data array
         $user = (object) $user[0];
-        foreach ($user->groups as $group_id) {
-            $groups[] = $this->group($group_id)->document();
+//        foreach ($user->groups as $group_id) {
+//            $groups[] = $this->group($group_id)->document();
+//        }
+        foreach ($user->groups as $group) {
+            $groups[] = $group;
         }
-
+        
         $this->response = $groups;
         return $this;
     }
@@ -1379,7 +1387,8 @@ class Ion_auth_mongodb_model extends CI_Model {
         $this->trigger_events('group');
 
         if (isset($id)) {
-            $this->mongo_db->where('_id', new MongoId($id));
+            //$this->mongo_db->where('_id', new MongoId($id));
+            $this->mongo_db->where('userId', $id);
         }
 
         // Set query parameters

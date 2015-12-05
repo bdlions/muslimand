@@ -389,7 +389,7 @@ class Ion_auth {
         } else {
             $users_groups = $this->ion_auth_model->get_users_groups($id)->result();
             foreach ($users_groups as $group) {
-                $groups_array[$group->id] = $group->name;
+                $groups_array[$group->groupId] = $group->title;
             }
             $this->_cache_user_in_group[$id] = $groups_array;
         }
@@ -459,6 +459,54 @@ class Ion_auth {
          * if all, true
          */
         return $check_all;
+    }
+    
+    public function email_activation($id)
+    {
+        $this->load->library('curl');
+        $deactivate = $this->ion_auth_model->deactivate($id);
+
+        if (!$deactivate) {
+            $this->set_error('deactivate_unsuccessful');
+            $this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_unsuccessful'));
+            return FALSE;
+        }
+
+        $activation_code = $this->ion_auth_model->activation_code;
+        $identity = $this->config->item('identity', 'ion_auth');
+        $user = $this->ion_auth_model->user($id)->row();
+        $email = $user->email;
+        $data = array(
+            'identity' => $user->{$identity},
+            //'id' => $user->id,
+            'userId' => $user->userId,
+            'email' => $email,
+            'activation' => $activation_code,
+        );
+            
+        $url = "http://app.sportzweb.com/restapi/index.php/api/example/users";
+        $this->curl->create($url);
+        $this->curl->post(array("id" => $user->userId, "identity" => $user->{$identity}, "first_name" => $user->firstName, "last_name" => $user->lastName, "email"=>$email, "activation_code"=>$activation_code));
+        $result = json_decode($this->curl->execute());
+
+//        $message = $this->load->view($this->config->item('email_templates', 'ion_auth') . $this->config->item('email_activate', 'ion_auth'), $data, true);
+//
+//        $this->email->clear();
+//        $this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
+//        $this->email->to($email);
+//        $this->email->subject($this->config->item('site_title', 'ion_auth') . ' - ' . $this->lang->line('email_activation_subject'));
+//        $this->email->message($message);
+//
+//        if ($this->email->send() == TRUE) {
+//            $this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_successful', 'activation_email_successful'));
+//            $this->set_message('activation_email_successful');
+//            return $id;
+//        }
+//
+//
+//        $this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_unsuccessful', 'activation_email_unsuccessful'));
+//        $this->set_error('activation_email_unsuccessful');
+//        return FALSE;
     }
 
 }

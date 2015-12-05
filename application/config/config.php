@@ -357,6 +357,9 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-
+$config['twitter'] = array(
+    'twitter_consumer_token' => 'U8NTaYJ6x6CoWgBMUV0xA',
+    'twitter_consumer_secret' => 'pJt6ZaaEQshzjyHppMiHeHgFWSwvz5W9ykIitDk'
+);
 /* End of file config.php */
 /* Location: ./application/config/config.php */

@@ -20,6 +20,7 @@ class Auth extends CI_Controller {
         $this->load->model('common_mongodb_model');
         $this->load->model('basic_profile_mongodb_model');
         $this->load->model('landing_page_model');
+        $this->load->model('social_network_mongodb_model');
         // Load MongoDB library instead of native db driver if required
         $this->config->item('use_mongodb', 'ion_auth') ?
                         $this->load->library('mongo_db') :
@@ -54,10 +55,8 @@ class Auth extends CI_Controller {
                     //$this->_render_page('auth/index', $this->data);
                     $this->template->load(NULL, ADMIN_LOGIN_SUCCESS_VIEW, $this->data);
                     break;
-                } elseif ($group == MEMBER) {
-                    $this->data['message'] = validation_errors() ? validation_errors() : $this->session->flashdata('message');
-                    $this->template->load(NULL, MEMBER_LOGIN_SUCCESS_VIEW, $this->data);
-                    return;
+                } elseif ($group == MEMBER_GROUP_TITLE) {
+                    redirect('member/newsfeed', 'refresh');
                 } else {
                     echo "Non member";
                 }
@@ -82,7 +81,9 @@ class Auth extends CI_Controller {
             if (property_exists($landing_page_info, "countryList") != FALSE) {
                 foreach ($landing_page_info->countryList as $country_info) {
                     $country_list[$country_info->code] = $country_info->title;
-                    $country_time_zone[$country_info->code] = $country_info->gmtOffset;
+                    //$country_time_zone[$country_info->code] = $country_info->gmtOffset;
+                    //hard coded
+                    $country_time_zone[$country_info->code] = "+6";
                 }
             }
             if (property_exists($landing_page_info, "religionList") != FALSE) {
@@ -174,6 +175,22 @@ class Auth extends CI_Controller {
                     if ($result != null) {
 
                         $this->ion_auth->set_message('account_creation_successful');
+                        //adding social network code
+                        if( !empty( $this->session->userdata('social_network_id') ) && !empty( $this->session->userdata('social_network_code')) ) {
+                            $social_network_data = array(
+                                'user_id' => $id,
+                                'social_network_id' => $this->session->userdata('social_network_id'),
+                                'code' => $this->session->userdata('social_network_code')
+                            );
+                            $this->social_network_mongodb_model->add_social_network_info($social_network_data);
+                            $this->session->unset_userdata('social_network_id');
+                            $this->session->unset_userdata('social_network_code');
+                        }
+                        else
+                        {
+                            //send email to the client to confirm the email
+                            $this->ion_auth->email_activation($id);
+                        }
                     }
                     //check to see if we are creating the user
                     //redirect them back to the admin page
@@ -207,11 +224,16 @@ class Auth extends CI_Controller {
             }
         } else {
 
+            $r_first_name = $this->form_validation->set_value('r_first_name');
+            if( !empty( $this->session->userdata('first_name') ) ) {
+                $r_first_name =  $this->session->userdata('first_name');  
+                $this->session->unset_userdata('first_name');
+            }
             $this->data['r_first_name'] = array(
                 'name' => 'r_first_name',
                 'id' => 'r_first_name',
                 'type' => 'text',
-                'value' => $this->form_validation->set_value('r_first_name'),
+                'value' => $r_first_name,
             );
             $this->data['r_last_name'] = array(
                 'name' => 'r_last_name',
@@ -279,6 +301,7 @@ class Auth extends CI_Controller {
 
     function login_attempt() {
 
+        $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
         $this->data['identity'] = array('name' => 'identity',
             'id' => 'identity',
             'type' => 'text',
@@ -894,4 +917,94 @@ class Auth extends CI_Controller {
         $this->template->load(NULL, "nonmember/wrong_password", $this->data);
     }
 
+    function twitter() {
+        $this->load->library('twitteroauth');
+        $twitter_config = $this->config->item('twitter');
+
+        if ($this->session->userdata('access_token') && $this->session->userdata('access_token_secret')) {
+            // If user already logged in
+            $this->connection = $this->twitteroauth->create($twitter_config['twitter_consumer_token'], $twitter_config['twitter_consumer_secret'], $this->session->userdata('access_token'), $this->session->userdata('access_token_secret'));
+        } elseif ($this->session->userdata('request_token') && $this->session->userdata('request_token_secret')) {
+            // If user in process of authentication
+            $this->connection = $this->twitteroauth->create($twitter_config['twitter_consumer_token'], $twitter_config['twitter_consumer_secret'], $this->session->userdata('request_token'), $this->session->userdata('request_token_secret'));
+        } else {
+            // Unknown user
+            $this->connection = $this->twitteroauth->create($twitter_config['twitter_consumer_token'], $twitter_config['twitter_consumer_secret']);
+        }
+        if ($this->input->get('oauth_token')) {
+
+            $access_token = $this->connection->getAccessToken($this->input->get('oauth_verifier'));
+
+            if ($this->connection->http_code == 200) {
+                $this->session->set_userdata('access_token', $access_token['oauth_token']);
+                $this->session->set_userdata('access_token_secret', $access_token['oauth_token_secret']);
+                
+                $this->session->unset_userdata('request_token');
+                $this->session->unset_userdata('request_token_secret');
+
+                $profile_info = $this->connection->get('users/show', array("screen_name" => $access_token['screen_name']));
+                print_r($profile_info);
+                exit();
+                $code = $profile_info->id;
+                $user_id = $this->social_network_mongodb_model->is_user_mapped_to_social_network(SOCIAL_NETWORK_ID_TWITTER, $code);
+                if ($user_id === FALSE) {
+                    $this->session->set_userdata('social_network_id', SOCIAL_NETWORK_ID_TWITTER);
+                    $this->session->set_userdata('social_network_code', $profile_info->id);
+                    $this->session->set_userdata('first_name', $profile_info->name);
+                    redirect('auth/login', 'refresh');
+                } else {
+                    $this->social_network_mongodb_model->login_via_social_network($user_id);
+                    redirect('auth', 'refresh');
+                }
+            } else {
+                // An error occured. Add your notification code here.
+                redirect('auth/login', 'refresh');
+            }
+        } else if ($this->session->userdata('access_token') && $this->session->userdata('access_token_secret')) {
+            // User is already authenticated. Add your user notification code here.
+            $access_token_array = explode("-", $this->session->userdata('access_token'));
+            if(!empty($access_token_array))
+            {
+                $code = $access_token_array[0];
+                $user_id = $this->social_network_mongodb_model->is_user_mapped_to_social_network(SOCIAL_NETWORK_ID_TWITTER, $code);
+                if ($user_id === FALSE) {
+                    $this->session->unset_userdata('access_token');
+                    $this->session->unset_userdata('access_token_secret');
+                    redirect('auth/twitter', 'refresh');
+                } else {
+                    $this->social_network_mongodb_model->login_via_social_network($user_id);
+                    redirect('auth', 'refresh');
+                }
+            }
+            //redirect('auth/login', 'refresh');
+        } else {
+            // Making a request for request_token
+            $request_token = $this->connection->getRequestToken(base_url('auth/twitter'));
+            
+            $this->session->set_userdata('request_token', $request_token['oauth_token']);
+            $this->session->set_userdata('request_token_secret', $request_token['oauth_token_secret']);
+
+            if ($this->connection->http_code == 200) {
+                $url = $this->connection->getAuthorizeURL($request_token, "");
+                redirect($url);
+            } else {
+                // An error occured. Make sure to put your error notification code here.
+                redirect('auth/twitter', 'refresh');
+            }
+        }
+    }
+    
+    function login_complete() {
+        $this->load->model('org/user/profile_model');
+        if ($this->profile_model->is_security_information_stored($this->session->userdata('user_id'))) {
+            redirect('home', 'refresh');
+            //redirect('profile', 'refresh');
+        } else {
+            $session_data = array(
+                'request_type' => PRE_SETTINGS
+            );
+            $this->session->set_userdata($session_data);
+            redirect('profile', 'refresh');
+        }
+    }
 }

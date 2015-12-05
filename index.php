@@ -1,5 +1,6 @@
 <?php
 /***************** Custom constant **********************/
+include './constants/social_network.php';
 include './constants/template.php';
 include './constants/basic_profile.php';
 include './constants/user_photo.php';
