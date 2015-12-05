@@ -1,4 +1,3 @@
- <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/chat_styles.css">
     <script>
         (function ($) {
             $(window).load(function () {
