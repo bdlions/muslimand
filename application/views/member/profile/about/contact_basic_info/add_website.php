@@ -18,15 +18,15 @@
                 <span class="subcategory_label_style">Website</span>
             </div>
             <div class="col-md-8">
-                <input type="text" class="form-control" id="website_add_id" ng-model="websiteInfo.website">
+                <input type="text" class="form-control form_control_custom_style" id="website_add_id" ng-model="websiteInfo.website">
             </div>
         </div>
         <div class="pagelet_divider"></div>
         <div class="row">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-12">
                 <div class="row form-group">
                     <div class="col-md-5">
-                        <select class="form-control" name="control">
+                        <select class="form-control form_control_custom_style" name="control">
                             <option selected="1" value="0">Everyone</option>
                             <option value="1">Friends</option>
                             <option value="2">Friends of Friends</option>
@@ -35,10 +35,10 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button id="save_website_btn" class="btn btn-default form-control" style="background-color: #703684; color: white" onclick="add_website('<?php echo $user_id; ?>')">Save</button>
+                        <button id="save_website_btn" class="btn btn-xs form-control form_control_custom_style" style="background-color: #703684; color: #fff;" onclick="add_website('<?php echo $user_id; ?>')">Save</button>
                     </div>
                     <div class="col-md-3">
-                        <button class="form-control form_control_custom_style member_about_cancel_button cancel_website_window" >Cancel</button>
+                        <button class="btn btn-xs form-control form_control_custom_style member_about_cancel_button cancel_website_window" style="background-color: #703684; color: #fff;">Cancel</button>
                     </div>
                 </div>
             </div>

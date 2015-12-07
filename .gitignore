@@ -16,6 +16,8 @@ local.properties
 .settings/
 
 
+resources/uploads/
+
 # External tool builders
 .externalToolBuilders/
 
@@ -31,7 +33,7 @@ local.properties
 # Folder config file
 Desktop.ini
 
-resources/uploads/
+
 
 #################
 ## Visual Studio
@@ -223,4 +225,4 @@ pip-log.txt
 Desktop.ini
 
 resources/uploads/
-*.jpg
+

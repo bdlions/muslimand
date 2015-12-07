@@ -4,10 +4,10 @@ angular.module('controllers.Message', ['services.Message']).
             //<chat >
             $scope.chatBoxes = [];
             $scope.miniBoxes = [];
-            $scope.chatBoxStartPos = 375;
+            $scope.chatBoxStartPos = 225;
             $scope.miniBoxesStartPos = 940;
             $scope.chatBoxWidth = 260;
-            $scope.chatBoxGap = 15;
+            $scope.chatBoxGap = 10;
             $scope.friendList = [];
             $scope.chatUserList = [];
             $scope.userInfo = {};

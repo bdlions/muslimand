@@ -20,7 +20,7 @@
                         <span class="subcategory_label_style">University</span>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" id="university_add_id" class="form-control" ng-model="universityInfo.university">
+                        <input type="text" id="university_add_id" class="form-control form_control_custom_style" ng-model="universityInfo.university">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -31,7 +31,7 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="pages_type_add_form_input">
-                                    <select class="form-control"  ng-options="year for year in yearList" ng-model="universityInfo.startDate">
+                                    <select class="form-control form_control_custom_style"  ng-options="year for year in yearList" ng-model="universityInfo.startDate">
                                         <option value="" selected>Select Year</option>
                                     </select>
                                 </div>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="pages_type_add_form_input">
-                                    <select class="form-control"  ng-options="year for year in yearList" ng-model="universityInfo.endDate">
+                                    <select class="form-control form_control_custom_style"  ng-options="year for year in yearList" ng-model="universityInfo.endDate">
                                         <option value="" selected>Select Year</option>
                                     </select>
                                 </div>
@@ -54,7 +54,7 @@
                         <span class="subcategory_label_style">Description</span>
                     </div>
                     <div class="col-md-8">
-                        <textarea type="text" class="form-control" ng-model="universityInfo.description"></textarea>
+                        <textarea type="text" class="form-control textarea_custom_style font_12px" ng-model="universityInfo.description"></textarea>
                     </div>
                 </div>
                 <div class="pagelet_divider"></div>
@@ -62,7 +62,7 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-5">
-                                <select class="form-control" name="control">
+                                <select class="form-control form_control_custom_style" name="control">
                                     <option selected="1" value="0">Everyone</option>
                                     <option value="1">Friends</option>
                                     <option value="2">Friends of Friends</option>
@@ -71,10 +71,10 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <button id="university_btn_id" class="btn btn-default form-control" style="background-color: #703684; color: white" onclick="add_university('<?php echo $user_id; ?>')">Save</button>
+                                <button id="university_btn_id" class="btn btn-xs form-control form_control_custom_style" style="background-color: #703684; color: white" onclick="add_university('<?php echo $user_id; ?>')">Save</button>
                             </div>
                             <div class="col-md-3">
-                                <button class="btn btn-default form-control cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
+                                <button class="btn btn-xs form-control form_control_custom_style cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
                             </div>
                         </div>
                     </div>

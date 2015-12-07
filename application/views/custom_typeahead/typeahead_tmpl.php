@@ -21,7 +21,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-10 font_style">
-                                            <div class="user_name" style="padding-bottom: 14px">
+                                            <div class="user_name" style="padding-top: 7px; padding-top: 7px">
                                             </div>
                                         </div>
                                     </a> 

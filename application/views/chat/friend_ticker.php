@@ -1,23 +1,23 @@
 <div class="">
-    <div  class="msg_box style_left_box common_box" style="right:{{chatUserDetails.rightPos}}px" >
-        <div class="message_friends_divider_full common_box_header">
+    <div  class="msg_box style_left_box common_box" style="right: {{chatUserDetails.rightPos}}px" >
+        <div class="message_friends_divider_full common_box_header" style="border: none!important;">
             <div class="row">
                 <div class="col-md-2">
-                    <img class="img-responsive" style="margin-top: 3px;" src="<?php echo base_url(); ?>resources/images/online.png">
+                    <img class="img-responsive" style="margin-top: 6px;" src="<?php echo base_url(); ?>resources/images/online.png">
                 </div>
                 <div class="col-md-6">
-                    <a style="color:#fff; vertical-align: middle;" href="">{{chatUserDetails.firstName + " " + chatUserDetails.lastName}}</a>
+                    <a class="msg_box_user_name" href='<?php echo base_url(); ?>member/timeline/{{userId}}'>{{chatUserDetails.firstName + " " + chatUserDetails.lastName}}</a>
                 </div>
                 <div class="col-md-2">
-                    <img class="img-responsive" style="margin-top: 3px; cursor: pointer" src="<?php echo base_url(); ?>resources/images/settings.png">
+                    <!--<img class="img-responsive" style="margin-top: 3px; cursor: pointer" src="<?php //echo base_url(); ?>resources/images/settings.png">-->
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="close" aria-label="Close" ng-click="removeUser(chatUserDetails)" ><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close close-custom" aria-label="Close" ng-click="removeUser(chatUserDetails)" ><span aria-hidden="true">&times;</span></button>
                 </div>
             </div>
         </div>
         <div class="chat_box_hidden_container">
-            <div class="message_friends_divider_others chat_box_container" style="height: 150px; width: 100%; overflow-y: scroll; overflow-x: hidden; background-color: #fff;">
+            <div class="message_friends_divider_others chat_box_container" style="height: 230px; overflow-y: scroll; overflow-x: hidden; background-color: #fff; border: 2px solid #703684;">
                 <div ng-repeat="message in chatUserDetails.messages">
                     <div class="row" ng-if="message.senderInfo.userId == userInfo.userId">
                         <div class="col-md-12">
@@ -43,7 +43,7 @@
                         </form>
                     </div>
                     <div class="col-md-2">
-                        <form action="upload.php" method="post" style="margin-left: 5px; margin-top: 5px;">
+                        <form action="upload.php" method="post" style="margin-left: 14px; padding-top: 1px; margin-bottom: -1px;">
                             <label for="fileToUpload">
                                 <img style="cursor: pointer;" src="<?php echo base_url(); ?>resources/images/camera.png"/>
                             </label>
@@ -51,7 +51,7 @@
                         </form>
                     </div>
                     <div class="col-md-2">
-                        <img style="cursor: pointer; margin-left: -12px; margin-top: 5px;" src="<?php echo base_url(); ?>resources/images/emotion.png" />
+                        <img style="cursor: pointer; margin-left: -8px; padding-top: 2px;" src="<?php echo base_url(); ?>resources/images/emotion.png" />
                     </div>
                 </div>
             </div>

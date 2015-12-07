@@ -18,15 +18,15 @@
                 <span class="subcategory_label_style">Add Quote</span>
             </div>
             <div class="col-md-8">
-                <textarea id="fv_quote" class="form-control" placeholder="Add Your Favorite Quote" ng-model="fQuoteInfo.fQuote"></textarea>
+                <textarea id="fv_quote" class="form-control textarea_custom_style font_12px" placeholder="Add Your Favorite Quote" ng-model="fQuoteInfo.fQuote"></textarea>
             </div>
         </div>
         <div class="pagelet_divider"></div>
         <div class="row">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-12">
                 <div class="row form-group">
                     <div class="col-md-5">
-                        <select class="form-control" name="control">
+                        <select class="form-control form_control_custom_style" name="control">
                             <option selected="1" value="0">Everyone</option>
                             <option value="1">Friends</option>
                             <option value="2">Friends of Friends</option>
@@ -35,10 +35,10 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button id="favorite_quote_save" class="pull-right form-control form_control_custom_style member_about_save_button" onclick="add_fQuote('<?php echo $user_id; ?>')">Save</button>
+                        <button id="favorite_quote_save" class="btn btn-xs form-control form_control_custom_style member_about_save_button" onclick="add_fQuote('<?php echo $user_id; ?>')" style="background-color: #703684; color: #fff;">Save</button>
                     </div>
                     <div class="col-md-3">
-                        <button class="form-control form_control_custom_style member_about_cancel_button cancel_favorite_quote_window" >Cancel</button>
+                        <button class="btn btn-xs form-control form_control_custom_style member_about_cancel_button cancel_favorite_quote_window" style="background-color: #703684; color: #fff;">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -47,13 +47,13 @@
 </div>
 
 <script>
-    $(function () {
+    $(function() {
         // Favorite Quote
-        $("#add_favorite_quote").on("click", function () {
+        $("#add_favorite_quote").on("click", function() {
             $("#add_favorite_quote").hide();
             $("#favorite_quote").show();
         });
-        $(".cancel_favorite_quote_window").on("click", function () {
+        $(".cancel_favorite_quote_window").on("click", function() {
             $("#favorite_quote").hide();
             $("#add_favorite_quote").show();
         });
@@ -65,7 +65,7 @@
             alert("Please Write Your favorite Quote!");
             return;
         }
-        angular.element($('#favorite_quote_save')).scope().addFQuote(userId, function () {
+        angular.element($('#favorite_quote_save')).scope().addFQuote(userId, function() {
             $('#fQuoteId').show();
             $("#add_favorite_quote").show();
             $("#favorite_quote").hide();

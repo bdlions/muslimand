@@ -41,7 +41,7 @@
                 <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{notification.genderId}}.jpg">
             </div>
             <div class="col-xs-4">
-                <a href="<?php echo base_url(); ?>member/timeline/{{notification.friendNotification.userInfo.userId}} style="font-size: 12px; font-weight: bold;" >{{notification.friendNotification.userInfo.firstName}} &nbsp; {{notification.friendNotification.userInfo.lastName}}</a>
+                <a href="<?php echo base_url(); ?>member/timeline/{{notification.friendNotification.userInfo.userId}}" style="font-size: 12px; font-weight: bold;" >{{notification.friendNotification.userInfo.firstName}} &nbsp; {{notification.friendNotification.userInfo.lastName}}</a>
             </div>
             <div class="col-xs-6">
                 <div class="pull-right">
@@ -50,8 +50,8 @@
                         <button id="delete_pending_request_{{notification.friendNotification.userInfo.userId}}" type="submit" class="btn btn-xs" style="background-color: #703684; color: white" onclick="delete_request(angular.element(this).scope().notification.friendNotification.userInfo.userId)">Delete Request</button>
                     </div>
                     <div>
-                        <button   id="friend_request_accept_{{notification.friendNotification.userInfo.userId}}" style="display: none" type="button" class=" btn btn-default">Friend</button>   
-                        <button  id="request_spam_{{notification.friendNotification.userInfo.userId}}" style="display: none" type="button" class=" btn btn-default">Mark as Spam</button>   
+                        <button   id="friend_request_accept_{{notification.friendNotification.userInfo.userId}}" style="display: none; background-color: #703684; color: white" type="button" class="btn btn-xs">Friend</button>   
+                        <button  id="request_spam_{{notification.friendNotification.userInfo.userId}}" style="display: none; background-color: #703684; color: white;" type="button" class="btn btn-xs">Mark as Spam</button>   
                     </div>
                 </div>
             </div>

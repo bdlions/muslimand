@@ -178,7 +178,7 @@
                         <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>friend/get_friend_list">Friends</a>
                     <?php } ?>
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <button style="font-size: 100%" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             More
                             <span class="caret"></span>
                         </button>

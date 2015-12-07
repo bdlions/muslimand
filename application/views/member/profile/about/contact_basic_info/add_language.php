@@ -18,15 +18,15 @@
                 <span class="subcategory_label_style">Language</span>
             </div>
             <div class="col-md-8">
-                <input class="form-control" placeholder="Add Your Language">
+                <input class="form-control form_control_custom_style" placeholder="">
             </div>
         </div>
         <div class="pagelet_divider"></div>
         <div class="row">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-12">
                 <div class="row form-group">
                     <div class="col-md-5">
-                        <select class="form-control" name="control">
+                        <select class="form-control form_control_custom_style" name="control">
                             <option selected="1" value="0">Everyone</option>
                             <option value="1">Friends</option>
                             <option value="2">Friends of Friends</option>
@@ -35,10 +35,10 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button class="pull-right form-control form_control_custom_style member_about_save_button">Save</button>
+                        <button class="btn btn-xs form-control form_control_custom_style member_about_save_button" style="background-color: #703684; color: #fff;">Save</button>
                     </div>
                     <div class="col-md-3">
-                        <button class="form-control form_control_custom_style member_about_cancel_button cancel_language_window" >Cancel</button>
+                        <button class="btn btn-xs form-control form_control_custom_style member_about_cancel_button cancel_language_window" style="background-color: #703684; color: #fff;">Cancel</button>
                     </div>
                 </div>
             </div>

@@ -15,36 +15,38 @@ and open the template in the editor.
 /*================================  tmpl  ================================*/
 
 @font-face {
-  font-family: 'OpenSans-Bold';
-  font-style: normal;
-  font-weight: 400;
-  src: local('OpenSans-Bold'), url(../fonts/OpenSans-Bold.ttf) format('ttf');
+    font-family: 'Cabin-Bold';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cabin-Bold.otf'), url(../fonts/Cabin-Bold.otf) format('otf');
 }
 
 @font-face {
-  font-family: 'OpenSans-Regular';
-  font-style: normal;
-  font-weight: 400;
-  src: local('OpenSans-Regular'), url(../fonts/OpenSans-Regular.ttf) format('ttf');
+    font-family: 'Cabin-Medium';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cabin-Medium'), url(../fonts/Cabin-Medium.otf) format('otf');
 }
 @font-face {
-  font-family: 'OpenSans-Semibold';
-  font-style: normal;
-  font-weight: 400;
-  src: local('OpenSans-Semibold'), url(../fonts/OpenSans-Semibold.ttf) format('ttf');
+    font-family: 'Cabin-Regular';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cabin-Regular'), url(../fonts/Cabin-Regular.otf) format('otf');
 }
 @font-face {
-  font-family: 'OpenSans-Light';
-  font-style: normal;
-  font-weight: 400;
-  src: local('OpenSans-Light'), url(../fonts/OpenSans-Light.ttf) format('ttf');
+    font-family: 'Cabin-SemiBold';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cabin-SemiBold'), url(../fonts/Cabin-SemiBold.otf) format('otf');
 }
+
 
 body {
     margin:0;
     padding:0;
     height:100%;
-    font-family: OpenSans-Regular!important;
+    font-family: Helvetica!important;
+    font-size: 12px!important;
 }
 #wrapper {
     min-height:100%;
@@ -159,46 +161,9 @@ body {
 /*================================  Landing Page  ================================*/
 /*================================  Hridoys css  ================================*/
 
-.ticker_friends{
-    background-color: #E9EAED;
-    padding: 10px;
-    font-size: 11px;
-    border-bottom: 1px solid lightgray;
-}
-.ticker_friends:hover,
-.message_friends_box:hover,
-.message_friends:hover{
-    cursor: pointer;
-    background-color: lightgrey;
-}
-.message_friends{
-    background-color: white;
-    font-size: 12px;
-    padding: 10px;
-    border: 1px solid lightgray;
-}
-.message_friends_box,.message_friends_box_1{
-    background-color: white;
-    font-size: 12px;
-    padding: 10px;
-}
-.message_text:hover{
-    cursor: pointer;
-    opacity: 0.7;
-}
-.message_friends_divider_full,.message_friends_divider_others{
-    padding: 2px 4px;
-    border: 1px solid lightgray;
-    border-top: 0px;
-}
-.message_friends_divider_full{
-    border-top: 1px solid lightgray;
-}
-.border_without_bottom{
-    border-top: 1px solid lightgray;
-    border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-}
+
+
+
 
 /*================================  Left Menu  ================================*/
 .video_ul{
@@ -268,7 +233,7 @@ body {
     position: fixed; 
     top: 0; 
     width: 100%; 
-	z-index: 10000;
+    z-index: 10000;
 }
 .container_wrapper{
     background-color: #703684; 
@@ -314,16 +279,16 @@ body {
 
 /*================================  font size ================================*/
 .font_10px{
-    font-size: 10px;
+    font-size: 10px!important;
 }
 .font_11px{
-    font-size: 11px;
+    font-size: 11px!important;
 }
 .font_12px{
-    font-size: 12px;
+    font-size: 12px!important;
 }
 .font_13px{
-    font-size: 13px;
+    font-size: 13px!important;
 }
 
 /*================================  Middle column section  ================================*/
@@ -409,68 +374,73 @@ body {
 .msg_box{
     position: absolute;
     width: 260px;
-   
+    z-index: 20000;
+
 }
 
-.msg_box_counter{
-    font-size: 10px;
-    font-weight: bold;
-    position: absolute;
-    bottom:  8px;
-    left: 25px;
-    text-align: center;
-    background-color: #703684;
-    color: #fff;
-    border-radius: 2px;
-    padding: 1px 3px;
+.msg_box_user_name, .msg_box_user_name:hover, .msg_box_user_name:focus, .msg_box_user_name:visited{
+    color:#fff; 
+    text-decoration: none;
+    vertical-align: middle; 
+    padding-top: 5px; 
+    font-size: 10.5px; 
+    width: 100%; 
+    white-space: nowrap; 
+    overflow:hidden !important; 
+    text-overflow: ellipsis;
 }
+
+.chatting_user_name, .chatting_user_name:hover,.chatting_user_name:focus,.chatting_user_name:visited{
+    text-decoration: none;
+    vertical-align: middle; 
+    padding-top: 5px; 
+    font-size: 10.5px; 
+    display:inline-block; 
+    width: 100%; 
+    white-space: nowrap; 
+    overflow:hidden !important; 
+    text-overflow: ellipsis;
+    vertical-align: middle!important;
+}
+
 
 .dropdown-menu-custom {
 
 }
 
 .textarea_background_style{
-    border: 1px solid lightgray; 
-    padding-top: 5px; 
-    padding-bottom: 5px;
+    padding-top: 1px; 
 }
-.chatting_textarea_box_1, .chatting_textarea_box_2, .chatting_textarea_box_3{
-    background-color: #fff;
-    border: 1px solid #703684;
-    border-radius: 3px;
-    box-shadow: none;
-    resize: none;
-    width: 165px!important;
-    overflow-y: scroll;
-    height: 32px;
-}
+
 .chatting_input_area{
     background-color: #fff;
-    border: 1px solid #703684;
+    border: 2px solid #703684;
     border-radius: 3px;
     box-shadow: none;
     resize: none;
-    width: 165px!important;
+    width: 198px!important;
     overflow-y: scroll;
-    height: 32px;
-    margin-left: 5px;
+    height: 24px;
+    margin-left: 3px;
 }
 
 .MiniBoxesUser > a{
-    text-decoration: none;
+    text-decoration: none!important;
 }
 .MiniBoxesUser{
-    width: 115%;
+    margin-left: 5px;
+    padding-top: 2px;
+    vertical-align: middle;
+    width: 112%;
 }
 .MiniBoxesUser:hover{
-    background-color: #703684;
+    background-color: lavender;
 }
 
 .message_owner_content_style, .message_friend_content_style {
     border: 1px solid #d2d2d2;
     border-radius: 2px;
     display: inline-block;
-    font-weight: normal;
     line-height: 20px;
     margin-right: 5px;
     overflow: hidden;
@@ -479,19 +449,19 @@ body {
     border-radius: 5px;
     word-wrap: break-word;
     max-width: 600px;
-    font-size: 9px;
-    font-weight: bold;
+    font-size: 14px;
 }
 .message_owner_content_style{
-    background-color: #9A70AD;
-    color: #fff;
+    background-color: #E9EAED;
+    color: #333;
 }
 .message_friend_content_style {
-    background-color: #F8F9F9;
+    background-color: #E7F1FE;
+    margin-left: 5px;
 }
 
 .message_owner_style::before {
-    background-color: #9A70AD;
+    background-color: #E9EAED;
     border-bottom: 1px solid #d2d2d2;
     border-right: 1px solid #d2d2d2;
     content: "";
@@ -503,25 +473,83 @@ body {
     width: 8px;
 }
 .message_friend_style::before {
-    background-color: #F8F9F9;
+    background-color: #e7f1fe;
     border-bottom: 1px solid #d2d2d2;
     border-left: 1px solid #d2d2d2;
     content: "";
-    height: 10px;
+    height: 8px;
+    left: 11.5px;
+    margin-left: 5px;
     position: absolute;
-    left: 10px;
-    top: 8px;
+    top: 7px;
     transform: rotate(45deg);
-    width: 10px;
+    width: 8px;
 }
 
 .counterPosition{
     position: absolute; 
-    background-color: #E5E5E5; 
+    background-color: lavender; 
     padding: 5px 0; 
     font-size: 10px!important;
-    right: 1215px;
-    top: 195px;
+    right: 1050px;
+}
+
+
+.ticker_friends{
+    background-color: #E9EAED;
+    padding: 2px 5px!important;
+    font-size: 12px;
+    border-bottom: 1px solid lightgray;
+}
+.ticker_friends:hover,
+.message_friends_box:hover,
+.message_friends:hover{
+    cursor: pointer;
+    background-color: lightgrey;
+}
+.message_friends{
+    background-color: white;
+    font-size: 12px;
+    padding: 10px;
+    border: 1px solid lightgray;
+}
+.message_friends_box,.message_friends_box_1{
+    background-color: white;
+    font-size: 12px;
+    padding: 10px;
+}
+.message_text:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+.message_friends_divider_full,.message_friends_divider_others{
+    padding: 0 4px;
+    border: 1px solid lightgray;
+    border-top: 0px;
+}
+.message_friends_divider_full{
+    border-top: 1px solid lightgray;
+}
+.border_without_bottom{
+    border-top: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
+.online, .offline {
+    border-radius: 4px;
+    display: inline-block;
+    height: 8px;
+    margin-left: 4px;
+    width: 8px;
+    margin-top: 9px;
+    margin-left: -4px;
+}
+.online {
+    background-color: #0f9d28;
+}
+.offline {
+    background-color: #898f9c;
 }
 
 /*-------------------------------------CK editor--------------------------------------*/
@@ -573,7 +601,11 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 }
 
-/*-------------------------------------Header (Auth)--------------------------------------*/
+/*------------------------------------- Login --------------------------------------*/
+
+.fadeOut > p, .fadeOut > img{
+    display: inline; 
+}
 
 .margin_style{
     /*    margin-left: -12px;
@@ -691,28 +723,15 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 .img_caption{
     position: relative;
-    left: 0;
-    right: 0;
     bottom: 5px;
-    display: block;
-    padding: 5px;
+    padding: 5px 0;
     text-decoration: none;
     background-color: transparent;
     font-size: 10px;
-    word-wrap: break-word;
     cursor: pointer;
+    white-space:initial;
 }
 
-.friend_list_img_style{
-    list-style-type: none; 
-    padding: 0px;
-    margin: 0px;    
-}
-
-.friend_list_img_style a img{
-    height: 90px;
-    width: 80px;
-}
 .non_friend_pagelet_header_anchor_style{
     color: black;
 }
@@ -789,8 +808,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     cursor: pointer;
 }
 .subcategory_label_style{
-    font-size: 14px;
-    vertical-align: central;
+    font-size: 12px;
 }
 .achor_holder_style{
     cursor: pointer;
@@ -917,6 +935,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 .form_control_custom_style{
     height: 30px!important; 
     padding: 3px!important; 
+    font-size: 12px!important; 
 }
 
 .well {
@@ -943,6 +962,16 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     margin-left: 20px;
 }
 
+.close-custom{
+    color: #fff!important;
+    opacity: 1!important;
+    font-weight: normal!important;
+}
+.close-custom:hover{
+    color: #fff!important;
+    opacity: 1!important;
+    font-weight: bold!important;
+}
 
 .tooltip_hover {
     position: absolute;
@@ -970,36 +999,13 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 .ticker_divider{
     border: 2px solid lightgray;
 }
-.ticker_vertical_font_align{
-    padding-top: 12%;
-    vertical-align: middle!important;
-}
 .display_hidden{
     /*display: none;*/
-}
-
-.member_about_save_button,.member_about_save_button:hover,.member_about_save_button:focus,.member_about_save_button:active{
-    background-color: #703684; 
-    color: #fff; 
-    margin-right: -15px;
-    border: 1px solid #703684;
-    outline: none;
-    box-shadow: none;
-    border-radius: 3px;
-}
-.member_about_cancel_button,.member_about_cancel_button:hover,.member_about_cancel_button:focus,member_about_cancel_button:focus{
-    background-color: #703684; 
-    color: #fff; 
-    border: 1px solid #703684;
-    outline: none;
-    box-shadow: none;
-    border-radius: 3px;
 }
 
 .contact_background,.carrer_bg{
     background-color: #E9EAED;
     padding: 10px;
-    margin: 10px;
     border-radius: 5px;
 }
 
@@ -1034,4 +1040,13 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 .progress_custom{
     margin-bottom: 5px!important;
+}
+
+
+
+/*--------------------------Timeline About------------------------*/
+
+#dropdownMenu1, #dropdownMenu1:hover, #dropdownMenu1:visited, #dropdownMenu1:focus{
+    border: none!important;
+    padding: 3px 8px!important;
 }

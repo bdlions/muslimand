@@ -20,7 +20,7 @@
                         <span class="subcategory_label_style">Professional Skills</span>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" id="p_skill_id" class="form-control" ng-model="pSkillInfo.pSkill">
+                        <input type="text" id="p_skill_id" class="form-control form_control_custom_style" ng-model="pSkillInfo.pSkill">
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-5">
-                        <select class="form-control" name="control">
+                        <select class="form-control form_control_custom_style" name="control">
                             <option selected="1" value="0">Everyone</option>
                             <option value="1">Friends</option>
                             <option value="2">Friends of Friends</option>
@@ -39,10 +39,10 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button id="save_p_skill_btn" class="btn btn-default form-control" style="background-color: #703684; color: white" onclick="add_s_skill('<?php echo $user_id; ?>')">Save</button>
+                        <button id="save_p_skill_btn" class="btn btn-xs form-control form_control_custom_style" style="background-color: #703684; color: white" onclick="add_s_skill('<?php echo $user_id; ?>')">Save</button>
                     </div>
                     <div class="col-md-3">
-                        <button class="btn btn-default form-control cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
+                        <button class="btn btn-xs form-control form_control_custom_style cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -51,12 +51,12 @@
 </div>
 
 <script>
-    $(function () {
-        $('#subcategory_professional_skill').on('click', function () {
+    $(function() {
+        $('#subcategory_professional_skill').on('click', function() {
             $('#subcategory_professional_skill').hide();
             $('#professional_skill').show();
         });
-        $(".cancelling_btn").on("click", function () {
+        $(".cancelling_btn").on("click", function() {
             $("#professional_skill").hide();
             $("#subcategory_professional_skill").show();
         });
@@ -67,7 +67,7 @@
             alert("Please Fill up Professional Field");
             return;
         }
-        angular.element($('#save_p_skill_btn')).scope().addPSkill(userId, function () {
+        angular.element($('#save_p_skill_btn')).scope().addPSkill(userId, function() {
             $("#professional_skill").hide();
             $("#subcategory_professional_skill").show();
             $("#p_skill_tmpl_id").show();
