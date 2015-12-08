@@ -187,7 +187,7 @@
             <?php $this->load->view("member/profile/about/contact_basic_info/add_language"); ?>
         </div>
     </div>
-</div>
+
     <!--Show updated languages-->
     <div id="language_id" style="display: none">
         <div class="row form-group">
@@ -346,7 +346,7 @@
         </div>
     </div>
     
-
+</div>
 <script type="text/javascript">
     function show_mobile_edit_place(e) {
         var mobilePId = $(e).attr('id');
