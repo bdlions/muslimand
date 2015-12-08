@@ -139,7 +139,7 @@
                                     <li class="MiniBoxesUser" ng-click="openMiniBoxesUser(chatUserDetails)"><a>{{chatUserDetails.firstName}}&nbsp;{{ chatUserDetails.lastName}}</a></li>
                                 </div>
                                 <div class="col-md-2">
-                                    <button type="button" class="close" aria-label="Close" ng-click="removeMiniBoxesUser(item)" ><span aria-hidden="true">&times;</span></button>
+                                    <button type="button" class="close" aria-label="Close" ng-click="removeMiniBoxesUser(chatUserDetails)" ><span aria-hidden="true">&times;</span></button>
                                 </div>
                             </div>
                         </ul>
