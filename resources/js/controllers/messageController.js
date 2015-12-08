@@ -121,6 +121,8 @@ angular.module('controllers.Message', ['services.Message']).
             $scope.removeMiniBoxesUser = function (item) {
                 var index = $scope.miniBoxes.indexOf(item);
                 $scope.miniBoxes.splice(index, 1);
+                var chatUserIndex = $scope.chatUserList.indexOf(item);
+                $scope.chatUserList.splice(chatUserIndex, 1);
             };
 
 

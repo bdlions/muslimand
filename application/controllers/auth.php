@@ -81,9 +81,9 @@ class Auth extends CI_Controller {
             if (property_exists($landing_page_info, "countryList") != FALSE) {
                 foreach ($landing_page_info->countryList as $country_info) {
                     $country_list[$country_info->code] = $country_info->title;
-                    //$country_time_zone[$country_info->code] = $country_info->gmtOffset;
+                    $country_time_zone[$country_info->code] = $country_info->gmtOffset;
                     //hard coded
-                    $country_time_zone[$country_info->code] = "+6";
+//                    $country_time_zone[$country_info->code] = "+6";
                 }
             }
             if (property_exists($landing_page_info, "religionList") != FALSE) {
@@ -95,6 +95,8 @@ class Auth extends CI_Controller {
                 $user_list = $landing_page_info->userList;
                 $this->data['user_list'] = json_encode($user_list);
             }
+        } else {
+            $this->data['user_list'] = array();
         }
         if ($this->input->post('register_btn') != null) {
             //validate form input to register
@@ -123,7 +125,7 @@ class Auth extends CI_Controller {
                 if ($religion_id != null) {
                     $religion_title = $religion_list[$religion_id];
                 }
-                
+
                 if ($gender_id != null) {
                     $gender_title = $gender_list[$gender_id];
                 }
@@ -136,7 +138,7 @@ class Auth extends CI_Controller {
                     'id' => $religion_id,
                     'title' => $religion_title,
                 );
-               
+
                 $gender = array(
                     'genderId' => $gender_id,
                     'title' => $gender_title
@@ -176,7 +178,7 @@ class Auth extends CI_Controller {
 
                         $this->ion_auth->set_message('account_creation_successful');
                         //adding social network code
-                        if( !empty( $this->session->userdata('social_network_id') ) && !empty( $this->session->userdata('social_network_code')) ) {
+                        if (!empty($this->session->userdata('social_network_id')) && !empty($this->session->userdata('social_network_code'))) {
                             $social_network_data = array(
                                 'user_id' => $id,
                                 'social_network_id' => $this->session->userdata('social_network_id'),
@@ -185,9 +187,7 @@ class Auth extends CI_Controller {
                             $this->social_network_mongodb_model->add_social_network_info($social_network_data);
                             $this->session->unset_userdata('social_network_id');
                             $this->session->unset_userdata('social_network_code');
-                        }
-                        else
-                        {
+                        } else {
                             //send email to the client to confirm the email
                             $this->ion_auth->email_activation($id);
                         }
@@ -225,8 +225,8 @@ class Auth extends CI_Controller {
         } else {
 
             $r_first_name = $this->form_validation->set_value('r_first_name');
-            if( !empty( $this->session->userdata('first_name') ) ) {
-                $r_first_name =  $this->session->userdata('first_name');  
+            if (!empty($this->session->userdata('first_name'))) {
+                $r_first_name = $this->session->userdata('first_name');
                 $this->session->unset_userdata('first_name');
             }
             $this->data['r_first_name'] = array(
@@ -269,7 +269,7 @@ class Auth extends CI_Controller {
             //the user is not logging in so display the login page
             //set the flash data error message if there is one
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-            $this->data['success_image'] =  $this->session->flashdata('success_image');
+            $this->data['success_image'] = $this->session->flashdata('success_image');
 
             $this->data['identity'] = array('name' => 'identity',
                 'id' => 'identity',
@@ -938,7 +938,7 @@ class Auth extends CI_Controller {
             if ($this->connection->http_code == 200) {
                 $this->session->set_userdata('access_token', $access_token['oauth_token']);
                 $this->session->set_userdata('access_token_secret', $access_token['oauth_token_secret']);
-                
+
                 $this->session->unset_userdata('request_token');
                 $this->session->unset_userdata('request_token_secret');
 
@@ -961,8 +961,7 @@ class Auth extends CI_Controller {
         } else if ($this->session->userdata('access_token') && $this->session->userdata('access_token_secret')) {
             // User is already authenticated. Add your user notification code here.
             $access_token_array = explode("-", $this->session->userdata('access_token'));
-            if(!empty($access_token_array))
-            {
+            if (!empty($access_token_array)) {
                 $code = $access_token_array[0];
                 $user_id = $this->social_network_mongodb_model->is_user_mapped_to_social_network(SOCIAL_NETWORK_ID_TWITTER, $code);
                 if ($user_id === FALSE) {
@@ -978,7 +977,7 @@ class Auth extends CI_Controller {
         } else {
             // Making a request for request_token
             $request_token = $this->connection->getRequestToken(base_url('auth/twitter'));
-            
+
             $this->session->set_userdata('request_token', $request_token['oauth_token']);
             $this->session->set_userdata('request_token_secret', $request_token['oauth_token_secret']);
 
@@ -991,7 +990,7 @@ class Auth extends CI_Controller {
             }
         }
     }
-    
+
     function login_complete() {
         $this->load->model('org/user/profile_model');
         if ($this->profile_model->is_security_information_stored($this->session->userdata('user_id'))) {
@@ -1005,4 +1004,5 @@ class Auth extends CI_Controller {
             redirect('profile', 'refresh');
         }
     }
+
 }

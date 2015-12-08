@@ -100,7 +100,7 @@
                                                 <span ng-if="status.mappingId == '<?php echo $user_id; ?>'">
                                                     <li onclick="select_edit_field(angular.element(this).scope().status.statusId)"><a >Edit</a></li>
                                                 </span>
-                                                <li><a href="#">Report</a></li>
+                                                <!--<li><a href="#">Report</a></li>-->
                                                 <span ng-if="status.mappingId == '<?php echo $user_id; ?>' || status.userId == '<?php echo $user_id; ?>'">
                                                     <li><a href  ng-click="deleteStatus(status.statusId)">Delete</a></li>
                                                 </span>
