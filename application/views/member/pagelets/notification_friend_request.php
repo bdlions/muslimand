@@ -37,8 +37,7 @@
     <div class="pagelet" ng-repeat="notification in friendNotifications.slice().reverse()">
         <div class="row" ng-if="notification.friendNotification.typeId == '<?php echo NOTIFICATION_TYPE_PENDING_REQUEST; ?>'" >
             <div class="col-xs-2">
-                <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{notification.userInfo.userId}}.jpg" onError="onImageUnavailableHeader(this)">
-                <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{notification.genderId}}.jpg">
+                <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{notification.genderId}}.jpg" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{notification.userInfo.userId}}.jpg" >
             </div>
             <div class="col-xs-4">
                 <a href="<?php echo base_url(); ?>member/timeline/{{notification.friendNotification.userInfo.userId}}" style="font-size: 12px; font-weight: bold;" >{{notification.friendNotification.userInfo.firstName}} &nbsp; {{notification.friendNotification.userInfo.lastName}}</a>

@@ -1,16 +1,3 @@
-<script>
-    function onImageNotFound(img) {
-        var div = img.parentNode;
-        var firstImage = img;
-        var secondImage = div.getElementsByTagName('img')[1];
-
-        firstImage.style.display = 'none';
-
-        secondImage.style.visibility = 'visible';
-        secondImage.style.height = '100%';
-    }
-
-</script>
 
 <div class="pagelet">
     <div class="row">
@@ -30,8 +17,7 @@
         <div class="row">
             <a  href="<?php echo base_url() ?>status/get_status_details/{{notification.notification.referenceId}}">
                 <div class="col-xs-2">
-                    <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50; ?>{{notification.notification.userList[0].userId}}.jpg" onError="onImageUnavailableHeader(this)"> 
-                    <img style="visibility:hidden;height: 0px;" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{notification.genderId}}.jpg" alt="">
+                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{notification.genderId}}.jpg" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50; ?>{{notification.notification.userList[0].userId}}.jpg"> 
                 </div>
                 <div class="col-xs-10 ">
                     <div>

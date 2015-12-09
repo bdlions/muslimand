@@ -27,7 +27,7 @@ angular.module('controllers.Landing', ['services.Landing']).
             };
             $scope.setGender = function (genders) {
                 $scope.genderList = JSON.parse(genders);
-                console.log($scope.genderList);
+//                console.log($scope.genderList);
             };
             $scope.setReligion = function (religions) {
                 $scope.religionList = JSON.parse(religions);

@@ -71,6 +71,7 @@ class Auth extends CI_Controller {
         $religion_list = array();
         $country_time_zone = array();
         $gender_list = array();
+        $user_list_info = array();
         $user_list = array();
         $landing_page_info = $this->landing_page_model->get_landing_page_info();
         $gender = $this->utils->get_gender();
@@ -93,17 +94,33 @@ class Auth extends CI_Controller {
             }
             if (property_exists($landing_page_info, "userList") != FALSE) {
                 $user_list = $landing_page_info->userList;
-                $this->data['user_list'] = json_encode($user_list);
+                foreach ($user_list as $user) {
+                    if (property_exists($user, "country")) {
+                        $user->country = json_decode($user->country);
+                    }
+                    if (property_exists($user, "gender")) {
+                        $user->gender = json_decode($user->gender);
+                    }
+                    if (property_exists($user, "pSkill")) {
+                        $user->pSkill = json_decode($user->pSkill);
+                    }
+                    $user_list_info[] = $user;
+                }
+                $this->data['user_list'] = json_encode($user_list_info);
             }
         } else {
             $this->data['user_list'] = array();
         }
         if ($this->input->post('register_btn') != null) {
             //validate form input to register
+            $this->form_validation->set_rules('gender_id', 'Gender', 'required');
             $this->form_validation->set_rules('r_first_name', 'First Name', 'required');
             $this->form_validation->set_rules('r_last_name', 'Last Name', 'required');
             $this->form_validation->set_rules('r_email', 'Email', 'required');
             $this->form_validation->set_rules('r_password', 'Password', 'required');
+//            $this->form_validation->set_rules('birthday_day', 'Day', 'required');
+//            $this->form_validation->set_rules('birthday_month', 'Month', 'required');
+//            $this->form_validation->set_rules('birthday_year', 'Year', 'required');
             $this->form_validation->set_rules('r_password_conf', 'Password confirm', 'required|matches[r_password]');
         } else if ($this->input->post('login_btn') != null) {
             //validate form input to login
@@ -117,7 +134,7 @@ class Auth extends CI_Controller {
                 $password = $this->input->post('r_password');
                 $country_code = $this->input->post('country_list');
                 $religion_id = $this->input->post('religion_list');
-                $gender_id = $this->input->post('gender_list');
+                $gender_id = $this->input->post('gender_id');
                 if ($country_code != null) {
                     $country_title = $country_list[$country_code];
                     $gmt_offset = $country_time_zone[$country_code];

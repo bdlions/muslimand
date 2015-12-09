@@ -1,13 +1,4 @@
-<script>
-    function onImageUnavailable(img) {
-        var div = img.parentNode;
-        var firstImage = img;
-        var secondImage = div.getElementsByTagName('img')[1];
-        firstImage.style.display = 'none';
-        secondImage.style.visibility = 'visible';
-        secondImage.style.height = '100%';
-    }
-</script>
+
 <script>
     (function($) {
         $(window).load(function() {
@@ -85,8 +76,7 @@
                             <div class="col-md-3"> 
                                 <span ng-repeat= "userInfo in messageSummery.userList" >
                                     <span ng-if="userInfo.userId != '<?php echo $user_id; ?>'">
-                                        <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{userInfo.userId}}.jpg" width="30" height="30" onError="onImageUnavailable(this)"> 
-                                        <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userInfo.genderId}}.jpg">
+                                        <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userInfo.genderId}}.jpg" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{userInfo.userId}}.jpg" width="30" height="30" > 
                                     </span>
                                 </span>
                             </div>
@@ -116,9 +106,7 @@
                         <div class="row" ng-repeat="messageInfo in messageInformation.messages">
                             <div class="user_comment">
                                 <div class="col-md-1">
-                                    <img src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
-                                    <!--<img src="<?php // echo base_url() . PROFILE_PICTURE_PATH_W30_H30;  ?>{{messageInfo.senderInfo.userId}}.jpg" width="30" height="30" onError="onImageUnavailable(this)">--> 
-                                    <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{messageInfo.senderInfo.genderId}}.jpg">
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{messageInfo.senderInfo.genderId}}.jpg" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
                                 </div>
                                 <div class="col-md-8">
                                     <div class="row">

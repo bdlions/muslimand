@@ -12,7 +12,7 @@
     <div class="row from-group" style="margin-bottom: 3px;">
         <div id="status" class="col-xs-2 col-sm-2 col-md-2"><span class="status_label_style">Status</span></div>
         <div id="photo" class="col-xs-2 col-sm-2 col-md-2"><span class="status_label_style">Photo</span></div>
-        <div id="link" class="col-xs-2 col-sm-2 col-md-2"><span class="status_label_style">Link</span></div>
+        <!--<div id="link" class="col-xs-2 col-sm-2 col-md-2"><span class="status_label_style">Link</span></div>-->
     </div>
     <div id="photo_details" style="display: none;">
         <div id="fileupload" method="POST" enctype="multipart/form-data" data-ng-app="demo" data-ng-controller="DemoFileUploadController" ng-init="setPath('<?php echo base_url(); ?>status/image_upload')" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">

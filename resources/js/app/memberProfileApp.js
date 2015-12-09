@@ -1,4 +1,4 @@
-angular.module("app.MemberProfile", [
+var app = angular.module("app.MemberProfile", [
     'controllers.ImageCopper',
     'controllers.Header',
     'controllers.BasicProfile',
@@ -9,10 +9,21 @@ angular.module("app.MemberProfile", [
     'controllers.Photo',
     'controllers.Image',
     'ui.bootstrap'
-]).directive("chatBox", function () {
+]);
+app.directive("chatBox", function () {
     return {
         restrict: "E",
         replace: true,
-        templateUrl:'http://localhost/muslimand/member/chat_tmpl_load'
+        templateUrl: 'http://localhost/muslimand/member/chat_tmpl_load'
     };
+});
+app.directive('fallbackSrc', function () {
+    var fallbackSrc = {
+        link: function postLink(scope, iElement, iAttrs) {
+            iElement.bind('error', function () {
+                angular.element(this).attr("src", iAttrs.fallbackSrc);
+            });
+        }
+    }
+    return fallbackSrc;
 });

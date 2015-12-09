@@ -102,6 +102,7 @@ class Utils {
      *  */
 
     public function get_year_list() {
+         $year_list[0] = "year";
         for ($i = 2015; $i >= 1915; $i--) {
             $year_list["" . $i] = "" . $i;
         }

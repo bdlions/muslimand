@@ -40,7 +40,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <?php $this->load->view("member/timeline/add_request"); ?>
+        <?php // $this->load->view("member/timeline/add_request"); ?>
     </div>
 </div>
 <div class="row form-group"></div>
