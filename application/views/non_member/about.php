@@ -52,18 +52,17 @@
             <div class="col-md-12">
                 <?php $this->load->view("non_member/profile_cover"); ?>
                 <div class="row form-group"></div>
-                <div class="pagelet" style="margin: 0 15px">
+                <div class="pagelet">
                     <div class="row">
                         <div class="col-md-1">
-                            <div class="row form-group"></div>
-                            <img src="<?php echo base_url(); ?>resources/images/about_box_2.png"  width="28" height="28">   
+                            <img src="<?php echo base_url(); ?>resources/images/about_icons/about.png">   
                         </div>
                         <div class="col-md-11">
-                            <span style="font-size: 35px;">About</span>  
+                            <div style="font-size: 20px;">About</div>  
                         </div>
                     </div>
                 </div>
-                <div class="pagelet" style="margin: 0 15px">
+                <div class="pagelet">
                     <div class="row">
                         <div class="col-md-4" style="border-right: 1px solid lightgray;">
                             <div class="pagelet">

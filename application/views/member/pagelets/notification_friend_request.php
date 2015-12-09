@@ -57,10 +57,11 @@
             </div>
         </div>
         <div class="row" ng-if="notification.friendNotification.typeId == '<?php echo NOTIFICATION_TYPE_ACCEPT_REQUEST; ?>'" >
-             <div class="col-md-offset-1 col-md-10">
-            <a href="<?php echo base_url(); ?>member/timeline/{{notification.friendNotification.userInfo.userId}}">{{notification.friendNotification.userInfo.firstName}}&nbsp;{{notification.friendNotification.userInfo.lastName}} </a>
-            Accept your Friend Request
-             </div>
+            <div class="col-md-12">
+                <img src="<?php echo base_url(); ?>resources/images/success_img.png">
+                <a href="<?php echo base_url(); ?>member/timeline/{{notification.friendNotification.userInfo.userId}}">{{notification.friendNotification.userInfo.firstName}}&nbsp;{{notification.friendNotification.userInfo.lastName}} </a>
+                Accept your Friend Request
+            </div>
         </div>
     </div>
     <div class="pagelet">

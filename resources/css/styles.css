@@ -370,7 +370,14 @@ body {
 
 .common_box{
     background-color: #703684;
+    z-index: 20000;
 }
+
+.active_chat{
+     background-color: red;
+    z-index: 20000;
+}
+
 .msg_box{
     position: absolute;
     width: 260px;
@@ -1041,8 +1048,6 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 .progress_custom{
     margin-bottom: 5px!important;
 }
-
-
 
 /*--------------------------Timeline About------------------------*/
 

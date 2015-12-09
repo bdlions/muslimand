@@ -19,14 +19,6 @@
         })(jQuery);
     </script>
     <script type="text/javascript">
-        $(function () {
-            $('.msg_box').each(function () {
-                $(this).click(function () {
-                    $(this).css("background-color", "#842D80");
-                    $('.msg_box').not(this).css("background-color", "#703684");
-                });
-            });
-        });
 
         function onImageUnavailable(img) {
             var div = img.parentNode;

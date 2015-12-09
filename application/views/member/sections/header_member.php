@@ -105,7 +105,7 @@
     <div class="col-md-offset-1 col-md-2">
         <a target="_self" href="<?php echo base_url(); ?>member/newsfeed">
             <img class="img-circle" src="<?php echo base_url(); ?>resources/images/logo.png">
-            <img src="<?php echo base_url(); ?>resources/images/sadiik.png">
+            <img src="<?php echo base_url(); ?>resources/images/shadhiin.png">
         </a>
     </div>
     <div class="col-md-4">
