@@ -182,13 +182,12 @@ class Member extends CI_Controller {
         $offset = 0;
         $user_id = $this->session->userdata('user_id');
         $result = $this->message_mongodb_model->get_message_summary_list($user_id, $offset, $limit);
-        $this->data["message_summery_list"] = $result;
+        $this->data["message_summery_list"] = $result->messageSummeryList;
+        $this->data["recent_message_info"] = json_decode($result->recentMessageInfo);
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['user_id'] = $user_id;
         $this->data['app'] = "app.Message";
         $this->template->load(null, "member/messages", $this->data);
-//        $this->template->load(MEMBER_TEMPLATE, "member/messages", $this->data);
-//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/messages", $this->data);
     }
 
     function privacy_settings($profile_id = "0") {

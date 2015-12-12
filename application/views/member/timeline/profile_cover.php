@@ -103,10 +103,9 @@
                     </div>
                 </div>
             </div>
-            <span ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)" ng-clock>
-                <a class="timeline_profile_name" href="" ng-cloak>
-                    <?php // echo $profile_first_name; ?>&nbsp;<?php // echo $profile_last_name; ?>
-                    {{userRelation.profile_first_name}} {{userRelation.profile_last_name}}
+            <span ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)">
+                <a class="timeline_profile_name ">
+                    <span ng-cloak>{{userRelation.profile_first_name}} {{userRelation.profile_last_name}}</span>
                 </a>
                 <div> 
                     <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_NON_FRIEND_ID; ?>">

@@ -43,15 +43,17 @@ class Message extends CI_Controller {
                 $user_id_list[] = $r_user_id;
             }
         }
-
         $user_id_list[] = $sender_id;
-
         $user_info = new stdClass();
         $user_info->firstName = $this->session->userdata('first_name');
         $user_info->lastName = $this->session->userdata('last_name');
         $user_info->userId = $sender_id;
 
         if (isset($r_user_id)) {
+            function cmp($a, $b) {
+                return strcmp($a, $b);
+            }
+            usort($user_id_list, "cmp");
             $result = $this->message_mongodb_model->add_message($user_id_list, $sender_id, $message);
         } else {
             $result = $this->message_mongodb_model->add_message_by_group_id($group_id, $user_info, $message);
@@ -63,6 +65,7 @@ class Message extends CI_Controller {
             $response["message_info"] = $messageInfo;
         }
         echo json_encode($response);
+        return;
     }
 
     function get_gender_id($user_id_list) {
@@ -75,7 +78,6 @@ class Message extends CI_Controller {
         $gender_id = "_";
         foreach ($user_id_list as $user) {
             $gender_id = $gender_id . $user . "_";
-            ;
         }
 
         return $gender_id;
@@ -102,8 +104,7 @@ class Message extends CI_Controller {
             $chat_initial_info = new stdClass();
             $chat_initial_info->groupId = $gender_id;
             $chat_initial_info->messages = array();
-            $response['message_history']   = $chat_initial_info;
-            
+            $response['message_history'] = $chat_initial_info;
         }
         echo json_encode($response);
         return;

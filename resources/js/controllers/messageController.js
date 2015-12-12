@@ -30,8 +30,6 @@ angular.module('controllers.Message', ['services.Message']).
                         success(function (data, status, headers, config) {
                             if (typeof data.message_history != "undefined") {
                                 $scope.messageHistory = data.message_history;
-                                console.log(data.message_history);
-
                                 $scope.messageHistory.userId = chatUserInfo.userId;
                                 $scope.messageHistory.firstName = chatUserInfo.firstName;
                                 $scope.messageHistory.lastName = chatUserInfo.lastName;
@@ -180,27 +178,37 @@ angular.module('controllers.Message', ['services.Message']).
 
             $scope.messageSummeryList = [];
             $scope.messageInformation = {};
-            $scope.messageInformation.message = [];
+//            $scope.messageInformation.message = [];
             $scope.userMessage = {};
 
             $scope.setMessageSummery = function (messageSummeryList) {
                 $scope.messageSummeryList = JSON.parse(messageSummeryList);
-                console.log($scope.messageSummeryList);
+//                console.log($scope.messageSummeryList[0].userList);
+            };
+            $scope.setRecentMessageInfo = function (recentMessageInfo) {
+                $scope.messageInformation = JSON.parse(recentMessageInfo);
+                $scope.messageInformation.userList = $scope.messageSummeryList[0].userList;
+                console.log($scope.messageInformation);
             };
 
             $scope.addMessage = function (groupId) {
+                console.log($scope.messageInformation);
                 $scope.userMessage.groupId = groupId;
                 messageService.addMessage($scope.userMessage).
                         success(function (data, status, headers, config) {
+                            if (typeof $scope.messageInformation.messages == "undefined") {
+                                $scope.messageInformation.messages = new Array();
+                            }
                             $scope.messageInformation.messages.push(data.message_info);
                             $scope.userMessage.message = "";
                         });
             };
-            $scope.getMessageList = function (groupId) {
+            $scope.getMessageList = function (messageSummery) {
+                var groupId = messageSummery.groupId ;
                 messageService.getMessageList(groupId).
                         success(function (data, status, headers, config) {
                             $scope.messageInformation = data;
-//                            console.log(data);
+                            $scope.messageInformation.userList = messageSummery.userList;
                         });
             };
 
