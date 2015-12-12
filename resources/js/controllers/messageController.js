@@ -51,7 +51,6 @@ angular.module('controllers.Message', ['services.Message']).
                 if (userExistStatus != 1) {
                     $scope.chatUserList.push(userObject);
                 }
-                console.log($scope.chatUserList);
             };
 
             $scope.getChatBoxes = function () {
@@ -72,7 +71,6 @@ angular.module('controllers.Message', ['services.Message']).
                 }
                 $scope.chatBoxes = tempChatBoxes;
                 $scope.miniBoxes = tempMiniBoxes;
-                console.log($scope.chatBoxes);
             };
 
 
@@ -187,12 +185,12 @@ angular.module('controllers.Message', ['services.Message']).
             };
             $scope.setRecentMessageInfo = function (recentMessageInfo) {
                 $scope.messageInformation = JSON.parse(recentMessageInfo);
+                if(typeof $scope.messageSummeryList[0] != "undefined"){
                 $scope.messageInformation.userList = $scope.messageSummeryList[0].userList;
-                console.log($scope.messageInformation);
+                }
             };
 
             $scope.addMessage = function (groupId) {
-                console.log($scope.messageInformation);
                 $scope.userMessage.groupId = groupId;
                 messageService.addMessage($scope.userMessage).
                         success(function (data, status, headers, config) {

@@ -1057,3 +1057,9 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     border: none!important;
     padding: 3px 8px!important;
 }
+
+/*ng-clock*/
+
+.ng-cloak {
+  display: none !important;
+}

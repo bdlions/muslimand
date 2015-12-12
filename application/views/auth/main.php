@@ -195,7 +195,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="professional_info">{{user.pSkill.pSkill}}</div>
+                                <div class="professional_info">{{user.pSkill}}</div>
                             </div>
                         </div>
                         <div class="row">

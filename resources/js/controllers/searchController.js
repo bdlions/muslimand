@@ -5,7 +5,6 @@ angular.module('controllers.Search', ['services.Search']).
             $scope.getUsers = function () {
                 searchService.getUsers($scope.searchValue).
                         success(function (data, status, headers, config) {
-                          console.log(data);
                         });
             };
          

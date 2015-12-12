@@ -21,7 +21,6 @@ angular.module('controllers.ImageCopper', ['ImageCropper'])
                     delete $scope.resultBlob;
                 };
                 $scope.upload_picture = function (imageData) {
-                    console.log(imageData);
                 }
             }]);
 

@@ -105,7 +105,8 @@
             </div>
             <span ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)">
                 <a class="timeline_profile_name ">
-                    <span ng-cloak>{{userRelation.profile_first_name}} {{userRelation.profile_last_name}}</span>
+                    <span ng-bind="userRelation.profile_first_name"></span>
+                    <span ng-bind="userRelation.profile_last_name"></span>
                 </a>
                 <div> 
                     <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_NON_FRIEND_ID; ?>">

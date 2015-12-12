@@ -177,13 +177,18 @@ class Member extends CI_Controller {
     }
 
     function messages() {
-
+        $message_ummery_list = array();
+        $recent_mage_info = array();
         $limit = 10;
         $offset = 0;
         $user_id = $this->session->userdata('user_id');
         $result = $this->message_mongodb_model->get_message_summary_list($user_id, $offset, $limit);
-        $this->data["message_summery_list"] = $result->messageSummeryList;
-        $this->data["recent_message_info"] = json_decode($result->recentMessageInfo);
+        if ($result != null) {
+            $message_ummery_list = $result->messageSummeryList;
+            $recent_mage_info = json_decode($result->recentMessageInfo);
+        }
+        $this->data["message_summery_list"] = $message_ummery_list;
+        $this->data["recent_message_info"] = $recent_mage_info;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['user_id'] = $user_id;
         $this->data['app'] = "app.Message";

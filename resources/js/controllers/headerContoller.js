@@ -7,7 +7,6 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
             $scope.friendNotifications = [];
             $scope.url = "../";
             $scope.userCurrentTimeStamp = new Date().getTime()/1000;
-            console.log($scope.userCurrentTimeStamp);
             $scope.userGenderId = "";
 //            $scope.setConstants = function (t) {
 //                $scope.constants = JSON.parse(t);
@@ -39,7 +38,6 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
                     }
                 }, $scope.allNotificationList);
 
-                console.log($scope.allNotificationList);
             };
 
 
@@ -57,7 +55,6 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
 
             $scope.setUserGender = function (genderId) {
                 $scope.userGenderId = genderId;
-                console.log($scope.userGenderId);
 
             };
 

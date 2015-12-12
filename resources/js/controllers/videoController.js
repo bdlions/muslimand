@@ -11,15 +11,12 @@ angular.module('controllers.Video', ['services.Video']).
 
             $scope.setVideoCategories = function (categoryList) {
                 $scope.categories = JSON.parse(categoryList);
-//                console.log($scope.categories);
             };
             $scope.setVideos = function (videoList) {
                 $scope.videoList = JSON.parse(videoList);
-//                console.log($scope.videoList);
             };
             $scope.setVideoInfo = function (vedioInfo) {
                 $scope.videoDetail = JSON.parse(vedioInfo);
-                console.log($scope.videoDetail);
             };
             $scope.addVideo = function (requestFunction) {
                 videoService.addVideo($scope.videoInfo).
@@ -109,7 +106,6 @@ angular.module('controllers.Video', ['services.Video']).
 
             $scope.setSharedInfo = function (sharedInfo, requestFunction) {
                 $scope.sharedInfo = sharedInfo;
-//                console.log($scope.sharedInfo);
                 requestFunction();
             };
 
@@ -122,7 +118,4 @@ angular.module('controllers.Video', ['services.Video']).
                         });
             };
 
-//            $scope.testController = function () {
-//                console.log("test Controler");
-//            };
         });
