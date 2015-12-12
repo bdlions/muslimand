@@ -130,6 +130,7 @@ class Member extends CI_Controller {
         $user_relation = $this->get_user_relation_info($profile_id);
         $this->data['profile_first_name'] = $user_relation['profile_first_name'];
         $this->data['profile_last_name'] = $user_relation['profile_last_name'];
+        $this->data['gender_id'] = $user_relation['gender_id'];
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');

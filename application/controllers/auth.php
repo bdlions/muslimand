@@ -93,20 +93,20 @@ class Auth extends CI_Controller {
                 }
             }
             if (property_exists($landing_page_info, "userList") != FALSE) {
+
                 $user_list = $landing_page_info->userList;
-                foreach ($user_list as $user) {
-                    if (property_exists($user, "country")) {
-                        $user->country = json_decode($user->country);
+                if (!empty($user_list)) {
+                    foreach ($user_list as $user) {
+                        if (property_exists($user, "gender")) {
+                            $user->gender = json_decode($user->gender);
+                        }
+                        if (property_exists($user, "country")) {
+                            $user->country = json_decode($user->country);
+                        }
+                        $user_list_info[] = $user;
                     }
-                    if (property_exists($user, "gender")) {
-                        $user->gender = json_decode($user->gender);
-                    }
-                    if (property_exists($user, "pSkill")) {
-                        $user->pSkill = json_decode($user->pSkill);
-                    }
-                    $user_list_info[] = $user;
+                    $this->data['user_list'] = json_encode($user_list_info);
                 }
-                $this->data['user_list'] = json_encode($user_list_info);
             }
         } else {
             $this->data['user_list'] = array();

@@ -9,10 +9,6 @@
         secondImage.style.visibility = 'visible';
         secondImage.style.height = '100%';
     }
-    function onImageNotFound() {
-
-    }
-
 </script>
 
 <div ng-controller="statusController" ng-clock ng-init="setUserGender(<?php echo htmlspecialchars(json_encode($user_gender_id)); ?>)">
@@ -22,8 +18,8 @@
             <div class="row form-group"></div>
             <div class="row">
                 <div class="col-xs-12" class="newsfeed_profile_picture" style="margin-left: 0;">
-                    <img class="img-circle" fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100_{{userGenderId}}.jpg" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
-                    <img style="visibility:hidden; height: 0px;" class="img-circle" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100_{{userGenderId}}.jpg?time= <?php echo time();?>">
+                    <img class="img-circle" fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>" />
+                    <!--<img style="visibility:hidden; height: 0px;" class="img-circle" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100_{{userGenderId}}.jpg">-->
                 </div>
             </div>
             <div class="row">

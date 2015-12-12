@@ -76,7 +76,7 @@
                             <div class="col-md-3"> 
                                 <span ng-repeat= "userInfo in messageSummery.userList" >
                                     <span ng-if="userInfo.userId != '<?php echo $user_id; ?>'">
-                                        <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userInfo.genderId}}.jpg" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{userInfo.userId}}.jpg" width="30" height="30" > 
+                                        <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userInfo.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{userInfo.userId}}.jpg" width="30" height="30" > 
                                     </span>
                                 </span>
                             </div>
@@ -106,7 +106,7 @@
                         <div class="row" ng-repeat="messageInfo in messageInformation.messages">
                             <div class="user_comment">
                                 <div class="col-md-1">
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{messageInfo.senderInfo.genderId}}.jpg" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{messageInfo.senderInfo.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
                                 </div>
                                 <div class="col-md-8">
                                     <div class="row">

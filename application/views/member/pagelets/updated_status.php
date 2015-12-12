@@ -10,7 +10,7 @@
                 <div class="pagelet">
                     <div class="row">
                         <div class="col-md-2" >
-                            <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{status.genderId}}.jpg" style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time= <?php echo time(); ?>" width="40" height="40" alt="">
+                            <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{status.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time= <?php echo time(); ?>" width="40" height="40" alt="">
                         </div>
                         <div class="col-md-10" >
                             <div class="row">
@@ -76,7 +76,7 @@
                                         <div class="col-md-3">
                                             <ul style="list-style-type: none; padding: 0;">
                                                 <li class="dropdown">
-                                                    <img src="<?php echo base_url(); ?>resources/images/friends_icon.png" width="15" height="15">
+                                                    <img ng-src="<?php echo base_url(); ?>resources/images/friends_icon.png" width="15" height="15">
                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
                                                     <ul class="dropdown-menu" role="menu">
                                                         <li><a href="#">Everyone</a></li>
@@ -142,23 +142,23 @@
                                 <div ng-repeat="image in status.images">
                                     <div ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> == status.statusTypeId">
                                         <div class="col-md-12 form-group">
-                                            <img class="img-responsive" style="border: 1px solid #703684; float: left;"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
+                                            <img class="img-responsive" style="border: 1px solid #703684; float: left;" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
                                         </div>
                                     </div>
                                     <div ng-if="<?php echo CHANGE_COVER_PICTURE; ?> == status.statusTypeId">
                                         <div class="col-md-12 form-group">
-                                            <img class="img-responsive" style="border: 1px solid #703684; float: left"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
+                                            <img class="img-responsive" style="border: 1px solid #703684; float: left" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
                                         </div>
                                     </div>
                                     <div class="col-md-4 form-group" ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> != status.statusTypeId && <?php echo CHANGE_COVER_PICTURE; ?> != status.statusTypeId">
-                                        <img class="img-responsive" style="border: 1px solid #703684; float: left"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >
+                                        <img class="img-responsive" style="border: 1px solid #703684; float: left" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row from-group">
                                 <div class="from-group col-md-4" ng-repeat="image in status.referenceInfo.images">
-                                    <img class="img-responsive" style="border: 1px solid #703684; float: left"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" width="120" height="100">
+                                    <img class="img-responsive" style="border: 1px solid #703684; float: left" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" width="120" height="100">
                                 </div>
                             </div>
 
@@ -177,12 +177,12 @@
                                     </span>
                                     <span ng-if = "status.likeStatus == '1'">
                                         <a style="color: #3B59A9;" href id="statusUnLike{{status.statusId}}" ng-click="unLike(status.statusId)">
-                                            <img src="<?php echo base_url(); ?>resources/images/like_icon.png"> liked </a>. 
+                                            <img ng-src="<?php echo base_url(); ?>resources/images/like_icon.png"> liked </a>. 
                                     </span>
                                     <a style="color: #3B59A9;" href onclick="select_comment_field(angular.element(this).scope().status.statusId)">
-                                        <img src="<?php echo base_url(); ?>resources/images/comment_icon.png"> Comment </a>.
+                                        <img ng-src="<?php echo base_url(); ?>resources/images/comment_icon.png"> Comment </a>.
                                     <a style="color: #3B59A9;"  id="share_add_id" href onclick="open_modal_share(angular.element(this).scope().status)">
-                                        <img src="<?php echo base_url(); ?>resources/images/share_icon.png"> Share</a>
+                                        <img ng-src="<?php echo base_url(); ?>resources/images/share_icon.png"> Share</a>
                                 </div>
                             </div>
                         </div>
@@ -217,7 +217,7 @@
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <div style="float: left;">
-                                    <img src="<?php echo base_url(); ?>resources/images/share_icon.png" >
+                                    <img ng-src="<?php echo base_url(); ?>resources/images/share_icon.png" >
                                     <a href id="shared_list_id" onclick="open_modal_shared_list(angular.element(this).scope().status.statusId)">{{status.shareCounter}} shares</a>
                                 </div>
                             </div>
@@ -229,7 +229,7 @@
                             <div class="col-md-12" id="more_comment_id">
                                 <div style="float: left;">
 
-                                    <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
+                                    <img ng-src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
                                     <a href  id="status_more_comment" onclick="get_album_comments(angular.element(this).scope().status.statusId)">view {{status.commentCounter}} more comments </a>
                                 </div>
                             </div>
@@ -241,7 +241,7 @@
                         <div ng-repeat="commentInfo in status.commentList.slice().reverse()">
                             <div class="row form-group" id="comment_{{commentInfo.commentId}}">
                                 <div class="col-md-1" profile_picture >
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg" style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time= <?php echo time(); ?> " width="30" height="30">
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg" width="30" height="30">
                                     <!--<img style="border: 1px solid lightgray; visibility:hidden; height: 0px " src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg">-->
                                 </div>
                                 <div class="col-md-9">
@@ -298,7 +298,7 @@
                     </span>
                     <div class="row">
                         <div class="col-md-1" profile_picture>
-                            <img  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
+                            <img  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
                         </div>
                         <div class="col-md-11">
                             <form  ng-submit="addComment(userGenderId, status.userInfo, status.statusId)">

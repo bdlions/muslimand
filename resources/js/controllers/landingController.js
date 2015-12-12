@@ -13,7 +13,7 @@ angular.module('controllers.Landing', ['services.Landing']).
 
             $scope.setUserList = function (userList) {
                 $scope.userList = JSON.parse(userList);
-//                console.log($scope.userList);
+                console.log($scope.userList);
             };
 
             $scope.setBirthDay = function (dates) {

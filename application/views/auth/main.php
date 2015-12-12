@@ -169,7 +169,7 @@
                         <div class="brand_cover_single_image">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>40x40_{{user.gender.genderId}}.jpg" height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url().PROFILE_PICTURE_PATH_W40_H40 ?>{{user.userId}}.jpg" />
+                                    <img  height="45" width="45" class="img_pad_mar_top_single_image" alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{user.userId}}.jpg"  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>40x40_{{user.gender.genderId}}.jpg" />
                                 </div>
                             </div>
                             <div class="row">
@@ -179,7 +179,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url() . COUNTRY_FLAG_IMAGE_PATH; ?>{{user.country.code}}.png">
+                                    <img style="margin-top: -12px;" height="22" width="45" ng-src="<?php echo base_url() . COUNTRY_FLAG_IMAGE_PATH; ?>{{user.country.code}}.png">
                                 </div>
                             </div>
                         </div>
@@ -197,7 +197,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="info_style_single_image">{{user.pSkill.pSkill}}</div>
+                                        <div class="info_style_single_image">{{user.pSkill}}</div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -261,20 +261,20 @@
                 alert("Gender is required !");
                 return false;
             }
-            if (day == "" ||day == "0" || day == 0) {
+            if (day == "" || day == "0" || day == 0) {
                 alert("Birth Day is required !");
                 return false;
             }
-            if (month == ""||month == "0" || month == 0) {
+            if (month == "" || month == "0" || month == 0) {
                 alert("Birth Month is required !");
                 return false;
             }
-            if (year == ""||year == "0" || year == 0) {
+            if (year == "" || year == "0" || year == 0) {
                 alert("Birth year is required !");
                 return false;
             }
             $("#form_registration").submit();
-            
+
 
         });
         $(".brand_single_image").mouseenter(function () {
