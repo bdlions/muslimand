@@ -7,11 +7,11 @@
 <div class="row form-group"></div>
 <div class="row form-group font_11px">
     <div class="col-md-3">
-        <a href="<?php echo base_url();?>photos/photos_view_albums_pic" >
+        <a href="" >
             <img style="border: 1px solid #703684;" src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="120" height="100">
         </a>
-        <div class="border_without_bottom" >
-            <a href="<?php echo base_url();?>photos/photos_view_albums_pic" > Profile Pictures</a><br>
+        <div>
+            <a href="" > Profile Pictures</a><br>
             72 photos
         </div>
     </div>
@@ -19,7 +19,7 @@
         <a href="" >
             <img style="border: 1px solid #703684;" src="<?php echo base_url(); ?>resources/images/photos/view_my_albums/cover_photos/03.jpg" width="120" height="100">
         </a>
-        <div class="border_without_bottom" >
+        <div>
             <a href="" >Cover</a><br>
             102 photos
         </div>
@@ -29,7 +29,7 @@
         <a href="" >
             <img style="border: 1px solid #703684;" src="<?php echo base_url(); ?>resources/images/photos/albums/English_Cotton/04.jpg" width="120" height="100">
         </a>
-        <div class="border_without_bottom" >
+        <div>
             <a href="" > English Cotton</a><br>
             35 photos
         </div>
@@ -38,7 +38,7 @@
         <a href="" >
             <img style="border: 1px solid #703684;" src="<?php echo base_url(); ?>resources/images/photos/albums/Perfumes/04.jpg" width="120" height="100">
         </a>
-        <div class="border_without_bottom" >
+        <div>
             <a href="" >Perfumes</a><br>
             78 photos
         </div>
@@ -50,7 +50,7 @@
         <a href="" >
             <img style="border: 1px solid #703684;" src="<?php echo base_url(); ?>resources/images/photos/albums/Islamic_life/07.jpg" width="120" height="100">
         </a>
-        <div class="border_without_bottom" >
+        <div>
             <a href="" >Islamic life</a><br>
             93 photos
         </div>
@@ -68,7 +68,7 @@
 <div class="row form-group"></div>
 <div class="row">
     <div class="col-md-4">
-        <span>1-4 of 666 Results</span>
+        <span>1-5 of 666 Results</span>
     </div>
     <div class="col-md-8">
         <nav style="float: right;">

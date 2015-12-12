@@ -538,8 +538,8 @@ body {
 .message_friends_divider_full{
     border-top: 1px solid lightgray;
 }
-.border_without_bottom{
-    border-top: 1px solid lightgray;
+.border_without_top{
+    border-bottom: 1px solid lightgray;
     border-left: 1px solid lightgray;
     border-right: 1px solid lightgray;
 }
@@ -853,12 +853,16 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 {
     box-shadow: 0 8px 6px -6px red;
 }
-.label_padding_top_single_image{
-    padding-top: 5px;
-    height: 45px;
-    font-size: 12px;
-    padding-left: 5px;
+.label_padding_top_single_image, .professional_info{
+    max-height: 30px;
+    font-size: 10px;
+    padding: 2px;
 }
+.professional_info, .age_info{
+    color: #703684;
+    font-weight: bold;
+}
+
 .img_pad_mar_top_single_image{
     padding-top: 5px;
     margin-right: 10px;
@@ -880,12 +884,6 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     width: 100%;
     position: relative;
     background-color: lightgray;
-}
-.info_style_single_image{
-    text-indent: 2px;
-    font-size: 10px;
-    color: #703684;
-    font-weight: bold;  
 }
 
 .overflow-y{

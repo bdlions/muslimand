@@ -1,4 +1,4 @@
-<div class="col-md-2">
+<div class="col-md-3">
     <div class="row">
         <div class="col-md-12">
             <ul class="video_ul">
@@ -68,16 +68,14 @@
             </ul> 
         </div>
     </div>
-    <div class="row form-group"></div>
-    <div class="row">
+    <div class="row padding_top_20px">
         <div class="col-md-12">
             <span style="color: black; font-size: 16px; font-weight: bold; opacity: .6;" href="">Main</span>
         </div>
     </div>
-    <div class="row form-group"></div>
     <div class="row">
         <div class="col-md-12">
-            <?php //$this->load->view("member/sections/menu/menu_link"); ?>
+            <?php $this->load->view("member/sections/menu/menu_link"); ?>
         </div>
     </div>
     <div class="row form-group"></div>

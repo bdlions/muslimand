@@ -169,7 +169,7 @@
                         <div class="brand_cover_single_image">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>40x40_{{user.gender.genderId}}.jpg" height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url().PROFILE_PICTURE_PATH_W40_H40 ?>{{user.userId}}.jpg" />
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>40x40_{{user.gender.genderId}}.jpg" height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>{{user.userId}}.jpg" />
                                 </div>
                             </div>
                             <div class="row">
@@ -189,29 +189,24 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-offset-1 col-md-10">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div style="padding: 2px 0px;" class="font_10px">Profession:</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="info_style_single_image">{{user.pSkill.pSkill}}</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div style="padding: 2px 0px;" class="font_10px">Age:</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="info_style_single_image">{{user.age}} Years</div>
-                                    </div>
-                                </div>
+                            <div class="col-md-12">
+                                <div class="font_11px">Profession:</div>
                             </div>
-                            <div class="col-md-offset-1"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="professional_info">{{user.pSkill.pSkill}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="font_11px">Age:</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="age_info font_10px">{{user.age}} Years</div>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -225,13 +220,13 @@
 </div>
 
 <script>
-    $('#other_religion').on('click', function () {
+    $('#other_religion').on('click', function() {
         $('#religion').hide();
         $('#religion_input').show();
     });
 
-    $(function () {
-        $("#register_btn").on("click", function () {
+    $(function() {
+        $("#register_btn").on("click", function() {
             var firstName = $("#r_first_name").val();
             var lastName = $("#r_last_name").val();
             var rEmail = $("#r_email").val();
@@ -261,29 +256,29 @@
                 alert("Gender is required !");
                 return false;
             }
-            if (day == "" ||day == "0" || day == 0) {
+            if (day == "" || day == "0" || day == 0) {
                 alert("Birth Day is required !");
                 return false;
             }
-            if (month == ""||month == "0" || month == 0) {
+            if (month == "" || month == "0" || month == 0) {
                 alert("Birth Month is required !");
                 return false;
             }
-            if (year == ""||year == "0" || year == 0) {
+            if (year == "" || year == "0" || year == 0) {
                 alert("Birth year is required !");
                 return false;
             }
             $("#form_registration").submit();
-            
+
 
         });
-        $(".brand_single_image").mouseenter(function () {
+        $(".brand_single_image").mouseenter(function() {
             var brand_single_image = $(this);
             var brand_single_cover_image = $(this).find(".brand_cover_single_image");
             $(brand_single_image).show();
             $(brand_single_cover_image).hide();
         });
-        $(".brand_single_image").mouseleave(function () {
+        $(".brand_single_image").mouseleave(function() {
             var brand_single_image = $(this);
             var brand_single_cover_image = $(this).find(".brand_cover_single_image");
             if ($(brand_single_cover_image).prop("style").display === "none") {

@@ -4,13 +4,12 @@
     </div>
 </div>
 <div class="pagelet_divider"></div>
-<div class="row form-group"></div>
-<div class="row form-group font_11px" >
+<div class="row form-group font_11px padding_top_10px">
     <div class="col-md-3" ng-repeat="album in userAlbums">
         <a href="<?php echo base_url(); ?>photos/get_album/{{album.albumId}}" >
-            <img style="border: 1px solid #703684;" src="<?php echo base_url().USER_ALBUM_IMAGE_PATH ?>{{album.defaultImg}}" width="120" height="100">
+            <img style="border: 1px solid #703684;" src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{album.defaultImg}}" width="120" height="100">
         </a>
-        <div class="border_without_bottom" >
+        <div style="margin-right: -3px; padding: 0 2px 2px 2px;">
             <a href="" > <span ng-bind="album.title"></span></a><br>
             <span ng-bind="album.totalImg"></span> photos
         </div>
