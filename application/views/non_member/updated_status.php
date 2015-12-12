@@ -10,7 +10,7 @@
                 <div class="pagelet">
                     <div class="row">
                         <div class="col-md-2" >
-                            <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{status.genderId}}.jpg" style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time= <?php echo time(); ?>" width="40" height="40">
+                            <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{status.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time= <?php echo time(); ?>" width="40" height="40">
                         </div>
                         <div class="col-md-10" >
                             <div class="row">
@@ -234,7 +234,7 @@
                         <div ng-repeat="commentInfo in status.commentList.slice().reverse()">
                             <div class="row form-group" id="comment_{{commentInfo.commentId}}">
                                 <div class="col-md-1" profile_picture >
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg" style="border: 1px solid lightgray" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time=<?php echo time();?>" width="30" height="30" >
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg?time=<?php echo time();?>" width="30" height="30" >
                                 </div>
                                 <div class="col-md-9">
                                     <div class="row" >

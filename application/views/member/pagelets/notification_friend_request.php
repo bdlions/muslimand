@@ -37,7 +37,7 @@
     <div class="pagelet" ng-repeat="notification in friendNotifications.slice().reverse()">
         <div class="row" ng-if="notification.friendNotification.typeId == '<?php echo NOTIFICATION_TYPE_PENDING_REQUEST; ?>'" >
             <div class="col-xs-2">
-                <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{notification.genderId}}.jpg" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{notification.userInfo.userId}}.jpg" >
+                <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50 ?>50x50_{{notification.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{notification.userInfo.userId}}.jpg" >
             </div>
             <div class="col-xs-4">
                 <a href="<?php echo base_url(); ?>member/timeline/{{notification.friendNotification.userInfo.userId}}" style="font-size: 12px; font-weight: bold;" >{{notification.friendNotification.userInfo.firstName}} &nbsp; {{notification.friendNotification.userInfo.lastName}}</a>
@@ -70,7 +70,7 @@
             </div>
         </div>
     </div>
-    <div class="pagelet">
+<!--    <div class="pagelet">
         <div class="row">
             <div class="col-xs-2">
                 <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg" width="40" height="40">
@@ -85,105 +85,14 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="pagelet">
-        <div class="row">
-            <div class="col-xs-2">
-                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg" width="40" height="40">
-            </div>
-            <div class="col-xs-6">
-                <a style="font-size: 12px; font-weight: bold;" href="#">Jannatul Ferdaus</a><br>
-                <a style="font-size: 11px; color: black;" href="#">49 mutual friends</a>
-            </div>
-            <div class="col-xs-4">
-                <div class="pull-right">
-                    <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white">Add Friend</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="pagelet">
-        <div class="row">
-            <div class="col-xs-2">
-                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg" width="40" height="40">
-            </div>
-            <div class="col-xs-6">
-                <a style="font-size: 12px; font-weight: bold;" href="#">Fatematul Kobra</a>
-            </div>
-            <div class="col-xs-4">
-                <div class="pull-right">
-                    <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white">Add Friend</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="pagelet">
-        <div class="row">
-            <div class="col-xs-2">
-                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_7.jpg" width="40" height="40">
-            </div>
-            <div class="col-xs-6">
-                <a style="font-size: 12px; font-weight: bold;" href="#">Sharmin Akter</a><br>
-                <a style="font-size: 11px; color: black;" href="#">21 mutual friends</a>
-            </div>
-            <div class="col-xs-4">
-                <div class="pull-right">
-                    <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white">Add Friend</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="pagelet">
-        <div class="row">
-            <div class="col-xs-2">
-                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_8.jpg" width="40" height="40">
-            </div>
-            <div class="col-xs-6">
-                <a style="font-size: 12px; font-weight: bold;" href="#"><b>Mohammad Rafique</b></a>
-            </div>
-            <div class="col-xs-4">
-                <div class="pull-right">
-                    <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white">Add Friend</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="pagelet">
-        <div class="row">
-            <div class="col-xs-2">
-                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg" width="40" height="40">
-            </div>
-            <div class="col-xs-6">
-                <a style="font-size: 12px; font-weight: bold;" href="#">Jannatul Ferdaus</a><br>
-                <a style="font-size: 11px; color: black;" href="#">21 mutual friends</a>
-            </div>
-            <div class="col-xs-4">
-                <div class="pull-right">
-                    <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white">Add Friend</button>
-                </div>
-            </div>
-        </div>
-    </div>  
-    <div class="pagelet">
-        <div class="row">
-            <div class="col-xs-2">
-                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_3.jpg" width="40" height="40">
-            </div>
-            <div class="col-xs-6">
-                <a style="font-size: 12px; font-weight: bold;" href="#">Barak Obama</a>
-            </div>
-            <div class="col-xs-4">
-                <div class="pull-right">
-                    <button type="submit" class="btn btn-xs" style="background-color: #703684; color: white">Add Friend</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div>-->
+   
 </div>
 <div style="border-top: 1px solid lightgray;"class="pagelet message_friends_box_1">
     <div class="row">
         <div class="col-xs-12">
-            <div style="text-align: center; font-weight: bold;"><a href="<?php echo base_url(); ?>member/add_friends">See All</a></div>
+            <div style="text-align: center; font-weight: bold;">See All</div>
+            <!--<div style="text-align: center; font-weight: bold;"><a href="<?php echo base_url(); ?>member/add_friends">See All</a></div>-->
         </div>
     </div>
 </div>

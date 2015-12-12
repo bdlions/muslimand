@@ -169,7 +169,7 @@
                         <div class="brand_cover_single_image">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>40x40_{{user.gender.genderId}}.jpg" height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>{{user.userId}}.jpg" />
+                                    <img  height="45" width="45" class="img_pad_mar_top_single_image" alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{user.userId}}.jpg"  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>40x40_{{user.gender.genderId}}.jpg" />
                                 </div>
                             </div>
                             <div class="row">
@@ -179,7 +179,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url() . COUNTRY_FLAG_IMAGE_PATH; ?>{{user.country.code}}.png">
+                                    <img style="margin-top: -12px;" height="22" width="45" ng-src="<?php echo base_url() . COUNTRY_FLAG_IMAGE_PATH; ?>{{user.country.code}}.png">
                                 </div>
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 
 <script>
-    (function($) {
-        $(window).load(function() {
+    (function ($) {
+        $(window).load(function () {
             $("#full_msg_box_container .ticker").mCustomScrollbar({
                 setHeight: 300,
                 theme: "dark-3"
@@ -10,8 +10,8 @@
     })(jQuery);
 </script>
 <div class="row" ng-controller="messageController" ng-cloak  ng-init="setMessageSummery('<?php echo htmlspecialchars(json_encode($message_summery_list)); ?>')">
-    <div class="col-md-12">
-        <div class="pagelet">
+    <div class="col-md-12" >
+        <div class="pagelet" ng-init="setRecentMessageInfo('<?php echo htmlspecialchars(json_encode($recent_message_info)); ?>')">
             <div class="padding_top_10px"></div>
             <div class="row">
                 <div class="col-md-4">
@@ -42,7 +42,12 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-6">
-                            <a style="color: black; font-weight: bold; font-size: 18px;" href="#">Mohammad Azhar Uddin</a>
+                            <span ng-repeat= "userInfo in messageInformation.userList" >
+                                <span ng-if="userInfo.userId != '<?php echo $user_id; ?>'">
+                                    <a style="color: black; font-weight: bold; font-size: 18px;" href="">
+                                        {{userInfo.firstName}} &nbsp; {{userInfo.lastName}}</a>
+                                </span>
+                            </span>
                         </div>
                         <div class="col-md-6">
                             <div class="dropdown pull-right">
@@ -71,12 +76,12 @@
                         </div>  
                     </div>
                     <div class="pagelet message_friends_box" ng-repeat="messageSummery in messageSummeryList">
-                        <div class="row" ng-click="getMessageList(messageSummery.groupId)"> 
+                        <div class="row" ng-click="getMessageList(messageSummery)"> 
 
                             <div class="col-md-3"> 
                                 <span ng-repeat= "userInfo in messageSummery.userList" >
                                     <span ng-if="userInfo.userId != '<?php echo $user_id; ?>'">
-                                        <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userInfo.genderId}}.jpg" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{userInfo.userId}}.jpg" width="30" height="30" > 
+                                        <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userInfo.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{userInfo.userId}}.jpg" width="30" height="30" > 
                                     </span>
                                 </span>
                             </div>
@@ -90,23 +95,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="pagelet message_friends_box">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg"  width="30" height="30"> 
-                            </div>
-                            <div class="col-md-9">
-                                <span style="font-weight: bold;">Maria Islam</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-md-8">
                     <div class="border_without_bottom padding_top_5px">
                         <div class="row" ng-repeat="messageInfo in messageInformation.messages">
                             <div class="user_comment">
                                 <div class="col-md-1">
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{messageInfo.senderInfo.genderId}}.jpg" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{messageInfo.senderInfo.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
                                 </div>
                                 <div class="col-md-8">
                                     <div class="row">
