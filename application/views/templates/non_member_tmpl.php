@@ -94,7 +94,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/photoApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/videoApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image-crop.js"></script>
-        <title>Sadiik.com</title>
+      
+        <title>Shadhiin.com</title>
     </head>
     <body ng-app="<?php echo $app; ?>">
         <div id="header">

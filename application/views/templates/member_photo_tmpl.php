@@ -10,6 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/photo.css"/>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
@@ -25,12 +26,12 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/lib/hash.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
-        <script src="<?php echo base_url(); ?>resources/js/image/vendor/jquery.ui.widget.js"></script>
-        <script src="<?php echo base_url(); ?>resources/js/image/load-image.all.min.js"></script>
-        <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload.js"></script>
-        <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-process.js"></script>
-        <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-image.js"></script>
-        <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-angular.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image/vendor/jquery.ui.widget.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image/load-image.all.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-process.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-image.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-angular.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/moment.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/Utils.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload-shim.min.js"></script>
@@ -44,9 +45,9 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/rightService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/photoService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/headerService.js"></script>
-
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/photoApp.js "></script>
-        <title>Sadiik.com</title>
+        
+        <title>Shadhiin.com</title>
     </head>
     <body ng-app="<?php echo $app; ?>">
         <div class="body_wrapper">

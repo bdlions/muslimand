@@ -25,7 +25,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/rightController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/rightService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/headerApp.js "></script>
-        <title>Sadiik.com</title>
+
+        <title>Shadhiin.com</title>
     </head>
     <body ng-app="<?php echo $app; ?>">
         <div class="body_wrapper">
