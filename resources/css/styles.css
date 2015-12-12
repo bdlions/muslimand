@@ -47,6 +47,7 @@ body {
     height:100%;
     font-family: Helvetica!important;
     font-size: 12px!important;
+    background-color: #E9EAED!important; 
 }
 #wrapper {
     min-height:100%;
@@ -751,6 +752,10 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 /*------------------------------------------- Custom Buttons --------------------------------- */
 
+.btn{
+    font-size: 12px!important;
+}
+
 .btn-default-custom {
     background-color: #fff!important; 
     border-color: #fff!important; 
@@ -764,8 +769,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 .button-custom, .button-primary-custom,.button-primary-custom, .button-danger-custom, .button-danger-custom:hover {
     color: #fff!important; 
     border-radius: 3px!important; 
-    padding: 4px 8px!important; 
-    line-height: 16px!important; 
+    padding: 2px 8px!important; 
 }
 .button-custom, .button-custom:hover {
     background-color: #703684!important; 
