@@ -13,7 +13,6 @@ angular.module('controllers.Landing', ['services.Landing']).
 
             $scope.setUserList = function (userList) {
                 $scope.userList = JSON.parse(userList);
-//                console.log($scope.userList);
             };
 
             $scope.setBirthDay = function (dates) {
@@ -27,7 +26,6 @@ angular.module('controllers.Landing', ['services.Landing']).
             };
             $scope.setGender = function (genders) {
                 $scope.genderList = JSON.parse(genders);
-                console.log($scope.genderList);
             };
             $scope.setReligion = function (religions) {
                 $scope.religionList = JSON.parse(religions);
@@ -40,7 +38,6 @@ angular.module('controllers.Landing', ['services.Landing']).
             };
 
             $scope.registration = function () {
-                console.log($scope.registrationInfo);
             };
 
 

@@ -1,7 +1,6 @@
 <div id="about_family_relation" style="display: none;">
     <div class="row">
         <div class="col-md-12">
-            <span class="header_label_style">Relational Information</span>
             <span class="header_label_style"> Family & Relational Information</span>
         </div>
     </div>

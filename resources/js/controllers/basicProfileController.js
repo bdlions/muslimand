@@ -46,11 +46,9 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             };
             $scope.setUserId = function (userId) {
                 $scope.userId = userId;
-                console.log($scope.userId);
             };
             $scope.setProfileId = function (profileId) {
                 $scope.profileId = profileId;
-                console.log($scope.profileId);
 
             };
 
@@ -441,7 +439,6 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                                 if (typeof data.family_relations != "undefined") {
                                     if (typeof data.family_relations.relationshipStatus != "undefined") {
                                         $scope.rStatus = data.family_relations.relationshipStatus;
-                                        console.log($scope.rStatus);
                                     }
                                     if (typeof data.family_relations.familyMember != "undefined") {
                                         $scope.fMemebers = data.family_relations.familyMember;

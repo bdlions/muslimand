@@ -68,8 +68,6 @@ angular.module('controllers.Friend', ['services.Friend']).
             //needed to change
             $scope.imageCropStep = 1;
             $scope.fileChanged = function (e) {
-                console.log(e);
-
                 var files = e.target.files;
 
                 var fileReader = new FileReader();

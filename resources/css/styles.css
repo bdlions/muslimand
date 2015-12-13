@@ -47,6 +47,7 @@ body {
     height:100%;
     font-family: Helvetica!important;
     font-size: 12px!important;
+    background-color: #E9EAED!important; 
 }
 #wrapper {
     min-height:100%;
@@ -370,7 +371,14 @@ body {
 
 .common_box{
     background-color: #703684;
+    z-index: 20000;
 }
+
+.active_chat{
+     background-color: red;
+    z-index: 20000;
+}
+
 .msg_box{
     position: absolute;
     width: 260px;
@@ -530,8 +538,8 @@ body {
 .message_friends_divider_full{
     border-top: 1px solid lightgray;
 }
-.border_without_bottom{
-    border-top: 1px solid lightgray;
+.border_without_top{
+    border-bottom: 1px solid lightgray;
     border-left: 1px solid lightgray;
     border-right: 1px solid lightgray;
 }
@@ -744,6 +752,10 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 /*------------------------------------------- Custom Buttons --------------------------------- */
 
+.btn{
+    font-size: 12px!important;
+}
+
 .btn-default-custom {
     background-color: #fff!important; 
     border-color: #fff!important; 
@@ -757,8 +769,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 .button-custom, .button-primary-custom,.button-primary-custom, .button-danger-custom, .button-danger-custom:hover {
     color: #fff!important; 
     border-radius: 3px!important; 
-    padding: 4px 8px!important; 
-    line-height: 16px!important; 
+    padding: 2px 8px!important; 
 }
 .button-custom, .button-custom:hover {
     background-color: #703684!important; 
@@ -842,12 +853,16 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 {
     box-shadow: 0 8px 6px -6px red;
 }
-.label_padding_top_single_image{
-    padding-top: 5px;
-    height: 45px;
-    font-size: 12px;
-    padding-left: 5px;
+.label_padding_top_single_image, .professional_info{
+    max-height: 30px;
+    font-size: 10px;
+    padding: 2px;
 }
+.professional_info, .age_info{
+    color: #703684;
+    font-weight: bold;
+}
+
 .img_pad_mar_top_single_image{
     padding-top: 5px;
     margin-right: 10px;
@@ -869,12 +884,6 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     width: 100%;
     position: relative;
     background-color: lightgray;
-}
-.info_style_single_image{
-    text-indent: 2px;
-    font-size: 10px;
-    color: #703684;
-    font-weight: bold;  
 }
 
 .overflow-y{
@@ -1042,11 +1051,15 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     margin-bottom: 5px!important;
 }
 
-
-
 /*--------------------------Timeline About------------------------*/
 
 #dropdownMenu1, #dropdownMenu1:hover, #dropdownMenu1:visited, #dropdownMenu1:focus{
     border: none!important;
     padding: 3px 8px!important;
+}
+
+/*ng-clock*/
+
+.ng-cloak {
+  display: none !important;
 }

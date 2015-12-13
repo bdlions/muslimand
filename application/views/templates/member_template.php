@@ -46,12 +46,12 @@
         
 
       <!--<image upload>-->
-        <script src="<?php echo base_url(); ?>resources/js/image/vendor/jquery.ui.widget.js"></script>
-        <script src="<?php echo base_url(); ?>resources/js/image/load-image.all.min.js"></script>
-        <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload.js"></script>
-        <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-process.js"></script>
-        <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-image.js"></script>
-        <script src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-angular.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image/vendor/jquery.ui.widget.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image/load-image.all.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-process.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-image.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image/jquery.fileupload-angular.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload-shim.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/ng-infinite-scroll.min.js"></script>
@@ -95,7 +95,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/videoApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image-crop.js"></script>
         
-        <title>Sadiik.com</title>
+        <title>Shadhiin.com</title>
     </head>
     <body ng-app="<?php echo $app; ?>">
         <div style="position: relative; background-color: #E9EAED;" >

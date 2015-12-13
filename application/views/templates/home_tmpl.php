@@ -19,7 +19,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/landingController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/landingService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/landingApp.js "></script>
-        <title>Sadiik.com</title>
+        
+        <title>Shadhiin.com</title>
     </head>
     <body class="back">
         <div id="wrapper">

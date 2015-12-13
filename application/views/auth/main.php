@@ -1,17 +1,4 @@
-<script>
 
-
-    function onImageUnavailable(img) {
-        var div = img.parentNode;
-        var firstImage = img;
-        var secondImage = div.getElementsByTagName('img')[1];
-
-        firstImage.style.display = 'none';
-        secondImage.style.visibility = 'visible';
-        secondImage.style.height = '100%';
-    }
-
-</script>
 
 <style>
     .user_brief_card
@@ -40,7 +27,7 @@
                 </div>
             </div>
             <div class="col-md-5">
-                <?php echo form_open("auth/login"); ?>
+                <?php echo form_open("auth/login", array('id' => 'form_registration')); ?>
                 <?php if (isset($message) && ($message != NULL)) {
                     ?>
                     <div class="alert alert-dismissible fadeOut" style="background-color: #703684;color: #ffffff">
@@ -98,14 +85,14 @@
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group">
                         <div class="pages_type_add_form_input">
-                            <?php echo form_dropdown('birthday_year', $year_list, "0", 'class=form-control id=birthday_year'); ?>
+                            <?php echo form_dropdown('birthday_year', $year_list, "0", 'class=form-control id=birthday_year '); ?>
                         </div>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-md-4 col-sm-6 col-xs-12 form-group">
                         <label style="color: #703684; font-size: 15px; font-weight: bold;">Gender</label>
-                        <?php echo form_dropdown('gender_list', $gender_list, 0, 'class=form-control id=gender_id'); ?>
+                        <?php echo form_dropdown('gender_id', $gender_list, 0, 'class=form-control id=gender_id'); ?>
                     </div>
                     <div class="col-md-4 col-sm-6 col-xs-12 form-group">
                         <label style="color: #703684; font-size: 15px; font-weight: bold;">Religion</label>
@@ -122,7 +109,7 @@
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12" >
                         <?php echo form_input($register_btn + array('class' => 'btn button-custom', 'style' => 'background-color: #703684; color: white')); ?>
                         <!--<button id="btnSubmit" type="submit" class="btn button-custom" style="background-color: #703684; color: white"><b>Sign Up</b></button>-->
                     </div>
@@ -182,8 +169,7 @@
                         <div class="brand_cover_single_image">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?> {{user.userId}}'.jpg" onError="onImageUnavailable(this)"/>
-                                    <img style="visibility:hidden; height: 0px;"  src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>40x40_{{user.gender.genderId}}.jpg">
+                                    <img  height="45" width="45" class="img_pad_mar_top_single_image" alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{user.userId}}.jpg"  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>40x40_{{user.gender.genderId}}.jpg" />
                                 </div>
                             </div>
                             <div class="row">
@@ -193,7 +179,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url() . COUNTRY_FLAG_IMAGE_PATH; ?>{{user.country.code}}.png">
+                                    <img style="margin-top: -12px;" height="22" width="45" ng-src="<?php echo base_url() . COUNTRY_FLAG_IMAGE_PATH; ?>{{user.country.code}}.png">
                                 </div>
                             </div>
                         </div>
@@ -203,29 +189,24 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-offset-1 col-md-10">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div style="padding: 2px 0px;" class="font_10px">Profession:</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="info_style_single_image">Doctor</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div style="padding: 2px 0px;" class="font_10px">Age:</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="info_style_single_image">40 Years</div>
-                                    </div>
-                                </div>
+                            <div class="col-md-12">
+                                <div class="font_11px">Profession:</div>
                             </div>
-                            <div class="col-md-offset-1"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="professional_info">{{user.pSkill}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="font_11px">Age:</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="age_info font_10px">{{user.age}} Years</div>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -239,19 +220,65 @@
 </div>
 
 <script>
-    $('#other_religion').on('click', function () {
+    $('#other_religion').on('click', function() {
         $('#religion').hide();
         $('#religion_input').show();
     });
 
-    $(function () {
-        $(".brand_single_image").mouseenter(function () {
+    $(function() {
+        $("#register_btn").on("click", function() {
+            var firstName = $("#r_first_name").val();
+            var lastName = $("#r_last_name").val();
+            var rEmail = $("#r_email").val();
+            var rPassword = $("#r_password").val();
+            var gender = $("#gender_id").val();
+            var day = $("#birthday_day").val();
+            var month = $("#birthday_month").val();
+            var year = $("#birthday_year").val();
+
+            if (firstName == "") {
+                alert("Frist Name is required !");
+                return false;
+            }
+            if (lastName == "") {
+                alert("Last Name is required !");
+                return false;
+            }
+            if (rEmail == "") {
+                alert("Email is required !");
+                return false;
+            }
+            if (rPassword == "") {
+                alert("Password is required !");
+                return false;
+            }
+            if (gender == "" || gender == "0" || gender == 0) {
+                alert("Gender is required !");
+                return false;
+            }
+            if (day == "" || day == "0" || day == 0) {
+                alert("Birth Day is required !");
+                return false;
+            }
+            if (month == "" || month == "0" || month == 0) {
+                alert("Birth Month is required !");
+                return false;
+            }
+            if (year == "" || year == "0" || year == 0) {
+                alert("Birth year is required !");
+                return false;
+            }
+            $("#form_registration").submit();
+
+
+        });
+        $(".brand_single_image").mouseenter(function() {
             var brand_single_image = $(this);
             var brand_single_cover_image = $(this).find(".brand_cover_single_image");
             $(brand_single_image).show();
             $(brand_single_cover_image).hide();
         });
-        $(".brand_single_image").mouseleave(function () {
+        $(".brand_single_image").mouseleave(function() {
             var brand_single_image = $(this);
             var brand_single_cover_image = $(this).find(".brand_cover_single_image");
             if ($(brand_single_cover_image).prop("style").display === "none") {

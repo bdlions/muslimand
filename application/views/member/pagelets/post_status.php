@@ -12,7 +12,7 @@
     <div class="row from-group" style="margin-bottom: 3px;">
         <div id="status" class="col-xs-2 col-sm-2 col-md-2"><span class="status_label_style">Status</span></div>
         <div id="photo" class="col-xs-2 col-sm-2 col-md-2"><span class="status_label_style">Photo</span></div>
-        <div id="link" class="col-xs-2 col-sm-2 col-md-2"><span class="status_label_style">Link</span></div>
+        <!--<div id="link" class="col-xs-2 col-sm-2 col-md-2"><span class="status_label_style">Link</span></div>-->
     </div>
     <div id="photo_details" style="display: none;">
         <div id="fileupload" method="POST" enctype="multipart/form-data" data-ng-app="demo" data-ng-controller="DemoFileUploadController" ng-init="setPath('<?php echo base_url(); ?>status/image_upload')" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
@@ -91,32 +91,31 @@
 
 <script>
     function add_status() {
-        var profileId = '<?php
-if (isset($profile_id)) {
-    echo $profile_id;
-};
-?>';
+        var profileId = '<?php if (isset($profile_id)) { echo $profile_id; }; ?>';
         if (profileId === "0") {
             profileId = '<?php echo $user_id; ?>';
         }
 
         var profileUserInfo = [];
         profileUserInfo['profileId'] = profileId;
-        profileUserInfo['profileFirstName'] = '<?php if (isset($profile_first_name)) {
-    echo $profile_first_name;
-}; ?>';
-        profileUserInfo['profileLastName'] = '<?php if (isset($profile_last_name)) {
-    echo $profile_last_name;
-}; ?>';
+        profileUserInfo['profileFirstName'] = '<?php if (isset($profile_first_name)) { echo $profile_first_name; }; ?>';
+        profileUserInfo['profileLastName'] = '<?php if (isset($profile_last_name)) { echo $profile_last_name; }; ?>';
         var image_list = [];
         image_list = get_image_list();
-        angular.element($('#save_status_id')).scope().addStatus(image_list, profileUserInfo, function() {
+        var description = $('#statusPostId').val();
+        if(description == "" && image_list.length == 0 ){
+            alert("Please Write Something  or attach photo to update your status !!!");
+            return;
+        }
+        angular.element($('#save_status_id')).scope().addStatus(image_list, profileUserInfo, function () {
             $("#updateStatusPagelet").show();
             $("#photo_details").hide();
             $("#statusPostId").val('');
+            var image = [];
+            set_image(image);
         });
     }
-    $('#category_status').on('click', function() {
+    $('#category_status').on('click', function () {
         $('#status_privacy').hide();
         $('#status_privacy').show();
         $('#status').css("font-weight", "bold");
@@ -124,7 +123,7 @@ if (isset($profile_id)) {
         $('#link').css("font-weight", "normal");
     });
 
-    $('#status').on('click', function() {
+    $('#status').on('click', function () {
         $('#status_privacy').hide();
         $('#photo_details').hide();
         $('#link_details').hide();
@@ -132,14 +131,14 @@ if (isset($profile_id)) {
         $('#status').css("font-weight", "bold");
         $('#photo').css("font-weight", "normal");
         $('#link').css("font-weight", "normal");
-        $('#category_status').on('click', function() {
+        $('#category_status').on('click', function () {
             $('#status').css("font-weight", "bold");
             $('#photo').css("font-weight", "normal");
             $('#link').css("font-weight", "normal");
         });
     });
 
-    $('#photo').on('click', function() {
+    $('#photo').on('click', function () {
         $('#status_privacy').hide();
         $('#link_details').hide();
         $('#status_privacy').show();
@@ -147,14 +146,14 @@ if (isset($profile_id)) {
         $('#photo').css("font-weight", "bold");
         $('#status').css("font-weight", "normal");
         $('#link').css("font-weight", "normal");
-        $('#category_status').on('click', function() {
+        $('#category_status').on('click', function () {
             $('#photo').css("font-weight", "bold");
             $('#status').css("font-weight", "normal");
             $('#link').css("font-weight", "normal");
         });
     });
 
-    $('#link').on('click', function() {
+    $('#link').on('click', function () {
         $('#settings').hide();
         $('#photo_details').hide();
         $('#settings').show();
@@ -162,12 +161,12 @@ if (isset($profile_id)) {
         $('#link').css("font-weight", "bold");
         $('#photo').css("font-weight", "normal");
         $('#status').css("font-weight", "normal");
-        $('#category_status').on('click', function() {
+        $('#category_status').on('click', function () {
             $('#link').css("font-weight", "bold");
             $('#photo').css("font-weight", "normal");
             $('#status').css("font-weight", "normal");
         });
-        $('#http').on('click', function() {
+        $('#http').on('click', function () {
             $('#status_privacy').show();
 
         });

@@ -110,7 +110,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 $scope.userGenderId = statusInfo.user_gender_id;
                 $scope.statuses = statusInfo.status_list;
                 $scope.getStatusInformation();
-                console.log($scope.statuses);
             };
 
             $scope.getProfileStatus = function (profileId) {
@@ -270,7 +269,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 statusService.getStatusLikeList(statusId).
                         success(function (data, status, headers, config) {
                             $scope.likeList = data.like_list;
-                            console.log($scope.likeList);
                             requestFunction();
                         });
                 return false;

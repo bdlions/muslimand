@@ -1,5 +1,5 @@
 <div class="">
-    <div  class="msg_box style_left_box common_box" style="right: {{chatUserDetails.rightPos}}px" >
+    <div  class="msg_box common_box" style="right: {{chatUserDetails.rightPos}}px" >
         <div class="message_friends_divider_full common_box_header" style="border: none!important;">
             <div class="row">
                 <div class="col-md-2">
@@ -9,7 +9,7 @@
                     <a class="msg_box_user_name" href='<?php echo base_url(); ?>member/timeline/{{userId}}'>{{chatUserDetails.firstName + " " + chatUserDetails.lastName}}</a>
                 </div>
                 <div class="col-md-2">
-                    <!--<img class="img-responsive" style="margin-top: 3px; cursor: pointer" src="<?php //echo base_url(); ?>resources/images/settings.png">-->
+                    <!--<img class="img-responsive" style="margin-top: 3px; cursor: pointer" src="<?php //echo base_url();  ?>resources/images/settings.png">-->
                 </div>
                 <div class="col-md-2">
                     <button type="button" class="close close-custom" aria-label="Close" ng-click="removeUser(chatUserDetails)" ><span aria-hidden="true">&times;</span></button>

@@ -33,7 +33,6 @@ angular.module('controllers.Photo', ['services.Photo']).
             };
             $scope.setPhotoInfo = function (photoInfo) {
                 $scope.photoInfoList.push(JSON.parse(photoInfo));
-//                console.log($scope.photoInfoList);
             };
             $scope.getUserAlbumList = function (profileId) {
                 photoService.getUserAlbumList(profileId).

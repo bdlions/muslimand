@@ -32,14 +32,12 @@
             <div ng-controller="ImageCopperController" style="position: relative;">
                 <div  ng-show="imageCropStep == 1" class="fileinput-cover-button">	
                     <?php if ($profile_id != "0" && $profile_id != $user_id) { ?>
-                        <img class="img-responsive"  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $profile_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
-                        <img class="img-responsive" style="visibility:hidden;height: 0px;" src="<?php echo base_url() ?>resources/images/cover.jpg">
+                        <img class="img-responsive" fallback-src="<?php echo base_url() ?>resources/images/cover.jpg"  ng-src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $profile_id . '.jpg';  ?>"/>
                     <?php } else { ?>
-                        <img class="img-responsive"  alt="" src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
-                        <img class="img-responsive" style="visibility:hidden;height: 0px;" src="<?php echo base_url() ?>resources/images/cover.jpg">
+                        <img class="img-responsive" fallback-src="<?php echo base_url() ?>resources/images/cover.jpg"  ng-src="<?php echo base_url() . COVER_PICTURE_IMAGE_PATH . $user_id . '.jpg'; ?>" />
                         <input class="profile_cover_upload_input" style="z-index: 1005" type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)"/>
                         <div class="profile_cover_upload_img">
-                            <img src="<?php echo base_url() ?>resources/images/upload_icon.png"/>
+                            <img ng-src="<?php echo base_url() ?>resources/images/upload_icon.png"/>
                             <span>Upload Cover Picture</span>
                         </div>
                     <?php } ?>
@@ -73,11 +71,9 @@
             <div ng-controller="ImageCopperController" ng-clock style="position: absolute; bottom: -15px; left: 25px; z-index: 1001;">
                 <div ng-show="imageCropStep == 1" class="fileinput-button profile_picture timeline_profile_picture_custom" style="height: 150px!important; width: 150px!important;">
                     <?php if ($profile_id != "0" && $profile_id != $user_id) { ?>
-                        <img  class="cursor_holder_style" alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $profile_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
-                        <img class="cursor_holder_style" style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>150x150_{{userGenderId}}.jpg" alt="">
+                        <img  class="cursor_holder_style" fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>150x150_{{userGenderId}}.jpg" alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $profile_id . '.jpg'; ?>" />
                     <?php } else { ?>
-                        <img  class="cursor_holder_style" alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
-                        <img class="cursor_holder_style" style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>150x150_{{userGenderId}}.jpg" alt="">
+                        <img  class="cursor_holder_style" fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>150x150_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $user_id . '.jpg'; ?>" />
                         <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
                     <?php } ?>
                 </div>	
@@ -107,10 +103,10 @@
                     </div>
                 </div>
             </div>
-            <span ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)" ng-clock>
-                <a class="timeline_profile_name" href="" ng-cloak>
-                    <?php // echo $profile_first_name; ?>&nbsp;<?php // echo $profile_last_name; ?>
-                    {{userRelation.profile_first_name}} {{userRelation.profile_last_name}}
+            <span ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)">
+                <a class="timeline_profile_name ">
+                    <span ng-bind="userRelation.profile_first_name"></span>
+                    <span ng-bind="userRelation.profile_last_name"></span>
                 </a>
                 <div> 
                     <div ng-if ="userRelation.relation_ship_status == <?php echo RELATION_TYPE_NON_FRIEND_ID; ?>">

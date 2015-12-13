@@ -56,13 +56,6 @@ and open the template in the editor.
     font-weight: bold;
 }
 
-/*================================  photo albums  ================================*/
-.border_without_bottom{
-border-left: 1px solid #703684; 
-border-right: 1px solid #703684; 
-border-bottom: 1px solid #703684; 
-width: 120px;
-}
 /*================================  photo gallery  ================================*/
 .border_style{
 /*border: 1px solid #703684;*/

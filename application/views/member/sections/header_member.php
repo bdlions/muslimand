@@ -9,15 +9,18 @@
             url: '<?php echo base_url(); ?>' + "notification/get_notification_counter",
             success: function (data) {
                 if (typeof data.user_initiation_info != 'undefined') {
+                    if (typeof data.user_initiation_info.genderId != "undefiend") {
+                        angular.element($('#set_user_initiation_info_id')).scope().setUserGender(data.user_initiation_info.genderId);
+                    }
                     if (data.user_initiation_info.friend > 0) {
                         $("#follower_counter_div").show();
                         $("#follower_counter_div").val(data.user_initiation_info.friend);
                         $("#follower_counter_div").html(data.user_initiation_info.friend);
                     }
                     if (data.user_initiation_info.message > 0) {
-                        $("#message_counter_div").show();
-                        $("#message_counter_div").val(data.user_initiation_info.message);
-                        $("#message_counter_div").html(data.user_initiation_info.message);
+//                        $("#message_counter_div").show();
+//                        $("#message_counter_div").val(data.user_initiation_info.message);
+//                        $("#message_counter_div").html(data.user_initiation_info.message);
                     }
                     if (data.user_initiation_info.general > 0) {
                         $("#general_notification_counter_div").show();
@@ -27,10 +30,7 @@
                     if (typeof data.user_initiation_info.userCurrentTimeStamp != "undefiend") {
                         angular.element($('#set_user_initiation_info_id')).scope().setUserCurrentTime(data.user_initiation_info.userCurrentTimeStamp);
                     }
-                    if (typeof data.user_initiation_info.genderId != "undefiend") {
-                        $("#user_profile_picture_on_error").attr('src', "<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25; ?>" + "25x25_" + data.user_initiation_info.genderId + ".jpg");
-                        angular.element($('#set_user_initiation_info_id')).scope().setUserGender(data.user_initiation_info.genderId);
-                    }
+
                 }
             }
         });
@@ -76,10 +76,8 @@
     }
 
     function msg_toggle() {
-
-
-
-        $('#mm_message_box').show();
+        window.location = '<?php echo base_url(); ?>member/messages';
+//        $('#mm_message_box').show();
     }
 
     function notf_toggle() {
@@ -105,7 +103,7 @@
     <div class="col-md-offset-1 col-md-2">
         <a target="_self" href="<?php echo base_url(); ?>member/newsfeed">
             <img class="img-circle" src="<?php echo base_url(); ?>resources/images/logo.png">
-            <img src="<?php echo base_url(); ?>resources/images/sadiik.png">
+            <img src="<?php echo base_url(); ?>resources/images/shadhiin.png">
         </a>
     </div>
     <div class="col-md-4">
@@ -118,8 +116,7 @@
     <div class="col-md-2 profile_picture">
         <a target="_self" style="text-decoration: none;" href="<?php echo base_url(); ?>member/timeline">
             <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
-                <img style="height: 25px; width: 25px;" alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 . $user_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailableHeader(this)"/>
-                <img style="visibility:hidden; height: 0px; width: 0px;" id="user_profile_picture_on_error" src="">
+                <img  style="height: 25px; width: 25px;" fallback-src="<?php echo base_url().PROFILE_PICTURE_PATH_W25_H25; ?>25x25_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 . $user_id . '.jpg'; ?>" />
                 &nbsp; <span id="profile_name" style="text-decoration: none" ><?php echo $first_name; ?></span>
             </span>
         </a>
@@ -143,7 +140,7 @@
                 <img src="<?php echo base_url(); ?>resources/images/header_icons/messages.png">
             </a>
             <div id="mm_message_box">
-                <?php $this->load->view("member/pagelets/notification_message"); ?>
+                <?php // $this->load->view("member/pagelets/notification_message"); ?>
             </div>
         </div>
 
@@ -163,10 +160,12 @@
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuRight">
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="<?php echo base_url() ?>member/account_settings">Account settings</a>
+                    <!--<a role="menuitem" tabindex="-1" href="<?php // echo base_url() ?>member/account_settings">Account settings</a>-->
+                    <a role="menuitem" tabindex="-1">Account settings</a>
                 </li>
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="<?php echo base_url() ?>member/privacy_settings">Privacy settings</a>
+                    <a role="menuitem" tabindex="-1" >Privacy settings</a>
+                    <!--<a role="menuitem" tabindex="-1" href="<?php // echo base_url() ?>member/privacy_settings">Privacy settings</a>-->
                 </li>
                 <li role="presentation">
                     <a role="menuitem" tabindex="-1" href="<?php echo base_url() ?>auth/logout">Log out</a>

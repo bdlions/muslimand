@@ -73,10 +73,10 @@ class Member extends CI_Controller {
         $result = json_decode($result);
         if ($result != null) {
             if (property_exists($result, "userCurrentTime")) {
-                $user_current_time = $result->userCurrentTime;
+                $this->data['user_current_time'] = $result->userCurrentTime;
             }
             if (property_exists($result, "userGenderId")) {
-                $user_gender_id = $result->userGenderId;
+                $this->data['user_gender_id'] = $result->userGenderId;
             }
             if (property_exists($result, "statusInfoList")) {
                 $status_info_list = $result->statusInfoList;
@@ -106,16 +106,6 @@ class Member extends CI_Controller {
         } else {
             $this->data["status_list"] = json_encode(array());
         }
-        if (isset($user_current_time)) {
-            $this->data['user_current_time'] = $user_current_time;
-        } else {
-            $this->data['user_current_time'] = now();
-        }
-        if (isset($user_gender_id)) {
-            $this->data['user_gender_id'] = $user_gender_id;
-        } else {
-            $this->data['user_gender_id'] = "";
-        }
         $this->data['app'] = "app.Status";
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
@@ -130,6 +120,7 @@ class Member extends CI_Controller {
         $user_relation = $this->get_user_relation_info($profile_id);
         $this->data['profile_first_name'] = $user_relation['profile_first_name'];
         $this->data['profile_last_name'] = $user_relation['profile_last_name'];
+        $this->data['gender_id'] = $user_relation['gender_id'];
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
@@ -155,8 +146,6 @@ class Member extends CI_Controller {
         } else {
             $this->template->load(null, "member/about", $this->data);
         }
-//        $this->template->load(MEMBER_TEMPLATE, "member/about", $this->data);
-//        $this->template->load(MEMBER_PROFILE_TEMPLATE, "member/about", $this->data);
     }
 
     function account_settings($profile_id = "0") {
@@ -167,8 +156,6 @@ class Member extends CI_Controller {
         $this->data['profile_id'] = $profile_id;
         $this->data['app'] = "app.Status";
         $this->template->load(null, "member/account_settings", $this->data);
-//        $this->template->load(MEMBER_TEMPLATE, "member/account_settings", $this->data);
-//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/account_settings", $this->data);
     }
 
     function chat_tmpl_load() {
@@ -176,18 +163,22 @@ class Member extends CI_Controller {
     }
 
     function messages() {
-
+        $message_ummery_list = array();
+        $recent_mage_info = array();
         $limit = 10;
         $offset = 0;
         $user_id = $this->session->userdata('user_id');
         $result = $this->message_mongodb_model->get_message_summary_list($user_id, $offset, $limit);
-        $this->data["message_summery_list"] = $result;
+        if ($result != null) {
+            $message_ummery_list = $result->messageSummeryList;
+            $recent_mage_info = json_decode($result->recentMessageInfo);
+        }
+        $this->data["message_summery_list"] = $message_ummery_list;
+        $this->data["recent_message_info"] = $recent_mage_info;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['user_id'] = $user_id;
         $this->data['app'] = "app.Message";
         $this->template->load(null, "member/messages", $this->data);
-//        $this->template->load(MEMBER_TEMPLATE, "member/messages", $this->data);
-//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/messages", $this->data);
     }
 
     function privacy_settings($profile_id = "0") {
@@ -198,8 +189,6 @@ class Member extends CI_Controller {
         $this->data['profile_id'] = $profile_id;
         $this->data['app'] = "app.Status";
         $this->template->load(null, "member/privacy_settings", $this->data);
-//        $this->template->load(MEMBER_TEMPLATE, "member/privacy_settings", $this->data);
-//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/privacy_settings", $this->data);
     }
 
     function zakat() {
@@ -208,8 +197,6 @@ class Member extends CI_Controller {
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['app'] = "app.Header";
         $this->template->load(null, "member/zakat", $this->data);
-//        $this->template->load(MEMBER_TEMPLATE, "member/zakat", $this->data);
-//        $this->template->load(MEMBER_LOGGED_IN_TEMPLATE, "member/zakat", $this->data);
     }
 
     function invite() {

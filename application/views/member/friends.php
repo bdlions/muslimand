@@ -30,8 +30,7 @@
                         <div style="padding: 10px; display: inline-block;">
                             <div class="friendd">
                                 <div style="float: left">
-                                    <img  alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>{{friend.userId}}.jpg" onError="onImageUnavailable(this)"/>
-                                    <img style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100_{{friend.genderId}}.jpg" alt="">
+                                    <img  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100_{{friend.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>{{friend.userId}}.jpg"/>
                                 </div>
                                 <div style="float: left; width: 180px; padding: 10px;">
                                     <div >

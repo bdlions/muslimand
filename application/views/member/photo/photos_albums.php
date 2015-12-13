@@ -4,22 +4,18 @@
         <a href="<?php echo base_url(); ?>photos/"><img src="<?php echo base_url(); ?>resources/images/photos/icon/photo.png"></a>
         <a  class="anchor_property_change" href="<?php echo base_url(); ?>photos/"><span style="text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold;">Photo</span></a>
     </div>
-    <div class="col-md-3"></div>
-    <div class="col-md-2">
-        <a  href="<?php echo base_url(); ?>photos/add_photos"><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 28px;">Upload a New Image</button></a>
+    <div class="col-md-offset-3 col-md-3">
+        <a  href="<?php echo base_url(); ?>photos/add_photos"><button class="button-custom pull-right">Upload a New Image</button></a>
     </div>
-    <div class="col-md-1"></div>
 </div>
 <div class="row">
-    <div class="col-md-11">
+    <div class="col-md-12">
         <div class="pagelet_divider"></div>
-    </div>    
-    <div class="col-md-1">
     </div>    
 </div>
 <div class="row">
     <!--LEFT_COLUMN-->
-    <div class="col-md-2">
+    <div class="col-md-3">
         <div class="row">
             <div class="col-md-12">
                 <ul class="video_ul">
@@ -33,14 +29,11 @@
                 </ul> 
             </div>
         </div>
-        <div class="row form-group"></div>
-        <div class="row form-group"></div>
-        <div class="row">
+        <div class="row padding_top_20px">
             <div class="col-md-12">
                 <span style="color: black; font-size: 16px; font-weight: bold; opacity: .6;" href="">Main</span>
             </div>
         </div>
-        <div class="row form-group"></div>
         <div class="row">
             <div class="col-md-12">
                 <?php $this->load->view("member/sections/menu/menu_link"); ?>
@@ -57,7 +50,7 @@
                     <input style="height: 26px; border-radius: 3px;" type="text" class="mm_input form-control" placeholder="Search photos..." />
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-12">
                         <span style="font-size: 12px; font-weight: bold; opacity: .6;" href="">Sort:</span>
@@ -67,9 +60,9 @@
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="<?php echo base_url(); ?>photos/">Latest</a></li>
-                                <li><a href="<?php echo base_url(); ?>photos/photos_sort_most_viewed">Most Viewed</a></li>
-                                <li><a href="<?php echo base_url(); ?>photos/photos_sort_top_rated">Top Rated</a></li>
-                                <li><a href="<?php echo base_url(); ?>photos/photos_sort_most_discussed">Most Discussed</a></li>
+<!--                                <li><a href="<?php //echo base_url();  ?>photos/photos_sort_most_viewed">Most Viewed</a></li>
+                                <li><a href="<?php //echo base_url();  ?>photos/photos_sort_top_rated">Top Rated</a></li>
+                                <li><a href="<?php //echo base_url();  ?>photos/photos_sort_most_discussed">Most Discussed</a></li>-->
                             </ul>
                         </div>
                         &nbsp;
@@ -101,16 +94,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-1"></div>
         </div>
         <div class="pagelet_divider"></div>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <?php $this->load->view("member/pagelets/photo/sort_albums"); ?>
             </div>
-            <div class="col-md-3">
-            </div>
         </div>
-        <div class="col-md-1"></div>
     </div>
 </div>

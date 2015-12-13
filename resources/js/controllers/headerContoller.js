@@ -7,7 +7,6 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
             $scope.friendNotifications = [];
             $scope.url = "../";
             $scope.userCurrentTimeStamp = new Date().getTime()/1000;
-            console.log($scope.userCurrentTimeStamp);
             $scope.userGenderId = "";
 //            $scope.setConstants = function (t) {
 //                $scope.constants = JSON.parse(t);
@@ -39,7 +38,6 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
                     }
                 }, $scope.allNotificationList);
 
-                console.log($scope.allNotificationList);
             };
 
 
@@ -57,7 +55,6 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
 
             $scope.setUserGender = function (genderId) {
                 $scope.userGenderId = genderId;
-                console.log($scope.userGenderId);
 
             };
 
@@ -71,7 +68,7 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
                                     userList = notification.notification.userList;
                                     notification.notification.userList.reverse();
                                     if (typeof notification.notification.timeDiff == "undefined") {
-                                        notification.notification.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, notification.notification.createdOn);
+                                        notification.notification.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, notification.notification.modifiedOn);
                                     } else {
                                         notification.notification.timeDiff = "1sec ago ";
                                     }
