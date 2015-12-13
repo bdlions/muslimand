@@ -1,7 +1,7 @@
 @import url("bootstrap.min.css");
 .form-background
 {
-    background-color: #E4F2D9;
+/*    background-color: #E4F2D9;*/
 }
 .table td {
     text-align: center;   
@@ -294,3 +294,21 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 /*******************************************************************************************/
+
+.btn_custom_button{
+
+    background-color: #703684; 
+    border: 1px solid #703684;
+    color:#fff;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.table_row_style{
+    color: #843534;
+    font-weight: bold; 
+    font-size: 14px;
+}

@@ -1,8 +1,34 @@
-<?php
+<div class="panel panel-default">
+    <div class="panel-heading table_row_style">Update photo category</div>
+    <div class="panel-body">
+        <div class="form-background top-bottom-padding">
+            <div class="row">
+                <div class ="col-md-8 margin-top-bottom">
+                    <?php echo form_open("admin/media/update_photo_category", array('id' => 'form_update_video_category', 'class' => 'form-horizontal')); ?>
+                    <div class ="row">
+                        <div class="col-md-12"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="match_date" class="col-md-6 control-label requiredField">
+                            Title
+                        </label>
+                        <div class ="col-md-6">
+                               <input id="title" class="form-control" type="text" value="" name="title">
+                        </div> 
+                    </div>
+                    <div class="form-group">
+                        <label for="submit_update_match" class="col-md-6 control-label requiredField">
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+                        </label>
+                        <div class ="col-md-3 pull-right">
+                            <input id="submit_update_menu" class="form-control button btn_custom_button" type="submit" value="Update" name="submit_update_menu">
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group" style="padding-left: 10px;">
+                <input type="button" style="width:120px;" value="Back" id="back_button" onclick="javascript:history.back();" class="form-control button btn_custom_button">
+            </div>
+        </div>
+    </div>
+</div>

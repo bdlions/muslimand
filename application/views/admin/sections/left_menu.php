@@ -4,7 +4,7 @@
             <a href=<?php echo base_url(); ?>admin/admin_panel><li>Overview</li></a>
             <li class="admin_panel_left_menu_li">Users
                 <ul>
-                    <a href=""> <li>Overview</li></a>
+                    <a href=""><li>Overview</li></a>
                     <a href=""><li>User Manage</li></a>
                     <a href=""><li>Reports</li></a>
                 </ul>
@@ -13,7 +13,7 @@
                 <ul>
                     <li class="admin_panel_left_menu_li">News Feed
                         <ul style="list-style-type: none; cursor: pointer;">
-                            <a href=""> <li>Post Status</li></a>
+                            <a href=""><li>Post Status</li></a>
                             <a href=""><li>Shared Status</li></a>
                             <a href=""><li>Shared Link</li></a>
                             <a href=""><li>Shared Photo</li>

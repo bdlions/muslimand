@@ -1,0 +1,136 @@
+/*author:salma
+version:1.0/*
+
+/*---------------------facebook-------------------------------k*/
+
+.header_style{
+    background-color: #703684;
+}
+.logo_text_style{
+    font-size: 42px;
+    padding-top: 20px;
+    color: #fff;
+    font-weight: bold;
+    /*text-align: center;*/
+}
+.header_login_input_style{
+    color: #000;
+    padding-top: 10px;
+    font-size: 12px;
+}
+.header_input_style{
+    height: 24px;
+}
+.header_login_style{
+    height: 24px;
+    font-size: 12px;
+    vertical-align: top;
+    background-color: #703684;
+    /*border: 1px solid #5F78AB;*/
+    color: white;
+    font-weight: bold;
+    border-color: #2f477a #29447e #1a356e;
+}
+.checkbox_padding_style{
+    padding-top: 3px;
+    margin-left: 10px;
+}
+.input_text_style_1{
+    vertical-align: top;
+    color: white;
+    opacity: 0.7;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.input_text_style_2:hover{
+    color: wheat;
+}
+
+.divider_style{
+    border: 1px solid lightgray;
+}
+.body_style{
+    background-color: #EDF0F5;
+}
+.slogan_text_style{
+    padding-top: 58px;
+    font-size: 28px;
+    font-weight: bold;
+}
+.photos_text_style{
+    padding-top: 30px;
+}
+.photo_updates_style{
+    padding-top: 10px;
+    font-size: 16px;
+}
+.photo_updates_text_style{
+    font-weight: bold;
+}
+.share_timeline_style{
+    padding-top: 10px;
+    font-size: 16px;
+}
+.share_timeline_text_style{
+    font-weight:bold;
+}
+.find_style{
+    padding-top: 10px;
+    font-size: 16px;
+}
+.find_text_style{
+    font-weight:bold;
+}
+.sign_text_style{
+    padding-top: 7px;
+    font-size: 36px;
+    font-weight: bold;
+}
+.text_style{
+    font-size: 20px;
+}
+.birthday_text_style{
+    font-size: 18px;
+}
+.birthday_option_style{
+    margin-left: -4px;
+}
+.text1_style{
+    font-size: 13px;
+    margin-bottom: 2px;
+    margin-left: 30px;
+}
+.text2_style{
+    font-size: 13px;
+    padding-bottom: 18px;
+}
+.celebraty_style{
+    padding-top: 6px;
+}
+.birthday_style{
+    padding-right: 35px;
+    font-size: 12px;
+}
+.footer_style{
+    background-color: #ffffff;
+}
+.ss_style{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.ss_style li{
+    float:left;
+    padding-right: 10px;
+    cursor: pointer;
+}
+.padding_bottom_style{
+    padding-bottom: 10px;
+    font-size: 12px;
+}   
+.padding_bottom_style1{
+    padding-left: 5px;
+    font-size: 12px;
+}
+
