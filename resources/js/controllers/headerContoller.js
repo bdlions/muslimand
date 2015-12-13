@@ -68,7 +68,7 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
                                     userList = notification.notification.userList;
                                     notification.notification.userList.reverse();
                                     if (typeof notification.notification.timeDiff == "undefined") {
-                                        notification.notification.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, notification.notification.createdOn);
+                                        notification.notification.timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, notification.notification.modifiedOn);
                                     } else {
                                         notification.notification.timeDiff = "1sec ago ";
                                     }

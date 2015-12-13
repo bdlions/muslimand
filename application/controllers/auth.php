@@ -109,7 +109,7 @@ class Auth extends CI_Controller {
                 }
             }
         } else {
-            $this->data['user_list'] = array();
+            $this->data['user_list'] = json_encode(array());
         }
         if ($this->input->post('register_btn') != null) {
             //validate form input to register
