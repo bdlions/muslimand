@@ -138,7 +138,7 @@
                                 </div>
                             </div>
 
-                            <div class="row from-group" >
+                            <div class="row from-group" ng-cloak="">
                                 <div ng-repeat="image in status.images">
                                     <div ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> == status.statusTypeId">
                                         <div class="col-md-12 form-group">
@@ -164,7 +164,7 @@
 
                             <div class="row from-group">
                                 <div class="col-md-12">
-                                    <div style="float: left; text-align: justify">
+                                    <div style="float: left; text-align: justify" ng-cloak>
                                         {{status.referenceInfo.description}}
                                     </div>
                                 </div>

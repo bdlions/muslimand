@@ -38,8 +38,6 @@ class Photos extends CI_Controller {
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(null, "member/photo/photo_home", $this->data);
-//        $this->template->load(MEMBER_TEMPLATE, "member/photo/photo_home", $this->data);
-//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_home", $this->data);
     }
 
     function get_home_photos($profile_id = "0") {
@@ -69,8 +67,6 @@ class Photos extends CI_Controller {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(null, "member/photo/photos_view_my", $this->data);
-//        $this->template->load(MEMBER_TEMPLATE, "member/photo/photos_view_my", $this->data);
-//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my", $this->data);
     }
 
     function photos_view_albums_pic() {
@@ -82,8 +78,6 @@ class Photos extends CI_Controller {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(null, "member/photo/photos_view_friend", $this->data);
-//        $this->template->load(MEMBER_TEMPLATE, "member/photo/photos_view_friend", $this->data);
-//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_friend", $this->data);
     }
 
     function photos_albums() {
@@ -91,8 +85,6 @@ class Photos extends CI_Controller {
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(null, "member/photo/photos_albums", $this->data);
-//        $this->template->load(MEMBER_TEMPLATE, "member/photo/photos_albums", $this->data);
-//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums", $this->data);
     }
 
     function photos_sort_most_viewed() {
@@ -166,8 +158,6 @@ class Photos extends CI_Controller {
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(null, "member/photo/photos_albums_view", $this->data);
-//        $this->template->load(MEMBER_TEMPLATE, "member/photo/photos_albums_view", $this->data);
-//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_albums_view", $this->data);
     }
 
     function create_album() {

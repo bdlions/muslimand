@@ -20,6 +20,7 @@ angular.module('controllers.Message', ['services.Message']).
                         success(function (data, status, headers, config) {
                             $scope.friendList = data.friend_list;
                             $scope.userInfo = data.user_info;
+                            console.log($scope.userInfo);
                         });
             };
 
@@ -33,6 +34,7 @@ angular.module('controllers.Message', ['services.Message']).
                                 $scope.messageHistory.userId = chatUserInfo.userId;
                                 $scope.messageHistory.firstName = chatUserInfo.firstName;
                                 $scope.messageHistory.lastName = chatUserInfo.lastName;
+                                $scope.messageHistory.genderId = chatUserInfo.genderId;
                                 var userObject = $scope.messageHistory;
                                 $scope.addUserToChatUserList(userObject);
                                 $scope.reOrganizeChatBoxes();

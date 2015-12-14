@@ -1,4 +1,4 @@
-<div ng-repeat="albumDetail in albumDetailList">
+<div ng-repeat="albumDetail in albumDetailList" ng-clock>
     <div class="row">
         <div class="col-md-12">
             <span style="font-size: 16px; font-weight: bold;" ng-bind="albumDetail.title"></span>

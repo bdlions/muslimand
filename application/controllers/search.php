@@ -38,10 +38,7 @@ class Search extends CI_Controller {
                     if ($user->firstName != NULL && $user->firstName != "") {
                         $user->signature = $user->firstName[0];
                     }
-                    if ($user->lastName != NULL && $user->lastName != "") {
-                        $user->signature = $user->signature . $user->lastName[0];
-                    }
-                    $user->user_image = base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user->userId;
+                    $user->user_image = base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user->userId .".jpg";
                     $user->user_on_error_image = base_url() . PROFILE_PICTURE_PATH_W30_H30 ."30x30_".$user->gender->genderId .".jpg";
                     array_push($temp_users, $user);
                 }

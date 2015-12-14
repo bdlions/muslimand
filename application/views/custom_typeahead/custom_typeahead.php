@@ -92,7 +92,7 @@
                                             $(user_image).attr('src', data.users[count].user_image);
                                             $(user_on_error_image).attr('src', data.users[count].user_on_error_image);
 //                                            $(ptpro_display).css('display', data.users[count].ptpro_display);
-                                            $(signature_id).html(data.users[count].signature);
+//                                            $(signature_id).html(data.users[count].signature);
                                             $(user_name).html(data.users[count].firstName+' '+data.users[count].lastName);
 //                                            $(home_town).html(data.users[count].home_town);
 //                                            $(country_name).html(data.users[count].country_name);

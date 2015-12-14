@@ -68,19 +68,19 @@ class Message extends CI_Controller {
         return;
     }
 
-    function get_gender_id($user_id_list) {
+    function get_group_id($user_id_list) {
 
         function cmp($a, $b) {
             return strcmp($a, $b);
         }
 
         usort($user_id_list, "cmp");
-        $gender_id = "_";
+        $group_id = "_";
         foreach ($user_id_list as $user) {
-            $gender_id = $gender_id . $user . "_";
+            $group_id = $group_id . $user . "_";
         }
 
-        return $gender_id;
+        return $group_id;
     }
 
     function get_message_history() {
@@ -94,15 +94,15 @@ class Message extends CI_Controller {
         $user_id_list = array();
         $user_id_list[] = $chat_user_id;
         $user_id_list[] = $sender_user_id;
-        $gender_id = $this->get_gender_id($user_id_list);
+        $group_id = $this->get_group_id($user_id_list);
         $limit = 5;
         $offset = 0;
-        $result = $this->message_mongodb_model->get_message_list($gender_id, $offset, $limit);
+        $result = $this->message_mongodb_model->get_message_list($group_id, $offset, $limit);
         if ($result != null) {
             $response['message_history'] = $result;
         } else {
             $chat_initial_info = new stdClass();
-            $chat_initial_info->groupId = $gender_id;
+            $chat_initial_info->groupId = $group_id;
             $chat_initial_info->messages = array();
             $response['message_history'] = $chat_initial_info;
         }

@@ -165,6 +165,7 @@ class Friend extends CI_Controller {
         $user_info->firstName = $this->session->userdata('first_name');
         $user_info->lastName = $this->session->userdata('last_name');
         $user_info->userId = $this->session->userdata('user_id');
+        $user_info->genderId = $this->friend_mongodb_model->get_user_gender_info($user_id);
         $response['user_info'] = $user_info;
         echo json_encode($response);
     }
