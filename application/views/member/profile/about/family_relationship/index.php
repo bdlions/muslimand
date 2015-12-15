@@ -5,22 +5,22 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div class="row" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0')">
+    <div class="row form-group" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0')">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/family_relationship/add_relationship"); ?>
         </div>
     </div>
     <div id="relationship_add" style="display: none">
         <div class="row" >
-            <div class="col-md-2">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/relation.png">
+            <div class="col-md-3">
+                <img class="pull-right" src="<?php echo base_url(); ?>resources/images/about_icons/relation.png">
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <div class="row">
-                    <div class="col-md-8">
-                        <span ng-bind="rStatus.relationshipStatus"></span>
+                    <div class="col-md-10">
+                        <div style="margin-top: 5px;;" ng-bind="rStatus.relationshipStatus"></div>
                     </div>
-                    <div class="col-md-4" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0')">
+                    <div class="col-md-2" ng-if="(profileId != '0' && userId == profileId) || (profileId == '0')">
                         <div class="pull-right">
                             <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                                 <span class="caret"></span>
@@ -36,7 +36,7 @@
         </div>
     </div>
     <div id="edit_relation_status" style="display: none">
-      <?php $this->load->view("member/profile/about/family_relationship/edit_relationship"); ?>  
+        <?php $this->load->view("member/profile/about/family_relationship/edit_relationship"); ?>  
     </div>
     <div  class="row"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0')">
         <div class="pagelet_divider"></div>
@@ -85,8 +85,8 @@
     </div>
 </div>
 <script>
-    $(function () {
-        $('#show_relation_edit_place').on('click', function () {
+    $(function() {
+        $('#show_relation_edit_place').on('click', function() {
             $('#relationship_add').hide();
             $('#edit_relation_status').show();
         });

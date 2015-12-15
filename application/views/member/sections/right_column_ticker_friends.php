@@ -1,16 +1,11 @@
 <script>
-    (function ($) {
-        $(window).load(function () {
-            $("#ticker_notification .ticker").mCustomScrollbar({
-                setHeight: 300,
-                theme: "dark-3"
-            });
-        });
-    })(jQuery);
+    $(function() {
+        $(".chat_box_container")..scrollTop(250);
+    });
 </script>
 <script>
-    (function ($) {
-        $(window).load(function () {
+    (function($) {
+        $(window).load(function() {
             $("#ticker_friend .ticker").mCustomScrollbar({
                 setHeight: 300,
                 theme: "dark-3"
@@ -18,12 +13,22 @@
         });
     })(jQuery);
 </script>
+<script>
+    (function($) {
+        $(window).load(function() {
+            $("#ticker_notification .ticker").mCustomScrollbar({
+                setHeight: 300,
+                theme: "dark-3"
+            });
+        });
+    })(jQuery);
+</script>
 <script type="text/javascript">
-    $(function () {
-        $('.msg_box').each(function () {
-            $(this).click(function () {
+    $(function() {
+        $('.common_box').each(function() {
+            $(this).click(function() {
                 $(this).css("background-color", "#842D80");
-                $('.msg_box').not(this).css("background-color", "#703684");
+                $('.common_box').not(this).css("background-color", "#703684");
             });
         });
 
@@ -72,7 +77,7 @@
     <!--        <div class="ticker_friends message_friends_divider_others">
                 <div class="row">
                     <div class="col-xs-3 col-sm-3 col-md-3">
-                        <img src="<?php //echo base_url();    ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30"> 
+                        <img src="<?php //echo base_url();     ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30"> 
                     </div>
                     <div class="col-xs-9 col-sm-9 col-md-9">
                         <b>Jannatul Ferdaus</b></a> changed her profile pic.

@@ -369,20 +369,26 @@ body {
 
 /*-------------------------------------msg box--------------------------------------*/
 
+
+.chat_box_container{
+    height: 230px; 
+    overflow-y: scroll; 
+    overflow-x: hidden; 
+    background-color: #fff; 
+    border: 2px solid #703684!important;
+}
+
 .common_box{
     background-color: #703684;
-    z-index: 20000;
 }
 
 .active_chat{
-     background-color: red;
-    z-index: 20000;
+    background-color: red;
 }
 
 .msg_box{
     position: absolute;
     width: 260px;
-    z-index: 20000;
 
 }
 
@@ -1016,6 +1022,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     background-color: #E9EAED;
     padding: 10px;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .modal_content_row_border_full{
@@ -1061,5 +1068,5 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 /*ng-clock*/
 
 .ng-cloak {
-  display: none !important;
+    display: none !important;
 }

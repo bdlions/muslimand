@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="pagelet_divider"></div>
-    <div class="row form-group"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
+    <div class="row form-group"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0')">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/places/add_current_city"); ?>
         </div>
@@ -14,14 +14,14 @@
     <div id="current_city_id" style="display: none;">
         <div class="row form-group">
             <div class="col-md-2">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/dhaka.jpg">
+                <img class="pull-right" src="<?php echo base_url(); ?>resources/images/about_icons/livingPlace.png">
             </div>
             <div class="col-md-10">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                         <a href=""><span ng-bind="city.cityName"></span><span ng-bind="city.country.title"></span></a>
                     </div>
-                    <div class="col-md-4"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
+                    <div class="col-md-2"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0')">
                         <div class="pull-right">
                             <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                                 <span class="caret"></span>
@@ -45,8 +45,8 @@
         <?php $this->load->view("member/profile/about/places/edit_current_city"); ?>
     </div>
 
-    <span ng-if="town != null "><div class="pagelet_divider"></div></span>
-    <div class="row form-group"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
+    <span ng-if="town != null"><div class="pagelet_divider"></div></span>
+    <div class="row form-group"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0')">
         <div class="col-md-12">
             <?php $this->load->view("member/profile/about/places/add_home_town"); ?>
         </div>
@@ -55,14 +55,14 @@
     <div id = "home_town_id" style="display: none">
         <div class="row form-group">
             <div class="col-md-2">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/dhaka.jpg">
+                <img class="pull-right" src="<?php echo base_url(); ?>resources/images/about_icons/home_town.png">
             </div>
             <div class="col-md-10">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                         <a href=""><span ng-bind="town.townName"></span>,<span ng-bind="town.country.title"></span></a>
                     </div>
-                    <div class="col-md-4"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0') ">
+                    <div class="col-md-2"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0')">
                         <div class="pull-right">
                             <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                                 <span class="caret"></span>
@@ -98,9 +98,9 @@
     function open_modal_city_delete(e) {
         var cCityId = $(e).attr('id');
         var selectionInfo = "Current City?";
-        delete_confirmation(selectionInfo, function (response) {
+        delete_confirmation(selectionInfo, function(response) {
             if (response == "Yes") {
-                angular.element($('#delete_content_btn')).scope().deleteCurrentCity(cCityId, function () {
+                angular.element($('#delete_content_btn')).scope().deleteCurrentCity(cCityId, function() {
                     $('#common_delete_confirmation_modal').modal('hide');
                     $('#current_city_id').hide();
                 });
@@ -114,9 +114,9 @@
     function open_modal_h_town_delete(e) {
         var hTownId = $(e).attr('id');
         var selectionInfo = "Home Town?";
-        delete_confirmation(selectionInfo, function (response) {
+        delete_confirmation(selectionInfo, function(response) {
             if (response == "Yes") {
-                angular.element($('#delete_content_btn')).scope().deleteHomeTown(hTownId, function () {
+                angular.element($('#delete_content_btn')).scope().deleteHomeTown(hTownId, function() {
                     $('#common_delete_confirmation_modal').modal('hide');
                     $('#home_town_id').hide();
                 });

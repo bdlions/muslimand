@@ -10,7 +10,7 @@
                 <span class="subcategory_label_style">Professional Skills</span>
             </div>
             <div class="col-md-8">
-                <input type="text" id="p_skill_{{pSkill.id}}" class="form-control" ng-model="pSkill.pSkill">
+                <input type="text" id="p_skill_{{pSkill.id}}" class="form-control form_control_custom_style" ng-model="pSkill.pSkill">
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-5">
-                <select class="form-control" name="control">
+                <select class="form-control form_control_custom_style" name="control">
                     <option selected="1" value="0">Everyone</option>
                     <option value="1">Friends</option>
                     <option value="2">Friends of Friends</option>
@@ -29,10 +29,10 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <button id="edit_p_skill_btn_id" class="btn btn-default form-control" style="background-color: #703684; color: white" onclick="edit_p_skill(angular.element(this).scope().pSkill)">Save</button>
+                <button id="edit_p_skill_btn_id" class="btn btn-xs form-control form_control_custom_style" style="background-color: #703684; color: white" onclick="edit_p_skill(angular.element(this).scope().pSkill)">Save</button>
             </div>
             <div class="col-md-3">
-                <button class="btn btn-default form-control cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
+                <button class="btn btn-xs form-control form_control_custom_style cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
             alert("Please Fill up Professional Field");
             return;
         }
-        angular.element($('#edit_p_skill_btn_id')).scope().editPSkill(pSkillInfo, function () {
+        angular.element($('#edit_p_skill_btn_id')).scope().editPSkill(pSkillInfo, function() {
             $('#p_skill_' + pSkillId).show();
             $('#edit_p_skill_' + pSkillId).hide();
         });

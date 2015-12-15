@@ -8,33 +8,33 @@
                 <div> Works at <a href ><span ng-bind="overview.workPlace.company"></span></a></div>
             </div>
         </div>
-<!--        <div class="row form-group" id="about_overview_add_work_place" onclick="getWorksEducation('<?php echo $user_id ;?>')">
+<!--        <div class="row form-group" id="about_overview_add_work_place" onclick="getWorksEducation('<?php echo $user_id; ?>')">
             <div class="col-md-12">
                 <div class="cursor_holder_style">
-                    <img style="border: 1px solid lightpink;" src="<?php //echo base_url(); ?>resources/images/plus.png">
+                    <img style="border: 1px solid lightpink;" src="<?php //echo base_url();  ?>resources/images/plus.png">
                     <a class="holder_style">Add a workplace</a>
                 </div>
             </div>
         </div>-->
         <div class="row form-group" id="about_overview_uiversity" style="display: none">
-        <div class="pagelet_divider"></div>
+            <div class="pagelet_divider"></div>
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/about_icons/institution.png"> 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/university.png"> 
             </div>
             <div class="col-md-10">
                 Studied at <a href="#"> <span ng-bind="overview.university.university"></span></a>
             </div>
         </div>
-<!--        <div class="row form-group" id="about_overview_add_university" ng-click="getWorksEducation('<?php echo $user_id ;?>')">
+<!--        <div class="row form-group" id="about_overview_add_university" ng-click="getWorksEducation('<?php echo $user_id; ?>')">
             <div class="col-md-12">
                 <div class="cursor_holder_style">
-                    <img style="border: 1px solid lightpink;" src="<?php //echo base_url(); ?>resources/images/plus.png">
+                    <img style="border: 1px solid lightpink;" src="<?php //echo base_url();  ?>resources/images/plus.png">
                     <a class="holder_style">Add Your University</a>
                 </div>
             </div>
         </div>-->
         <div class="row form-group" id="about_overview_city" style="display: none"> 
-        <div class="pagelet_divider"></div>
+            <div class="pagelet_divider"></div>
             <div class="col-md-2">
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/livingPlace.png"> 
             </div>
@@ -42,10 +42,10 @@
                 Lives in <a href="#"> <span ng-bind="overview.city.cityName"></span></a>
             </div>
         </div>
-<!--        <div class="row form-group" id="about_overview_add_city"  ng-click="getCityTown('<?php echo $user_id ;?>')">
+<!--        <div class="row form-group" id="about_overview_add_city"  ng-click="getCityTown('<?php echo $user_id; ?>')">
             <div class="col-md-12">
                 <div class="cursor_holder_style">
-                    <img style="border: 1px solid lightpink;" src="<?php //echo base_url(); ?>resources/images/plus.png">
+                    <img style="border: 1px solid lightpink;" src="<?php //echo base_url();  ?>resources/images/plus.png">
                     <a class="holder_style">Add Current City</a>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/address.png"  > 
             </div>
             <div class="col-md-10">
-                <h6><span ng-bind="overview.address.postCode"></span>,<span ng-bind="overview.address.zip"></span>,<span ng-bind="overview.address.address"></span>,<span ng-bind="overview.address.city"></span></h6>
+                <span ng-bind="overview.address.address"></span>, <span ng-bind="overview.address.postCode"></span>, <span ng-bind="overview.address.zip"></span>, <span ng-bind="overview.address.city"></span>
             </div>
         </div>
         <div class="row form-group" id="about_overview_website" style="display: none">
@@ -81,7 +81,7 @@
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/website.png"  > 
             </div>
             <div class="col-md-10">
-                <a href="{{overview.website.website}}" target="_blank" ng-bind="overview.website.website"></a>
+                <a style="word-wrap: break-word;" href="{{overview.website.website}}" target="_blank" ng-bind="overview.website.website"></a>
             </div>
         </div>
         <div class="row form-group" id="about_overview_birthDate" style="display: none">

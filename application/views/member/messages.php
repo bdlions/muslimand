@@ -1,9 +1,9 @@
 
 <script>
-    (function ($) {
-        $(window).load(function () {
-            $("#full_msg_box_container .ticker").mCustomScrollbar({
-                setHeight: 300,
+    (function($) {
+        $(window).load(function() {
+            $("#msg_content .msg_scroll").mCustomScrollbar({
+                setHeight: 350,
                 theme: "dark-3"
             });
         });
@@ -97,31 +97,35 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div class="border_without_bottom padding_top_5px">
-                        <div class="row" ng-repeat="messageInfo in messageInformation.messages">
-                            <div class="user_comment">
-                                <div class="col-md-1">
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{messageInfo.senderInfo.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <a style="font-weight: bold;" href="#">{{messageInfo.senderInfo.firstName}} &nbsp;{{messageInfo.senderInfo.lastName}}</a>
-                                        </div>  
+                    <div id="msg_content">
+                        <div class="msg_scroll">
+                            <div class="border_without_bottom padding_top_5px">
+                                <div class="row" ng-repeat="messageInfo in messageInformation.messages">
+                                    <div class="user_comment">
+                                        <div class="col-md-1">
+                                            <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{messageInfo.senderInfo.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <a style="font-weight: bold;" href="#">{{messageInfo.senderInfo.firstName}} &nbsp;{{messageInfo.senderInfo.lastName}}</a>
+                                                </div>  
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <span>{{messageInfo.message}}</span>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            24/12, 11.15pm
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <span>{{messageInfo.message}}</span>
-                                        </div> 
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    24/12, 11.15pm
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="message_friends_divider_others">
+                    <div class="message_friends_divider_others" style="padding-top: 5px; border-top: 1px solid lightgray;">
                         <div class="row">
                             <div class="col-md-12"> 
                                 <form  ng-submit="addMessage(messageInformation.groupId)">
