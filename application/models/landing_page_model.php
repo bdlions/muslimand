@@ -10,7 +10,7 @@ class Landing_page_model extends CI_Model
     
     public function get_landing_page_info(){
         $this->curl->create($this->SERVICE_STATUS . 'getLandingPageInfo');
-        $this->curl->post(array());
+//        $this->curl->post(array());
         return json_decode($this->curl->execute());
     }
 }

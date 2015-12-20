@@ -24,3 +24,4 @@ app.directive('fallbackSrc', function () {
     }
     return fallbackSrc;
 });
+

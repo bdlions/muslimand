@@ -61,7 +61,7 @@ if (defined('ENVIRONMENT'))
 			exit('The application environment is not set correctly.');
 	}
 }
-define("SERVICE_PATH", "http://localhost:8080/dataservice/");
+define("SERVICE_PATH", "http://localhost:8080/");
 /*
  *---------------------------------------------------------------
  * SYSTEM FOLDER NAME

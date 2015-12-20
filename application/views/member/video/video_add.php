@@ -1,4 +1,3 @@
-
 <div class="row form-group"></div>
 <div class="row form-group"></div>
 <div class="row form-group"></div>
@@ -10,7 +9,7 @@
     <div class="col-md-2">
     </div>
 </div>
-<div class="row">
+<div class="row" ng-controller="videoController">
     <div class="col-md-10">
         <div class="pagelet_divider"></div>
         <div class="row">
@@ -81,6 +80,7 @@
         <div class="col-md-2"></div>
     </div>
 </div>
+
 <?php $this->load->view("member/video/modal_suppoted_video"); ?>
 
 <script>

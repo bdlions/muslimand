@@ -1,6 +1,6 @@
 <script>
     $(function() {
-        $(".chat_box_container")..scrollTop(250);
+        $(".chat_box_container").scrollTop(250);
     });
 </script>
 <script>
