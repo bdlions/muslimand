@@ -44,7 +44,7 @@ class Utils {
 
     public function get_gender() {
         $gender = array(
-            "0" => 'gender',
+            "0" => 'Gender',
             "1" => 'Male',
             "2" => 'Female',
             "3" => 'Other',
@@ -60,7 +60,7 @@ class Utils {
 
     public function get_month_list() {
         $months = array(
-            "0" => 'month',
+            "0" => 'Month',
             "01" => 'Jan',
             "02" => 'Feb',
             "03" => 'Mar',
@@ -84,7 +84,7 @@ class Utils {
      *  */
 
     public function get_date_list() {
-        $date_list[0] = "date";
+        $date_list[0] = "Date";
         for ($i = 1; $i <= 31; $i++) {
             if ($i < 10) {
                 $date_list["0" . $i] = "0" . $i;
@@ -102,7 +102,7 @@ class Utils {
      *  */
 
     public function get_year_list() {
-         $year_list[0] = "year";
+         $year_list[0] = "Year";
         for ($i = 2015; $i >= 1915; $i--) {
             $year_list["" . $i] = "" . $i;
         }
