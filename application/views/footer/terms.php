@@ -10,7 +10,7 @@
             <div style="font-size: 12px; text-align: justify;">
                 <div class="row padding_top_over_row">
                     <div class="col-md-12">
-                        <p>Effective as of: 01.01.2015</p>
+                        <p>Effective as of: 01.01.2016</p>
                         <p style="font-weight: bold;">PLEASE READ THESE TERMS AND CONDITIONS OF USE ("TERMS OF USE") CAREFULLY. 
                             BY ACCESSING OR USING THIS WEB SITE, YOU AGREE TO BE BOUND BY THESE TERMS OF USE.</p>
                         <p>Donec arcu ante, laoreet sit amet eros et, aliquam pellentesque odio. Sed accumsan convallis risus, 
@@ -26,7 +26,7 @@
                 <div style="font-size: 12px; text-align: justify;">
                     <div class="row padding_top_over_row">
                         <div class="col-md-12">
-                            <h3>1. Muslimand Account:</h3>
+                            <h3>1. Shadhiin Account:</h3>
                             <p style="font-weight: bold;">1.1 Eligibility</p>
                             <p>Donec arcu ante, laoreet sit amet eros et, aliquam pellentesque odio. Sed accumsan convallis risus, 
                                 nec scelerisque nulla dignissim efficitur. Aenean feugiat maximus placerat. Quisque lobortis malesuada tortor. 

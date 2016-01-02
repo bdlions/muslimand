@@ -1,6 +1,6 @@
-<div class="container-fluid" style="padding-top: 10px; background-color: #703684; color: white">
+<div class="container-fluid" style="background-color: #703684; color: white">
     <?php echo form_open("auth/login"); ?>
-    <div class="row form-group">
+    <div class="row">
         <div class="col-md-4">
              <div style="text-align: center; padding-top: 14px; padding-left: 90px;">
                 <img class="img-circle" src="<?php echo base_url(); ?>resources/images/logo.png" style="margin: 0px 3px 20px 0px;">
