@@ -1,7 +1,4 @@
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row">
+<div class="row padding_top_30px">
     <div class="col-md-10">
         <img src="<?php echo base_url(); ?>resources/images/video/film_add.png">
         <span style="font-size: 16px; font-weight: bold;">Video</span>

@@ -16,7 +16,7 @@
             <div class="modal-body">
                 <div class="row form-group">
                     <div class="col-md-12">
-                        <textarea rows="4" cols="50" ng-model="statusShareInfo.description"></textarea>
+                        <textarea class="textarea_custom_style" ng-model="statusShareInfo.description"></textarea>
                         <input type="hidden" id="status_id">
                         <input type="hidden" id="image">
                     </div>
@@ -52,9 +52,9 @@
             </div>
             <div class="modal-footer">
                 <div class="row">
-                    <div class="col-md-offset-4 col-md-3">
+                    <div class="col-md-offset-5 col-md-3">
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn button-custom dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 Everyone
                                 <span class="caret"></span>
                             </button>
@@ -70,8 +70,8 @@
                     <div class="col-md-2">
                         <input type="button" class="close modal_cancel_button_style" data-dismiss="modal" aria-hidden="true" value="Cancel">
                     </div>
-                    <div class="col-md-3">
-                        <input type="button" id="status_shared_add_id" class="default_button form-control" value="Share" onclick="share_status()" >
+                    <div class="col-md-2">
+                        <input type="button" id="status_shared_add_id" class="button-custom" value="Share" onclick="share_status()" >
                     </div>
                 </div>
             </div>

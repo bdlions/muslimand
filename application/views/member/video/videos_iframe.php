@@ -40,9 +40,9 @@
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="<?php echo base_url(); ?>videos/">Latest</a></li>
-                                <li><a href="<?php echo base_url(); ?>videos/videos_sort_most_viewed">Most Viewed</a></li>
-                                <li><a href="<?php echo base_url(); ?>videos/videos_sort_top_rated">Top Rated</a></li>
-                                <li><a href="<?php echo base_url(); ?>videos/videos_sort_most_discussed">Most Discussed</a></li>
+                                <!--                                <li><a href="<?php //echo base_url(); ?>videos/videos_sort_most_viewed">Most Viewed</a></li>
+                                <li><a href="<?php //echo base_url(); ?>videos/videos_sort_top_rated">Top Rated</a></li>
+                                <li><a href="<?php //echo base_url(); ?>videos/videos_sort_most_discussed">Most Discussed</a></li>-->
                             </ul>
                         </div>
                         &nbsp;
@@ -115,15 +115,27 @@
             <div class="row">
                 <div class="col-md-12">
                     <span ng-if = "videoDetail.likeStatus != '1'">
-                        <a href style="color: #3B59A9;"  onclick="add_video_like(angular.element(this).scope().videoDetail.videoId)" id="video_like_{{videoDetail.videoId}}">Like</a>
+                        <a href style="color: #3B59A9;"  onclick="add_video_like(angular.element(this).scope().videoDetail.videoId)" id="video_like_{{videoDetail.videoId}}">
+                            <img src="<?php echo base_url() ?>resources/images/like_icon.png">
+                            Like
+                        </a>
                     </span>
                     <span ng-if = "videoDetail.likeStatus == '1'">
-                        <a href style="color: #3B59A9;" >liked</a>
+                        <a href style="color: #3B59A9;" >
+                            <img src="<?php echo base_url() ?>resources/images/like_icon.png">
+                            Liked
+                        </a>
                     </span>
                     .
-                    <a href style="color: #3B59A9;" id="video_comment_id_focus"> Comment</a>
+                    <a href style="color: #3B59A9;" id="video_comment_id_focus"> 
+                        <img src="<?php echo base_url() ?>resources/images/comment_icon.png">
+                        Comment
+                    </a>
                     .
-                    <a style="color: #3B59A9;"  id="share_add_id" href onclick="open_modal_share(angular.element(this).scope().videoDetail)"> Share</a>
+                    <a style="color: #3B59A9;"  id="share_add_id" href onclick="open_modal_share(angular.element(this).scope().videoDetail)">
+                        <img src="<?php echo base_url() ?>resources/images/share_icon.png">
+                        Share
+                    </a>
                 </div>
             </div>
             <div class="row form-group"></div>

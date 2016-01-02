@@ -1,4 +1,4 @@
-<div class="col-md-2">
+<div class="col-md-3">
         <div class="row">
             <div class="col-md-12">
                 <ul class="video_ul">

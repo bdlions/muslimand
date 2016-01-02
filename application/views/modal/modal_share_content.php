@@ -42,9 +42,9 @@
 
             <div class="modal-footer">
                 <div class="row">
-                    <div class="col-md-offset-4 col-md-3">
+                    <div class="col-md-offset-5 col-md-3">
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn button-custom dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 Everyone
                                 <span class="caret"></span>
                             </button>
@@ -60,8 +60,8 @@
                     <div class="col-md-2">
                         <input type="button" class="close modal_cancel_button_style" data-dismiss="modal" aria-hidden="true" value="Cancel">
                     </div>
-                    <div class="col-md-3">
-                        <input type="button" class="default_button form-control" value="Share Video" >
+                    <div class="col-md-2">
+                        <input type="button" class="button-custom" value="Share Video" >
                     </div>
                 </div>
             </div>

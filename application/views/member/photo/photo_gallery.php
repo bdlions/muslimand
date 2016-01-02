@@ -50,15 +50,27 @@
                             <div class="row form-group">
                                 <div class="col-md-12">
                                     <span ng-if = "photoInfo.likeStatus != '1'">
-                                        <a href style="color: #3B59A9;"  onclick="add_photo_like(angular.element(this).scope().photoInfo.photoId)" id="photo_like_{{photoInfo.photoId}}">Like</a>
+                                        <a href style="color: #3B59A9;"  onclick="add_photo_like(angular.element(this).scope().photoInfo.photoId)" id="photo_like_{{photoInfo.photoId}}">
+                                            <img src="<?php echo base_url() ?>resources/images/like_icon.png">
+                                            Like
+                                        </a>
                                     </span>
                                     <span ng-if = "photoInfo.likeStatus == '1'">
-                                        <a href style="color: #3B59A9;" id="photo_dislike_{{photoInfo.photoId}}">liked</a>
+                                        <a href style="color: #3B59A9;" id="photo_dislike_{{photoInfo.photoId}}">
+                                            <img src="<?php echo base_url() ?>resources/images/like_icon.png">
+                                            Liked
+                                        </a>
                                     </span>
                                     .
-                                    <a href style="color: #3B59A9;" id="photo_comment_id_focus"> Comment</a>
+                                    <a href style="color: #3B59A9;" id="photo_comment_id_focus"> 
+                                        <img src="<?php echo base_url() ?>resources/images/comment_icon.png">
+                                        Comment
+                                    </a>
                                     .
-                                    <a href="#" style="color: #3B59A9;"> Share</a>
+                                    <a href="#" style="color: #3B59A9;"> 
+                                        <img src="<?php echo base_url() ?>resources/images/share_icon.png">
+                                        Share
+                                    </a>
                                 </div>
                             </div>
                             <div class="pagelet_divider"></div>

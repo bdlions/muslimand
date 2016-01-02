@@ -389,6 +389,8 @@ body {
 .msg_box{
     position: absolute;
     width: 260px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 
 }
 
@@ -775,12 +777,14 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 .button-custom, .button-primary-custom,.button-primary-custom, .button-danger-custom, .button-danger-custom:hover {
     color: #fff!important; 
     border-radius: 3px!important; 
-    padding: 2px 8px!important; 
+    padding: 3px 8px!important; 
+    font-weight: bold!important; 
 }
 .button-custom, .button-custom:hover {
     background-color: #703684!important; 
     border: 1px solid #703684!important; 
     color: #fff!important; 
+    font-weight: bold!important; 
 }
 .button-primary-custom{
     background-color: #428bca!important; 
@@ -918,33 +922,21 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     cursor: pointer!important;
 }
 
-.default_button{
-    background-color: #703684;
-    border: 1px solid #703684;
-    border-radius: 3px;
-    color: white;
-    text-align: center;
-    vertical-align: middle;
-    height: 30px;
-    line-height: 15px;
-    font-weight: bold;
+
+.modal_cancel_button_style, .modal_cancel_button_style:hover, .modal_cancel_button_style:active, .modal_cancel_button_style:focus{
+    background-color: #703684!important;  
+    font-size: 14px!important;  
+    opacity: 1!important;  
+    border: 1px solid #703684!important;  
+    color: #fff!important;  
+    font-weight: bold!important;  
+    padding: 4px 8px!important;  
+    border-radius: 3px!important;  
+    text-shadow: none!important;   
 }
 
-.modal_cancel_button_style{
-    background-color: #703684; 
-    font-size: 14px; 
-    opacity: 1; 
-    border: 1px solid #703684; 
-    color: #fff; 
-    font-weight: bold; 
-    padding: 6px 12px; 
-    border-radius: 3px; 
-    text-shadow: none;  
-}
-.modal_cancel_button_style:hover{
-    background-color: #703684!important; 
-    color: #fff!important; 
-    opacity: 1;
+.modal{
+    top: 5%!important; 
 }
 
 .form_control_custom_style{
@@ -964,6 +956,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 .textarea_custom_style{
     resize: none;
+    width: 100%;
 }
 .button_border_remover{
     border: 0px;

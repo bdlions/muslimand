@@ -23,7 +23,7 @@
                             <div class="col-md-3" ng-if="sharedUser.userInfo.userId != '<?php echo $user_id; ?>'">
                                 <input id="add_friend_id_1" type="button" class="default_button form-control form_control_custom_style" value="Add Friend" >
                                 <div id="friend_list_id_1" class="btn-group" role="group" style=" display: none;">
-                                    <button class="btn btn-default dropdown-toggle button-custom" aria-expanded="false" data-toggle="dropdown" type="button">
+                                    <button class="btn button-custom dropdown-toggle button-custom" aria-expanded="false" data-toggle="dropdown" type="button">
                                         Friend
                                         <span class="caret"></span>
                                     </button>

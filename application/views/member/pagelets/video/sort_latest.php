@@ -4,11 +4,10 @@
     </div>
 </div>
 <div class="pagelet_divider"></div>
-<div class="row form-group"></div>
 <div class="row form-group">
-    <div class="col-md-3" ng-repeat=" video in videoList" >
+    <div class="col-md-4" ng-repeat=" video in videoList" >
             <a href="<?php echo base_url(); ?>videos/videos_iframe/{{video.videoId}}" >
-                <img scrolling="no" src="{{video.imageUrl}}" width="120" height="90" frameborder="0" allowfullscreen>
+                <img scrolling="no" src="{{video.imageUrl}}" frameborder="0" allowfullscreen>
             </a>
             <div class="font_11px">
                 <a href="<?php echo base_url(); ?>videos/videos_iframe">amazing child</a><br>

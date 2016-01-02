@@ -6,7 +6,7 @@
 <div class="pagelet_divider"></div>
 <div class="row form-group"></div>
 <div class="row form-group">
-    <div class="col-md-3">
+    <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
             <img scrolling="no" src="http://img.youtube.com/vi/Wdhk2y6zFg4/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
@@ -18,7 +18,7 @@
         by <a href="">Fatematul Kobra</a>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
             <img scrolling="no" src="http://img.youtube.com/vi/X-MXr00HEdM/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
@@ -30,17 +30,12 @@
         by <a href="">Sharmin Akter</a>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
             <img scrolling="no" src="http://img.youtube.com/vi/VSJYk7QfzbM/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-    </div>
-    <div class="col-md-3">
-        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/_bLd7Jlgj1E/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
-        </a>
         <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Death</a><br>
+            <a href="<?php echo base_url(); ?>videos/videos_iframe">Pray</a><br>
         </div>
         <div class="font_10px">
         4,552 views<br>
@@ -50,7 +45,7 @@
 </div>
 <div class="row form-group"></div>
 <div class="row form-group">
-    <div class="col-md-3">
+    <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
             <img scrolling="no" src="http://img.youtube.com/vi/Ot-0uvKGk5o/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
@@ -62,7 +57,7 @@
         by <a href="">Jannatul Ferdaus</a>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
             <img scrolling="no" src="http://img.youtube.com/vi/TpcbfxtdoI8/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
@@ -74,7 +69,7 @@
         by <a href="">Mohammad Rafique</a>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
             <img scrolling="no" src="http://img.youtube.com/vi/bWsH-fbKjlk/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
@@ -86,7 +81,10 @@
         by <a href="">Dr. Belal</a>
         </div>
     </div>
-    <div class="col-md-3">
+</div>
+<div class="row form-group"></div>
+<div class="row form-group">
+    <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
             <img scrolling="no" src="http://img.youtube.com/vi/k7IWSj_iY0g/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
@@ -98,10 +96,7 @@
         by <a href="">Sharmin Akter</a>
         </div>
     </div>
-</div>
-<div class="row form-group"></div>
-<div class="row form-group">
-    <div class="col-md-3">
+    <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
             <img scrolling="no" src="http://img.youtube.com/vi/PdhjzQ1X_nU/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
@@ -113,7 +108,7 @@
         by <a href="">Sharmin Akter</a>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
             <img scrolling="no" src="http://img.youtube.com/vi/eitlk23MqhI/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
@@ -125,7 +120,11 @@
         by <a href="">Maria Islam</a>
         </div>
     </div>
-    <div class="col-md-3">
+</div>
+
+<div class="row form-group"></div>
+<div class="row form-group">
+    <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
             <img scrolling="no" src="http://img.youtube.com/vi/CWMqH7QJu_w/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
@@ -137,7 +136,19 @@
         by <a href="">Barak Obama</a>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
+        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+            <img scrolling="no" src="http://img.youtube.com/vi/_bLd7Jlgj1E/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+        </a>
+        <div class="font_11px">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe">Death</a><br>
+        </div>
+        <div class="font_10px">
+        4,552 views<br>
+        by <a href="">Barak Obama</a>
+        </div>
+    </div>
+    <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
             <img scrolling="no" src="http://img.youtube.com/vi/OBic6aOQNaY/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>

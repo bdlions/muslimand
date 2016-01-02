@@ -1,20 +1,15 @@
-<div class="padding_top_30px"></div>
-<div class="row">
+<div class="row padding_top_30px">
     <div class="col-md-6">
         <a href="<?php echo base_url(); ?>photos/"><img src="<?php echo base_url(); ?>resources/images/video/film_add.png"></a>
         <a  class="anchor_property_change" href="<?php echo base_url(); ?>photos/"><span style="text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold;">Video</span></a>
     </div>
-    <div class="col-md-3"></div>
-    <div class="col-md-2">
-        <a  href="<?php echo base_url(); ?>Videos/add_video"><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 28px;">Share a Video</button></a>
+    <div class="col-md-offset-3 col-md-3">
+        <a  href="<?php echo base_url(); ?>Videos/add_video"><button class="button-custom pull-right" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 28px;">Share a Video</button></a>
     </div>
-    <div class="col-md-1"></div>
 </div>
 <div class="row">
-    <div class="col-md-11">
+    <div class="col-md-12">
         <div class="pagelet_divider"></div>
-    </div>    
-    <div class="col-md-1">
     </div>    
 </div>
 <div class="row">
@@ -29,7 +24,7 @@
                     <input style="height: 26px; border-radius: 3px;" type="text" class="mm_input form-control" placeholder="Search videos..." />
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-12">
                         <span style="font-size: 12px; font-weight: bold; opacity: .6;" href="">Sort:</span>
@@ -39,9 +34,9 @@
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="<?php echo base_url(); ?>videos/">Latest</a></li>
-                                <li><a href="<?php echo base_url(); ?>videos/videos_sort_most_viewed">Most Viewed</a></li>
-                                <li><a href="<?php echo base_url(); ?>videos/videos_sort_top_rated">Top Rated</a></li>
-                                <li><a href="<?php echo base_url(); ?>videos/videos_sort_most_discussed">Most Discussed</a></li>
+                                <!--                                <li><a href="<?php //echo base_url(); ?>videos/videos_sort_most_viewed">Most Viewed</a></li>
+                                <li><a href="<?php //echo base_url(); ?>videos/videos_sort_top_rated">Top Rated</a></li>
+                                <li><a href="<?php //echo base_url(); ?>videos/videos_sort_most_discussed">Most Discussed</a></li>-->
                             </ul>
                         </div>
                         &nbsp;
@@ -78,7 +73,6 @@
         <div class="pagelet_divider"></div>
         <div class="row">
             <div class="col-md-9">
-
                 <?php $this->load->view("member/pagelets/video/view_my"); ?>
             </div>
             <div class="col-md-3">
