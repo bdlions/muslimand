@@ -23,7 +23,6 @@ class Message extends CI_Controller {
         $this->load->helper('language');
     }
 
- 
     function add_mesage() {
 
         $sender_id = $this->session->userdata('user_id');
@@ -55,7 +54,6 @@ class Message extends CI_Controller {
             function cmp($a, $b) {
                 return strcmp($a, $b);
             }
-
             usort($user_id_list, "cmp");
             $result = $this->message_mongodb_model->add_message($user_id_list, $sender_id, $message);
         } else {

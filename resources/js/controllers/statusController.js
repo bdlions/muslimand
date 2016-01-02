@@ -138,8 +138,12 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
              * 
              * */
             $scope.addStatus = function (imageList, profileUserInfo, requestFunction) {
+                var imageListArray = [];
+                imageListArray = imageList;
+                if(imageListArray.length > 0 ){
                 $scope.statusInfo.imageList = [];
                 $scope.statusInfo.imageList = imageList;
+                }
                 $scope.statusInfo.profileId = profileUserInfo.profileId;
                 $scope.statusInfo.profileFirstName = profileUserInfo.profileFirstName;
                 $scope.statusInfo.profileLastName = profileUserInfo.profileLastName;

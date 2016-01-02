@@ -1,13 +1,15 @@
 
 <script>
-    (function($) {
-        $(window).load(function() {
+    $("#testId").css("background-color");
+    (function ($) {
+        $(window).load(function () {
             $("#msg_content .msg_scroll").mCustomScrollbar({
                 setHeight: 350,
                 theme: "dark-3"
             });
         });
     })(jQuery);
+
 </script>
 <div class="row" ng-controller="messageController" ng-cloak  ng-init="setMessageSummery('<?php echo htmlspecialchars(json_encode($message_summery_list)); ?>')">
     <div class="col-md-12" >

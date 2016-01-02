@@ -1,5 +1,5 @@
 
-<div class="">
+<div class="" id="testId">
     <div  class="msg_box common_box" style="right: {{chatUserDetails.rightPos}}px" >
         <div class="message_friends_divider_full common_box_header" style="border: none!important;">
             <div class="row">
