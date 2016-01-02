@@ -18,68 +18,122 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
             $scope.userId = "";
             $scope.message = {};
             $scope.webSocketMessage = {};
-            ws;
+            $scope.ws;
             $scope.setUserId = function (userId) {
                 $scope.userId = userId;
                 console.log($scope.userId);
-                ws = $websocket("ws://localhost:8089/" + $scope.userId);
-            };
-            console.log($scope.userId);
-            ws = $websocket("ws://localhost:8089/" + "9Ixsx2qFkzWEliG");
-            //ws = $websocket("ws://localhost:8089/" + $scope.userId);
-            ws.onMessage(function (event) {
-                var userMessage = {};
-                var userExistStatus = 0;
-                userMessage = JSON.parse(event.data);
-                console.log(userMessage);
-                if ($scope.messageNotification.length > 0) {
-                    angular.forEach($scope.messageNotification, function (notification, key) {
-                        if (notification != userMessage.groupId) {
-                            $("#message_counter_div").show();
-                            var messageNotificationCounter = $("#message_counter_div").val();
-                            messageNotificationCounter = +messageNotificationCounter + +1;
-                            $("#message_counter_div").val(messageNotificationCounter);
-                            $("#message_counter_div").html(messageNotificationCounter);
-                            $scope.messageNotification.push(userMessage.groupId);
+                $scope.ws = $websocket("ws://localhost:8089/" + $scope.userId);
+                $scope.ws.onMessage(function (event) {
+                    var userMessage = {};
+                    var userExistStatus = 0;
+                    userMessage = JSON.parse(event.data);
+                    console.log(userMessage);
+                    if ($scope.messageNotification.length > 0) {
+                        angular.forEach($scope.messageNotification, function (notification, key) {
+                            if (notification != userMessage.groupId) {
+                                $("#message_counter_div").show();
+                                var messageNotificationCounter = $("#message_counter_div").val();
+                                messageNotificationCounter = +messageNotificationCounter + +1;
+                                $("#message_counter_div").val(messageNotificationCounter);
+                                $("#message_counter_div").html(messageNotificationCounter);
+                                $scope.messageNotification.push(userMessage.groupId);
+                            }
+                        });
+                    } else {
+                        $("#message_counter_div").show();
+                        var messageNotificationCounter = $("#message_counter_div").val();
+                        messageNotificationCounter = +messageNotificationCounter + +1;
+                        $("#message_counter_div").val(messageNotificationCounter);
+                        $("#message_counter_div").html(messageNotificationCounter);
+                        $scope.messageNotification.push(userMessage.groupId);
+
+                    }
+
+
+                    userMessage.senderInfo = JSON.parse(userMessage.senderInfo);
+                    var message = {"message": userMessage.message, "senderInfo": userMessage.senderInfo};
+                    userMessage.message = message;
+                    var userExistStatus = 0;
+                    angular.forEach($scope.chatUserList, function (chatUser, key) {
+                        if (chatUser.groupId === userMessage.groupId) {
+                            chatUser.messages.push(message);
+                            userExistStatus = 1;
                         }
                     });
-                } else {
-                    $("#message_counter_div").show();
-                    var messageNotificationCounter = $("#message_counter_div").val();
-                    messageNotificationCounter = +messageNotificationCounter + +1;
-                    $("#message_counter_div").val(messageNotificationCounter);
-                    $("#message_counter_div").html(messageNotificationCounter);
-                    $scope.messageNotification.push(userMessage.groupId);
-
-                }
-
-
-                userMessage.senderInfo = JSON.parse(userMessage.senderInfo);
-                var message = {"message": userMessage.message, "senderInfo": userMessage.senderInfo};
-                userMessage.message = message;
-                angular.forEach($scope.chatUserList, function (chatUser, key) {
-                    if (chatUser.groupId === userMessage.groupId) {
-                        chatUser.messages.push(message);
-                        userExistStatus = 1;
+                    if (userExistStatus != 1) {
+                        userMessage.userId = userMessage.senderInfo.userId;
+                        userMessage.firstName = userMessage.senderInfo.firstName;
+                        userMessage.lastName = userMessage.senderInfo.lastName;
+                        userMessage.genderId = userMessage.senderInfo.genderId;
+                        $scope.getChatInitialInfo(userMessage);
                     }
                 });
-                if (userExistStatus != 1) {
-                    userMessage.userId = userMessage.senderInfo.userId;
-                    userMessage.firstName = userMessage.senderInfo.firstName;
-                    userMessage.lastName = userMessage.senderInfo.lastName;
-                    userMessage.genderId = userMessage.senderInfo.genderId;
-                    $scope.getChatInitialInfo(userMessage);
-                }
-            });
 
-            ws.onError(function (event) {
+                $scope.ws.onError(function (event) {
 
-                console.log('connection Error', event);
-            });
-            ws.onClose(function (event) {
+                    console.log('connection Error', event);
+                });
+                $scope.ws.onClose(function (event) {
 
-                console.log('connection closed', event);
-            });
+                    console.log('connection closed', event);
+                });
+            };
+//            console.log($scope.userId);
+//            ws = $websocket("ws://localhost:8089/" + "9Ixsx2qFkzWEliG");
+//            //ws = $websocket("ws://localhost:8089/" + $scope.userId);
+//            ws.onMessage(function (event) {
+//                var userMessage = {};
+//                var userExistStatus = 0;
+//                userMessage = JSON.parse(event.data);
+//                console.log(userMessage);
+//                if ($scope.messageNotification.length > 0) {
+//                    angular.forEach($scope.messageNotification, function (notification, key) {
+//                        if (notification != userMessage.groupId) {
+//                            $("#message_counter_div").show();
+//                            var messageNotificationCounter = $("#message_counter_div").val();
+//                            messageNotificationCounter = +messageNotificationCounter + +1;
+//                            $("#message_counter_div").val(messageNotificationCounter);
+//                            $("#message_counter_div").html(messageNotificationCounter);
+//                            $scope.messageNotification.push(userMessage.groupId);
+//                        }
+//                    });
+//                } else {
+//                    $("#message_counter_div").show();
+//                    var messageNotificationCounter = $("#message_counter_div").val();
+//                    messageNotificationCounter = +messageNotificationCounter + +1;
+//                    $("#message_counter_div").val(messageNotificationCounter);
+//                    $("#message_counter_div").html(messageNotificationCounter);
+//                    $scope.messageNotification.push(userMessage.groupId);
+//
+//                }
+//
+//
+//                userMessage.senderInfo = JSON.parse(userMessage.senderInfo);
+//                var message = {"message": userMessage.message, "senderInfo": userMessage.senderInfo};
+//                userMessage.message = message;
+//                angular.forEach($scope.chatUserList, function (chatUser, key) {
+//                    if (chatUser.groupId === userMessage.groupId) {
+//                        chatUser.messages.push(message);
+//                        userExistStatus = 1;
+//                    }
+//                });
+//                if (userExistStatus != 1) {
+//                    userMessage.userId = userMessage.senderInfo.userId;
+//                    userMessage.firstName = userMessage.senderInfo.firstName;
+//                    userMessage.lastName = userMessage.senderInfo.lastName;
+//                    userMessage.genderId = userMessage.senderInfo.genderId;
+//                    $scope.getChatInitialInfo(userMessage);
+//                }
+//            });
+//
+//            ws.onError(function (event) {
+//
+//                console.log('connection Error', event);
+//            });
+//            ws.onClose(function (event) {
+//
+//                console.log('connection closed', event);
+//            });
 
             $scope.sendMessage = function (chatUserDetails) {
                 var messageSize = chatUserDetails.messages.length;
@@ -97,7 +151,7 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                             $scope.webSocketMessage.senderInfo = JSON.stringify($scope.userInfo);
                             console.log($scope.webSocketMessage);
                             $scope.webSocketMessage.groupId = chatUserDetails.groupId;
-                            ws.send(JSON.stringify($scope.webSocketMessage));
+                            $scope.ws.send(JSON.stringify($scope.webSocketMessage));
 
                             chatUserDetails.messages.push(message);
                             chatUserDetails.writtenMsg = "";
@@ -173,14 +227,16 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                 messageService.getMessagehistory(userId).
                         success(function (data, status, headers, config) {
                             if (typeof data.message_history != "undefined") {
+                                console.log(data.message_history);
                                 $scope.messageHistory = data.message_history;
                                 $scope.messageHistory.userId = chatUserInfo.userId;
                                 $scope.messageHistory.firstName = chatUserInfo.firstName;
                                 $scope.messageHistory.lastName = chatUserInfo.lastName;
                                 $scope.messageHistory.genderId = chatUserInfo.genderId;
-                                if (typeof chatUserInfo.message != "undefined") {
-                                    $scope.messageHistory.messages.push(chatUserInfo.message);
-                                }
+                                
+//                                if (typeof chatUserInfo.message == "undefined") {
+//                                    $scope.messageHistory.messages.push(chatUserInfo.message);
+//                                }
                                 var userObject = $scope.messageHistory;
                                 $scope.addUserToChatUserList(userObject);
                                 $scope.reOrganizeChatBoxes();
