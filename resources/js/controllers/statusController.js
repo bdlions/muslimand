@@ -18,8 +18,9 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             $scope.userGenderId = "";
             $scope.busy = false;
             $scope.getStatusList = function () {
-                if ($scope.busy)
+                if ($scope.busy == true){
                     return;
+                }
                 $scope.busy = true;
                 var statusInfo = {};
                 var offset = $scope.statuses.length;

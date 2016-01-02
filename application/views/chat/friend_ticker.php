@@ -40,7 +40,7 @@
                 <div class="row" >
                     <div class="col-md-8" >
                         <form ng-submit="sendMessage(chatUserDetails)" >
-                            <input type="text" name="chatMessageDisplayer" class="chatting_input_area"  ng-model = "chatUserDetails.writtenMsg">
+                            <input  id="send_message_id" type="text" name="chatMessageDisplayer" class="chatting_input_area"  ng-model = "chatUserDetails.writtenMsg">
                         </form>
                     </div>
                     <div class="col-md-2">

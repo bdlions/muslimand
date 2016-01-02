@@ -62,7 +62,7 @@ class Friend_mongodb_model extends Ion_auth_mongodb_model {
         $this->curl->post(array("userId" => $user_id, "relationTypeId" => $status_type,"offset" => $offset,"limit" => $limit));
         return $this->curl->execute();
     }
-    public function get_relationship_status($user_id,$friend_id) {
+    public function get_relationship_status($user_id, $friend_id) {
         $this->curl->create($this->SERVICE_FRIEND . 'getRelationInfo');
         $this->curl->post(array("fromUserId" => $user_id, "toUserId" => $friend_id));
         return $this->curl->execute();

@@ -13,6 +13,7 @@ angular.module('services.Message', []).
                     }
                 });
             };
+         
             messageService.getMessagehistory = function (userId) {
                 return $http({
                     method: 'post',

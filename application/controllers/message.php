@@ -23,6 +23,7 @@ class Message extends CI_Controller {
         $this->load->helper('language');
     }
 
+ 
     function add_mesage() {
 
         $sender_id = $this->session->userdata('user_id');
@@ -50,9 +51,11 @@ class Message extends CI_Controller {
         $user_info->userId = $sender_id;
 
         if (isset($r_user_id)) {
+
             function cmp($a, $b) {
                 return strcmp($a, $b);
             }
+
             usort($user_id_list, "cmp");
             $result = $this->message_mongodb_model->add_message($user_id_list, $sender_id, $message);
         } else {
@@ -98,7 +101,7 @@ class Message extends CI_Controller {
         $limit = 5;
         $offset = 0;
         $result = $this->message_mongodb_model->get_message_list($group_id, $offset, $limit);
-        if ($result != null) {
+        if ($result->groupId != null) {
             $response['message_history'] = $result;
         } else {
             $chat_initial_info = new stdClass();

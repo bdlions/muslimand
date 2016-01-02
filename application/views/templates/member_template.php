@@ -94,6 +94,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/photoApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/videoApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image-crop.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-websocket.js"></script>
         
         <title>Shadhiin.com</title>
     </head>

@@ -127,6 +127,7 @@ class Member extends CI_Controller {
         $this->data['profile_id'] = $profile_id;
         $this->data['app'] = "app.MemberProfile";
         if ($user_id == FALSE) {
+            
             $this->template->load(null, "non_member/timeline", $this->data);
         } else {
             $this->template->load(null, "member/timeline", $this->data);

@@ -22,7 +22,7 @@ class Status_mongodb_model extends Ion_auth_mongodb_model {
     }
     public function get_user_profile_status($user_id, $mapping_id, $offset, $limit) {
         $this->curl->create($this->SERVICE_STATUS . 'getUserProfileStatuses');
-        $this->curl->post(array("userId" => $user_id,"mappingId" =>$mapping_id, "offset" => $offset, "limit" => $limit));
+        $this->curl->post(array("userId" => $user_id, "mappingId" =>$mapping_id, "offset" => $offset, "limit" => $limit));
         return $this->curl->execute();
     }
     public function get_status_details($user_id, $status_id) {
