@@ -172,7 +172,9 @@ class Member extends CI_Controller {
         $result = $this->message_mongodb_model->get_message_summary_list($user_id, $offset, $limit);
         if ($result != null) {
             $message_ummery_list = $result->messageSummeryList;
+            if(property_exists($result, "recentMessageInfo")){
             $recent_mage_info = json_decode($result->recentMessageInfo);
+            }
         }
         $this->data["message_summery_list"] = $message_ummery_list;
         $this->data["recent_message_info"] = $recent_mage_info;
