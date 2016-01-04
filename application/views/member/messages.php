@@ -103,6 +103,7 @@
                         <div class="msg_scroll">
                             <div class="border_without_bottom padding_top_5px">
                                 <div class="row" ng-repeat="messageInfo in messageInformation.messages">
+                                    {{messageInfo.senderInfo.genderId}}
                                     <div class="user_comment">
                                         <div class="col-md-1">
                                             <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{messageInfo.senderInfo.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
@@ -110,7 +111,7 @@
                                         <div class="col-md-8">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <a style="font-weight: bold;" href="#">{{messageInfo.senderInfo.firstName}} &nbsp;{{messageInfo.senderInfo.lastName}}</a>
+                                                    <a style="font-weight: bold;" href="#">{{messageInfo.senderInfo.firstName}} &nbsp;{{messageInfo.senderInfo.lastName}}{{messageInfo.senderInfo.genderId}}</a>
                                                 </div>  
                                             </div>
                                             <div class="row">

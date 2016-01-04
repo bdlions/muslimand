@@ -328,10 +328,28 @@
         }
 
         function open_modal_share(statusInfo) {
+            var userId = statusInfo.userId;
+            var genderId = statusInfo.genderId;
+            var imageSize = 0;
+            if (statusInfo.images) {
+                imageSize = statusInfo.images.length;
+            }
+            var statusTypeId = statusInfo.statusTypeId;
             angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function () {
                 $("#user_first_name").append(statusInfo.userInfo.firstName);
                 $("#user_last_name").append(statusInfo.userInfo.lastName);
                 $("#old_description").append(statusInfo.description);
+                $("#shared_user_profile_picture_set_id").attr('src', '<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>' + userId + ".jpg");
+                $("#shared_user_profile_picture_set_id").attr('fallback-src', '<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>' + "40x40_" + genderId + ".jpg");
+                if (imageSize > 0) {
+                    if (statusTypeId == '<?php echo CHANGE_PROFILE_PICTURE ?>') {
+                        $("#status_type_id").append("Shared profile Picture");
+                    } else if (statusTypeId == '<?php echo CHANGE_COVER_PICTURE ?>') {
+                        $("#status_type_id").append("Shared cover Picture");
+                    } else if (statusTypeId == '<?php echo ADD_ALBUM_PHOTOS ?>') {
+                        $("#status_type_id").append("Shared Album ");
+                    }
+                }
                 $('#modal_share_content').modal('show');
             });
 
@@ -369,6 +387,7 @@
         }
         function select_comment_field(statusId) {
             $('#commentInputField' + statusId).focus();
-        };
+        }
+        ;
 
     </script>
