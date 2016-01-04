@@ -40,9 +40,8 @@
         var div = img.parentNode;
         var firstImage = img;
         var secondImage = div.getElementsByTagName('img')[1];
-        firstImage.style.display = 'none';
-        secondImage.style.visibility = 'visible';
-        secondImage.style.height = '100%';
+        var image = secondImage.src;
+        firstImage.src = image;
     }
 
 </script>

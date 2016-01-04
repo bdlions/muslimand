@@ -26,6 +26,7 @@ class Message extends CI_Controller {
     function add_mesage() {
 
         $sender_id = $this->session->userdata('user_id');
+        $user_info = new stdClass();
         $response = array();
         $user_id_list = array();
         $postdata = file_get_contents("php://input");
@@ -42,18 +43,23 @@ class Message extends CI_Controller {
                 $r_user_id = $result->rUserId;
                 $user_id_list[] = $r_user_id;
             }
+            if (property_exists($result, "genderId")) {
+                $user_info->genderId = $result->genderId;
+            }
         }
         $user_id_list[] = $sender_id;
-        $user_info = new stdClass();
         $user_info->firstName = $this->session->userdata('first_name');
         $user_info->lastName = $this->session->userdata('last_name');
         $user_info->userId = $sender_id;
+        var_dump($user_info);
+        exit;
 
         if (isset($r_user_id)) {
 
             function cmp($a, $b) {
                 return strcmp($a, $b);
             }
+
             usort($user_id_list, "cmp");
             $result = $this->message_mongodb_model->add_message($user_id_list, $sender_id, $message);
         } else {

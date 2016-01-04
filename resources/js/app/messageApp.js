@@ -1,10 +1,18 @@
-angular.module("app.Message", [
+var app = angular.module("app.Message", [
     'controllers.Message',
     'controllers.Image',
     'controllers.Header',
     'controllers.Right',
     'ui.bootstrap'
-]).directive('fallbackSrc', function () {
+]);
+app.directive("chatBox", function () {
+    return {
+        restrict: "E",
+        replace: true,
+        templateUrl: 'http://localhost/muslimand/member/chat_tmpl_load'
+    };
+});
+app.directive('fallbackSrc', function () {
     var fallbackSrc = {
         link: function postLink(scope, iElement, iAttrs) {
             iElement.bind('error', function () {

@@ -18,20 +18,21 @@
                     <div class="col-md-12">
                         <textarea class="textarea_custom_style" ng-model="statusShareInfo.description"></textarea>
                         <input type="hidden" id="status_id">
+                        <!--<input type="hidden" id="status_type_id">-->
                         <input type="hidden" id="image">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-md-12">
                         <div style="float: left; padding-right: 10px;">
-                            <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_6.jpg" width="40" height="40">
+                            <img id="shared_user_profile_picture_set_id" src="" width="40" height="40" fallback-src="">
                         </div>
                         <div style="float: left;">
                             <div>
                                 <a style="font-weight: bold;"href id="status_user_id"><span id="user_first_name"></span>&nbsp;<span id="user_last_name"></span></a>
                             </div>
                             <div>
-                                January 03, 2015 at 10:45am.
+                                <!--January 03, 2015 at 10:45am.-->
                             </div>
                         </div>
                     </div>
@@ -41,6 +42,7 @@
                     </div>
                     <div class="col-md-10">
                         <span id="old_description"></span>
+                        <span id="status_type_id"></span>
                         <!--use when share a video-->
                     </div>
 
