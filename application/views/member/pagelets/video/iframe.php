@@ -3,7 +3,7 @@
         <span style="font-size: 16px; font-weight: bold;">You are watching:</span>
     </div>
     <div class="col-md-3">
-        <button class="btn btn-xs" onclick="open_modal_delete_video(angular.element(this).scope().videoDetail.videoId)" style=" padding: 4px 34px; background-color: #703684; color: white; font-weight: bold;">Delete </button>
+        <button class="button-custom pull-right" onclick="open_modal_delete_video(angular.element(this).scope().videoDetail.videoId)" >Delete </button>
     </div>
 </div>
 <div class="pagelet_divider"></div>

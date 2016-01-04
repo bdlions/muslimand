@@ -225,6 +225,9 @@ body {
     padding: 6px;
 }
 
+embed{
+    width: 560px;
+}
 /*================================  Member templete ================================*/
 .body_wrapper{
     position: relative; 

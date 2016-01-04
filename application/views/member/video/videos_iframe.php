@@ -1,28 +1,21 @@
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row form-group"></div>
-<div class="row">
+<div class="row padding_top_30px">
     <div class="col-md-6">
         <span style="font-size: 25px; font-weight: bold;">Video</span>
     </div>
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-4">
-        <a  href="<?php echo base_url(); ?>videos/video_add"><button class="btn btn-xs" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;">Share a Video</button></a>
+    <div class="col-md-offset-3 col-md-3">
+        <a  href="<?php echo base_url(); ?>videos/video_add"><button class="button-custom pull-right" >Share a Video</button></a>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-12">
         <div class="pagelet_divider"></div>
-    </div>    
-    <div class="col-md-2">
     </div>    
 </div>
 <div class="row">
     <!--LEFT_COLUMN-->
     <?php $this->load->view("templates/sections/member_videos_left_pane"); ?>
     <!--MIDDLE COLUMN-->
-    <div class="col-md-7 col_md_7_reduced">
+    <div class="col-md-9">
         <div class="row">
             <div class="col-md-4 ">
                 <div class="left-inner-addon">
@@ -35,7 +28,7 @@
                     <div class="col-md-12">
                         <span style="font-size: 12px; font-weight: bold; opacity: .6;" href="">Sort:</span>
                         <div class="btn-group" style="color: #703684;">
-                            <button style="background-color: #703684; color: white;" type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <button style="background-color: #703684; color: white;" type="button" class="button-custom pull-right dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 Latest<span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -48,7 +41,7 @@
                         &nbsp;
                         <span style="font-size: 12px; font-weight: bold; opacity: .6;" href="">Show:</span>
                         <div class="btn-group">
-                            <button style="background-color: #703684; color: white;" type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <button style="background-color: #703684; color: white;" type="button" class="button-custom dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 12 per Page<span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -61,7 +54,7 @@
                         &nbsp;
                         <span style="font-size: 12px; font-weight: bold; opacity: .6;" href="">When:</span>
                         <div class="btn-group">
-                            <button style="background-color: #703684; color: white;" type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <button style="background-color: #703684; color: white;" type="button" class="button-custom dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 All Time<span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -208,12 +201,10 @@
             <?php $this->load->view("modal/modal_liked_people_list"); ?>
             <?php $this->load->view("member/pagelets/video/modal_share_content"); ?>
         </div>
+    <div class="row form-group"></div>
+    <div class="row form-group"></div>
     </div>
-    <div class="row form-group"></div>
-    <div class="row form-group"></div>
     <!--ADD COLUMN-->
-    <div class="col-md-3">
-    </div>
 </div>
 <script type="text/javascript">
 
