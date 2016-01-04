@@ -51,7 +51,6 @@ body {
 }
 #wrapper {
     min-height:100%;
-    position:relative;
 }
 #footer {
     background-color: #E9EAED;
@@ -61,6 +60,8 @@ body {
     bottom:0;
     left:0;
 }
+
+
 
 /*================================  COMPONENTS  ================================*/
 .mm_input{
@@ -225,9 +226,17 @@ body {
     padding: 6px;
 }
 
+.url_ellipsis {
+    white-space: nowrap; 
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
 embed{
     width: 560px;
 }
+
 /*================================  Member templete ================================*/
 .body_wrapper{
     position: relative; 
@@ -631,23 +640,24 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
         margin-right: 12px;*/
 }
 
-
-@media all and (max-width: 991px){
-    .margin_style{
-        margin-left: 0!important;
-        margin-right: 0!important;
-    }
+.landingImgHeader{
+    /*margin-bottom: -6px;*/ 
+    background-color: #703684; 
+    color: white;
 }
-@media all and (max-width: 767px){
-    .padding_style{
-        padding-bottom: 15px;
-    }
 
+.loginPageLogo{
+    padding-top: 14px; 
 }
-@media all and (min-width: 992px){
-    .mrg_left{
-        margin-left: -7%;
-    }
+.loginPageLogo img{
+    display: inline;
+}
+
+.landingPageSlogan{
+   color: #703684; 
+   font: italic bold 20px Georgia, serif ; 
+   z-index: 999999999!important;
+   position: absolute;
 }
 
 /*================================  Admin Panel  ================================*/
@@ -902,20 +912,62 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 .overflow-y{
     width: 8px;
 }
-/* ------------------------- reponsive style ----------------------------*/
+/* ------------------------- custom responsive style (media) ----------------------------*/
 
-@media all and (max-width: 767px){
-
+@media (max-width: 480px) {
+     .padding_style{
+        padding-bottom: 15px;
+    }
+     .margin_style{
+        margin-left: 0!important;
+        margin-right: 0!important;
+    }
+    .landingImgHeader{
+        padding-top: 30px; 
+    }
+/*    .landingPageSlogan{
+        margin-left: 20px 
+    }*/
 }
-@media (min-width: 768px) and (max-width: 991px){
 
+@media (min-width: 481px)and (max-width: 767px) {
+     .padding_style{
+        padding-bottom: 15px;
+    }
+     .margin_style{
+        margin-left: 0!important;
+        margin-right: 0!important;
+    }
+    .landingImgHeader{
+        padding-top: 30px; 
+    }
 }
-@media (min-width: 992px) and (max-width: 1199px){
 
+@media (min-width: 768px)and (max-width: 991px) { 
+ .margin_style{
+        margin-left: 0!important;
+        margin-right: 0!important;
+    }
 }
-@media all and (min-width: 1200px){
 
+@media (min-width: 992px) { 
+    .mrg_left{
+        margin-left: -7%;
+    }
+    .landingImgHeader{
+        padding: 10px 0; 
+    }
+/*    .loginPageLogo{
+        padding-left: 25%;
+    }*/
+    .login_logo_mg{
+      margin-right: 10px;  
+    }
+    .landingPageSlogan{
+        margin-left: -20px 
+    }
 }
+
 
 /* ------------------------- newsfeed ----------------------------*/
 
