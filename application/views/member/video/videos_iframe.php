@@ -3,7 +3,7 @@
         <span style="font-size: 25px; font-weight: bold;">Video</span>
     </div>
     <div class="col-md-offset-3 col-md-3">
-        <a  href="<?php echo base_url(); ?>videos/video_add"><button class="button-custom pull-right" >Share a Video</button></a>
+        <a  href="<?php echo base_url(); ?>Videos/add_video"><button class="button-custom pull-right" >Share a Video</button></a>
     </div>
 </div>
 <div class="row">
