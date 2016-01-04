@@ -8,10 +8,10 @@
 <div class="row form-group">
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/bWsH-fbKjlk/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/8LVN7WVgx0c/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Inside Islam 1</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="Top 5 - Technology That Has Changed The World" data-placement="top" data-toggle="tooltip">Top 5 - Technology That Has Changed The World</a><br>
         </div>
         <div class="font_10px">
         5,294 views<br>
@@ -20,10 +20,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/NacEIc2oET8/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/lMymFYJWW5M/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">waz</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="10 Future Technologies That May Change The World" data-placement="top" data-toggle="tooltip">10 Future Technologies That May Change The World</a><br>
         </div>
         <div class="font_10px">
         2,589 views<br>
@@ -32,10 +32,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/H2vTUeGnZE0/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/VxwsBSoenqs/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Inside Islam 2</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="Awesome Top New Technology Cool Gadgets and Inventions 2015" data-placement="top" data-toggle="tooltip">Awesome Top New Technology Cool Gadgets and Inventions 2015</a><br>
         </div>
         <div class="font_10px">
         1,294 views<br>
@@ -47,10 +47,10 @@
 <div class="row form-group">
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/XEkVs3oRclA/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/9FxvBFPTtWQ/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Inside Islam 4</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="6 Cool New Technologies and Inventions 2015" data-placement="top" data-toggle="tooltip">6 Cool New Technologies and Inventions 2015</a><br>
         </div>
         <div class="font_10px">
         5,294 views<br>
@@ -59,10 +59,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/B_kmXOOTwe8/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/eRCKYLjR7yw/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Mishary Rashid Alafasy</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="Top 10 Future Technology That's Here Right Now" data-placement="top" data-toggle="tooltip">Top 10 Future Technology That's Here Right Now</a><br>
         </div>
         <div class="font_10px">
         3,698 views<br>
@@ -71,10 +71,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/Re6T7aLVi1o/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/oYOmZlTjsQ0/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Quran Reading</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="Future Transportation Technology Will Blow Your Mind" data-placement="top" data-toggle="tooltip">Future Transportation Technology Will Blow Your Mind</a><br>
         </div>
         <div class="font_10px">
         2,687 views<br>
@@ -86,10 +86,10 @@
 <div class="row form-group">
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/rzLRzV-DE8Y/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/mePA9VifSPM/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Why I convert!!!</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="Mysterious technology" data-placement="top" data-toggle="tooltip">Mysterious technology</a><br>
         </div>
         <div class="font_10px">
         2,658 views<br>
@@ -98,10 +98,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/erSOu4L6ok0/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/lvtfD_rJ2hE/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Mosque</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="Amazing Technology Invented By MIT - Tangible Media" data-placement="top" data-toggle="tooltip">Amazing Technology Invented By MIT - Tangible Media</a><br>
         </div>
         <div class="font_10px">
         1,694 views<br>
@@ -110,10 +110,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/qP4d7Mc-uDY/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/tqKpk1wABuI/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Historical Places</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="Top 10 most Amazing Technologies" data-placement="top" data-toggle="tooltip">Top 10 most Amazing Technologies</a><br>
         </div>
         <div class="font_10px">
         3,987 views<br>
@@ -125,10 +125,10 @@
 <div class="row form-group">
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/BTlZ5Nuzei4/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/0aDqZUyJ9Kc/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Inside Islam 3</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="Awesome Technologies 2016" data-placement="top" data-toggle="tooltip">Awesome Technologies 2016</a><br>
         </div>
         <div class="font_10px">
         5,294 views<br>
@@ -137,10 +137,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/FgTuWiKSLkI/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/vbNHCn2gHQ4/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Beautiful Sky</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="Top 5 Future Technology Inventions | 2019 - 2050" data-placement="top" data-toggle="tooltip">Top 5 Future Technology Inventions | 2019 - 2050</a><br>
         </div>
         <div class="font_10px">
         3,294 views<br>
@@ -149,10 +149,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/gvElrClsCtE/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/M7EvizTkIAE/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Inside Islam 1</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="Amazing Eco-Friendly Technology That Will Change The World" data-placement="top" data-toggle="tooltip">Amazing Eco-Friendly Technology That Will Change The World</a><br>
         </div>
         <div class="font_10px">
         4,654 views<br>

@@ -8,10 +8,10 @@
 <div class="row form-group">
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/Wdhk2y6zFg4/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/HQx5Be9g16U/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Islamic Life</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="10 Amazing Science Tricks Using Liquid!" data-placement="top" data-toggle="tooltip">10 Amazing Science Tricks Using Liquid! </a><br>
         </div>
         <div class="font_10px">
         2,139 views<br>
@@ -20,26 +20,26 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/X-MXr00HEdM/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/0Ojq-0KKOL0/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">livelihood</a><br>
-        </div>
-        <div class="font_10px">
-        1,139 views<br>
-        by <a href="">Sharmin Akter</a>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/VSJYk7QfzbM/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
-        </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Pray</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="3 Amazing Science Experiments That You Can Do At Home | Dedicated to the Top Fans of This Month" data-placement="top" data-toggle="tooltip">3 Amazing Science Experiments That You Can Do At Home | Dedicated to the Top Fans of This Month</a><br>
         </div>
         <div class="font_10px">
         4,552 views<br>
         by <a href="">Barak Obama</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <a href="<?php echo base_url(); ?>videos/videos_iframe" >
+            <img scrolling="no" src="http://img.youtube.com/vi/NkyEOrQiGMQ/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+        </a>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="10 More Amazing Science Stunts" data-placement="top" data-toggle="tooltip">10 More Amazing Science Stunts</a><br>
+        </div>
+        <div class="font_10px">
+        1,139 views<br>
+        by <a href="">Sharmin Akter</a>
         </div>
     </div>
 </div>
@@ -47,10 +47,10 @@
 <div class="row form-group">
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/Ot-0uvKGk5o/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/5NDdp8ucWGg/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Touchy</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="8 Coin Science Experiments Compilation" data-placement="top" data-toggle="tooltip">8 Coin Science Experiments Compilation</a><br>
         </div>
         <div class="font_10px">
         2,556 views<br>
@@ -59,10 +59,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/TpcbfxtdoI8/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/YXfTNcnF9rM/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Waz 5</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="10 Science Experiments You Can Do at Home Compilation" data-placement="top" data-toggle="tooltip">10 Science Experiments You Can Do at Home Compilation</a><br>
         </div>
         <div class="font_10px">
         2,569 views<br>
@@ -71,10 +71,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/bWsH-fbKjlk/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/8XSzJibma1s/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Waz 5</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="Underwater Candle - Science Experiment" data-placement="top" data-toggle="tooltip">Underwater Candle - Science Experiment </a><br>
         </div>
         <div class="font_10px">
         3,598 views<br>
@@ -86,10 +86,10 @@
 <div class="row form-group">
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/k7IWSj_iY0g/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/stwJgL2UtZY/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Waz 6</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="6 Things Your Body Does That Science Still Can't Explain" data-placement="top" data-toggle="tooltip">6 Things Your Body Does That Science Still Can't Explain</a><br>
         </div>
         <div class="font_10px">
         1,139 views<br>
@@ -98,10 +98,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/PdhjzQ1X_nU/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/8xHXx5HARC8/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Quran recite</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="5 Crazy Science Stunts, You Won't See At School" data-placement="top" data-toggle="tooltip">5 Crazy Science Stunts, You Won't See At School </a><br>
         </div>
         <div class="font_10px">
         589 views<br>
@@ -110,10 +110,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/eitlk23MqhI/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/whkCJCVzUB4/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Waz7</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="Edible Science Experiment" data-placement="top" data-toggle="tooltip">Edible Science Experiment</a><br>
         </div>
         <div class="font_10px">
         987 views<br>
@@ -126,10 +126,10 @@
 <div class="row form-group">
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/CWMqH7QJu_w/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/J1QjgZCcNig/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Islamic discuss</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="10 Science Tricks You Can Try at Home" data-placement="top" data-toggle="tooltip">10 Science Tricks You Can Try at Home</a><br>
         </div>
         <div class="font_10px">
         654 views<br>
@@ -138,10 +138,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/_bLd7Jlgj1E/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/glQ2NrnDHWc/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Death</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="3 Simple Science Experiments - Balloons" data-placement="top" data-toggle="tooltip">3 Simple Science Experiments - Balloons</a><br>
         </div>
         <div class="font_10px">
         4,552 views<br>
@@ -150,10 +150,10 @@
     </div>
     <div class="col-md-4">
         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
-            <img scrolling="no" src="http://img.youtube.com/vi/OBic6aOQNaY/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
+            <img scrolling="no" src="http://img.youtube.com/vi/ia8CKDIur3s/1.jpg" width="120" height="90" frameborder="0" allowfullscreen>
         </a>
-        <div class="font_11px">
-            <a href="<?php echo base_url(); ?>videos/videos_iframe">Waz8</a><br>
+        <div class="font_11px url_ellipsis">
+            <a href="<?php echo base_url(); ?>videos/videos_iframe" title="Super Cool Science Experiments You Can Do At Home" data-placement="top" data-toggle="tooltip">Super Cool Science Experiments You Can Do At Home</a><br>
         </div>
         <div class="font_10px">
         2,365 views<br>

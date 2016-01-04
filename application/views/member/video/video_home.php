@@ -76,7 +76,7 @@
             <div class="col-md-9" ng-init="setVideos(<?php echo htmlspecialchars(json_encode($video_list)); ?>)">
                 <?php $this->load->view("member/pagelets/video/sort_latest"); ?>
             </div>
-            <div class="col-md-3">
+<!--            <div class="col-md-3">
                 <div class="row form-group"></div>
                 <div class="row form-group"></div>
                 <div class="row">
@@ -89,12 +89,12 @@
                 <div class="row" ng-init="setVideos(<?php echo htmlspecialchars(json_encode($video_list)); ?>)">
                     <div class="col-md-12" ng-repeat="video in videoList">
                         <div ng-video> </div>{{video.url}}
-                        <!--html_entity_decode({{video->ur)}});-->
+                        html_entity_decode({{video->ur)}});
                         
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="{{video.url}}" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
-                        <div class="font_11px">
+                        <div class="font_11px url_ellipsis">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">amazing child</a><br>
                         </div>
                         <div class="font_10px">
@@ -109,7 +109,7 @@
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="http://img.youtube.com/vi/RDKbkBa03CE/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
-                        <div class="font_11px">
+                        <div class="font_11px url_ellipsis">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">Sheikh Motiur Rahman Madani 1</a><br>
                         </div>
                         <div class="font_10px">
@@ -119,12 +119,12 @@
                     </div>
                 </div>
                 <div class="row form-group"></div>
-<!--                <div class="row">
+                <div class="row">
                     <div class="col-md-12">
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="http://img.youtube.com/vi/OTUoExVeQNI/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
-                        <div class="font_11px">
+                        <div class="font_11px url_ellipsis">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">Sheikh Motiur Rahman Madani 2</a><br>
                         </div>
                         <div class="font_10px">
@@ -132,14 +132,14 @@
                             by <a href="">Maria Islam</a>
                         </div>
                     </div>
-                </div>-->
+                </div>
                 <div class="row form-group"></div>
                 <div class="row">
                     <div class="col-md-12">
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="http://img.youtube.com/vi/Re6T7aLVi1o/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
-                        <div class="font_11px">
+                        <div class="font_11px url_ellipsis">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">Quran Recite</a><br>
                         </div>
                         <div class="font_10px">
@@ -174,7 +174,7 @@
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="{{video.url}}" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
-                        <div class="font_11px">
+                        <div class="font_11px url_ellipsis">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">amazing child</a><br>
                         </div>
                         <div class="font_10px">
@@ -189,7 +189,7 @@
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="http://img.youtube.com/vi/FgTuWiKSLkI/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
-                        <div class="font_11px">
+                        <div class="font_11px url_ellipsis">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">Enlighten power</a><br>
                         </div>
                         <div class="font_10px">
@@ -204,7 +204,7 @@
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="http://img.youtube.com/vi/hCe81IJmmDo/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
-                        <div class="font_11px">
+                        <div class="font_11px url_ellipsis">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">Waz 3</a><br>
                         </div>
                         <div class="font_10px">
@@ -219,7 +219,7 @@
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="http://img.youtube.com/vi/NIvOrtLto0M/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
-                        <div class="font_11px">
+                        <div class="font_11px url_ellipsis">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">Purity</a><br>
                         </div>
                         <div class="font_10px">
@@ -252,7 +252,7 @@
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="http://img.youtube.com/vi/h9uGVSlTMK4/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
-                        <div class="font_11px">
+                        <div class="font_11px url_ellipsis">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">Critical Ques</a><br>
                         </div>
                         <div class="font_10px">
@@ -267,7 +267,7 @@
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="http://img.youtube.com/vi/ogfbPh0MkzQ/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
-                        <div class="font_11px">
+                        <div class="font_11px url_ellipsis">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">Zakir Naik lecture 1</a><br>
                         </div>
                         <div class="font_10px">
@@ -282,7 +282,7 @@
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="http://img.youtube.com/vi/kwBDpW7QOmQ/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
-                        <div class="font_11px">
+                        <div class="font_11px url_ellipsis">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">Zakir Naik lecture 2</a><br>
                         </div>
                         <div class="font_10px">
@@ -297,7 +297,7 @@
                         <a href="<?php echo base_url(); ?>videos/videos_iframe" >
                             <img scrolling="no" src="http://img.youtube.com/vi/NIvOrtLto0M/1.jpg" width="160" height="90" frameborder="0" allowfullscreen>
                         </a>
-                        <div class="font_11px">
+                        <div class="font_11px url_ellipsis">
                             <a href="<?php echo base_url(); ?>videos/videos_iframe">Purity</a><br>
                         </div>
                         <div class="font_10px">
@@ -315,7 +315,7 @@
                     </div>
                 </div>
                 <div class="row form-group"></div>
-            </div>
+            </div>-->
         </div>
     </div>
     <div class="col-md-1"></div>

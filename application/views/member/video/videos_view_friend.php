@@ -75,7 +75,9 @@
             <div class="col-md-9">
                 <?php $this->load->view("member/pagelets/video/view_friend"); ?>
             </div>
-            <div class="col-md-3">
+            
+            
+<!--            <div class="col-md-3">
                 <div class="row form-group"></div>
                 <div class="row form-group"></div>
                 <div class="row">
@@ -310,7 +312,7 @@
                     </div>
                 </div>
                 <div class="row form-group"></div>
-            </div>
+            </div>-->
             <div class="col-md-1"></div>
         </div>
     </div>
