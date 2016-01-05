@@ -51,11 +51,7 @@ class Message extends CI_Controller {
         $user_info->firstName = $this->session->userdata('first_name');
         $user_info->lastName = $this->session->userdata('last_name');
         $user_info->userId = $sender_id;
-        var_dump($user_info);
-        exit;
-
         if (isset($r_user_id)) {
-
             function cmp($a, $b) {
                 return strcmp($a, $b);
             }
