@@ -13,7 +13,7 @@
             <div class="friend_list_img_style">
                 <!--<a href='<?php // echo base_url(); ?>member/timeline/{{friend.userId}}' >-->
 
-                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100_{{friend.genderId}}.jpg" alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>{{friend.userId}}.jpg" />
+                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50; ?>50x50_{{friend.genderId}}.jpg" alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50; ?>{{friend.userId}}.jpg" />
                     <span class="img_caption">{{friend.firstName}}&nbsp;{{friend.lastName}}</span>
                 <!--</a>-->
             </div>
