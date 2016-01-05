@@ -12,7 +12,7 @@
     <div class="pagelet_divider"></div>
     <div class="row form-group"></div>
     <div class="row form-group">
-        <div class="col-md-3" ng-repeat="photo in albumPhotoList">
+        <div class="col-md-3" ng-repeat="photo in albumPhotoList" style="padding-bottom: 28px;">
             <a href="<?php echo base_url(); ?>photos/get_photo/{{photo.photoId}}" >
                 <img style="border: 1px solid #703684;"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photo.image}}" width="120" height="100">
             </a>

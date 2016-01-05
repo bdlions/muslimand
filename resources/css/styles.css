@@ -285,7 +285,7 @@ embed{
 
 .textarea-custom{
     resize: none; 
-    border-radius: 0;
+    border-radius: 0!important;
 }
 
 
@@ -752,7 +752,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 .img_caption{
     position: relative;
-    bottom: 5px;
+    /*bottom: 5px;*/
     padding: 5px 0;
     text-decoration: none;
     background-color: transparent;

@@ -29,7 +29,9 @@
                         </div>
                         <div style="float: left;">
                             <div>
-                                <a style="font-weight: bold;"href id="status_user_id"><span id="user_first_name"></span>&nbsp;<span id="user_last_name"></span></a>
+                                <a style="font-weight: bold;"href id="status_user_id">
+                                    <span id="user_first_name"></span>&nbsp;<span id="user_last_name"></span>
+                                </a>
                             </div>
                             <div>
                                 <!--January 03, 2015 at 10:45am.-->
@@ -38,9 +40,7 @@
                     </div>
                 </div>
                 <div class="row from-group">
-                    <div class="col-md-2">
-                    </div>
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <span id="old_description"></span>
                         <span id="status_type_id"></span>
                         <!--use when share a video-->
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="button" class="close modal_cancel_button_style" data-dismiss="modal" aria-hidden="true" value="Cancel">
+                        <input type="button" class="close modal_cancel_button_style" data-dismiss="modal" aria-hidden="true" value="Cancel" onclick="close()">
                     </div>
                     <div class="col-md-2">
                         <input type="button" id="status_shared_add_id" class="button-custom" value="Share" onclick="share_status()" >
@@ -82,9 +82,9 @@
 </div>
 
 <script>
+    
     function share_status() {
-
-        angular.element($('#status_shared_add_id')).scope().shareStatus(function () {
+        angular.element($('#status_shared_add_id')).scope().shareStatus(function() {
             $("#user_first_name").val("");
             $("#user_last_name").val("");
             $("#old_description").val("");
