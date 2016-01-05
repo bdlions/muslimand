@@ -7,7 +7,7 @@
 </div>
 <div class="pagelet" style="border: 1px solid #fff;">
     <div class="row">
-        <div class="col-md-4" ng-repeat="album in albumList">
+        <div class="col-md-4" ng-repeat="album in albumList" style="padding-bottom: 28px;">
             <div class="photo_list_img_style">
                 <a href="<?php echo base_url(); ?>photos/get_album/{{album.albumId}}" >
                     <img class="img-responsive"  src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{album.defaultImg}}">

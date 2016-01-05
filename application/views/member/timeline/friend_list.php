@@ -9,7 +9,7 @@
 </div>
 <div class="pagelet" style="border: 1px solid #fff;">
     <div class="row" >
-        <div class="col-md-4" ng-repeat="friend in friends">
+        <div class="col-md-4" ng-repeat="friend in friends" style="padding-bottom: 28px;">
                 <a href='<?php echo base_url(); ?>member/timeline/{{friend.userId}}' style="text-decoration: none;">
                     <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50; ?>50x50_{{friend.genderId}}.jpg" alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50; ?>{{friend.userId}}.jpg" />
                 </a>
