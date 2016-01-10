@@ -1,5 +1,3 @@
-
-
 <style>
     .user_brief_card
     {
@@ -8,25 +6,40 @@
         background-color: white;
     }
 </style>
-<div style="padding-bottom: 45px;">
-    <div class="container-fluid">
-        <div class="row form-group"></div>
-        <div class="row form-group"></div>
-        <div class="row form-group">
-            <div class="col-md-offset-1 col-md-5">
+    <div class="container" >
+        <div class="row" style="padding-top: 65px;">
+            <div class="col-md-6">
                 <div class="row form-group">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <p style="color: #703684; font: italic bold 20px Georgia, serif ;">Be a part of worldwide family, share life with us</p>
+                        <p class="landingPageSlogan">Be a part of worldwide family, share life with us</p>
                     </div>
                 </div>
-                <div class="row form-group"></div>
-                <div class="row form-group">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/banner.png">
-                    </div>
-                </div>
+                        <div id="page">
+                            <ul class="cb-slideshow bg_landing_ul" style="margin-top: 80px">
+                                <li>
+                                    <span>Image 01</span>
+                                </li>
+                                <li>
+                                    <span>Image 02</span>
+                                </li>
+                                <li>
+                                    <span>Image 03</span>
+                                </li>
+                                <li>
+                                    <span>Image 04</span>
+                                </li>
+                                <li>
+                                    <span>Image 05</span>
+                                </li>
+                                <li>
+                                    <span>Image 06</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--<img class="img-responsive" src="<?php //echo base_url(); ?>resources/images/banner.png">-->
             </div>
-            <div class="col-md-5">
+            <div class="col-md-offset-1 col-md-5">
+            <div class="pagelet_auth">
                 <?php echo form_open("auth/login", array('id' => 'form_registration')); ?>
                 <?php if (isset($message) && ($message != NULL)) {
                     ?>
@@ -116,7 +129,7 @@
                 </div>
                 <?php echo form_close(); ?>
             </div>
-            <div class="col-md-1"></div>
+            </div>
         </div>
 
 
@@ -159,10 +172,7 @@
                     <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
                 </div>-->
 
-        <div class="row form-group" ng-app="app.Landing" ng-controller="landingController" ng-clock ng-init="setUserList(<?php echo htmlspecialchars(json_encode($user_list)); ?>)">
-            <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
-
-
+        <div class="row form-group" style="margin-top: 15px!important; margin-bottom: 0px!important;" ng-app="app.Landing" ng-controller="landingController" ng-clock ng-init="setUserList(<?php echo htmlspecialchars(json_encode($user_list)); ?>)">
             <div ng-repeat="user in userList" class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
                 <a href="<?php echo base_url() ?>member/timeline/{{user.userId}}">
                     <div id="brand" class="brand_single_image" >
@@ -211,13 +221,8 @@
                     </div>
                 </a>
             </div>
-            <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
         </div>
-
-
-
     </div>
-</div>
 
 <script>
     $('#other_religion').on('click', function() {

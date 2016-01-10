@@ -208,7 +208,7 @@ class Auth extends CI_Controller {
                             $this->session->unset_userdata('social_network_code');
                         } else {
                             //send email to the client to confirm the email
-                            $this->ion_auth->email_activation($id);
+ //                           $this->ion_auth->email_activation($id);
                         }
                     }
                     //check to see if we are creating the user

@@ -11,6 +11,7 @@
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/template.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/landingBanner.css"/>
         
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
@@ -20,21 +21,38 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/landingService.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/landingApp.js "></script>
         
-        <title>Shadhiin.com</title>
+        
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/modernizr.custom.86080.js "></script>
+        
+        <title><?php echo WEBSITE_TITLE; ?></title>
     </head>
-    <body class="back">
-        <div id="wrapper">
+    <body>
+        <div style="position: relative;" >
+            <div style="position: fixed; top: 0; width: 100%;">
+                <div class="container-fluid"  style="background-color: #703684; color: white;">
+                    <?php $this->load->view("auth/sections/header_with_login"); ?>
+                </div>
+            </div>
+        </div>
+        <div class="padding_top"></div>
+        <div>
+            <?php echo $contents; ?>                            
+        </div>
+        <div id="footer">
+            <?php $this->load->view("auth/sections/footer"); ?>
+        </div>
+<!--        <div id="wrapper">
             <div id="header">
-                <?php $this->load->view("auth/sections/header_with_login"); ?>
+                <?php //$this->load->view("auth/sections/header_with_login"); ?>
             </div>
             <div style="background-color: #EDF0F5;">
                 <div class="container-fluid">
-                    <?php echo $contents; ?>
+                    <?php //echo $contents; ?>
                 </div>
             </div>
             <div id="footer">
-                <?php $this->load->view("auth/sections/footer"); ?>
+                <?php //$this->load->view("auth/sections/footer"); ?>
             </div>
-        </div>
+        </div>-->
     </body>
 </html>

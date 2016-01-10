@@ -96,7 +96,7 @@ hr {
 }
 
 .timeline_profile_picture_custom input{
-    width: 95%;
+    width: 98%;
     border: 1px solid #703684;
 }
 .timeline_profile_picture_custom img{
@@ -109,14 +109,13 @@ hr {
 .fileinput-cover-button input {
     cursor: pointer;
     direction: ltr;
-    height: 35px;
+    height: 33px;
     left: 3.1%;
     margin: 0;
     opacity: 0;
     position: absolute;
     top: 22px;
-    width: 24%;
-    z-index: 102;
+    width: 21.8em!important;
 }
 
 
