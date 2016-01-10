@@ -24,7 +24,7 @@
                                                     <a href="<?php echo base_url(); ?>member/timeline/{{status.mappingUserInfo.userId}}" style="font-weight: bold;">{{status.mappingUserInfo.firstName}}&nbsp;{{status.mappingUserInfo.lastName}}</a> 
                                                 </span>
                                                 <span ng-if="<?php echo POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID; ?> == status.statusTypeId">
-                                                    update 
+                                                    updated 
                                                     <span ng-if="<?php echo Male; ?> == status.genderId">his</span>
                                                     <span ng-if="<?php echo Female; ?> == status.genderId">her</span>
                                                     <!--his/her--> 
@@ -43,10 +43,10 @@
                                                     shared video  
                                                 </span>
                                                 <span ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> == status.statusTypeId">
-                                                    update profile picture 
+                                                    updated profile picture 
                                                 </span>
                                                 <span ng-if="<?php echo CHANGE_COVER_PICTURE; ?> == status.statusTypeId">
-                                                    update cover picture 
+                                                    updated cover picture 
                                                 </span>
                                                 <span ng-if="<?php echo ADD_ALBUM_PHOTOS; ?> == status.statusTypeId">
                                                     added a new photos 

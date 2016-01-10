@@ -70,8 +70,9 @@
             </div>
 
             <!--profile picture-->
-            <div ng-controller="ImageCopperController" style="position: absolute; bottom: -15px; left: 25px; z-index: 1001;">
-                <div ng-show="imageCropStep == 1" class="fileinput-button profile_picture timeline_profile_picture_custom" style="height: 150px!important; width: 150px!important;">
+            <!--<div ng-controller="ImageCopperController" style="position: absolute; bottom: -15px; left: 25px; z-index: 1001;">-->
+            <div ng-controller="ImageCopperController" ng-clock style="position: absolute; bottom: 0; left: 15px; z-index: 1001;">    
+            <div ng-show="imageCropStep == 1" class="fileinput-button profile_picture timeline_profile_picture_custom" style="height: 150px!important; width: 150px!important;">
                     <?php if ($profile_id != "0" && $profile_id != $user_id) { ?>
                         <img  class="cursor_holder_style" alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $profile_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
                         <img class="cursor_holder_style" style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>150x150_{{userGenderId}}.jpg" alt="">
@@ -117,7 +118,8 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div style="background-color: whitesmoke; text-align: center;">
+            <!--<div style="background-color: whitesmoke; text-align: center;">-->
+            <div style="background-color: whitesmoke;">
                 <div class="btn-group" role="group" aria-label="...">
 
                     <?php if ($profile_id != "0") { ?>

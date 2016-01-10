@@ -62,7 +62,6 @@
     </div>
     <div class="col-md-7" ng-controller="statusController"  ng-clock id='status_set_id' ng-init="" >
         <?php // $this->load->view("member/pagelets/post_status"); ?>
-        <div class="row form-group"></div>
         <?php $this->load->view("non_member/updated_status"); ?>
     </div>
 </div>
