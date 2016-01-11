@@ -29,6 +29,7 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
 
             $scope.setNotificationList = function (notificationList) {
                 $scope.allNotificationList = JSON.parse(notificationList);
+                console.log( $scope.allNotificationList );
                 angular.forEach($scope.allNotificationList, function (notification, key) {
                     var userList = new Array();
                     userList = notification.notification.userList;

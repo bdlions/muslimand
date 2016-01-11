@@ -13,7 +13,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             $scope.commentLikeList = [];
             $scope.shareList = [];
             $scope.CommentList = [];
-            $scope.userCurrentTimeStamp = 0;
+            $scope.userCurrentTimeStamp = new Date().getTime()/1000;
             $scope.timeDifferent = 0;
             $scope.userGenderId = "";
             $scope.busy = false;

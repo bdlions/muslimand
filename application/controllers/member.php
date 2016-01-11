@@ -175,9 +175,13 @@ class Member extends CI_Controller {
             if(property_exists($result, "recentMessageInfo")){
             $recent_mage_info = json_decode($result->recentMessageInfo);
             }
+            if(property_exists($result, "currentTime")){
+            $user_current_time = json_decode($result->currentTime);
+            }
         }
         $this->data["message_summery_list"] = $message_ummery_list;
         $this->data["recent_message_info"] = $recent_mage_info;
+        $this->data["user_current_time"] = $user_current_time;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['user_id'] = $user_id;
         $this->data['app'] = "app.Message";

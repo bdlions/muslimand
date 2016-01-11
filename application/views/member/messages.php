@@ -12,7 +12,7 @@
 
 </script>
 <div class="row" ng-controller="messageController" ng-cloak  ng-init="setMessageSummery('<?php echo htmlspecialchars(json_encode($message_summery_list)); ?>')">
-    <div class="col-md-12" >
+    <div class="col-md-12"  ng-init="setUserCurrentTime('<?php echo htmlspecialchars(json_encode($user_current_time)); ?>')">
         <div class="pagelet" ng-init="setRecentMessageInfo('<?php echo htmlspecialchars(json_encode($recent_message_info)); ?>')">
             <div class="padding_top_10px"></div>
             <div class="row">
@@ -103,7 +103,6 @@
                         <div class="msg_scroll">
                             <div class="border_without_bottom padding_top_5px">
                                 <div class="row" ng-repeat="messageInfo in messageInformation.messages">
-                                    {{messageInfo.senderInfo.genderId}}
                                     <div class="user_comment">
                                         <div class="col-md-1">
                                             <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{messageInfo.senderInfo.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
@@ -111,7 +110,7 @@
                                         <div class="col-md-8">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <a style="font-weight: bold;" href="#">{{messageInfo.senderInfo.firstName}} &nbsp;{{messageInfo.senderInfo.lastName}}{{messageInfo.senderInfo.genderId}}</a>
+                                                    <a style="font-weight: bold;" href="#">{{messageInfo.senderInfo.firstName}} &nbsp;{{messageInfo.senderInfo.lastName}}</a>
                                                 </div>  
                                             </div>
                                             <div class="row">
@@ -121,7 +120,8 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            24/12, 11.15pm
+                                            {{messageInfo.sentTime}}
+                                            <!--24/12, 11.15pm-->
                                         </div>
                                     </div>
                                 </div>
