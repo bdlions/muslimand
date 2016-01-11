@@ -656,7 +656,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 .landingPageSlogan{
    color: #703684; 
    font: italic bold 20px Georgia, serif ; 
-   z-index: 999999999!important;
+   z-index: 999999!important;
    position: absolute;
 }
 
