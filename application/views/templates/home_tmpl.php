@@ -27,7 +27,7 @@
         <title><?php echo WEBSITE_TITLE; ?></title>
     </head>
     <body>
-        <div style="position: relative;" >
+        <div style="position: relative; z-index: 9999999!important;" >
             <div style="position: fixed; top: 0; width: 100%;">
                 <div class="container-fluid"  style="background-color: #703684; color: white;">
                     <?php $this->load->view("auth/sections/header_with_login"); ?>
