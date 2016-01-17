@@ -14,7 +14,7 @@
     <div id="current_city_id" style="display: none;">
         <div class="row form-group">
             <div class="col-md-2">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/dhaka.jpg">
+                <img class="pull-right" src="<?php echo base_url(); ?>resources/images/about_icons/livingPlace.png">
             </div>
             <div class="col-md-10">
                 <div class="row">
@@ -55,7 +55,7 @@
     <div id = "home_town_id" style="display: none">
         <div class="row form-group">
             <div class="col-md-2">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/dhaka.jpg">
+                 <img class="pull-right" src="<?php echo base_url(); ?>resources/images/about_icons/home_town.png">
             </div>
             <div class="col-md-10">
                 <div class="row">

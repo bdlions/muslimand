@@ -14,7 +14,7 @@
         <div class="row form-group" ng-repeat="workPlace in workPlaces.slice().reverse()">
             <div id="work_place_{{workPlace.id}}">
                 <div class="col-md-2">
-                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+                   <img class="pull-right" src="<?php echo base_url(); ?>resources/images/about_icons/work.png">
                 </div>
                 <div class="col-md-10">
                     <div class="row">
@@ -98,7 +98,7 @@
         <div class="row form-group"ng-repeat="university in universities.slice().reverse()">
             <div id="uv_{{university.id}}">  
                 <div class="col-md-2">
-                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+                    <img class="pull-right" src="<?php echo base_url(); ?>resources/images/about_icons/university.png">
                 </div>
                 <div class="col-md-10">
                     <div class="row">
@@ -146,7 +146,7 @@
         <div class="row form-group" ng-repeat="college in colleges.slice().reverse()">
             <div id="college_{{college.id}}">
                 <div class="col-md-2">
-                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+                     <img class="pull-right" src="<?php echo base_url(); ?>resources/images/about_icons/institution.png">
                 </div>
                 <div class="col-md-10">
                     <div class="row">
@@ -195,7 +195,7 @@
         <div class="row form-group"ng-repeat="school in schools.slice().reverse()">
             <div id="school_{{school.id}}">
                 <div class="col-md-2">
-                    <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+                    <img class="pull-right" src="<?php echo base_url(); ?>resources/images/about_icons/institution.png">
                 </div>
                 <div class="col-md-10">
                     <div class="row">
