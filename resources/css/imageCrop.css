@@ -100,7 +100,7 @@ hr {
     border: 1px solid #703684;
 }
 .timeline_profile_picture_custom img{
-    border: 2px solid lightgray;
+    /*border: 2px solid lightgray;*/
     border-radius: 3px 3px 3px 3px ;
 }
 

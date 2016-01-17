@@ -96,13 +96,12 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image-crop.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-websocket.js"></script>
 
-        <title>Shadhiin.com</title>
+        <title><?php echo WEBSITE_TITLE?></title>
     </head>
     <body ng-app="<?php echo $app; ?>">
         <div id="header">
             <?php $this->load->view("auth/sections/header_without_login"); ?>
         </div>
-
         <div class="container-fluid" style="background-color: #E9EAED;">
             <div class="row">
                 <div class="col-md-offset-1 col-md-7">

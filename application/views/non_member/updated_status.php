@@ -130,21 +130,27 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row from-group" >
-                                <div ng-repeat="image in status.images">
-                                    <div ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> == status.statusTypeId">
+                            
+                            <div ng-repeat="image in status.images">
+                                <div ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> == status.statusTypeId">
+                                    <div class="row from-group">
                                         <div class="col-md-12 form-group">
-                                            <img class="img-responsive" style="border: 1px solid #703684; float: left;"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
+                                            <img class="img-responsive" style="border: 1px solid #703684; float: left;" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
                                         </div>
                                     </div>
-                                    <div ng-if="<?php echo CHANGE_COVER_PICTURE; ?> == status.statusTypeId">
+                                </div>
+                                <div ng-if="<?php echo CHANGE_COVER_PICTURE; ?> == status.statusTypeId">
+                                    <div class="row from-group">
                                         <div class="col-md-12 form-group">
-                                            <img class="img-responsive" style="border: 1px solid #703684; float: left"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
+                                            <img class="img-responsive" style="border: 1px solid #703684; float: left" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
                                         </div>
                                     </div>
-                                    <div class="col-md-4 form-group" ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> != status.statusTypeId && <?php echo CHANGE_COVER_PICTURE; ?> != status.statusTypeId">
-                                        <img class="img-responsive" style="border: 1px solid #703684; float: left"src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >
+                                </div>
+                            </div>
+                            <div ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> != status.statusTypeId && <?php echo CHANGE_COVER_PICTURE; ?> != status.statusTypeId">
+                                <div class="row">
+                                    <div ng-repeat="(key, image) in status.images">
+                                        <img class="img-responsive" style="border: 1px solid #703684; float: left; height: 150px; width: 150px; margin: 0 10px 25px 15px" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >
                                     </div>
                                 </div>
                             </div>

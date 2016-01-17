@@ -17,7 +17,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="resources/js/jquery.navgoco.js"></script>
         
-        <title>Shadhiin.com</title>
+        <title><?php echo WEBSITE_TITLE?></title>
     </head>
 
     <body>

@@ -1,6 +1,6 @@
 <?php
     define("DB_ID_LENGTH",                                      "15");
-    
+    define("WEBSITE_TITLE",                                     "Shadhiin.com");
     
     
     define("ACCOUNT_STATUS_ID_INACTIVE",                        "0");  

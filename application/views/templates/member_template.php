@@ -96,7 +96,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image-crop.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-websocket.js"></script>
         
-        <title>Shadhiin.com</title>
+       <title><?php echo WEBSITE_TITLE?></title>
     </head>
     <body ng-app="<?php echo $app; ?>">
         <div style="position: relative; background-color: #E9EAED;" >
