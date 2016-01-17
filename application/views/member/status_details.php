@@ -9,7 +9,7 @@
                     <div class="pagelet">
                         <div class="row">
                             <div class="col-md-2" >
-                                <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time= <?php echo time(); ?>" width="40" height="40">
+                                <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time= <?php echo time(); ?>">
                             </div>
                             <div class="col-md-10" >
                                 <div class="row">

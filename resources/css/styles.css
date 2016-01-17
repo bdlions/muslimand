@@ -386,8 +386,8 @@ embed{
     height: 230px; 
     overflow-y: scroll; 
     overflow-x: hidden; 
-    background-color: #fff; 
-    border: 2px solid #703684!important;
+    background-color: #E9EAED; 
+    border: 1px solid #9197a3!important;
 }
 
 .common_box{
@@ -438,11 +438,12 @@ embed{
 
 .textarea_background_style{
     padding-top: 1px; 
+    background-color: #703684!important;
 }
 
-.chatting_input_area{
+.chatting_input_area,.chatting_input_area:hover,.chatting_input_area:focus,.chatting_input_area:visited{
     background-color: #fff;
-    border: 2px solid #703684;
+    border: 2px solid #703684!important;
     border-radius: 3px;
     box-shadow: none;
     resize: none;
@@ -477,19 +478,19 @@ embed{
     border-radius: 5px;
     word-wrap: break-word;
     max-width: 600px;
-    font-size: 14px;
+    font-size: 12px;
 }
 .message_owner_content_style{
-    background-color: #E9EAED;
+    background-color: #E7F1FE;
     color: #333;
 }
 .message_friend_content_style {
-    background-color: #E7F1FE;
+    background-color: #FFFFFF;
     margin-left: 5px;
 }
 
 .message_owner_style::before {
-    background-color: #E9EAED;
+    background-color: #E7F1FE;
     border-bottom: 1px solid #d2d2d2;
     border-right: 1px solid #d2d2d2;
     content: "";
@@ -501,7 +502,7 @@ embed{
     width: 8px;
 }
 .message_friend_style::before {
-    background-color: #e7f1fe;
+    background-color: #FFFFFF;
     border-bottom: 1px solid #d2d2d2;
     border-left: 1px solid #d2d2d2;
     content: "";

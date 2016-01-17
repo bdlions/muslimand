@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="row form-group" id="about_overview_workplace" style="display:none">
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="40" height="40"> 
+                 <img src="<?php echo base_url(); ?>resources/images/about_icons/work.png">  
             </div>
             <div class="col-md-10">
                 Works at <a href ><span ng-bind="overview.workPlace.company"></span></a>
@@ -19,7 +19,7 @@
         <!--<div class="pagelet_divider"></div>-->
         <div class="row form-group" id="about_overview_uiversity" style="display: none">
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/Food.jpg"  width="40" height="40"> 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/university.png"> 
             </div>
             <div class="col-md-10">
                 Studied at <a href="#"> <span ng-bind="overview.university.university"></span></a>
@@ -36,7 +36,7 @@
         <!--<div class="pagelet_divider"></div>-->
         <div class="row form-group" id="about_overview_city" style="display: none"> 
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/car.jpg"  width="40" height="40"> 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/livingPlace.png">  
             </div>
             <div class="col-md-10">
                 Lives in <a href="#"> <span ng-bind="overview.city.cityName"></span></a>
@@ -54,7 +54,7 @@
     <div class="col-md-6">
         <div class="row form-group" id="about_overview_phone" style="display: none">
             <div class="col-md-2">
-                <img src="<?php echo base_url(); ?>resources/images/about_icons/mobile_icon.png"  > 
+                <img src="<?php echo base_url(); ?>resources/images/about_icons/mobile_icon.png"  >  
             </div>
             <div class="col-md-10">
                 <a href="#"><span ng-bind="overview.mobilePhone.phone"></span></a>
@@ -81,7 +81,7 @@
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/website.png"  > 
             </div>
             <div class="col-md-10">
-                <a href="#"><span ng-bind="overview.website.website"></span></a>
+                <a href="#"><span style="word-wrap: break-word;" ng-bind="overview.website.website"></span></a>
             </div>
         </div>
         <div class="row form-group" id="about_overview_birthDate" style="display: none">

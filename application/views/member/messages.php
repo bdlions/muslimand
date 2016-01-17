@@ -107,7 +107,7 @@
                                         <div class="col-md-1">
                                             <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{messageInfo.senderInfo.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{messageInfo.senderInfo.userId}}.jpg"> 
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-7">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <a style="font-weight: bold;" href="#">{{messageInfo.senderInfo.firstName}} &nbsp;{{messageInfo.senderInfo.lastName}}</a>
@@ -119,7 +119,7 @@
                                                 </div> 
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             {{messageInfo.sentTime}}
                                             <!--24/12, 11.15pm-->
                                         </div>
