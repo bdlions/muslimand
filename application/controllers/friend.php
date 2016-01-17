@@ -20,6 +20,9 @@ class Friend extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/login', 'refresh');
+        }
     }
 
     function add_friend() {
@@ -169,8 +172,6 @@ class Friend extends CI_Controller {
         $response['user_info'] = $user_info;
         echo json_encode($response);
     }
-    
-    
 
     function get_short_friend_list() {
         $response = array();

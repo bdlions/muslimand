@@ -21,6 +21,9 @@ class Message extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/login', 'refresh');
+        }
     }
 
     function add_mesage() {
@@ -52,6 +55,7 @@ class Message extends CI_Controller {
         $user_info->lastName = $this->session->userdata('last_name');
         $user_info->userId = $sender_id;
         if (isset($r_user_id)) {
+
             function cmp($a, $b) {
                 return strcmp($a, $b);
             }

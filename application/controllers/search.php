@@ -20,6 +20,9 @@ class Search extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/login', 'refresh');
+        }
     }
 
     function get_search_result() {
@@ -29,7 +32,7 @@ class Search extends CI_Controller {
         if ($search_value != null) {
             $result_users = $this->search_mongodb_model->get_users($search_value);
             if ($result_users != null) {
-                
+
                 $users = json_decode($result_users);
                 foreach ($users as $user) {
                     $user->value = $user->firstName . " " . $user->lastName;
@@ -38,8 +41,8 @@ class Search extends CI_Controller {
                     if ($user->firstName != NULL && $user->firstName != "") {
                         $user->signature = $user->firstName[0];
                     }
-                    $user->user_image = base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user->userId .".jpg";
-                    $user->user_on_error_image = base_url() . PROFILE_PICTURE_PATH_W30_H30 ."30x30_".$user->gender->genderId .".jpg";
+                    $user->user_image = base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user->userId . ".jpg";
+                    $user->user_on_error_image = base_url() . PROFILE_PICTURE_PATH_W30_H30 . "30x30_" . $user->gender->genderId . ".jpg";
                     array_push($temp_users, $user);
                 }
                 $response['users'] = $temp_users;

@@ -13,7 +13,7 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
             $scope.friendList = [];
             $scope.chatUserList = [];
             $scope.userInfo = {};
-            $scope.userCurrentTimeStamp = new Date().getTime()/1000;
+            $scope.userCurrentTimeStamp = new Date().getTime() / 1000;
             $scope.messageHistory = {};
             $scope.messageNotification = [];
             $scope.userId = "";
@@ -284,6 +284,11 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                 messageService.getMessageList(groupId).
                         success(function (data, status, headers, config) {
                             $scope.messageInformation = data;
+                            if (typeof $scope.messageInformation.messages != "undefined") {
+                                angular.forEach($scope.messageInformation.messages, function (message, key) {
+                                    message.sentTime = utilsTimezone.getUnixTimeToHumanTimeWithAMPM(message.sentTime);
+                                });
+                            }
                             $scope.messageInformation.userList = messageSummery.userList;
                         });
             };

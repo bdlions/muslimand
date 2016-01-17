@@ -64,6 +64,9 @@ class Member extends CI_Controller {
     }
 
     function newsfeed($offset = 0, $limit = 0) {
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/login', 'refresh');
+        }
         $user_id = $this->session->userdata('user_id');
         $limit = STATUS_LIMIT_PER_REQUEST;
         $offset = STATUS_INITIAL_OFFSET;
@@ -110,13 +113,16 @@ class Member extends CI_Controller {
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['last_name'] = $this->session->userdata('last_name');
+
         $this->template->load(null, "member/newsfeed", $this->data);
     }
 
     function timeline($profile_id = "0") {
-
-        $user_relation = array();
         $user_id = $this->session->userdata('user_id');
+        if ($profile_id == "0" && $user_id == FALSE) {
+            redirect('auth/login', 'refresh');
+        }
+        $user_relation = array();
         $user_relation = $this->get_user_relation_info($profile_id);
         $this->data['profile_first_name'] = $user_relation['profile_first_name'];
         $this->data['profile_last_name'] = $user_relation['profile_last_name'];
@@ -127,16 +133,18 @@ class Member extends CI_Controller {
         $this->data['profile_id'] = $profile_id;
         $this->data['app'] = "app.MemberProfile";
         if ($user_id == FALSE) {
-            
+
             $this->template->load(null, "non_member/timeline", $this->data);
         } else {
             $this->template->load(null, "member/timeline", $this->data);
         }
     }
 
-    function about($profile_id = 0) {
-
+    function about($profile_id = "0") {
         $user_id = $this->session->userdata('user_id');
+        if ($profile_id == "0" && $user_id == FALSE) {
+            redirect('auth/login', 'refresh');
+        }
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['user_relation'] = json_encode($this->get_user_relation_info($profile_id));
@@ -150,6 +158,9 @@ class Member extends CI_Controller {
     }
 
     function account_settings($profile_id = "0") {
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/login', 'refresh');
+        }
         $user_id = $this->session->userdata('user_id');
         $this->data['user_relation'] = json_encode($this->get_user_relation_info($profile_id));
         $this->data['user_id'] = $user_id;
@@ -164,6 +175,9 @@ class Member extends CI_Controller {
     }
 
     function messages() {
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/login', 'refresh');
+        }
         $message_ummery_list = array();
         $recent_mage_info = array();
         $limit = 10;
@@ -172,11 +186,11 @@ class Member extends CI_Controller {
         $result = $this->message_mongodb_model->get_message_summary_list($user_id, $offset, $limit);
         if ($result != null) {
             $message_ummery_list = $result->messageSummeryList;
-            if(property_exists($result, "recentMessageInfo")){
-            $recent_mage_info = json_decode($result->recentMessageInfo);
+            if (property_exists($result, "recentMessageInfo")) {
+                $recent_mage_info = json_decode($result->recentMessageInfo);
             }
-            if(property_exists($result, "currentTime")){
-            $user_current_time = json_decode($result->currentTime);
+            if (property_exists($result, "currentTime")) {
+                $user_current_time = json_decode($result->currentTime);
             }
         }
         $this->data["message_summery_list"] = $message_ummery_list;
@@ -189,6 +203,9 @@ class Member extends CI_Controller {
     }
 
     function privacy_settings($profile_id = "0") {
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/login', 'refresh');
+        }
         $user_id = $this->session->userdata('user_id');
         $this->data['user_relation'] = json_encode($this->get_user_relation_info($profile_id));
         $this->data['user_id'] = $user_id;
@@ -199,6 +216,9 @@ class Member extends CI_Controller {
     }
 
     function zakat() {
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/login', 'refresh');
+        }
         $user_id = $this->session->userdata('user_id');
         $this->data['user_id'] = $user_id;
         $this->data['first_name'] = $this->session->userdata('first_name');

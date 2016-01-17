@@ -69,14 +69,24 @@ angular.module('services.Timezone', []).
 
             utilsTimezone.getUnixTimeToHumanTimeWithAMPM = function (unixTimeStamp) {
                 var date = new Date(unixTimeStamp * 1000);
+
+                var months = date.getMonth() + 1;
+                if (months < 10) {
+                    months = "0" + months;
+                }
+                var days = date.getDay();
+                if (days < 10) {
+                    days = "0" + days;
+                }
                 var hours = date.getHours();
                 var minutes = date.getMinutes();
                 var ampm = hours >= 12 ? 'pm' : 'am';
                 hours = hours % 12;
                 hours = hours ? hours : 12; // the hour '0' should be '12'
                 minutes = minutes < 10 ? '0' + minutes : minutes;
-                var strTime =  date.getFullYear()+"-"+date.getMonth() +"-"+ date.getDay()+","+hours + ':' + minutes + ' ' + ampm;
-                
+
+                var strTime = date.getFullYear() + "-" +months +"-" + days+ "," + hours + ':' + minutes + ' ' + ampm;
+
                 return strTime;
             }
 
