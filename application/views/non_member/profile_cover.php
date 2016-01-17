@@ -1,6 +1,6 @@
 <script>
     function approve_request(friendId) {
-        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function () {
+        angular.element($('#request_accept_id')).scope().approveRequest(friendId, function() {
 
         });
     }
@@ -19,7 +19,7 @@
 </script>
 <script>
     function block_request(friendId) {
-        angular.element($('#block_friend_id')).scope().blockRequest(friendId, function () {
+        angular.element($('#block_friend_id')).scope().blockRequest(friendId, function() {
             alert("user is blocked ");
         });
     }
@@ -72,7 +72,7 @@
             <!--profile picture-->
             <!--<div ng-controller="ImageCopperController" style="position: absolute; bottom: -15px; left: 25px; z-index: 1001;">-->
             <div ng-controller="ImageCopperController" ng-clock style="position: absolute; bottom: 0; left: 15px; z-index: 1001;">    
-            <div ng-show="imageCropStep == 1" class="fileinput-button profile_picture timeline_profile_picture_custom" style="height: 150px!important; width: 150px!important;">
+                <div ng-show="imageCropStep == 1" class="img-circle fileinput-button profile_picture timeline_profile_picture_custom" style="height: 150px!important; width: 150px!important;">
                     <?php if ($profile_id != "0" && $profile_id != $user_id) { ?>
                         <img  class="cursor_holder_style" alt="" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150 . $profile_id . '.jpg?time=' . time(); ?>" onError="onImageUnavailable(this)"/>
                         <img class="cursor_holder_style" style="visibility:hidden; height: 0px" src="<?php echo base_url() . PROFILE_PICTURE_PATH_W150_H150; ?>150x150_{{userGenderId}}.jpg" alt="">
@@ -124,10 +124,10 @@
 
                     <?php if ($profile_id != "0") { ?>
                         <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>member/timeline/<?php echo $profile_id; ?>">Timeline</a>
-                        <a class="btn btn-default get_over_view_class" style="font-size: 100%"  href="<?php echo base_url(); ?>member/about/<?php echo $profile_id?>">About</a>
+                        <a class="btn btn-default get_over_view_class" style="font-size: 100%"  href="<?php echo base_url(); ?>member/about/<?php echo $profile_id ?>">About</a>
                         <a class="btn btn-default" style="font-size: 100%" >Photo</a>
                         <a class="btn btn-default" style="font-size: 100%" >Friends</a>
-                    <?php }?>
+                    <?php } ?>
                     <div class="btn-group" role="group">
                         <button style="font-size: 100%" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             More
