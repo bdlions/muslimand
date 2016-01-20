@@ -3,8 +3,6 @@ muslimand
 ### Version 1.0
 ##### Features
 1. Registration
-... By Email
-... By Twitter
-1. First ordered list item
-2. Another item
-⋅⋅* Unordered sub-list. 
+  1. By Email
+  2. By Twitter
+
