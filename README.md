@@ -6,7 +6,7 @@ muslimand
 * By Email
 * By Twitter
 
-  * *Email validation Registration:* User will fill up a form with member information including name, email, password etc.then      user  will be got a email to his/her given email address. After validating this email address user will be able to login the     site.
+  * *Email validation Registration:* User will fill up a form with member information including name, email, password etc.then      user  will be got a email to his/her given email address. After validating this email address user will be able to login       the  site.
 
 
   * *Twitter validation Registration:* First of all ,user validation check by given site like twitter then fill up others           information for registration and then user able to login.  
@@ -21,6 +21,12 @@ muslimand
 8. **Post Status :** User will post status of his newsfeed.
 9. **Photo Post:** User will be able to post multiple photos.  
 10. **Friend :** Any member will be able to sent friend request to other based on privacy. Requested user can approve, remove or block the friend request. By accepting request member able to follow his/her activities. Request user also can remove and block any member. Any member can block any other member.
-11. **Timeline:**  User can view his/her own timeline or friend time line based on privacy. he/she can write or post photo  of his/her own timeline or friend timeline.In time line user show sort view of basic infoinformation. friend list and photos.
-12. **About :** User can add,edit,delete his/her Works and Education(Work, Professional Skills, University, College, School etc), Places you've lived(current city, home town), Contacts and Basic Info(Mobile/Phone, address, email, website).Any member can see About above features.
-13. ** timeline Friend : ** User can view his/her own  friend list  or friend friend list based on privacy.
+11. **Message :** One user will be able to send message to another user.
+12.  **Live Chat :** One user will be able to communicate text message in real time.
+13. **Timeline:**  User can view his/her own timeline or friend time line based on privacy. user can change profile picture and cover photo. he/she can write or post photo  of his/her own timeline or friend timeline.In time line user show sort view of basic infoinformation. friend list and photos.
+14. **About :** User can add,edit,delete his/her Works and Education(Work, Professional Skills, University, College, School etc), Places you've lived(current city, home town), Contacts and Basic Info(Mobile/Phone, address, email, website).Any member can see About above features.
+15. **Timeline Friend :** User can view his/her own  friend list  or friend friend list based on privacy.
+16. **Photos :** User can create new album then able to add photos or add more photos to previous created album. Friends can also like comment share these photos
+17. **Vedios :** User will be able to add youtube video link in his/her video gallery and watch this vedio by own or friends. Here, friends also can like comment share this vedio. 
+18. **Recent Activities :** User will be able to see recent activities of his/her friend including(like , comment, share status, change profile picture, over photo and albums etc)
+
