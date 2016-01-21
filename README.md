@@ -29,5 +29,5 @@ muslimand
 16. **Photos :** User can create new album then able to add photo/photos or add more photos to previous created album. Friends can also like, comment, share these photos.
 17. **Videos :** User will be able to add youtube video link in his/her video gallery and watch this video by own or friends. Here, friends also can like, comment, share this video. 
 18. **Recent Activities :** User will be able to see recent activities of his/her friend including(like , comment, share status, change profile picture, cover photo and albums etc).
-19. **Notification:** User can get notification when friend like or comment or share his/her status, photos,or vedios .and also get notification when friend request accepted .
+19. **Notification:** User get notification when friend like or comment or share his/her status, photos or videos and also get notification when friend request accepted .
 
