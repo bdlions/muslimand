@@ -3,17 +3,16 @@ muslimand
 ### Version 1.0
 ##### Features
 1. **Member Registration :** User will register by two diffrient ways. 
- * By Email
- * By Twitter
+* By Email
+* By Twitter
 
-  * *Email validation Registration:* User will fill up a form with member information including name, email, password etc.then      user  will get an email to his/her given email address. After validating this email address user will be able to login the      site.
+  * *Email validation Registration:* User will fill up a form with member information including name, email, password etc. then user will get an email to his/her given email address. After validating this email address user will be able to login the site.
 
-
-  * *Twitter validation Registration:* First of all ,user validation check by given site like twitter then fill up others           information for registration and then user able to login.  
+  * *Twitter validation Registration:* First of all, user validation check by given site like twitter then fill up others information for registration and then user able to login.  
 
 2. **User LogIn :**  User login by giving his/her email address and password.
 3. **Wrong password :**  User will attrempt x (3)times to login by giving wrong email address or password.
-4. **Sort View of Most Recent Users:** most recent user basic inforamtions like user name,country,professional skill etc will be seen by anyone.
+4. **Sort View of Most Recent Users:** most recent user basic inforamtions like user name, country, professional skill etc will be seen by anyone.
 5. **Non Member Profile View :**  Anyone will be able to view a member profile  basic informations based on permission of that member profile.
 6. **Search Friend :** user will be able to search anyone by his/ her frist name or last name.
 7. **NewsFeed :**  User will be able to see his/her own or friend’s latest statuses, photos and videos. 
