@@ -6,9 +6,13 @@ muslimand
 * By Email
 * By Twitter
 
-  * ##Email validation Registration:## User will fill up a form with member information including name, email, password etc. then user will get an email to his/her given email address. After validating this email address user will be able to login the site.
+* Email validation Registration:
 
-  * ##Twitter validation Registration:# First of all, user validation check by given site like twitter then fill up others information for registration and then user able to login.  
+  User will fill up a form with member information including name, email, password etc. then user will get an email to his/her   given email address. After validating this email address user will be able to login the site.
+
+* Twitter validation Registration:
+
+  First of all, user validation check by given site like twitter then fill up others information for registration and then user   able to login.  
 
 2. **User LogIn :**  User will be able to login by giving his/her email address and password.
 3. **Wrong password :**  User will attrempt x (3)times to login by giving wrong email address or password then user will be bolcked.
