@@ -14,8 +14,8 @@ muslimand
 
   First of all, user validation check by given site like twitter then fill up others information for registration and then user   able to login.  
 
-2. **User LogIn :**  User will be able to login by giving his/her email address and password.
-3. **Wrong password :**  User will attrempt x (3)times to login by giving wrong email address or password then user will be bolcked.
+2. **User LogIn :**  User will be able to login by giving his/her email address and password  which user is used in registration.
+3. **Wrong password :**  User will attrempt x (3)times to login by giving wrong email address or password then user will be bolcked by this site .In this setuation user will get read of from this by using  forget password feature. 
 4. **Short View of Most Recent Users:** Most recent user basic inforamtions like user name, country, professional skill etc will be seen by anyone.
 5. **Non Member Profile View :**  Anyone will be able to view a member profile and basic informations based on permission of that member profile.
 6. **Search Friend :** User will be able to search anyone by his/ her frist name or last name.
