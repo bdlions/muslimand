@@ -10,11 +10,11 @@ muslimand
 
   * *Twitter validation Registration:* First of all, user validation check by given site like twitter then fill up others information for registration and then user able to login.  
 
-2. **User LogIn :**  User login by giving his/her email address and password.
-3. **Wrong password :**  User will attrempt x (3)times to login by giving wrong email address or password.
-4. **Sort View of Most Recent Users:** most recent user basic inforamtions like user name, country, professional skill etc will be seen by anyone.
-5. **Non Member Profile View :**  Anyone will be able to view a member profile  basic informations based on permission of that member profile.
-6. **Search Friend :** user will be able to search anyone by his/ her frist name or last name.
+2. **User LogIn :**  User will be able to login by giving his/her email address and password.
+3. **Wrong password :**  User will attrempt x (3)times to login by giving wrong email address or password then user will be bolcked.
+4. **Short View of Most Recent Users:** Most recent user basic inforamtions like user name, country, professional skill etc will be seen by anyone.
+5. **Non Member Profile View :**  Anyone will be able to view a member profile and basic informations based on permission of that member profile.
+6. **Search Friend :** User will be able to search anyone by his/ her frist name or last name.
 7. **NewsFeed :**  User will be able to see his/her own or friend’s latest statuses, photos and videos. 
     * *Like, comment, Share :*  User will be able to like or comment of these statuses and will be able to share these statuses, photos or videos. User also will be edit, delete and like comments based on privacy. 
 8. **Post Status :** User will post status of his/her newsfeed. User can edit and delete his/her post.
