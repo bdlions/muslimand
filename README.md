@@ -3,8 +3,8 @@ muslimand
 ### Version 1.0
 ##### Features
 1. **Member Registration :** User will register by two diffrient ways. 
-* By Email
-* By Twitter
+ * By Email
+ * By Twitter
 
   * *Email validation Registration:* User will fill up a form with member information including name, email, password etc.then      user  will get an email to his/her given email address. After validating this email address user will be able to login the      site.
 
