@@ -6,39 +6,39 @@
         background-color: white;
     }
 </style>
-    <div class="container" >
-        <div class="row" style="padding-top: 65px;">
-            <div class="col-md-6">
-                <div class="row form-group">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <p class="landingPageSlogan">Be a part of worldwide family, share life with us</p>
-                    </div>
+<div class="container" >
+    <div class="row" style="padding-top: 65px;">
+        <div class="col-md-6">
+            <div class="row form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <p class="landingPageSlogan">Be a part of worldwide family, share life with us</p>
                 </div>
-                        <div id="page">
-                            <ul class="cb-slideshow bg_landing_ul" style="margin-top: 80px">
-                                <li>
-                                    <span>Image 01</span>
-                                </li>
-                                <li>
-                                    <span>Image 02</span>
-                                </li>
-                                <li>
-                                    <span>Image 03</span>
-                                </li>
-                                <li>
-                                    <span>Image 04</span>
-                                </li>
-                                <li>
-                                    <span>Image 05</span>
-                                </li>
-                                <li>
-                                    <span>Image 06</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--<img class="img-responsive" src="<?php //echo base_url(); ?>resources/images/banner.png">-->
             </div>
-            <div class="col-md-offset-1 col-md-5">
+            <div id="page">
+                <ul class="cb-slideshow bg_landing_ul" style="margin-top: 80px">
+                    <li>
+                        <span>Image 01</span>
+                    </li>
+                    <li>
+                        <span>Image 02</span>
+                    </li>
+                    <li>
+                        <span>Image 03</span>
+                    </li>
+                    <li>
+                        <span>Image 04</span>
+                    </li>
+                    <li>
+                        <span>Image 05</span>
+                    </li>
+                    <li>
+                        <span>Image 06</span>
+                    </li>
+                </ul>
+            </div>
+            <!--<img class="img-responsive" src="<?php //echo base_url();   ?>resources/images/banner.png">-->
+        </div>
+        <div class="col-md-offset-1 col-md-5">
             <div class="pagelet_auth">
                 <?php echo form_open("auth/login", array('id' => 'form_registration')); ?>
                 <?php if (isset($message) && ($message != NULL)) {
@@ -129,112 +129,121 @@
                 </div>
                 <?php echo form_close(); ?>
             </div>
-            </div>
-        </div>
-
-
-        <!--        <div class="row form-group">
-                    <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
-        <?php //for ($i = 0; $i < 10; $i++) {  ?>
-                        <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
-                            <div id="brand" class="brand_single_image">
-                                <div class="brand_cover_single_image">
-                                    <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/face.jpg"><br>
-                                    <p class="font_10px" style="margin-right: 8px;">Nazrul Islam</p>
-                                    <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag.png"><br>
-                                </div>
-        
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <span class="label_padding_top_single_image" >Nazrul Islam</span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-offset-1 col-md-10">
-                                        <ul style="margin: 0px; padding: 0px; padding-top: 5px; list-style-type: none;">
-                                            <li style="padding: 2px 0px;" class="font_10px">Profession:
-                                                <ul style="margin: 0px; padding: 0px; list-style-type: none;">
-                                                    <li class="info_style_single_image">Doctor</li>
-                                                </ul>
-                                            </li>
-                                            <li style="padding: 2px 0px;" class="font_10px">Age:
-                                                <ul style="margin: 0px; padding: 0px; list-style-type: none;">
-                                                    <li class="info_style_single_image ">30 Years</li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-offset-1"></div>
-                                </div>
-                            </div>
-                        </div>
-        <?php //}  ?>
-                    <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
-                </div>-->
-
-        <div class="row form-group" style="margin-top: 15px!important; margin-bottom: 0px!important;" ng-app="app.Landing" ng-controller="landingController" ng-clock ng-init="setUserList(<?php echo htmlspecialchars(json_encode($user_list)); ?>)">
-            <div ng-repeat="user in userList" class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
-                <a href="<?php echo base_url() ?>member/timeline/{{user.userId}}">
-                    <div id="brand" class="brand_single_image" >
-                        <div class="brand_cover_single_image">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img  height="45" width="45" class="img_pad_mar_top_single_image" alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{user.userId}}.jpg"  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>40x40_{{user.gender.genderId}}.jpg" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px;">{{user.firstName}}&nbsp;{{user.lastName}}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img style="margin-top: -12px;" height="22" width="45" ng-src="<?php echo base_url() . COUNTRY_FLAG_IMAGE_PATH; ?>{{user.country.code}}.png">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="label_padding_top_single_image" >{{user.firstName}}&nbsp;{{user.lastName}}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="font_11px">Profession:</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="professional_info">{{user.pSkill}}</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="font_11px">Age:</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="age_info font_10px">{{user.age}} Years</div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
         </div>
     </div>
 
+
+    <!--        <div class="row form-group">
+                <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
+    <?php //for ($i = 0; $i < 10; $i++) {  ?>
+                    <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
+                        <div id="brand" class="brand_single_image">
+                            <div class="brand_cover_single_image">
+                                <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/face.jpg"><br>
+                                <p class="font_10px" style="margin-right: 8px;">Nazrul Islam</p>
+                                <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag.png"><br>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span class="label_padding_top_single_image" >Nazrul Islam</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-offset-1 col-md-10">
+                                    <ul style="margin: 0px; padding: 0px; padding-top: 5px; list-style-type: none;">
+                                        <li style="padding: 2px 0px;" class="font_10px">Profession:
+                                            <ul style="margin: 0px; padding: 0px; list-style-type: none;">
+                                                <li class="info_style_single_image">Doctor</li>
+                                            </ul>
+                                        </li>
+                                        <li style="padding: 2px 0px;" class="font_10px">Age:
+                                            <ul style="margin: 0px; padding: 0px; list-style-type: none;">
+                                                <li class="info_style_single_image ">30 Years</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-offset-1"></div>
+                            </div>
+                        </div>
+                    </div>
+    <?php //}  ?>
+                <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
+            </div>-->
+
+    <div class="row form-group" style="margin-top: 15px!important; margin-bottom: 0px!important;" ng-app="app.Landing" ng-controller="landingController" ng-clock ng-init="setUserList(<?php echo htmlspecialchars(json_encode($user_list)); ?>)">
+        <div ng-repeat="user in userList" class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
+            <a href="<?php echo base_url() ?>member/timeline/{{user.userId}}">
+                <div id="brand" class="brand_single_image" >
+                    <div class="brand_cover_single_image">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img  height="45" width="45" class="img_pad_mar_top_single_image" alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{user.userId}}.jpg"  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>40x40_{{user.gender.genderId}}.jpg" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px;">{{user.firstName}}&nbsp;{{user.lastName}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img style="margin-top: -12px;" height="22" width="45" ng-src="<?php echo base_url() . COUNTRY_FLAG_IMAGE_PATH; ?>{{user.country.code}}.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="label_padding_top_single_image" >{{user.firstName}}&nbsp;{{user.lastName}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="font_11px">Profession:</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="professional_info">{{user.pSkill}}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="font_11px">Age:</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="age_info font_10px">{{user.age}} Years</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
 <script>
-    $('#other_religion').on('click', function() {
+    $('#other_religion').on('click', function () {
         $('#religion').hide();
         $('#religion_input').show();
     });
 
-    $(function() {
-        $("#register_btn").on("click", function() {
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+    $(function () {
+        $("#register_btn").on("click", function () {
             var firstName = $("#r_first_name").val();
             var lastName = $("#r_last_name").val();
             var rEmail = $("#r_email").val();
+            var varificationResult = validateEmail(rEmail);
+            if (varificationResult == false) {
+                alert("Please Enter a valid Email Address!");
+                return false;
+            }
             var rPassword = $("#r_password").val();
             var gender = $("#gender_id").val();
             var day = $("#birthday_day").val();
@@ -253,6 +262,7 @@
                 alert("Email is required !");
                 return false;
             }
+
             if (rPassword == "") {
                 alert("Password is required !");
                 return false;
@@ -277,13 +287,13 @@
 
 
         });
-        $(".brand_single_image").mouseenter(function() {
+        $(".brand_single_image").mouseenter(function () {
             var brand_single_image = $(this);
             var brand_single_cover_image = $(this).find(".brand_cover_single_image");
             $(brand_single_image).show();
             $(brand_single_cover_image).hide();
         });
-        $(".brand_single_image").mouseleave(function() {
+        $(".brand_single_image").mouseleave(function () {
             var brand_single_image = $(this);
             var brand_single_cover_image = $(this).find(".brand_cover_single_image");
             if ($(brand_single_cover_image).prop("style").display === "none") {
