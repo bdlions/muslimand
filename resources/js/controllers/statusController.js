@@ -144,6 +144,9 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 $scope.statusInfo.imageList = [];
                 $scope.statusInfo.imageList = imageList;
                 }
+                if(($scope.statusInfo.description == null || $scope.statusInfo.description == "") && ($scope.statusInfo.imageList == null || typeof $scope.statusInfo.imageList == "undefined" )){
+                    return;
+                };
                 $scope.statusInfo.profileId = profileUserInfo.profileId;
                 $scope.statusInfo.profileFirstName = profileUserInfo.profileFirstName;
                 $scope.statusInfo.profileLastName = profileUserInfo.profileLastName;
@@ -153,6 +156,8 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                 data.status_info.genderId = $scope.userGenderId;
                             }
                             $scope.statuses.unshift(data.status_info);
+                            $scope.statusInfo.description = "";
+                            $scope.statusInfo.imageList = null;
                             requestFunction();
                         });
             };
@@ -224,6 +229,10 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 $scope.statusInfo.referenceUserInfo = referenceUserInfo;
 //                $scope.statusInfo.referenceUserInfo.genderId = $scope.userGenderId;
                 $scope.statusInfo.statusId = statusId;
+                console.log($scope.statusInfo.commentDes);
+                if($scope.statusInfo.commentDes == "" || $scope.statusInfo.commentDes == null){
+                    return;
+                }
                 statusService.addComment($scope.statusInfo).
                         success(function (data, status, headers, config) {
                             angular.forEach($scope.statuses, function (value, key) {

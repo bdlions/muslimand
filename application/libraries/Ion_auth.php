@@ -249,15 +249,76 @@ class Ion_auth {
         }
     }
 
+    public function register($username, $password, $email, $additional_data, $basic_info) { //need to test email activation
+        $this->ion_auth_model->trigger_events('pre_account_creation');
+        $email_activation = $this->config->item('email_activation', 'ion_auth');
+
+        if (!$email_activation) {
+            $id = $this->ion_auth_model->register($username, $password, $email, $additional_data, $basic_info);
+             if ($id !== FALSE) {
+                    $this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_successful'));
+                    return $id;
+            } else {
+                $this->set_error('account_creation_unsuccessful');
+                $this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_unsuccessful'));
+                return FALSE;
+            }
+        } else {
+        $id = $this->ion_auth_model->register($username, $password, $email, $additional_data, $basic_info);
+        if (!$id) {
+            $this->set_error('account_creation_unsuccessful');
+            return FALSE;
+        }
+        $deactivate = $this->ion_auth_model->deactivate($id);
+        if (!$deactivate) {
+            $this->set_error('deactivate_unsuccessful');
+            $this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_unsuccessful'));
+            return FALSE;
+        }
+
+        $activation_code = $this->ion_auth_model->activation_code;
+        $identity = $this->config->item('identity', 'ion_auth');
+        $user = $this->ion_auth_model->user($id);
+        $data = array(
+            'identity' => $user->email,
+            'id' => $user->userId,
+            'email' => $email,
+            'activation' => $activation_code,
+        );
+        if (!$this->config->item('use_ci_email', 'ion_auth')) {
+            $this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_successful', 'activation_email_successful'));
+            $this->set_message('activation_email_successful');
+            return $data;
+        } else {
+            $message = $this->load->view($this->config->item('email_templates', 'ion_auth') . $this->config->item('email_activate', 'ion_auth'), $data, true);
+
+            $this->email->clear();
+            $this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
+            $this->email->to($email);
+            $this->email->subject($this->config->item('site_title', 'ion_auth') . ' - ' . $this->lang->line('email_activation_subject'));
+            $this->email->message($message);
+
+            if ($this->email->send() == TRUE) {
+                $this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_successful', 'activation_email_successful'));
+                $this->set_message('activation_email_successful');
+                return $id;
+            }
+        }
+
+        $this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_unsuccessful', 'activation_email_unsuccessful'));
+        $this->set_error('activation_email_unsuccessful');
+        return FALSE;
+        }
+    }
+
     /**
      * register
      *
      * @return void
      * @author Mathew
      * */
-    public function register($username, $password, $email, $additional_data = array(), $group_ids = array()) { //need to test email activation
+    public function registerTest($username, $password, $email, $additional_data = array(), $group_ids = array()) { //need to test email activation
         $this->ion_auth_model->trigger_events('pre_account_creation');
-
         $email_activation = $this->config->item('email_activation', 'ion_auth');
 
         if (!$email_activation) {
@@ -279,7 +340,6 @@ class Ion_auth {
             }
 
             $deactivate = $this->ion_auth_model->deactivate($id);
-
             if (!$deactivate) {
                 $this->set_error('deactivate_unsuccessful');
                 $this->ion_auth_model->trigger_events(array('post_account_creation', 'post_account_creation_unsuccessful'));
@@ -288,7 +348,7 @@ class Ion_auth {
 
             $activation_code = $this->ion_auth_model->activation_code;
             $identity = $this->config->item('identity', 'ion_auth');
-            $user = $this->ion_auth_model->user($id)->row();
+            $user = $this->ion_auth_model->user($id);
 
             $data = array(
                 'identity' => $user->{$identity},
@@ -380,10 +440,10 @@ class Ion_auth {
         return null;
     }
 
-    public function get_current_user_types(){
+    public function get_current_user_types() {
         $id = $this->session->userdata('user_id');
         $groups_array = array();
-        
+
         if (isset($this->_cache_user_in_group[$id])) {
             $groups_array = $this->_cache_user_in_group[$id];
         } else {
@@ -395,6 +455,7 @@ class Ion_auth {
         }
         return $groups_array;
     }
+
     /**
      * is_admin
      *
@@ -460,9 +521,8 @@ class Ion_auth {
          */
         return $check_all;
     }
-    
-    public function email_activation($id)
-    {
+
+    public function email_activation($id) {
         $this->load->library('curl');
         $deactivate = $this->ion_auth_model->deactivate($id);
 
@@ -483,10 +543,10 @@ class Ion_auth {
             'email' => $email,
             'activation' => $activation_code,
         );
-            
+
         $url = "http://app.sportzweb.com/restapi/index.php/api/example/users";
         $this->curl->create($url);
-        $this->curl->post(array("id" => $user->userId, "identity" => $user->{$identity}, "first_name" => $user->firstName, "last_name" => $user->lastName, "email"=>$email, "activation_code"=>$activation_code));
+        $this->curl->post(array("id" => $user->userId, "identity" => $user->{$identity}, "first_name" => $user->firstName, "last_name" => $user->lastName, "email" => $email, "activation_code" => $activation_code));
         $result = json_decode($this->curl->execute());
 
 //        $message = $this->load->view($this->config->item('email_templates', 'ion_auth') . $this->config->item('email_activate', 'ion_auth'), $data, true);

@@ -6,7 +6,6 @@
                 var timeoutfn;
                 var waitForResult = false;
                 $("#typeahead").on("keyup", function () {
-
                     waitForResult = true;
                     timeElapsed = 0;
                 });

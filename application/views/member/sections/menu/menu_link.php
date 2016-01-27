@@ -5,7 +5,7 @@
     <a href="<?php echo base_url(); ?>photos/"><li>Photos</li></a>
     <a href="<?php echo base_url(); ?>videos/"><li>Videos</li></a>
     <!--<a href="<?php // echo base_url(); ?>blogs/"><li>Blogs</li></a>-->
-    <!--<a href="<?php // echo base_url(); ?>pages/"><li>Pages</li></a>-->
+    <a href="<?php echo base_url(); ?>pages/"><li>Pages</li></a>
     <!--<a href="<?php // echo base_url(); ?>academy/"><li>Academy</li></a>-->
     <!--<a href="<?php // echo base_url(); ?>library/"><li>Library</li></a>-->
     <!--<a href="<?php // echo base_url(); ?>fund/"><li>Fund Raising</li></a>-->

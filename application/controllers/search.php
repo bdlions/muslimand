@@ -30,7 +30,9 @@ class Search extends CI_Controller {
         $response = array();
         $search_value = $_POST['input_value'];
         if ($search_value != null) {
-            $result_users = $this->search_mongodb_model->get_users($search_value);
+            $offset = SEARCH_OFFSET;
+            $limit = SEARCH_LIMIT;
+            $result_users = $this->search_mongodb_model->get_users($search_value, $offset, $limit);
             if ($result_users != null) {
 
                 $users = json_decode($result_users);

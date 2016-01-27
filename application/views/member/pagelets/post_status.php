@@ -107,12 +107,17 @@
             alert("Please Write Something  or attach photo to update your status !!!");
             return;
         }
+        if(image_list.length != 0){
+            for(var i = 0; image_list.length > i; i++){
+                console.log(image_list[i]);
+            }
+        }
         angular.element($('#save_status_id')).scope().addStatus(image_list, profileUserInfo, function () {
             $("#updateStatusPagelet").show();
             $("#photo_details").hide();
             $("#statusPostId").val('');
-            var image = [];
-            set_image(image);
+            image_list = null;
+            clear_image();
         });
     }
     $('#category_status').on('click', function () {

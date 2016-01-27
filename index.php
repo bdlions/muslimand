@@ -13,6 +13,7 @@ include './constants/general.php';
 include './constants/video.php';
 include './constants/recent_activites.php';
 include './constants/landing_page.php';
+include './constants/search.php';
 
 
 /***************** Custom constant End **********************/

@@ -1,6 +1,6 @@
 <?php
 
-class Search_mongodb_model extends Ion_auth_mongodb_model {
+class Search_mongodb_model extends CI_Model {
 
     var $SERVICE_STATUS;
 
@@ -9,9 +9,9 @@ class Search_mongodb_model extends Ion_auth_mongodb_model {
         $this->SERVICE_STATUS = SERVICE_PATH . "search/";
     }
 
-    public function get_users($search_value) {
+    public function get_users($search_value, $offset, $limit) {
         $this->curl->create($this->SERVICE_STATUS . 'getUsers');
-        $this->curl->post(array("searchValue" => $search_value));
+        $this->curl->post(array("searchValue" => $search_value, "offset" => $offset, "limit" => $limit));
         return $this->curl->execute();
     }
 

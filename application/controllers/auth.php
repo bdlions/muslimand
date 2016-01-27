@@ -65,7 +65,7 @@ class Auth extends CI_Controller {
     }
 
     //log the user in
-    function login() {
+    function loginTest() {
         $this->data['title'] = "Login";
         $country_list = array();
         $religion_list = array();
@@ -107,8 +107,8 @@ class Auth extends CI_Controller {
                     }
                     $this->data['user_list'] = json_encode($user_list_info);
                 } else {
-            $this->data['user_list'] = json_encode(array());
-        }
+                    $this->data['user_list'] = json_encode(array());
+                }
             }
         } else {
             $this->data['user_list'] = json_encode(array());
@@ -208,7 +208,7 @@ class Auth extends CI_Controller {
                             $this->session->unset_userdata('social_network_code');
                         } else {
                             //send email to the client to confirm the email
- //                           $this->ion_auth->email_activation($id);
+                            //                           $this->ion_auth->email_activation($id);
                         }
                     }
                     //check to see if we are creating the user
@@ -226,9 +226,253 @@ class Auth extends CI_Controller {
             } else if ($this->input->post('login_btn') != null) {
                 //check to see if the user is logging in
                 //check for "remember me"
-                $remember = (bool) $this->input->post('remember');
-
+                $remember =  (bool)$this->input->post('remember');
                 if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
+                    //if the login is successful
+                    //redirect them back to the home page
+                    //$this->session->set_flashdata('message', $this->ion_auth->messages());
+                    //redirect('auth/', 'refresh');
+                    redirect('member/newsfeed', 'refresh');
+                } else {
+                    //if the login was un-successful
+                    //redirect them back to the login page
+                    $this->session->set_flashdata('message', $this->ion_auth->errors());
+                    redirect('auth/login_attempt', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+                }
+            }
+        } else {
+
+            $r_first_name = $this->form_validation->set_value('r_first_name');
+            if (!empty($this->session->userdata('first_name'))) {
+                $r_first_name = $this->session->userdata('first_name');
+                $this->session->unset_userdata('first_name');
+            }
+            $this->data['r_first_name'] = array(
+                'name' => 'r_first_name',
+                'id' => 'r_first_name',
+                'type' => 'text',
+                'value' => $r_first_name,
+            );
+            $this->data['r_last_name'] = array(
+                'name' => 'r_last_name',
+                'id' => 'r_last_name',
+                'type' => 'text',
+                'value' => $this->form_validation->set_value('r_last_name'),
+            );
+            $this->data['r_email'] = array(
+                'name' => 'r_email',
+                'id' => 'r_email',
+                'type' => 'email',
+                'value' => $this->form_validation->set_value('r_email'),
+            );
+
+            $this->data['r_password'] = array(
+                'name' => 'r_password',
+                'id' => 'r_password',
+                'type' => 'password',
+                'value' => $this->form_validation->set_value('r_password'),
+            );
+            $this->data['r_password_conf'] = array(
+                'name' => 'r_password_conf',
+                'id' => 'r_password_conf',
+                'type' => 'password',
+                'value' => $this->form_validation->set_value('r_password_conf'),
+            );
+            $this->data['register_btn'] = array('name' => 'register_btn',
+                'id' => 'register_btn',
+                'type' => 'submit',
+                'value' => 'Sign Up',
+            );
+
+            //the user is not logging in so display the login page
+            //set the flash data error message if there is one
+            $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+            $this->data['success_image'] = $this->session->flashdata('success_image');
+
+            $this->data['identity'] = array('name' => 'identity',
+                'id' => 'identity',
+                'type' => 'text',
+                'value' => $this->form_validation->set_value('identity'),
+            );
+            $this->data['password'] = array('name' => 'password',
+                'id' => 'password',
+                'type' => 'password',
+            );
+            $this->data['remember'] = array('name' => 'remember',
+                'id' => 'remember',
+                'type' => 'text',
+//                'value' => false
+            );
+            $this->data['login_btn'] = array('name' => 'login_btn',
+                'id' => 'login_btn',
+                'type' => 'submit',
+                'tabindex' => '4',
+                'value' => 'Sign in',
+            );
+            $this->data['country_list'] = $country_list;
+            $this->data['gender_list'] = $gender_list;
+            $this->data['religion_list'] = $religion_list;
+            $this->data['month_list'] = $this->utils->get_month_list();
+            $this->data["date_list"] = $this->utils->get_date_list();
+            $this->data["year_list"] = $this->utils->get_year_list();
+//            var_dump($this->data);
+//            exit;
+            $this->template->load("templates/home_tmpl", LOGIN_VIEW, $this->data);
+            //$this->_render_page('auth/login', $this->data);
+        }
+    }
+
+    function login() {
+
+        $this->data['title'] = "Login";
+        $country_list = array();
+        $religion_list = array();
+        $country_time_zone = array();
+        $gender_list = array();
+        $user_list_info = array();
+        $user_list = array();
+        $landing_page_info = $this->landing_page_model->get_landing_page_info();
+        $gender = $this->utils->get_gender();
+        foreach ($gender as $key => $gender_info) {
+            $gender_list[$key] = $gender_info;
+        }
+        if (!empty($landing_page_info)) {
+            if (property_exists($landing_page_info, "countryList") != FALSE) {
+                foreach ($landing_page_info->countryList as $country_info) {
+                    $country_list[$country_info->code] = $country_info->title;
+                    $country_time_zone[$country_info->code] = $country_info->gmtOffset;
+                    //hard coded
+//                    $country_time_zone[$country_info->code] = "+6";
+                }
+            }
+            if (property_exists($landing_page_info, "religionList") != FALSE) {
+                foreach ($landing_page_info->religionList as $religion_info) {
+                    $religion_list[$religion_info->religionId] = $religion_info->title;
+                }
+            }
+            if (property_exists($landing_page_info, "userList") != FALSE) {
+
+                $user_list = $landing_page_info->userList;
+                if (!empty($user_list)) {
+                    foreach ($user_list as $user) {
+                        if (property_exists($user, "gender")) {
+                            $user->gender = json_decode($user->gender);
+                        }
+                        if (property_exists($user, "country")) {
+                            $user->country = json_decode($user->country);
+                        }
+                        $user_list_info[] = $user;
+                    }
+                    $this->data['user_list'] = json_encode($user_list_info);
+                } else {
+                    $this->data['user_list'] = json_encode(array());
+                }
+            }
+        } else {
+            $this->data['user_list'] = json_encode(array());
+        }
+        if ($this->input->post('register_btn') != null) {
+            //validate form input to register
+            $this->form_validation->set_rules('gender_id', 'Gender', 'required');
+            $this->form_validation->set_rules('r_first_name', 'First Name', 'required');
+            $this->form_validation->set_rules('r_last_name', 'Last Name', 'required');
+            $this->form_validation->set_rules('r_email', 'Email', 'required');
+            $this->form_validation->set_rules('r_password', 'Password', 'required');
+//            $this->form_validation->set_rules('birthday_day', 'Day', 'required');
+//            $this->form_validation->set_rules('birthday_month', 'Month', 'required');
+//            $this->form_validation->set_rules('birthday_year', 'Year', 'required');
+            $this->form_validation->set_rules('r_password_conf', 'Password confirm', 'required|matches[r_password]');
+        } else if ($this->input->post('login_btn') != null) {
+            //validate form input to login
+            $this->form_validation->set_rules('identity', 'Identity', 'required');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+        }
+        if ($this->form_validation->run() == true) {
+            if ($this->input->post('register_btn') != null) {
+                $username = strtolower($this->input->post('r_first_name')) . ' ' . strtolower($this->input->post('r_last_name'));
+                $email = $this->input->post('r_email');
+                $password = $this->input->post('r_password');
+                $country_code = $this->input->post('country_list');
+                $religion_id = $this->input->post('religion_list');
+                $gender_id = $this->input->post('gender_id');
+                if ($country_code != null) {
+                    $country_title = $country_list[$country_code];
+                    $gmt_offset = $country_time_zone[$country_code];
+                }
+                if ($religion_id != null) {
+                    $religion_title = $religion_list[$religion_id];
+                }
+
+                if ($gender_id != null) {
+                    $gender_title = $gender_list[$gender_id];
+                }
+                $country = new stdClass();
+                $country->code = $country_code;
+                $country->title = $country_title;
+                $country->gmtOffset = $gmt_offset;
+                $religion = new stdClass();
+                $religion->id = $religion_id;
+                $religion->title = $religion_title;
+                $gender = new stdClass();
+                $gender->genderId = $gender_id;
+                $gender->title = $gender_title;
+                $group_info = new stdClass();
+                $group_info->groupId = MEMBER_GROUP_ID;
+                $group_info->title = MEMBER_GROUP_TITLE;
+                $groups = array();
+                $groups[] = $group_info;
+                $additional_data = new stdClass();
+                $additional_data->firstName = $this->input->post('r_first_name');
+                $additional_data->lastName = $this->input->post('r_last_name');
+                $additional_data->country = $country;
+                $additional_data->gender = $gender;
+                $additional_data->groups = $groups;
+                $birth_date = new stdClass();
+                $birth_date->birthDay = $this->input->post('birthday_day');
+                $birth_date->birthMonth = $this->input->post('birthday_month');
+                $birth_date->birthYear = $this->input->post('birthday_year');
+
+                $basic_info = new stdClass();
+                $basic_info->birthDate = $birth_date;
+                $basic_info->gender = $gender;
+                $basic_info->religions = $religion;
+                $user_basic_info = new stdClass();
+                $user_basic_info->basicInfo = $basic_info;
+                $id = $this->ion_auth->register($username, $password, $email, $additional_data, $user_basic_info);
+                if ($id != null && $id != FALSE) {
+                    $this->ion_auth->set_message('account_creation_successful');
+                    //adding social network code
+//                        if (!empty($this->session->userdata('social_network_id')) && !empty($this->session->userdata('social_network_code'))) {
+//                            $social_network_data = array(
+//                                'user_id' => $id,
+//                                'social_network_id' => $this->session->userdata('social_network_id'),
+//                                'code' => $this->session->userdata('social_network_code')
+//                            );
+//                            $this->social_network_mongodb_model->add_social_network_info($social_network_data);
+//                            $this->session->unset_userdata('social_network_id');
+//                            $this->session->unset_userdata('social_network_code');
+//                        } else {
+//                            //send email to the client to confirm the email
+//                            $this->ion_auth->email_activation($id);
+//                        }
+                    //check to see if we are creating the user
+//                    //redirect them back to the admin page
+                    $success_image = base_url() . "resources/images/success_img.png";
+                    $this->session->set_flashdata('success_image', $success_image);
+                    $this->session->set_flashdata('message', $this->ion_auth->messages());
+                } else {
+                    $this->session->set_flashdata('message', "Unsuccessful to register a user.");
+                }
+                redirect("auth/login", 'refresh');
+                //$this->data['message'] = $this->session->flashdata('message');
+                //redirect("auth/login", 'refresh');
+                //$this->template->load("templates/profile_setting_tmpl", "display_message", $this->data);
+            } else if ($this->input->post('login_btn') != null) {
+                //check to see if the user is logging in
+                //check for "remember me"
+                $remember = (bool) $this->input->post('remember');
+                $login_success = $this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember);
+                if ($login_success == TRUE) {
                     //if the login is successful
                     //redirect them back to the home page
                     //$this->session->set_flashdata('message', $this->ion_auth->messages());

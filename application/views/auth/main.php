@@ -210,12 +210,12 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="font_11px">Age:</div>
+                            <div class="font_11px">Current City:</div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="age_info font_10px">{{user.age}} Years</div>
+                            <div class="age_info font_10px">{{user.city}}</div>
                         </div>
                     </div>
                 </div>

@@ -35,7 +35,7 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button id="about_add_id_" class="btn btn-xs form-control form_control_custom_style member_about_save_button" onform-controlclick="add_about('<?php echo $user_id; ?>')" style="background-color: #703684; color: #fff;">Save</button>
+                        <button id="about_add_id_" class="btn btn-xs form-control form_control_custom_style member_about_save_button" onform-control onclick="add_about('<?php echo $user_id; ?>')" style="background-color: #703684; color: #fff;">Save</button>
                     </div>
                     <div class="col-md-3">
                         <button class="btn btn-xs form-control form_control_custom_style member_about_cancel_button cancel_about_own_window" style="background-color: #703684; color: #fff;">Cancel</button>

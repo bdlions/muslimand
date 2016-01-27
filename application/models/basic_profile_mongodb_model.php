@@ -1,6 +1,6 @@
 <?php
 
-class Basic_profile_mongodb_model extends Ion_auth_mongodb_model {
+class Basic_profile_mongodb_model extends CI_Model {
 
     var $SERVICE_BASIC_PROFILE;
 

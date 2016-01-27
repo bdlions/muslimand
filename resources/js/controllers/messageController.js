@@ -84,6 +84,10 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                 }
                 $scope.userMessage.genderId = $scope.userInfo.genderId;
                 $scope.userMessage.message = chatUserDetails.writtenMsg;
+                if($scope.userMessage.message == null ||$scope.userMessage.message == ""){
+                    console.log($scope.userMessage.message);
+                    return;
+                }
                 messageService.addMessage($scope.userMessage).
                         success(function (data, status, headers, config) {
                             var message = {"message": chatUserDetails.writtenMsg, "senderInfo": $scope.userInfo};
@@ -93,7 +97,8 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                             $scope.webSocketMessage.groupId = chatUserDetails.groupId;
                             $scope.ws.send(JSON.stringify($scope.webSocketMessage));
                             chatUserDetails.messages.push(message);
-                            chatUserDetails.writtenMsg = "";
+                            chatUserDetails.writtenMsg = "" ;
+                             $scope.userMessage.message  = "" ;
                         });
             };
             $scope.onMessage = function (event) {

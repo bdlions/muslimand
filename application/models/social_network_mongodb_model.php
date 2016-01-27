@@ -1,6 +1,6 @@
 <?php
 
-class Social_network_mongodb_model extends Ion_auth_mongodb_model {
+class Social_network_mongodb_model extends CI_Model {
 
     public function __construct() {
         parent::__construct();

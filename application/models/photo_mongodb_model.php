@@ -1,6 +1,6 @@
 <?php
 
-class Photo_mongodb_model extends Ion_auth_mongodb_model {
+class Photo_mongodb_model extends CI_Model {
 
     var $SERVICE_PHOTO;
 

@@ -40,7 +40,7 @@
                             <input id="identity" name="identity" type="email" class="" style="color: black; height: 22px; width: 100%;">
                         </div>  
                         <div class="col-md-12">
-                            <input id="remember" name="remember" type="checkbox" >
+                            <input id="remember" name="remember" type="checkbox"  >
                             <span style="line-height: 22px;">Remember me</span>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 <?php
-class Common_mongodb_model extends Ion_auth_mongodb_model
+class Common_mongodb_model extends CI_Model
 {
     public function __construct() 
     {

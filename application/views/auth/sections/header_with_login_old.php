@@ -20,7 +20,7 @@
             Email:
             <!--<label>Email:</label>-->
             <div style="color: #703684"><?php echo form_input($identity + array('style' => 'width: 100%')); ?></div>
-            <div><input type="checkbox" style="vertical-align: top"> Remember me </div>
+            <div><input type="checkbox" name="remember" style="vertical-align: top"> Remember me </div>
         </div>
         <div class="col-md-2">
             Password:

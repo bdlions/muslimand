@@ -114,6 +114,7 @@ var images = [];
                         });
                     },
                     done: function (e, data) {
+                        console.log(data.response().result);
                         set_image(data.response().result.files[0].name)
                         if (e.isDefaultPrevented()) {
                             return false;
@@ -429,9 +430,13 @@ var images = [];
 }));
 
 function set_image(image) {
-    images.push(image);
+        images.push(image);
+}
+function clear_image() {
+        images = [];
 }
 function get_image_list() {
+    console.log(images);
     return images;
 
 }
