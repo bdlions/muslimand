@@ -62,11 +62,11 @@ muslimand
 
 **Url need to change when launch it to server:**
 
-1. .htaccess file project title need to change
-2.almost all js angular apps dereactive url 
-3. js angular message controller websocket url need to change
-4. all angular js services project title need to change
-5. Mongodb database host name need to change
+1. .htaccess file project title need to change.
+2. almost all js angular apps dereactive url. 
+3. js angular message controller websocket url need to change.
+4. all angular js services project title need to change.
+5. Mongodb database host name need to change.
 
 
 
