@@ -10,7 +10,7 @@
                     <a class="msg_box_user_name" href='<?php echo base_url(); ?>member/timeline/{{userId}}'>{{chatUserDetails.firstName + " " + chatUserDetails.lastName}}</a>
                 </div>
                 <div class="col-md-2">
-                    <!--<img class="img-responsive" style="margin-top: 3px; cursor: pointer" src="<?php //echo base_url();   ?>resources/images/settings.png">-->
+                    <!--<img class="img-responsive" style="margin-top: 3px; cursor: pointer" src="<?php //echo base_url();    ?>resources/images/settings.png">-->
                 </div>
                 <div class="col-md-2">
                     <button type="button" class="close close-custom" aria-label="Close" ng-click="removeUser(chatUserDetails)" ><span aria-hidden="true">&times;</span></button>
@@ -21,14 +21,23 @@
             <div class="message_friends_divider_others chat_box_container">
                 <div ng-repeat="message in chatUserDetails.messages">
                     <div class="row" ng-if="message.senderInfo.userId == userInfo.userId">
-                        <div class="col-md-12">
+                        <div class="col-md-offset-2 col-md-10">
                             <div class="message_owner_style pull-right">
-                                <span  class="message_owner_content_style" >{{ message.message}}</span>
+                                <a data-toggle="tooltip" data-placement="left" title="February 1st, 10.16pm"> 
+                                    <span  class="message_owner_content_style" >{{ message.message}}</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="row" ng-if="message.senderInfo.userId !== userInfo.userId">
-                        <div class="col-md-12">
+                    <div class="row form-group" ng-if="message.senderInfo.userId !== userInfo.userId">
+                        <div class="col-md-2">
+                            <div class="pull-left">
+                                <a data-toggle="tooltip" data-placement="right" title="February 2nd, 12.16pm"> 
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 ?>25x25_{{message.senderInfo.userId}}.jpg" class="img-circle" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 ?>{{message.senderInfo.userId}}.jpg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
                             <div class="message_friend_style pull-left">
                                 <span class="message_friend_content_style" >{{  message.message}}</span>
                             </div>
