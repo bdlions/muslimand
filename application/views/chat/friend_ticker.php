@@ -23,7 +23,7 @@
                     <div class="row" ng-if="message.senderInfo.userId == userInfo.userId">
                         <div class="col-md-offset-2 col-md-10">
                             <div class="message_owner_style pull-right">
-                                <a data-toggle="tooltip" data-placement="left" title="February 1st, 10.16pm"> 
+                                <a data-toggle="tooltip" data-placement="left" title="{{message.sentTime}}"> 
                                     <span  class="message_owner_content_style" >{{ message.message}}</span>
                                 </a>
                             </div>
@@ -32,8 +32,8 @@
                     <div class="row form-group" ng-if="message.senderInfo.userId !== userInfo.userId">
                         <div class="col-md-2">
                             <div class="pull-left">
-                                <a data-toggle="tooltip" data-placement="right" title="February 2nd, 12.16pm"> 
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 ?>25x25_{{message.senderInfo.userId}}.jpg" class="img-circle" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 ?>{{message.senderInfo.userId}}.jpg">
+                                <a data-toggle="tooltip" data-placement="right" title="{{message.sentTime}}"> 
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 ?>25x25_{{message.senderInfo.genderId}}.jpg" class="img-circle" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 ?>{{message.senderInfo.userId}}.jpg">
                                 </a>
                             </div>
                         </div>

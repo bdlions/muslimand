@@ -13,12 +13,12 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             $scope.commentLikeList = [];
             $scope.shareList = [];
             $scope.CommentList = [];
-            $scope.userCurrentTimeStamp = new Date().getTime()/1000;
+            $scope.userCurrentTimeStamp = new Date().getTime() / 1000;
             $scope.timeDifferent = 0;
             $scope.userGenderId = "";
             $scope.busy = false;
             $scope.getStatusList = function () {
-                if ($scope.busy == true){
+                if ($scope.busy == true) {
                     return;
                 }
                 $scope.busy = true;
@@ -138,15 +138,20 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
              * 
              * */
             $scope.addStatus = function (imageList, profileUserInfo, requestFunction) {
+                if ($scope.busy == true) {
+                    return;
+                }
+                $scope.busy = true;
                 var imageListArray = [];
                 imageListArray = imageList;
-                if(imageListArray.length > 0 ){
-                $scope.statusInfo.imageList = [];
-                $scope.statusInfo.imageList = imageList;
+                if (imageListArray.length > 0) {
+                    $scope.statusInfo.imageList = [];
+                    $scope.statusInfo.imageList = imageList;
                 }
-                if(($scope.statusInfo.description == null || $scope.statusInfo.description == "") && ($scope.statusInfo.imageList == null || typeof $scope.statusInfo.imageList == "undefined" )){
+                if (($scope.statusInfo.description == null || $scope.statusInfo.description == "") && ($scope.statusInfo.imageList == null || typeof $scope.statusInfo.imageList == "undefined")) {
                     return;
-                };
+                }
+                ;
                 $scope.statusInfo.profileId = profileUserInfo.profileId;
                 $scope.statusInfo.profileFirstName = profileUserInfo.profileFirstName;
                 $scope.statusInfo.profileLastName = profileUserInfo.profileLastName;
@@ -158,11 +163,16 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                             $scope.statuses.unshift(data.status_info);
                             $scope.statusInfo.description = "";
                             $scope.statusInfo.imageList = null;
+                            $scope.busy = false;
                             requestFunction();
                         });
             };
 // update a status...............
             $scope.updateStatus = function (status) {
+                if ($scope.busy == true) {
+                    return;
+                }
+                $scope.busy = true;
                 var statusId = status.statusId;
                 statusService.updateStatus(status).
                         success(function (data, status, headers, config) {
@@ -173,7 +183,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                     $("#displayStatus" + statusId).show();
                                 }
                             }, $scope.statuses);
-
+                            $scope.busy = false;
                         });
             };
             /**
@@ -181,6 +191,10 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
              * parameter statusId 
              * */
             $scope.addLike = function (userId, statusId) {
+                if ($scope.busy == true) {
+                    return;
+                }
+                $scope.busy = true;
                 statusService.addLike(userId, statusId).
                         success(function (data, status, headers, config) {
                             angular.forEach($scope.statuses, function (value, key) {
@@ -194,7 +208,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                     }
                                 }
                             }, $scope.statuses);
-
+                            $scope.busy = false;
                         });
                 return false;
             };
@@ -226,11 +240,15 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
              * 
              * */
             $scope.addComment = function (genderId, referenceUserInfo, statusId) {
+                if ($scope.busy == true) {
+                    return;
+                }
+                $scope.busy = true;
                 $scope.statusInfo.referenceUserInfo = referenceUserInfo;
 //                $scope.statusInfo.referenceUserInfo.genderId = $scope.userGenderId;
                 $scope.statusInfo.statusId = statusId;
                 console.log($scope.statusInfo.commentDes);
-                if($scope.statusInfo.commentDes == "" || $scope.statusInfo.commentDes == null){
+                if ($scope.statusInfo.commentDes == "" || $scope.statusInfo.commentDes == null) {
                     return;
                 }
                 statusService.addComment($scope.statusInfo).
@@ -250,6 +268,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                 }
                             }, $scope.statuses);
                             $scope.statusInfo.commentDes = "";
+                            $scope.busy = false;
                         });
 
                 return false;

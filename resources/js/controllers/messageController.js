@@ -49,7 +49,8 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
 
 
                     userMessage.senderInfo = JSON.parse(userMessage.senderInfo);
-                    var message = {"message": userMessage.message, "senderInfo": userMessage.senderInfo};
+                    userMessage.sentTime = utilsTimezone.getUnixTimeToHumanTimeWithAMPM(userMessage.sentTime);
+                    var message = {"message": userMessage.message, "senderInfo": userMessage.senderInfo, "sentTime": userMessage.sentTime};
                     userMessage.message = message;
                     var userExistStatus = 0;
                     angular.forEach($scope.chatUserList, function (chatUser, key) {
@@ -84,63 +85,22 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                 }
                 $scope.userMessage.genderId = $scope.userInfo.genderId;
                 $scope.userMessage.message = chatUserDetails.writtenMsg;
-                if($scope.userMessage.message == null ||$scope.userMessage.message == ""){
-                    console.log($scope.userMessage.message);
+                if ($scope.userMessage.message == null || $scope.userMessage.message == "") {
                     return;
                 }
                 messageService.addMessage($scope.userMessage).
                         success(function (data, status, headers, config) {
-                            var message = {"message": chatUserDetails.writtenMsg, "senderInfo": $scope.userInfo};
+                            var sentTime = utilsTimezone.getUnixTimeToHumanTimeWithAMPM($scope.userCurrentTimeStamp);
+                            var message = {"message": chatUserDetails.writtenMsg, "senderInfo": $scope.userInfo, "sentTime": sentTime};
                             $scope.webSocketMessage.message = chatUserDetails.writtenMsg;
                             $scope.webSocketMessage.receiverId = chatUserDetails.userId;
                             $scope.webSocketMessage.senderInfo = JSON.stringify($scope.userInfo);
                             $scope.webSocketMessage.groupId = chatUserDetails.groupId;
                             $scope.ws.send(JSON.stringify($scope.webSocketMessage));
                             chatUserDetails.messages.push(message);
-                            chatUserDetails.writtenMsg = "" ;
-                             $scope.userMessage.message  = "" ;
+                            chatUserDetails.writtenMsg = "";
+                            $scope.userMessage.message = "";
                         });
-            };
-            $scope.onMessage = function (event) {
-                var userMessage = JSON.parse(event);
-                if ($scope.messageNotification.length > 0) {
-                    angular.forEach($scope.messageNotification, function (notification, key) {
-                        if (notification != userMessage.groupId) {
-                            $("#message_counter_div").show();
-                            var messageNotificationCounter = $("#message_counter_div").val();
-                            messageNotificationCounter = +messageNotificationCounter + +1;
-                            $("#message_counter_div").val(messageNotificationCounter);
-                            $("#message_counter_div").html(messageNotificationCounter);
-                            $scope.messageNotification.push(userMessage.groupId);
-                        }
-                    });
-                } else {
-                    $("#message_counter_div").show();
-                    var messageNotificationCounter = $("#message_counter_div").val();
-                    messageNotificationCounter = +messageNotificationCounter + +1;
-                    $("#message_counter_div").val(messageNotificationCounter);
-                    $("#message_counter_div").html(messageNotificationCounter);
-                    $scope.messageNotification.push(userMessage.groupId);
-                }
-
-
-                userMessage.senderInfo = JSON.parse(userMessage.senderInfo);
-                var message = {"message": userMessage.message, "senderInfo": userMessage.senderInfo};
-                userMessage.message = message;
-                var userExistStatus = 0;
-                angular.forEach($scope.chatUserList, function (chatUser, key) {
-                    if (chatUser.groupId === userMessage.groupId) {
-                        chatUser.messages.push(message);
-                        userExistStatus = 1;
-                    }
-                });
-                if (userExistStatus != 1) {
-                    userMessage.userId = userMessage.senderInfo.userId;
-                    userMessage.firstName = userMessage.senderInfo.firstName;
-                    userMessage.lastName = userMessage.senderInfo.lastName;
-                    userMessage.genderId = userMessage.senderInfo.genderId;
-                    $scope.getChatInitialInfo(userMessage);
-                }
             };
             $scope.getFriendList = function () {
                 messageService.getFriendList().
@@ -155,13 +115,20 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                 messageService.getMessagehistory(userId).
                         success(function (data, status, headers, config) {
                             if (typeof data.message_history != "undefined") {
-
                                 $scope.messageHistory = data.message_history;
                                 $scope.messageHistory.userId = chatUserInfo.userId;
                                 $scope.messageHistory.firstName = chatUserInfo.firstName;
                                 $scope.messageHistory.lastName = chatUserInfo.lastName;
                                 $scope.messageHistory.genderId = chatUserInfo.genderId;
+                                if (typeof $scope.messageHistory.messages != "undefined") {
+                                    angular.forEach($scope.messageHistory.messages, function (message, key) {
+                                        message.sentTime = utilsTimezone.getUnixTimeToHumanTimeWithAMPM(message.sentTime);
+                                    }, $scope.messageHistory.messages);
+                                }
+
+
 //                                if (typeof chatUserInfo.message == "undefined") {
+//                                if(typeof data.message)
 //                                    $scope.messageHistory.messages.push(chatUserInfo.message);
 //                                }
                                 var userObject = $scope.messageHistory;
