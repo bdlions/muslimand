@@ -62,5 +62,11 @@ class Pages extends CI_Controller {
         $this->data['app'] = "app.Header";
         $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_newsfeed", $this->data);
     }
+    function pages_getting_started() {
+        $this->data['user_id'] = $this->session->userdata('user_id');
+        $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->data['app'] = "app.Header";
+        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_getting_started", $this->data);
+    }
 
 }

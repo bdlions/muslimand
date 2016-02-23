@@ -20,7 +20,7 @@
                                                 <img style="visibility:hidden;height: 0px;" src="" class="user_on_error_image img-responsive on-error-profile-photo" alt="" >
                                             </div>
                                         </div>
-                                        <div class="col-md-10 font_style">
+                                        <div class="col-md-10 font_12px">
                                             <div class="user_name" style="padding-top: 7px; padding-top: 7px">
                                             </div>
                                         </div>

@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-offset-1 col-md-9">
                         <div id="footer">
                             <?php $this->load->view("auth/sections/footer"); ?>
                         </div>

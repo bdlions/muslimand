@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-md-10">
         <a href="<?php echo base_url(); ?>photos/"><img src="<?php echo base_url(); ?>resources/images/pages/icon/page.png"></a>
-        <a  class="anchor_property_change" href="<?php echo base_url(); ?>pages/"><span style="text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold;">Page</span></a>
+        <a  class="anchor_property_change" href="<?php echo base_url(); ?>pages/"><span class="" style="text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold;">Pages</span></a>
     </div>
     <div class="col-md-2">
     </div>
@@ -23,66 +23,32 @@
                 <div id="brand" class="brand">
                     <div class="brand_cover">
                         <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/brand.png"><br>
-                        <span >Brand</span>
+                        <span class="font_bold">Brand</span>
                     </div>
 
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Brand</label>
+                            <label class="label_padding_top font_16px" >Brand</label>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Select a Category</label><br>
-                            <select class="form-control" name="control">
-                                <option selected="1">Select a Category</option>
-                                <option value="0">Appliances</option>
-                                <option value="1">Baby Goods/Kids Goods</option>
-                                <option value="2">Bags/Luggage</option>
-                                <option value="3">Building Materials</option>
-                                <option value="4">Camera/Photo</option>
-                                <option value="5">Cars</option>
-                                <option value="6">Health</option>
-                                <option value="7">Clothing</option>
-                                <option value="8">Commercial Equipment</option>
-                                <option value="9">Computers</option>
-                                <option value="10">Drugs</option>
-                                <option value="11">Electronics</option>
-                                <option value="12">Food/Beverages</option>
-                                <option value="13">Furniture</option>
-                                <option value="14">Games/Toys</option>
-                                <option value="15">Beauty</option>
-                                <option value="16">Home Decor</option>
-                                <option value="17">Household Supplies</option>
-                                <option value="18">Jewelry/Watches</option>
-                                <option value="19">Kitchen/Cooking</option>
-                                <option value="20">Movies/Music</option>
-                                <option value="21">Musical Instrument</option>
-                                <option value="22">Office Supplies</option>
-                                <option value="23">Outdoor Gear/Sporting Goods</option>
-                                <option value="24">Patio/Garden</option>
-                                <option value="25">Pet Supplies</option>
-                                <option value="26">Product/Service</option>
-                                <option value="27">Software</option>
-                                <option value="28">Tools/Equipment</option>
-                                <option value="29">Vitamins/Supplements</option>
-                                <option value="30">Website</option>
-                            </select>
+                             <?php $this->load->view("member/sections/page_category/brand"); ?>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <label class="label_padding_top" >Name: </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control page_custom_form_control">
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <div style="padding-top: 10px;">
-                                <a  href=""><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 20px;">Get started</button></a>
+                                <a  href=""><button id="brand_creating_page_button" class="button-custom">Get started</button></a>
                             </div>
                         </div>
                         <div class="col-md-offset-1"></div>
@@ -91,70 +57,36 @@
             </div>
             <div class="col-md-4">
                 <!--                <div id="product_cover" class="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
-                                    <span>Product</span>
+                                     <span class="font_bold">Product</span>
                                 </div>-->
                 <div id="product" class="brand">
                     <div class="brand_cover">
                         <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/product.png"><br>
-                        <span>Product</span>
+                        <span class="font_bold">Product</span>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top">Product</label>
+                            <label class="label_padding_top font_16px">Product</label>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Select a Category</label><br>
-                            <select class="form-control" name="control">
-                                <option selected="1">Select a Category</option>
-                                <option value="0">Appliances</option>
-                                <option value="1">Baby Goods/Kids Goods</option>
-                                <option value="2">Bags/Luggage</option>
-                                <option value="3">Building Materials</option>
-                                <option value="4">Camera/Photo</option>
-                                <option value="5">Cars</option>
-                                <option value="6">Health</option>
-                                <option value="7">Clothing</option>
-                                <option value="8">Commercial Equipment</option>
-                                <option value="9">Computers</option>
-                                <option value="10">Drugs</option>
-                                <option value="11">Electronics</option>
-                                <option value="12">Food/Beverages</option>
-                                <option value="13">Furniture</option>
-                                <option value="14">Games/Toys</option>
-                                <option value="15">Beauty</option>
-                                <option value="16">Home Decor</option>
-                                <option value="17">Household Supplies</option>
-                                <option value="18">Jewelry/Watches</option>
-                                <option value="19">Kitchen/Cooking</option>
-                                <option value="20">Movies/Music</option>
-                                <option value="21">Musical Instrument</option>
-                                <option value="22">Office Supplies</option>
-                                <option value="23">Outdoor Gear/Sporting Goods</option>
-                                <option value="24">Patio/Garden</option>
-                                <option value="25">Pet Supplies</option>
-                                <option value="26">Product/Service</option>
-                                <option value="27">Software</option>
-                                <option value="28">Tools/Equipment</option>
-                                <option value="29">Vitamins/Supplements</option>
-                                <option value="30">Website</option>
-                            </select>
+                            <?php $this->load->view("member/sections/page_category/product"); ?>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <label class="label_padding_top" >Name: </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control page_custom_form_control">
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <div style="padding-top: 10px;">
-                                <a  href=""><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 20px;">Get started</button></a>
+                                <a  href=""><button id="product_creating_page_button" class="button-custom">Get started</button></a>
                             </div>
                         </div>
                         <div class="col-md-offset-1"></div>
@@ -163,52 +95,30 @@
             </div>
             <div class="col-md-4">
                 <!--                <div id="group_cover" class="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
-                                    <span>Group</span>
+                                     <span class="font_bold">Group</span>
                                 </div>-->
                 <div id="group" class="brand">
                     <div class="brand_cover">
                         <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/group.png"><br>
-                        <span>Group</span>
+                        <span class="font_bold">Group</span>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top">Group</label>
-                        </div>
-                        <div class="col-md-offset-1"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Select a Category</label><br>
-                            <select class="form-control" name="control">
-                                <option selected="1">Select a Category</option>
-                                <option value="0">Business</option>
-                                <option value="1">Common Interest</option>
-                                <option value="2">Entertainment</option>
-                                <option value="3">Arts</option>
-                                <option value="4">Geography</option>
-                                <option value="5">Internet</option>
-                                <option value="6">Technology</option>
-                                <option value="7">Just for Fun</option>
-                                <option value="8">Music</option>
-                                <option value="9">Organizations</option>
-                                <option value="10">Sports</option>
-                                <option value="11">Recreation</option>
-                                <option value="12">Student Groups</option>
-                            </select>
+                            <label class="label_padding_top font_16px">Group</label>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <label class="label_padding_top" >Name: </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control page_custom_form_control">
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <div style="padding-top: 10px;">
-                                <a  href=""><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 20px;">Get started</button></a>
+                                <a  href=""><button id="group_creating_page_button" class="button-custom">Get started</button></a>
                             </div>
                         </div>
                         <div class="col-md-offset-1"></div>
@@ -216,57 +126,32 @@
                 </div>
             </div>
         </div>
-        <div class="row form-group"></div>
-        <div class="row form-group"></div>
-        <div class="row form-group"></div>
-        <div class="row">
+        <div class="row padding_top_30px">
             <div class="col-md-4">
                 <!--                <div class="brand_cover" id="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
-                                    <span>Community</span>
+                                     <span class="font_bold">Community</span>
                                 </div>-->
                 <div id="community" class="brand">
                     <div class="brand_cover">
                         <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/community.png"><br>
-                        <span>Community</span>
+                        <span class="font_bold">Community</span>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top">Community</label>
+                            <label class="label_padding_top font_16px">Community</label>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Select a Category</label><br>
-                            <select class="form-control" name="control">
-                                <option selected="1">Select a Category</option>
-                                <option value="0">Business</option>
-                                <option value="1">Common Interest</option>
-                                <option value="2">Entertainment</option>
-                                <option value="3">Arts</option>
-                                <option value="4">Geography</option>
-                                <option value="5">Internet</option>
-                                <option value="6">Technology</option>
-                                <option value="7">Just for Fun</option>
-                                <option value="8">Music</option>
-                                <option value="9">Organizations</option>
-                                <option value="10">Sports</option>
-                                <option value="11">Recreation</option>
-                                <option value="12">Student Groups</option>
-                            </select>
-                        </div>
-                        <div class="col-md-offset-1"></div>
-                    </div>
-                    <div class="row">
+                    <div class="row form-group">
                         <div class="col-md-offset-1 col-md-10">
                             <label class="label_padding_top" >Name: </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control page_custom_form_control">
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <a  href=""><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 20px;">Get started</button></a>
+                            <a  href=""><button id="community_creating_page_button" class="button-custom">Get started</button></a>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
@@ -274,75 +159,59 @@
             </div>
             <div class="col-md-4">
                 <!--                <div id="product_cover" class="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
-                                    <span>Product</span>
+                                     <span class="font_bold">Product</span>
                                 </div>-->
                 <div id="business" class="brand">
                     <div class="brand_cover">
                         <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/business.png"><br>
-                        <span>Business</span>
+                        <span class="font_bold">Business</span>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top">Business</label>
+                            <label class="label_padding_top font_16px">Business</label>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Select a Category</label><br>
-                            <select class="form-control" name="control">
-                                <option selected="1">Select a Category</option>
-                                <option value="0">Masjid</option>
-                                <option value="1">Airport</option>
-                                <option value="2">Arts</option>
-                                <option value="3">Entertainment</option>
-                                <option value="4">automotive</option>
-                                <option value="5">Bank</option>
-                                <option value="6">Financial Services</option>
-                                <option value="7">Book Store</option>
-                                <option value="8">Business Services</option>
-                                <option value="9">Religious Organizations</option>
-                                <option value="10">Club</option>
-                                <option value="11">Community</option>
-                                <option value="12">Government</option>
-                                <option value="13">Concert</option>
-                                <option value="14">Education</option>
-                                <option value="15">Event Planning</option>
-                                <option value="16">Event Services</option>
-                                <option value="17">Food</option>
-                                <option value="18">Grocery</option>
-                                <option value="19">Health</option>
-                                <option value="20">Medical</option>
-                                <option value="21">Pharmacy</option>
-                                <option value="22">Home Improvement</option>
-                                <option value="23">Hospital</option>
-                                <option value="24">Clinic</option>
-                                <option value="25">Hotel</option>
-                                <option value="26">Landmark</option>
-                                <option value="27">Library</option>
-                                <option value="28">Local Business</option>
-                                <option value="29">Movie</option>
-                                <option value="30">Theater</option>
-                                <option value="31">Museum</option>
-                                <option value="32">Art Gallery</option>
-                                <option value="33">Pet Services</option>
-                                <option value="34">Professional Services</option>
-                                <option value="35">Public Places</option>
-                            </select>
+                            <?php $this->load->view("member/sections/page_category/business"); ?>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Name: </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control page_custom_form_control" placeholder="Name">
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <div style="padding-top: 10px;">
-                                <a  href=""><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 20px;">Get started</button></a>
+                            <input type="text" class="form-control page_custom_form_control" placeholder="Street Address">
+                        </div>
+                        <div class="col-md-offset-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <input type="text" class="form-control page_custom_form_control" placeholder="City/State">
+                        </div>
+                        <div class="col-md-offset-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <input type="text" class="form-control page_custom_form_control" placeholder="Zip Code">
+                        </div>
+                        <div class="col-md-offset-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <input type="text" class="form-control page_custom_form_control" placeholder="Phone">
+                        </div>
+                        <div class="col-md-offset-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <div style="padding-top: 6px;">
+                                <a  href=""><button id="business_creating_page_button" class="button-custom" >Get started</button></a>
                             </div>
                         </div>
                         <div class="col-md-offset-1"></div>
@@ -351,52 +220,59 @@
             </div>
             <div class="col-md-4">
                 <!--                <div id="group_cover" class="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
-                                    <span>Group</span>
+                                     <span class="font_bold">Group</span>
                                 </div>-->
                 <div id="place" class="brand">
                     <div class="brand_cover">
                         <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/place.png"><br>
-                        <span>Place</span>
+                        <span class="font_bold">Place</span>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top">Place</label>
+                            <label class="label_padding_top font_16px">Place</label>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Select a Category</label><br>
-                            <select class="form-control" name="control">
-                                <option selected="1">Select a Category</option>
-                                <option value="0">Business</option>
-                                <option value="1">Common Interest</option>
-                                <option value="2">Entertainment</option>
-                                <option value="3">Arts</option>
-                                <option value="4">Geography</option>
-                                <option value="5">Internet</option>
-                                <option value="6">Technology</option>
-                                <option value="7">Just for Fun</option>
-                                <option value="8">Music</option>
-                                <option value="9">Organizations</option>
-                                <option value="10">Sports</option>
-                                <option value="11">Recreation</option>
-                                <option value="12">Student Groups</option>
-                            </select>
+                            <?php $this->load->view("member/sections/page_category/place"); ?>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Name: </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control page_custom_form_control" placeholder="Name">
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <div style="padding-top: 10px;">
-                                <a  href=""><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 20px;">Get started</button></a>
+                            <input type="text" class="form-control page_custom_form_control" placeholder="Street Address">
+                        </div>
+                        <div class="col-md-offset-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <input type="text" class="form-control page_custom_form_control" placeholder="City/State">
+                        </div>
+                        <div class="col-md-offset-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <input type="text" class="form-control page_custom_form_control" placeholder="Zip Code">
+                        </div>
+                        <div class="col-md-offset-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <input type="text" class="form-control page_custom_form_control" placeholder="Phone">
+                        </div>
+                        <div class="col-md-offset-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <div style="padding-top: 6px;">
+                                <a  href=""><button id="place_creating_page_button" class="button-custom">Get started</button></a>
                             </div>
                         </div>
                         <div class="col-md-offset-1"></div>
@@ -407,76 +283,39 @@
 
 
 
-        <div class="row form-group"></div>
-        <div class="row form-group"></div>
-        <div class="row form-group"></div>
-        <div class="row">
+        <div class="row padding_top_30px">
             <div class="col-md-4">
                 <!--                <div class="brand_cover" id="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
-                                    <span>Brand</span>
+                                     <span class="font_bold">Brand</span>
                                 </div>-->
                 <div id="entertainment" class="brand">
                     <div class="brand_cover">
                         <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/entertainment.png"><br>
-                        <span>Entertainment</span>
+                        <span class="font_bold">Entertainment</span>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top">Entertainment</label>
+                            <label class="label_padding_top font_16px">Entertainment</label>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Select a Category</label><br>
-                            <select class="form-control" name="control">
-                                <option selected="1">Select a Category</option>
-                                <option value="0">Appliances</option>
-                                <option value="1">Baby Goods/Kids Goods</option>
-                                <option value="2">Bags/Luggage</option>
-                                <option value="3">Building Materials</option>
-                                <option value="4">Camera/Photo</option>
-                                <option value="5">Cars</option>
-                                <option value="6">Health</option>
-                                <option value="7">Clothing</option>
-                                <option value="8">Commercial Equipment</option>
-                                <option value="9">Computers</option>
-                                <option value="10">Drugs</option>
-                                <option value="11">Electronics</option>
-                                <option value="12">Food/Beverages</option>
-                                <option value="13">Furniture</option>
-                                <option value="14">Games/Toys</option>
-                                <option value="15">Beauty</option>
-                                <option value="16">Home Decor</option>
-                                <option value="17">Household Supplies</option>
-                                <option value="18">Jewelry/Watches</option>
-                                <option value="19">Kitchen/Cooking</option>
-                                <option value="20">Movies/Music</option>
-                                <option value="21">Musical Instrument</option>
-                                <option value="22">Office Supplies</option>
-                                <option value="23">Outdoor Gear/Sporting Goods</option>
-                                <option value="24">Patio/Garden</option>
-                                <option value="25">Pet Supplies</option>
-                                <option value="26">Product/Service</option>
-                                <option value="27">Software</option>
-                                <option value="28">Tools/Equipment</option>
-                                <option value="29">Vitamins/Supplements</option>
-                                <option value="30">Website</option>
-                            </select>
+                            <?php $this->load->view("member/sections/page_category/entertainment"); ?>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <label class="label_padding_top" >Name: </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control page_custom_form_control">
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <div style="padding-top: 10px;">
-                                <a  href=""><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 20px;">Get started</button></a>
+                                <a  href=""><button id="entertainment_creating_page_button" class="button-custom">Get started</button></a>
                             </div>
                         </div>
                         <div class="col-md-offset-1"></div>
@@ -485,70 +324,36 @@
             </div>
             <div class="col-md-4">
                 <!--                <div id="product_cover" class="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
-                                    <span>Product</span>
+                                     <span class="font_bold">Product</span>
                                 </div>-->
                 <div id="company" class="brand">
                     <div class="brand_cover">
                         <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/company.png"><br>
-                        <span>Company</span>
+                        <span class="font_bold">Company</span>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top">Company</label>
+                            <label class="label_padding_top font_16px">Company</label>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Select a Category</label><br>
-                            <select class="form-control" name="control">
-                                <option selected="1">Select a Category</option>
-                                <option value="0">Appliances</option>
-                                <option value="1">Baby Goods/Kids Goods</option>
-                                <option value="2">Bags/Luggage</option>
-                                <option value="3">Building Materials</option>
-                                <option value="4">Camera/Photo</option>
-                                <option value="5">Cars</option>
-                                <option value="6">Health</option>
-                                <option value="7">Clothing</option>
-                                <option value="8">Commercial Equipment</option>
-                                <option value="9">Computers</option>
-                                <option value="10">Drugs</option>
-                                <option value="11">Electronics</option>
-                                <option value="12">Food/Beverages</option>
-                                <option value="13">Furniture</option>
-                                <option value="14">Games/Toys</option>
-                                <option value="15">Beauty</option>
-                                <option value="16">Home Decor</option>
-                                <option value="17">Household Supplies</option>
-                                <option value="18">Jewelry/Watches</option>
-                                <option value="19">Kitchen/Cooking</option>
-                                <option value="20">Movies/Music</option>
-                                <option value="21">Musical Instrument</option>
-                                <option value="22">Office Supplies</option>
-                                <option value="23">Outdoor Gear/Sporting Goods</option>
-                                <option value="24">Patio/Garden</option>
-                                <option value="25">Pet Supplies</option>
-                                <option value="26">Product/Service</option>
-                                <option value="27">Software</option>
-                                <option value="28">Tools/Equipment</option>
-                                <option value="29">Vitamins/Supplements</option>
-                                <option value="30">Website</option>
-                            </select>
+                            <?php $this->load->view("member/sections/page_category/company"); ?>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <label class="label_padding_top" >Name: </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control page_custom_form_control">
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <div style="padding-top: 10px;">
-                                <a  href=""><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 20px;">Get started</button></a>
+                                <a  href=""><button id="company_creating_page_button" class="button-custom">Get started</button></a>
                             </div>
                         </div>
                         <div class="col-md-offset-1"></div>
@@ -557,52 +362,36 @@
             </div>
             <div class="col-md-4">
                 <!--                <div id="group_cover" class="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
-                                    <span>Group</span>
+                                     <span class="font_bold">Group</span>
                                 </div>-->
                 <div id="organization" class="brand">
                     <div class="brand_cover">
                         <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/organization.png"><br>
-                        <span>Organization</span>
+                        <span class="font_bold">Organization</span>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top">Organization</label>
+                            <label class="label_padding_top font_16px">Organization</label>
                         </div><div class="col-md-offset-1"></div>
 
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Select a Category</label><br>
-                            <select class="form-control" name="control">
-                                <option selected="1">Select a Category</option>
-                                <option value="0">Business</option>
-                                <option value="1">Common Interest</option>
-                                <option value="2">Entertainment</option>
-                                <option value="3">Arts</option>
-                                <option value="4">Geography</option>
-                                <option value="5">Internet</option>
-                                <option value="6">Technology</option>
-                                <option value="7">Just for Fun</option>
-                                <option value="8">Music</option>
-                                <option value="9">Organizations</option>
-                                <option value="10">Sports</option>
-                                <option value="11">Recreation</option>
-                                <option value="12">Student Groups</option>
-                            </select>
+                            <?php $this->load->view("member/sections/page_category/organization"); ?>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <label class="label_padding_top" >Name: </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control page_custom_form_control">
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <div style="padding-top: 10px;">
-                                <a  href=""><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 20px;">Get started</button></a>
+                                <a  href=""><button id="organization_creating_page_button" class="button-custom">Get started</button></a>
                             </div>
                         </div>
                         <div class="col-md-offset-1"></div>
@@ -610,76 +399,39 @@
                 </div>
             </div>
         </div>
-        <div class="row form-group"></div>
-        <div class="row form-group"></div>
-        <div class="row form-group"></div>
-        <div class="row">
+        <div class="row padding_top_30px">
             <div class="col-md-4">
                 <!--                <div class="brand_cover" id="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
-                                    <span>Brand</span>
+                                     <span class="font_bold">Brand</span>
                                 </div>-->
                 <div id="institution" class="brand">
                     <div class="brand_cover">
                         <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/institution.png"><br>
-                        <span>Institution</span>
+                        <span class="font_bold">Institution</span>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top">Institution</label>
+                            <label class="label_padding_top font_16px">Institution</label>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Select a Category</label><br>
-                            <select class="form-control" name="control">
-                                <option selected="1">Select a Category</option>
-                                <option value="0">Appliances</option>
-                                <option value="1">Baby Goods/Kids Goods</option>
-                                <option value="2">Bags/Luggage</option>
-                                <option value="3">Building Materials</option>
-                                <option value="4">Camera/Photo</option>
-                                <option value="5">Cars</option>
-                                <option value="6">Health</option>
-                                <option value="7">Clothing</option>
-                                <option value="8">Commercial Equipment</option>
-                                <option value="9">Computers</option>
-                                <option value="10">Drugs</option>
-                                <option value="11">Electronics</option>
-                                <option value="12">Food/Beverages</option>
-                                <option value="13">Furniture</option>
-                                <option value="14">Games/Toys</option>
-                                <option value="15">Beauty</option>
-                                <option value="16">Home Decor</option>
-                                <option value="17">Household Supplies</option>
-                                <option value="18">Jewelry/Watches</option>
-                                <option value="19">Kitchen/Cooking</option>
-                                <option value="20">Movies/Music</option>
-                                <option value="21">Musical Instrument</option>
-                                <option value="22">Office Supplies</option>
-                                <option value="23">Outdoor Gear/Sporting Goods</option>
-                                <option value="24">Patio/Garden</option>
-                                <option value="25">Pet Supplies</option>
-                                <option value="26">Product/Service</option>
-                                <option value="27">Software</option>
-                                <option value="28">Tools/Equipment</option>
-                                <option value="29">Vitamins/Supplements</option>
-                                <option value="30">Website</option>
-                            </select>
+                            
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <label class="label_padding_top" >Name: </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control page_custom_form_control">
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <div style="padding-top: 10px;">
-                                <a  href=""><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 20px;">Get started</button></a>
+                                <a  href=""><button id="institution_creating_page_button" class="button-custom">Get started</button></a>
                             </div>
                         </div>
                         <div class="col-md-offset-1"></div>
@@ -688,70 +440,36 @@
             </div>
             <div class="col-md-4">
                 <!--                <div id="product_cover" class="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
-                                    <span>Product</span>
+                                     <span class="font_bold">Product</span>
                                 </div>-->
                 <div id="artist" class="brand">
                     <div class="brand_cover">
                         <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/band.png"><br>
-                        <span>Artist or Band</span>
+                        <span class="font_bold">Artist or Band</span>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top">Artist or Band</label>
+                            <label class="label_padding_top font_16px">Artist or Band</label>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Select a Category</label><br>
-                            <select class="form-control" name="control">
-                                <option selected="1">Select a Category</option>
-                                <option value="0">Appliances</option>
-                                <option value="1">Baby Goods/Kids Goods</option>
-                                <option value="2">Bags/Luggage</option>
-                                <option value="3">Building Materials</option>
-                                <option value="4">Camera/Photo</option>
-                                <option value="5">Cars</option>
-                                <option value="6">Health</option>
-                                <option value="7">Clothing</option>
-                                <option value="8">Commercial Equipment</option>
-                                <option value="9">Computers</option>
-                                <option value="10">Drugs</option>
-                                <option value="11">Electronics</option>
-                                <option value="12">Food/Beverages</option>
-                                <option value="13">Furniture</option>
-                                <option value="14">Games/Toys</option>
-                                <option value="15">Beauty</option>
-                                <option value="16">Home Decor</option>
-                                <option value="17">Household Supplies</option>
-                                <option value="18">Jewelry/Watches</option>
-                                <option value="19">Kitchen/Cooking</option>
-                                <option value="20">Movies/Music</option>
-                                <option value="21">Musical Instrument</option>
-                                <option value="22">Office Supplies</option>
-                                <option value="23">Outdoor Gear/Sporting Goods</option>
-                                <option value="24">Patio/Garden</option>
-                                <option value="25">Pet Supplies</option>
-                                <option value="26">Product/Service</option>
-                                <option value="27">Software</option>
-                                <option value="28">Tools/Equipment</option>
-                                <option value="29">Vitamins/Supplements</option>
-                                <option value="30">Website</option>
-                            </select>
+                             <?php $this->load->view("member/sections/page_category/band"); ?>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <label class="label_padding_top" >Name: </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control page_custom_form_control">
                         </div><div class="col-md-offset-1"></div>
 
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <div style="padding-top: 10px;">
-                                <a  href=""><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 20px;">Get started</button></a>
+                                <a  href=""><button id="band_creating_page_button" class="button-custom">Get started</button></a>
                             </div>
                         </div>
                         <div class="col-md-offset-1"></div>
@@ -760,52 +478,36 @@
             </div>
             <div class="col-md-4">
                 <!--                <div id="group_cover" class="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
-                                    <span>Group</span>
+                                     <span class="font_bold">Group</span>
                                 </div>-->
                 <div id="public" class="brand">
                     <div class="brand_cover">
                         <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/public.png"><br>
-                        <span>Public Figure</span>
+                        <span class="font_bold">Public Figure</span>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top">Public Figure</label>
+                            <label class="label_padding_top font_16px">Public Figure</label>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <label class="label_padding_top" >Select a Category</label><br>
-                            <select class="form-control" name="control">
-                                <option selected="1">Select a Category</option>
-                                <option value="0">Business</option>
-                                <option value="1">Common Interest</option>
-                                <option value="2">Entertainment</option>
-                                <option value="3">Arts</option>
-                                <option value="4">Geography</option>
-                                <option value="5">Internet</option>
-                                <option value="6">Technology</option>
-                                <option value="7">Just for Fun</option>
-                                <option value="8">Music</option>
-                                <option value="9">Organizations</option>
-                                <option value="10">Sports</option>
-                                <option value="11">Recreation</option>
-                                <option value="12">Student Groups</option>
-                            </select>
+                            <?php $this->load->view("member/sections/page_category/public"); ?>
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <label class="label_padding_top" >Name: </label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control page_custom_form_control">
                         </div>
                         <div class="col-md-offset-1"></div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <div style="padding-top: 10px;">
-                                <a  href=""><button class="btn btn-xs" style="background-color: #703684; color: white; font-weight: bold; padding: 3px 20px;">Get started</button></a>
+                                <a  href=""><button id="public_creating_page_button" class="button-custom">Get started</button></a>
                             </div>
                         </div>
                         <div class="col-md-offset-1"></div>
@@ -817,6 +519,8 @@
     </div>
     <div class="col-md-2"></div>
 </div>
+
+<?php //$this->load->view("modal/modal_create_page_error"); ?>
 
 <script>
     $(function() {
