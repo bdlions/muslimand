@@ -63,8 +63,8 @@ body {
 
 hr {
     border-color: #999 -moz-use-text-color -moz-use-text-color!important; 
-    margin-bottom: 0!important; 
-    margin-top: 0!important; 
+     margin-bottom: 5px !important;
+    margin-top: 1px !important;
 }
 
 /*================================  COMPONENTS  ================================*/
@@ -259,6 +259,9 @@ embed{
 }
 .padding_top{
     padding-top: 49px;
+}
+.padding_top_50px{
+    padding-top: 50px;
 }
 .padding_top_30px{
     padding-top: 30px;
@@ -668,10 +671,10 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 
 .landingPageSlogan{
-   color: #703684; 
-   font: italic bold 20px Georgia, serif ; 
-   z-index: 999999!important;
-   position: absolute;
+    color: #703684; 
+    font: italic bold 20px Georgia, serif ; 
+    z-index: 999999!important;
+    position: absolute;
 }
 
 /*================================  Admin Panel  ================================*/
@@ -791,12 +794,12 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     font-size: 12px!important;
 }
 
-.btn-default-custom {
+.btn_default_custom {
     background-color: #fff!important; 
     border-color: #fff!important; 
     color: #333;
 }
-.btn-default-custom:hover, .btn-default-custom:focus, .btn-default-custom.focus, .btn-default-custom:active, .btn-default-custom.active, .open > .dropdown-toggle.btn-default-custom {
+.btn_default_custom:hover, .btn_default_custom:focus, .btn_default_custom.focus, .btn_default_custom:active, .btn_default_custom.active, .open > .dropdown-toggle.btn_default_custom {
     background-color: #fff!important; 
     border-color: #fff!important; 
     color: #333;
@@ -930,26 +933,26 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 /* ------------------------- custom responsive style (media) ----------------------------*/
 
 @media (max-width: 480px) {
-     .padding_style{
+    .padding_style{
         padding-bottom: 15px;
     }
-     .margin_style{
+    .margin_style{
         margin-left: 0!important;
         margin-right: 0!important;
     }
     .landingImgHeader{
         padding-top: 30px; 
     }
-/*    .landingPageSlogan{
-        margin-left: 20px 
-    }*/
+    /*    .landingPageSlogan{
+            margin-left: 20px 
+        }*/
 }
 
 @media (min-width: 481px)and (max-width: 767px) {
-     .padding_style{
+    .padding_style{
         padding-bottom: 15px;
     }
-     .margin_style{
+    .margin_style{
         margin-left: 0!important;
         margin-right: 0!important;
     }
@@ -959,7 +962,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 
 @media (min-width: 768px)and (max-width: 991px) { 
- .margin_style{
+    .margin_style{
         margin-left: 0!important;
         margin-right: 0!important;
     }
@@ -972,11 +975,11 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     .landingImgHeader{
         padding: 10px 0; 
     }
-/*    .loginPageLogo{
-        padding-left: 25%;
-    }*/
+    /*    .loginPageLogo{
+            padding-left: 25%;
+        }*/
     .login_logo_mg{
-      margin-right: 10px;  
+        margin-right: 10px;  
     }
     .landingPageSlogan{
         margin-left: -20px 
@@ -1010,7 +1013,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 
 .form_control_custom_style{
-    height: 30px!important; 
+    height: 28px!important; 
     padding: 3px!important; 
     font-size: 12px!important; 
 }
@@ -1165,4 +1168,54 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     text-align: center;
 }
 
+.page_pagelet{
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 1px;
+    box-shadow: 0 0 1px #bbb;
+}
 
+.image_inline a:hover,.image_inline a:focus, .image_inline a:active{
+    text-decoration: none;
+}
+.image_inline a,.image_inline a:hover,.image_inline a:focus, .image_inline a:active{
+    color: #333;
+}
+.image_inline a span{
+    position: absolute;
+    margin-left: 22px;
+    margin-top: 12px;
+    z-index: 100000;
+    /*font-weight: bold;*/
+}
+.image_inline a img{
+    display: inline;
+    margin-left: 5px;
+}
+
+.image_inline > a.active {
+    color: #703684;
+    font-weight: bold;
+}
+
+.contain{
+    height: 200px;
+}
+.content_hidden{
+    display: none;
+}
+.content_show{
+    visibility: visible;
+}
+
+.btn-group-vertical-custom {
+    display: inline!important;
+}
+.page_btn_default:hover, .page_btn_default:focus, .page_btn_default:active, .page_btn_default:active, .open > .dropdown-toggle.btn-default {
+    background-color: #703684!important;
+    color: #fff!important;
+}
+
+.opacity_70{
+    opacity: 0.7;
+}

@@ -1,12 +1,12 @@
 
 <script type="text/javascript">
 
-    $(function () {
+    $(function() {
         var profileId = '<?php echo $profile_id; ?>';
         if (profileId === "0") {
             profileId = '<?php echo $user_id; ?>';
         }
-        angular.element($('#brief_info_set')).scope().getOverview(profileId, function (data) {
+        angular.element($('#brief_info_set')).scope().getOverview(profileId, function(data) {
             if (typeof data.workPlace !== "undefined") {
                 $('#brif_work_id').show();
             }
@@ -16,7 +16,7 @@
             if (typeof data.city !== "undefined") {
                 $('#brif_city_id').show();
             }
-          
+
             if (typeof data.address !== "undefined") {
                 $('#brif_address_id').show();
             }

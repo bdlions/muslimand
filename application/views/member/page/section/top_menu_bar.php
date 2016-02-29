@@ -1,0 +1,12 @@
+<div class="row form-group">
+    <div class="col-md-12">
+        <div style="background-color: whitesmoke;">
+            <div aria-label="..." role="group" class="btn-group">
+                <a href="<?php echo base_url() ?>pages/pages_newsfeed" style="font-size: 100%" class="btn btn-default">Timeline</a>
+                <a href="<?php echo base_url() ?>pages/about" style="font-size: 100%" class="btn btn-default get_over_view_class">About</a>
+                <a href="<?php echo base_url() ?>photos" style="font-size: 100%" class="btn btn-default">Photos</a>
+                <a href="<?php echo base_url() ?>friend/get_friend_list" style="font-size: 100%" class="btn btn-default">Videos</a>
+            </div>
+        </div>
+    </div>
+</div>
