@@ -7,8 +7,9 @@
     <div class="col-md-12">
         <div class="pull-right" style="margin-right: 10px;">
             <button class="button-custom glyphicon glyphicon-plus" style="position: relative; top: -35px;  z-index: 1001; font-weight: bold;"> Join</button>
-            <button class="button-custom glyphicon glyphicon-star" style="position: relative; top: -35px;  z-index: 1001; font-weight: bold;"> Invite</button>
+            <button onclick="open_modal_page_invitation()" class="button-custom glyphicon glyphicon-star" style="position: relative; top: -35px;  z-index: 1001; font-weight: bold;"> Invite</button>
         </div>
     </div>
 </div>
+<?php $this->load->view("modal/modal_page_invitation"); ?>
 

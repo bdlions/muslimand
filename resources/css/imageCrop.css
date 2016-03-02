@@ -3,13 +3,7 @@ a {
     color: blue;
     cursor: pointer;
 }
-hr {
-    border: none;
-    height: 1px;
-    width: 80%;
-    background: rgba(0,0,0,.3);
-    margin: 40px auto;
-}
+
 .result-datauri {
     width: 300px;
     height: 100px;
