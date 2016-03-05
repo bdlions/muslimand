@@ -63,7 +63,7 @@ body {
 
 hr {
     border-color: #999 -moz-use-text-color -moz-use-text-color!important; 
-     margin-bottom: 5px !important;
+    margin-bottom: 5px !important;
     margin-top: 1px !important;
 }
 
@@ -807,8 +807,9 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 .button-custom, .button-primary-custom,.button-primary-custom, .button-danger-custom, .button-danger-custom:hover {
     color: #fff!important; 
     border-radius: 3px!important; 
-    padding: 3px 8px!important; 
+    padding: 2px 4px!important; 
     font-weight: bold!important; 
+    border: 1px solid #703684!important; 
 }
 .button-custom, .button-custom:hover {
     background-color: #703684!important; 
@@ -1222,6 +1223,31 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 .successful_page_invitation_bg{
     background-color: lavender;
-    padding: 5px 0;
+    margin-left: 0!important;
+    padding: 3px 0;
     width: 98%;
+}
+
+.dropdown_menu_custom_page li:hover{
+    visibility: visible!important;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block!important;
+}
+
+.nav-tabs .dropdown_menu_custom_page, .nav-pills .dropdown_menu_custom_page, .navbar .dropdown_menu_custom_page {
+    margin-top: 0!important;
+}
+
+.nav_page_custom > li > ul> li{
+    padding: 3px 0!important;
+}
+.nav_page_custom > li > a{
+    padding: 0!important;
+    margin-right: 5px!important;
+}
+.nav_page_custom > li > a, .nav_page_custom > li > a:hover, .nav_page_custom > li > a:focus, .nav_page_custom > li > a:active, .nav_page_custom > li > a:visited{
+    background-color:  #703684!important;
+    border: 1px solid #703684!important;
 }
