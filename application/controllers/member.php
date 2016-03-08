@@ -229,5 +229,7 @@ class Member extends CI_Controller {
     function invite() {
         $this->template->load(MEMBER_LOGGED_IN_TEMPLATE_WITH_FOOTER, "member/invite");
     }
+    
+    
 
 }

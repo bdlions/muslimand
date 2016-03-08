@@ -1,13 +1,47 @@
-
+<div class="row form-group" ng-controller="friendController" ng-cloak >
+    <div class="col-md-12">
+        <?php $this->load->view("member/timeline/profile_cover"); ?>
+    </div>
+</div>
 <div ng-app="app.Photo">
+    <div class="row form-group">
+        <div class="col-md-6">
+            <a href="<?php echo base_url(); ?>photos/"><img src="<?php echo base_url(); ?>resources/images/photos/icon/photo.png"></a>
+            <a href="<?php echo base_url(); ?>photos/" class="anchor_property_change"><span style="text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold;">Photos</span></a>
+        </div>
+        <div class="col-md-6">
+            <div class="pull-right">
+                <button id="create_new_album" style="margin: 0 3px 3px 0;" class="button-custom glyphicon glyphicon-plus"> <span style="vertical-align: text-top;">Create Album</span></button>
+                <a href="<?php //echo base_url(); ?>photos/add_photos"><button style="margin: 0 3px 3px 0;" class="button-custom glyphicon glyphicon-plus"> <span style="vertical-align: text-top;">Add Photo</span></button></a>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-controller="photoController" ng-clock>
+        <div ng-init="setAlbumPhotoList(<?php echo htmlspecialchars(json_encode($photo_list)); ?>)" >
+            <div class="col-md-12" ng-init="setAlbumInfo(<?php echo htmlspecialchars(json_encode($album_info)); ?>)" >
+                <?php $this->load->view("member/photo/section/view_album_photos"); ?>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row form-group">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+        <div id="footer">
+            <?php $this->load->view("auth/sections/footer"); ?>
+        </div>
+    </div>
+</div>
+
+
+<!--<div ng-app="app.Photo">
     <div class="row form-group"></div>
     <div class="row">
         <div class="col-md-6">
-            <a href="<?php echo base_url(); ?>photos/"><img src="<?php echo base_url(); ?>resources/images/photos/icon/photo.png"></a>
-            <a  class="anchor_property_change" href="<?php echo base_url(); ?>photos/"><span style="text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold;">Photo</span></a>
+            <a href="<?php //echo base_url();  ?>photos/"><img src="<?php //echo base_url();  ?>resources/images/photos/icon/photo.png"></a>
+            <a  class="anchor_property_change" href="<?php //echo base_url();  ?>photos/"><span style="text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold;">Photo</span></a>
         </div>
         <div class="col-md-offset-3 col-md-3">
-            <a  href="<?php echo base_url(); ?>photos/add_photos"><button class="button-custom pull-right">Upload a New Image</button></a>
+            <a  href="<?php //echo base_url();  ?>photos/add_photos"><button class="button-custom pull-right">Upload a New Image</button></a>
         </div>
     </div>
     <div class="row">
@@ -16,9 +50,9 @@
         </div>    
     </div>
     <div class="row">
-        <!--LEFT_COLUMN-->
-        <?php $this->load->view("templates/sections/member_photos_left_pane"); ?>
-        <!--MIDDLE COLUMN-->
+        LEFT_COLUMN
+<?php //$this->load->view("templates/sections/member_photos_left_pane"); ?>
+        MIDDLE COLUMN
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-4 ">
@@ -36,10 +70,10 @@
                                     Latest<span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="<?php echo base_url(); ?>photos/">Latest</a></li>
-<!--                                    <li><a href="<?php //echo base_url();  ?>photos/photos_sort_most_viewed">Most Viewed</a></li>
-                                    <li><a href="<?php //echo base_url();  ?>photos/photos_sort_top_rated">Top Rated</a></li>
-                                    <li><a href="<?php //echo base_url();  ?>photos/photos_sort_most_discussed">Most Discussed</a></li>-->
+                                    <li><a href="<?php //echo base_url();  ?>photos/">Latest</a></li>
+                                    <li><a href="<?php //echo base_url();   ?>photos/photos_sort_most_viewed">Most Viewed</a></li>
+                                    <li><a href="<?php //echo base_url();   ?>photos/photos_sort_top_rated">Top Rated</a></li>
+                                    <li><a href="<?php //echo base_url();   ?>photos/photos_sort_most_discussed">Most Discussed</a></li>
                                 </ul>
                             </div>
                             &nbsp;
@@ -74,12 +108,12 @@
             </div>
             <div class="pagelet_divider"></div>
             <div class="row" ng-controller="photoController" ng-clock>
-                <div ng-init="setAlbumPhotoList(<?php echo htmlspecialchars(json_encode($photo_list)); ?>)" >
-                    <div class="col-md-12" ng-init="setAlbumInfo(<?php echo htmlspecialchars(json_encode($album_info)); ?>)" >
-                        <?php $this->load->view("member/pagelets/photo/view_album"); ?>
+                <div ng-init="setAlbumPhotoList(<?php //echo htmlspecialchars(json_encode($photo_list)); ?>)" >
+                    <div class="col-md-12" ng-init="setAlbumInfo(<?php //echo htmlspecialchars(json_encode($album_info)); ?>)" >
+                        <?php //$this->load->view("member/pagelets/photo/view_album"); ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div>-->

@@ -167,7 +167,8 @@
                     <?php if ($profile_id != "0") { ?>
                         <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>member/timeline/<?php echo $profile_id; ?>">Timeline</a>
                         <a class="btn btn-default get_over_view_class" style="font-size: 100%"  href="<?php echo base_url(); ?>member/about/<?php echo $profile_id?>">About</a>
-                        <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>photos/get_home_photos/<?php echo $profile_id; ?>">Photo</a>
+                        <!--<a class="btn btn-default" style="font-size: 100%" href="<?php //echo base_url(); ?>photos/get_home_photos/<?php //echo $profile_id; ?>">Photo</a>-->
+                        <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>photos">Photo</a>
                         <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>friend/get_friend_list/<?php echo $profile_id; ?>">Friends</a>
                     <?php } else { ?>
                         <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>member/timeline">Timeline</a>

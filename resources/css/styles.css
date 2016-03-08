@@ -447,11 +447,6 @@ embed{
     vertical-align: middle!important;
 }
 
-
-.dropdown-menu-custom {
-
-}
-
 .textarea_background_style{
     padding-top: 1px; 
     background-color: #703684!important;
@@ -1251,3 +1246,93 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     background-color:  #703684!important;
     border: 1px solid #703684!important;
 }
+
+
+/*-------------------------- Photo ------------------------*/
+
+/*.btn-group a, .btn-group button{
+    line-height: 14px;
+}*/
+
+.photo_menu_list_inline > a.active {
+    color: #fff;
+    font-weight: bold;
+    background-color: #703684;
+}
+
+.carousel-control.left{
+    background-image: none!important;
+}
+.carousel-control.right{
+    background-image: none!important;
+}
+
+.inline li{
+    display: inline;
+    padding: 5px;
+}
+.inline li:hover{
+    cursor: pointer;
+}
+
+/* .modal-fullscreen */
+
+.modal-fullscreen {
+  background: transparent;
+}
+.modal-fullscreen .modal-content {
+  background: transparent;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.modal-backdrop.modal-backdrop-fullscreen {
+  background: #000;
+}
+.modal-backdrop.modal-backdrop-fullscreen.in {
+  opacity: .5;
+  filter: alpha(opacity=50);
+}
+
+/* .modal-fullscreen size: we use Bootstrap media query breakpoints */
+
+.modal-fullscreen .modal-dialog {
+  margin: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .modal-fullscreen .modal-dialog {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/*.photo-dropdown-menu-custom{
+    bottom: 100%!important;
+}*/
+
+@media (min-width: 992px) {
+  .modal-fullscreen .modal-dialog {
+    width: 100%;
+  height: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  .modal-fullscreen .modal-dialog {
+     width: 100%;
+  }
+  .modal_photo_display_full_height{
+      height: 510px!important;
+  }
+  .modal_photo_pagelet{
+      background-color: white;
+    padding: 15px;
+    margin-bottom: 1px;
+    box-shadow: 0 0 1px #bbb;
+    height: 330px;
+    
+  }
+}
+
