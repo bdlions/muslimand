@@ -5,7 +5,7 @@
     <a href="<?php echo base_url(); ?>photos/"><li>Photos</li></a>
     <a href="<?php echo base_url(); ?>videos/"><li>Videos</li></a>
     <!--<a href="<?php // echo base_url();  ?>blogs/"><li>Blogs</li></a>-->
-    <a href="<?php echo base_url(); ?>pages/"><li class="cursor_holder_style">Pages
+    <a href="<?php echo base_url(); ?>pages/pages_newsfeed"><li class="cursor_holder_style">Pages
             <ul class="video_ul" style="margin-left: 15px;">
                 <a href="<?php echo base_url(); ?>pages/pages_add"><li>Create a Page</li></a>
                 <a href=""><li>Prime Bank</li></a>

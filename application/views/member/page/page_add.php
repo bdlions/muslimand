@@ -1,14 +1,11 @@
-<div class="padding_top_30px"></div>
-<div class="row">
-    <div class="col-md-10">
+<div class="row padding_top_30px">
+    <div class="col-md-12">
         <a href="<?php echo base_url(); ?>photos/"><img src="<?php echo base_url(); ?>resources/images/pages/icon/page.png"></a>
-        <a  class="anchor_property_change" href="<?php echo base_url(); ?>pages/"><span class="" style="text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold;">Pages</span></a>
-    </div>
-    <div class="col-md-2">
+        <a  class="anchor_property_change" href="<?php echo base_url(); ?>pages/pages_newsfeed"><span class="" style="text-decoration: none; cursor: pointer; font-size: 16px; font-weight: bold;">Pages</span></a>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-12">
         <div class="pagelet_divider"></div>
         <div class="row">
             <div class="col-md-12">
@@ -517,10 +514,9 @@
         </div>
         <div class="padding_top_30px"></div>
     </div>
-    <div class="col-md-2"></div>
 </div>
 
-<?php //$this->load->view("modal/modal_create_page_error"); ?>
+<?php $this->load->view("modal/modal_create_page_error"); ?>
 
 <script>
     $(function() {

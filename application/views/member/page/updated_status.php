@@ -6,7 +6,7 @@
         <?php } ?>
         <div ng-repeat="status in statuses" class="form-group">
             <!--<div ng-repeat="status in statuses.slice().reverse()" class="form-group">-->
-            <div class="pagelet" id="pagelet{{status.statusId}}">
+            <div class="pagelet" id="pagelet{{status.statusId}}"  style="margin-left: -15px;">
                 <div class="pagelet">
                     <div class="row">
                         <div class="col-md-2" >

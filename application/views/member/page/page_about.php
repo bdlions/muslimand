@@ -19,14 +19,14 @@
         <?php $this->load->view("member/page/section/top_menu_bar"); ?>
         <?php $this->load->view("member/page/section/page_title"); ?>
 
-        <div class="pagelet" style="border: 1px solid #fff;">
+        <div class="pagelet" style="border: 1px solid #fff;  margin-left: -15px;">
             <div class="row">
                 <div class="col-md-12">
                     <label>About Prime Bank</label>
                 </div>
             </div>
         </div>
-        <div class="pagelet" style="border: 1px solid #fff;">
+        <div class="pagelet" style="border: 1px solid #fff; margin-left: -15px;">
             <div class="row">
                 <div class="col-md-3" >
                     <a class="non_friend_pagelet_header_anchor_style font_bold" href="">Photo Info</a>
@@ -43,7 +43,11 @@
                             <span class="opacity_70 font_bold">Category</span>
                         </div> 
                         <div class="col-md-7">
-                            <span class="opacity_70">Companies & Organizations: Bank/Financial Institute</span>
+                            <span id="page_about_category_edited_text" class="opacity_70">Companies & Organizations: Bank/Financial Institute</span>
+                            <div id="page_about_category_edit_box"  style="display: none;">
+                                <textarea class="form-control" style="resize: none; margin-bottom: 5px;">Companies & Organizations: Bank/Financial Institute</textarea>
+                                <input id="page_about_category_edited_text_save" type="button" class="button-custom pull-right" value="Save">
+                            </div>
                         </div> 
                         <div class="col-md-2">
                             <ul style="list-style-type: none; padding: 0;">
@@ -53,7 +57,7 @@
                                     </a>
                                     <ul role="menu" class="dropdown-menu">
                                         <li>
-                                            <a>Edit</a>
+                                            <a id="page_about_category_edit_option">Edit</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -70,7 +74,11 @@
                             <span class="opacity_70 font_bold">Name</span>
                         </div> 
                         <div class="col-md-7">
-                            <span class="opacity_70">Prime Bank</span>
+                            <span id="page_about_name_edited_text" class="opacity_70">Prime Bank</span>
+                            <div id="page_about_name_edit_box"  style="display: none;">
+                                <textarea class="form-control" style="resize: none; margin-bottom: 5px;">Prime Bank</textarea>
+                                <input id="page_about_name_edited_text_save" type="button" class="button-custom pull-right" value="Save">
+                            </div>
                         </div> 
                         <div class="col-md-2">
                             <ul style="list-style-type: none; padding: 0;">
@@ -80,7 +88,7 @@
                                     </a>
                                     <ul role="menu" class="dropdown-menu">
                                         <li>
-                                            <a>Edit</a>
+                                            <a id="page_about_name_edit_option">Edit</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -97,7 +105,11 @@
                             <span class="opacity_70 font_bold">Short Description</span>
                         </div> 
                         <div class="col-md-7">
-                            <span class="opacity_70">Prime Bank has already made significant progress within a very short period of its exitance</span>
+                            <span id="page_about_short_description_edited_text" class="opacity_70">Prime Bank has already made significant progress within a very short period of its exitance</span>
+                            <div id="page_about_short_description_edit_box"  style="display: none;">
+                                <textarea class="form-control" style="resize: none; margin-bottom: 5px;">Prime Bank has already made significant progress within a very short period of its exitance</textarea>
+                                <input id="page_about_short_description_edited_text_save" type="button" class="button-custom pull-right" value="Save">
+                            </div>
                         </div> 
                         <div class="col-md-2">
                             <ul style="list-style-type: none; padding: 0;">
@@ -107,7 +119,7 @@
                                     </a>
                                     <ul role="menu" class="dropdown-menu">
                                         <li>
-                                            <a>Edit</a>
+                                            <a id="page_about_short_description_edit_option">Edit</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -124,7 +136,11 @@
                             <span class="opacity_70 font_bold">Interests</span>
                         </div> 
                         <div class="col-md-7">
-                            <span class="opacity_70">Can help you connect with specific audiences by looking at their audiences by looking at their interests, activities the page</span>
+                            <span id="page_about_interest_edited_text" class="opacity_70">Can help you connect with specific audiences by looking at their audiences by looking at their interests, activities the page</span>
+                            <div id="page_about_interest_edit_box"  style="display: none;">
+                                <textarea class="form-control" style="resize: none; margin-bottom: 5px;">Can help you connect with specific audiences by looking at their audiences by looking at their interests, activities the page</textarea>
+                                <input id="page_about_interest_edited_text_save" type="button" class="button-custom pull-right" value="Save">
+                            </div>
                         </div> 
                         <div class="col-md-2">
                             <ul style="list-style-type: none; padding: 0;">
@@ -134,7 +150,7 @@
                                     </a>
                                     <ul role="menu" class="dropdown-menu">
                                         <li>
-                                            <a>Edit</a>
+                                            <a id="page_about_interest_edit_option">Edit</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -146,4 +162,39 @@
         </div>
     </div>
 </div>
-
+<script>
+ $(function() {
+        $("#page_about_category_edit_option").on("click", function() {
+            $('#page_about_category_edited_text').hide();
+            $('#page_about_category_edit_box').show();
+        });
+        $("#page_about_category_edited_text_save").on("click", function() {
+            $('#page_about_category_edit_box').hide();
+            $('#page_about_category_edited_text').show();
+        });
+        $("#page_about_name_edit_option").on("click", function() {
+            $('#page_about_name_edited_text').hide();
+            $('#page_about_name_edit_box').show();
+        });
+        $("#page_about_name_edited_text_save").on("click", function() {
+            $('#page_about_name_edit_box').hide();
+            $('#page_about_name_edited_text').show();
+        });
+        $("#page_about_short_description_edit_option").on("click", function() {
+            $('#page_about_short_description_edited_text').hide();
+            $('#page_about_short_description_edit_box').show();
+        });
+        $("#page_about_short_description_edited_text_save").on("click", function() {
+            $('#page_about_short_description_edit_box').hide();
+            $('#page_about_short_description_edited_text').show();
+        });
+        $("#page_about_interest_edit_option").on("click", function() {
+            $('#page_about_interest_edited_text').hide();
+            $('#page_about_interest_edit_box').show();
+        });
+        $("#page_about_interest_edited_text_save").on("click", function() {
+            $('#page_about_interest_edit_box').hide();
+            $('#page_about_interest_edited_text').show();
+        });
+    });
+</script>

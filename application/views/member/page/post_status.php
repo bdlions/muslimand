@@ -8,7 +8,7 @@
         width: 100px;
     }
 </style>
-<div class="pagelet">
+<div class="pagelet" style="margin-left: -15px;">
     <div class="row from-group" style="margin-bottom: 3px;">
         <div id="status" class="col-xs-2 col-sm-2 col-md-2"><span class="status_label_style">Status</span></div>
         <div id="photo" class="col-xs-2 col-sm-2 col-md-2"><span class="status_label_style">Photo</span></div>

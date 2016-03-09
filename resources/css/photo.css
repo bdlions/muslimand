@@ -103,9 +103,6 @@ and open the template in the editor.
 .carousel-control.left,.carousel-control.right {
     background-image: none;
 }
-.pagelet {
-    margin: 15px;
-}
 .pagelet_mg_custom {
     margin: 0px!important;
 }

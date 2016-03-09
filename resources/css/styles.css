@@ -1254,7 +1254,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     line-height: 14px;
 }*/
 
-.photo_menu_list_inline > a.active {
+.photo_menu_list_inline > a.active, .page_photo_menu_list_inline > a.active {
     color: #fff;
     font-weight: bold;
     background-color: #703684;
@@ -1302,16 +1302,18 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
   margin-left: auto;
   width: 100%;
 }
+
+.link{
+    font-size: 16px!important;
+    font-weight: bold!important;
+}
+
 @media (min-width: 768px) {
   .modal-fullscreen .modal-dialog {
     width: 100%;
     height: 100%;
   }
 }
-
-/*.photo-dropdown-menu-custom{
-    bottom: 100%!important;
-}*/
 
 @media (min-width: 992px) {
   .modal-fullscreen .modal-dialog {
