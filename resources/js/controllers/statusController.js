@@ -1,5 +1,5 @@
 angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'infinite-scroll']).
-        controller('statusController', function ($scope, statusService, utilsTimezone) {
+        controller('statusController', function ($scope, $modal, statusService, utilsTimezone) {
             $scope.statuses = [];
             $scope.statusDetails = {};
             $scope.statusTypes = {};
@@ -13,10 +13,12 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             $scope.commentLikeList = [];
             $scope.shareList = [];
             $scope.CommentList = [];
+            $scope.modalImages = [];
             $scope.userCurrentTimeStamp = new Date().getTime() / 1000;
             $scope.timeDifferent = 0;
             $scope.userGenderId = "";
             $scope.busy = false;
+            $scope.statusFlag = true;
             $scope.getStatusList = function () {
                 if ($scope.busy == true) {
                     return;
@@ -39,21 +41,16 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                             }
                         }.bind($scope));
             };
-
-
             $scope.setUserCurrentTimeStamp = function (userCurrentTimeStamp) {
                 $scope.userCurrentTimeStamp = userCurrentTimeStamp;
             };
-
             $scope.setUserGender = function (genderId) {
                 $scope.userGenderId = genderId;
-
             };
             $scope.setStatus = function (userStatus) {
                 $scope.statuses = JSON.parse(userStatus);
                 $scope.getStatusInformation();
             };
-
             $scope.getStatusInformation = function () {
                 angular.forEach($scope.statuses, function (status, key) {
                     if (typeof status.timeDiff == "undefined") {
@@ -103,8 +100,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                             }
                         }.bind($scope));
             };
-
-
             $scope.setStatusDetails = function (statusDetails) {
                 var statusInfo = JSON.parse(statusDetails);
                 $scope.userCurrentTimeStamp = statusInfo.user_current_time;
@@ -112,7 +107,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 $scope.statuses = statusInfo.status_list;
                 $scope.getStatusInformation();
             };
-
             $scope.getProfileStatus = function (profileId) {
                 statusService.getProfileStatus(profileId).
                         success(function (data, status, headers, config) {
@@ -122,7 +116,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                             $scope.getStatusInformation();
                         });
             };
-
             $scope.setSharedInfo = function (sharedInfo, requestFunction) {
                 $scope.sharedInfo = sharedInfo;
                 requestFunction();
@@ -138,16 +131,17 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
              * 
              * */
             $scope.addStatus = function (imageList, profileUserInfo, requestFunction) {
-                if ($scope.busy == true) {
+                if ($scope.statusFlag != true) {
                     return;
                 }
-                $scope.busy = true;
+                $scope.statusFlag = false;
                 var imageListArray = [];
                 imageListArray = imageList;
                 if (imageListArray.length > 0) {
                     $scope.statusInfo.imageList = [];
                     $scope.statusInfo.imageList = imageList;
                 }
+                console.log($scope.statusInfo.description);
                 if (($scope.statusInfo.description == null || $scope.statusInfo.description == "") && ($scope.statusInfo.imageList == null || typeof $scope.statusInfo.imageList == "undefined")) {
                     return;
                 }
@@ -163,16 +157,16 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                             $scope.statuses.unshift(data.status_info);
                             $scope.statusInfo.description = "";
                             $scope.statusInfo.imageList = null;
-                            $scope.busy = false;
+                            $scope.statusFlag = true;
                             requestFunction();
                         });
             };
 // update a status...............
             $scope.updateStatus = function (status) {
-                if ($scope.busy == true) {
+                if ($scope.statusFlag != true) {
                     return;
                 }
-                $scope.busy = true;
+                $scope.statusFlag = false;
                 var statusId = status.statusId;
                 statusService.updateStatus(status).
                         success(function (data, status, headers, config) {
@@ -183,19 +177,20 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                     $("#displayStatus" + statusId).show();
                                 }
                             }, $scope.statuses);
-                            $scope.busy = false;
+                            $scope.statusFlag = true;
                         });
             };
             /**
              * add status like
              * parameter statusId 
              * */
-            $scope.addLike = function (userId, statusId) {
-                if ($scope.busy == true) {
+            $scope.addLike = function (status) {
+                if ($scope.statusFlag != true) {
                     return;
                 }
-                $scope.busy = true;
-                statusService.addLike(userId, statusId).
+                $scope.statusFlag = false;
+                var statusId = status.statusId;
+                statusService.addLike(status).
                         success(function (data, status, headers, config) {
                             angular.forEach($scope.statuses, function (value, key) {
                                 if (value.statusId == statusId) {
@@ -208,7 +203,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                     }
                                 }
                             }, $scope.statuses);
-                            $scope.busy = false;
+                            $scope.statusFlag = false;
                         });
                 return false;
             };
@@ -231,7 +226,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                     }
                                 }, status);
                             }, $scope.statuses);
-
                         });
                 return false;
             };
@@ -240,14 +234,13 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
              * 
              * */
             $scope.addComment = function (genderId, referenceUserInfo, statusId) {
-                if ($scope.busy == true) {
+                if ($scope.statusFlag != true) {
                     return;
                 }
-                $scope.busy = true;
+                $scope.statusFlag = false;
                 $scope.statusInfo.referenceUserInfo = referenceUserInfo;
 //                $scope.statusInfo.referenceUserInfo.genderId = $scope.userGenderId;
                 $scope.statusInfo.statusId = statusId;
-                console.log($scope.statusInfo.commentDes);
                 if ($scope.statusInfo.commentDes == "" || $scope.statusInfo.commentDes == null) {
                     return;
                 }
@@ -268,9 +261,8 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                 }
                             }, $scope.statuses);
                             $scope.statusInfo.commentDes = "";
-                            $scope.busy = false;
+                            $scope.statusFlag = true;
                         });
-
                 return false;
             };
             /**
@@ -284,7 +276,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                         });
                 return false;
             };
-
             $scope.shareStatus = function (requestFunction) {
                 statusService.shareStatus($scope.sharedInfo, $scope.statusShareInfo).
                         success(function (data, status, headers, config) {
@@ -293,11 +284,9 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                             requestFunction();
                         });
             };
-
             $scope.setNewsfeeds = function (t) {
                 $scope.newsfeeds = JSON.parse(t);
             };
-
             $scope.getStatusLikeList = function (statusId, requestFunction) {
                 statusService.getStatusLikeList(statusId).
                         success(function (data, status, headers, config) {
@@ -333,9 +322,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                             requestFunction();
                         });
                 return false;
-
             };
-
             $scope.updateStatusComment = function (statusId, comment) {
                 var commentId = comment.commentId;
                 var commentInfo = {};
@@ -346,7 +333,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                         success(function (data, status, headers, config) {
                             $("#displayStatusComment_" + commentId).show();
                             $("#updateStatusComment_" + commentId).hide();
-
                         });
             };
             $scope.deleteStatusComment = function (statusId, commentId, requestFunction) {
@@ -358,7 +344,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
 
                         });
             };
-
             $scope.getStatusCommentLikeList = function (statusId, commentId, requestFunction) {
                 statusService.getStatusCommentLikeList(statusId, commentId).
                         success(function (data, status, headers, config) {
@@ -367,7 +352,23 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                         });
                 return false;
             };
+            $scope.open = function (statusInfo) {
+                console.log($scope.modalImages);
+                var indx = $scope.statuses.indexOf(statusInfo);
+                var imageSize = statusInfo.images.length;
+                statusService.getphotoInfo().
+                        success(function (data, status, headers, config) {
+                            statusInfo.active = true;
+                            $scope.modalImages.push(statusInfo);
+                            $scope.modalInstance = $modal.open({
+                                animation: true,
+                                templateUrl: 'template/pic-modal.html',
+                                scope: $scope
+                            });
+                        });
 
-
-
+            };
+            $scope.ok = function () {
+                $scope.modalInstance.close();
+            };
         });

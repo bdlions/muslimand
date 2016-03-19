@@ -22,7 +22,6 @@ class Status extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
-      
     }
 
     /**
@@ -89,20 +88,11 @@ class Status extends CI_Controller {
 
                 $profile_id = $request->profileId;
             }
-
-            if ($user_id != $profile_id && $profile_id != "") {
-                $status_info->mappingId = $profile_id;
-                $status_info->statusTypeId = POST_STATUS_BY_USER_AT_FRIEND_PROFILE_TYPE_ID;
-            } else {
-                $status_info->mappingId = $user_id;
-                $status_info->statusTypeId = POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID;
-            }
-            if (property_exists($request, "description") != FALSE) {
-                $status_info->description = $request->description;
-            }
             $images = array();
+            $image_size;
             if (property_exists($request, "imageList") != FALSE) {
                 $image_list = $request->imageList;
+                $image_size = count($image_list);
                 if (!empty($image_list)) {
                     foreach ($image_list as $imageInfo) {
                         $image = new stdClass();
@@ -111,9 +101,26 @@ class Status extends CI_Controller {
                     }
                     $album_id = TIMELINE_PHOTOS_ALBUM_ID;
                     $album_title = TIMELINE_PHOTOS_ALBUM_TITLE;
-                    $album_result = $this->album_add($user_id, $album_id, $album_title, $image_list);
+                    $album_result = $this->album_add($user_id, $album_id, $album_title, $image_list, $new_status_id);
                 }
             }
+            if ($user_id != $profile_id && $profile_id != "" && $image_size == 1) {
+                $status_info->mappingId = $profile_id;
+                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO;
+            } else if ($user_id != $profile_id && $profile_id != "") {
+                $status_info->mappingId = $profile_id;
+                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE;
+            } else if ($image_size == 1) {
+                $status_info->mappingId = $user_id;
+                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO;
+            } else {
+                $status_info->mappingId = $user_id;
+                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE;
+            }
+            if (property_exists($request, "description") != FALSE) {
+                $status_info->description = $request->description;
+            }
+
             $status_info->images = $images;
             $status_info->userInfo = $user_info;
             $result = $this->status_mongodb_model->add_status($status_info);
@@ -191,7 +198,7 @@ class Status extends CI_Controller {
             $r_user_info->userInfo = $ref_user_info;
             $status_info = new stdClass();
             $status_info->userId = $this->session->userdata('user_id');
-            $status_info->statusTypeId = SHARE_OTHER_STATUS;
+            $status_info->statusTypeId = STATUS_TYPE_ID_SHARE_OTHER_STATUS;
             $status_info->mappingId = $this->session->userdata('user_id');
             $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
             if (property_exists($new_status_info, "description")) {
@@ -240,23 +247,32 @@ class Status extends CI_Controller {
         $response = array();
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
+        if (property_exists($request, "status")) {
+            $status = $request->status;
+            if (property_exists($status, "statusId")) {
+                $status_id = $status->statusId;
+            }
+            if (property_exists($status, "userInfo")) {
+                $userInfo = $status->userInfo;
+                $user_id = $status->userInfo->userId;
+            }
+            if (property_exists($status, "statusTypeId")) {
+                $status_type_id = $status->statusTypeId;
+            }
+        }
         $ref_user_info = new StdClass(); //get from session;
         $ref_user_info->userId = $this->session->userdata('user_id');
 
         $ref_user_info->firstName = $this->session->userdata('first_name');
         $ref_user_info->lastName = $this->session->userdata('last_name');
-        if (property_exists($request, "statusId")) {
-            $status_id = $request->statusId;
-        }
-        if (property_exists($request, "userId")) {
-            $user_id = $request->userId;
-        }
-
         $status_like_info = new StdClass();
         $status_like_info->userInfo = $ref_user_info;
-        $result = $this->status_mongodb_model->add_status_like($user_id, $status_id, $status_like_info);
-        if ($result != null) {
-            $response["status_like_info"] = $status_like_info;
+        $request_event = $this->status_mongodb_model->add_status_like($user_id, $status_id, $status_like_info, $status_type_id);
+        if ($request_event != null) {
+            $request_event = json_decode($request_event);
+            if (property_exists($request_event, "responseCode") && $request_event->responseCode == REQUEST_SUCCESSFULL) {
+                $response["status_like_info"] = $status_like_info;
+            }
         }
         echo json_encode($response);
     }
@@ -646,7 +662,7 @@ class Status extends CI_Controller {
      * @param userId 
      * @param status id
      *  */
-    function album_add($user_id, $album_id, $type_title, $image_list) {
+    function album_add($user_id, $album_id, $type_title, $image_list, $status_id) {
         $user_image_list_info = array();
         $response = array();
         foreach ($image_list as $image) {
@@ -654,6 +670,7 @@ class Status extends CI_Controller {
             $photo_info->photoId = $this->utils->generateRandomString(USER_PHOTO_ID_LENGTH);
             $photo_info->albumId = $album_id;
             $photo_info->image = $image;
+            $photo_info->referenceId = $status_id;
             $user_image_list_info[] = $photo_info;
         }
         $image_add_result = $this->photo_mongodb_model->add_photos($user_id, $album_id, $user_image_list_info);
@@ -679,6 +696,11 @@ class Status extends CI_Controller {
             }
         }
         echo json_encode($recent_activities);
+        return;
+    }
+
+    function get_photo_info() {
+        echo json_encode(array());
         return;
     }
 

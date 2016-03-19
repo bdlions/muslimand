@@ -149,6 +149,15 @@ angular.module('services.Photo', []).
                     }
                 });
             };
+            photoService.getPhotoInfo = function (photoId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/photos/get_photo_info',
+                    data: {
+                        photoId: photoId
+                    }
+                });
+            };
             photoService.cropPicture = function (imageInfo) {
                 console.log(imageInfo);
                 return $http({
@@ -188,7 +197,7 @@ angular.module('services.Photo', []).
             photoService.deletePhoto = function (albumId, photoId) {
                 return $http({
                     method: 'post',
-                    url: $location.path() + $app_name + 'photos/delete_photo',
+                    url: $location.path() + $app_name + '/photos/delete_photo',
                     data: {
                         albumId: albumId,
                         photoId: photoId
@@ -196,12 +205,13 @@ angular.module('services.Photo', []).
                 });
             };
 
-            photoService.addPhotoLike = function (photoId) {
+            photoService.addPhotoLike = function (photoId, referenceId) {
                 return $http({
                     method: 'post',
-                    url: $location.path() + $app_name + 'photos/add_photo_like',
+                    url: $location.path() + $app_name + '/photos/add_photo_like',
                     data: {
-                        photoId: photoId
+                        photoId: photoId,
+                        referenceId :referenceId 
                     }
                 });
             };
@@ -228,7 +238,7 @@ angular.module('services.Photo', []).
             photoService.addPhotoComment = function (commentInfo) {
                 return $http({
                     method: 'post',
-                    url: $location.path() + $app_name +'photos/add_photo_comment',
+                    url: $location.path() + $app_name +'/photos/add_photo_comment',
                     data: {
                         commentInfo: commentInfo
                     }

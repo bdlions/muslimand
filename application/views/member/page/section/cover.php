@@ -1,6 +1,6 @@
 <div class="row" style="margin-bottom: 1px;">
     <div class="col-md-12">
-        <img src="<?php echo base_url() ?>resources/images/pages/cover/02.jpg" width="100%" height="250">
+        <img src="<?php echo base_url() ?>resources/images/pages/cover/01.jpg" width="100%" height="250">
     </div>
 </div>
 <div class="row">

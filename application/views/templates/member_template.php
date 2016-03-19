@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        
+
 
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/styles.css"/>
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/image-crop-styles.css"/>
@@ -21,8 +21,9 @@
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/jquery.fileupload-ui.css">
         <link type='text/css' rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/video.css"/>
-        
-   
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/page.css"/>
+
+
         <!--<jQuer and Javascript>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/modernizr.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/modernizr.2.5.3.min.js"></script>
@@ -31,8 +32,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.pictureflip.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/lib/hash.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/moment.min.js"></script>
-        
-        
+
+
 
         <!--<angular>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
@@ -42,8 +43,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/elif.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
-        
-        
+
+
 
       <!--<image upload>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image/vendor/jquery.ui.widget.js"></script>
@@ -55,8 +56,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload-shim.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/ng-infinite-scroll.min.js"></script>
-        
-        
+
+
 
         <!--<angular controllers>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageUploadController.js"></script>
@@ -70,6 +71,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/statusController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/photoController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/videoController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/pageContoller.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/Utils.js"></script>
 
         <!--<angular services>-->
@@ -82,6 +84,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/statusService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/photoService.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/videoService.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/services/pageService.js"></script>
         <!--<angular app's>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/headerApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/searchApp.js "></script>
@@ -93,10 +96,11 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/imageCropperApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/photoApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/videoApp.js "></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/pageApp.js "></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/image-crop.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-websocket.js"></script>
-        
-       <title><?php echo WEBSITE_TITLE?></title>
+
+        <title><?php echo WEBSITE_TITLE ?></title>
     </head>
     <body ng-app="<?php echo $app; ?>">
         <div style="position: relative; background-color: #E9EAED;" >

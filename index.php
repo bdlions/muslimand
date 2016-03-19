@@ -14,6 +14,8 @@ include './constants/video.php';
 include './constants/recent_activites.php';
 include './constants/landing_page.php';
 include './constants/search.php';
+include './constants/page.php';
+include './constants/app_configarations.php';
 
 
 /***************** Custom constant End **********************/

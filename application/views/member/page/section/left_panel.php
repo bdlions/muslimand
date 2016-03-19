@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <a style="margin-left: 54px;" href="<?php echo base_url(); ?>pages/pages_newsfeed" >
-                <img class="img-circle" src="<?php echo base_url(); ?>resources/images/pages/profile/100_100/01.jpg">
+                <img class="img-circle" src="<?php echo base_url(); ?>resources/images/pages/profile_picture/100x100/01.jpg">
             </a>
         </div>
     </div>

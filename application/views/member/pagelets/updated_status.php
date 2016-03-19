@@ -23,44 +23,44 @@
                                                     to 
                                                     <a href="<?php echo base_url(); ?>member/timeline/{{status.mappingUserInfo.userId}}" style="font-weight: bold;">{{status.mappingUserInfo.firstName}}&nbsp;{{status.mappingUserInfo.lastName}}</a> 
                                                 </span>
-                                                <span ng-if="<?php echo POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID; ?> == status.statusTypeId">
+                                                <span ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE; ?> == status.statusTypeId">
                                                     updated 
                                                     <span ng-if="<?php echo Male; ?> == status.genderId">his</span>
                                                     <span ng-if="<?php echo Female; ?> == status.genderId">her</span>
                                                     <!--his/her--> 
                                                     status
                                                 </span>
-                                                <span ng-if="<?php echo POST_STATUS_BY_USER_AT_FRIEND_PROFILE_TYPE_ID; ?> == status.statusTypeId">
+                                                <span ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE; ?> == status.statusTypeId">
 
                                                 </span>
-                                                <span ng-if="<?php echo SHARE_OTHER_STATUS; ?> == status.statusTypeId">
+                                                <span ng-if="<?php echo STATUS_TYPE_ID_SHARE_OTHER_STATUS; ?> == status.statusTypeId">
                                                     shared 
                                                 </span>
-                                                <span ng-if="<?php echo SHARE_OTHER_PHOTO; ?> == status.statusTypeId">
+                                                <span ng-if="<?php echo STATUS_TYPE_ID_SHARE_OTHER_PHOTO; ?> == status.statusTypeId">
                                                     shared photos 
                                                 </span>
-                                                <span ng-if="<?php echo SHARE_OTHER_VIDEO; ?> == status.statusTypeId">
+                                                <span ng-if="<?php echo STATUS_TYPE_ID_SHARE_OTHER_VIDEO; ?> == status.statusTypeId">
                                                     shared video  
                                                 </span>
-                                                <span ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> == status.statusTypeId">
+                                                <span ng-if="<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE; ?> == status.statusTypeId">
 
                                                     updated 
                                                     <span ng-if="<?php echo Male; ?> == status.genderId">his</span>
                                                     <span ng-if="<?php echo Female; ?> == status.genderId">her</span>
                                                     profile picture 
                                                 </span>
-                                                <span ng-if="<?php echo CHANGE_COVER_PICTURE; ?> == status.statusTypeId">
+                                                <span ng-if="<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE; ?> == status.statusTypeId">
                                                     updated 
                                                     <span ng-if="<?php echo Male; ?> == status.genderId">his</span>
                                                     <span ng-if="<?php echo Female; ?> == status.genderId">her</span>
                                                     cover picture 
                                                 </span>
-                                                <span ng-if="<?php echo ADD_ALBUM_PHOTOS; ?> == status.statusTypeId">
+                                                <span ng-if="<?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS; ?> == status.statusTypeId">
                                                     added a new photos 
                                                 </span>
                                                 &nbsp;
                                                 <a href="#" style="font-weight: bold;"> <span>{{status.referenceInfo.userInfo.firstName}}&nbsp;{{status.referenceInfo.userInfo.lastName}}</span></a>
-                                                <span ng-if="<?php echo SHARE_OTHER_STATUS; ?> == status.statusTypeId">
+                                                <span ng-if="<?php echo STATUS_TYPE_ID_SHARE_OTHER_STATUS; ?> == status.statusTypeId">
                                                     status
                                                 </span> 
                                             </div>
@@ -137,26 +137,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div ng-repeat="image in status.images">
-                                <div ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> == status.statusTypeId">
+                            <div ng-repeat="image in status.images" >
+                                <div ng-if="<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE; ?> == status.statusTypeId">
                                     <div class="row from-group">
                                         <div class="col-md-12 form-group">
-                                            <img class="img-responsive" style="border: 1px solid #703684; float: left;" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
+                                            <img class="img-responsive"  ng-click="open(status)" style="border: 1px solid #703684; float: left;" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
                                         </div>
                                     </div>
                                 </div>
-                                <div ng-if="<?php echo CHANGE_COVER_PICTURE; ?> == status.statusTypeId">
+                                <div ng-if="<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE; ?> == status.statusTypeId">
                                     <div class="row from-group">
                                         <div class="col-md-12 form-group">
-                                            <img class="img-responsive" style="border: 1px solid #703684; float: left" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
+                                            <img class="img-responsive"  ng-click="open(status)"  style="border: 1px solid #703684; float: left" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> != status.statusTypeId && <?php echo CHANGE_COVER_PICTURE; ?> != status.statusTypeId">
+                            <div ng-if="<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE; ?> != status.statusTypeId && <?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE; ?> != status.statusTypeId">
                                 <div class="row">
                                     <div ng-repeat="(key, image) in status.images">
-                                        <img class="img-responsive" style="border: 1px solid #703684; float: left; height: 150px; width: 150px; margin: 0 10px 25px 15px" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >
+                                        <img class="img-responsive" ng-click="open(status)" style="border: 1px solid #703684; float: left; height: 150px; width: 150px; margin: 0 10px 25px 15px" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >
                                     </div>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                             <div class="row from-group" style="float: left;">
                                 <div class="col-md-12">
                                     <span ng-if = "status.likeStatus != '1'">
-                                        <a style="color: #3B59A9;" href id="statusLike{{status.statusId}}" ng-click="addLike(status.userInfo.userId, status.statusId)">
+                                        <a style="color: #3B59A9;" href id="statusLike{{status.statusId}}" ng-click="addLike(status)">
                                             <img src="<?php echo base_url(); ?>resources/images/like_icon.png"> Like </a>.
                                     </span>
                                     <span ng-if = "status.likeStatus == '1'">
@@ -346,11 +346,11 @@
                 $("#shared_user_profile_picture_set_id").attr('src', '<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>' + userId + ".jpg");
                 $("#shared_user_profile_picture_set_id").attr('fallback-src', '<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>' + "40x40_" + genderId + ".jpg");
                 if (imageSize > 0) {
-                    if (statusTypeId == '<?php echo CHANGE_PROFILE_PICTURE ?>') {
+                    if (statusTypeId == '<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE ?>') {
                         $("#status_type_id").append("Shared profile Picture");
-                    } else if (statusTypeId == '<?php echo CHANGE_COVER_PICTURE ?>') {
+                    } else if (statusTypeId == '<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE ?>') {
                         $("#status_type_id").append("Shared cover Picture");
-                    } else if (statusTypeId == '<?php echo ADD_ALBUM_PHOTOS ?>') {
+                    } else if (statusTypeId == '<?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS ?>') {
                         $("#status_type_id").append("Shared Album ");
                     }
                 }
@@ -394,4 +394,19 @@
         }
         ;
 
+    </script>
+    <script type="text/ng-template" id="template/pic-modal.html">
+        <div class="modal-body">
+        <div class="img-group">
+        <carousel>
+        <slide ng-repeat="photoInfo in modalImages" active="photoInfo.active">
+        <div>
+        <img ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photoInfo.image}}"  class="img-responsive" />
+                    {{photoInfo.image}}fddddddddddddddddddddddd
+        </slide>
+        </carousel>
+        <button type="button" class="close close-lg" ng-click="ok()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+
+        </div>
+        </div>  
     </script>

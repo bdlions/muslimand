@@ -95,16 +95,16 @@
                     </div>
                     <div class="col-xs-9 col-sm-9 col-md-9">
                         <a  style="font-weight: bold;"><b>{{recentActivity.userInfo.firstName}}&nbsp;{{recentActivity.userInfo.lastName}}</b></a> 
-                        <span ng-if="<?php echo POST_STATUS_BY_USER_AT_HIS_PROFILE_TYPE_ID; ?> == recentActivity.typeId">
+                        <span ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE; ?> == recentActivity.typeId">
                             update
                             <span ng-if="<?php echo Male; ?> == recentActivity.genderId">his</span>
                             <span ng-if="<?php echo Female; ?> == recentActivity.genderId">her</span>
                             status
                         </span>
-                        <span ng-if="<?php echo CHANGE_PROFILE_PICTURE; ?> == recentActivity.typeId">
+                        <span ng-if="<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE; ?> == recentActivity.typeId">
                             update profile picture 
                         </span>
-                        <span ng-if="<?php echo CHANGE_COVER_PICTURE; ?> == recentActivity.typeId">
+                        <span ng-if="<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE; ?> == recentActivity.typeId">
                             update cover picture 
                         </span>
                         <span ng-if="<?php echo COMMENTED_ON_ID; ?> == recentActivity.typeId">

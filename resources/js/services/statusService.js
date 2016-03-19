@@ -46,14 +46,12 @@ angular.module('services.Status', []).
                 });
             };
 
-            statusService.addLike = function (userId, statusId) {
+            statusService.addLike = function (status) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/status/add_status_like',
                     data: {
-                        userId: userId,
-                        statusId: statusId,
-
+                        status: status
                     }
                 });
             };
@@ -170,6 +168,14 @@ angular.module('services.Status', []).
                     url: $location.path() + $app_name + '/status/get_user_profile_status',
                     data: {
                         profileId: profileId
+                    }
+                });
+            };
+            statusService.getphotoInfo = function () {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/status/get_photo_info',
+                    data: {
                     }
                 });
             };

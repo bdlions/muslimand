@@ -85,7 +85,7 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                 }
                 $scope.userMessage.genderId = $scope.userInfo.genderId;
                 $scope.userMessage.message = chatUserDetails.writtenMsg;
-                if ($scope.userMessage.message == null || $scope.userMessage.message == "") {
+                if ($scope.userMessage.message == null || $scope.userMessage.message == "" || chatUserDetails.writtenMsg == null || chatUserDetails.writtenMsg == "") {
                     return;
                 }
                 messageService.addMessage($scope.userMessage).

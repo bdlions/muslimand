@@ -777,8 +777,10 @@ class Ion_auth_model extends CI_Model {
          * call to webserver for registration
          * */
         $this->curl->create($this->SERVICE_LANDING_PAGE . "userRegistration");
-        $this->curl->post(array('registrationInfo' => json_encode($additional_data), 'userBasicInfo' => json_encode($basic_info)));
+        $this->curl->post(array( 'userBasicInfo' => json_encode($basic_info), 'usersInfo' => json_encode($usersInfo)));
         $result_event = json_decode($this->curl->execute());
+        var_dump($result_event);
+        exit;
         if (property_exists($result_event, "responseCode")) {
             if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
                 $id = $user_id;

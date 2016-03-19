@@ -1,5 +1,5 @@
 angular.module('controllers.Photo', ['services.Photo']).
-        controller('photoController', function ($scope, photoService) {
+        controller('photoController', function ($scope, $modal, photoService, utilsTimezone) {
             $scope.categoryList = [];
             $scope.albumList = [];
             $scope.albumPhotoList = [];
@@ -13,6 +13,7 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.albumCommentInfo = {};
             $scope.photoCommentInfo = {};
             $scope.albumSharedInfo = {};
+            $scope.userCurrentTimeStamp = new Date().getTime() / 1000;
 
 
             $scope.setPhotoCategories = function (t) {
@@ -178,17 +179,17 @@ angular.module('controllers.Photo', ['services.Photo']).
                         });
             };
 
-            $scope.addPhotoLike = function (photoInfo) {
-
-
-            };
-            $scope.addPhotoLike = function (photoId, requestFunction) {
-                photoService.addPhotoLike(photoId).
+            $scope.addPhotoLike = function (photoId, referenceId, requestFunction) {
+                photoService.addPhotoLike(photoId, referenceId).
                         success(function (data, status, headers, config) {
-                            angular.forEach($scope.photoInfoList, function (value, key) {
+                            console.log(data);
+                            angular.forEach($scope.albumPhotoList, function (value, key) {
                                 if (value.photoId == photoId) {
-                                    if (typeof value.likeStatus === "undefined") {
-                                        value.likeStatus = "1";
+                                    (value.likeStatus = "1");
+                                    if (typeof value.likeCounter == "undefined") {
+                                        (value.likeCounter = 1);
+                                    } else {
+                                        (value.likeCounter = value.likeCounter + 1);
                                     }
                                 }
                             }, $scope.photoInfoList);
@@ -210,18 +211,20 @@ angular.module('controllers.Photo', ['services.Photo']).
 
             };
 
-            $scope.addPhotoComment = function (photoId) {
-                $scope.photoCommentInfo.photoId = photoId;
+            $scope.addPhotoComment = function (photoInfo) {
+                var photoId = $scope.photoCommentInfo.photoId = photoInfo.photoId;
+                $scope.photoCommentInfo.referenceId = photoInfo.referenceId;
+                $scope.photoCommentInfo.userInfo = photoInfo.userInfo;
                 photoService.addPhotoComment($scope.photoCommentInfo).
                         success(function (data, status, headers, config) {
-                            angular.forEach($scope.photoInfoList, function (value, key) {
+                            angular.forEach($scope.albumPhotoList, function (value, key) {
                                 if (value.photoId === photoId) {
                                     if (typeof value.comment == "undefined") {
                                         value.comment = new Array();
                                     }
                                     value.comment.push(data.comment);
                                 }
-                            }, $scope.photoInfoList);
+                            }, $scope.albumPhotoList);
                             $scope.photoCommentInfo.comment = "";
                         });
                 return false;
@@ -254,6 +257,39 @@ angular.module('controllers.Photo', ['services.Photo']).
 
             $scope.searchPhoto = function () {
 
+            };
+
+
+            $scope.photos = [
+                {"image": "http://localhost/muslimand/resources/images/profile_picture/150x150/7OdqKzxmuakkpRq.jpg", "name": "Cat on Fence"},
+                {"image": "http://localhost/muslimand/resources/images/cover_picture/9Ixsx2qFkzWEliG.jpg", "name": "Cat in Sun"},
+                {"image": "http://localhost/muslimand/resources/images/photos/albums/user_album/12743937_2380336878651567_1331589904391873430_n1.jpg", "name": "Blue Eyed Cat"},
+                {"image": "http://localhost/muslimand/resources/images/photos/albums/user_album/12705447_932543446831073_8553385767911857321_n.jpg", "name": "Blue Eyed Cat"},
+                {"image": "http://localhost/muslimand/resources/images/profile_picture/150x150/t87sqMzqcM86ee2.jpg", "name": "Patchy Cat"},
+            ];
+
+            $scope.open = function (photoInfo) {
+                var indx = $scope.albumPhotoList.indexOf(photoInfo);
+                var photoId = photoInfo.photoId;
+                photoService.getPhotoInfo(photoId).
+                        success(function (data, status, headers, config) {
+                            if (typeof data.photo_info != "undefined") {
+                                var photo = data.photo_info;
+                                photo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photo.createdOn);
+                                photo.active = true;
+                                console.log(photo);
+                                $scope.albumPhotoList[indx] = photo;
+                                $scope.modalInstance = $modal.open({
+                                    animation: true,
+                                    templateUrl: 'template/pic-modal.html',
+                                    scope: $scope
+                                });
+                            }
+                        });
+            };
+
+            $scope.ok = function () {
+                $scope.modalInstance.close();
             };
 
 

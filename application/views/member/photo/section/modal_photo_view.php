@@ -14,12 +14,9 @@
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <div id="photo_slider" class="carousel slide" data-ride="carousel" data-interval="false">
-                                    <div class="carousel-inner" role="listbox">
-                                        <div class="item active">
-                                            <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/2.jpg" alt="...">
-                                            <!--                                    <div class="carousel-caption">
-                                                                                    ...
-                                                                                </div>-->
+                                    <div class="carousel-inner" role="listbox" ng-repeat="photo in albumList">
+                                        <div class="item" >
+                                            <img class="img-responsive" src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photo.image}}"  alt="...">
                                         </div>
                                         <div class="item">
                                             <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/4.jpg" alt="...">
@@ -28,8 +25,6 @@
                                             <img class="img-responsive" src="<?php echo base_url(); ?>resources/images/5.jpg" alt="...">
                                         </div>
                                     </div>
-
-                                    <!-- Controls -->
                                     <a class="left carousel-control" href="#photo_slider" role="button" data-slide="prev" style="cursor: pointer;">
                                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                                         <span class="sr-only">Previous</span>
@@ -49,7 +44,7 @@
                                     <li>
                                         <div class="btn-group dropup">
                                             <button style="margin-left: -8px;" class="button-custom dropdown-toggle" data-toggle="dropdown">
-                                                <!--                                            <button class="button-custom">Options</button>-->
+                                                <!--                                            <button class="button-custom">Options</button>
                                                 Options
                                                 <span class="caret"></span>
                                             </button>
