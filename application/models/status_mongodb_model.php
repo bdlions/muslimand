@@ -37,9 +37,9 @@ class Status_mongodb_model extends CI_Model {
         return $this->curl->execute();
     }
 
-    public function add_status_like($user_id, $status_id, $like_info) {
+    public function add_status_like($user_id, $status_id, $like_info, $status_type_id) {
         $this->curl->create($this->SERVICE_STATUS . 'addStatusLike');
-        $this->curl->post(array("userId" => $user_id, "statusId" => $status_id, 'likeInfo' => json_encode($like_info)));
+        $this->curl->post(array("userId" => $user_id, "statusId" => $status_id, 'likeInfo' => json_encode($like_info), 'statusTypeId' => $status_type_id));
         return $this->curl->execute();
     }
     public function add_status_comment_like($status_id, $comment_id, $like_info) {

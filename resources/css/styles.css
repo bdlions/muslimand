@@ -1278,29 +1278,29 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 /* .modal-fullscreen */
 
 .modal-fullscreen {
-  background: transparent;
+    background: transparent;
 }
 .modal-fullscreen .modal-content {
-  background: transparent;
-  border: 0;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+    background: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 .modal-backdrop.modal-backdrop-fullscreen {
-  background: #000;
+    background: #000;
 }
 .modal-backdrop.modal-backdrop-fullscreen.in {
-  opacity: .5;
-  filter: alpha(opacity=50);
+    opacity: .5;
+    filter: alpha(opacity=50);
 }
 
 /* .modal-fullscreen size: we use Bootstrap media query breakpoints */
 
 .modal-fullscreen .modal-dialog {
-  margin: 0;
-  margin-right: auto;
-  margin-left: auto;
-  width: 100%;
+    margin: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
 }
 
 .link{
@@ -1308,33 +1308,70 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     font-weight: bold!important;
 }
 
+.carousel-indicators{
+    display: none;
+}
+
+.close_custom{
+    color: #fff!important;
+    opacity: 0.5!important;
+}
+.close_custom:hover {
+    color: #fff!important;
+    opacity: 0.8!important;
+}
+
 @media (min-width: 768px) {
-  .modal-fullscreen .modal-dialog {
-    width: 100%;
-    height: 100%;
-  }
+    .modal-fullscreen .modal-dialog {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 @media (min-width: 992px) {
-  .modal-fullscreen .modal-dialog {
-    width: 100%;
-  height: 100%;
-  }
+    .modal-fullscreen .modal-dialog {
+        width: 100%;
+        height: 100%;
+    }
 }
 @media (min-width: 1200px) {
-  .modal-fullscreen .modal-dialog {
-     width: 100%;
-  }
-  .modal_photo_display_full_height{
-      height: 510px!important;
-  }
-  .modal_photo_pagelet{
-      background-color: white;
-    padding: 15px;
-    margin-bottom: 1px;
-    box-shadow: 0 0 1px #bbb;
-    height: 330px;
+    .modal-dialog {
+        width: 1200px!important;
+    }
+    .carousel-inner{
+        width: 600px!important;
+        height: 400px!important;
+        float: left;
+        margin-top: 30px;
+
+    }
+   
+    .carousel-inner > .item > img{
+        min-height: 320px!important;
+        max-height: 400px!important;
+        max-width: 600px!important;
+        min-width: 400px!important;
+        margin-left: auto;
+        margin-right: auto;
+    }
     
-  }
+    .carousel-control.left{
+        left: -70px!important;
+          z-index: 999999999;
+          top: 200px;
+    }
+    .carousel-control.right{
+        right: 500px!important;
+        z-index: 999999999;
+         top: 200px;
+    }
+
+    .modal_photo_pagelet{
+        background-color: white;
+        padding: 15px;
+        margin-bottom: 1px;
+        box-shadow: 0 0 1px #bbb;
+        height: 450px;
+    }
 }
 

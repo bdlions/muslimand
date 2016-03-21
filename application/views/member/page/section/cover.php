@@ -1,6 +1,45 @@
 <div class="row" style="margin-bottom: 1px;">
     <div class="col-md-12">
-        <img src="<?php echo base_url() ?>resources/images/pages/cover/01.jpg" width="100%" height="250">
+        <div ng-controller="ImageCopperController" ng-clock style="position: absolute; left: 15px; z-index: 1001;">
+            <div  ng-show="imageCropStep == 1" class="fileinput-cover-button">
+                <span ng-if="PageBasicInfo.referenceInfo.userId != '<?php echo $user_id; ?>'">
+                    <img class="img-responsive" fallback-src="<?php echo base_url() ?>resources/images/pages/cover_picture/01.jpg"  ng-src="<?php echo base_url() . PAGE_COVER_PICTURE_IMAGE_PATH . $page_id . '.jpg'; ?>"/>
+                </span>
+                <span ng-if="PageBasicInfo.referenceInfo.userId == '<?php echo $user_id; ?>'">
+                    <img class="img-responsive" fallback-src="<?php echo base_url() ?>resources/images/pages/cover_picture/01.jpg"  ng-src="<?php echo base_url() . PAGE_COVER_PICTURE_IMAGE_PATH . $page_id . '.jpg'; ?>" />
+                    <input class="profile_cover_upload_input" style="z-index: 1005" type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)"/>
+                    <div class="profile_cover_upload_img">
+                        <img ng-src="<?php echo base_url() ?>resources/images/upload_icon.png"/>
+                        <span>Upload Cover Picture</span>
+                    </div>
+                </span>
+            </div>	
+            <div ng-show="imageCropStep == 2">
+                <image-crop			 
+                    data-height="200"
+                    data-width="500"
+                    data-shape="square"
+                    data-step="imageCropStep"
+                    src="imgSrc"
+                    data-result="result"
+                    data-result-blob="resultBlob"
+                    crop="initCrop"
+                    padding="0"
+                    max-size="1012"
+                    imagepath="<?php echo base_url(); ?>pages/add_cover_picture/<?php echo $page_id?>"
+                    reloadpath = ""
+                    ></image-crop>	   
+            </div>
+            <div ng-show="imageCropStep == 2">
+                <button class="btn btn-sm" style="position: absolute; bottom: 0; right: 45px; background-color: #999; color: #fff; width: 25%;"  ng-click="initCrop = true">Crop</button>		
+                <button class="btn btn-sm" style="position: absolute; bottom: 0; left: 45px; background-color: #999; color: #fff; width: 28%; vertical-align: middle;" ng-click="clear()">Cancel</button>
+            </div>		  
+            <div  ng-show="imageCropStep == 3">
+                <div >
+                    <img ng-src="{{result}}"/>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row">
@@ -44,13 +83,13 @@
     </div>
 </div>
 <script>
-    $('#join_page_id_01').on('click', function() {
-        $('#join_page_id_01').hide();
-        $('#joined_page_content_id_01').show();
-    });
-    $('#disjoin_page_id_01').on('click', function() {
-        $('#joined_page_content_id_01').hide();
-        $('#join_page_id_01').show();
-    });
+//    $('#join_page_id_01').on('click', function() {
+//        $('#join_page_id_01').hide();
+//        $('#joined_page_content_id_01').show();
+//    });
+//    $('#disjoin_page_id_01').on('click', function() {
+//        $('#joined_page_content_id_01').hide();
+//        $('#join_page_id_01').show();
+//    });
 </script>
-<?php $this->load->view("modal/modal_page_invitation"); ?>
+<?php // $this->load->view("modal/modal_page_invitation"); ?>

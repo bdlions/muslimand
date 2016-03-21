@@ -44,10 +44,9 @@ class Utils {
 
     public function get_gender() {
         $gender = array(
-            "0" => 'Gender',
             "1" => 'Male',
             "2" => 'Female',
-            "3" => 'Other',
+            "3" => 'Both',
         );
         return $gender;
     }
@@ -96,13 +95,26 @@ class Utils {
     }
 
     /*
+     * this method return age from 15 - 115 
+     *  @Rashida 20th March 2016
+     *  
+     *  */
+
+    public function get_age_list() {
+        for ($i = 15; $i <= 115; $i++) {
+            $age_list["" . $i] = "" . $i;
+        }
+        return $age_list;
+    }
+
+    /*
      * this method return list of year
      *  @Rashida 17th May 2015
      *  
      *  */
 
     public function get_year_list() {
-         $year_list[0] = "Year";
+        $year_list[0] = "Year";
         for ($i = 2015; $i >= 1915; $i--) {
             $year_list["" . $i] = "" . $i;
         }
@@ -219,9 +231,5 @@ class Utils {
         }
         return $result;
     }
-
-
-
-
 
 }

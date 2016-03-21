@@ -904,7 +904,7 @@ class Photos extends CI_Controller {
         $image_list[] = $image;
         $album_id = PROFILE_PHOTOS_ALBUM_ID;
         $album_title = PROFILE_PHOTOS_ALBUM_TITLE;
-        $album_result = $this->STATUS_TYPE_ID_ADD_ALBUM_PHOTOS($user_id, $album_id, $album_title, $image_list);
+        $album_result = $this->album_add($user_id, $album_id, $album_title, $image_list);
 //add status in user profile related to the change of profile picture
         $user_info = new stdClass();
         $user_info->userId = $user_id;

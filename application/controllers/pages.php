@@ -45,28 +45,27 @@ class Pages extends CI_Controller {
             $category_list = $result_event->categoryList;
             $sub_category_list = $result_event->subCategoryList;
             foreach ($sub_category_list as $category) {
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_BRAND){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_BRAND) {
                     $brand_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_COMMUNITY){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_COMMUNITY) {
                     $community_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_BUSINESS){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_BUSINESS) {
                     $business_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_PLACE){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_PLACE) {
                     $place_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_ENTERTAINMENT){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_ENTERTAINMENT) {
                     $entertainment_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_COMPANY){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_COMPANY) {
                     $company_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_ORGANIZATION){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_ORGANIZATION) {
                     $organization_category_list[] = $category;
                 }
-                
             }
         }
         $this->data['categories'] = $category_list;
@@ -141,7 +140,7 @@ class Pages extends CI_Controller {
             if (property_exists($page_info, "phone") != FALSE) {
                 $page_information->phone = $page_info->phone;
             }
-            $page_information->pageId = $this->utils->generateRandomString(PAGE_ID_LENGTH);
+            $page_id = $page_information->pageId = $this->utils->generateRandomString(PAGE_ID_LENGTH);
             $page_information->referenceId = $this->session->userdata('user_id');
             $page_information->category = $category_info;
             $page_information->subCategory = $sub_category_info;
@@ -149,7 +148,8 @@ class Pages extends CI_Controller {
             if ($result_event != "" || $result_event != null) {
                 $result_event = json_decode($result_event);
                 if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
-                    $response['message'] = "Page Created Succefully";
+                    $response['status'] = "1";
+                    $response['page_id'] = $page_id;
                 } else if ($result_event->responseCode == PAGE_NAME_VALIDATION_EXIST) {
                     $response['message'] = "Sorry! Page Title is alreay Exist";
                 } else {
@@ -167,6 +167,7 @@ class Pages extends CI_Controller {
      */
 
     function update_page() {
+        $response = array();
         $user_id = $this->session->userdata('user_id');
         if (file_get_contents("php://input") != null) {
             $postdata = file_get_contents("php://input");
@@ -181,25 +182,28 @@ class Pages extends CI_Controller {
             if (property_exists($page_info, "maxAge") != FALSE) {
                 $age_range->maxAge = $page_info->maxAge;
             }
-            $page_info = new stdClass();
-            $page_info->interestedAgeRange = $age_range;
+            $page_basic_info = new stdClass();
+            $page_basic_info->interestedAgeRange = $age_range;
             if (property_exists($page_info, "about") != FALSE) {
-                $page_info->about = $page_info->about;
+                $page_basic_info->about = $page_info->about;
+            }
+            if (property_exists($page_info, "pageId") != FALSE) {
+                $page_basic_info->pageId = $page_info->pageId;
             }
             if (property_exists($page_info, "intertestedGender") != FALSE) {
-                $page_info->intertestedGender = $page_info->intertestedGender;
+                $page_basic_info->intertestedGender = $page_info->intertestedGender;
             }
             $userInfo = new stdClass();
             $userInfo->userId = $user_id;
             $userInfo->firstName = $this->session->userdata('first_name');
             $userInfo->lastName = $this->session->userdata('last_name');
-            $page_info->intertestedGender = "3";
-            $page_info->referenceId = $user_id;
-            $page_info->referenceInfo = $userInfo;
-            $result_event = $this->page_mongodb_model->update_page($page_info);
+            $page_basic_info->referenceId = $user_id;
+            $page_basic_info->referenceInfo = $userInfo;
+            $result_event = $this->page_mongodb_model->update_page($page_basic_info);
             if ($result_event != null) {
-                $result_event = json_encode($result_event);
+                $result_event = json_decode($result_event);
                 if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
+                    $response['status'] = "1";
                     $response['message'] = "Page Created Succefully";
                 } else {
                     $response['message'] = "Error While Processing";
@@ -211,106 +215,30 @@ class Pages extends CI_Controller {
     }
 
     function newsfeed($mapping_id = 0) {
-        $mapping_id = "1";
+        $page_info = new stdClass();
+        $like_counter = "0";
         $user_id = $this->session->userdata('user_id');
         $result_event = $this->page_mongodb_model->get_page_info($mapping_id);
-        $result_event = json_decode($result_event);
-        var_dump($result_event);
-//        $result_event = json_encode($result_event);
-        exit;
-        if ($result_event != "") {
-            if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
-                $page_info = $result_event->result;
-            } else {
-                $response['message'] = "Error While Processing";
+        if ($result_event != null) {
+            $result_event = json_decode($result_event);
+            $member_event = json_decode($result_event->pageMemberCounter);
+            $page_event = json_decode($result_event->pageInfo);
+            if ($member_event->responseCode == REQUEST_SUCCESSFULL) {
+                $like_counter = $member_event->result;
+            }
+            if ($page_event->responseCode == REQUEST_SUCCESSFULL) {
+                $page_info = $page_event->result;
             }
         }
-        var_dump($result_event);
-        exit;
-    }
-
-    /**
-     * this methord add a new status of a user 
-     * @param userId and user status Info
-     *  */
-    function add_status() {
-
-        $postdata = file_get_contents("php://input");
-        $requestInfo = json_decode($postdata);
-        $album_result = array();
-        $response = array();
-        $user_id = $this->session->userdata('user_id');
-        if ($requestInfo != null) {
-            $user_info = new stdClass();
-            $user_info->userId = $user_id;
-            $user_info->firstName = $this->session->userdata('first_name');
-            $user_info->lastName = $this->session->userdata('last_name');
-            $status_info = new stdClass();
-            $status_info->userId = $user_id;
-            $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
-
-            if (property_exists($requestInfo, "statusInfo") != FALSE) {
-                $request = $requestInfo->statusInfo;
-            }
-            if (property_exists($request, "profileId") != FALSE) {
-
-                $profile_id = $request->profileId;
-            }
-            $images = array();
-            $image_size;
-            if (property_exists($request, "imageList") != FALSE) {
-                $image_list = $request->imageList;
-                $image_size = count($image_list);
-                if (!empty($image_list)) {
-                    foreach ($image_list as $imageInfo) {
-                        $image = new stdClass();
-                        $image->image = $imageInfo;
-                        $images[] = $image;
-                    }
-                    $album_id = TIMELINE_PHOTOS_ALBUM_ID;
-                    $album_title = TIMELINE_PHOTOS_ALBUM_TITLE;
-                    $album_result = $this->album_add($user_id, $album_id, $album_title, $image_list, $new_status_id);
-                }
-            }
-            if ($user_id != $profile_id && $profile_id != "" && $image_size == 1) {
-                $status_info->mappingId = $profile_id;
-                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO;
-            } else if ($user_id != $profile_id && $profile_id != "") {
-                $status_info->mappingId = $profile_id;
-                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE;
-            } else if ($image_size == 1) {
-                $status_info->mappingId = $user_id;
-                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO;
-            } else {
-                $status_info->mappingId = $user_id;
-                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE;
-            }
-            if (property_exists($request, "description") != FALSE) {
-                $status_info->description = $request->description;
-            }
-
-            $status_info->images = $images;
-            $status_info->userInfo = $user_info;
-            $result = $this->status_mongodb_model->add_status($status_info);
-            $result = json_decode($result);
-            if ($result->responseCode == REQUEST_SUCCESSFULL) {
-                if ($user_id != $profile_id && $profile_id != "") {
-                    $maping_user_info = new stdClass();
-                    $maping_user_info->userId = $profile_id;
-                    if (property_exists($request, "profileFirstName") != FALSE) {
-                        $maping_user_info->firstName = $request->profileFirstName;
-                    }
-                    if (property_exists($request, "profileLastName") != FALSE) {
-                        $maping_user_info->lastName = $request->profileLastName;
-                    }
-                    $profile_id = $status_info->mappingId = $request->profileId;
-                    $status_info->mappingUserInfo = $maping_user_info;
-                }
-                $status_info->timeDiff = "1sec ago";
-                $response["status_info"] = $status_info;
-            }
-        }
-        echo json_encode($response);
+        $this->data['page_info'] = $page_info;
+        $this->data['like_counter'] = $like_counter;
+        $this->data['profile_id'] = $mapping_id;
+        $this->data['app'] = PAGE_APP;
+        $this->data['user_id'] = $user_id;
+        $this->data['profile_id'] = $user_id;
+        $this->data['page_id'] = $mapping_id;
+        $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->template->load(MEMBER_TEMPLATE, "member/page/page_timeline", $this->data);
     }
 
     function pages_sort_view_my() {
@@ -379,7 +307,7 @@ class Pages extends CI_Controller {
         $category_list = array();
         $album_list = array();
         $image_list = array();
-        $user_image_list_info = array();
+        $page_image_list_info = array();
         $response = array();
         $user_id = $this->session->userdata('user_id');
         if (file_get_contents("php://input") != null) {
@@ -412,9 +340,9 @@ class Pages extends CI_Controller {
                         $tempimage->image = $image;
                         $images[] = $tempimage;
                         $photo_info->image = $image;
-                        $user_image_list_info[] = $photo_info;
+                        $page_image_list_info[] = $photo_info;
                     }
-                    $image_add_result = $this->photo_mongodb_model->add_photos($user_id, $album_id, $user_image_list_info);
+                    $image_add_result = $this->photo_mongodb_model->add_photos($user_id, $album_id, $page_image_list_info);
                     $image_add_result = json_decode($image_add_result);
                     if ($image_add_result->responseCode == CREATED_SUCCESSFULLY) {
                         $status_info = new stdClass();
@@ -498,11 +426,153 @@ class Pages extends CI_Controller {
         $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_about", $this->data);
     }
 
-    function pages_getting_started() {
+    function pages_getting_started($page_id = 0) {
+        $this->data['age_range_list'] = $this->utils->get_age_list();
+        $this->data['gender_list'] = $this->utils->get_gender();
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->data['app'] = "app.Header";
-        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_getting_started", $this->data);
+        $this->data['page_id'] = $page_id;
+        $this->data['app'] = PAGE_APP;
+        $this->template->load(null, "member/page/page_getting_started", $this->data);
+    }
+
+    public function add_profile_picture($page_id = 0) {
+        $response = array();
+        $image_data = $this->input->post('imageData');
+        $user_id = $this->session->userdata('user_id');
+        //temp picture upload to server for profile picture
+        $page_profile_picture_name = $page_id . '.jpg';
+        $profile_picture_temp_path = TEMP_PAGE_IMAGE_PATH;
+        $result1 = $this->upload_picture($image_data, $page_profile_picture_name, $profile_picture_temp_path);
+        // image upload to user album for database save 
+        $temp_src_name = $page_id . '_' . now() . '.jpg';
+        $page_image_path = PAGE_IMAGE_PATH;
+        $result2 = $this->upload_picture($image_data, $temp_src_name, $page_image_path);
+
+        if ($result1['status'] != 0 && $result2['status'] != 0) {
+            //resize profile picture 
+            $file_temp = $profile_picture_temp_path . $page_profile_picture_name;
+            $this->utils->resize_image($file_temp, PAGE_PROFILE_PICTURE_PATH_W150_H150 . $page_profile_picture_name, PAGE_PROFILE_PICTURE_H150, PAGE_PROFILE_PICTURE_W150);
+            $this->utils->resize_image($file_temp, PAGE_PROFILE_PICTURE_PATH_W100_H100 . $page_profile_picture_name, PAGE_PROFILE_PICTURE_H100, PAGE_PROFILE_PICTURE_W100);
+            $this->utils->resize_image($file_temp, PAGE_PROFILE_PICTURE_PATH_W50_H50 . $page_profile_picture_name, PAGE_PROFILE_PICTURE_H50, PAGE_PROFILE_PICTURE_W50);
+            $this->utils->resize_image($file_temp, PAGE_PROFILE_PICTURE_PATH_W40_H40 . $page_profile_picture_name, PAGE_PROFILE_PICTURE_H40, PAGE_PROFILE_PICTURE_W40);
+            $this->utils->resize_image($file_temp, PAGE_PROFILE_PICTURE_PATH_W30_H30 . $page_profile_picture_name, PAGE_PROFILE_PICTURE_H30, PAGE_PROFILE_PICTURE_W30);
+            $this->utils->resize_image($file_temp, PAGE_PROFILE_PICTURE_PATH_W25_H25 . $page_profile_picture_name, PAGE_PROFILE_PICTURE_H25, PAGE_PROFILE_PICTURE_W25);
+            //create album if no album exsist for profile picture or add picture to profile picture album
+            $image_list = array();
+            $image = new stdClass();
+            $image->image = $temp_src_name;
+            $image_list[] = $image;
+            $album_id = PAGE_PROFILE_PHOTOS_ALBUM_ID;
+            $album_title = PAGE_PROFILE_PHOTOS_ALBUM_TITLE;
+            $status_id = $this->utils->generateRandomString(PAGE_ID_LENGTH);
+            $album_result = $this->album_add($page_id, $album_id, $album_title, $image_list, $status_id);
+            if ($album_result != '' && $album_result != null) {
+                $album_result = json_decode($album_result);
+                if ($album_result->responseCode == REQUEST_SUCCESSFULL) {
+                    $page_title = $album_result->result;
+                    $page_info = new stdClass();
+                    $page_info->pageId = $page_id;
+                    $page_info->referenceId = $user_id;
+                    $page_info->title = $page_title;
+                    $status_info = new stdClass();
+                    $status_info->userId = $user_id;
+                    $new_status_id = $status_info->statusId = $status_id;
+                    $status_info->statusTypeId = STATUS_TYPE_ID_PAGE_CHANGE_PROFILE_PICTURE;
+                    $status_info->images = $image_list;
+                    $status_info->pageInfo = $page_info;
+                    $status_info->mappingId = $page_id;
+                    $result = $this->page_mongodb_model->add_status($status_info);
+                    $result = json_decode($result);
+                    if ($result->responseCode == REQUEST_SUCCESSFULL) {
+                        $response["message"] = "Profile picture add successfully";
+                        $response["status"] = "1";
+                    }
+                }
+            }
+        }
+        echo json_encode($response);
+        return;
+    }
+
+    function add_cover_picture($page_id = 0) {
+        $response = array();
+        $image_data = $this->input->post('imageData');
+        $user_id = $this->session->userdata('user_id');
+        //temp picture upload to server for cover picture
+        $cover_picture_image_name = $page_id . '.jpg';
+        $cover_image_temp_path = PAGE_COVER_PICTURE_IMAGE_PATH;
+        $result1 = $this->upload_picture($image_data, $cover_picture_image_name, $cover_image_temp_path);
+        // image upload to user album for database save 
+        $temp_src_name = $page_id . '_' . now() . '.jpg';
+        $page_image_path = PAGE_IMAGE_PATH;
+        $result2 = $this->upload_picture($image_data, $temp_src_name, $page_image_path);
+
+        if ($result1['status'] != 0 && $result2['status'] != 0) {
+            //create album if no album exsist for cover picture or add picture to cover picture album
+            $image_list = array();
+            $image = new stdClass();
+            $image->image = $temp_src_name;
+            $image_list[] = $image;
+            $album_id = PAGE_COVER_PHOTOS_ALBUM_ID;
+            $album_title = PAGE_COVER_PHOTOS_ALBUM_TITLE;
+            $status_id = $this->utils->generateRandomString(PAGE_ID_LENGTH);
+            $album_result = $this->album_add($page_id, $album_id, $album_title, $image_list, $status_id);
+            //add status in user profile related to the change of cover picture
+            if ($album_result != '' && $album_result != null) {
+                $album_result = json_decode($album_result);
+                if ($album_result->responseCode == REQUEST_SUCCESSFULL) {
+                    $page_title = $album_result->result;
+                    $page_info = new stdClass();
+                    $page_info->pageId = $page_id;
+                    $page_info->referenceId = $user_id;
+                    $page_info->title = $page_title;
+                    $status_info = new stdClass();
+                    $status_info->userId = $user_id;
+                    $new_status_id = $status_info->statusId = $status_id;
+                    $status_info->statusTypeId = STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE;
+                    $status_info->images = $image_list;
+                    $status_info->pageInfo = $page_info;
+                    $status_info->mappingId = $page_id;
+                    $result = $this->page_mongodb_model->add_status($status_info);
+                    $result = json_decode($result);
+                    if ($result->responseCode == REQUEST_SUCCESSFULL) {
+                        $response["status_info"] = $status_info;
+                    }
+                }
+            }
+
+            echo json_encode($response);
+        }
+    }
+
+    public function upload_picture($image_data, $image_name, $image_path) {
+        $response = array();
+        list(, $data) = explode(',', $image_data);
+        $final_image_data = base64_decode($data);
+        $file = $image_path . $image_name;
+        $result = file_put_contents($file, $final_image_data);
+        if ($result != null) {
+            $response['status'] = 1;
+        } else {
+            $response['status'] = 0;
+        }
+        return $response;
+    }
+
+    function album_add($page_id, $album_id, $type_title, $image_list, $status_id) {
+        $page_image_list_info = array();
+        $response = array();
+        foreach ($image_list as $image) {
+            $photo_info = new stdClass();
+            $photo_info->photoId = $this->utils->generateRandomString(USER_PHOTO_ID_LENGTH);
+            $photo_info->albumId = $album_id;
+            $photo_info->image = $image->image;
+            $photo_info->referenceId = $status_id;
+            $page_image_list_info[] = $photo_info;
+        }
+        $image_add_result = $this->page_mongodb_model->add_photos($page_id, $album_id, $page_image_list_info);
+        return $image_add_result;
     }
 
 }

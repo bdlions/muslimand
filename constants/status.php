@@ -10,6 +10,10 @@
     define("STATUS_TYPE_ID_ADD_VIDEO",                                          9);
     define("STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO",      10);
     define("STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO",   11);
+    define("STATUS_TYPE_ID_PAGE_CHANGE_PROFILE_PICTURE",                        12);
+    define("STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE",                          13);
+    define("STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_PHOTO",    14);
+    define("STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_PHOTO",   15);
     
     
     

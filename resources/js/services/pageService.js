@@ -11,6 +11,15 @@ angular.module('services.Page', []).
                     }
                 });
             };
+              pageService.updatePage = function (pageInfo) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/update_page',
+                    data: {
+                        pageInfo: pageInfo
+                    }
+                });
+            };
             
             return pageService;
         });

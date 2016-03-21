@@ -7,3 +7,33 @@
      define("CATEGORY_TYPE_ID_FOR_ENTERTAINMENT",                               "5");
      define("CATEGORY_TYPE_ID_FOR_COMPANY",                                    "6");
      define("CATEGORY_TYPE_ID_FOR_ORGANIZATION",                                "7");
+     
+    define("PAGE_TIMELINE_PHOTOS_ALBUM_TITLE",                             "Timeline Photos");
+    define("PAGE_TIMELINE_PHOTOS_ALBUM_ID",                                "1");
+    define("PAGE_PROFILE_PHOTOS_ALBUM_TITLE",                              "Profile Pictures");
+    define("PAGE_PROFILE_PHOTOS_ALBUM_ID",                                 "2");
+    define("PAGE_COVER_PHOTOS_ALBUM_TITLE",                                "Cover Photos");
+    define("PAGE_COVER_PHOTOS_ALBUM_ID",                                   "3");
+     
+     define("TEMP_PAGE_IMAGE_PATH",                                             "resources/images/pages/temp_image_path/");
+     define("PAGE_PROFILE_PICTURE_PATH_W150_H150",                              "resources/images/pages/profile_picture/150x150/");
+     define("PAGE_IMAGE_PATH",                                                  "resources/images/pages/user_photos/");
+     define("PAGE_PROFILE_PICTURE_PATH_W100_H100",                              "resources/images/pages/profile_picture/100x100/");
+     define("PAGE_PROFILE_PICTURE_PATH_W50_H50",                                "resources/images/pages/profile_picture/50x50/");
+     define("PAGE_PROFILE_PICTURE_PATH_W40_H40",                                "resources/images/pages/profile_picture/40x40/");
+     define("PAGE_PROFILE_PICTURE_PATH_W30_H30",                                "resources/images/pages/profile_picture/30x30/");
+     define("PAGE_PROFILE_PICTURE_PATH_W25_H25",                                "resources/images/pages/profile_picture/25x25/");
+     define("PAGE_COVER_PICTURE_IMAGE_PATH",                                    "resources/images/pages/cover_picture/");
+  
+     define("PAGE_PROFILE_PICTURE_W150",                                        "150");
+     define("PAGE_PROFILE_PICTURE_H150",                                         "150");
+    define("PAGE_PROFILE_PICTURE_W100",                                             "100");
+    define("PAGE_PROFILE_PICTURE_H100",                                             "100");
+    define("PAGE_PROFILE_PICTURE_W50",                                              "50");
+    define("PAGE_PROFILE_PICTURE_H50",                                              "50");
+    define("PAGE_PROFILE_PICTURE_W40",                                              "40");
+    define("PAGE_PROFILE_PICTURE_H40",                                              "40");
+    define("PAGE_PROFILE_PICTURE_W30",                                              "30");
+    define("PAGE_PROFILE_PICTURE_H30",                                              "30");
+    define("PAGE_PROFILE_PICTURE_W25",                                              "25");
+    define("PAGE_PROFILE_PICTURE_H25",                                              "25");

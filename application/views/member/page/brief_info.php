@@ -8,9 +8,9 @@
 <div class="pagelet" style="border: 1px solid #fff;">
     <div class="row">
         <div class="col-md-12">
-            <label>Link road</label><br>
-            <label>Dhaka, Bangladesh</label><br>
-            <label>01912314466</label>
+            <label>{{PageBasicInfo.street}}</label><br>
+            <label>{{PageBasicInfo.city}}</label><br>
+            <label>{{PageBasicInfo.phone}}</label>
         </div>
     </div>
 </div>

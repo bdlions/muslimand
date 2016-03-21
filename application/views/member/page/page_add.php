@@ -1,3 +1,19 @@
+<script>
+    function add_page(catrgoryInfo) {
+        angular.element($('#add_page_id')).scope().addPage(catrgoryInfo, function (data) {
+            if(data.status == 1){
+                window.location = '<?php echo base_url(); ?>pages/pages_getting_started/' +data.page_id;
+            }else if(data.status == 0){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+
+        });
+    }
+</script>
+
+
 <div class="row padding_top_30px">
     <div class="col-md-12">
         <a href="<?php echo base_url(); ?>photos/"><img src="<?php echo base_url(); ?>resources/images/pages/icon/page.png"></a>
@@ -17,7 +33,7 @@
             <div class="pagelet_divider"></div>
             <div class="row form-group"></div>
             <div class="row">
-                <div class="col-md-4" ng-repeat=" category in categoryList">
+                <div  id="add_page_id" class="col-md-4" ng-repeat=" category in categoryList">
                     <div ng-if="category.categoryId == '<?php echo CATEGORY_TYPE_ID_FOR_BRAND ?>'">
                         <form>
                             <div id="brand" class="brand">
@@ -29,7 +45,7 @@
                                 <div class="row">
                                     <div class="col-md-offset-1 col-md-10">
                                         <label class="label_padding_top font_16px" >{{category.title}}</label>
-                                    <input type="hidden" class="form-control page_custom_form_control" value="{{category.title}}" ng-model="PageInfo.categoryTitle" >
+                                        <input type="hidden" class="form-control page_custom_form_control" value="{{category.title}}" ng-model="PageInfo.categoryTitle" >
                                     </div>
                                     <div class="col-md-offset-1"></div>
                                 </div>
@@ -51,7 +67,7 @@
                                 <div class="row">
                                     <div class="col-md-offset-1 col-md-10">
                                         <div style="padding-top: 10px;">
-                                            <a  href=""><button id="brand_creating_page_button" class="button-custom" ng-click="addPage(category)">Get started</button></a>
+                                            <a  href=""><button id="brand_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                         </div>
                                     </div>
                                     <div class="col-md-offset-1"></div>
@@ -76,11 +92,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10" ng-init="setCommunitySubcategoryList('<?php echo htmlspecialchars(json_encode($community_subcategories)); ?>')" >
-                                    <select  class="form-control " id="seleted_">
+                                    <select  class="form-control " ng-options="subCategory.title for subCategory in communitySubCategoryList" ng-model="PageInfo.subCategory">
                                         <option class="form-control" value="">Please select</option>
-                                        <option class="form-control" ng-repeat="subCategory in communitySubCategoryList" >
-                                            {{subCategory.title}}
-                                        </option>
                                     </select>
                                 </div>
                                 <div class="col-md-offset-1"></div>
@@ -102,42 +115,39 @@
                             </div>
                         </div>
                     </div>
-
+                    <div ng-if="category.categoryId == '<?php echo CATEGORY_TYPE_ID_FOR_BUSINESS ?>'">
+                        <div id="group_cover" class="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
+                            <span class="font_bold">Group</span>
+                        </div>
+                        <div id="group" class="brand">
+                            <div class="brand_cover">
+                                <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/group.png"><br>
+                                <span class="font_bold">Group</span>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-offset-1 col-md-10">
+                                    <label class="label_padding_top font_16px">Group</label>
+                                </div>
+                                <div class="col-md-offset-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-offset-1 col-md-10">
+                                    <label class="label_padding_top" >Name: </label>
+                                    <input type="text" class="form-control page_custom_form_control">
+                                </div>
+                                <div class="col-md-offset-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-offset-1 col-md-10">
+                                    <div style="padding-top: 10px;">
+                                        <a  href=""><button id="group_creating_page_button" class="button-custom">Get started</button></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-offset-1"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <!--                <div class="col-md-4">
-                                    <div id="group_cover" class="brand_cover" style="background-color: #CCBC90; width: 100%; height: 250px; border-radius: 8px; text-align: center;">
-                                        <span class="font_bold">Group</span>
-                                    </div>
-                                    <div id="group" class="brand">
-                                        <div class="brand_cover">
-                                            <img class="img_padding_top" src="<?php echo base_url(); ?>resources/images/pages/icon/group.png"><br>
-                                            <span class="font_bold">Group</span>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-offset-1 col-md-10">
-                                                <label class="label_padding_top font_16px">Group</label>
-                                            </div>
-                                            <div class="col-md-offset-1"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-offset-1 col-md-10">
-                                                <label class="label_padding_top" >Name: </label>
-                                                <input type="text" class="form-control page_custom_form_control">
-                                            </div>
-                                            <div class="col-md-offset-1"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-offset-1 col-md-10">
-                                                <div style="padding-top: 10px;">
-                                                    <a  href=""><button id="group_creating_page_button" class="button-custom">Get started</button></a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-offset-1"></div>
-                                        </div>
-                                    </div>
-                                </div>-->
-
             </div>
             <div class="row padding_top_30px">
                 <div class="col-md-4">

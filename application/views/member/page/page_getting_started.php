@@ -1,33 +1,81 @@
 <script>
-    $(function() {
-        $(".brand_cover").click(function() {
+    $(function () {
+        $("#update_btn_id").hide();
+        $("#interest_next_id").hide();
+        $("#about_next_id").hide();
+        $(".brand_cover").click(function () {
             $(".brand_cover").show();
             $(this).hide();
         });
         var selector = '.image_inline a';
-        $(selector).on('click', function() {
+        $(selector).on('click', function () {
             $(selector).removeClass('active');
             $(this).addClass('active');
         });
-        $("#about").click(function() {
+        $("#about").click(function () {
             $("#profile_picture_content").hide();
             $("#preferred_page_content").hide();
+            $("#update_btn_id").hide();
+            $("#profile_next_id").hide();
+            $("#about_next_id").show();
             $("#about_content").show();
         });
-        $("#profile_picture").click(function() {
+        $("#profile_picture").click(function () {
             $("#about_content").hide();
             $("#preferred_page_content").hide();
             $("#profile_picture_content").show();
+            $("#profile_next_id").show();
+            $("#update_btn_id").hide();
         });
-        $("#preferred_page").click(function() {
+        $("#preferred_page").click(function () {
             $("#about_content").hide();
             $("#profile_picture_content").hide();
             $("#preferred_page_content").show();
+            $("#about_next_id").hide();
+            $("#profile_next_id").hide();
+            $("#update_btn_id").show();
         });
     });
+    function active_profile_field() {
+        $("#profile_picture_content").hide();
+        $("#preferred_page_content").hide();
+        $("#profile_next_id").hide();
+        $("#about_next_id").show();
+        $("#about_content").show();
+    }
+    function active_about_field() {
+        $("#about_content").hide();
+        $("#profile_picture_content").hide();
+        $("#preferred_page_content").show();
+        $("#about_next_id").hide();
+        $("#interest_next_id").hide();
+        $("#update_btn_id").show();
+    }
+    function active_interest_field() {
+        $("#about_content").hide();
+        $("#profile_picture_content").hide();
+        $("#preferred_page_content").show();
+        $("#about_next_id").hide();
+        $("#interest_next_id").hide();
+        $("#update_btn_id").show();
+    }
+    
+    function update_page(){
+       var pageId = '<?php echo $page_id; ?>';
+         angular.element($('#update_btn_id')).scope().updatePage(pageId, function (data) {
+            if(data.status == 1){
+                window.location = '<?php echo base_url(); ?>pages/newsfeed/' +pageId;
+            }else if(data.status == 0){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+
+        });
+    }
 </script>
 <div class="padding_top_50px"></div>
-<div class="row">
+<div class="row" ng-controller="pageController">
     <div class="col-md-9">
         <div style="outline: 10px solid #fff;  border-radius: 4px;">
             <div class="pagelet" style="border: 1px solid lightgrey; border-radius: 4px;">
@@ -38,118 +86,124 @@
                     </div>
                 </div>
 
-                <div class="row form-group">
-                    <div class="col-md-12">
-                        <div class="image_inline">
-                            <a id="about" class="active" href=""><span style="margin-left: 16px;">About</span><img class="img-responsive" src="<?php echo base_url(); ?>resources/images/pages/1.png"></a>
-                            <a id="profile_picture" href=""><span style="margin-left: 26px;">Profile Pictute</span><img class="img-responsive" src="<?php echo base_url(); ?>resources/images/pages/2.png"></a>
-                            <a id="preferred_page" href=""><span style="margin-left: 32px;">Preferred Page Audience</span><img class="img-responsive" src="<?php echo base_url(); ?>resources/images/pages/3.png"></a>
-                        </div>
+                <ng-form>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <div class="image_inline">
+                                <a id="profile_picture" class="active" href=""><span style="margin-left: 26px;">Profile Pictute</span><img class="img-responsive" src="<?php echo base_url(); ?>resources/images/pages/2.png"></a>
+                                <a id="about" href=""><span style="margin-left: 16px;">About</span><img class="img-responsive" src="<?php echo base_url(); ?>resources/images/pages/1.png"></a>
+                                <a id="preferred_page" href=""><span style="margin-left: 32px;">Preferred Page Audience</span><img class="img-responsive" src="<?php echo base_url(); ?>resources/images/pages/3.png"></a>
+                            </div>
 
-                        <hr>
-                    </div>
-                </div>
-                <div class="contain">
-                    <div id="about_content" class="content_show">
-                        <div class="row form-group padding_top_30px">
-                            <div class="col-md-12">
-                                Add a few sentences to tell people what your Page is about. 
-                                This will help it show up in the right search results. You will
-                                be able to add more details later from your Page settings.
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-md-12">
-                                <textarea style="resize: none;" class="form-control" placeholder="*Tell people what your Page is about..."></textarea>
-                            </div>
+                            <hr>
                         </div>
                     </div>
-                    <div id="profile_picture_content" class="content_show content_hidden">
-                        <div class="row form-group padding_top_30px">
-                            <div class="col-md-offset-4 col-md-8">
-                                <div style="height: 150px!important; width: 150px!important;">
-                                    <img src="<?php echo base_url(); ?>resources/images/pages/page_create_default_pic.jpg" style="border: 2px solid lightgray; box-shadow: 0 8px 4px -4px gray;">
-                                    <form action="upload.php" method="post" style=" border: 2px solid #777; margin-bottom: 10px; margin-left: 2px; padding-top: 3px; position: relative; top: -33px; width: 150px; z-index: 10000; padding: 3px;" class="ng-pristine ng-valid">
-                                        <label for="fileToUpload" style="cursor: pointer; height: 22px; margin-top: -5px; width: 150px;">
-                                            <img style="cursor: pointer;" src="<?php echo base_url(); ?>resources/images/camera.png">
+                    <div class="contain">
+                        <div id="profile_picture_content"  class="content_show" >
+                            <div class="row form-group padding_top_30px">
+                                <div class="col-md-offset-4 col-md-8">
+                                    <div ng-controller="ImageCopperController" ng-clock style="position: absolute; left: 15px; z-index: 1001;">
+                                        <div ng-show="imageCropStep == 1" class=" fileinput-button profile_picture timeline_profile_picture_custom" style="height: 150px!important; width: 150px!important;">
+                                            <img  class="cursor_holder_style" fallback-src="<?php echo base_url() . 'resources/images/pages/profile_picture/100x100/01.jpg'; ?>"  ng-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W100_H100 . $page_id . '.jpg'; ?>"/>
+                                            <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
+                                            <img style="position: absolute; z-index: 99999; cursor: pointer; height: 22px; width: 22px;" src="<?php echo base_url(); ?>resources/images/camera.png">
                                             <span style="font-size: 10px; color: #fff; text-align: center;">Upload From Computer</span>
-                                        </label>
-                                        <input type="File" name="fileToUpload" id="fileToUpload" class="hidden" >
-                                    </form>
+                                        </div>	
+                                        <div ng-show="imageCropStep == 2">
+                                            <image-crop			 
+                                                data-height="150"
+                                                data-width="150"
+                                                data-shape="square"
+                                                data-step="imageCropStep"
+                                                src="imgSrc"
+                                                data-result="result"
+                                                data-result-blob="resultBlob"
+                                                crop="initCrop"
+                                                padding="50"
+                                                max-size="1024"
+                                                imagepath = "<?php echo base_url(); ?>pages/add_profile_picture/<?php echo $page_id; ?>"
+                                                reloadpath = ""
+                                                ></image-crop>		   
+                                        </div>
+                                        <div ng-show="imageCropStep == 2">
+                                            <button class="btn btn-sm" style="position: absolute; bottom: 0; right: 45px; background-color: #999; color: #fff; width: 25%;"  ng-click="initCrop = true">Crop</button>		
+                                            <button class="btn btn-sm" style="position: absolute; bottom: 0; left: 45px; background-color: #999; color: #fff; width: 28%; vertical-align: middle;" ng-click="clear()">Cancel</button>
+                                        </div>		  
+                                        <div  ng-show="imageCropStep == 3">
+                                            <div >
+                                                <img ng-src="{{result}}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="about_content" class="content_show content_hidden">
+                            <div class="row form-group padding_top_30px">
+                                <div class="col-md-12">
+                                    Add a few sentences to tell people what your Page is about. 
+                                    This will help it show up in the right search results. You will
+                                    be able to add more details later from your Page settings.
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <textarea style="resize: none;" class="form-control" placeholder="*Tell people what your Page is about..." ng-model="PageInfo.about"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="preferred_page_content" class="content_show content_hidden" ng-init="SetAgeRange('<?php echo htmlspecialchars(json_encode($age_range_list)) ?>')">
+                            <div class="row form-group padding_top_30px text-center">
+                                <div class="col-md-offset-3 col-md-1">
+                                    <label style="margin-top: 5px;">Age</label>
+                                </div>
+                                <div class="col-md-2">
+                                  <select  class="form-control " ng-options="ageRange for ageRange in ageRangeList" ng-model="PageInfo.minAge">
+                                        <option class="form-control" value="">Please select</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <label style="margin-top: 5px;">-</label>
+                                </div>
+                                <div class="col-md-2">
+                                     <select  class="form-control " ng-options="ageRange for ageRange in ageRangeList" ng-model="PageInfo.maxAge">
+                                        <option class="form-control" value="">Please select</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group text-center" ng-init="SetGenderList('<?php echo htmlspecialchars(json_encode($gender_list)) ?>')">
+                                <div class="col-md-offset-3 col-md-1">
+                                    <label style="margin-top: 5px;">Gender</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <select  class="form-control " ng-options="gender for gender in genderList" ng-model="PageInfo.intertestedGender">
+                                     <option class="form-control" value="">Please select</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="preferred_page_content" class="content_show content_hidden">
-                        <div class="row form-group padding_top_30px text-center">
-                            <div class="col-md-offset-3 col-md-1">
-                                <label style="margin-top: 5px;">Age</label>
-                            </div>
-                            <div class="col-md-2">
-                                <select class="form-control form_control_custom_style">
-                                    <option >13</option>
-                                    <option >14</option>
-                                    <option >15</option>
-                                    <option >16</option>
-                                    <option >17</option>
-                                    <option selected>18</option>
-                                    <?php for ($i = 19; $i < 65; $i++) { ?>
-                                        <option > <?php echo $i; ?></option>
-                                    <?php } ?>
-                                    <option >65+</option>
-                                </select>
-                            </div>
-                            <div class="col-md-1">
-                                <label style="margin-top: 5px;">-</label>
-                            </div>
-                            <div class="col-md-2">
-                                <select class="form-control form_control_custom_style">
-                                    <option >13</option>
-                                    <option >14</option>
-                                    <option >15</option>
-                                    <option >16</option>
-                                    <option >17</option>
-                                    <option >18</option>
-                                    <?php for ($i = 19; $i < 65; $i++) { ?>
-                                        <option > <?php echo $i; ?></option>
-                                    <?php } ?>
-                                    <option selected>65+</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row form-group text-center">
-                            <div class="col-md-offset-3 col-md-1">
-                                <label style="margin-top: 5px;">Gender</label>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="btn-group btn-group-vertical-custom" role="group" aria-label="...">
-                                    <button type="button" class="btn btn-default page_btn_default">All</button>
-                                    <button type="button" class="btn btn-default page_btn_default">Men</button>
-                                    <button type="button" class="btn btn-default page_btn_default">Women</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-md-12">
+                    <div class="padding_top_30px"></div>
+                    <div class="row" style="background-color: #E9EAED; margin-bottom: -15px; padding: 10px;" id="update_info_id">
+                        <div class="col-md-12">
+                            <div class="uiInterstitialBar uiBoxGray pull-right">
+                                <input type="button" class="btn btn-default" value="Next" id="profile_next_id" onclick="active_profile_field()"style="padding: 4px 8px;">
+                                <input type="button" class="btn btn-default" value="Next" id="about_next_id" onclick="active_about_field()"style="padding: 4px 8px;">
+                                <input type="button" class="btn btn-default" value="Next" id="interest_next_id" onclick="active_interest_field()"style="padding: 4px 8px;">
+                                <input type="button" class="btn button-custom" value="Save Info" id="update_btn_id" onclick="update_page()">
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="padding_top_30px"></div>
-                <div class="row" style="background-color: #E9EAED; margin-bottom: -15px; padding: 10px;">
-                    <div class="col-md-12">
-                        <div class="uiInterstitialBar uiBoxGray pull-right">
-                            <input type="button" class="btn btn-default" value="Skip" style="padding: 4px 8px;">
-                            <a href="<?php echo base_url(); ?>pages/pages_newsfeed"><input type="button" class="btn button-custom" value="Save Info"></a>
-                        </div>
-                    </div>
-                </div>
+                </ng-form>
             </div>
         </div>
 
     </div>
 </div>
 
-<?php //$this->load->view("modal/modal_create_page_error"); ?>
 
 
