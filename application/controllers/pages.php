@@ -34,48 +34,73 @@ class Pages extends CI_Controller {
         $category_list = array();
         $sub_category_list = array();
         $brand_category_list = array();
+        $product_category_list = array();
+        $group_category_list = array();
         $community_category_list = array();
         $business_category_list = array();
         $place_category_list = array();
         $entertainment_category_list = array();
         $company_category_list = array();
         $organization_category_list = array();
+        $institution_category_list = array();
+        $artist_or_band_category_list = array();
+        $public_figure_category_list = array();
         $result_event = $this->page_mongodb_model->get_categories_subcaregories();
         if ($result_event != null) {
             $category_list = $result_event->categoryList;
             $sub_category_list = $result_event->subCategoryList;
             foreach ($sub_category_list as $category) {
-                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_BRAND) {
+                if($category->categoryId == CATEGORY_TYPE_ID_FOR_BRAND){
                     $brand_category_list[] = $category;
                 }
-                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_COMMUNITY) {
+                if($category->categoryId == CATEGORY_TYPE_ID_FOR_PRODUCT){
+                    $product_category_list[] = $category;
+                }
+                if($category->categoryId == CATEGORY_TYPE_ID_FOR_GROUP){
+                    $group_category_list[] = $category;
+                }
+                if($category->categoryId == CATEGORY_TYPE_ID_FOR_COMMUNITY){
                     $community_category_list[] = $category;
                 }
-                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_BUSINESS) {
+                if($category->categoryId == CATEGORY_TYPE_ID_FOR_BUSINESS){
                     $business_category_list[] = $category;
                 }
-                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_PLACE) {
+                if($category->categoryId == CATEGORY_TYPE_ID_FOR_PLACE){
                     $place_category_list[] = $category;
                 }
-                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_ENTERTAINMENT) {
+                if($category->categoryId == CATEGORY_TYPE_ID_FOR_ENTERTAINMENT){
                     $entertainment_category_list[] = $category;
                 }
-                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_COMPANY) {
+                if($category->categoryId == CATEGORY_TYPE_ID_FOR_COMPANY){
                     $company_category_list[] = $category;
                 }
-                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_ORGANIZATION) {
+                if($category->categoryId == CATEGORY_TYPE_ID_FOR_ORGANIZATION){
                     $organization_category_list[] = $category;
+                }
+                if($category->categoryId == CATEGORY_TYPE_ID_FOR_INSTITUTION){
+                    $institution_category_list[] = $category;
+                }
+                if($category->categoryId == CATEGORY_TYPE_ID_FOR_ARTIST_OR_BAND){
+                    $artist_or_band_category_list[] = $category;
+                }
+                if($category->categoryId == CATEGORY_TYPE_ID_FOR_PUBLIC_FIGURE){
+                    $public_figure_category_list[] = $category;
                 }
             }
         }
         $this->data['categories'] = $category_list;
         $this->data['brand_subcategories'] = $brand_category_list;
+        $this->data['product_subcategories'] = $product_category_list;
+        $this->data['group_subcategories'] = $group_category_list;
         $this->data['community_subcategories'] = $community_category_list;
         $this->data['business_subcategories'] = $business_category_list;
         $this->data['place_subcategories'] = $place_category_list;
         $this->data['entertainment_subcategories'] = $entertainment_category_list;
         $this->data['company_subcategories'] = $company_category_list;
         $this->data['organization_subcategories'] = $organization_category_list;
+        $this->data['institution_subcategories'] = $institution_category_list;
+        $this->data['artist_or_band_subcategories'] = $artist_or_band_category_list;
+        $this->data['public_figure_subcategories'] = $public_figure_category_list;
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->data['app'] = PAGE_APP;

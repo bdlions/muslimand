@@ -11,40 +11,6 @@ and open the template in the editor.
 
 /*================================  Pages  ================================*/
 
-/*================================  Left Category  ================================*/
-.video_ul,.category_ul{
-    list-style-type:none;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-}
-.video_ul{
-    line-height: 28px;
-    font-size: 13px;
-}
-.category_ul{
-    line-height: 22px;
-    font-size: 10px;
-}
-.video_ul a,.category_ul a{
-    text-decoration: none;
-    color: black;
-}
-
-.video_ul a li:hover,.category_ul a li:hover{
-    display: block;
-    border-radius: 3px;
-    cursor: pointer;
-    background-color: #888888!important;
-    color: white!important;
-    padding-left: 4px;
-    font-weight: bold;
-}
-.video_ul a li:hover{
-    border-radius: 3px;
-}
-
-
 /*---------------------------------Add a Page -------------------------------*/
 
 .label_padding_top{
@@ -66,7 +32,7 @@ and open the template in the editor.
 }
 .brand{
     border-radius: 8px;
-    min-height: 220px;
+    min-height: 245px;
     position: relative;
     background-color: lightgray;
 }
