@@ -1,6 +1,6 @@
 <div class="row" style="margin-bottom: 1px;">
     <div class="col-md-12">
-        <div ng-controller="ImageCopperController" ng-clock style="position: absolute; left: 15px; z-index: 1001;">
+        <div ng-controller="ImageCopperController" ng-clock style="position: relative; left: 0px; z-index: 1001;">
             <div  ng-show="imageCropStep == 1" class="fileinput-cover-button">
                 <span ng-if="PageBasicInfo.referenceInfo.userId != '<?php echo $user_id; ?>'">
                     <img class="img-responsive" fallback-src="<?php echo base_url() ?>resources/images/pages/cover_picture/01.jpg"  ng-src="<?php echo base_url() . PAGE_COVER_PICTURE_IMAGE_PATH . $page_id . '.jpg'; ?>"/>
@@ -16,8 +16,8 @@
             </div>	
             <div ng-show="imageCropStep == 2">
                 <image-crop			 
-                    data-height="200"
-                    data-width="500"
+                    data-height="272"
+                    data-width="760"
                     data-shape="square"
                     data-step="imageCropStep"
                     src="imgSrc"
@@ -26,7 +26,7 @@
                     crop="initCrop"
                     padding="0"
                     max-size="1012"
-                    imagepath="<?php echo base_url(); ?>pages/add_cover_picture/<?php echo $page_id?>"
+                    imagepath="<?php echo base_url(); ?>pages/add_cover_picture/<?php echo $page_id ?>"
                     reloadpath = ""
                     ></image-crop>	   
             </div>
@@ -83,13 +83,15 @@
     </div>
 </div>
 <script>
-//    $('#join_page_id_01').on('click', function() {
-//        $('#join_page_id_01').hide();
-//        $('#joined_page_content_id_01').show();
-//    });
-//    $('#disjoin_page_id_01').on('click', function() {
-//        $('#joined_page_content_id_01').hide();
-//        $('#join_page_id_01').show();
-//    });
+    $(function() {
+        $('#join_page_id_01').on('click', function() {
+            $('#join_page_id_01').hide();
+            $('#joined_page_content_id_01').show();
+        });
+        $('#disjoin_page_id_01').on('click', function() {
+            $('#joined_page_content_id_01').hide();
+            $('#join_page_id_01').show();
+        });
+    });
 </script>
-<?php // $this->load->view("modal/modal_page_invitation"); ?>
+<?php $this->load->view("member/page/section/modal_page_invitation"); ?>
