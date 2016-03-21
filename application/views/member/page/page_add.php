@@ -1,3 +1,17 @@
+<script>
+    function add_page(catrgoryInfo) {
+        angular.element($('#add_page_id')).scope().addPage(catrgoryInfo, function (data) {
+            if(data.status == 1){
+                window.location = '<?php echo base_url(); ?>pages/pages_getting_started/' + data.page_id;
+            }else if(data.status == 0){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+
+        });
+    }
+</script>
 <style>
     option{
         height: 28px!important; 
@@ -16,6 +30,7 @@
         width: 100%;
     }
 </style>
+
 <div class="row padding_top_30px">
     <div class="col-md-12">
         <a href="<?php echo base_url(); ?>photos/"><img src="<?php echo base_url(); ?>resources/images/pages/icon/page.png"></a>
@@ -34,7 +49,7 @@
             </div>
             <div class="pagelet_divider"></div>
             <div class="row padding_top_20px">
-                <div class="col-md-4 padding_bottom_30px" ng-repeat="category in categoryList">
+                <div id="add_page_id" class="col-md-4 padding_bottom_30px" ng-repeat="category in categoryList">
                     <div ng-if="category.categoryId == '<?php echo CATEGORY_TYPE_ID_FOR_BRAND ?>'">
                         <form>
                             <div id="brand" class="brand">
@@ -65,7 +80,7 @@
                                 <div class="row">
                                     <div class="col-md-offset-1 col-md-10">
                                         <div style="padding-top: 10px;">
-                                            <a  href=""><button id="brand_creating_page_button" class="button-custom" ng-click="addPage(category)">Get started</button></a>
+                                            <a  href=""><button id="brand_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +115,7 @@
                                 <div class="row">
                                     <div class="col-md-offset-1 col-md-10">
                                         <div style="padding-top: 10px;">
-                                            <a  href=""><button id="product_creating_page_button" class="button-custom" ng-click="addPage(category)">Get started</button></a>
+                                            <a  href=""><button id="product_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -129,7 +144,7 @@
                                 <div class="row">
                                     <div class="col-md-offset-1 col-md-10">
                                         <div style="padding-top: 10px;">
-                                            <a  href=""><button id="group_creating_page_button" class="button-custom" ng-click="addPage(category)">Get started</button></a>
+                                            <a  href=""><button id="group_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +171,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-offset-1 col-md-10">
-                                        <a  href=""><button id="community_creating_page_button" class="button-custom" ng-click="addPage(category)">Get started</button></a>
+                                        <a  href=""><button id="community_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +224,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <div style="padding-top: 6px;">
-                                        <a  href=""><button id="business_creating_page_button" class="button-custom" ng-click="addPage(category)">Get started</button></a>
+                                        <a  href=""><button id="business_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -262,7 +277,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <div style="padding-top: 6px;">
-                                        <a  href=""><button id="place_creating_page_button" class="button-custom" ng-click="addPage(category)">Get started</button></a>
+                                        <a  href=""><button id="place_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -296,7 +311,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <div style="padding-top: 10px;">
-                                        <a  href=""><button id="entertainment_creating_page_button" class="button-custom" ng-click="addPage(category)">Get started</button></a>
+                                        <a  href=""><button id="entertainment_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -330,7 +345,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <div style="padding-top: 10px;">
-                                        <a  href=""><button id="company_creating_page_button" class="button-custom" ng-click="addPage(category)">Get started</button></a>
+                                        <a  href=""><button id="company_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -357,7 +372,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <div style="padding-top: 10px;">
-                                        <a  href=""><button id="organization_creating_page_button" class="button-custom" ng-click="addPage(category)">Get started</button></a>
+                                        <a  href=""><button id="organization_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -384,7 +399,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <div style="padding-top: 10px;">
-                                        <a  href=""><button id="institution_creating_page_button" class="button-custom" ng-click="addPage(category)">Get started</button></a>
+                                        <a  href=""><button id="institution_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -418,7 +433,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <div style="padding-top: 10px;">
-                                        <a  href=""><button id="band_creating_page_button" class="button-custom" ng-click="addPage(category)">Get started</button></a>
+                                        <a  href=""><button id="band_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -452,7 +467,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <div style="padding-top: 10px;">
-                                        <a  href=""><button id="public_creating_page_button" class="button-custom" ng-click="addPage(category)">Get started</button></a>
+                                        <a  href=""><button id="public_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -475,3 +490,5 @@
         });
     });
 </script>
+
+
