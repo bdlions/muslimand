@@ -1,7 +1,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.Jcrop.js"></script>
 <link rel="stylesheet" href="<?php echo base_url() ?>resources/css/jquery.Jcrop.css" type="text/css" />
 <div class="modal fade bs-example-modal-lg" id="modal_photo_display_id" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg custom_modal_dialog">
         <div class="modal-content modal_background_color">
             <div class="modal-body" style="background-color: #333;">
                 <div class="row form-group">

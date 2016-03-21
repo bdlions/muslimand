@@ -1338,10 +1338,10 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     }
 }
 @media (min-width: 1200px) {
-    .modal-dialog {
+    .custom_modal_dialog {
         width: 1200px!important;
     }
-    .carousel-inner{
+    .custom_modal_dialog> .carousel-inner{
         width: 600px!important;
         height: 400px!important;
         float: left;
@@ -1349,7 +1349,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
     }
 
-    .carousel-inner > .item > img{
+    .custom_modal_dialog> .carousel-inner > .item > img{
         min-height: 320px!important;
         max-height: 400px!important;
         max-width: 600px!important;
@@ -1363,7 +1363,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
         z-index: 999999999;
         top: 200px;
     }
-    .carousel-control.right{
+    .custom_modal_dialog> .carousel-control.right{
         right: 500px!important;
         z-index: 999999999;
         top: 200px;
