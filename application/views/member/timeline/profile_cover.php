@@ -42,8 +42,8 @@
                         </div>
                     <?php } ?>
                 </div>			
-                <div style="position: relative; left: -16px; margin: 0 15px; right: 0; top: 0; width: 100%"  ng-show="imageCropStep == 2" >
-                    <image-crop			 
+                <div style="position: relative; left: -16px; margin: 0 15px; right: 0; top: 0; width: 100%"  ng-show="imageCropStep == 2" class="zoom_disable">
+                    <image-crop		 
                         data-height="272"
                         data-width="760"
                         data-shape="square"
@@ -88,15 +88,15 @@
                         data-result="result"
                         data-result-blob="resultBlob"
                         crop="initCrop"
-                        padding="50"
-                        max-size="1024"
+                        padding="0"
+                        max-size="1012"
                         imagepath = "<?php echo base_url(); ?>photos/add_profile_picture/"
                         reloadpath = "<?php echo base_url(); ?>member/timeline/"
                         ></image-crop>		   
                 </div>
                 <div ng-show="imageCropStep == 2">
-                    <button class="btn btn-sm" style="position: absolute; bottom: 0; right: 45px; background-color: #999; color: #fff; width: 25%;" ng-click="initCrop = true">Crop</button>		
-                    <button class="btn btn-sm" style="position: absolute; bottom: 0; left: 45px; background-color: #999; color: #fff; width: 28%; vertical-align: middle;" ng-click="clear()">Cancel</button>
+                    <button class="btn btn-xs" style="position: absolute; bottom: 0; right: 15px; background-color: #999; color: #fff;" ng-click="initCrop = true">Crop</button>		
+                    <button class="btn btn-xs" style="position: absolute; bottom: 0; left: 15px; background-color: #999; color: #fff; vertical-align: middle;" ng-click="clear()">Cancel</button>
                 </div>		  
                 <div  ng-show="imageCropStep == 3">
                     <div >

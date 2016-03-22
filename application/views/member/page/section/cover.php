@@ -14,7 +14,7 @@
                     </div>
                 </span>
             </div>	
-            <div ng-show="imageCropStep == 2">
+            <div ng-show="imageCropStep == 2" class="zoom_disable">
                 <image-crop			 
                     data-height="272"
                     data-width="760"
@@ -31,8 +31,8 @@
                     ></image-crop>	   
             </div>
             <div ng-show="imageCropStep == 2">
-                <button class="btn btn-sm" style="position: absolute; bottom: 0; right: 45px; background-color: #999; color: #fff; width: 25%;"  ng-click="initCrop = true">Crop</button>		
-                <button class="btn btn-sm" style="position: absolute; bottom: 0; left: 45px; background-color: #999; color: #fff; width: 28%; vertical-align: middle;" ng-click="clear()">Cancel</button>
+                <button class="btn btn-sm" style="position: absolute; bottom: 0; right: 300px; bottom: 30px; background-color: #999; color: #fff;"  ng-click="initCrop = true">Crop</button>		
+                <button class="btn btn-sm" style="position: absolute; bottom: 0; left: 300px; bottom: 30px; background-color: #999; color: #fff; vertical-align: middle;" ng-click="clear()">Cancel</button>
             </div>		  
             <div  ng-show="imageCropStep == 3">
                 <div >

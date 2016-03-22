@@ -67,3 +67,7 @@
   position: relative;
   top: 32px;
 }
+
+.zoom_disable > .ng-image-crop > section > .zoom-handle{
+    display: none;
+}

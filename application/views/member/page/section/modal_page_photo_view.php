@@ -1,6 +1,6 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.Jcrop.js"></script>
 <link rel="stylesheet" href="<?php echo base_url() ?>resources/css/jquery.Jcrop.css" type="text/css" />
-<div class="modal fade bs-example-modal-lg" id="modal_page_photo_display_id" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-lg" id="" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content modal_background_color">
             <div class="modal-body" style="background-color: #333;">
@@ -71,7 +71,7 @@
                         <div class="modal_photo_pagelet">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img class="img-responsive" ng-src="<?php echo base_url();?>resources/images/profile_picture/40x40/Rx9hPNdqmRLRb4i.jpg?time= 1457357330" style="border: 1px solid lightgray" fallback-src="<?php echo base_url();?>resources/images/profile_picture/40x40/40x40_1.jpg" src="<?php echo base_url();?>resources/images/profile_picture/40x40/Rx9hPNdqmRLRb4i.jpg?time= 1457357330">
+                                    <img class="img-responsive" ng-src="<?php echo base_url(); ?>resources/images/profile_picture/40x40/Rx9hPNdqmRLRb4i.jpg?time= 1457357330" style="border: 1px solid lightgray" fallback-src="<?php echo base_url(); ?>resources/images/profile_picture/40x40/40x40_1.jpg" src="<?php echo base_url(); ?>resources/images/profile_picture/40x40/Rx9hPNdqmRLRb4i.jpg?time= 1457357330">
                                 </div>
                                 <div class="col-md-10">
                                     <div class="row">
@@ -79,8 +79,8 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div style="float: left;">
-                                                        <!--<a style="font-weight: bold;" href="<?php echo base_url();?>member/timeline/Rx9hPNdqmRLRb4i"><span ng-bind="status.userInfo.firstName" class="ng-binding">Alamgir</span>&nbsp;<span ng-bind="status.userInfo.lastName" class="ng-binding">Kabir</span></a>--> 
-                                                        <a style="font-weight: bold;" href="<?php echo base_url();?>member/timeline/Rx9hPNdqmRLRb4i"><span class="ng-binding">Alamgir</span>&nbsp;<span class="ng-binding">Kabir</span></a> 
+                                                        <!--<a style="font-weight: bold;" href="<?php echo base_url(); ?>member/timeline/Rx9hPNdqmRLRb4i"><span ng-bind="status.userInfo.firstName" class="ng-binding">Alamgir</span>&nbsp;<span ng-bind="status.userInfo.lastName" class="ng-binding">Kabir</span></a>--> 
+                                                        <a style="font-weight: bold;" href="<?php echo base_url(); ?>member/timeline/Rx9hPNdqmRLRb4i"><span class="ng-binding">Alamgir</span>&nbsp;<span class="ng-binding">Kabir</span></a> 
                                                         <!-- ngIf: status.mappingUserInfo != null -->
                                                         <!-- ngIf: 1 == status.statusTypeId -->
                                                         <!-- ngIf: 2 == status.statusTypeId -->
@@ -114,7 +114,7 @@
                                                 <div class="col-md-3">
                                                     <ul style="list-style-type: none; padding: 0;">
                                                         <li class="dropdown">
-                                                            <img width="15" height="15" ng-src="h<?php echo base_url();?>resources/images/friends_icon.png" src="<?php echo base_url();?>resources/images/friends_icon.png">
+                                                            <img width="15" height="15" ng-src="h<?php echo base_url(); ?>resources/images/friends_icon.png" src="<?php echo base_url(); ?>resources/images/friends_icon.png">
                                                             <a aria-expanded="false" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="caret"></span></a>
                                                             <ul role="menu" class="dropdown-menu">
                                                                 <li><a href="#">Everyone</a></li>
@@ -179,7 +179,7 @@
                                         <!-- ngIf: 3 == status.statusTypeId --><div ng-if="3 == status.statusTypeId" class="ng-scope">
                                             <div class="row from-group">
                                                 <div class="col-md-12 form-group">
-                                                    <img ng-src="<?php echo base_url();?>resources/images/photos/albums/user_album/Rx9hPNdqmRLRb4i_1454386530.jpg" style="border: 1px solid #703684; float: left;" class="img-responsive" src="<?php echo base_url();?>resources/images/photos/albums/user_album/Rx9hPNdqmRLRb4i_1454386530.jpg">
+                                                    <img ng-src="<?php echo base_url(); ?>resources/images/photos/albums/user_album/Rx9hPNdqmRLRb4i_1454386530.jpg" style="border: 1px solid #703684; float: left;" class="img-responsive" src="<?php echo base_url(); ?>resources/images/photos/albums/user_album/Rx9hPNdqmRLRb4i_1454386530.jpg">
                                                 </div>
                                             </div>
                                         </div><!-- end ngIf: 3 == status.statusTypeId -->
@@ -201,13 +201,13 @@
                                         <div class="col-md-12">
                                             <!-- ngIf: status.likeStatus != '1' --><span ng-if="status.likeStatus != '1'" class="ng-scope">
                                                 <a ng-click="addLike(status.userInfo.userId, status.statusId)" id="statusLike3SNXd7ulUTAXfrV" href="" style="color: #3B59A9;">
-                                                    <img src="<?php echo base_url();?>resources/images/like_icon.png"> Like </a>.
+                                                    <img src="<?php echo base_url(); ?>resources/images/like_icon.png"> Like </a>.
                                             </span><!-- end ngIf: status.likeStatus != '1' -->
                                             <!-- ngIf: status.likeStatus == '1' -->
                                             <a onclick="select_comment_field(angular.element(this).scope().status.statusId)" href="" style="color: #3B59A9;">
-                                                <img ng-src="<?php echo base_url();?>resources/images/comment_icon.png" src="<?php echo base_url();?>resources/images/comment_icon.png"> Comment </a>.
+                                                <img ng-src="<?php echo base_url(); ?>resources/images/comment_icon.png" src="<?php echo base_url(); ?>resources/images/comment_icon.png"> Comment </a>.
                                             <a onclick="open_modal_share(angular.element(this).scope().status)" href="" id="share_add_id" style="color: #3B59A9;">
-                                                <img ng-src="<?php echo base_url();?>resources/images/share_icon.png" src="<?php echo base_url();?>resources/images/share_icon.png"> Share</a>
+                                                <img ng-src="<?php echo base_url(); ?>resources/images/share_icon.png" src="<?php echo base_url(); ?>resources/images/share_icon.png"> Share</a>
                                         </div>
                                     </div>
                                 </div>
@@ -221,7 +221,7 @@
 
                                 <div class="row">
                                     <div profile_picture="" class="col-md-2">
-                                        <img ng-src="<?php echo base_url();?>resources/images/profile_picture/30x30/Rx9hPNdqmRLRb4i.jpg?time=1457357330" fallback-src="<?php echo base_url();?>resources/images/profile_picture/30x30/30x30_1.jpg" src="<?php echo base_url();?>resources/images/profile_picture/30x30/Rx9hPNdqmRLRb4i.jpg?time=1457357330">
+                                        <img ng-src="<?php echo base_url(); ?>resources/images/profile_picture/30x30/Rx9hPNdqmRLRb4i.jpg?time=1457357330" fallback-src="<?php echo base_url(); ?>resources/images/profile_picture/30x30/30x30_1.jpg" src="<?php echo base_url(); ?>resources/images/profile_picture/30x30/Rx9hPNdqmRLRb4i.jpg?time=1457357330">
                                     </div>
                                     <div class="col-md-10">
                                         <form ng-submit="addComment(userGenderId, status.userInfo, status.statusId)" class="ng-pristine ng-valid">
