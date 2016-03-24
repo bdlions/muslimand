@@ -439,17 +439,17 @@ class Pages extends CI_Controller {
         $this->template->load(null, "member/page/page_album_photo_view", $this->data);
     }
 
-    function pages_about($profile_id = "0") {
-        $user_id = $this->session->userdata('user_id');
-        if ($profile_id == "0" && $user_id == FALSE) {
-            redirect('auth/login', 'refresh');
-        }
-        $this->data['user_id'] = $user_id;
-        $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->data['profile_id'] = $profile_id;
-        $this->data['app'] = "app.BasicProfile";
-        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_about", $this->data);
-    }
+//    function pages_about($profile_id = "0") {
+//        $user_id = $this->session->userdata('user_id');
+//        if ($profile_id == "0" && $user_id == FALSE) {
+//            redirect('auth/login', 'refresh');
+//        }
+//        $this->data['user_id'] = $user_id;
+//        $this->data['first_name'] = $this->session->userdata('first_name');
+//        $this->data['profile_id'] = $profile_id;
+//        $this->data['app'] = "app.BasicProfile";
+//        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_about", $this->data);
+//    }
 
     function pages_getting_started($page_id = 0) {
         $this->data['age_range_list'] = $this->utils->get_age_list();

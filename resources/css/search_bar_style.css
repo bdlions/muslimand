@@ -20,6 +20,8 @@
     margin-bottom: 1px;
     box-shadow: 1px 4px 3px #888888;
     border: 1px solid #79B7EA;
+    max-height: 550px;
+    overflow-y: scroll;
 }
 .pagelet_z_index{
     position: absolute;
@@ -55,6 +57,7 @@
 
 .profile-background{
     background-color: #703684; 
+    border: 1px solid #703684;
     height: 50px;
     width: 50px;
     line-height: 50px;	

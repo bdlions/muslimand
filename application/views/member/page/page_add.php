@@ -480,7 +480,7 @@
     </div>
 </div>
 
-<?php $this->load->view("member/page/section/modal_create_page_error"); ?>
+<?php // $this->load->view("member/page/section/modal_create_page_error"); ?>
 
 <script>
     $(function() {

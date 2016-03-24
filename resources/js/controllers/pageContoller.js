@@ -86,6 +86,18 @@ angular.module('controllers.Page', ['services.Page', 'services.Timezone']).
                     pageInfo.subCategoryId = subCategoryInfo.subCategoryId;
                     pageInfo.subCategoryTitle = subCategoryInfo.title;
                 }
+                if (typeof $scope.PageInfo.street != "undefined" && $scope.PageInfo.street != "") {
+                    pageInfo.street = $scope.PageInfo.street;
+                }
+                if (typeof $scope.PageInfo.city != "undefined" && $scope.PageInfo.city != "") {
+                    pageInfo.city = $scope.PageInfo.city;
+                }
+                if (typeof $scope.PageInfo.zipCode != "undefined" && $scope.PageInfo.zipCode != "") {
+                    pageInfo.zipCode = $scope.PageInfo.zipCode;
+                }
+                if (typeof $scope.PageInfo.phone != "undefined" && $scope.PageInfo.phone != "") {
+                    pageInfo.phone = $scope.PageInfo.phone;
+                }
                 pageService.addPage(pageInfo).
                         success(function(data, status, headers, config) {
                             requestFunction(data);
