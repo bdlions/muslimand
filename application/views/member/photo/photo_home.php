@@ -20,19 +20,19 @@
         <div class="col-md-12">
             <div style="background-color: whitesmoke;">
                 <div aria-label="..." role="group" class="btn-group photo_menu_list_inline">
-                    <a id="albums" href="" class="btn btn-default">Albums</a>
+                    <a id="albums" href="" class="btn btn-default"  onclick="get_album_list()">Albums</a>
                     <a id="photos" href="" class="btn btn-default active">Photos</a>
                 </div>
             </div>
         </div>
     </div>
     <div class="row form-group">
-        <div class="col-md-12" ng-init="setUserAlbumList(<?php echo htmlspecialchars(json_encode($user_album_list)); ?>)" >
+        <div class="col-md-12" id="albums_id" >
             <?php $this->load->view("member/photo/section/my_albums"); ?>
         </div>
     </div>
-    <div class="row form-group">
-        <div class="col-md-12" >
+    <div class="row form-group" id="all_photos_id">
+        <div class="col-md-12"  ng-init="setTimeLinePhotoList(<?php echo htmlspecialchars(json_encode($photo_list)); ?>)" >
             <?php $this->load->view("member/photo/section/all_photos"); ?>
         </div>
     </div>
@@ -45,21 +45,23 @@
     </div>
 </div>
 <script>
-    $("#photos").click(function() {
+    function get_album_list() {
+        angular.element($('#albums')).scope().getAlbumList(function () {
+            $("#photo_albums").show();
+            $("#all_photos").hide();
+        });
+    }
+    $("#photos").click(function () {
         $("#all_photos").show();
         $("#photo_albums").hide();
     });
-    $("#albums").click(function() {
-        $("#photo_albums").show();
-        $("#all_photos").hide();
-    });
-    $(function() {
+    $(function () {
         var selector = '.photo_menu_list_inline a';
-        $(selector).on('click', function() {
+        $(selector).on('click', function () {
             $(selector).removeClass('active');
             $(this).addClass('active');
         });
-        $("#create_new_album").on("click", function() {
+        $("#create_new_album").on("click", function () {
             $('#modal_create_album_box').modal('show');
         });
     });
@@ -79,7 +81,7 @@
             <span style="font-size: 25px; font-weight: bold;">Photos</span>
         </div>
         <div class="col-md-offset-3 col-md-3">
-            <a  href="<?php //echo base_url();     ?>photos/add_photos"><button class="button-custom pull-right">Upload a New Image</button></a>
+            <a  href="<?php //echo base_url();            ?>photos/add_photos"><button class="button-custom pull-right">Upload a New Image</button></a>
         </div>
     </div>
     <div class="row">
@@ -108,10 +110,10 @@
                                     Latest<span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="<?php //echo base_url();     ?>photos/">Latest</a></li>
-                                        <li><a href="<?php //echo base_url();      ?>photos/photos_sort_most_viewed">Most Viewed</a></li>
-                                    <li><a href="<?php //echo base_url();      ?>photos/photos_sort_top_rated">Top Rated</a></li>
-                                    <li><a href="<?php //echo base_url();      ?>photos/photos_sort_most_discussed">Most Discussed</a></li>
+                                    <li><a href="<?php //echo base_url();            ?>photos/">Latest</a></li>
+                                        <li><a href="<?php //echo base_url();             ?>photos/photos_sort_most_viewed">Most Viewed</a></li>
+                                    <li><a href="<?php //echo base_url();             ?>photos/photos_sort_top_rated">Top Rated</a></li>
+                                    <li><a href="<?php //echo base_url();             ?>photos/photos_sort_most_discussed">Most Discussed</a></li>
                                 </ul>
                             </div>
                             &nbsp;
@@ -146,7 +148,7 @@
             </div>
             <div class="pagelet_divider"></div>
             <div class="row">
-                <div class="col-md-12" ng-init="setUserAlbumList(<?php //echo htmlspecialchars(json_encode($user_album_list));     ?>)" >
+                <div class="col-md-12" ng-init="setUserAlbumList(<?php //echo htmlspecialchars(json_encode($user_album_list));            ?>)" >
 <?php // $this->load->view("member/pagelets/photo/sort_latest"); ?>
 <?php //$this->load->view("member/pagelets/photo/sort_view_my_albums"); ?>
                 </div>

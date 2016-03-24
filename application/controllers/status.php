@@ -89,7 +89,7 @@ class Status extends CI_Controller {
                 $profile_id = $request->profileId;
             }
             $images = array();
-            $image_size;
+            $image_size = 0;
             if (property_exists($request, "imageList") != FALSE) {
                 $image_list = $request->imageList;
                 $image_size = count($image_list);
@@ -104,13 +104,13 @@ class Status extends CI_Controller {
                     $album_result = $this->album_add($user_id, $album_id, $album_title, $image_list, $new_status_id);
                 }
             }
-            if ($user_id != $profile_id && $profile_id != "" && $image_size == 1) {
+            if ($user_id != $profile_id && $profile_id != "" && $image_size > 0) {
                 $status_info->mappingId = $profile_id;
                 $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO;
             } else if ($user_id != $profile_id && $profile_id != "") {
                 $status_info->mappingId = $profile_id;
                 $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE;
-            } else if ($image_size == 1) {
+            } else if ($image_size > 0) {
                 $status_info->mappingId = $user_id;
                 $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO;
             } else {
@@ -267,6 +267,9 @@ class Status extends CI_Controller {
         $ref_user_info->lastName = $this->session->userdata('last_name');
         $status_like_info = new StdClass();
         $status_like_info->userInfo = $ref_user_info;
+        if(!(isset($user_id))){
+            $user_id = $this->session->userdata('user_id');
+        }
         $request_event = $this->status_mongodb_model->add_status_like($user_id, $status_id, $status_like_info, $status_type_id);
         if ($request_event != null) {
             $request_event = json_decode($request_event);
@@ -384,6 +387,50 @@ class Status extends CI_Controller {
     }
 
     /**
+     * this methord return a user timline status
+     * @param userId
+     * @mapping id
+     *  */
+    function get_page_profile_status() {
+        if (file_get_contents("php://input") != null) {
+            $response = array();
+            $user_id = $this->session->userdata('user_id');
+            $offset = STATUS_INITIAL_OFFSET;
+            $limit = STATUS_LIMIT_PER_REQUEST;
+            $postdata = file_get_contents("php://input");
+            $request = json_decode($postdata);
+
+            if (property_exists($request, "statusInfo") != FALSE) {
+                $status_info = $request->statusInfo;
+            }
+            if (property_exists($status_info, "pageId") != FALSE) {
+                $page_id = $status_info->pageId;
+            }
+            if (property_exists($status_info, "offset") != FALSE) {
+                $offset = $status_info->offset;
+            }
+            $mapping_id = $page_id;
+
+            $result = array();
+            $status_list = array();
+            $result = $this->status_mongodb_model->get_page_profile_status($user_id, $mapping_id, $offset, $limit);
+            if ($result != null) {
+                $result = json_decode($result);
+                if (property_exists($result, "userCurrentTime")) {
+                    $user_current_time = $result->userCurrentTime;
+                }
+                if (property_exists($result, "statusInfoList")) {
+                    $status_info_list = $result->statusInfoList;
+                    $status_list = $this->get_status_information($status_info_list);
+                }
+                $response["status_list"] = $status_list;
+                $response["user_current_time"] = $user_current_time;
+            }
+            echo json_encode($response);
+        }
+    }
+
+    /**
      * this methord return a user timline or newfeed  status
      * @param userId
      * @param profileId
@@ -478,6 +525,9 @@ class Status extends CI_Controller {
         foreach ($status_info_list as $status) {
             if (property_exists($status, "userInfo")) {
                 $status->userInfo = json_decode($status->userInfo);
+            }
+            if (property_exists($status, "pageInfo")) {
+                $status->pageInfo = json_decode($status->pageInfo);
             }
             if (property_exists($status, "mappingUserInfo")) {
                 $status->mappingUserInfo = json_decode($status->mappingUserInfo);

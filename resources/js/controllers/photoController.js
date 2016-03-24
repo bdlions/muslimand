@@ -9,6 +9,7 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.photolikeList = [];
             $scope.albumInfo = {};
             $scope.albumDetailList = [];
+            $scope.timeLinePhotoList = [];
             $scope.photoInfo = {};
             $scope.albumCommentInfo = {};
             $scope.photoCommentInfo = {};
@@ -34,6 +35,18 @@ angular.module('controllers.Photo', ['services.Photo']).
             };
             $scope.setPhotoInfo = function (photoInfo) {
                 $scope.photoInfoList.push(JSON.parse(photoInfo));
+            };
+            $scope.setTimeLinePhotoList = function (photoList) {
+                $scope.timeLinePhotoList = JSON.parse(photoList);
+            };
+            $scope.getAlbumList = function (requestFunction) {
+                photoService.getAlbumList().
+                        success(function (data, status, headers, config) {
+                            console.log(data);
+                            $scope.userAlbums = data.album_list;
+                            console.log($scope.userAlbums);
+                            requestFunction();
+                        });
             };
             $scope.getUserAlbumList = function (profileId) {
                 photoService.getUserAlbumList(profileId).
@@ -268,6 +281,17 @@ angular.module('controllers.Photo', ['services.Photo']).
                 {"image": "http://localhost/muslimand/resources/images/profile_picture/150x150/t87sqMzqcM86ee2.jpg", "name": "Patchy Cat"},
             ];
 
+            $scope.openTimeLineModal = function (photoInfo) {
+                var indx = $scope.timeLinePhotoList.indexOf(photoInfo);
+                photoInfo.active = true;
+                $scope.albumPhotoList[indx] = photoInfo;
+                $scope.modalInstance = $modal.open({
+                    animation: true,
+                    templateUrl: 'template/timeline_pic-modal.html',
+                    scope: $scope
+                });
+
+            };
             $scope.open = function (photoInfo) {
                 var indx = $scope.albumPhotoList.indexOf(photoInfo);
                 var photoId = photoInfo.photoId;

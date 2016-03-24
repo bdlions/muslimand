@@ -41,25 +41,40 @@ class Photos extends CI_Controller {
 //    }
     function index() {
         $user_id = $this->session->userdata('user_id');
-        $result = $this->photo_mongodb_model->get_user_albums($user_id);
-        $result_array = json_decode($result);
-        if (!empty($result_array)) {
-            if (property_exists($result_array, "albumList")) {
-                $this->data['user_album_list'] = json_encode($result_array->albumList);
+        $photo_list = array();
+        $result_event = $this->photo_mongodb_model->get_timeline_photos($user_id);
+        if ($result_event != null) {
+            $result_event = json_decode($result_event);
+            if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
+                $photo_list = $result_event->result;
             }
-        } else {
-            $this->data['user_album_list'] = array();
         }
+//      
         $user_relation = array();
         $user_relation['first_name'] = $this->session->userdata('first_name');
         $user_relation['last_name'] = $this->session->userdata('last_name');
         $user_relation['user_id'] = $user_id;
+        $this->data['photo_list'] = json_encode($photo_list);
         $this->data['app'] = "app.Photo";
         $this->data['user_id'] = $user_id;
         $this->data['profile_id'] = $user_id;
         $this->data['user_relation'] = json_encode($user_relation);
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(null, "member/photo/photo_home", $this->data);
+    }
+
+    function get_album_list() {
+        $response = array();
+        $user_id = $this->session->userdata('user_id');
+        $result_event = $this->photo_mongodb_model->get_user_albums($user_id);
+        if ($result_event != null) {
+            $temp_album_list = json_decode($result_event);
+            if (property_exists($temp_album_list, "albumList")) {
+                $response["album_list"] = $temp_album_list->albumList;
+            }
+        }
+        echo json_encode($response);
+        return;
     }
 
     function get_home_photos($profile_id = "0") {
@@ -403,6 +418,7 @@ class Photos extends CI_Controller {
             $album_id = $requestInfo->albumId;
         }
     }
+
 //used method
     function get_photo_info($photo_id = 0) {
         $response = array();
@@ -713,6 +729,7 @@ class Photos extends CI_Controller {
         }
         echo json_encode($response);
     }
+
 //used method
     function add_photo_like() {
         $response = array();

@@ -33,15 +33,39 @@ class Page_mongodb_model extends CI_Controller {
         return $this->curl->execute();
     }
 
-    function get_page_info($page_id) {
+    function get_page_info($page_id, $user_id) {
         $this->curl->create($this->SERVICE_PAGE . 'getPageInfo');
-        $this->curl->post(array("pageId" => $page_id));
+        $this->curl->post(array("pageId" => $page_id, "userId" => $user_id));
         return $this->curl->execute();
     }
 
     function add_page_like($page_id, $member_info) {
         $this->curl->create($this->SERVICE_PAGE . 'addPageLike');
         $this->curl->post(array("pageId" => $page_id, "memberInfo" => json_encode($member_info)));
+        return $this->curl->execute();
+    }
+
+    function get_invite_friend_list($page_id, $user_id, $offset = 0, $limit = 0) {
+        $this->curl->create($this->SERVICE_PAGE . 'getInviteFriendList');
+        $this->curl->post(array("pageId" => $page_id, "userId" => $user_id, "offset" => $offset, "limit" => $limit));
+        return $this->curl->execute();
+    }
+
+    function invite_member($page_id, $member_info) {
+        $this->curl->create($this->SERVICE_PAGE . 'inviteMember');
+        $this->curl->post(array("pageId" => $page_id, "memberInfo" => json_encode($member_info)));
+        return $this->curl->execute();
+    }
+
+    function join_page_membership($page_id, $member_info) {
+        $this->curl->create($this->SERVICE_PAGE . 'joinPageMamberShip');
+        $this->curl->post(array("pageId" => $page_id, "memberInfo" => json_encode($member_info)));
+        return $this->curl->execute();
+    }
+
+    function leave_page_membership($page_id, $user_id) {
+        $this->curl->create($this->SERVICE_PAGE . 'leavePageMemberShip');
+        $this->curl->post(array("pageId" => $page_id, "userId" => $user_id));
         return $this->curl->execute();
     }
 
@@ -63,5 +87,7 @@ class Page_mongodb_model extends CI_Controller {
         $this->curl->post(array("statusInfo" => json_encode($status_info)));
         return $this->curl->execute();
     }
+
+ 
 
 }

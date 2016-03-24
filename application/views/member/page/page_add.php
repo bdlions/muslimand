@@ -7,7 +7,7 @@
                 alert(data.message);
             }else{
                 alert(data.message);
-            }
+             }
 
         });
     }
@@ -80,7 +80,7 @@
                                 <div class="row">
                                     <div class="col-md-offset-1 col-md-10">
                                         <div style="padding-top: 10px;">
-                                            <a  href=""><button id="brand_creating_page_button" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
+                                            <a  href=""><button id="" class="button-custom" onclick="add_page(angular.element(this).scope().category)">Get started</button></a>
                                         </div>
                                     </div>
                                 </div>

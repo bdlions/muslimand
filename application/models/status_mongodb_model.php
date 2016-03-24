@@ -20,11 +20,19 @@ class Status_mongodb_model extends CI_Model {
         $this->curl->post(array("userId" => $user_id, "offset" => $offset, "limit" => $limit));
         return $this->curl->execute();
     }
+
     public function get_user_profile_status($user_id, $mapping_id, $offset, $limit) {
         $this->curl->create($this->SERVICE_STATUS . 'getUserProfileStatuses');
-        $this->curl->post(array("userId" => $user_id, "mappingId" =>$mapping_id, "offset" => $offset, "limit" => $limit));
+        $this->curl->post(array("userId" => $user_id, "mappingId" => $mapping_id, "offset" => $offset, "limit" => $limit));
         return $this->curl->execute();
     }
+
+    public function get_page_profile_status($user_id, $mapping_id, $offset, $limit) {
+        $this->curl->create($this->SERVICE_STATUS . 'getPageProfileStatuses');
+        $this->curl->post(array("userId" => $user_id, "mappingId" => $mapping_id, "offset" => $offset, "limit" => $limit));
+        return $this->curl->execute();
+    }
+
     public function get_status_details($user_id, $status_id) {
         $this->curl->create($this->SERVICE_STATUS . 'getStatusDetails');
         $this->curl->post(array("userId" => $user_id, "statusId" => $status_id));
@@ -42,6 +50,7 @@ class Status_mongodb_model extends CI_Model {
         $this->curl->post(array("userId" => $user_id, "statusId" => $status_id, 'likeInfo' => json_encode($like_info), 'statusTypeId' => $status_type_id));
         return $this->curl->execute();
     }
+
     public function add_status_comment_like($status_id, $comment_id, $like_info) {
         $this->curl->create($this->SERVICE_STATUS . 'addStatusCommentLike');
         $this->curl->post(array("statusId" => $status_id, "commentId" => $comment_id, 'likeInfo' => json_encode($like_info)));
@@ -65,6 +74,7 @@ class Status_mongodb_model extends CI_Model {
         $this->curl->post(array("statusId" => $status_id));
         return $this->curl->execute();
     }
+
     public function get_status_shears($status_id) {
         $this->curl->create($this->SERVICE_STATUS . 'getStatusShareList');
         $this->curl->post(array("statusId" => $status_id));
@@ -76,19 +86,22 @@ class Status_mongodb_model extends CI_Model {
         $this->curl->post(array("userId" => $user_id, "statusId" => $status_id));
         return $this->curl->execute();
     }
+
     public function update_status_comment($status_id, $comment_id, $description) {
         $this->curl->create($this->SERVICE_STATUS . 'updateStatusComment');
-        $this->curl->post(array("statusId" =>$status_id, "commentId" => $comment_id, "description" => $description));
+        $this->curl->post(array("statusId" => $status_id, "commentId" => $comment_id, "description" => $description));
         return $this->curl->execute();
     }
+
     public function delete_status_comment($status_id, $comment_id) {
         $this->curl->create($this->SERVICE_STATUS . 'deleteStatusComment');
-        $this->curl->post(array("statusId" =>$status_id, "commentId" => $comment_id));
+        $this->curl->post(array("statusId" => $status_id, "commentId" => $comment_id));
         return $this->curl->execute();
     }
+
     public function get_status_comment_like_list($status_id, $comment_id) {
         $this->curl->create($this->SERVICE_STATUS . 'getStatusCommentLikeList');
-        $this->curl->post(array("statusId" =>$status_id, "commentId" => $comment_id));
+        $this->curl->post(array("statusId" => $status_id, "commentId" => $comment_id));
         return $this->curl->execute();
     }
 
@@ -97,6 +110,7 @@ class Status_mongodb_model extends CI_Model {
         $this->curl->post(array("statusId" => $status_id));
         return $this->curl->execute();
     }
+
     public function get_recent_activities($user_id, $offset, $limit) {
         $this->curl->create($this->SERVICE_STATUS . 'getRecentActivities');
         $this->curl->post(array("userId" => $user_id, "offset" => $offset, "limit" => $limit));

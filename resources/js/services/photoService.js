@@ -13,6 +13,14 @@ angular.module('services.Photo', []).
                     }
                 });
             };
+            photoService.getAlbumList = function () {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/photos/get_album_list',
+                    data: {
+                    }
+                });
+            };
             photoService.getAlbum = function (albumId) {
                 return $http({
                     method: 'post',

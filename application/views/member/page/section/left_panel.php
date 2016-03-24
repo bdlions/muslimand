@@ -40,7 +40,7 @@
 <div class="pagelet form-group" >
     <div class="row">
         <div class="col-md-12">
-            <label><?php echo $like_counter ?> people likes this</label>
+            <label> {{memberInfo.counter}}people likes this</label>
         </div>
     </div>
 </div>

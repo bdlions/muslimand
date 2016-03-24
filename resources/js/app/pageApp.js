@@ -6,6 +6,8 @@ var app = angular.module("app.Page", [
     'controllers.Friend',
     'controllers.Message',
     'controllers.Page',
+    'controllers.Status',
+    'controllers.Image',
     'ui.bootstrap'
 ]);
 app.directive("chatBox", function () {

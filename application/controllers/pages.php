@@ -50,40 +50,40 @@ class Pages extends CI_Controller {
             $category_list = $result_event->categoryList;
             $sub_category_list = $result_event->subCategoryList;
             foreach ($sub_category_list as $category) {
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_BRAND){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_BRAND) {
                     $brand_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_PRODUCT){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_PRODUCT) {
                     $product_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_GROUP){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_GROUP) {
                     $group_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_COMMUNITY){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_COMMUNITY) {
                     $community_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_BUSINESS){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_BUSINESS) {
                     $business_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_PLACE){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_PLACE) {
                     $place_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_ENTERTAINMENT){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_ENTERTAINMENT) {
                     $entertainment_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_COMPANY){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_COMPANY) {
                     $company_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_ORGANIZATION){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_ORGANIZATION) {
                     $organization_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_INSTITUTION){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_INSTITUTION) {
                     $institution_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_ARTIST_OR_BAND){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_ARTIST_OR_BAND) {
                     $artist_or_band_category_list[] = $category;
                 }
-                if($category->categoryId == CATEGORY_TYPE_ID_FOR_PUBLIC_FIGURE){
+                if ($category->categoryId == CATEGORY_TYPE_ID_FOR_PUBLIC_FIGURE) {
                     $public_figure_category_list[] = $category;
                 }
             }
@@ -239,28 +239,24 @@ class Pages extends CI_Controller {
         }
     }
 
-    function newsfeed($mapping_id = 0) {
+    function timeline($mapping_id = 0) {
         $page_info = new stdClass();
-        $like_counter = "0";
+        $member_info = new stdClass();
         $user_id = $this->session->userdata('user_id');
-        $result_event = $this->page_mongodb_model->get_page_info($mapping_id);
+        $result_event = $this->page_mongodb_model->get_page_info($mapping_id, $user_id);
         if ($result_event != null) {
             $result_event = json_decode($result_event);
-            $member_event = json_decode($result_event->pageMemberCounter);
+            $member_info = $result_event->pageMemberInfo;
             $page_event = json_decode($result_event->pageInfo);
-            if ($member_event->responseCode == REQUEST_SUCCESSFULL) {
-                $like_counter = $member_event->result;
-            }
             if ($page_event->responseCode == REQUEST_SUCCESSFULL) {
                 $page_info = $page_event->result;
             }
         }
         $this->data['page_info'] = $page_info;
-        $this->data['like_counter'] = $like_counter;
-        $this->data['profile_id'] = $mapping_id;
+        $this->data['member_info'] = $member_info;
         $this->data['app'] = PAGE_APP;
         $this->data['user_id'] = $user_id;
-        $this->data['profile_id'] = $user_id;
+        $this->data['profile_id'] = $mapping_id;
         $this->data['page_id'] = $mapping_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(MEMBER_TEMPLATE, "member/page/page_timeline", $this->data);
@@ -301,6 +297,125 @@ class Pages extends CI_Controller {
         $this->template->load(MEMBER_TEMPLATE, "member/page/page_timeline", $this->data);
     }
 
+    //.......................................................memebers...........................................
+
+
+    function get_invite_friend_list() {
+        if (file_get_contents("php://input") != null) {
+            $response = array();
+            $invite_friend_list = array();
+            $postdata = file_get_contents("php://input");
+            $requestInfo = json_decode($postdata);
+            if (property_exists($requestInfo, "pageId") != FALSE) {
+                $page_id = $requestInfo->pageId;
+            }
+            $offset = PAGE_INVITE_FRIEND_LIST_INITIAL_OFFSET;
+            $limit = PAGE_INVITE_FRIEND_LIST_INITIAL_LIMIT;
+            $user_id = $this->session->userdata('user_id');
+            $result_event = $this->page_mongodb_model->get_invite_friend_list($page_id, $user_id, $offset, $limit);
+            if ($result_event != null) {
+                $friend_list = json_decode($result_event);
+                foreach ($friend_list as $invite_friend_info) {
+                    $invite_friend_info->friendInfo = json_decode($invite_friend_info->friendInfo);
+                    $invite_friend_list[] = $invite_friend_info;
+                }
+                $response['invite_friend_list'] = $invite_friend_list;
+            }
+            echo json_encode($response);
+            return;
+        }
+    }
+
+    function add_invitation() {
+        if (file_get_contents("php://input") != null) {
+            $response = array();
+            $invite_friend_list = array();
+            $postdata = file_get_contents("php://input");
+            $requestInfo = json_decode($postdata);
+            if (property_exists($requestInfo, "pageId") != FALSE) {
+                $page_id = $requestInfo->pageId;
+            }
+            $member_info = new stdClass();
+            if (property_exists($requestInfo, "userInfo") != FALSE) {
+                $user_info = $requestInfo->userInfo;
+                $member_info->userId = $user_info->userId;
+                $member_info->firstName = $user_info->firstName;
+                $member_info->lastName = $user_info->lastName;
+                $member_info->genderId = $user_info->genderId;
+            }
+            $result_event = $this->page_mongodb_model->invite_member($page_id, $member_info);
+            if ($result_event != null) {
+                $result_event = json_decode($result_event);
+                if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
+                    $response['status'] = "1";
+                    $response['member_status'] = PAGE_MEMBER_STATUS_ID_LIKED;
+                } else {
+                    $response['status'] = "0";
+                }
+            } else {
+                $response['status'] = "0";
+            }
+            echo json_encode($response);
+        }
+    }
+
+    function join_page() {
+        if (file_get_contents("php://input") != null) {
+            $response = array();
+            $invite_friend_list = array();
+            $postdata = file_get_contents("php://input");
+            $requestInfo = json_decode($postdata);
+            if (property_exists($requestInfo, "pageId") != FALSE) {
+                $page_id = $requestInfo->pageId;
+            }
+            $member_info = new stdClass();
+            $member_info->userId = $this->session->userdata('user_id');
+            $member_info->firstName = $this->session->userdata('first_name');
+            $member_info->lastName = $this->session->userdata('last_name');
+            $member_info->relationTypeId = PAGE_MEMBER_STATUS_ID_LIKED;
+            $result_event = $this->page_mongodb_model->join_page_membership($page_id, $member_info);
+            if ($result_event != null) {
+                $result_event = json_decode($result_event);
+                if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
+                    $response['status'] = "1";
+                    $response['member_status'] = PAGE_MEMBER_STATUS_ID_LIKED;
+                } else {
+                    $response['status'] = "0";
+                }
+            } else {
+                $response['status'] = "0";
+            }
+            echo json_encode($response);
+        }
+    }
+
+    function leave_membership() {
+        if (file_get_contents("php://input") != null) {
+            $response = array();
+            $invite_friend_list = array();
+            $postdata = file_get_contents("php://input");
+            $requestInfo = json_decode($postdata);
+            if (property_exists($requestInfo, "pageId") != FALSE) {
+                $page_id = $requestInfo->pageId;
+            }
+            $user_id = $this->session->userdata('user_id');
+            $result_event = $this->page_mongodb_model->leave_page_membership($page_id, $user_id);
+            if ($result_event != null) {
+                $result_event = json_decode($result_event);
+                if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
+                    $response['status'] = "1";
+                    $response['member_status'] = PAGE_MEMBER_STATUS_ID_NON_MEMBER;
+                } else {
+                    $response['status'] = "0";
+                }
+            } else {
+                $response['status'] = "0";
+            }
+            echo json_encode($response);
+        }
+    }
+
+//...................................................................photos.....................
     function pages_photo() {
         $user_id = $this->session->userdata('user_id');
         $result = $this->photo_mongodb_model->get_user_albums($user_id);
@@ -501,7 +616,7 @@ class Pages extends CI_Controller {
                     $page_info->referenceId = $user_id;
                     $page_info->title = $page_title;
                     $status_info = new stdClass();
-                    $status_info->userId = $user_id;
+                    $status_info->pageId = $page_id;
                     $new_status_id = $status_info->statusId = $status_id;
                     $status_info->statusTypeId = STATUS_TYPE_ID_PAGE_CHANGE_PROFILE_PICTURE;
                     $status_info->images = $image_list;
@@ -553,7 +668,7 @@ class Pages extends CI_Controller {
                     $page_info->referenceId = $user_id;
                     $page_info->title = $page_title;
                     $status_info = new stdClass();
-                    $status_info->userId = $user_id;
+                    $status_info->pageId = $page_id;
                     $new_status_id = $status_info->statusId = $status_id;
                     $status_info->statusTypeId = STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE;
                     $status_info->images = $image_list;
@@ -598,6 +713,128 @@ class Pages extends CI_Controller {
         }
         $image_add_result = $this->page_mongodb_model->add_photos($page_id, $album_id, $page_image_list_info);
         return $image_add_result;
+    }
+
+    //.......................status.........................................
+
+    /**
+     * this method upload image at server
+     * @ param file info
+     *  */
+    public function image_upload() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        $file = array();
+        $files = array();
+        if (isset($_FILES["userfile"])) {
+            $file_info = $_FILES["userfile"];
+            $result = $this->utils->upload_image($file_info, PAGE_IMAGE_PATH);
+            if ($result['status'] == 1) {
+                $picture = $result['upload_data']['file_name'];
+                $file = array(
+                    "name" => $picture,
+                    "type" => "image/jpeg",
+                    "url" => base_url() . PAGE_IMAGE_PATH . $picture,
+                    "thumbnailUrl" => base_url() . PAGE_IMAGE_PATH . $picture,
+                    "deleteUrl" => base_url() . PAGE_IMAGE_PATH . $picture,
+                    "size" => 100,
+                    "deleteType" => "DELETE"
+                );
+                $files[] = $file;
+                $response["files"] = $files;
+            } else {
+                $this->data['message'] = $result['message'];
+                echo json_encode($this->data);
+                return;
+            }
+            echo json_encode($response);
+            return;
+        }
+    }
+
+    /**
+     * this methord add a new status of a page 
+     * @param userId and page status Info
+     *  */
+    function add_status() {
+
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        $album_result = array();
+        $response = array();
+        $user_id = $this->session->userdata('user_id');
+        if ($requestInfo != null) {
+            $user_info = new stdClass();
+            $user_info->userId = $user_id;
+            $user_info->firstName = $this->session->userdata('first_name');
+            $user_info->lastName = $this->session->userdata('last_name');
+            $status_info = new stdClass();
+
+            $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
+            if (property_exists($requestInfo, "statusInfo") != FALSE) {
+                $request = $requestInfo->statusInfo;
+            }
+            $page_info = new stdClass();
+            if (property_exists($request, "pageId") != FALSE) {
+                $page_id = $request->pageId;
+                $page_info->pageId = $page_id;
+                $status_info->pageId = $page_id;
+            }
+            if (property_exists($request, "referenceId") != FALSE) {
+                $reference_id = $request->referenceId;
+                $page_info->referenceId = $reference_id;
+            }
+            if (property_exists($request, "title") != FALSE) {
+                $title = $request->title;
+                $page_info->title = $title;
+            }
+            $images = array();
+            $image_size = 0;
+            if (property_exists($request, "imageList") != FALSE) {
+                $image_list = $request->imageList;
+                $image_size = count($image_list);
+                if (!empty($image_list)) {
+                    foreach ($image_list as $imageInfo) {
+                        $image = new stdClass();
+                        $image->image = $imageInfo;
+                        $images[] = $image;
+                    }
+                    $album_id = PAGE_TIMELINE_PHOTOS_ALBUM_ID;
+                    $album_title = PAGE_TIMELINE_PHOTOS_ALBUM_TITLE;
+                    $album_result = $this->album_add($page_id, $album_id, $album_title, $images, $new_status_id);
+                }
+            }
+            if ($user_id == $reference_id && $reference_id != "" && $image_size == 1) {
+                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_S_PHOTO;
+            } else if ($user_id == $reference_id && $reference_id != "" && $image_size > 1) {
+                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS;
+            } else if ($user_id == $reference_id && $reference_id != "" && $image_size <= 0) {
+                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE;
+            } else if ($user_id != $reference_id && $reference_id != "" && $image_size == 1) {
+                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO;
+            } else if ($user_id != $reference_id && $image_size > 1) {
+                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS;
+            } else if ($user_id != $reference_id && $image_size < 0) {
+                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE;
+            }
+            if (property_exists($request, "description") != FALSE) {
+                $status_info->description = $request->description;
+            }
+            $status_info->images = $images;
+            $status_info->userInfo = $user_info;
+            $status_info->pageInfo = $page_info;
+            $status_info->mappingId = $page_id;
+            $result = $this->page_mongodb_model->add_status($status_info);
+            $result = json_decode($result);
+            if ($result->responseCode == REQUEST_SUCCESSFULL) {
+                $response["status"] = "1";
+            } else {
+                $response["status"] = "0";
+                $response["message"] = "Sorry! Error while add Status !! ";
+            }
+        }
+        echo json_encode($response);
     }
 
 }

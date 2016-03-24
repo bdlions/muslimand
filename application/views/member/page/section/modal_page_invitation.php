@@ -62,8 +62,8 @@
                                 }
                             </script> 
                             <script>
-                                (function($) {
-                                    $(window).load(function() {
+                                (function ($) {
+                                    $(window).load(function () {
                                         $("#page_invitation_list .ticker").mCustomScrollbar({
                                             setHeight: 300,
                                             theme: "dark-3"
@@ -78,62 +78,25 @@
             <div class="modal-body" >
                 <div id="page_invitation_list" >
                     <div class="ticker">
-                        <div class="row form-group">
-                            <div class="col-md-6">
+                        <div class="row form-group"> 
+                            <div class="col-md-6" ng-repeat="inviteMemberInfo in inviteFriendList">
                                 <div class="row form-group" id="find_row_01">
                                     <div class="col-md-2">
-                                        <img src="<?php echo base_url(); ?>resources/images/profile_picture/25x25/25x25_1.jpg">
+                                        <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 ?>25x25_{{inviteMemberInfo.friendInfo.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25; ?>{{inviteMemberInfo.friendInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
                                     </div>
                                     <div class="col-md-6">
-                                        <span class="font_bold chatting_user_name">Alamgir Kabir</span>
+                                        <span class="font_bold chatting_user_name">{{inviteMemberInfo.friendInfo.firstName}} &nbsp {{inviteMemberInfo.friendInfo.lastName}}</span>
                                     </div>
                                     <div class="col-md-4">
-                                        <input id="page_invitation_id_01" type="button" class="button-custom" value="Invite">
-                                        <span id="successful_page_invitation_id_01" class="content_hidden">Invite sent</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="row form-group" id="find_row_02">
-                                    <div class="col-md-2">
-                                        <img src="<?php echo base_url(); ?>resources/images/profile_picture/25x25/25x25_2.jpg">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="font_bold chatting_user_name">Rashida Suntana</span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input id="page_invitation_id_02" type="button" class="button-custom" value="Invite">
-                                        <span id="successful_page_invitation_id_02" class="content_hidden">Invite sent</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-md-6">
-                                <div class="row form-group" id="find_row_03">
-                                    <div class="col-md-2">
-                                        <img src="<?php echo base_url(); ?>resources/images/profile_picture/25x25/25x25_1.jpg">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="font_bold chatting_user_name">Nazmul Hasan</span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input id="page_invitation_id_03" type="button" class="button-custom" value="Invite">
-                                        <span id="successful_page_invitation_id_03" class="content_hidden">Invite sent</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="row form-group" id="find_row_04">
-                                    <div class="col-md-2">
-                                        <img src="<?php echo base_url(); ?>resources/images/profile_picture/25x25/25x25_2.jpg">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="font_bold chatting_user_name">Salma Akter</span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input id="page_invitation_id_04" type="button" class="button-custom" value="Invite">
-                                        <span id="successful_page_invitation_id_04" class="content_hidden">Invite sent</span>
+                                        <div ng-if="inviteMemberInfo.status == '<?php echo PAGE_MEMBER_STATUS_ID_INVITED ?>'">
+                                            <input id="" type="button" class="button-custom" value="Liked">
+                                        </div>
+                                        <div ng-if="inviteMemberInfo.status == '<?php echo PAGE_MEMBER_STATUS_ID_LIKED ?>'">
+                                            <input id="" type="button" class="button-custom" value="Invited">
+                                        </div>
+                                        <div onclick="add_invitation(angular.element(this).scope().inviteMemberInfo.friendInfo)" ng-if="inviteMemberInfo.status != '<?php echo PAGE_MEMBER_STATUS_ID_LIKED ?>' && inviteMemberInfo.status != '<?php echo PAGE_MEMBER_STATUS_ID_INVITED ?>'">
+                                            <input id="page_invitation_id" type="button" class="button-custom" value="Invite sent">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -147,27 +110,31 @@
 </div>
 
 <script>
-    function open_modal_page_invitation() {
-        $('#modal_page_invitation').modal('show');
+
+    function add_invitation(friendInfo) {
+        var pageId = '<?php echo $page_id; ?>'
+        angular.element($('#page_invitation_id')).scope().addInvitation(pageId, friendInfo, function () {
+        });
+
     }
-    $('#page_invitation_id_01').on('click', function() {
-        $('#page_invitation_id_01').hide();
-        $('#successful_page_invitation_id_01').show();
-        $('#find_row_01').addClass("successful_page_invitation_bg");
-    });
-    $('#page_invitation_id_02').on('click', function() {
-        $('#page_invitation_id_02').hide();
-        $('#successful_page_invitation_id_02').show();
-        $('#find_row_02').addClass("successful_page_invitation_bg");
-    });
-    $('#page_invitation_id_03').on('click', function() {
-        $('#page_invitation_id_03').hide();
-        $('#successful_page_invitation_id_03').show();
-        $('#find_row_03').addClass("successful_page_invitation_bg");
-    });
-    $('#page_invitation_id_04').on('click', function() {
-        $('#page_invitation_id_04').hide();
-        $('#successful_page_invitation_id_04').show();
-        $('#find_row_04').addClass("successful_page_invitation_bg");
-    });
+//    $('#page_invitation_id_01').on('click', function () {
+//        $('#page_invitation_id_01').hide();
+//        $('#successful_page_invitation_id_01').show();
+//        $('#find_row_01').addClass("successful_page_invitation_bg");
+//    });
+//    $('#page_invitation_id_02').on('click', function () {
+//        $('#page_invitation_id_02').hide();
+//        $('#successful_page_invitation_id_02').show();
+//        $('#find_row_02').addClass("successful_page_invitation_bg");
+//    });
+//    $('#page_invitation_id_03').on('click', function () {
+//        $('#page_invitation_id_03').hide();
+//        $('#successful_page_invitation_id_03').show();
+//        $('#find_row_03').addClass("successful_page_invitation_bg");
+//    });
+//    $('#page_invitation_id_04').on('click', function () {
+//        $('#page_invitation_id_04').hide();
+//        $('#successful_page_invitation_id_04').show();
+//        $('#find_row_04').addClass("successful_page_invitation_bg");
+//    });
 </script>

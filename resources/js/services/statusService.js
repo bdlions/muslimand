@@ -45,6 +45,15 @@ angular.module('services.Status', []).
                     }
                 });
             };
+            statusService.getPageStatusList = function (statusInfo) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/status/get_page_profile_status',
+                    data: {
+                        statusInfo: statusInfo
+                    }
+                });
+            };
 
             statusService.addLike = function (status) {
                 return $http({

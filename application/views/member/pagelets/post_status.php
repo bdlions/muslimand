@@ -113,6 +113,7 @@
             }
         }
         angular.element($('#save_status_id')).scope().addStatus(image_list, profileUserInfo, function () {
+            
             $("#updateStatusPagelet").show();
             $("#photo_details").hide();
             $("#statusPostId").val('');

@@ -14,8 +14,8 @@
         <div id="photo" class="col-xs-2 col-sm-2 col-md-2"><span class="status_label_style">Photo</span></div>
         <!--<div id="link" class="col-xs-2 col-sm-2 col-md-2"><span class="status_label_style">Link</span></div>-->
     </div>
-<!--    <div id="photo_details" style="display: none;">
-        <div id="fileupload" method="POST" enctype="multipart/form-data" data-ng-app="demo" data-ng-controller="DemoFileUploadController" ng-init="setPath('<?php echo base_url(); ?>status/image_upload')" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
+    <div id="photo_details" style="display: none;">
+        <div id="fileupload" method="POST" enctype="multipart/form-data" data-ng-app="demo" data-ng-controller="DemoFileUploadController" ng-init="setPath('<?php echo base_url(); ?>pages/image_upload')" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
             <div class="row fileupload-buttonbar">
                 <div class="col-md-10">
                     <span style="margin-top: 10px;" class="btn button-custom  fileinput-button" ng-class="{disabled: disabled}">
@@ -23,9 +23,9 @@
                         <input type="file" name="userfile" multiple ng-disabled="disabled">
                     </span>
                 </div>
-                 The global progress state 
+                The global progress state 
                 <div class="col-md-2 fade" data-ng-class="{in: active()}">
-                     The global progress bar 
+                    The global progress bar 
                     <div class="progress progress_custom progress-striped active" data-file-upload-progress="progress()"><div class="progress-bar progress-bar-success" data-ng-style="{width: num + '%'}"></div></div>
                     <div class="progress-extended">&nbsp;</div>
                 </div>
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
 
     <div id="link_details" style="display: none;">
         <div class="row">
@@ -91,33 +91,25 @@
 
 <script>
     function add_status() {
-        var profileId = '<?php if (isset($profile_id)) { echo $profile_id; }; ?>';
-        if (profileId === "0") {
-            profileId = '<?php echo $user_id; ?>';
-        }
-
-        var profileUserInfo = [];
-        profileUserInfo['profileId'] = profileId;
-        profileUserInfo['profileFirstName'] = '<?php if (isset($profile_first_name)) { echo $profile_first_name; }; ?>';
-        profileUserInfo['profileLastName'] = '<?php if (isset($profile_last_name)) { echo $profile_last_name; }; ?>';
+        var pageId = '<?php echo $profile_id; ?>';
         var image_list = [];
         image_list = get_image_list();
         var description = $('#statusPostId').val();
-        if(description == "" && image_list.length == 0 ){
+        if (description == "" && image_list.length == 0) {
             alert("Please Write Something  or attach photo to update your status !!!");
             return;
         }
-        if(image_list.length != 0){
-            for(var i = 0; image_list.length > i; i++){
+        if (image_list.length != 0) {
+            for (var i = 0; image_list.length > i; i++) {
                 console.log(image_list[i]);
             }
         }
-        angular.element($('#save_status_id')).scope().addStatus(image_list, profileUserInfo, function () {
-            $("#updateStatusPagelet").show();
-            $("#photo_details").hide();
-            $("#statusPostId").val('');
-            image_list = null;
-            clear_image();
+        angular.element($('#save_status_id')).scope().addStatus(image_list, pageId, function (data) {
+            if (data.status == "1") {
+                window.location = '<?php echo base_url(); ?>pages/timeline/' + pageId;
+            }else{
+                alert(data.message);
+            }
         });
     }
     $('#category_status').on('click', function () {

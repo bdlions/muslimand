@@ -328,5 +328,10 @@ class Photo_mongodb_model extends CI_Model {
         $this->curl->post(array("photoId" => $photo_id, "commentId" => $comment_id));
         return $this->curl->execute();
     }
+    public function get_timeline_photos($user_id) {
+        $this->curl->create($this->SERVICE_PHOTO . 'getTimelinePhotos');
+        $this->curl->post(array("userId" => $user_id));
+        return $this->curl->execute();
+    }
 
 }

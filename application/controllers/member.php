@@ -88,6 +88,9 @@ class Member extends CI_Controller {
                 if (property_exists($resultInfo, "userInfo")) {
                     $resultInfo->userInfo = json_decode($resultInfo->userInfo);
                 }
+                if (property_exists($resultInfo, "pageInfo")) {
+                    $resultInfo->pageInfo = json_decode($resultInfo->pageInfo);
+                }
                 if (property_exists($resultInfo, "referenceInfo")) {
                     $resultInfo->referenceInfo = json_decode($resultInfo->referenceInfo);
                 }

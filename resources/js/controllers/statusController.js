@@ -79,7 +79,40 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                         success(function (data, status, headers, config) {
                             $scope.userCurrentTimeStamp = data.user_current_time;
                             $scope.userGenderId = data.user_gender_id;
-                            if (typeof data.status_list == "undefined") {
+                            if (typeof data.status_list == "undefined"|| data.status_list.length <= 0) {
+                                $scope.busy = true;
+                            } else {
+                                var counter = data.status_list.length;
+                                for (var i = 0; i < counter; i++) {
+                                    if (typeof data.status_list[i].timeDiff == "undefined") {
+                                        data.status_list[i].timeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, data.status_list[i].createdOn);
+                                    }
+                                    if (typeof data.status_list[i].commentList != "undefined") {
+                                        angular.forEach(data.status_list[i].commentList, function (comment, key) {
+                                            if (typeof comment.commentTimeDiff == "undefined") {
+                                                comment.commentTimeDiff = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                            }
+                                        });
+                                    }
+                                    $scope.statuses.push(data.status_list[i]);
+                                }
+                                $scope.busy = false;
+                            }
+                        }.bind($scope));
+            };
+            $scope.getPageStatusList = function (pageId) {
+                if ($scope.busy)
+                    return;
+                $scope.busy = true;
+                var statusInfo = {};
+                var offset = $scope.statuses.length;
+                statusInfo.offset = offset;
+                statusInfo.pageId = pageId;
+                statusService.getPageStatusList(statusInfo).
+                        success(function (data, status, headers, config) {
+                            console.log(data);
+                            $scope.userCurrentTimeStamp = data.user_current_time;
+                            if (typeof data.status_list == "undefined" || data.status_list.length <= 0) {
                                 $scope.busy = true;
                             } else {
                                 var counter = data.status_list.length;

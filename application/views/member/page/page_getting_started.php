@@ -64,7 +64,7 @@
        var pageId = '<?php echo $page_id; ?>';
          angular.element($('#update_btn_id')).scope().updatePage(pageId, function (data) {
             if(data.status == 1){
-                window.location = '<?php echo base_url(); ?>pages/newsfeed/' +pageId;
+                window.location = '<?php echo base_url(); ?>pages/timeline/' +pageId;
             }else if(data.status == 0){
                 alert(data.message);
             }else{
