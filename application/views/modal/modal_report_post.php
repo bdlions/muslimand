@@ -1,5 +1,5 @@
 <div class="modal fade" id="modal_report_post" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal_dialog">
         <div class="modal-content modal_background_color">
             <div class="modal-header">
                 <div class="row">

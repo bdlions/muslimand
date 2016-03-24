@@ -2,7 +2,7 @@
     <div class="pagelet" style="border: 1px solid #fff;  margin-left: -15px;">
         <div class="row">
             <div class="col-md-12">
-                <label>About Prime Bank</label>
+                <label ng-cloak>About {{PageBasicInfo.title}}</label>
             </div>
         </div>
     </div>
@@ -23,9 +23,9 @@
                         <span class="opacity_70 font_bold">Category</span>
                     </div> 
                     <div class="col-md-7">
-                        <span id="page_about_category_edited_text" class="opacity_70">Companies & Organizations: Bank/Financial Institute</span>
+                        <span id="page_about_category_edited_text" class="opacity_70" ng-cloak>{{PageBasicInfo.category.categoryTitle}} : {{PageBasicInfo.subCategory.subCategoryTitle}}</span>
                         <div id="page_about_category_edit_box"  style="display: none;">
-                            <textarea class="form-control" style="resize: none; margin-bottom: 5px;">Companies & Organizations: Bank/Financial Institute</textarea>
+                            <textarea class="form-control" style="resize: none; margin-bottom: 5px;" ng-cloak>{{PageBasicInfo.category.categoryTitle}} : {{PageBasicInfo.subCategory.subCategoryTitle}}</textarea>
                             <input id="page_about_category_edited_text_save" type="button" class="button-custom pull-right" value="Save">
                         </div>
                     </div> 
@@ -37,7 +37,7 @@
                                 </a>
                                 <ul role="menu" class="dropdown-menu">
                                     <li>
-                                        <a id="page_about_category_edit_option">Edit</a>
+                                        <!--<a id="page_about_category_edit_option">Edit</a>-->
                                     </li>
                                 </ul>
                             </li>
@@ -54,9 +54,9 @@
                         <span class="opacity_70 font_bold">Name</span>
                     </div> 
                     <div class="col-md-7">
-                        <span id="page_about_name_edited_text" class="opacity_70">Prime Bank</span>
+                        <span id="page_about_name_edited_text" class="opacity_70" ng-cloak>{{PageBasicInfo.title}}</span>
                         <div id="page_about_name_edit_box"  style="display: none;">
-                            <textarea class="form-control" style="resize: none; margin-bottom: 5px;">Prime Bank</textarea>
+                            <textarea class="form-control" style="resize: none; margin-bottom: 5px;" value="{{PageBasicInfo.title}}" ng-model="PageBasicInfo.title" ng-cloak></textarea>
                             <input id="page_about_name_edited_text_save" type="button" class="button-custom pull-right" value="Save">
                         </div>
                     </div> 
@@ -68,19 +68,19 @@
                                 </a>
                                 <ul role="menu" class="dropdown-menu">
                                     <li>
-                                        <a id="page_about_name_edit_option">Edit</a>
+                                        <!--<a id="page_about_name_edit_option">Edit</a>-->
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
                 </div> 
-                <div class="row form-group">
+     <!--             <div class="row form-group">
                     <div class="col-md-12">
                         <hr>
                     </div> 
                 </div> 
-                <div class="row form-group">
+              <div class="row form-group">
                     <div class="col-md-3">
                         <span class="opacity_70 font_bold">Short Description</span>
                     </div> 
@@ -136,7 +136,7 @@
                             </li>
                         </ul>
                     </div>
-                </div> 
+                </div> -->
             </div> 
         </div>
     </div>

@@ -997,12 +997,12 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 .modal_cancel_button_style, .modal_cancel_button_style:hover, .modal_save_button_style:active, .modal_save_button_style:focus{
     background-color: #703684!important;  
-    font-size: 14px!important;  
+    font-size: 12px!important;  
     opacity: 1!important;  
     border: 1px solid #703684!important;  
     color: #fff!important;  
     font-weight: bold!important;  
-    padding: 4px 8px!important;  
+    padding: 4px 6px!important;  
     border-radius: 3px!important;  
     text-shadow: none!important;   
 }
@@ -1359,9 +1359,14 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     }
 
     .carousel-control.left{
-        left: -70px!important;
-        z-index: 999999999;
-        top: 200px;
+        left: 0px!important;
+        z-index: 2147483647;
+        top: 80px;
+    }
+    .carousel-control.right{
+        right: 0px !important;
+        top: 80px;
+        z-index: 2147483647;
     }
     .custom_modal_dialog> .carousel-control.right{
         right: 500px!important;
@@ -1376,12 +1381,38 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
         box-shadow: 0 0 1px #bbb;
         height: 450px;
     }
-    
+
     .modal_single_photo_display_window{
         background-color: #fff;
         border-radius: 4px;
         left: -150px;
         min-width: 900px; 
     }
+    .modal.in .modal-dialog{
+        width: 1200px!important;
+    }
+
+    .modal_dialog {
+        margin: 30px auto!important;
+        width: 600px!important;
+        position: relative!important;
+    }
+    .carousel > .carousel-inner > .item.text-center{
+        position: relative;
+        text-align: initial;
+        z-index: 2147483647;
+        padding-top: 80px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .carousel > .carousel-inner > .item.text-center > img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-height: 300px;
+        max-width: 600px;
+    }
+
 }
+
 

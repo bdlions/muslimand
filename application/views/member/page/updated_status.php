@@ -1,31 +1,31 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/elif.js"></script>
-<div ng-cloak class="scroll" id="updateStatusPagelet" infinite-scroll='getPageStatusList(<?php echo htmlspecialchars(json_encode($page_id)); ?>)' infinite-scroll-disabled='busy' infinite-scroll-distance='1'>
+<div ng-cloak class="scroll" id="timeLineUpdatedContent" style="margin-left: -15px;" id="updateStatusPagelet" infinite-scroll='getPageStatusList(<?php echo htmlspecialchars(json_encode($page_id)); ?>)' infinite-scroll-disabled='busy' infinite-scroll-distance='1'>
     <div ng-repeat="status in statuses" class="form-group">
         <div class="pagelet" id="pagelet{{status.statusId}}">
             <div class="pagelet">
                 <div class="row">
                     <div class="col-md-2" >
                         <div ng-if="status.statusTypeId === '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_PROFILE_PICTURE; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>'">
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>'">
                             <img fallback-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40 ?>40x40_01.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40; ?>{{status.pageInfo.pageId}}.jpg?time= <?php echo time(); ?>" alt="">
                         </div>
                         <div ng-if="status.statusTypeId === '<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_SHARE_OTHER_STATUS; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_SHARE_OTHER_PHOTO; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_SHARE_OTHER_VIDEO; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_ADD_VIDEO; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO; ?>' ||
-                                                    status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO; ?>'">
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_SHARE_OTHER_STATUS; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_SHARE_OTHER_PHOTO; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_SHARE_OTHER_VIDEO; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_ADD_VIDEO; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO; ?>' ||
+                                            status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO; ?>'">
                             <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{status.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
                         </div>
                     </div>
@@ -385,7 +385,7 @@
 <script>
 
     function get_album_comments(statusId) {
-        angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function () {
+        angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function() {
             $('#more_comment_id').hide();
             $('#pagelet_id_1').hide();
             $('#pagelet_id_2').hide();
@@ -400,7 +400,7 @@
             imageSize = statusInfo.images.length;
         }
         var statusTypeId = statusInfo.statusTypeId;
-        angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function () {
+        angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function() {
             $("#user_first_name").append(statusInfo.userInfo.firstName);
             $("#user_last_name").append(statusInfo.userInfo.lastName);
             $("#old_description").append(statusInfo.description);
@@ -421,12 +421,12 @@
     }
 
     function open_modal_like_list(statusId) {
-        angular.element($('#like_list_id')).scope().getStatusLikeList(statusId, function () {
+        angular.element($('#like_list_id')).scope().getStatusLikeList(statusId, function() {
             $('#modal_liked_people_list').modal('show');
         });
     }
     function open_modal_shared_list(statusId) {
-        angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function () {
+        angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function() {
             $('#modal_shared_people_list').modal('show');
         });
     }
@@ -439,14 +439,14 @@
         $("#updateStatusComment_" + commentId).show();
     }
     function delete_status_comment(statusId, commentId) {
-        angular.element($('#delete_option_comment_line_' + commentId)).scope().deleteStatusComment(statusId, commentId, function (response) {
+        angular.element($('#delete_option_comment_line_' + commentId)).scope().deleteStatusComment(statusId, commentId, function(response) {
             if (response == "1") {
                 $("#comment_" + commentId).hide();
             }
         });
     }
     function get_comment_like_list(statusId, commentId) {
-        angular.element($('#comment_like_' + commentId)).scope().getStatusCommentLikeList(statusId, commentId, function () {
+        angular.element($('#comment_like_' + commentId)).scope().getStatusCommentLikeList(statusId, commentId, function() {
             $('#modal_comment_liked_people_list').modal('show');
         });
     }

@@ -1,5 +1,5 @@
 <div class="modal fade" id="modal_share_album" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal_dialog">
         <div class="modal-content modal_background_color">
             <div class="modal-header">
                 <div class="row">
@@ -40,9 +40,9 @@
                     <div class="col-md-2">
                         <input type="button" class="close modal_cancel_button_style" data-dismiss="modal" aria-hidden="true" value="Cancel">
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <input type="hidden" id="album_shared_id">
-                        <input type="button" class="default_button form-control"  value="Share" id="add_album_share_id" onclick="add_album_share()">
+                        <input type="button" class="button-custom"  value="Share" id="add_album_share_id" onclick="add_album_share()">
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 angular.module('controllers.Photo', ['services.Photo']).
-        controller('photoController', function ($scope, $modal, photoService, utilsTimezone) {
+        controller('photoController', function($scope, $modal, photoService, utilsTimezone) {
             $scope.categoryList = [];
             $scope.albumList = [];
             $scope.albumPhotoList = [];
@@ -17,55 +17,56 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.userCurrentTimeStamp = new Date().getTime() / 1000;
 
 
-            $scope.setPhotoCategories = function (t) {
+            $scope.setPhotoCategories = function(t) {
                 $scope.categoryList = JSON.parse(t);
             };
-            $scope.setAlbums = function (albumList) {
+            $scope.setAlbums = function(albumList) {
                 $scope.albumList = JSON.parse(albumList);
             };
-            $scope.setUserAlbumList = function (userAlbumList) {
+            $scope.setUserAlbumList = function(userAlbumList) {
                 $scope.userAlbums = JSON.parse(userAlbumList);
             };
 
-            $scope.setAlbumInfo = function (albumInfo) {
+            $scope.setAlbumInfo = function(albumInfo) {
                 $scope.albumDetailList.push(JSON.parse(albumInfo));
             };
-            $scope.setAlbumPhotoList = function (photoList) {
+            $scope.setAlbumPhotoList = function(photoList) {
                 $scope.albumPhotoList = JSON.parse(photoList);
             };
-            $scope.setPhotoInfo = function (photoInfo) {
+            $scope.setPhotoInfo = function(photoInfo) {
                 $scope.photoInfoList.push(JSON.parse(photoInfo));
             };
-            $scope.setTimeLinePhotoList = function (photoList) {
+            $scope.setTimeLinePhotoList = function(photoList) {
                 $scope.timeLinePhotoList = JSON.parse(photoList);
+                console.log($scope.timeLinePhotoList);
             };
-            $scope.getAlbumList = function (requestFunction) {
+            $scope.getAlbumList = function(requestFunction) {
                 photoService.getAlbumList().
-                        success(function (data, status, headers, config) {
+                        success(function(data, status, headers, config) {
                             console.log(data);
                             $scope.userAlbums = data.album_list;
                             console.log($scope.userAlbums);
                             requestFunction();
                         });
             };
-            $scope.getUserAlbumList = function (profileId) {
+            $scope.getUserAlbumList = function(profileId) {
                 photoService.getUserAlbumList(profileId).
-                        success(function (data, status, headers, config) {
+                        success(function(data, status, headers, config) {
                             $scope.albumList = data.album_list;
                         });
             };
 
-            $scope.getAlbumLikeList = function (albumId, requestFunction) {
+            $scope.getAlbumLikeList = function(albumId, requestFunction) {
                 photoService.getAlbumLikeList(albumId).
-                        success(function (data, status, headers, config) {
+                        success(function(data, status, headers, config) {
                             $scope.likeList = data.like_list;
                             requestFunction();
                         });
                 return false;
             };
-            $scope.createAlbum = function (requestFunction) {
+            $scope.createAlbum = function(requestFunction) {
                 photoService.createAlbum($scope.albumInfo).
-                        success(function (data, status, headers, config) {
+                        success(function(data, status, headers, config) {
                             $scope.albumList.push(data.album_lsit);
                             $scope.albumInfo = "";
                             requestFunction();
@@ -73,20 +74,20 @@ angular.module('controllers.Photo', ['services.Photo']).
                 return false;
             };
 
-            $scope.editAlbum = function (albumId, albumInfo) {
+            $scope.editAlbum = function(albumId, albumInfo) {
 
 
             };
 
-            $scope.deleteAlbum = function (albumId) {
+            $scope.deleteAlbum = function(albumId) {
 
 
             };
 
-            $scope.addAlbumLike = function (albumId, requestFunction) {
+            $scope.addAlbumLike = function(albumId, requestFunction) {
                 photoService.addAlbumLike(albumId).
-                        success(function (data, status, headers, config) {
-                            angular.forEach($scope.albumDetailList, function (value, key) {
+                        success(function(data, status, headers, config) {
+                            angular.forEach($scope.albumDetailList, function(value, key) {
                                 if (value.albumId == albumId) {
                                     if (typeof value.likeStatus === "undefined") {
                                         value.likeStatus = "1";
@@ -99,16 +100,16 @@ angular.module('controllers.Photo', ['services.Photo']).
             };
 
 
-            $scope.deleteAlbumLike = function (albumId, likeId) {
+            $scope.deleteAlbumLike = function(albumId, likeId) {
 
 
             };
 
-            $scope.addAlbumComment = function (albumId) {
+            $scope.addAlbumComment = function(albumId) {
                 $scope.albumCommentInfo.albumId = albumId;
                 photoService.addAlbumComment($scope.albumCommentInfo).
-                        success(function (data, status, headers, config) {
-                            angular.forEach($scope.albumDetailList, function (value, key) {
+                        success(function(data, status, headers, config) {
+                            angular.forEach($scope.albumDetailList, function(value, key) {
                                 if (value.albumId == albumId) {
                                     if (typeof value.comment === "undefined") {
                                         value.comment = new Array();
@@ -121,10 +122,10 @@ angular.module('controllers.Photo', ['services.Photo']).
                         });
                 return false;
             };
-            $scope.getAlbumComments = function (albumId, requestFunction) {
+            $scope.getAlbumComments = function(albumId, requestFunction) {
                 photoService.getAlbumComments(albumId).
-                        success(function (data, status, headers, config) {
-                            angular.forEach($scope.albumDetailList, function (value, key) {
+                        success(function(data, status, headers, config) {
+                            angular.forEach($scope.albumDetailList, function(value, key) {
                                 if (value.albumId == albumId ? value.comment = data.comment_list : '') {
                                 }
                             }, $scope.albumDetailList);
@@ -134,20 +135,20 @@ angular.module('controllers.Photo', ['services.Photo']).
                 return false;
 
             };
-            $scope.editAlbumComment = function (commentInfo) {
+            $scope.editAlbumComment = function(commentInfo) {
 
 
             };
 
-            $scope.deleteAlbumComment = function (albumId, commentId) {
+            $scope.deleteAlbumComment = function(albumId, commentId) {
 
 
             };
 
-            $scope.AddAlbumShare = function (albumId, requestFunction) {
+            $scope.AddAlbumShare = function(albumId, requestFunction) {
                 $scope.albumSharedInfo.albumId = albumId;
                 photoService.AddAlbumShare($scope.albumSharedInfo).
-                        success(function (data, status, headers, config) {
+                        success(function(data, status, headers, config) {
                             requestFunction();
                         });
 
@@ -155,48 +156,48 @@ angular.module('controllers.Photo', ['services.Photo']).
 
 
             //.............................photo module...............
-            $scope.getPhotos = function (userId) {
+            $scope.getPhotos = function(userId) {
 
             };
 
-            $scope.getNextPhoto = function (photoInfo, requestFunction) {
+            $scope.getNextPhoto = function(photoInfo, requestFunction) {
                 var photoId = photoInfo.photoId;
                 photoService.getNextPhoto(photoId).
-                        success(function (data, status, headers, config) {
+                        success(function(data, status, headers, config) {
                             $scope.photoInfoList = data.photoInfo;
                             requestFunction();
                         });
 
             };
-            $scope.cropPicture = function (imageInfo, requestFunction) {
+            $scope.cropPicture = function(imageInfo, requestFunction) {
                 photoService.cropPicture(imageInfo).
-                        success(function (data, status, headers, config) {
+                        success(function(data, status, headers, config) {
                             requestFunction();
                         });
             };
 
-            $scope.addPhotos = function (imageList, requestFunction) {
+            $scope.addPhotos = function(imageList, requestFunction) {
                 $scope.photoInfo.imageList = [];
                 $scope.photoInfo.imageList = imageList;
                 photoService.addPhotos($scope.photoInfo).
-                        success(function (data, status, headers, config) {
+                        success(function(data, status, headers, config) {
                             requestFunction();
                         });
             };
-            $scope.deletePhoto = function (photoInfo, requestFunction) {
+            $scope.deletePhoto = function(photoInfo, requestFunction) {
                 var albumId = photoInfo.albumId;
                 var photoId = photoInfo.photoId;
                 photoService.deletePhoto(albumId, photoId).
-                        success(function (data, status, headers, config) {
+                        success(function(data, status, headers, config) {
                             requestFunction();
                         });
             };
 
-            $scope.addPhotoLike = function (photoId, referenceId, requestFunction) {
+            $scope.addPhotoLike = function(photoId, referenceId, requestFunction) {
                 photoService.addPhotoLike(photoId, referenceId).
-                        success(function (data, status, headers, config) {
+                        success(function(data, status, headers, config) {
                             console.log(data);
-                            angular.forEach($scope.albumPhotoList, function (value, key) {
+                            angular.forEach($scope.albumPhotoList, function(value, key) {
                                 if (value.photoId == photoId) {
                                     (value.likeStatus = "1");
                                     if (typeof value.likeCounter == "undefined") {
@@ -211,26 +212,26 @@ angular.module('controllers.Photo', ['services.Photo']).
                         });
                 return false;
             };
-            $scope.getPhotoLikeList = function (photoId, requestFunction) {
+            $scope.getPhotoLikeList = function(photoId, requestFunction) {
                 photoService.getPhotoLikeList(photoId).
-                        success(function (data, status, headers, config) {
+                        success(function(data, status, headers, config) {
                             $scope.likeList = data.like_list;
                             requestFunction();
                         });
                 return false;
             };
 
-            $scope.deletePhotoLike = function (photoInfo) {
+            $scope.deletePhotoLike = function(photoInfo) {
 
             };
 
-            $scope.addPhotoComment = function (photoInfo) {
+            $scope.addPhotoComment = function(photoInfo) {
                 var photoId = $scope.photoCommentInfo.photoId = photoInfo.photoId;
                 $scope.photoCommentInfo.referenceId = photoInfo.referenceId;
                 $scope.photoCommentInfo.userInfo = photoInfo.userInfo;
                 photoService.addPhotoComment($scope.photoCommentInfo).
-                        success(function (data, status, headers, config) {
-                            angular.forEach($scope.albumPhotoList, function (value, key) {
+                        success(function(data, status, headers, config) {
+                            angular.forEach($scope.albumPhotoList, function(value, key) {
                                 if (value.photoId === photoId) {
                                     if (typeof value.comment == "undefined") {
                                         value.comment = new Array();
@@ -244,10 +245,10 @@ angular.module('controllers.Photo', ['services.Photo']).
             };
 
 
-            $scope.getPhotoComments = function (photoId, requestFunction) {
+            $scope.getPhotoComments = function(photoId, requestFunction) {
                 photoService.getPhotoComments(photoId).
-                        success(function (data, status, headers, config) {
-                            angular.forEach($scope.photoInfoList, function (value, key) {
+                        success(function(data, status, headers, config) {
+                            angular.forEach($scope.photoInfoList, function(value, key) {
                                 if (value.photoId == photoId ? value.comment = data.comment_list : '') {
                                 }
                             }, $scope.photoInfoList);
@@ -260,15 +261,15 @@ angular.module('controllers.Photo', ['services.Photo']).
 
 
 
-            $scope.editPhotoComment = function (photoCommentInfo) {
+            $scope.editPhotoComment = function(photoCommentInfo) {
 
             };
 
-            $scope.deletePhotoComment = function (albumId, commentId) {
+            $scope.deletePhotoComment = function(albumId, commentId) {
 
             };
 
-            $scope.searchPhoto = function () {
+            $scope.searchPhoto = function() {
 
             };
 
@@ -281,22 +282,22 @@ angular.module('controllers.Photo', ['services.Photo']).
                 {"image": "http://localhost/muslimand/resources/images/profile_picture/150x150/t87sqMzqcM86ee2.jpg", "name": "Patchy Cat"},
             ];
 
-            $scope.openTimeLineModal = function (photoInfo) {
+            $scope.openTimeLineModal = function(photoInfo) {
                 var indx = $scope.timeLinePhotoList.indexOf(photoInfo);
                 photoInfo.active = true;
                 $scope.albumPhotoList[indx] = photoInfo;
                 $scope.modalInstance = $modal.open({
                     animation: true,
                     templateUrl: 'template/timeline_pic-modal.html',
-                    scope: $scope
+                    scope: $scope,
                 });
 
             };
-            $scope.open = function (photoInfo) {
+            $scope.open = function(photoInfo) {
                 var indx = $scope.albumPhotoList.indexOf(photoInfo);
                 var photoId = photoInfo.photoId;
                 photoService.getPhotoInfo(photoId).
-                        success(function (data, status, headers, config) {
+                        success(function(data, status, headers, config) {
                             if (typeof data.photo_info != "undefined") {
                                 var photo = data.photo_info;
                                 photo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photo.createdOn);
@@ -312,7 +313,7 @@ angular.module('controllers.Photo', ['services.Photo']).
                         });
             };
 
-            $scope.ok = function () {
+            $scope.ok = function() {
                 $scope.modalInstance.close();
             };
 

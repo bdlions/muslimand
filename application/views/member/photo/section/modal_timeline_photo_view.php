@@ -6,8 +6,8 @@
         </div>
     </div>
 
-    <div class="row form-group" style="background-color: #000; height: 500px;">
-        <div class="col-md-12">
+    <div class="row form-group" style="background-color: #000; height: 500px; width: 600px;">
+        <div class="">
 
             <carousel>
                 <slide ng-repeat="photoInfo in timeLinePhotoList" active="photoInfo.active">
@@ -36,10 +36,13 @@
                             </ul>
                         </div>
                     </div>
-<!--                    <div class="modal_photo_pagelet" style="bottom: 70px; float: right; position: fixed; right: 40px; width: 504px; z-index: 99999999; ">
+                    
+                    
+                    
+                     <div class="modal_photo_pagelet" style="bottom: 70px; float: right; position: fixed; right: 40px; width: 504px; z-index: 99999999;">
                         <div class="row">
                             <div class="col-md-2" >
-                                 <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{photoInfo.userInfo.gender.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{photoInfo.userInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
+                                <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{photoInfo.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{photoInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
                             </div>
                             <div class="col-md-10">
                                 <div class="row">
@@ -217,7 +220,9 @@
                                 </form>
                             </div>
                         </div>
-                    </div>-->
+                    </div>
+                    
+                    
                 </slide>
 
             </carousel>
@@ -231,7 +236,7 @@
 <?php $this->load->view("member/photo/modal_shared_album"); ?>
 <script type="text/javascript">
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('.flipbook').pageFlip({});
     });
 
@@ -240,12 +245,12 @@
     }
 
     function get_photo_comments(photoId) {
-        angular.element($('#photo_more_comment_show')).scope().getPhotoComments(photoId, function () {
+        angular.element($('#photo_more_comment_show')).scope().getPhotoComments(photoId, function() {
             $('#more_photo_comment_id').hide();
         });
     }
     function open_modal_photo_like_list(photoId) {
-        angular.element($('#photo_like_list_id')).scope().getPhotoLikeList(photoId, function () {
+        angular.element($('#photo_like_list_id')).scope().getPhotoLikeList(photoId, function() {
             $('#modal_liked_people_list').modal('show');
 
         });
@@ -253,7 +258,7 @@
     function add_photo_like(photoInfo) {
         var photoId = photoInfo.photoId;
         var referenceId = photoInfo.referenceId;
-        angular.element($('#photo_like_' + photoId)).scope().addPhotoLike(photoId, referenceId, function () {
+        angular.element($('#photo_like_' + photoId)).scope().addPhotoLike(photoId, referenceId, function() {
             $("#photo_like_" + photoId).hide();
             $("#photo_dislike_" + photoId).show();
         });
@@ -263,9 +268,9 @@
 //        var photoId = photoInfo.photoId;
         var albumId = photoInfo.albumId;
         var selectionInfo = " Photo ? ";
-        delete_confirmation(selectionInfo, function (response) {
+        delete_confirmation(selectionInfo, function(response) {
             if (response == '<?php echo MODAL_DELETE_YES; ?>') {
-                angular.element($('#delete_content_btn')).scope().deletePhoto(photoInfo, function () {
+                angular.element($('#delete_content_btn')).scope().deletePhoto(photoInfo, function() {
                     $('#common_delete_confirmation_modal').modal('hide');
                     window.location = '<?php echo base_url(); ?>photos/get_album/' + albumId;
                 });
@@ -280,4 +285,11 @@
 
 
 
+</script>
+<script>
+    $(function() {
+        $('.left.carousel-control').on("click", function() {
+            console.log("fgh");
+        });
+    });
 </script>

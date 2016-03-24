@@ -8,7 +8,9 @@
     <a href="<?php echo base_url(); ?>pages/pages_newsfeed"><li class="cursor_holder_style">Pages
             <ul class="video_ul" style="margin-left: 15px;">
                 <a href="<?php echo base_url(); ?>pages/pages_add"><li>Create a Page</li></a>
-                <a href=""><li>Prime Bank</li></a>
+<!--                <div ng-repeat="">
+                <a href=""><li>{{PageBasicInfo.title}}</li></a>
+                </div>-->
             </ul>    
         </li></a>
     <!--<a href="<?php // echo base_url();  ?>academy/"><li>Academy</li></a>-->
