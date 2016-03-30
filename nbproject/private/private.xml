@@ -3,14 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/muslimand/application/views/member/sections/menu/menu_link.php</file>
-            <file>file:/C:/xampp/htdocs/muslimand/application/views/member/photo/section/modal_photo_view_1.php</file>
-            <file>file:/C:/xampp/htdocs/muslimand/resources/css/styles.css</file>
-            <file>file:/C:/xampp/htdocs/muslimand/application/views/member/page/section/page_title.php</file>
-            <file>file:/C:/xampp/htdocs/muslimand/application/views/member/photo/section/modal_timeline_photo_view.php</file>
-            <file>file:/C:/xampp/htdocs/muslimand/application/views/member/page/page_about.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/views/member/photo/photo_home_1.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/controllers/auth2.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/controllers/photos.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/controllers/auth.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/models/ion_auth_model.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/config/autoload.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/config/ion_auth.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/resources/js/app/statusApp.js</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/views/member/photo/photo_home.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/config/routes.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/libraries/Ion_auth.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/views/member/photo/section/all_photos.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/constants/template.php</file>
             <file>file:/C:/xampp/htdocs/muslimand/resources/js/controllers/photoController.js</file>
-            <file>file:/C:/xampp/htdocs/muslimand/application/views/member/page/page_add.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/config/database.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/libraries/Ion_auth_1.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/application/config/config.php</file>
+            <file>file:/C:/xampp/htdocs/muslimand/resources/js/app/photoApp.js</file>
         </group>
     </open-files>
 </project-private>

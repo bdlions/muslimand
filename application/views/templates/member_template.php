@@ -43,6 +43,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/elif.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/angular-bootstrap-lightbox.min.css"/>
 
 
 
@@ -57,6 +58,9 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/ng-file-upload.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/ng-infinite-scroll.min.js"></script>
 
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap-lightbox.js"></script>
+        <!--<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap-lightbox.min.js"></script>-->
+        <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/testModal.js"></script>
 
 
         <!--<angular controllers>-->

@@ -442,17 +442,17 @@ class Ion_auth {
 
     public function get_current_user_types() {
         $id = $this->session->userdata('user_id');
-        $groups_array = array();
+        $groups_array = array(MEMBER_GROUP_TITLE);
 
-        if (isset($this->_cache_user_in_group[$id])) {
-            $groups_array = $this->_cache_user_in_group[$id];
-        } else {
-            $users_groups = $this->ion_auth_model->get_users_groups($id)->result();
-            foreach ($users_groups as $group) {
-                $groups_array[$group->groupId] = $group->title;
-            }
-            $this->_cache_user_in_group[$id] = $groups_array;
-        }
+//        if (isset($this->_cache_user_in_group[$id])) {
+//            $groups_array = $this->_cache_user_in_group[$id];
+//        } else {
+//            $users_groups = $this->ion_auth_model->get_users_groups($id)->result();
+//            foreach ($users_groups as $group) {
+//                $groups_array[$group->groupId] = $group->title;
+//            }
+//            $this->_cache_user_in_group[$id] = $groups_array;
+//        }
         return $groups_array;
     }
 

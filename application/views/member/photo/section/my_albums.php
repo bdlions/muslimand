@@ -2,12 +2,12 @@
     <div class="row form-group font_11px padding_top_10px">
         <div class="col-md-3" ng-repeat="album in userAlbums">
             <a href="<?php echo base_url(); ?>photos/get_album/{{album.albumId}}" >
-                <img style="border: 1px solid #703684;" src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{album.defaultImg}}" width="120" height="100">
+                <img style="border: 1px solid #703684;" fallback-src="<?php echo base_url() ?>resources/images/photos/albums/user_album/profile.jpg" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{album.defaultImg}}" width="120" height="100">
+                <div style="margin-right: -3px; padding: 0 2px 2px 2px;">
+                    <span ng-bind="album.title"></span><br>
+                    <span ng-bind="album.totalImg"></span> photos
+                </div>
             </a>
-            <div style="margin-right: -3px; padding: 0 2px 2px 2px;">
-                <a href="" > <span ng-bind="album.title"></span></a><br>
-                <span ng-bind="album.totalImg"></span> photos
-            </div>
         </div>
     </div>
     <div class="row form-group padding_top_10px">

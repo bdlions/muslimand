@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div id="users_temp">
+                    <div id="pages_temp">
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <span class="pagelet_title">Page</span>
@@ -43,13 +43,13 @@
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <div id="type_ahead_user">
-                                    <div id="dropdown_design_user">
+                                <div id="type_ahead_page">
+                                    <div id="dropdown_design_page">
                                         <div class="row margin_style">
                                             <a class= "page_anchor" href="" >
                                                 <div class="col-md-2">
                                                     <div class="profile-background profile_background_search_bar page_image_id">                                                                    
-                                                        <img  alt="" src="" class="page_image img-responsive profile-photo" onError="pageImageOnError(this)"/>
+                                                        <img  alt="" src="" class="page_image img-responsive profile-photo"/>
                                                         <img style="visibility: hidden; height: 0px;" src="" class="page_on_error_image img-responsive on-error-profile-photo" alt="" >
                                                     </div>
                                                 </div>

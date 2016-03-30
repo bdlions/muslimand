@@ -174,6 +174,7 @@ class Ion_auth_model extends CI_Model {
      * */
     public $_cache_user_in_group = array();
 
+    public $db;
     /**
      * caching of groups
      *
@@ -184,7 +185,7 @@ class Ion_auth_model extends CI_Model {
 
     public function __construct() {
         parent::__construct();
-        $this->load->database();
+//        $this->load->database();
         $this->load->config('ion_auth', TRUE);
         $this->load->helper('cookie');
         $this->load->helper('date');
@@ -746,17 +747,17 @@ class Ion_auth_model extends CI_Model {
 //            return FALSE;
 //        }
 // If username is taken, use username1 or username2, etc.
-        if ($this->identity_column != 'username') {
-            $original_username = $username;
-            for ($i = 0; $this->username_check($username); $i++) {
-                if ($i > 0) {
-                    $username = $original_username . $i;
-                }
-            }
-        }
+//        if ($this->identity_column != 'username') {
+//            $original_username = $username;
+//            for ($i = 0; $this->username_check($username); $i++) {
+//                if ($i > 0) {
+//                    $username = $original_username . $i;
+//                }
+//            }
+//        }
 
 // IP Address
-        $ip_address = $this->_prepare_ip($this->input->ip_address());
+        //$ip_address = $this->_prepare_ip($this->input->ip_address());
         $salt = $this->store_salt ? $this->salt() : FALSE;
         $password = $this->hash_password($password, $salt);
 
@@ -979,7 +980,7 @@ class Ion_auth_model extends CI_Model {
      * */
     public function clear_login_attempts($identity, $expire_period = 86400) {
         if ($this->config->item('track_login_attempts', 'ion_auth')) {
-            $ip_address = $this->_prepare_ip($this->input->ip_address());
+            //$ip_address = $this->_prepare_ip($this->input->ip_address());
             $this->curl->create($this->SERVICE_LANDING_PAGE . 'clearLoginAttempts');
             $this->curl->post(array('email' => $identity));
             $result_event = json_decode($this->curl->execute());
@@ -1964,12 +1965,12 @@ class Ion_auth_model extends CI_Model {
         return $filtered_data;
     }
 
-    protected function _prepare_ip($ip_address) {
-        if ($this->db->platform() === 'postgre' || $this->db->platform() === 'sqlsrv' || $this->db->platform() === 'mssql') {
-            return $ip_address;
-        } else {
-            return inet_pton($ip_address);
-        }
-    }
+//    protected function _prepare_ip($ip_address) {
+//        if ($this->db->platform() === 'postgre' || $this->db->platform() === 'sqlsrv' || $this->db->platform() === 'mssql') {
+//            return $ip_address;
+//        } else {
+//            return inet_pton($ip_address);
+//        }
+//    }
 
 }

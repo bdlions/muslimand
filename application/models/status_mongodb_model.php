@@ -44,6 +44,11 @@ class Status_mongodb_model extends CI_Model {
         $this->curl->post(array("statusId" => $status_id, 'statusInfo' => $status_info));
         return $this->curl->execute();
     }
+    public function update_status_photo($user_id, $status_id, $status_info) {
+        $this->curl->create($this->SERVICE_STATUS . 'updateStatusPhoto');
+        $this->curl->post(array("statusId" => $status_id, 'statusInfo' => $status_info));
+        return $this->curl->execute();
+    }
 
     public function add_status_like($user_id, $status_id, $like_info, $status_type_id) {
         $this->curl->create($this->SERVICE_STATUS . 'addStatusLike');

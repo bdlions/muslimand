@@ -1,65 +1,50 @@
-<!doctype html>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>resources/css/test_modal.css"/>
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular/angular.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/angular-bootstrap/ui-bootstrap.js"></script>
-<link rel="stylesheet" href="css/image-crop-styles.css">
-<link rel="stylesheet" href="resources/css/imageCrop.css">
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/imageCropController.js"></script>
-<script src="js/image-crop.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/imageCropperApp.js"></script>
-<html ng-app="app.ImageCopper">
-    <head>
-    <body>
-        <div ng-controller="ImageCopperController" ng-clock>
-            <div  ng-show="imageCropStep == 1" class="btn btn-success fileinput-button">		
-                <img src="<?php // echo base_url() ?>resources/images/add_photo_album.jpg" alt="">
-                <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
-            </div>			
-            <div ng-show="imageCropStep == 2">
-                <image-crop			 
-                    data-height="100"
-                    data-width="100"
-                    data-shape="square"
-                    data-step="imageCropStep"
-                    src="imgSrc"
-                    data-result="result"
-                    data-result-blob="resultBlob"
-                    crop="initCrop"
-                    padding="100"
-                    max-size="1024"
-                    ></image-crop>		   
-            </div>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/testModal.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/controllers/testModal.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/app/testApp.js"></script>
 
-            <div ng-show="imageCropStep == 2">
-                <br/>
-                <button ng-click="clear()">Cancel</button>
-                <button ng-click="initCrop = true">Crop</button>		
-            </div>		  
-            <div ng-show="imageCropStep == 3">
-                <img ng-src="{{result}}"></img>
-                <button onclick="imageUpload(angular.element(this).scope().result)">Save</button>	
-                <button ng-click="clear()">Clear</button>	
-            </div>
+
+<div ng-app="app.Test">
+    <div ng-controller="testController">
+        <div class="gallery">
+            <img src="http://localhost/muslimand/resources/images/cover_picture/9Ixsx2qFkzWEliG.jpg" onclick="lightbox(0)" style="width:auto; height:140px;" />
+            <img src="http://localhost/muslimand/resources/images/profile_picture/150x150/7OdqKzxmuakkpRq.jpg" onclick="lightbox(1)" style="width:auto; height:140px;" /><br />
+            <img src="http://localhost/muslimand/resources/images/profile_picture/150x150/7OdqKzxmuakkpRq.jpg" onclick="lightbox(2)" style="width:auto; height:140px;" /><br />
         </div>
-    </body>
-</html>
+
+    </div>
+</div>
+
+
+<div style="display:none;">
+    <div id="ninja-slider">
+        <div class="slider-inner"> 
+            <ul>
+                <li><a class="ns-img" href="http://localhost/muslimand/resources/images/cover_picture/9Ixsx2qFkzWEliG.jpg"></a></li>
+                <li><a class="ns-img" href="http://localhost/muslimand/resources/images/profile_picture/150x150/7OdqKzxmuakkpRq.jpg"></a></li>
+                <li><a class="ns-img" href="http://localhost/muslimand/resources/images/profile_picture/150x150/7OdqKzxmuakkpRq.jpg"></a></li>
+            </ul>
+            <div id="fsBtn" class="fs-icon" title="Expand/Close">close</div> 
+        </div>
+    </div>
+</div>
 
 <script>
 
-    function imageUpload(imageData) {
-        $.ajax({
-            dataType: 'json',
-            type: "POST",
-            url: '<?php echo base_url(); ?>welcome/image_crop/',
-            data: {
-                imageData: imageData
-            },
-            success: function (data) {
-                alert(data.message);
-            }
-        });
+    function lightbox(idx) {
+        var ninjaSldr = document.getElementById("ninja-slider");
+        ninjaSldr.parentNode.style.display = "block";
+        var abc = nslider.init(idx);
+        var fsBtn = document.getElementById("fsBtn");
+        fsBtn.click();
     }
 
+    function fsIconClick(isFullscreen) {
+        //Note: fsIconClick is the default event handler of the fullscreen button
+        var ninjaSldr = document.getElementById("ninja-slider");
+        ninjaSldr.parentNode.style.display = isFullscreen ? "block" : "none";
+    }
 </script>

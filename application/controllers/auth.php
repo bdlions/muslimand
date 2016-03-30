@@ -13,8 +13,9 @@ class Auth extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->attr_map = $this->config->item('attr_map', 'ion_auth');
-        $this->load->library('ion_auth');
         $this->load->library('form_validation');
+        
+        $this->load->library('ion_auth');
         $this->load->library('utils');
         $this->load->helper('url');
         $this->load->model('common_mongodb_model');
@@ -22,9 +23,9 @@ class Auth extends CI_Controller {
         $this->load->model('landing_page_model');
         $this->load->model('social_network_mongodb_model');
         // Load MongoDB library instead of native db driver if required
-        $this->config->item('use_mongodb', 'ion_auth') ?
-                        $this->load->library('mongo_db') :
-                        $this->load->database();
+//        $this->config->item('use_mongodb', 'ion_auth') ?
+//                        $this->load->library('mongo_db') :
+//                        $this->load->database();
 
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
@@ -47,10 +48,10 @@ class Auth extends CI_Controller {
                     $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
                     //list the users
-                    $this->data['users'] = $this->ion_auth->users()->result();
-                    foreach ($this->data['users'] as $k => $user) {
-                        $this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-                    }
+//                    $this->data['users'] = $this->ion_auth->users()->result();
+//                    foreach ($this->data['users'] as $k => $user) {
+//                        $this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+//                    }
 
                     //$this->_render_page('auth/index', $this->data);
                     $this->template->load(NULL, ADMIN_LOGIN_SUCCESS_VIEW, $this->data);

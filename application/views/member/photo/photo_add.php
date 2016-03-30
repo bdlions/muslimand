@@ -5,6 +5,7 @@
 </div>
 
 <div ng-controller="photoController" ng-clock class="pagelet">
+    <?php $this->load->view("member/photo/section/modal_create_album"); ?>
     <div class="row form-group">
         <div class="col-md-6">
             <span style="font-size: 20px; font-weight: bold;">Upload Photos</span>
@@ -25,16 +26,16 @@
                 <a style="text-decoration: none; cursor: pointer;"> <span id="createAlbumIdOnClick">(Create a New Photo Album)</span></a>
             </div>
         </div>
-        <div class="row form-group padding_top_10px">
+<!--        <div class="row form-group padding_top_10px">
             <div class="col-md-4">
                 <span style="font-size: 16px; font-weight: bold;">* Category:</span><br>
                 <select class="form-control"  ng-options="category.categoryId as category.title for category in categoryList" ng-model="photoInfo.categoryId">
                     <option value="" selected>Select Category</option>
                 </select>
             </div>
-        </div>
+        </div>-->
     </div>
-    <div class="row form-group padding_top_10px">
+<!--    <div class="row form-group padding_top_10px">
         <div class="col-md-6">
             <span style="font-size: 16px; font-weight: bold;">Photo(s) Privacy: </span><br>
             <select class="form-control" name="control">
@@ -46,8 +47,8 @@
             </select>
             Control who can see these photo(s). 
         </div>
-    </div>
-    <div class="row form-group padding_top_10px">
+    </div>-->
+<!--    <div class="row form-group padding_top_10px">
         <div class="col-md-6">
             <span style="font-size: 16px; font-weight: bold;">Comment Privacy: </span><br>
             <select class="form-control" name="control">
@@ -59,7 +60,7 @@
             </select>
             Control who can comment on these photo(s).
         </div>
-    </div>
+    </div>-->
     <div class="row form-group padding_top_10px">
         <div class="col-md-12">
             <!--image upload  start...............-->
@@ -125,6 +126,7 @@
             <button class="btn btn-xs" id="add_photos_btn_id" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;"  onclick="add_photos()">Upload</button>
         </div>
     </div>
+
 </div>
     <div class="row form-group">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
@@ -133,13 +135,16 @@
             </div>
         </div>
     </div>
-<?php $this->load->view("member/photo/section/modal_create_album"); ?>
 <script type="text/javascript">
     function add_photos() {
         var image_list = [];
         image_list = get_image_list();
-        angular.element($('#add_photos_btn_id')).scope().addPhotos(image_list, function() {
-            window.location = '<?php echo base_url(); ?>member/newsfeed';
+        angular.element($('#add_photos_btn_id')).scope().addPhotos(image_list, function(data) {
+            if(data.status == "1"){
+            window.location = '<?php echo base_url(); ?>member/timeline/<?php echo $user_id; ?>';
+            }else{
+                alert("Sorry! Error while Processing")
+            }
         });
     }
 

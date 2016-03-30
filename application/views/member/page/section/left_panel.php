@@ -3,10 +3,16 @@
         <div class="col-md-12">
             <div ng-controller="ImageCopperController" ng-clock style="position: relative; z-index: 1001;">
                 <div ng-show="imageCropStep == 1" class="img-circle fileinput-button profile_picture timeline_profile_picture_custom" style="height: 150px!important; width: 150px!important; margin-left: 60px;">
-                    <img class="cursor_holder_style img-circle" fallback-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W150_H150; ?>01.jpg" ng-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W150_H150 . $page_id . '.jpg'; ?>" />
-                    <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
-                    <img style="position: absolute; z-index: 99999; cursor: pointer; height: 22px; width: 22px;" src="<?php echo base_url(); ?>resources/images/camera.png">
-                    <span style="font-size: 10px; color: #fff; text-align: center;">Upload From Computer</span>
+                    <span ng-if="PageBasicInfo.referenceInfo.userId != '<?php echo $user_id; ?>'">
+                        <img class="cursor_holder_style img-circle" fallback-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W150_H150; ?>01.jpg" ng-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W150_H150 . $page_id . '.jpg'; ?>" />
+                    </span>
+                    <span ng-if="PageBasicInfo.referenceInfo.userId == '<?php echo $user_id; ?>'">
+                        <img class="cursor_holder_style img-circle" fallback-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W150_H150; ?>01.jpg" ng-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W150_H150 . $page_id . '.jpg'; ?>" />
+                        <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" />
+                        <img style="position: absolute; z-index: 99999; cursor: pointer; height: 22px; width: 22px;" src="<?php echo base_url(); ?>resources/images/camera.png">
+                        <span style="font-size: 10px; color: #fff; text-align: center;">Upload From Computer</span>
+                    </span>
+
                 </div>	
                 <div ng-show="imageCropStep == 2">
                     <image-crop			 

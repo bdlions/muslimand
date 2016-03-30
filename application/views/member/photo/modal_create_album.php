@@ -21,8 +21,8 @@
                         <textarea class="form-control form_control_custom_style textarea_custom_style" ng-model="albumInfo.description"></textarea>
                     </div>
                 </div>
-                <div class="row form-group"></div>
-                <div class="row">
+                <!--<div class="row form-group"></div>-->
+<!--                <div class="row">
                     <div class="col-md-6">
                         <span style="font-size: 16px; font-weight: bold;">Album(s) Privacy: </span><br>
                         <select class="form-control" name="control">
@@ -34,14 +34,14 @@
                         </select>
                     </div>
                     <div class="col-md-6"></div>
-                </div>
-                <div class="row">
+                </div>-->
+<!--                <div class="row">
                     <div class="col-md-12">
                         Control who can see this photo album and any photos associated with it.
                     </div>
-                </div>
-                <div class="row form-group"></div>
-                <div class="row">
+                </div>-->
+                <!--<div class="row form-group"></div>-->
+<!--                <div class="row">
                     <div class="col-md-6">
                         <span style="font-size: 16px; font-weight: bold;">Comment Privacy: </span><br>
                         <select class="form-control" name="control">
@@ -53,16 +53,16 @@
                         </select>
                     </div>
                     <div class="col-md-6"></div>
-                </div>
-                <div class="row">
+                </div>-->
+<!--                <div class="row">
                     <div class="col-md-12">
                         Control who can comment on this photo album and any photos associated with it.
                     </div>
-                </div>
+                </div>-->
                 <div class="row form-group"></div>
                 <div class="row">
                     <div class="col-md-6">
-                        <button class="btn btn-xs" id="create_album_btn" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;" onclick="create_album()">Submit</button>
+                        <button class="btn btn-xs" id="album_create_id" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;" onclick="create_album()">Submit</button>
                     </div>
                     <div class="col-md-6"></div>
                 </div>
@@ -80,6 +80,8 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
 <script type="text/javascript">
     function create_album() {
         var title = $('#album_title_id').val();
@@ -87,9 +89,8 @@
             alert("Please Give the Title of your Album");
             return;
         }
-        angular.element($('#create_album_btn')).scope().createAlbum(function () {
+        angular.element($('#album_create_id')).scope().createAlbum(function () {
             $('#modal_create_album_box').modal('hide');
         });
-    }
+    }}
 </script>
-

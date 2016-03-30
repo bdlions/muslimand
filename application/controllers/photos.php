@@ -7,7 +7,7 @@ class Photos extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->lang->load('auth');
-//$this->load->library('upload');
+        $this->load->library('upload');
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         $this->load->library('utils');
@@ -16,29 +16,13 @@ class Photos extends CI_Controller {
         $this->load->helper(array('form', 'url'));
         $this->load->helper('language');
 // Load MongoDB library instead of native db driver if required
-        $this->config->item('use_mongodb', 'ion_auth') ?
-                        $this->load->library('mongo_db') :
-                        $this->load->database();
+//        $this->config->item('use_mongodb', 'ion_auth') ?
+//                        $this->load->library('mongo_db') :
+//                        $this->load->database();
 
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
     }
 
-//    function index() {
-//        $user_id = $this->session->userdata('user_id');
-//        $result = $this->photo_mongodb_model->get_user_albums($user_id);
-//        $result_array = json_decode($result);
-//        if (!empty($result_array)) {
-//            if (property_exists($result_array, "albumList")) {
-//                $this->data['user_album_list'] = json_encode($result_array->albumList);
-//            }
-//        } else {
-//            $this->data['user_album_list'] = array();
-//        }
-//        $this->data['app'] = "app.Photo";
-//        $this->data['user_id'] = $user_id;
-//        $this->data['first_name'] = $this->session->userdata('first_name');
-//        $this->template->load(null, "member/photo/photo_home", $this->data);
-//    }
     function index() {
         $user_id = $this->session->userdata('user_id');
         $photo_list = array();
@@ -55,7 +39,7 @@ class Photos extends CI_Controller {
         $user_relation['last_name'] = $this->session->userdata('last_name');
         $user_relation['user_id'] = $user_id;
         $this->data['photo_list'] = json_encode($photo_list);
-        $this->data['app'] = "app.Photo";
+        $this->data['app'] = PHOTO_APP;
         $this->data['user_id'] = $user_id;
         $this->data['profile_id'] = $user_id;
         $this->data['user_relation'] = json_encode($user_relation);
@@ -173,7 +157,7 @@ class Photos extends CI_Controller {
         $user_relation['first_name'] = $this->session->userdata('first_name');
         $user_relation['last_name'] = $this->session->userdata('last_name');
         $user_relation['user_id'] = $user_id;
-        $this->data['app'] = "app.Photo";
+        $this->data['app'] = PHOTO_APP;
         $this->data['user_id'] = $user_id;
         $this->data['profile_id'] = $user_id;
         $this->data["first_name"] = $this->session->userdata('first_name');
@@ -244,7 +228,7 @@ class Photos extends CI_Controller {
         $user_relation['first_name'] = $this->session->userdata('first_name');
         $user_relation['last_name'] = $this->session->userdata('last_name');
         $user_relation['user_id'] = $user_id;
-        $this->data['app'] = "app.Photo";
+        $this->data['app'] = PHOTO_APP;
         $this->data['user_id'] = $user_id;
         $this->data['profile_id'] = $user_id;
         $this->data["first_name"] = $this->session->userdata('first_name');
@@ -447,7 +431,7 @@ class Photos extends CI_Controller {
         if (!empty($result_array)) {
             $this->data['photo_info'] = json_encode($result_array);
         }
-        $this->data['app'] = "app.Photo";
+        $this->data['app'] = PHOTO_APP;
         $this->data['user_id'] = $this->session->userdata('user_id');
         $this->data['first_name'] = $this->session->userdata('first_name');
         $this->template->load(null, "member/photo/photo_gallery", $this->data);
@@ -490,6 +474,10 @@ class Photos extends CI_Controller {
       }
       } */
 
+   /**
+     * this method upload image at server
+     * @ param file info
+     *  */
     public function image_upload() {
         $response = array();
         $postdata = file_get_contents("php://input");
@@ -653,20 +641,28 @@ class Photos extends CI_Controller {
                     }
                     $image_add_result = $this->photo_mongodb_model->add_photos($user_id, $album_id, $user_image_list_info);
                     $image_add_result = json_decode($image_add_result);
-                    if ($image_add_result->responseCode == CREATED_SUCCESSFULLY) {
-                        $status_info = new stdClass();
-                        $status_info->userId = $user_id;
-                        $status_info->statusId = $status_id;
-                        $status_info->statusTypeId = STATUS_TYPE_ID_ADD_ALBUM_PHOTOS;
-                        $status_info->images = $images;
-                        $status_info->userInfo = $user_info;
-                        $status_result = $this->status_mongodb_model->add_status($status_info);
-                        $status_result = json_decode($status_result);
-                        if ($status_result->responseCode == CREATED_SUCCESSFULLY) {
-                            $response['message'] = "added successfullly";
+                    if ($image_add_result->responseCode == REQUEST_SUCCESSFULL) {
+                        if ($image_add_result->result == NULL) {
+                            $status_info = new stdClass();
+                            $status_info->userId = $user_id;
+                            $status_info->mappingId = $user_id;
+                            $status_info->statusId = $status_id;
+                            $status_info->statusTypeId = STATUS_TYPE_ID_ADD_ALBUM_PHOTOS;
+                            $status_info->images = $images;
+                            $status_info->userInfo = $user_info;
+                            $status_result = $this->status_mongodb_model->add_status($status_info);
+                            $status_result = json_decode($status_result);
+                            if ($status_result->responseCode == REQUEST_SUCCESSFULL) {
+                                $response['status'] = "1";
+                            } else {
+                                $response['status'] = "0";
+                            }
+                        } else {
+                            $response['status'] = "1";
                         }
                     }
                     echo json_encode($response);
+                    return;
                 } else {
                     $response["message"] = "Please Seelect at least one Picture";
                     echo json_encode($response);
@@ -674,7 +670,9 @@ class Photos extends CI_Controller {
             } else {
                 $response["message"] = "Error message";
                 echo json_encode($response);
+                return;
             }
+            return;
         }
 
         $result = $this->photo_mongodb_model->get_albums_and_categories($user_id);

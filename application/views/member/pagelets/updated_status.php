@@ -11,14 +11,14 @@
                     <div class="pagelet">
                         <div class="row">
                             <div class="col-md-2" >
-                                <div ng-if="status.statusTypeId === '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_PROFILE_PICTURE; ?>' ||
-                                                status.statusTypeId === '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE; ?>' ||
-                                                status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE; ?>' ||
-                                                status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' ||
-                                                status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>' ||
-                                                status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE; ?>' ||
-                                                status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' ||
-                                                status.statusTypeId === '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>'">
+                                <div ng-if="status.statusTypeId == '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_PROFILE_PICTURE; ?>' ||
+                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE; ?>' ||
+                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE; ?>' ||
+                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' ||
+                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>' ||
+                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE; ?>' ||
+                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' ||
+                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>'">
                                     <img fallback-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40 ?>40x40_01.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40; ?>{{status.pageInfo.pageId}}.jpg?time= <?php echo time(); ?>" alt="">
                                 </div>
                                 <div ng-if="status.statusTypeId == '<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE; ?>' ||
@@ -212,7 +212,7 @@
                                     </div>
                                 </div>
                                 <!--user timeline or album photos-->
-                                <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO; ?>  == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO; ?>  == status.statusTypeId">
+                                <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO; ?>  == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO; ?>  == status.statusTypeId || <?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS; ?>  == status.statusTypeId ">
                                     <div class="row">
                                         <div ng-repeat="(key, image) in status.images">
                                             <img class="img-responsive" ng-click="open(status)" style="border: 1px solid #703684; float: left; height: 150px; width: 150px; margin: 0 10px 25px 15px" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >
