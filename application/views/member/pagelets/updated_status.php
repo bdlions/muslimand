@@ -12,26 +12,26 @@
                         <div class="row">
                             <div class="col-md-2" >
                                 <div ng-if="status.statusTypeId == '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_PROFILE_PICTURE; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>'">
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>'">
                                     <img fallback-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40 ?>40x40_01.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40; ?>{{status.pageInfo.pageId}}.jpg?time= <?php echo time(); ?>" alt="">
                                 </div>
                                 <div ng-if="status.statusTypeId == '<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_SHARE_OTHER_STATUS; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_SHARE_OTHER_PHOTO; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_SHARE_OTHER_VIDEO; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_ADD_VIDEO; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO; ?>' ||
-                                                status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO; ?>'">
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_SHARE_OTHER_STATUS; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_SHARE_OTHER_PHOTO; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_SHARE_OTHER_VIDEO; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_ADD_VIDEO; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO; ?>'">
                                     <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{status.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                                             <div class="col-md-12">
                                                 <div style="float: left;">
                                                     <span ng-if='status.pageInfo != null'>
-                                                        <a href="<?php echo base_url(); ?>pages/timeline/{{status.pageInfo.pageId}}" style="font-weight: bold;"><span ng-bind="status.pageInfo.title"></span></span></a> 
+                                                        <a href="<?php echo base_url(); ?>pages/timeline/{{status.pageInfo.pageId}}" style="font-weight: bold;"><span ng-bind="status.pageInfo.title"></span></a> 
                                                     </span>
                                                     <span ng-if='status.pageInfo == null'>
                                                         <a href="<?php echo base_url(); ?>member/timeline/{{status.userInfo.userId}}" style="font-weight: bold;"><span ng-bind="status.userInfo.firstName"></span>&nbsp<span ng-bind="status.userInfo.lastName"></span></a> 
@@ -203,7 +203,7 @@
                                         </div>
                                     </div>
                                     <!--upload single picture-->
-                                    <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_S_PHOTO; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO; ?> == status.statusTypeId ">
+                                    <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_S_PHOTO; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO; ?> == status.statusTypeId">
                                         <div class="row from-group">
                                             <div class="col-md-12 form-group">
                                                 <img class="img-responsive"  ng-click="open(status)"  style="border: 1px solid #703684; float: left" ng-src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{image.image}}" >
@@ -212,15 +212,15 @@
                                     </div>
                                 </div>
                                 <!--user timeline or album photos-->
-                                <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO; ?>  == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO; ?>  == status.statusTypeId || <?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS; ?>  == status.statusTypeId ">
+                                <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS; ?> == status.statusTypeId">
                                     <div class="row">
                                         <div ng-repeat="(key, image) in status.images">
                                             <img class="img-responsive" ng-click="open(status)" style="border: 1px solid #703684; float: left; height: 150px; width: 150px; margin: 0 10px 25px 15px" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >
                                         </div>
                                     </div>
                                 </div>
-                                  <!--page timeline or album photos-->
-                                <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>  == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>  == status.statusTypeId">
+                                <!--page timeline or album photos-->
+                                <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?> == status.statusTypeId">
                                     <div class="row">
                                         <div ng-repeat="(key, image) in status.images">
                                             <img class="img-responsive" ng-click="open(status)" style="border: 1px solid #703684; float: left; height: 150px; width: 150px; margin: 0 10px 25px 15px" ng-src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{image.image}}"  >
@@ -391,7 +391,7 @@
         <script>
 
             function get_album_comments(statusId) {
-                angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function () {
+                angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function() {
                     $('#more_comment_id').hide();
                     $('#pagelet_id_1').hide();
                     $('#pagelet_id_2').hide();
@@ -406,7 +406,7 @@
                     imageSize = statusInfo.images.length;
                 }
                 var statusTypeId = statusInfo.statusTypeId;
-                angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function () {
+                angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function() {
                     $("#user_first_name").append(statusInfo.userInfo.firstName);
                     $("#user_last_name").append(statusInfo.userInfo.lastName);
                     $("#old_description").append(statusInfo.description);
@@ -427,12 +427,12 @@
             }
 
             function open_modal_like_list(statusId) {
-                angular.element($('#like_list_id')).scope().getStatusLikeList(statusId, function () {
+                angular.element($('#like_list_id')).scope().getStatusLikeList(statusId, function() {
                     $('#modal_liked_people_list').modal('show');
                 });
             }
             function open_modal_shared_list(statusId) {
-                angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function () {
+                angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function() {
                     $('#modal_shared_people_list').modal('show');
                 });
             }
@@ -445,14 +445,14 @@
                 $("#updateStatusComment_" + commentId).show();
             }
             function delete_status_comment(statusId, commentId) {
-                angular.element($('#delete_option_comment_line_' + commentId)).scope().deleteStatusComment(statusId, commentId, function (response) {
+                angular.element($('#delete_option_comment_line_' + commentId)).scope().deleteStatusComment(statusId, commentId, function(response) {
                     if (response == "1") {
                         $("#comment_" + commentId).hide();
                     }
                 });
             }
             function get_comment_like_list(statusId, commentId) {
-                angular.element($('#comment_like_' + commentId)).scope().getStatusCommentLikeList(statusId, commentId, function () {
+                angular.element($('#comment_like_' + commentId)).scope().getStatusCommentLikeList(statusId, commentId, function() {
                     $('#modal_comment_liked_people_list').modal('show');
                 });
             }
@@ -464,137 +464,137 @@
         </script>
 
         <script type="text/ng-template" id="template/pic-modal.html">
-            <div class="modal-body modal_single_photo_display_window">
+        <div class="modal-body modal_single_photo_display_window">
             <div class="row form-group">
-            <div class="col-md-12">
-            <button type="button" class="close close-lg" ng-click="ok()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            </div>
+                <div class="col-md-12">
+                    <button type="button" class="close close-lg" ng-click="ok()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
             </div>
             <div class="row form-group">
-            <div class="col-md-6">
-            <img class="img-responsive" ng-src="<?php echo base_url(); ?>resources/images/4.jpg"  >
-            </div>
-            <div class="col-md-6">
-            <div class="pagelet" style="background-color: #ddd; max-height: 280px; overflow-y: scroll;">
-            <div class="row form-group" >
-            <div class="col-md-12">
-            <div style="float: left">
-            <span ng-if = "status.likeCounter > 0">
-            <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
-            <a  id="like_list_id"  style="color: #3B59A9;" href onclick="open_modal_like_list(angular.element(this).scope().status.statusId)" >
-            <span ng-if = "status.likeStatus === '1'">
-            <span  id="statusLike{{status.statusId}}"> you</span>
-            </span>
-            <span ng-if = "status.likeCounter > 1 && status.likeStatus === '1'">
-            and  {{status.likeCounter - 1}} people
-            </span>
-            <span ng-if ="status.likeCounter > 0 && status.likeStatus !== '1'">
-            {{status.likeCounter}} people
-            </span>
-            like this.
-            </a> 
-            </span>
-            </div>
+                <div class="col-md-6">
+                    <img class="img-responsive" ng-src="<?php echo base_url(); ?>resources/images/4.jpg"  >
+                </div>
+                <div class="col-md-6">
+                    <div class="pagelet" style="background-color: #ddd; max-height: 280px; overflow-y: scroll;">
+                        <div class="row form-group" >
+                            <div class="col-md-12">
+                                <div style="float: left">
+                                    <span ng-if = "status.likeCounter > 0">
+                                        <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                                        <a  id="like_list_id"  style="color: #3B59A9;" href onclick="open_modal_like_list(angular.element(this).scope().status.statusId)" >
+                                            <span ng-if = "status.likeStatus === '1'">
+                                                <span  id="statusLike{{status.statusId}}"> you</span>
+                                            </span>
+                                            <span ng-if = "status.likeCounter > 1 && status.likeStatus === '1'">
+                                                and  {{status.likeCounter - 1}} people
+                                            </span>
+                                            <span ng-if ="status.likeCounter > 0 && status.likeStatus !== '1'">
+                                                {{status.likeCounter}} people
+                                            </span>
+                                            like this.
+                                        </a> 
+                                    </span>
+                                </div>
 
-            </div>
-            </div>
-            <span ng-if = "status.shareCounter > 0">
-            <div class="pagelet_divider"></div>
-            <div class="row form-group">
-            <div class="col-md-12">
-            <div style="float: left;">
-            <img ng-src="<?php echo base_url(); ?>resources/images/share_icon.png" >
-            <a href id="shared_list_id" onclick="open_modal_shared_list(angular.element(this).scope().status.statusId)">{{status.shareCounter}} shares</a>
-            </div>
-            </div>
-            </div>
-            </span>
-            <span ng-if="status.commentCounter > 0">
-            <div class="pagelet_divider" id='pagelet_id_1'></div>
-            <div class="row form-group">
-            <div class="col-md-12" id="more_comment_id">
-            <div style="float: left;">
+                            </div>
+                        </div>
+                        <span ng-if = "status.shareCounter > 0">
+                            <div class="pagelet_divider"></div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <div style="float: left;">
+                                        <img ng-src="<?php echo base_url(); ?>resources/images/share_icon.png" >
+                                        <a href id="shared_list_id" onclick="open_modal_shared_list(angular.element(this).scope().status.statusId)">{{status.shareCounter}} shares</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+                        <span ng-if="status.commentCounter > 0">
+                            <div class="pagelet_divider" id='pagelet_id_1'></div>
+                            <div class="row form-group">
+                                <div class="col-md-12" id="more_comment_id">
+                                    <div style="float: left;">
 
-            <img ng-src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
-            <a href  id="status_more_comment" onclick="get_album_comments(angular.element(this).scope().status.statusId)">view {{status.commentCounter}} more comments </a>
-            </div>
-            </div>
-            </div>
-            </span>
+                                        <img ng-src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
+                                        <a href  id="status_more_comment" onclick="get_album_comments(angular.element(this).scope().status.statusId)">view {{status.commentCounter}} more comments </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
 
-            <span ng-if="status.commentList != null">
-            <div class="pagelet_divider" id='pagelet_id_2'></div>
-            <div ng-repeat="commentInfo in status.commentList.slice().reverse()">
-            <div class="row form-group" id="comment_{{commentInfo.commentId}}">
-            <div class="col-md-1" profile_picture >
-            <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg" width="30" height="30">
-            <!--<img style="border: 1px solid lightgray; visibility:hidden; height: 0px " src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg">-->
+                        <span ng-if="status.commentList != null">
+                            <div class="pagelet_divider" id='pagelet_id_2'></div>
+                            <div ng-repeat="commentInfo in status.commentList.slice().reverse()">
+                                <div class="row form-group" id="comment_{{commentInfo.commentId}}">
+                                    <div class="col-md-1" profile_picture >
+                                        <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg" width="30" height="30">
+                                        <!--<img style="border: 1px solid lightgray; visibility:hidden; height: 0px " src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg">-->
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="row" >
+                                            <div class="col-md-12">
+                                                <div style="float: left">
+                                                    <a style="font-weight: bold;" href='<?php echo base_url(); ?>member/timeline/{{commentInfo.userInfo.userId}}'></span><span ng-bind="commentInfo.userInfo.firstName"></span>&nbsp<span ng-bind="commentInfo.userInfo.lastName"></span></a>
+                                                    <span ng-bind="commentInfo.description" id="displayStatusComment_{{commentInfo.commentId}}"></span>
+                                                    <span id="updateStatusComment_{{commentInfo.commentId}}" style="display: none;">
+                                                        <form ng-submit="updateStatusComment(status.statusId, commentInfo)" >
+                                                            <input class="form-control" ng-model="commentInfo.description" />
+                                                        </form>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div style="float: left">
+                                                    {{commentInfo.commentTimeDiff}}
+                                                    <span ng-if = "commentInfo.CommentlikeStatus != '1'">
+                                                        <a style="color: #3B59A9;" href id="statusCommentLike{{commentInfo.commentId}}" ng-click="addStatusCommentLike(status.statusId, commentInfo.commentId)"> Like</a> 
+                                                    </span>
+                                                    <span ng-if = "commentInfo.CommentlikeStatus == '1'">
+                                                        <a style="color: #3B59A9;" href id="statusUnLike{{commentInfo.commentId}}" ng-click="unLike(status.statusId)"> liked</a> 
+                                                    </span><!--<a>like</a>-->
+                                                    <a id="comment_like_{{commentInfo.commentId}}" onclick="get_comment_like_list(angular.element(this).scope().status.statusId, angular.element(this).scope().commentInfo.commentId)" ng-if="commentInfo.commentlikeCounter > 0">
+                                                        <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
+                                                        {{commentInfo.commentlikeCounter}}
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" >
+                                        <ul id="single_comment_line_edit_or_delete_{{commentInfo.commentId}}" style="list-style-type: none;">
+                                            <li class="dropdown">
+                                                <a class="dropdown-toggle cursor_holder_style" aria-expanded="false" role="button" data-toggle="dropdown" data-toggle="tooltip" title="Edit">
+                                                    <span class="caret"></span>
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li ng-if="commentInfo.userInfo.userId == '<?php echo $user_id; ?>'">
+                                                        <a id="edit_option_comment_line_{{commentInfo.commentId}}" onclick="select_edit_comment_field(angular.element(this).scope().commentInfo.commentId)">Edit</a>
+                                                    </li>
+                                                    <li ng-if="commentInfo.userInfo.userId == '<?php echo $user_id; ?>' || status.mappingId == '<?php echo $user_id; ?>'">
+                                                        <a id="delete_option_comment_line_{{commentInfo.commentId}}" onclick="delete_status_comment(angular.element(this).scope().status.statusId, angular.element(this).scope().commentInfo.commentId)" >Delete</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+                        <div class="row">
+                            <div class="col-md-1" profile_picture>
+                                <img  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
+                            </div>
+                            <div class="col-md-11">
+                                <form  ng-submit="addComment(userGenderId, status.userInfo, status.statusId)">
+                                    <input  id="commentInputField{{status.statusId}}" type ="text" class="form-control" placeholder="Write a comment" ng-model="statusInfo.commentDes">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-9">
-            <div class="row" >
-            <div class="col-md-12">
-            <div style="float: left">
-            <a style="font-weight: bold;" href='<?php echo base_url(); ?>member/timeline/{{commentInfo.userInfo.userId}}'></span><span ng-bind="commentInfo.userInfo.firstName"></span>&nbsp<span ng-bind="commentInfo.userInfo.lastName"></span></a>
-            <span ng-bind="commentInfo.description" id="displayStatusComment_{{commentInfo.commentId}}"></span>
-            <span id="updateStatusComment_{{commentInfo.commentId}}" style="display: none;">
-            <form ng-submit="updateStatusComment(status.statusId, commentInfo)" >
-            <input class="form-control" ng-model="commentInfo.description" />
-            </form>
-            </span>
-            </div>
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-md-12">
-            <div style="float: left">
-            {{commentInfo.commentTimeDiff}}
-            <span ng-if = "commentInfo.CommentlikeStatus != '1'">
-            <a style="color: #3B59A9;" href id="statusCommentLike{{commentInfo.commentId}}" ng-click="addStatusCommentLike(status.statusId, commentInfo.commentId)"> Like</a> 
-            </span>
-            <span ng-if = "commentInfo.CommentlikeStatus == '1'">
-            <a style="color: #3B59A9;" href id="statusUnLike{{commentInfo.commentId}}" ng-click="unLike(status.statusId)"> liked</a> 
-            </span><!--<a>like</a>-->
-            <a id="comment_like_{{commentInfo.commentId}}" onclick="get_comment_like_list(angular.element(this).scope().status.statusId, angular.element(this).scope().commentInfo.commentId)" ng-if="commentInfo.commentlikeCounter > 0">
-            <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
-            {{commentInfo.commentlikeCounter}}
-            </a>
-            </div>
-            </div>
-            </div>
-            </div>
-            <div class="col-md-2" >
-            <ul id="single_comment_line_edit_or_delete_{{commentInfo.commentId}}" style="list-style-type: none;">
-            <li class="dropdown">
-            <a class="dropdown-toggle cursor_holder_style" aria-expanded="false" role="button" data-toggle="dropdown" data-toggle="tooltip" title="Edit">
-            <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-            <li ng-if="commentInfo.userInfo.userId == '<?php echo $user_id; ?>'">
-            <a id="edit_option_comment_line_{{commentInfo.commentId}}" onclick="select_edit_comment_field(angular.element(this).scope().commentInfo.commentId)">Edit</a>
-            </li>
-            <li ng-if="commentInfo.userInfo.userId == '<?php echo $user_id; ?>' || status.mappingId == '<?php echo $user_id; ?>'">
-            <a id="delete_option_comment_line_{{commentInfo.commentId}}" onclick="delete_status_comment(angular.element(this).scope().status.statusId, angular.element(this).scope().commentInfo.commentId)" >Delete</a>
-            </li>
-            </ul>
-            </li>
-            </ul>
-            </div>
-            </div>
-            </div>
-            </span>
-            <div class="row">
-            <div class="col-md-1" profile_picture>
-            <img  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
-            </div>
-            <div class="col-md-11">
-            <form  ng-submit="addComment(userGenderId, status.userInfo, status.statusId)">
-            <input  id="commentInputField{{status.statusId}}" type ="text" class="form-control" placeholder="Write a comment" ng-model="statusInfo.commentDes">
-            </form>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>  
+        </div>  
         </script>
 

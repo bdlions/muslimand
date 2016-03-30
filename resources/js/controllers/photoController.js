@@ -254,7 +254,7 @@ angular.module('controllers.Photo', ['services.Photo']).
                 $scope.albumPhotoList[indx] = photoInfo;
                 $scope.modalInstance = $modal.open({
                     animation: true,
-                    templateUrl: 'template/timeline_pic-modal',
+                    templateUrl: 'template/timeline_pic-modal.html',
                     scope: $scope,
                 });
             };

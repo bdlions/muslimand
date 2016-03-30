@@ -1385,7 +1385,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     .modal_single_photo_display_window{
         background-color: #fff;
         border-radius: 4px;
-        left: -150px;
+        /*left: -150px;*/
         min-width: 900px; 
     }
     .modal.in .modal-dialog{
