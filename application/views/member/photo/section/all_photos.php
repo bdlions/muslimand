@@ -32,7 +32,7 @@
 </div>
 </div>
 <?php // $this->load->view("member/photo/section/modal_timeline_photo_view"); ?>
-<script type="text/ng-template" id="template/timeline_pic-modal">
+<script type="text/ng-template" id="template/timeline_pic-modal.html">
 <div class="modal-body">
     <div class="img-group">
         <carousel>

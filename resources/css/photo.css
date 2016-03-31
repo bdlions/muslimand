@@ -54,6 +54,7 @@ and open the template in the editor.
 .modal_background_color{
     opacity: .9;
     font-weight: bold;
+    background-color: #000;
 }
 
 /*================================  photo gallery  ================================*/

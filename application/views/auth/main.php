@@ -245,6 +245,7 @@
                 return false;
             }
             var rPassword = $("#r_password").val();
+            var rPasswordConf = $("#r_password_conf").val();
             var gender = $("#gender_id").val();
             var day = $("#birthday_day").val();
             var month = $("#birthday_month").val();
@@ -267,6 +268,15 @@
                 alert("Password is required !");
                 return false;
             }
+            if (rPasswordConf == "") {
+                alert("Confirm Password is required !");
+                return false;
+            }
+            if (rPassword != rPasswordConf) {
+                alert("Passwords do not match !");
+                return false;
+            }
+            
             if (gender == "" || gender == "0" || gender == 0) {
                 alert("Gender is required !");
                 return false;
