@@ -1,7 +1,7 @@
 angular.module('services.Message', []).
         factory('messageService', function ($http, $location) {
             var messageService = {};
-            var $app_name = "/muslimand";
+            var $app_name = "/shadhiin";
 
 
 

@@ -1,7 +1,7 @@
 angular.module('services.Right', []).
         factory('rightService', function ($http, $location) {
             var rightService = {};
-             var $app_name = "/muslimand";
+             var $app_name = "/shadhiin";
            
              rightService.getRecentActivities = function () {
                 return $http({

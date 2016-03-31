@@ -1,7 +1,7 @@
 angular.module('services.Header', []).
         factory('headerService', function ($http, $location) {
             var headerService = {};
-            var $app_name = "/muslimand";
+            var $app_name = "/shadhiin";
             headerService.updateStatusGetFriendNotifications = function (counterValue) {
                 return $http({
                     method: 'post',

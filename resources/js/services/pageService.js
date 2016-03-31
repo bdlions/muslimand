@@ -1,7 +1,7 @@
 angular.module('services.Page', []).
         factory('pageService', function ($http, $location) {
             var pageService = {};
-            var $app_name = "/muslimand";
+            var $app_name = "/shadhiin";
             pageService.addPage = function (pageInfo) {
                 return $http({
                     method: 'post',
