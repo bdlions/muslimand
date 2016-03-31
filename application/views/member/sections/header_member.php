@@ -101,7 +101,7 @@
 
 <div class="row" id="set_user_initiation_info_id" style="padding-top: 11px;" ng-controller="headerController">
     <div class="col-md-offset-1 col-md-2">
-        <a target="_self" href="<?php echo base_url(); ?>member/newsfeed">
+        <a target="_self" href="<?php echo base_url(); ?>newsfeed">
             <img class="img-circle" src="<?php echo base_url(); ?>resources/images/logo.png">
             <img src="<?php echo base_url(); ?>resources/images/shadhiin.png">
         </a>
@@ -114,7 +114,7 @@
         </div>
     </div>
     <div class="col-md-2 profile_picture">
-        <a target="_self" style="text-decoration: none;" href="<?php echo base_url(); ?>member/timeline">
+        <a target="_self" style="text-decoration: none;" href="<?php echo base_url(); ?>timeline">
             <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
                 <img  style="height: 25px; width: 25px;" fallback-src="<?php echo base_url().PROFILE_PICTURE_PATH_W25_H25; ?>25x25_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 . $user_id . '.jpg'; ?>" />
                 &nbsp; <span id="profile_name" style="text-decoration: none" ><?php echo $first_name; ?></span>

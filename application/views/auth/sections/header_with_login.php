@@ -55,7 +55,7 @@
                         </div>
                         <div class="col-md-12">
                             <div style="margin-top: 2px;">
-                                <a style="color:white;" href="<?php base_url() ?>password_recover ">Forgot your password?</a>
+                                <a style="color:white;" href="<?php base_url() ?>auth/password_recover ">Forgot your password?</a>
                             </div>
                         </div>
                     </div>

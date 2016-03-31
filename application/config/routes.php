@@ -40,6 +40,9 @@
 
 $route['default_controller'] = "auth";
 $route['404_override'] = '';
+$route['login'] = 'auth/login';
+$route['newsfeed'] = 'member/newsfeed';
+$route['timeline'] = 'member/timeline';
 
 
 /* End of file routes.php */

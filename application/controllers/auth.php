@@ -38,7 +38,7 @@ class Auth extends CI_Controller {
 
         if (!$this->ion_auth->logged_in()) {
             //redirect them to the login page
-            redirect('auth/login', 'refresh');
+            redirect('login', 'refresh');
         } else {
             $user_group = $this->ion_auth->get_current_user_types();
             //print_r($user_group);
@@ -57,7 +57,7 @@ class Auth extends CI_Controller {
                     $this->template->load(NULL, ADMIN_LOGIN_SUCCESS_VIEW, $this->data);
                     break;
                 } elseif ($group == MEMBER_GROUP_TITLE) {
-                    redirect('member/newsfeed', 'refresh');
+                    redirect('newsfeed', 'refresh');
                 } else {
                     echo "Non member";
                 }
@@ -207,7 +207,7 @@ class Auth extends CI_Controller {
                 } else {
                     $this->session->set_flashdata('message', "Unsuccessful to register a user.");
                 }
-                redirect("auth/login", 'refresh');
+                redirect("login", 'refresh');
                 //$this->data['message'] = $this->session->flashdata('message');
                 //redirect("auth/login", 'refresh');
                 //$this->template->load("templates/profile_setting_tmpl", "display_message", $this->data);
@@ -221,7 +221,7 @@ class Auth extends CI_Controller {
                     //redirect them back to the home page
                     //$this->session->set_flashdata('message', $this->ion_auth->messages());
                     //redirect('auth/', 'refresh');
-                    redirect('member/newsfeed', 'refresh');
+                    redirect('newsfeed', 'refresh');
                 } else {
                     //if the login was un-successful
                     //redirect them back to the login page
@@ -340,7 +340,7 @@ class Auth extends CI_Controller {
 
         //redirect them to the login page
         $this->session->set_flashdata('message', $this->ion_auth->messages());
-        redirect('auth/login', 'refresh');
+        redirect('login', 'refresh');
     }
 
     //change password
