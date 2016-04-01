@@ -409,11 +409,13 @@ class Ion_auth_model extends CI_Model {
         if (property_exists($result_event, "responseCode")) {
             if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
                 $this->set_message('activate_successful');
+                return TRUE;
             } else {
                 $this->set_error('activate_unsuccessful');
+                return FALSE;
             }
         }
-        return $return;
+        
     }
 
     /**
@@ -950,7 +952,8 @@ class Ion_auth_model extends CI_Model {
      * */
     public function increase_login_attempts($identity) {
         if ($this->config->item('track_login_attempts', 'ion_auth')) {
-            $ip_address = $this->_prepare_ip($this->input->ip_address());
+            //$ip_address = $this->_prepare_ip($this->input->ip_address());
+            $ip_address = "";
             $login_attempt_info = new stdClass();
             $login_attempt_info->ipAddress = $ip_address;
             $login_attempt_info->login = $identity;

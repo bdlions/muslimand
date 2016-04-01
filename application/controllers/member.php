@@ -181,6 +181,7 @@ class Member extends CI_Controller {
         if (!$this->ion_auth->logged_in()) {
             redirect('auth/login', 'refresh');
         }
+        $user_current_time = now();
         $message_ummery_list = array();
         $recent_mage_info = array();
         $limit = 10;
