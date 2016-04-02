@@ -1,7 +1,7 @@
 angular.module('services.Photo', []).
         factory('photoService', function ($http, $location) {
             var photoService = {};
-            var $app_name = "/shadhiin";
+            var $app_name = "/muslimand";
 
 
             photoService.getUserAlbumList = function (profileId) {

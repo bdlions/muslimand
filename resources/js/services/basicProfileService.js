@@ -1,7 +1,7 @@
 angular.module('services.BasicProfile', []).
         factory('basicProfileService', function ($http, $location) {
             var basicProfileService = {};
-            var $app_name = "/shadhiin";
+            var $app_name = "/muslimand";
 
 //.............. about overview module..........................                
             basicProfileService.getOverviews = function (userId) {

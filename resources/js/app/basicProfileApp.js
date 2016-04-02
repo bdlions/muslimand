@@ -11,7 +11,7 @@ app.directive("chatBox", function () {
     return {
         restrict: "E",
         replace: true,
-        templateUrl: 'http://localhost/shadhiin/member/chat_tmpl_load'
+        templateUrl: 'http://localhost/muslimand/member/chat_tmpl_load'
     };
 });
 app.directive('fallbackSrc', function () {

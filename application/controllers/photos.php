@@ -11,6 +11,7 @@ class Photos extends CI_Controller {
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         $this->load->library('utils');
+        $this->load->model('friend_mongodb_model');
         $this->load->model('photo_mongodb_model');
         $this->load->model('status_mongodb_model');
         $this->load->helper(array('form', 'url'));
@@ -47,6 +48,69 @@ class Photos extends CI_Controller {
         $this->template->load(null, "member/photo/photo_home", $this->data);
     }
 
+    /**
+     * this method return user relation and profile info
+     * 
+     */
+    function get_user_relation_info($profile_id = "0") {
+        $user_relation_info = array();
+        $user_id = $this->session->userdata('user_id');
+        if ($profile_id != $user_id && $profile_id != "0") {
+            $result = $this->friend_mongodb_model->get_relationship_status($user_id, $profile_id);
+            $result = json_decode($result);
+            if (property_exists($result, "relationInfo")) {
+                $relation_info = json_decode($result->relationInfo);
+                if (property_exists($relation_info, "relationTypeId") != FALSE) {
+                    $user_relation_info['relation_ship_status'] = $relation_info->relationTypeId;
+                }
+                if (property_exists($relation_info, "isInitiated") != FALSE) {
+                    $user_relation_info['is_initiated'] = $relation_info->isInitiated;
+                }
+                if (property_exists($relation_info, "firstName") != FALSE) {
+                    $user_relation_info['profile_first_name'] = $relation_info->firstName;
+                }
+                if (property_exists($relation_info, "lastName") != FALSE) {
+                    $user_relation_info['profile_last_name'] = $relation_info->lastName;
+                }
+            }
+            if (property_exists($result, "userGenderId")) {
+                $user_gender_id = json_decode($result->userGenderId);
+                $user_relation_info['gender_id'] = $user_gender_id;
+            }
+        } else {
+            $user_relation_info['gender_id'] = $this->friend_mongodb_model->get_user_gender_info($user_id);
+            $user_relation_info['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
+            $user_relation_info['profile_first_name'] = $this->session->userdata('first_name');
+            $user_relation_info['profile_last_name'] = $this->session->userdata('last_name');
+        }
+        return $user_relation_info;
+    }
+
+    function get_home_photos($profile_id = "0") {
+        $user_id = $this->session->userdata('user_id');
+        if ($profile_id != "0") {
+            $mapping_id = $profile_id;
+        } else {
+            $mapping_id = $user_id;
+        }
+        $photo_list = array();
+        $result_event = $this->photo_mongodb_model->get_timeline_photos($mapping_id);
+        if ($result_event != null) {
+            $result_event = json_decode($result_event);
+            if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
+                $photo_list = $result_event->result;
+            }
+        }
+        $user_relation = $this->get_user_relation_info($profile_id);
+        $this->data['photo_list'] = json_encode($photo_list);
+        $this->data['app'] = PHOTO_APP;
+        $this->data['user_id'] = $user_id;
+        $this->data['profile_id'] = $profile_id;
+        $this->data['user_relation'] = json_encode($user_relation);
+        $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->template->load(null, "member/photo/photo_home", $this->data);
+    }
+
     function get_album_list() {
         $response = array();
         $user_id = $this->session->userdata('user_id');
@@ -61,27 +125,27 @@ class Photos extends CI_Controller {
         return;
     }
 
-    function get_home_photos($profile_id = "0") {
-        $user_id = $this->session->userdata('user_id');
-        if ($profile_id != "0" && $profile_id != $user_id) {
-            $result = $this->photo_mongodb_model->get_user_albums($profile_id);
-        } else {
-            $result = $this->photo_mongodb_model->get_user_albums($user_id);
-        }
-
-        $result_array = json_decode($result);
-        if (!empty($result_array)) {
-            if (property_exists($result_array, "albumList")) {
-                $this->data['user_album_list'] = json_encode($result_array->albumList);
-            }
-        } else {
-            $this->data['user_album_list'] = array();
-        }
-        $this->data['app'] = "app.Photo";
-        $this->data['user_id'] = $user_id;
-        $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(null, "member/photo/photo_home", $this->data);
-    }
+//    function get_home_photos($profile_id = "0") {
+//        $user_id = $this->session->userdata('user_id');
+//        if ($profile_id != "0" && $profile_id != $user_id) {
+//            $result = $this->photo_mongodb_model->get_user_albums($profile_id);
+//        } else {
+//            $result = $this->photo_mongodb_model->get_user_albums($user_id);
+//        }
+//
+//        $result_array = json_decode($result);
+//        if (!empty($result_array)) {
+//            if (property_exists($result_array, "albumList")) {
+//                $this->data['user_album_list'] = json_encode($result_array->albumList);
+//            }
+//        } else {
+//            $this->data['user_album_list'] = array();
+//        }
+//        $this->data['app'] = "app.Photo";
+//        $this->data['user_id'] = $user_id;
+//        $this->data['first_name'] = $this->session->userdata('first_name');
+//        $this->template->load(null, "member/photo/photo_home", $this->data);
+//    }
 
     function photos_view_my() {
         $this->data['app'] = "app.Photo";
@@ -474,7 +538,7 @@ class Photos extends CI_Controller {
       }
       } */
 
-   /**
+    /**
      * this method upload image at server
      * @ param file info
      *  */
@@ -1010,14 +1074,16 @@ class Photos extends CI_Controller {
         $response = array();
         $image_data = $this->input->post('imageData');
         $user_id = $this->session->userdata('user_id');
-        //temp picture upload to server for cover picture
-        $cover_picture_image_name = $user_id . '.jpg';
-        $cover_image_temp_path = COVER_PICTURE_IMAGE_PATH;
-        $result1 = $this->upload_picture($image_data, $cover_picture_image_name, $cover_image_temp_path);
+
         // image upload to user album for database save 
         $temp_src_name = $user_id . '_' . now() . '.jpg';
         $user_image_path = USER_ALBUM_IMAGE_PATH;
         $result2 = $this->upload_picture($image_data, $temp_src_name, $user_image_path);
+
+        //temp picture upload to server for cover picture
+        $cover_picture_image_name = $user_id . '.jpg';
+        // $cover_image_temp_path = COVER_PICTURE_IMAGE_PATH;
+        $result1 = $this->upload_picture($image_data, $cover_picture_image_name, COVER_PICTURE_IMAGE_PATH);
 
         if ($result1['status'] != 0 && $result2['status'] != 0) {
             //create album if no album exsist for cover picture or add picture to cover picture album
@@ -1028,7 +1094,6 @@ class Photos extends CI_Controller {
             $album_id = COVER_PHOTOS_ALBUM_ID;
             $album_title = COVER_PHOTOS_ALBUM_TITLE;
             $status_id = $this->utils->generateRandomString(STATUS_ID_LENGTH);
-            ;
             $album_result = $this->album_add($user_id, $album_id, $album_title, $image_list, $status_id);
             //add status in user profile related to the change of cover picture
             $user_info = new stdClass();

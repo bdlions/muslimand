@@ -1,4 +1,4 @@
 angular.module("app.Test", [
-    'controllers.Status',
+    'controllers.Test',
     'ui.bootstrap'
 ]);

@@ -18,7 +18,7 @@ myApp.factory('infinitiService', function ($http) {
         var offset = this.items.length - 1;
         var request = $http({
             method: 'post',
-            url: 'http://localhost/muslimand/welcome/infinity_call_test',
+            url: 'http://localhost/shadhiin/welcome/infinity_call_test',
             data: {
                 offset : offset
             }

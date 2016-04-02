@@ -1,7 +1,7 @@
 angular.module('services.Friend', []).
         factory('friendService', function ($http, $location) {
             var friendService = {};
-            var $app_name = "/shadhiin";
+            var $app_name = "/muslimand";
             friendService.getFriendList = function (profileId) {
                 return $http({
                     method: 'post',

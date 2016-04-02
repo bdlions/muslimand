@@ -1,6 +1,6 @@
 angular.module('services.Status', []).
         factory('statusService', function ($http, $location) {
-            var $app_name = "/shadhiin";
+            var $app_name = "/muslimand";
             var statusService = {};
            
 
