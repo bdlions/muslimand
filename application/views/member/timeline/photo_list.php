@@ -1,7 +1,8 @@
 <div class="pagelet" style="border: 1px solid #fff;">
     <div class="row">
         <div class="col-md-12">
-            <a class="non_friend_pagelet_header_anchor_style" href="">Photos</a>
+            <img class="img-circle" style="background-color: #703684;" src="<?php echo base_url(); ?>resources/images/photos/icon/photo.png">
+            <a class="non_friend_pagelet_header_anchor_style font_15px" href="">Photos</a>
         </div>
     </div>
 </div>

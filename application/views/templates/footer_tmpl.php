@@ -16,24 +16,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
         
         <title>Shadhiin.com</title>
-        <style>
-            html,
-            body {
-                height:100%;
-            }
-            #wrapper {
-                min-height:100%;
-            }
-            #header {
-            }
-
-            #footer {
-                background-color: #fff;
-                width:100%;
-                height:80px;
-            }
-        </style>
-    </head>
+       
     <body>
         <div id="wrapper">
             <div style="background-color: #E9EAED">
@@ -44,7 +27,7 @@
                     <?php echo $contents; ?>
                 </div>
                 <div id="footer">
-                    <?php $this->load->view("auth/sections/footer"); ?>
+                    <?php $this->load->view("auth/sections/non_member_footer"); ?>
                 </div>
             </div>
         </div>

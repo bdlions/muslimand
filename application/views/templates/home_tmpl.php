@@ -39,7 +39,7 @@
             <?php echo $contents; ?>                            
         </div>
         <div id="footer">
-            <?php $this->load->view("auth/sections/footer"); ?>
+            <?php $this->load->view("auth/sections/non_member_footer"); ?>
         </div>
 <!--        <div id="wrapper">
             <div id="header">

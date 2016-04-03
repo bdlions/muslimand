@@ -42,7 +42,7 @@
     <div class="row form-group">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
             <div id="footer">
-                <?php $this->load->view("auth/sections/footer"); ?>
+                <?php $this->load->view("auth/sections/member_footer"); ?>
             </div>
         </div>
     </div>

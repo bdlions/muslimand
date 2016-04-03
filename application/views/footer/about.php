@@ -1,19 +1,18 @@
 <div class="container-fluid">
-    <div class="row padding_top_over_row">
+    <div class="row form-group padding_top_over_row">
         <div class="col-md-offset-1 col-md-10">
-
-
-            <div class="row padding_top_over_row">
+            <div class="row">
                 <div class="col-md-12">
-                    <img style="border-radius: 8px;" class="img-responsive" width="100%" src="<?php echo base_url() ?>resources/images/footer/muslimand.jpg">
+                    <!--<img style="border-radius: 8px;" class="img-responsive" width="100%" src="<?php //echo base_url()   ?>resources/images/footer/muslimand.jpg">-->
                 </div>
             </div>
-            <div class="row padding_top_over_row">
+            <div class="row">
                 <div class="col-md-12">
-                    <h2>In the name of Allah, most benevolent, ever-merciful. [Quran - 1:1]</h2>
+                    <h2>Shadhiin.com</h2>
+                    <!--<h2>In the name of Allah, most benevolent, ever-merciful. [Quran - 1:1]</h2>-->
                 </div>
             </div>
-            <div class="row padding_top_over_row">
+            <div class="row">
                 <div class="col-md-12">
                     <p style="text-align: justify;">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tempus enim sapien, non interdum est congue vitae. Nulla
@@ -27,7 +26,7 @@
                     </p>
                 </div>
             </div>
-            <div class="row padding_top_over_row">
+            <div class="row">
                 <div class="col-md-12">
                     <div class="about_div">
                         <p class="about_h3_style">Unity</p>
@@ -61,20 +60,14 @@
                     <br>
                 </div>
             </div>
-            <div class="row padding_top_over_row">
+            <div class="row">
                 <div class="col-md-12">
-                    <p>If you are not a member yet, <a>Sign Up</a> here. If you are already a member, please, Invite your friends and family to Muslimand.</p>
+<!--                    <p>If you are not a member yet, <a>Sign Up</a> here. If you are already a member, please, Invite your friends and family to Muslimand.</p>
                     <p>May Allah accept our efforts and grant us what is best here and hereafter.</p>
                     <p>Jazzak-Allah Khairan</p>
-                    <p>- Friends at Muslimand</p>
+                    <p>- Friends at Muslimand</p>-->
                 </div>
             </div>
-
-
-
-
-
         </div>
-        <div class="col-md-1"></div>
     </div>
 </div>

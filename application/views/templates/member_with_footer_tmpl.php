@@ -41,7 +41,7 @@
         </div>
         <div class="row">
             <div class="col-md-10">
-                <?php $this->load->view("auth/sections/footer"); ?>
+                <?php $this->load->view("auth/sections/member_footer"); ?>
             </div>
             <div class="col-md-2"></div>
         </div>

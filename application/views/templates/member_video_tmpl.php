@@ -56,7 +56,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div id="footer">
-                            <?php $this->load->view("auth/sections/footer"); ?>
+                            <?php $this->load->view("auth/sections/member_footer"); ?>
                         </div>
                     </div>
                 </div>

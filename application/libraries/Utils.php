@@ -75,6 +75,26 @@ class Utils {
         );
         return $months;
     }
+    
+    public function get_relationship_status_list() {
+        $relationship_status = array(
+            "0" => '-----',
+            "01" => 'Single',
+            "02" => 'In a relationship',
+            "03" => 'Engaged',
+            "04" => 'Married',
+            "05" => 'In a civil union',
+            "06" => 'In a domestic partnership',
+            "07" => 'In an open relationship',
+            "08" => 'Its complicated',
+            "09" => 'Separated',
+            "10" => 'Divorced',
+            "11" => 'Widowed',
+        );
+        return $relationship_status;
+    }
+    
+    
 
     /*
      * this method return list of month
@@ -114,8 +134,7 @@ class Utils {
      *  */
 
     public function get_year_list() {
-        $year_list[0] = "Year";
-        for ($i = 2015; $i >= 1915; $i--) {
+        for ($i = 2016; $i >= 1915; $i--) {
             $year_list["" . $i] = "" . $i;
         }
         return $year_list;

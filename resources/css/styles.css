@@ -668,12 +668,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     display: inline;
 }
 
-.landingPageSlogan{
-    color: #703684; 
-    font: italic bold 20px Georgia, serif ; 
-    z-index: 999999!important;
-    position: absolute;
-}
+
 
 /*================================  Admin Panel  ================================*/
 .admin_panel_left_menu_ul{
@@ -855,7 +850,8 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 .holder_style:hover{
     text-decoration: none;
 }
-.cursor_holder_style{
+
+.cursor_holder_style, cursor_holder_style:hover{
     cursor: pointer;
 }
 .subcategory_label_style{
@@ -931,7 +927,27 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 /* ------------------------- custom responsive style (media) ----------------------------*/
 
+.display_inline > img{
+    display: inline-block;
+}
+
+@media (max-width: 991px) {
+  .display_hidden{
+        display: none!important;
+    }
+    
+}
+
 @media (max-width: 480px) {
+     .window_minimizing_custom_status{
+        visibility: visible!important;
+    }
+    .landingPageSlogan{
+        font: italic bold 12px Georgia, serif!important;
+    }
+    .auth_login_body_adjust{
+        padding-top: 50px;
+    }
     .padding_style{
         padding-bottom: 15px;
     }
@@ -942,12 +958,19 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     .landingImgHeader{
         padding-top: 30px; 
     }
-    /*    .landingPageSlogan{
-            margin-left: 20px 
-        }*/
+
 }
 
 @media (min-width: 481px)and (max-width: 767px) {
+     .window_minimizing_custom_status{
+        visibility: visible!important;
+    }
+    .landingPageSlogan{
+        font: italic bold 16px Georgia, serif!important;
+    }
+    .auth_login_body_adjust{
+        padding-top: 50px;
+    }
     .padding_style{
         padding-bottom: 15px;
     }
@@ -961,13 +984,29 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 
 @media (min-width: 768px)and (max-width: 991px) { 
+     .window_minimizing_custom_status{
+        visibility: visible!important;
+    }
+    .landingPageSlogan{
+        font: italic bold 18px Georgia, serif ; 
+    }
+    .auth_login_body_adjust{
+        padding-top: 175px;
+    }
+
     .margin_style{
         margin-left: 0!important;
         margin-right: 0!important;
     }
 }
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
+    .window_minimizing_custom_status{
+        display: none!important;
+    }
+    .auth_login_body_adjust{
+        padding-top: 65px;
+    }
     .mrg_left{
         margin-left: -7%;
     }
@@ -981,7 +1020,8 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
         margin-right: 10px;  
     }
     .landingPageSlogan{
-        margin-left: -20px 
+        margin-left: -20px;
+        font: italic bold 20px Georgia, serif ; 
     }
 }
 
@@ -1079,9 +1119,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 .ticker_divider{
     border: 2px solid lightgray;
 }
-.display_hidden{
-    /*display: none;*/
-}
+
 
 .contact_background,.carrer_bg{
     background-color: #E9EAED;
@@ -1323,6 +1361,12 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     color: #fff!important;
     opacity: 0.8!important;
 }
+.landingPageSlogan{
+    color: #703684; 
+    z-index: 999999!important;
+    position: absolute;
+}
+
 
 @media (min-width: 768px) {
     .modal-fullscreen .modal-dialog {
@@ -1336,8 +1380,12 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
         width: 100%;
         height: 100%;
     }
+
 }
 @media (min-width: 1200px) {
+
+
+
     .custom_modal_dialog {
         width: 1200px!important;
     }
@@ -1415,4 +1463,16 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 }
 
+.login_form {
+    margin-bottom: 0;
+}
+.login_form > tbody > tr > td{
+    border-top: none;
+    line-height: none;
+    padding: 0 5px;
+    vertical-align: top;
+}
 
+.login_form > tbody > tr > td > input{
+    border-radius: 0;
+}

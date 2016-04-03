@@ -7,7 +7,7 @@
     }
 </style>
 <div class="container" >
-    <div class="row" style="padding-top: 65px;">
+    <div class="row auth_login_body_adjust">
         <div class="col-md-6">
             <div class="row form-group">
                 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -53,7 +53,7 @@
                 <?php } ?>
                 <div class="row form-group">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <span style="font-size: 25px; color: #703684; font-weight: bold;">Sign Up</span>
+                        <span class="sign_up_lebel">Sign Up</span>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -77,7 +77,7 @@
                 </div>
                 <div class="row form-group"> 
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <?php echo form_input($r_password_conf + array('class' => 'form-control', 'placeholder' => 'Re-peated password')); ?>
+                        <?php echo form_input($r_password_conf + array('class' => 'form-control', 'placeholder' => 'Confirm Password')); ?>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -131,46 +131,6 @@
             </div>
         </div>
     </div>
-
-
-    <!--        <div class="row form-group">
-                <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
-    <?php //for ($i = 0; $i < 10; $i++) {  ?>
-                    <div class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
-                        <div id="brand" class="brand_single_image">
-                            <div class="brand_cover_single_image">
-                                <img height="45" width="45" class="img_pad_mar_top_single_image" src="<?php echo base_url(); ?>resources/images/face.jpg"><br>
-                                <p class="font_10px" style="margin-right: 8px;">Nazrul Islam</p>
-                                <img style="margin-top: -12px;" height="22" width="45" src="<?php echo base_url(); ?>resources/images/flag.png"><br>
-                            </div>
-    
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span class="label_padding_top_single_image" >Nazrul Islam</span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-offset-1 col-md-10">
-                                    <ul style="margin: 0px; padding: 0px; padding-top: 5px; list-style-type: none;">
-                                        <li style="padding: 2px 0px;" class="font_10px">Profession:
-                                            <ul style="margin: 0px; padding: 0px; list-style-type: none;">
-                                                <li class="info_style_single_image">Doctor</li>
-                                            </ul>
-                                        </li>
-                                        <li style="padding: 2px 0px;" class="font_10px">Age:
-                                            <ul style="margin: 0px; padding: 0px; list-style-type: none;">
-                                                <li class="info_style_single_image ">30 Years</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-offset-1"></div>
-                            </div>
-                        </div>
-                    </div>
-    <?php //}  ?>
-                <div class="col-md-1" style="padding-left: 3px; padding-right: 3px; "></div>
-            </div>-->
 
     <div class="row form-group" style="margin-top: 15px!important; margin-bottom: 0px!important;" ng-app="app.Landing" ng-controller="landingController" ng-clock ng-init="setUserList(<?php echo htmlspecialchars(json_encode($user_list)); ?>)">
         <div ng-repeat="user in userList" class="col-md-1 col-sm-2 col-xs-6 form-group user_brief_card" style="padding-left: 3px; padding-right: 3px; cursor: pointer;">
