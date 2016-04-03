@@ -396,8 +396,8 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 var statusTypeId = statusInfo.statusTypeId;
                 statusService.getSliderPhotoList(statusId).
                         success(function (data, status, headers, config) {
-                            if (typeof data.statusInfoList != "undefined") {
-                                $scope.sliderImages = data.statusInfoList;
+                            if (typeof data.photoList != "undefined") {
+                                $scope.sliderImages = data.photoList;
                                 angular.forEach($scope.sliderImages, function (photoInfo, key) {
                                     if (photoInfo.image == image) {
                                         photoInfo.active = true;

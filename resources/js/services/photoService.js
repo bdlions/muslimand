@@ -22,6 +22,16 @@ angular.module('services.Photo', []).
                     }
                 });
             };
+            photoService.getSliderAlbum = function (albumId, mappingId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/photos/get_slider_album',
+                    data: {
+                        albumId: albumId,
+                        mappingId :mappingId
+                    }
+                });
+            };
 
             photoService.createAlbum = function (albumInfo) {
                 return $http({

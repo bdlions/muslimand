@@ -248,14 +248,52 @@ angular.module('controllers.Photo', ['services.Photo']).
 //           
              ];
             $scope.openTimeLineModal = function (photoInfo) {
-                var indx = $scope.timeLinePhotoList.indexOf(photoInfo);
-                photoInfo.active = true;
-                $scope.albumPhotoList[indx] = photoInfo;
-                $scope.modalInstance = $modal.open({
-                    animation: true,
-                    templateUrl: 'template/timeline_pic-modal.html',
-                    scope: $scope,
-                });
+                var albumId = photoInfo.albumId;
+                var mappingId = photoInfo.userId;
+                console.log(photoInfo);
+                 photoService.getSliderAlbum(albumId, mappingId ).
+                        success(function (data, status, headers, config) {
+                            if (typeof data.photoList != "undefined") {
+                                $scope.sliderImages = data.photoList;
+                                angular.forEach($scope.sliderImages, function (photoInfo, key) {
+//                                    if (photoInfo.image == image) {
+//                                        photoInfo.active = true;
+//                                    }
+//                                    if (photoInfo.userId == userId) {
+//                                        photoInfo.userInfo = userInfo;
+//                                    }
+//                                    if (typeof photoInfo.statusTypeId == "undefined") {
+//                                        photoInfo.statusTypeId = statusTypeId;
+//                                    }
+//                                    if (typeof photoInfo.createdOn != "undefined") {
+//                                        photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
+//                                    }
+//                                    if (typeof photoInfo.commentList != "undefined") {
+//                                        angular.forEach(photoInfo.commentList, function (comment, key) {
+//                                            if (typeof comment.createdOn != "undefined") {
+//                                                comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+//                                            }
+//                                        });
+//                                    }
+//
+//                                }, $scope.sliderImages);
+//                                $scope.modalInstance = $modal.open({
+//                                    animation: true,
+//                                    templateUrl: 'template/newsfeed.html',
+//                                    scope: $scope
+                                });
+                            }
+                        });
+                
+                
+//                var indx = $scope.timeLinePhotoList.indexOf(photoInfo);
+//                photoInfo.active = true;
+//                $scope.albumPhotoList[indx] = photoInfo;
+//                $scope.modalInstance = $modal.open({
+//                    animation: true,
+//                    templateUrl: 'template/timeline_pic-modal.html',
+//                    scope: $scope,
+//                });
             };
             $scope.open = function (photoInfo) {
                 var indx = $scope.albumPhotoList.indexOf(photoInfo);

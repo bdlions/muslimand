@@ -2,7 +2,39 @@ angular.module('services.Status', []).
         factory('statusService', function ($http, $location) {
             var $app_name = "/muslimand";
             var statusService = {};
-           
+
+
+            statusService.getSliderPhotoList = function (statusId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/photos/get_slider_photos',
+                    data: {
+                        referenceId: statusId
+
+                    }
+                });
+            };
+            
+            statusService.addPhotoLike = function (photoId, referenceId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/photos/add_photo_like',
+                    data: {
+                        photoId: photoId,
+                        referenceId: referenceId
+                    }
+                });
+            };
+            statusService.addMPhotoLike = function (photoId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/photos/add_m_photo_like',
+                    data: {
+                        photoId: photoId
+                    }
+                });
+            };
+
 
             statusService.addStatus = function (statusInfo) {
                 return $http({

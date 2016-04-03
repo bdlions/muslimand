@@ -176,7 +176,13 @@ class Photo_mongodb_model extends CI_Model {
 
 //.....................................Photo module.............................
 
-    public function get_slider_photos($user_id, $reference_id) {
+    public function get_slider_album($mapping_id, $album_id, $user_id) {
+        $this->curl->create($this->SERVICE_PHOTO . 'getSliderAlbum');
+        $this->curl->post(array("mappingId" => $mapping_id, "albumId" => $album_id, "userId" => $user_id));
+        return $this->curl->execute();
+    }
+    
+     public function get_slider_photos($user_id, $reference_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getSliderPhotos');
         $this->curl->post(array("userId" => $user_id, "referenceId" => $reference_id));
         return $this->curl->execute();

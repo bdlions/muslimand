@@ -31,29 +31,7 @@
     </div>
 </div>
 </div>
-<?php // $this->load->view("member/photo/section/modal_timeline_photo_view"); ?>
-<script type="text/ng-template" id="template/timeline_pic-modal.html">
-<div class="modal-body">
-    <div class="img-group">
-        <carousel>
-            <slide ng-repeat="photoInfo in timeLinePhotoList" active="photoInfo.active">
-                <div class="row" onclick="nextPhoto()">
-                    <div class="col-md-6">
-                        <img ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photoInfo.image}}"  class="img-responsive pic" />
-                    </div>
-                    <div class="col-md-6">
-                        photo descriptions
-                        {{photoInfo.image}}
-                    </div>
-
-                </div>      
-
-            </slide>
-        </carousel>
-        <button type="button" class="close close-lg" ng-click="ok()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-    </div>
-</div>  
-</script>
+<?php $this->load->view("member/photo/section/modal_timeline_photo_view"); ?>
 <script>
     function nextPhoto() {
         console.log("here");
