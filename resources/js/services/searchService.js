@@ -7,6 +7,7 @@ angular.module('services.Search', []).
                 return $http({
                     method: 'post',
                     url: '../search/get_users',
+                   // url: $location.path() + $app_name +'/search/get_short_friend_list',
                     data: {
                         searchValue: searchValue
                     },

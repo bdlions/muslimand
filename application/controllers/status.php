@@ -104,15 +104,21 @@ class Status extends CI_Controller {
                     $album_result = $this->album_add($user_id, $album_id, $album_title, $image_list, $new_status_id);
                 }
             }
-            if ($user_id != $profile_id && $profile_id != "" && $image_size > 0) {
+            if ($user_id != $profile_id && $profile_id != "" && $image_size == 1) {
                 $status_info->mappingId = $profile_id;
                 $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO;
+            }else if($user_id != $profile_id && $profile_id != "" && $image_size > 1) {
+                $status_info->mappingId = $profile_id;
+                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTOS;
             } else if ($user_id != $profile_id && $profile_id != "") {
                 $status_info->mappingId = $profile_id;
                 $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE;
-            } else if ($image_size > 0) {
+            } else if ($image_size == 1) {
                 $status_info->mappingId = $user_id;
                 $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO;
+            } else if ($image_size > 1) {
+                $status_info->mappingId = $user_id;
+                $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTOS;
             } else {
                 $status_info->mappingId = $user_id;
                 $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE;
@@ -429,6 +435,8 @@ class Status extends CI_Controller {
             echo json_encode($response);
         }
     }
+    
+    
 
     /**
      * this methord return a user timline or newfeed  status
@@ -749,9 +757,6 @@ class Status extends CI_Controller {
         return;
     }
 
-    function get_photo_info() {
-        echo json_encode(array());
-        return;
-    }
+    
 
 }

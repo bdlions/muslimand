@@ -2,7 +2,7 @@
     <a href="<?php echo base_url(); ?>member/newsfeed"><li>News Feed</li></a>
     <a href="<?php echo base_url(); ?>member/messages"><li>Messages</li></a>
     <a href="<?php echo base_url(); ?>friend/get_friend_list"><li>Friends</li></a>
-    <a href="<?php echo base_url(); ?>photos/"><li>Photos</li></a>
+    <a href="<?php echo base_url(); ?>photos/get_home_photos"><li>Photos</li></a>
     <a href="<?php echo base_url(); ?>videos/"><li>Videos</li></a>
 <!--    <a href="<?php echo base_url(); ?>pages/pages_newsfeed"><li class="cursor_holder_style">Pages
             <ul class="video_ul" style="margin-left: 15px;">

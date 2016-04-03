@@ -35,6 +35,8 @@
 <script>
 
     function lightbox(idx) {
+        
+        console.log("here");
         var ninjaSldr = document.getElementById("ninja-slider");
         ninjaSldr.parentNode.style.display = "block";
         var abc = nslider.init(idx);

@@ -35,21 +35,19 @@ angular.module('controllers.Photo', ['services.Photo']).
             };
             $scope.setTimeLinePhotoList = function (photoList) {
                 $scope.timeLinePhotoList = JSON.parse(photoList);
-                console.log($scope.timeLinePhotoList);
             };
-            $scope.getAlbumList = function (requestFunction) {
-                photoService.getAlbumList().
-                        success(function (data, status, headers, config) {
-                            console.log(data);
-                            $scope.userAlbums = data.album_list;
-                            console.log($scope.userAlbums);
-                            requestFunction();
-                        });
-            };
+            
             $scope.getUserAlbumList = function (profileId) {
                 photoService.getUserAlbumList(profileId).
                         success(function (data, status, headers, config) {
-                            $scope.albumList = data.album_list;
+                            $scope.userAlbums = data.album_list;
+                        });
+            };
+            $scope.getAlbumList = function (profileId, requestFunction) {
+                photoService.getUserAlbumList(profileId).
+                        success(function (data, status, headers, config) {
+                            $scope.userAlbums = data.album_list;
+                            requestFunction();
                         });
             };
             $scope.getAlbumLikeList = function (albumId, requestFunction) {

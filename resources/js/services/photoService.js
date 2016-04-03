@@ -1,7 +1,7 @@
 angular.module('services.Photo', []).
         factory('photoService', function ($http, $location) {
             var photoService = {};
-            var $app_name = "/muslimand";
+           var $app_name = "/muslimand";
 
 
             photoService.getUserAlbumList = function (profileId) {
@@ -10,14 +10,6 @@ angular.module('services.Photo', []).
                     url: $location.path() + $app_name + '/photos/get_user_short_album_list',
                     data: {
                         profileId: profileId
-                    }
-                });
-            };
-            photoService.getAlbumList = function () {
-                return $http({
-                    method: 'post',
-                    url: $location.path() + $app_name + '/photos/get_album_list',
-                    data: {
                     }
                 });
             };
