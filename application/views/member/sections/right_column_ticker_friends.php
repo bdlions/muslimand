@@ -35,7 +35,7 @@
         angular.element($('#ticker_notification')).scope().getRecentActivities();
         angular.element($('#ticker_friend')).scope().getFriendList();
 
-        
+
     });
 
 
@@ -127,7 +127,7 @@
     <!--        <div class="ticker_friends message_friends_divider_others">
                 <div class="row">
                     <div class="col-xs-3 col-sm-3 col-md-3">
-                        <img src="<?php //echo base_url();        ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30"> 
+                        <img src="<?php //echo base_url();          ?>resources/images/user_data/profile_pictures/profile_pictures_5.jpg"  width="30" height="30"> 
                     </div>
                     <div class="col-xs-9 col-sm-9 col-md-9">
                         <b>Jannatul Ferdaus</b></a> changed her profile pic.
@@ -140,10 +140,10 @@
 
 <!--Chat box-->
 <div ng-controller="messageController" ng-cloak ng-init="setUserId(('<?php echo $user_id; ?>'))">
-    <div id="ticker_friend" >
-        <div class="ticker">
-            <div class="row" style="position: fixed; bottom: 0; max-height: 300px; right: 0; width: 240px;">
-                <div class="col-md-12">
+    <div class="row" style="position: fixed; top: 355px; right: -17px; height: 320px; width: 258px; overflow-y: scroll;">
+        <div class="col-md-12">
+            <div id="ticker_friend" >
+                <div class="ticker" >
                     <div class="ticker_friends message_friends_divider_full"  ng-repeat="friend in friendList" >
                         <div class="row" ng-click="getChatInitialInfo(friend)">
                             <div class="col-md-3">

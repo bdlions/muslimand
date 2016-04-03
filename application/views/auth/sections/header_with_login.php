@@ -7,7 +7,6 @@
             <span class="icon-bar"></span>
         </button> 
     </div>
-
     <div class="container landingImgHeader">
         <div class="collapse navbar-collapse" id="open-collapse">
             <div class="row">
@@ -19,56 +18,59 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                <div class="row">
-                <div class="col-md-4" style="padding-top: 20px">
-<!--                    <img style="padding: 2px; border-radius: 5px;"src="<?php echo base_url(); ?>resources/images/logins/facebook.png" >
-                    <img style="padding: 2px; border-radius: 5px;"src="<?php echo base_url(); ?>resources/images/logins/google.png" >-->
-                    <a href="<?php echo base_url() . 'auth/twitter'; ?>">
-                        <img style="padding: 2px; border-radius: 5px;"src="<?php echo base_url(); ?>resources/images/logins/twitter.png" >
-                    </a>
-<!--                    <img style="padding: 2px; border-radius: 5px;"src="<?php echo base_url(); ?>resources/images/logins/linkedin.png" >
-                    <img style="padding: 2px; border-radius: 5px;"src="<?php echo base_url(); ?>resources/images/logins/yahoo.png" >
-                    <img style="padding: 2px; border-radius: 5px;"src="<?php echo base_url(); ?>resources/images/logins/live.png" >-->
-                </div>
-                <div class="col-md-3">
-                    <!--<label>Email:</label>-->
                     <div class="row">
-                        <div class="col-md-12">
-                            <span>Email:</span>
-                        </div>  
-                        <div class="col-md-12">
-                            <input id="identity" name="identity" type="email" class="" style="color: black; height: 22px; width: 100%;">
-                        </div>  
-                        <div class="col-md-12">
-                            <input id="remember" name="remember" type="checkbox"  >
-                            <span style="line-height: 22px;">Remember me</span>
+                        <div class="col-md-4" style="padding-top: 20px">
+        <!--                    <img style="padding: 2px; border-radius: 5px;"src="<?php //echo base_url();              ?>resources/images/logins/facebook.png" >
+                            <img style="padding: 2px; border-radius: 5px;"src="<?php //echo base_url();              ?>resources/images/logins/google.png" >-->
+                            <a href="<?php echo base_url() . 'auth/twitter'; ?>">
+                                <img style="padding: 2px; border-radius: 5px;"src="<?php echo base_url(); ?>resources/images/logins/twitter.png" >
+                            </a>
+        <!--                    <img style="padding: 2px; border-radius: 5px;"src="<?php //echo base_url();              ?>resources/images/logins/linkedin.png" >
+                            <img style="padding: 2px; border-radius: 5px;"src="<?php //echo base_url();              ?>resources/images/logins/yahoo.png" >
+                            <img style="padding: 2px; border-radius: 5px;"src="<?php //echo base_url();              ?>resources/images/logins/live.png" >-->
+                        </div>
+                        <div class="col-md-6">
+                            <table class="table login_form">
+                                <tbody>
+                                    <tr>
+                                        <td >
+                                            <span>Email:</span>
+                                        </td>
+                                        <td >
+                                            <span>Password:</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input id="identity" name="identity" type="email" class="form-control auth_custom_form_control">
+                                        </td>
+                                        <td>
+                                            <input id="password" name="password" type ="password" class="form-control auth_custom_form_control">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input id="remember" name="remember" type="checkbox"  style="">
+                                            <span >Remember me</span>
+                                        </td>
+                                        <td >
+                                            <div style="margin-top: 2px;">
+                                                <a style="color:white;" href="<?php base_url() ?>auth/password_recover ">Forgot your password?</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="margin_style" style="margin-top: 18px;">  
+                                <input id="login_btn" class="form-group auth_sign_button" name="login_btn" type="submit" style="" value="Sign In"/>
+                            </div>  
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span>Password:</span>
-                        </div>
-                        <div class="col-md-12">
-                            <input id="password" name="password" type ="password" class="" style="color: black; height: 22px;width: 100%;">
-                        </div>
-                        <div class="col-md-12">
-                            <div style="margin-top: 2px;">
-                                <a style="color:white;" href="<?php base_url() ?>auth/password_recover ">Forgot your password?</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="margin_style" style="margin-top: 18px;">  
-                        <input id="login_btn" name="login_btn" type="submit" style="font-size: 10px; font-weight: normal; height: 20px; width: 100%; border: 0px; background-color: white; color: #703684;" value="Sign In"/>
-                    </div>  
-                </div>
-                </div>
-                </div>
-                <?php echo form_close(); ?>
             </div>
+            <?php echo form_close(); ?>
         </div>
     </div>
 </nav>

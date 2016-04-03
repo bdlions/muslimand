@@ -1,9 +1,10 @@
 <div class="pagelet" style="border: 1px solid #fff;">
     <div class="row">
         <div class="col-md-12">
-            <a class="non_friend_pagelet_header_anchor_style" href="">Friends</a> 
-            <!--            ·  <a class="non_friend_pagelet_header_anchor_style" href="">207</a>  
-                        <a class="non_friend_pagelet_header_anchor_style" href="">(1 Mutual)</a>-->
+            <img class="img-circle"  src="<?php echo base_url(); ?>resources/images/header_icons/friends.png">
+            <a class="non_friend_pagelet_header_anchor_style font_15px" href="">Friends</a> 
+            ·  <span class="non_friend_pagelet_header_anchor_style" href="">207</span>  
+            <!--<a class="non_friend_pagelet_header_anchor_style" href="">(1 Mutual)</a>-->
         </div>
     </div>
 </div>

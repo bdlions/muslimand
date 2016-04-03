@@ -1,7 +1,7 @@
 
 
 
-<div class="pagelet" style="border: 1px solid #fff;">
+<!--<div class="pagelet" style="border: 1px solid #fff;">
     <div class="row">
         <div class="col-md-9">
             <div class="row">
@@ -21,4 +21,4 @@
             <button style="display: none" class=" FriendRequestSentId btn btn-default pull-right form-control" style="background-color: #703684; color: white" ng-click="" id="friendId" >Friend Request Sent</button>
         </div>
     </div>
-</div>
+</div>-->

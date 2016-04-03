@@ -12,6 +12,7 @@ and open the template in the editor.
 /*================================  Footer  ================================*/
 .padding_top_over_row{
     padding-top: 20px;
+    margin-bottom: 50px;
 }
 .about_h3_style{
     border-bottom: 1px solid lightgray;
@@ -34,4 +35,18 @@ and open the template in the editor.
     margin-top: 15px;
     margin-bottom: 15px;
     border-bottom: 1px solid lightgray;
+}
+
+.padding_top_30px{
+    padding-top: 30px;
+}
+.padding_top_20px{
+    padding-top: 20px;
+}
+.padding_top_10px{
+    padding-top: 10px;
+}
+
+.term_use_unorder_list > li{
+    padding-top: 10px;
 }

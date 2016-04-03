@@ -66,7 +66,7 @@
 </div>
 <div class="row padding_top_over_row">
     <div class="col-md-11">
-        <?php $this->load->view("auth/sections/footer"); ?>
+        <?php $this->load->view("auth/sections/member_footer"); ?>
     </div>
     <div class="col-md-1"></div>
 </div>

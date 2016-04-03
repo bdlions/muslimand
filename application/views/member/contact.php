@@ -58,8 +58,7 @@
 
         <div class="row form-group"></div>
         <div id="footer">
-            <?php $this->load->view("auth/sections/footer"); ?>
+            <?php $this->load->view("auth/sections/non_member_footer"); ?>
         </div>
     </div>
-    <div class="col-md-1"></div>
 </div>
