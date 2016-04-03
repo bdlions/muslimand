@@ -4,7 +4,7 @@
     </div>
 </div>
 <div  ng-controller="photoController">
-     <?php $this->load->view("member/photo/section/modal_create_album"); ?>
+    <?php $this->load->view("member/photo/section/modal_create_album"); ?>
     <div ng-clock class="pagelet">
         <div class="row form-group">
             <div class="col-md-6">
@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-   
+
 </div>
 
 <script type="text/javascript">
@@ -55,22 +55,26 @@
         $('#modal_create_album_box').modal('show');
     }
     function get_album_list() {
-        angular.element($('#albums')).scope().getAlbumList(function() {
+        var profileId = '<?php echo $profile_id; ?>';
+        if (profileId === "0") {
+            profileId = '<?php echo $user_id; ?>';
+        }
+        angular.element($('#albums')).scope().getAlbumList(profileId, function () {
             $("#photo_albums").show();
             $("#all_photos").hide();
         });
     }
-    $("#photos").click(function() {
+    $("#photos").click(function () {
         $("#all_photos").show();
         $("#photo_albums").hide();
     });
-    $(function() {
+    $(function () {
         var selector = '.photo_menu_list_inline a';
-        $(selector).on('click', function() {
+        $(selector).on('click', function () {
             $(selector).removeClass('active');
             $(this).addClass('active');
         });
-        $("#create_new_album").on("click", function() {
+        $("#create_new_album").on("click", function () {
             $('#modal_create_album_box').modal('show');
         });
 

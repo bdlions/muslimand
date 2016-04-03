@@ -25,27 +25,7 @@ class Photos extends CI_Controller {
     }
 
     function index() {
-        $user_id = $this->session->userdata('user_id');
-        $photo_list = array();
-        $result_event = $this->photo_mongodb_model->get_timeline_photos($user_id);
-        if ($result_event != null) {
-            $result_event = json_decode($result_event);
-            if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
-                $photo_list = $result_event->result;
-            }
-        }
-//      
-        $user_relation = array();
-        $user_relation['first_name'] = $this->session->userdata('first_name');
-        $user_relation['last_name'] = $this->session->userdata('last_name');
-        $user_relation['user_id'] = $user_id;
-        $this->data['photo_list'] = json_encode($photo_list);
-        $this->data['app'] = PHOTO_APP;
-        $this->data['user_id'] = $user_id;
-        $this->data['profile_id'] = $user_id;
-        $this->data['user_relation'] = json_encode($user_relation);
-        $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(null, "member/photo/photo_home", $this->data);
+        
     }
 
     /**
@@ -111,10 +91,14 @@ class Photos extends CI_Controller {
         $this->template->load(null, "member/photo/photo_home", $this->data);
     }
 
-    function get_album_list() {
+    function get_user_short_album_list() {
         $response = array();
-        $user_id = $this->session->userdata('user_id');
-        $result_event = $this->photo_mongodb_model->get_user_albums($user_id);
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "profileId") != FALSE) {
+            $profile_id = $requestInfo->profileId;
+        }
+        $result_event = $this->photo_mongodb_model->get_user_albums($profile_id);
         if ($result_event != null) {
             $temp_album_list = json_decode($result_event);
             if (property_exists($temp_album_list, "albumList")) {
@@ -125,27 +109,24 @@ class Photos extends CI_Controller {
         return;
     }
 
-//    function get_home_photos($profile_id = "0") {
-//        $user_id = $this->session->userdata('user_id');
-//        if ($profile_id != "0" && $profile_id != $user_id) {
-//            $result = $this->photo_mongodb_model->get_user_albums($profile_id);
-//        } else {
-//            $result = $this->photo_mongodb_model->get_user_albums($user_id);
-//        }
-//
-//        $result_array = json_decode($result);
-//        if (!empty($result_array)) {
-//            if (property_exists($result_array, "albumList")) {
-//                $this->data['user_album_list'] = json_encode($result_array->albumList);
-//            }
-//        } else {
-//            $this->data['user_album_list'] = array();
-//        }
-//        $this->data['app'] = "app.Photo";
-//        $this->data['user_id'] = $user_id;
-//        $this->data['first_name'] = $this->session->userdata('first_name');
-//        $this->template->load(null, "member/photo/photo_home", $this->data);
-//    }
+    function get_slider_photos() {
+        $user_id = $this->session->userdata('user_id');
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "referenceId") != FALSE) {
+            $reference_id = $requestInfo->referenceId;
+        }
+        $result_event = $this->photo_mongodb_model->get_slider_photos($user_id, $reference_id);
+        if ($result_event != null) {
+            $temp_album_list = json_decode($result_event);
+            if (property_exists($temp_album_list, "statusInfoList")) {
+                $response["statusInfoList"] = $temp_album_list->statusInfoList;
+            }
+        }
+        echo json_encode($response);
+        return;
+    }
 
     function photos_view_my() {
         $this->data['app'] = "app.Photo";
@@ -190,21 +171,6 @@ class Photos extends CI_Controller {
 
     function add_photo_test() {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_add_test");
-    }
-
-    function get_user_short_album_list() {
-        $response = array();
-        $postdata = file_get_contents("php://input");
-        $requestInfo = json_decode($postdata);
-        if (property_exists($requestInfo, "profileId") != FALSE) {
-            $profile_id = $requestInfo->profileId;
-        }
-        $result = $this->photo_mongodb_model->get_user_albums($profile_id);
-        if ($result != null) {
-            $result = json_decode($result);
-            $response["album_list"] = $result->albumList;
-        }
-        echo json_encode($response);
     }
 
     function get_user_albums() {
@@ -811,6 +777,33 @@ class Photos extends CI_Controller {
         $like_info = new stdClass();
         $like_info->userInfo = $user_info;
         $result = $this->photo_mongodb_model->add_photo_like($user_id, $photo_id, $reference_id, $like_info);
+        if ($result != null) {
+            $result = json_decode($result);
+            if ($result->responseCode != REQUEST_SUCCESSFULL) {
+                $response['message'] = "Error while Processing ! ";
+            } else {
+                $response["like_info"] = $like_info;
+            }
+        }
+        echo json_encode($response);
+    }
+
+    //used method
+    function add_m_photo_like() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "photoId") != FALSE) {
+            $photo_id = $requestInfo->photoId;
+        }
+        $user_id = $this->session->userdata('user_id');
+        $user_info = new stdClass();
+        $user_info->userId = $user_id;
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
+        $like_info = new stdClass();
+        $like_info->userInfo = $user_info;
+        $result = $this->photo_mongodb_model->add_m_photo_like($user_id, $photo_id, $like_info);
         if ($result != null) {
             $result = json_decode($result);
             if ($result->responseCode != REQUEST_SUCCESSFULL) {

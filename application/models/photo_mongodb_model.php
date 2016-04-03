@@ -42,14 +42,15 @@ class Photo_mongodb_model extends CI_Model {
      * @author created by Rasida on 20th September 2015
      */
 
-    public function get_album($user_id,$album_id) {
+    public function get_album($user_id, $album_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getAlbum');
-        $this->curl->post(array("userId" => $user_id,"albumId" => $album_id));
+        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id));
         return $this->curl->execute();
     }
-    public function get_album_info($user_id,$album_id) {
+
+    public function get_album_info($user_id, $album_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getAlbumInfo');
-        $this->curl->post(array("userId" => $user_id,"albumId" => $album_id));
+        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id));
         return $this->curl->execute();
     }
 
@@ -139,6 +140,7 @@ class Photo_mongodb_model extends CI_Model {
         $this->curl->post(array("albumId" => $album_id, "commentInfo" => json_encode($comment_info)));
         return $this->curl->execute();
     }
+
     public function get_album_comments($album_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getAlbumComments');
         $this->curl->post(array("albumId" => $album_id));
@@ -174,11 +176,24 @@ class Photo_mongodb_model extends CI_Model {
 
 //.....................................Photo module.............................
 
+    public function get_slider_photos($user_id, $reference_id) {
+        $this->curl->create($this->SERVICE_PHOTO . 'getSliderPhotos');
+        $this->curl->post(array("userId" => $user_id, "referenceId" => $reference_id));
+        return $this->curl->execute();
+    }
+
+    public function add_m_photo_like($user_id, $photo_id, $like_info) {
+        $this->curl->create($this->SERVICE_PHOTO . 'addMPhotoLike');
+        $this->curl->post(array("userId" => $user_id, "photoId" => $photo_id, "likeInfo" => json_encode($like_info)));
+        return $this->curl->execute();
+    }
+
     /*
      * This method will return a photos info in a album
      * @param $user_id,user id 
      * @author created by Rashida on 20th September 2015
      */
+
     public function get_user_photos($user_id, $offset, $limit) {
         $this->curl->create($this->SERVICE_PHOTO . 'getUserPhotos');
         $this->curl->post(array("userId" => $user_id, "offset" => $offset, "limit" => $limit));
@@ -191,9 +206,9 @@ class Photo_mongodb_model extends CI_Model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function get_photos($user_id,$album_id) {
+    public function get_photos($user_id, $album_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getPhotos');
-        $this->curl->post(array("userId" => $user_id,"albumId" => $album_id));
+        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id));
         return $this->curl->execute();
     }
 
@@ -204,9 +219,9 @@ class Photo_mongodb_model extends CI_Model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function get_photo($user_id,$photo_id) {
+    public function get_photo($user_id, $photo_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getPhoto');
-        $this->curl->post(array("userId" => $user_id,"photoId" => $photo_id));
+        $this->curl->post(array("userId" => $user_id, "photoId" => $photo_id));
         return $this->curl->execute();
     }
 
@@ -246,7 +261,7 @@ class Photo_mongodb_model extends CI_Model {
 
     public function delete_photo($user_id, $album_id, $photo_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'deletePhoto');
-        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id,"photoId" => $photo_id));
+        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id, "photoId" => $photo_id));
         return $this->curl->execute();
     }
 
@@ -260,17 +275,16 @@ class Photo_mongodb_model extends CI_Model {
 
     public function add_photo_like($user_id, $photo_id, $reference_id, $like_info) {
         $this->curl->create($this->SERVICE_PHOTO . 'addPhotoLike');
-        $this->curl->post(array("userId" => $user_id, "photoId" => $photo_id, "referenceId" => $reference_id,"likeInfo" => json_encode($like_info)));
+        $this->curl->post(array("userId" => $user_id, "photoId" => $photo_id, "referenceId" => $reference_id, "likeInfo" => json_encode($like_info)));
         return $this->curl->execute();
     }
 
-    
-     public function get_photo_like_list($photo_id) {
+    public function get_photo_like_list($photo_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getPhotoLikeList');
         $this->curl->post(array("photoId" => $photo_id));
         return $this->curl->execute();
     }
-    
+
     /*
      * This method will add photo like
      * @param $album_id,album id 
@@ -293,15 +307,16 @@ class Photo_mongodb_model extends CI_Model {
 
     public function add_photo_comment($photo_id, $reference_id, $coment_info, $reference_info) {
         $this->curl->create($this->SERVICE_PHOTO . 'addPhotoComment');
-        $this->curl->post(array("photoId" => $photo_id, "referenceId" =>$reference_id, "commentInfo" => json_encode($coment_info), "referenceInfo" => json_encode($reference_info)));
+        $this->curl->post(array("photoId" => $photo_id, "referenceId" => $reference_id, "commentInfo" => json_encode($coment_info), "referenceInfo" => json_encode($reference_info)));
         return $this->curl->execute();
     }
 
-      public function get_photo_comments($photo_id) {
+    public function get_photo_comments($photo_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getPhotoComments');
         $this->curl->post(array("photoId" => $photo_id));
         return $this->curl->execute();
     }
+
     /*
      * This method will edit photo comment
      * @param $album_id,album id 
@@ -328,6 +343,7 @@ class Photo_mongodb_model extends CI_Model {
         $this->curl->post(array("photoId" => $photo_id, "commentId" => $comment_id));
         return $this->curl->execute();
     }
+
     public function get_timeline_photos($user_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getTimelinePhotos');
         $this->curl->post(array("userId" => $user_id));

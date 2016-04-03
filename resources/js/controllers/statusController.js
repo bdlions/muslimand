@@ -14,6 +14,8 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             $scope.shareList = [];
             $scope.CommentList = [];
             $scope.modalImages = [];
+            $scope.sliderImages = [];
+            $scope.singlePhoto = {};
             $scope.userCurrentTimeStamp = new Date().getTime() / 1000;
             $scope.timeDifferent = 0;
             $scope.userGenderId = "";
@@ -79,7 +81,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                         success(function (data, status, headers, config) {
                             $scope.userCurrentTimeStamp = data.user_current_time;
                             $scope.userGenderId = data.user_gender_id;
-                            if (typeof data.status_list == "undefined"|| data.status_list.length <= 0) {
+                            if (typeof data.status_list == "undefined" || data.status_list.length <= 0) {
                                 $scope.busy = true;
                             } else {
                                 var counter = data.status_list.length;
@@ -236,7 +238,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                     }
                                 }
                             }, $scope.statuses);
-                            $scope.statusFlag = false;
+                            $scope.statusFlag = true;
                         });
                 return false;
             };
@@ -385,22 +387,84 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                         });
                 return false;
             };
-            $scope.open = function (statusInfo) {
-                console.log($scope.modalImages);
-                var indx = $scope.statuses.indexOf(statusInfo);
-                var imageSize = statusInfo.images.length;
-                statusService.getphotoInfo().
-                        success(function (data, status, headers, config) {
-                            statusInfo.active = true;
-                            $scope.modalImages.push(statusInfo);
-                            $scope.modalInstance = $modal.open({
-                                animation: true,
-                                templateUrl: 'template/pic-modal.html',
-                                scope: $scope
-                            });
-                        });
 
+            //photo slider methords...................
+            $scope.open = function (statusInfo, image) {
+                var statusId = statusInfo.statusId;
+                var userInfo = statusInfo.userInfo;
+                var userId = statusInfo.userInfo.userId;
+                var statusTypeId = statusInfo.statusTypeId;
+                statusService.getSliderPhotoList(statusId).
+                        success(function (data, status, headers, config) {
+                            if (typeof data.statusInfoList != "undefined") {
+                                $scope.sliderImages = data.statusInfoList;
+                                angular.forEach($scope.sliderImages, function (photoInfo, key) {
+                                    if (photoInfo.image == image) {
+                                        photoInfo.active = true;
+                                    }
+                                    if (photoInfo.userId == userId) {
+                                        photoInfo.userInfo = userInfo;
+                                    }
+                                    if (typeof photoInfo.statusTypeId == "undefined") {
+                                        photoInfo.statusTypeId = statusTypeId;
+                                    }
+                                    if (typeof photoInfo.createdOn != "undefined") {
+                                        photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
+                                    }
+                                    if (typeof photoInfo.commentList != "undefined") {
+                                        angular.forEach(photoInfo.commentList, function (comment, key) {
+                                            if (typeof comment.createdOn != "undefined") {
+                                                comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                            }
+                                        });
+                                    }
+
+                                }, $scope.sliderImages);
+                                $scope.modalInstance = $modal.open({
+                                    animation: true,
+                                    templateUrl: 'template/newsfeed.html',
+                                    scope: $scope
+                                });
+                            }
+                        });
             };
+            $scope.addPhotoLike = function (photoId, referenceId, requestFunction) {
+                statusService.addPhotoLike(photoId, referenceId).
+                        success(function (data, status, headers, config) {
+                            console.log(data);
+                            angular.forEach($scope.sliderImages, function (value, key) {
+                                if (value.photoId == photoId) {
+                                    (value.likeStatus = "1");
+                                    if (typeof value.likeCounter == "undefined") {
+                                        (value.likeCounter = 1);
+                                    } else {
+                                        (value.likeCounter = value.likeCounter + 1);
+                                    }
+                                }
+                            }, $scope.sliderImages);
+                            requestFunction();
+                        });
+                return false;
+            };
+            $scope.addMPhotoLike = function (photoId, requestFunction) {
+                statusService.addMPhotoLike(photoId).
+                        success(function (data, status, headers, config) {
+                            console.log(data);
+                            angular.forEach($scope.sliderImages, function (value, key) {
+                                if (value.photoId == photoId) {
+                                    (value.likeStatus = "1");
+                                    if (typeof value.likeCounter == "undefined") {
+                                        (value.likeCounter = 1);
+                                    } else {
+                                        (value.likeCounter = value.likeCounter + 1);
+                                    }
+                                }
+                            }, $scope.sliderImages);
+                            requestFunction();
+                        });
+                return false;
+            };
+
             $scope.ok = function () {
                 $scope.modalInstance.close();
             };
