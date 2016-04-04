@@ -16,7 +16,9 @@
                 <span class="subcategory_label_style">Relationship</span>
             </div>
             <div class="col-md-8">
-                <input type="text" class="form-control" ng-model="rStatus.relationshipStatus">
+                <select class="form-control form_control_custom_style" ng-options="relation for relation in relationShipList" ng-model="rStatus.relationshipStatus">
+                    <option value="" selected>---</option>
+                </select>
             </div>
         </div>
         <div class="pagelet_divider"></div>
@@ -47,7 +49,7 @@
 <script>
 
     function edit_r_status(rStatus) {
-        angular.element($('#rStatus_update_btn')).scope().editRStatus(rStatus, function () {
+        angular.element($('#rStatus_update_btn')).scope().editRStatus(rStatus, function() {
             $('#relationship_add').show();
             $('#edit_relation_status').hide();
         });

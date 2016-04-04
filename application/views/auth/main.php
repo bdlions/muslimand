@@ -139,12 +139,12 @@
                     <div class="brand_cover_single_image">
                         <div class="row">
                             <div class="col-md-12">
-                                <img  height="45" width="45" class="img_pad_mar_top_single_image" alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{user.userId}}.jpg"  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>40x40_{{user.gender.genderId}}.jpg" />
+                                <img  style="height: 45px; width: 45px;" class="img_pad_mar_top_single_image" alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{user.userId}}.jpg"  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>40x40_{{user.gender.genderId}}.jpg" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px;">{{user.firstName}}&nbsp;{{user.lastName}}</p>
+                                <p class="font_10px" style="margin-right: 8px; height: 40px; margin-top: 5px; word-break: keep-all;">{{user.firstName}} {{user.lastName}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -155,7 +155,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="label_padding_top_single_image" >{{user.firstName}}&nbsp;{{user.lastName}}</p>
+                            <p class="label_padding_top_single_image" >{{user.firstName}} {{user.lastName}}</p>
                         </div>
                     </div>
                     <div class="row">

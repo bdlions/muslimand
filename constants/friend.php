@@ -7,6 +7,8 @@
     define("YOUR_RELATION_TYPE_ID",                             6);
     define("REQUEST_SENDER",                                    1);
     define("REQUEST_RECEIVER",                                  0);
+    define("SHORT_FRIEND_LIST_LIMIT",                           12);
+    define("SHORT_FRIEND_LIST_OFFSET",                          0);
    
 
     

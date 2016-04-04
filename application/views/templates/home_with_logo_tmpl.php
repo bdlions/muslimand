@@ -16,22 +16,6 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/bootstrap.min.js"></script>
        
         <title>Shadhiin.com</title>
-        <style>
-            html,
-            body {
-                margin:0;
-                padding:0;
-                height:100%;
-            }
-            #wrapper {
-                min-height:100%;
-                position:relative;
-            }
-            #header {
-            }
-            #content {
-            }
-        </style>
     </head>
     <body class="back">
         <div id="wrapper">

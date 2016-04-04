@@ -419,7 +419,7 @@ embed{
 
 .msg_box{
     position: absolute;
-    width: 260px;
+    width: 240px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 
@@ -565,10 +565,20 @@ embed{
     cursor: pointer;
     opacity: 0.7;
 }
+.message_friends_border{
+    /*border-right:  1px solid lightgray;*/
+    border-bottom: 1px solid lightgray;
+    background-color: #E9EAED;
+    padding: 2px 5px!important;
+    font-size: 12px;
+}
+.message_friends_border:hover{
+    cursor: pointer;
+    background-color: lightgrey;
+}
 .message_friends_divider_full,.message_friends_divider_others{
     padding: 0 4px;
     border: 1px solid lightgray;
-    border-top: 0px;
 }
 .message_friends_divider_full{
     border-top: 1px solid lightgray;
@@ -762,7 +772,6 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 .img_caption{
     position: relative;
-    /*bottom: 5px;*/
     padding: 5px 0;
     text-decoration: none;
     background-color: transparent;
@@ -932,14 +941,14 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 
 @media (max-width: 991px) {
-  .display_hidden{
+    .display_hidden{
         display: none!important;
     }
-    
+
 }
 
 @media (max-width: 480px) {
-     .window_minimizing_custom_status{
+    .window_minimizing_custom_status{
         visibility: visible!important;
     }
     .landingPageSlogan{
@@ -962,7 +971,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 
 @media (min-width: 481px)and (max-width: 767px) {
-     .window_minimizing_custom_status{
+    .window_minimizing_custom_status{
         visibility: visible!important;
     }
     .landingPageSlogan{
@@ -984,7 +993,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 
 @media (min-width: 768px)and (max-width: 991px) { 
-     .window_minimizing_custom_status{
+    .window_minimizing_custom_status{
         visibility: visible!important;
     }
     .landingPageSlogan{
@@ -1457,7 +1466,9 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
         display: block;
         margin-left: auto;
         margin-right: auto;
-        max-height: 300px;
+        min-height: 300px;
+        min-width: 300px;
+        max-height: 350px;
         max-width: 600px;
     }
 

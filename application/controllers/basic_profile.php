@@ -1047,6 +1047,7 @@ class Basic_profile extends CI_Controller {
             }
             $response['family_relations'] = $family_relations;
         }
+         $response['relationship_list'] = $this->utils->get_relationship_status_list();
         echo json_encode($response);
     }
 

@@ -1,6 +1,6 @@
-<div style="padding-bottom: 230px;">
-    <div class="row padding_top_over_row">
-        <div class="col-md-offset-2 col-md-8">
+<div style="">
+    <div class="row padding_top_over_row" style="margin-left: 10px;">
+        <div class="col-md-offset-1 col-md-10">
             <div class="row form-group">
                 <span style="font-size: 30px">Wrong password</span>
             </div>  

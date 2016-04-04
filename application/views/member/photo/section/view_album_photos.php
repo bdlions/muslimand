@@ -1,5 +1,5 @@
-<div ng-repeat="albumDetail in albumDetailList" ng-clock>
-    <div class="pagelet" style="margin-bottom: 3px;">
+<div id="all_album_photos" style="display: none;" ng-clock>
+    <div style="margin-bottom: 3px;">
         <div class="row form-group">
             <div class="col-md-12">
                 <span style="font-size: 16px; font-weight: bold;" ng-bind="albumDetail.title"></span>
@@ -13,7 +13,7 @@
         <hr>
         <div class="row form-group padding_top_10px">
             <div class="col-md-3" ng-repeat="photo in albumPhotoList" style="padding-bottom: 28px;">
-                <img style="border: 1px solid #703684;"   ng-click="openPhotoModal(photo)" src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photo.image}}" width="120" height="100">
+                <img style="border: 1px solid #703684; height: 120px; width: 150px;"   ng-click="openPhotoModal(photo)" src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photo.image}}">
             </div>
         </div>
         <div class="row form-group">

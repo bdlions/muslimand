@@ -1,3 +1,17 @@
+<script type="text/javascript">
+    $(function() {
+        var selector = '.photo_menu_list_inline a';
+        $(selector).on('click', function() {
+            $(selector).removeClass('active');
+            $(this).addClass('active');
+        });
+        $("#create_new_album").on("click", function() {
+            $('#modal_create_album_box').modal('show');
+        });
+    });
+
+</script>
+
 <div class="row form-group" ng-controller="friendController" ng-cloak >
     <div class="col-md-12">
         <?php $this->load->view("member/timeline/profile_cover"); ?>
@@ -28,8 +42,8 @@
                 </div>
             </div>
         </div>
-        <div class="row form-group">
-            <div class="col-md-12" id="albums_id" >
+        <div class="row form-group" >
+            <div class="col-md-12" >
                 <?php $this->load->view("member/photo/section/my_albums"); ?>
             </div>
         </div>
@@ -38,15 +52,12 @@
                 <?php $this->load->view("member/photo/section/all_photos"); ?>
             </div>
         </div>
-    </div>
-    <div class="row form-group">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-            <div id="footer">
-                <?php $this->load->view("auth/sections/member_footer"); ?>
+        <div  >
+            <div >
+                <?php $this->load->view("member/photo/section/view_album_photos"); ?>
             </div>
         </div>
     </div>
-
 </div>
 <?php $this->load->view("member/photo/section/slider_photo_modal"); ?>
 <script type="text/javascript">
@@ -59,25 +70,28 @@
         if (profileId === "0") {
             profileId = '<?php echo $user_id; ?>';
         }
-        angular.element($('#albums')).scope().getAlbumList(profileId, function () {
-            $("#photo_albums").show();
+        angular.element($('#albums')).scope().getAlbumList(profileId, function() {
+            $("#all_albums").show();
+            $("#all_album_photos").hide();
             $("#all_photos").hide();
         });
     }
-    $("#photos").click(function () {
-        $("#all_photos").show();
-        $("#photo_albums").hide();
-    });
-    $(function () {
-        var selector = '.photo_menu_list_inline a';
-        $(selector).on('click', function () {
-            $(selector).removeClass('active');
-            $(this).addClass('active');
+    function get_user_album(albumId) {
+        var profileId = '<?php echo $profile_id; ?>';
+        if (profileId === "0") {
+            profileId = '<?php echo $user_id; ?>';
+        }
+        angular.element($('#album_id_' + albumId)).scope().getUserAlbum(albumId, profileId, function() {
+            $("#all_photos").hide();
+            $("#all_albums").hide();
+            $("#all_album_photos").show();
         });
-        $("#create_new_album").on("click", function () {
-            $('#modal_create_album_box').modal('show');
-        });
+    }
 
+    $("#photos").click(function() {
+        $("#all_albums").hide();
+        $("#all_album_photos").hide();
+        $("#all_photos").show();
     });
 
 </script>

@@ -39,6 +39,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.userGenderId = "";
             $scope.profileId = "";
             $scope.userId = "";
+            $scope.relationShipList = [];
 
             $scope.setUserRelation = function (userRelation) {
                 $scope.userRelation = JSON.parse(userRelation);
@@ -444,6 +445,11 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                                         $scope.fMemebers = data.family_relations.familyMember;
                                     }
                                 }
+                            }
+                            if (typeof data.relationship_list != "undefined") {
+                                $scope.relationShipList = data.relationship_list ;
+                                console.log($scope.relationShipList);
+                                
                             }
                             requestFunction(data);
                         });

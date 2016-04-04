@@ -1,9 +1,8 @@
 <style>
     .friendd{
         border: 1px solid lightgray;
-        padding: 1px;
+        padding: 3px;
         display: inline-block;
-        width: 100%;
     }
 </style>
 <div ng-controller="friendController" ng-clock>
@@ -25,23 +24,23 @@
         </div>
         <div class="pagelet">
             <div class="row form-group">
-                <div class="col-md-12">
                     <div ng-repeat="friend in friends">
-                        <div style="padding: 10px; display: inline-block;">
+                <div class="col-md-6">
+                        <div style="padding: 10px;">
                             <div class="friendd">
-                                <div style="float: left">
-                                    <img  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100_{{friend.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>{{friend.userId}}.jpg"/>
+                                <div style="float: left; border: 1px solid #703684;">
+                                    <img class="img-responsive" style="height: 75px; width: 75px;" fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100_{{friend.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>{{friend.userId}}.jpg"/>
                                 </div>
                                 <div style="float: left; width: 180px; padding: 10px;">
                                     <div >
                                         <a style="font-weight: bold;" href='<?php echo base_url(); ?>member/timeline/{{friend.userId}}' ><span ng-bind="friend.firstName"></span>&nbsp;<span ng-bind="friend.lastName"></span></a>
                                     </div>
                                     <div >
-                                        <span style="font-size: 12px"> Mutual friends </span> 
+                                        <!--<span style="font-size: 12px"> Mutual friends </span>--> 
                                     </div>
                                 </div>
-                                <div class="pull-right">
-                                    <button style="margin: 10px 10px 0 0;" >Friends</button>
+                                <div style="float: right;">
+                                    <button style="margin-top: 50%;" >Friends</button>
                                 </div>
                             </div>
                         </div>

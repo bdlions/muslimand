@@ -222,30 +222,30 @@ class Photos extends CI_Controller {
 //        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my_albums", $this->data);
     }
 
-    function get_album($album_id = 0) {
-        $user_id = $this->session->userData('user_id');
+    function get_album() {
         $response = array();
-        $result = $this->photo_mongodb_model->get_photos($user_id, $album_id);
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "albumId") != FALSE) {
+            $album_id = $requestInfo->albumId;
+        }
+        if (property_exists($requestInfo, "profileId") != FALSE) {
+            $mapping_id = $requestInfo->profileId;
+        }
+        $response = array();
+        $result = $this->photo_mongodb_model->get_photos($mapping_id, $album_id);
         $result_array = json_decode($result);
         if (!empty($result_array)) {
             if (property_exists($result_array, "photoList")) {
-                $this->data['photo_list'] = json_encode($result_array->photoList);
+                $response['photo_list'] = $result_array->photoList;
             }
             if (property_exists($result_array, "albumInfo")) {
-                $this->data['album_info'] = json_encode(json_decode($result_array->albumInfo));
+                $response['album_info'] = json_decode($result_array->albumInfo);
             }
         }
+        echo json_encode($response);
+        return;
 
-        $user_relation = array();
-        $user_relation['first_name'] = $this->session->userdata('first_name');
-        $user_relation['last_name'] = $this->session->userdata('last_name');
-        $user_relation['user_id'] = $user_id;
-        $this->data['app'] = PHOTO_APP;
-        $this->data['user_id'] = $user_id;
-        $this->data['profile_id'] = $user_id;
-        $this->data["first_name"] = $this->session->userdata('first_name');
-        $this->data['user_relation'] = json_encode($user_relation);
-        $this->template->load(null, "member/photo/photos_albums_view", $this->data);
     }
 
     function create_album() {

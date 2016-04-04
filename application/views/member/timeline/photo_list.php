@@ -2,7 +2,11 @@
     <div class="row">
         <div class="col-md-12">
             <img class="img-circle" style="background-color: #703684;" src="<?php echo base_url(); ?>resources/images/photos/icon/photo.png">
-            <a class="non_friend_pagelet_header_anchor_style font_15px" href="">Photos</a>
+            <?php if ($profile_id != "0") { ?>
+                <a class="non_friend_pagelet_header_anchor_style font_15px" href="<?php echo base_url(); ?>photos/get_home_photos/<?php echo $profile_id; ?>">Photos</a>
+            <?php } else { ?>
+                <a class="non_friend_pagelet_header_anchor_style font_15px" href="<?php echo base_url(); ?>photos/get_home_photos">Photos</a>
+            <?php } ?>
         </div>
     </div>
 </div>

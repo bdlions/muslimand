@@ -2,8 +2,12 @@
     <div class="row">
         <div class="col-md-12">
             <img class="img-circle"  src="<?php echo base_url(); ?>resources/images/header_icons/friends.png">
-            <a class="non_friend_pagelet_header_anchor_style font_15px" href="">Friends</a> 
-            ·  <span class="non_friend_pagelet_header_anchor_style" href="">207</span>  
+            <?php if ($profile_id != "0") { ?>
+                <a class="non_friend_pagelet_header_anchor_style font_15px" href="<?php echo base_url(); ?>friend/get_friend_list/<?php echo $profile_id; ?>">Friends</a>
+            <?php } else { ?>
+                <a class="non_friend_pagelet_header_anchor_style font_15px" href="<?php echo base_url(); ?>friend/get_friend_list">Friends</a>
+            <?php } ?>
+            ·  <span class="non_friend_pagelet_header_anchor_style" href="">{{friendCounter}}</span>  
             <!--<a class="non_friend_pagelet_header_anchor_style" href="">(1 Mutual)</a>-->
         </div>
     </div>

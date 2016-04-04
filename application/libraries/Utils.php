@@ -75,10 +75,9 @@ class Utils {
         );
         return $months;
     }
-    
+
     public function get_relationship_status_list() {
         $relationship_status = array(
-            "0" => '-----',
             "01" => 'Single',
             "02" => 'In a relationship',
             "03" => 'Engaged',
@@ -93,8 +92,6 @@ class Utils {
         );
         return $relationship_status;
     }
-    
-    
 
     /*
      * this method return list of month

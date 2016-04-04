@@ -25,17 +25,17 @@
                     <input type="email" class="form-control">
                 </div>
             </div>  
-<!--            <div class="row padding_top_20px">
-                <div class="col-md-12">
-                    Muslimand <br>
-                    Address <br>
-                    Dhaka <br>
-                    Bangladesh <br><br>
-
-                    Email: muslimand@muslimand.com<br>
-                    Telephone: +880 01XXX XXX XXX
-                </div>
-            </div>  -->
+            <!--            <div class="row padding_top_20px">
+                            <div class="col-md-12">
+                                Muslimand <br>
+                                Address <br>
+                                Dhaka <br>
+                                Bangladesh <br><br>
+            
+                                Email: muslimand@muslimand.com<br>
+                                Telephone: +880 01XXX XXX XXX
+                            </div>
+                        </div>  -->
         </div>
         <div class="col-md-6">
             <div class="row padding_top_20px">

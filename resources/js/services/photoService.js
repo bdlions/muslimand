@@ -1,10 +1,10 @@
 angular.module('services.Photo', []).
-        factory('photoService', function ($http, $location) {
+        factory('photoService', function($http, $location) {
             var photoService = {};
-           var $app_name = "/muslimand";
+            var $app_name = "/muslimand";
 
 
-            photoService.getUserAlbumList = function (profileId) {
+            photoService.getUserAlbumList = function(profileId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/get_user_short_album_list',
@@ -13,7 +13,17 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.getAlbum = function (albumId) {
+            photoService.getUserAlbum = function(albumId, profileId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/photos/get_album',
+                    data: {
+                        albumId: albumId,
+                        profileId: profileId
+                    }
+                });
+            };
+            photoService.getAlbum = function(albumId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/get_album',
@@ -22,18 +32,18 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.getSliderAlbum = function (albumId, mappingId) {
+            photoService.getSliderAlbum = function(albumId, mappingId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/get_slider_album',
                     data: {
                         albumId: albumId,
-                        mappingId :mappingId
+                        mappingId: mappingId
                     }
                 });
             };
 
-            photoService.createAlbum = function (albumInfo) {
+            photoService.createAlbum = function(albumInfo) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/create_album',
@@ -43,7 +53,7 @@ angular.module('services.Photo', []).
                 });
             };
 
-            photoService.editAlbum = function (albumInfo) {
+            photoService.editAlbum = function(albumInfo) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/edit_album',
@@ -52,7 +62,7 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.deleteAlbum = function (albumId) {
+            photoService.deleteAlbum = function(albumId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/delete_album',
@@ -62,7 +72,7 @@ angular.module('services.Photo', []).
                 });
             };
 
-            photoService.addAlbumLike = function (albumId) {
+            photoService.addAlbumLike = function(albumId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/add_album_like',
@@ -71,17 +81,17 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.deleteAlbumLike = function (albumId, likeId) {
+            photoService.deleteAlbumLike = function(albumId, likeId) {
                 return $http({
                     method: 'post',
-                    url: $location.path() + $app_name +'/photos/delete_album_like',
+                    url: $location.path() + $app_name + '/photos/delete_album_like',
                     data: {
                         albumId: albumId,
                         likeId: likeId
                     }
                 });
             };
-            photoService.getAlbumLikeList = function (albumId) {
+            photoService.getAlbumLikeList = function(albumId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/get_album_like_list',
@@ -91,7 +101,7 @@ angular.module('services.Photo', []).
                 });
             };
 
-            photoService.addAlbumComment = function (commentInfo) {
+            photoService.addAlbumComment = function(commentInfo) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/add_album_comment',
@@ -100,7 +110,7 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.getAlbumComments = function (albumId) {
+            photoService.getAlbumComments = function(albumId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/get_album_comments',
@@ -109,7 +119,7 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.editAlbumComment = function (commentInfo) {
+            photoService.editAlbumComment = function(commentInfo) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/edit_album_comment',
@@ -119,7 +129,7 @@ angular.module('services.Photo', []).
                 });
             };
 
-            photoService.deleteAlbumComment = function (albumId, commentId) {
+            photoService.deleteAlbumComment = function(albumId, commentId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/delete_album_comment',
@@ -129,7 +139,7 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.AddAlbumShare = function (shareInfo) {
+            photoService.AddAlbumShare = function(shareInfo) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/delete_album_comment',
@@ -140,7 +150,7 @@ angular.module('services.Photo', []).
             };
             //................................photo module............................
 
-            photoService.getPhotos = function (albumId) {
+            photoService.getPhotos = function(albumId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/get_photos',
@@ -149,7 +159,7 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.getPhoto = function (albumId, photoId) {
+            photoService.getPhoto = function(albumId, photoId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/get_photo',
@@ -159,7 +169,7 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.getPhotoInfo = function (photoId) {
+            photoService.getPhotoInfo = function(photoId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/get_photo_info',
@@ -168,7 +178,7 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.cropPicture = function (imageInfo) {
+            photoService.cropPicture = function(imageInfo) {
                 console.log(imageInfo);
                 return $http({
                     method: 'post',
@@ -185,7 +195,7 @@ angular.module('services.Photo', []).
                 });
             };
 
-            photoService.addPhotos = function (photoInfo) {
+            photoService.addPhotos = function(photoInfo) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/add_photos',
@@ -195,7 +205,7 @@ angular.module('services.Photo', []).
                 });
             };
 
-            photoService.editPhoto = function (photoInfo) {
+            photoService.editPhoto = function(photoInfo) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/edit_photo',
@@ -204,7 +214,7 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.deletePhoto = function (albumId, photoId) {
+            photoService.deletePhoto = function(albumId, photoId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/delete_photo',
@@ -215,27 +225,27 @@ angular.module('services.Photo', []).
                 });
             };
 
-            photoService.addPhotoLike = function (photoId, referenceId) {
+            photoService.addPhotoLike = function(photoId, referenceId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/add_photo_like',
                     data: {
                         photoId: photoId,
-                        referenceId :referenceId 
+                        referenceId: referenceId
                     }
                 });
             };
-            photoService.getPhotoLikeList = function (photoId) {
+            photoService.getPhotoLikeList = function(photoId) {
                 return $http({
                     method: 'post',
-                    url: $location.path() + $app_name +'/photos/get_photo_like_list',
+                    url: $location.path() + $app_name + '/photos/get_photo_like_list',
                     data: {
                         photoId: photoId,
                     }
                 });
             };
 
-            photoService.deletePhotoLike = function (photoId, likeId) {
+            photoService.deletePhotoLike = function(photoId, likeId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/delete_photo_like',
@@ -245,26 +255,26 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.addPhotoComment = function (commentInfo) {
+            photoService.addPhotoComment = function(commentInfo) {
                 return $http({
                     method: 'post',
-                    url: $location.path() + $app_name +'/photos/add_photo_comment',
+                    url: $location.path() + $app_name + '/photos/add_photo_comment',
                     data: {
                         commentInfo: commentInfo
                     }
                 });
             };
 
-            photoService.getPhotoComments = function (photoId) {
+            photoService.getPhotoComments = function(photoId) {
                 return $http({
                     method: 'post',
-                    url: $location.path() + $app_name +'/photos/get_photo_comments',
+                    url: $location.path() + $app_name + '/photos/get_photo_comments',
                     data: {
                         photoId: photoId
                     }
                 });
             };
-            photoService.editPhotoComment = function (commentInfo) {
+            photoService.editPhotoComment = function(commentInfo) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/edit_photo_comment',
@@ -274,7 +284,7 @@ angular.module('services.Photo', []).
                 });
             };
 
-            photoService.deletePhotoComment = function (photoId, commentId) {
+            photoService.deletePhotoComment = function(photoId, commentId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/delete_photo_comment',
@@ -284,10 +294,10 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.AddPhotoShare = function (shareInfo) {
+            photoService.AddPhotoShare = function(shareInfo) {
                 return $http({
                     method: 'post',
-                    url: $location.path() + $app_name +'/photos/share_photo_comment',
+                    url: $location.path() + $app_name + '/photos/share_photo_comment',
                     data: {
                         shareInfo: shareInfo
                     }

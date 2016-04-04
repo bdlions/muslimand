@@ -21,7 +21,10 @@
                         <span class="subcategory_label_style">Relationship</span>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control form_control_custom_style" ng-model="rStatusInfo.relationship">
+                        <select class="form-control form_control_custom_style"  ng-options="relation for relation in relationShipList" ng-model="rStatusInfo.relationship">
+                            <option value="" selected>---</option>
+                        </select>
+                <!--<input type="text" class="form-control form_control_custom_style" ng-model="rStatusInfo.relationship">-->
                     </div>
                 </div>
                 <div class="pagelet_divider"></div>

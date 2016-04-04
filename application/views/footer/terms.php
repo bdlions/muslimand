@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            <div style="font-size: 13.5px; text-align: justify;">
+            <div style="font-size: 13px; text-align: justify;">
                 <div class="row padding_top_20px">
                     <div class="col-md-12">
                         Welcome to shadhiin.com a social networking service where people/ friends share their lives and show up entertainment.

@@ -172,19 +172,21 @@ class Friend extends CI_Controller {
     }
 
     function get_short_friend_list() {
+        $limit = SHORT_FRIEND_LIST_LIMIT;
+        $offset = SHORT_FRIEND_LIST_OFFSET;
         $response = array();
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
         if (property_exists($requestInfo, "profileId") != FALSE) {
             $profile_id = $requestInfo->profileId;
         }
-        $response['friend_list'] = $this->get_friend_list_info($profile_id);
+        $response['friend_list'] = $this->get_friend_list_info($profile_id, $limit, $offset);
         echo json_encode($response);
     }
 
-    function get_friend_list_info($user_id) {
-        $offset = 0;
-        $limit = 5;
+    function get_friend_list_info($user_id = 0, $limit = 12, $offset = 0) {
+        $offset = $offset;
+        $limit = $limit;
         $friend_list = array();
         $status_type = RELATION_TYPE_FRIEND_ID;
         $friend_list_result = $this->friend_mongodb_model->get_friend_list($user_id, $status_type, $offset, $limit);
