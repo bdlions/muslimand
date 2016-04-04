@@ -48,7 +48,7 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.getUserAlbumList = function (profileId) {
                 photoService.getUserAlbumList(profileId).
                         success(function (data, status, headers, config) {
-                            $scope.userAlbums = data.album_list;
+                            $scope.albumList = data.album_list;
                         });
             };
             $scope.getAlbumList = function (profileId, requestFunction) {
@@ -181,7 +181,6 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.addPhotoLike = function (photoId, referenceId, requestFunction) {
                 photoService.addPhotoLike(photoId, referenceId).
                         success(function (data, status, headers, config) {
-                            console.log(data);
                             angular.forEach($scope.albumPhotoList, function (value, key) {
                                 if (value.photoId == photoId) {
                                     (value.likeStatus = "1");

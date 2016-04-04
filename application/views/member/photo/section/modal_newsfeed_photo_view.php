@@ -40,7 +40,7 @@
     <div class="modal_photo_pagelet" style="bottom: 70px; float: right; position: fixed; right: 40px; width: 504px; z-index: 99999999;">
     <div class="row">
     <div class="col-md-2" >
-    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{photoInfo.userInfo.gender.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{photoInfo.userInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
+    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{photoInfo.userInfo.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{photoInfo.userInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
     </div>
     <div class="col-md-10">
     <div class="row">
@@ -259,11 +259,12 @@
         var referenceId = photoInfo.referenceId;
         var statusTypeId = photoInfo.statusTypeId;
         console.log(statusTypeId);
-        if ('<?php echo STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE; ?>' == statusTypeId ||
+        if ('<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE; ?>' == statusTypeId ||
                 '<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE; ?>' == statusTypeId ||
                 '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO; ?>' == statusTypeId ||
                 '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO; ?>' == statusTypeId ||
                 '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_PROFILE_PICTURE; ?>' == statusTypeId ||
+                '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE; ?>' == statusTypeId ||
                 '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' == statusTypeId ||
                 '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' == statusTypeId) {
             angular.element($('#photo_like_' + photoId)).scope().addPhotoLike(photoId, referenceId, function () {

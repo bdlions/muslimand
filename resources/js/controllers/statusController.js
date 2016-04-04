@@ -390,8 +390,10 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
 
             //photo slider methords...................
             $scope.open = function (statusInfo, image) {
+                var genderId = statusInfo.genderId;
                 var statusId = statusInfo.statusId;
                 var userInfo = statusInfo.userInfo;
+                userInfo.genderId = genderId;
                 var userId = statusInfo.userInfo.userId;
                 var statusTypeId = statusInfo.statusTypeId;
                 statusService.getSliderPhotoList(statusId).
