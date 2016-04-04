@@ -1,5 +1,5 @@
-<script type="text/ng-template" id="template/pic-modal.html">
-<div class="modal-body pic_modal" style="background-color: #000;">
+<script type="text/ng-template" id="template/slider_photo-modal.html">
+<div class="modal-body" style="background-color: #000; ">
     <div class="row form-group">
         <div class="col-md-offset-11 col-md-1">
             <button id="close_photo_modal" type="button"  ng-click="ok()" class="close close_custom" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -8,8 +8,9 @@
 
     <div class="row form-group" style="background-color: #000; height: 500px; width: 600px;">
         <div class="">
+
             <carousel>
-                <slide ng-repeat="photoInfo in albumPhotoList" active="photoInfo.active">
+                <slide ng-repeat="photoInfo in sliderImages" active="photoInfo.active">
                     <img ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photoInfo.image}}"  class="img-responsive" />
 
                     <div class="row" style="bottom: 55px; position: fixed; margin-left: 220px;">
@@ -38,10 +39,10 @@
                     
                     
                     
-                    <div class="modal_photo_pagelet" style="bottom: 70px; float: right; position: fixed; right: 40px; width: 504px; z-index: 99999999;">
+                     <div class="modal_photo_pagelet" style="bottom: 70px; float: right; position: fixed; right: 40px; width: 504px; z-index: 99999999;">
                         <div class="row">
                             <div class="col-md-2" >
-                                <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{photoInfo.userInfo.gender.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{photoInfo.userInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
+                                <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{photoInfo.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{photoInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
                             </div>
                             <div class="col-md-10">
                                 <div class="row">
@@ -222,7 +223,6 @@
                     </div>
                     
                     
-                    
                 </slide>
 
             </carousel>
@@ -283,4 +283,13 @@
     }
 
 
+
+
+</script>
+<script>
+    $(function() {
+        $('.left.carousel-control').on("click", function() {
+            console.log("fgh");
+        });
+    });
 </script>

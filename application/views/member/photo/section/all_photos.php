@@ -1,7 +1,7 @@
 <div id="all_photos">
     <div class="row form-group">
         <div class="col-md-3" ng-repeat="photoInfo in timeLinePhotoList">
-            <img style="border: 1px solid #703684;"   ng-click="openTimeLineModal(photoInfo)" src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photoInfo.image}}" width="120" height="100">
+            <img style="border: 1px solid #703684;"   ng-click="openPhotoModal(photoInfo)" src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photoInfo.image}}" width="120" height="100">
         </div>
     </div>
 
@@ -31,7 +31,7 @@
     </div>
 </div>
 </div>
-<?php $this->load->view("member/photo/section/modal_timeline_photo_view"); ?>
+
 <script>
     function nextPhoto() {
         console.log("here");

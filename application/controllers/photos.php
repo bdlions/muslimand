@@ -145,6 +145,9 @@ class Photos extends CI_Controller {
             if (property_exists($temp_album_list, "photoList")) {
                 $response["photoList"] = $temp_album_list->photoList;
             }
+            if (property_exists($temp_album_list, "userInfo")) {
+                $response["userInfo"] = json_decode($temp_album_list->userInfo);
+            }
         }
         echo json_encode($response);
         return;

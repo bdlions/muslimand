@@ -13,7 +13,7 @@
         <hr>
         <div class="row form-group padding_top_10px">
             <div class="col-md-3" ng-repeat="photo in albumPhotoList" style="padding-bottom: 28px;">
-                <img style="border: 1px solid #703684;"   ng-click="open(photo)" src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photo.image}}" width="120" height="100">
+                <img style="border: 1px solid #703684;"   ng-click="openPhotoModal(photo)" src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photo.image}}" width="120" height="100">
             </div>
         </div>
         <div class="row form-group">
@@ -165,5 +165,4 @@
 </script>
 <?php $this->load->view("modal/modal_liked_people_list"); ?>
 <?php $this->load->view("member/photo/modal_shared_album"); ?>
-<?php $this->load->view("member/photo/section/modal_photo_view_1"); ?>
 

@@ -64,7 +64,7 @@
     <div class="row form-group padding_top_10px">
         <div class="col-md-12">
             <!--image upload  start...............-->
-            <div id="fileupload" method="POST" enctype="multipart/form-data" data-ng-app="demo" data-ng-controller="DemoFileUploadController" ng-init="setPath('<?php echo base_url(); ?>photos/image_upload')" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
+            <div id="fileupload" method="POST" enctype="multipart/form-data" data-ng-app="demo" data-ng-controller="DemoFileUploadController" ng-init="setPath('<?php echo base_url(); ?>status/image_upload')" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
                 <div class="row fileupload-buttonbar">
                     <div class="col-md-10">
                         <span class="btn btn-sm btn-success fileinput-button" ng-class="{disabled: disabled}">

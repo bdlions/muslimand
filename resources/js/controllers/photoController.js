@@ -19,10 +19,18 @@ angular.module('controllers.Photo', ['services.Photo']).
                 $scope.categoryList = JSON.parse(t);
             };
             $scope.setAlbums = function (albumList) {
-                $scope.albumList = JSON.parse(albumList);
+                var tempAlbum = [];
+                tempAlbum = JSON.parse(albumList);
+                angular.forEach(tempAlbum, function (value, key) {
+                    if (value.albumId != "3" && value.albumId != "1" && value != "2") {
+                        $scope.albumList.push(value);
+                    }
+                });
+                console.log($scope.albumList);
             };
             $scope.setUserAlbumList = function (userAlbumList) {
                 $scope.userAlbums = JSON.parse(userAlbumList);
+
             };
             $scope.setAlbumInfo = function (albumInfo) {
                 $scope.albumDetailList.push(JSON.parse(albumInfo));
@@ -36,7 +44,7 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.setTimeLinePhotoList = function (photoList) {
                 $scope.timeLinePhotoList = JSON.parse(photoList);
             };
-            
+
             $scope.getUserAlbumList = function (profileId) {
                 photoService.getUserAlbumList(profileId).
                         success(function (data, status, headers, config) {
@@ -239,61 +247,40 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.searchPhoto = function () {
 
             };
-            $scope.photos = [
-//                {"image": "http://localhost/muslimand/resources/images/profile_picture/150x150/7OdqKzxmuakkpRq.jpg", "name": "Cat on Fence"},
-//                {"image": "http://localhost/muslimand/resources/images/cover_picture/9Ixsx2qFkzWEliG.jpg", "name": "Cat in Sun"},
-//                {"image": "http://localhost/muslimand/resources/images/photos/albums/user_album/12743937_2380336878651567_1331589904391873430_n1.jpg", "name": "Blue Eyed Cat"},
-//                {"image": "http://localhost/muslimand/resources/images/photos/albums/user_album/12705447_932543446831073_8553385767911857321_n.jpg", "name": "Blue Eyed Cat"},
-//                {"image": "http://localhost/muslimand/resources/images/profile_picture/150x150/t87sqMzqcM86ee2.jpg", "name": "Patchy Cat"},
-//           
-             ];
-            $scope.openTimeLineModal = function (photoInfo) {
+            $scope.openPhotoModal = function (photoInfo) {
+                console.log(photoInfo);
                 var albumId = photoInfo.albumId;
                 var mappingId = photoInfo.userId;
-                console.log(photoInfo);
-                 photoService.getSliderAlbum(albumId, mappingId ).
+                var photoId = photoInfo.photoId;
+                photoService.getSliderAlbum(albumId, mappingId).
                         success(function (data, status, headers, config) {
                             if (typeof data.photoList != "undefined") {
                                 $scope.sliderImages = data.photoList;
                                 angular.forEach($scope.sliderImages, function (photoInfo, key) {
-//                                    if (photoInfo.image == image) {
-//                                        photoInfo.active = true;
-//                                    }
-//                                    if (photoInfo.userId == userId) {
-//                                        photoInfo.userInfo = userInfo;
-//                                    }
-//                                    if (typeof photoInfo.statusTypeId == "undefined") {
-//                                        photoInfo.statusTypeId = statusTypeId;
-//                                    }
-//                                    if (typeof photoInfo.createdOn != "undefined") {
-//                                        photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
-//                                    }
-//                                    if (typeof photoInfo.commentList != "undefined") {
-//                                        angular.forEach(photoInfo.commentList, function (comment, key) {
-//                                            if (typeof comment.createdOn != "undefined") {
-//                                                comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
-//                                            }
-//                                        });
-//                                    }
+                                    if (photoInfo.photoId == photoId) {
+                                        photoInfo.active = true;
+                                    }
+                                    photoInfo.userInfo = data.userInfo;
+
+                                    if (typeof photoInfo.createdOn != "undefined") {
+                                        photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
+                                    }
+                                    if (typeof photoInfo.commentList != "undefined") {
+                                        angular.forEach(photoInfo.commentList, function (comment, key) {
+                                            if (typeof comment.createdOn != "undefined") {
+                                                comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                            }
+                                        });
+                                    }
 //
-//                                }, $scope.sliderImages);
-//                                $scope.modalInstance = $modal.open({
-//                                    animation: true,
-//                                    templateUrl: 'template/newsfeed.html',
-//                                    scope: $scope
+                                }, $scope.sliderImages);
+                                $scope.modalInstance = $modal.open({
+                                    animation: true,
+                                    templateUrl: 'template/slider_photo-modal.html',
+                                    scope: $scope
                                 });
                             }
                         });
-                
-                
-//                var indx = $scope.timeLinePhotoList.indexOf(photoInfo);
-//                photoInfo.active = true;
-//                $scope.albumPhotoList[indx] = photoInfo;
-//                $scope.modalInstance = $modal.open({
-//                    animation: true,
-//                    templateUrl: 'template/timeline_pic-modal.html',
-//                    scope: $scope,
-//                });
             };
             $scope.open = function (photoInfo) {
                 var indx = $scope.albumPhotoList.indexOf(photoInfo);

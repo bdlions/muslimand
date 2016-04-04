@@ -48,7 +48,7 @@
     </div>
 
 </div>
-
+<?php $this->load->view("member/photo/section/slider_photo_modal"); ?>
 <script type="text/javascript">
 
     function open_modal_create_photo() {
