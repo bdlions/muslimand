@@ -47,7 +47,7 @@
             <div class="row form-group">
                 <div class="col-md-12">
                     <span ng-if = "albumDetail.likeStatus != '1'">
-                        <a href style="color: #3B59A9;"  onclick="add_album_like(angular.element(this).scope().albumDetail.albumId)" id="album_like_id">
+                        <a href style="color: #3B59A9;"  ng-click="addAlbumLike(albumDetail)" id="album_like_id">
                             <img src="<?php echo base_url() ?>resources/images/like_icon.png">
                             Like
                         </a>
@@ -73,10 +73,21 @@
             <div class="pagelet_divider"></div>
             <div class="row form-group">
                 <div class="col-md-12">
-                    <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
-                    <span id="your_like_id" style="display: none">You</span>
-                    <span id="other_like_id" style="display: none">,and  {{albumDetail.likeCounter}} others</span>
-                    <a class="cursor_holder_style" onclick="open_modal_like_list(angular.element(this).scope().albumDetail.albumId)"  id="like_list_id" >{{albumDetail.likeCounter}} people</a> like this.
+                    <span ng-if = "albumDetail.likeCounter > 0">
+                        <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
+                        <a  id="like_list_id"  style="color: #3B59A9;" href onclick="open_modal_like_list(angular.element(this).scope().albumDetail.albumId)" >
+                            <span ng-if = "albumDetail.likeStatus === '1'">
+                                <span  id="statusLike{{albumDetail.statusId}}"> you</span>
+                            </span>
+                            <span ng-if = "albumDetail.likeCounter > 1 && albumDetail.likeStatus === '1'">
+                                and  {{albumDetail.likeCounter - 1}} people
+                            </span>
+                            <span ng-if ="albumDetail.likeCounter > 0 && albumDetail.likeStatus !== '1'">
+                                {{albumDetail.likeCounter}} people
+                            </span>
+                            like this.
+                        </a> 
+                    </span>
                 </div>
             </div>
             <div class="pagelet_divider"></div>
@@ -129,25 +140,13 @@
     </div>
 </div>
 <script type="text/javascript">
-    function add_album_like(albumId) {
-        angular.element($('#album_like_id')).scope().addAlbumLike(albumId, function() {
-            $("#album_like_id").hide();
-            $("#album_dislike_id").show();
-            $("#your_like_id").show();
-            $("#like_list_id").hide();
-            if (angular.element($('#album_like_id')).scope().albumDetail.likeCounter > 0) {
-                $("#other_like_id").show();
-
-            }
-        });
-    }
     function open_modal_like_list(albumId) {
-        angular.element($('#like_list_id')).scope().getAlbumLikeList(albumId, function() {
+        angular.element($('#like_list_id')).scope().getAlbumLikeList(albumId, function () {
             $('#modal_liked_people_list').modal('show');
         });
     }
     function get_album_comments(albumId) {
-        angular.element($('#album_more_comment')).scope().getAlbumComments(albumId, function() {
+        angular.element($('#album_more_comment')).scope().getAlbumComments(albumId, function () {
             $('#more_comment_id').hide();
         });
     }
@@ -157,8 +156,8 @@
     }
 
 
-    $(function() {
-        $("#album_comment_id_focus").on("click", function() {
+    $(function () {
+        $("#album_comment_id_focus").on("click", function () {
             $('#album_comment_field').focus();
         });
     });

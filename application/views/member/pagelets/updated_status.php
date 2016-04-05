@@ -200,7 +200,7 @@
                                     <div ng-repeat="image in status.images" >
                                         <div class="row from-group">
                                             <div class="col-md-12 form-group">
-                                                <img class="img-responsive"  id="single_photo_{{status.statusId}}"  ng-click="open(status, image.image)" style="border: 1px solid #703684; float: left;" ng-src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{image.image}}" >
+                                                <img class="img-responsive"  id="single_photo_{{status.statusId}}"  ng-click="openPage(status, image.image)" style="border: 1px solid #703684; float: left;" ng-src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{image.image}}" >
                                             </div>
                                         </div>
                                     </div>
@@ -219,7 +219,7 @@
                                     <div ng-repeat="image in status.images" >
                                         <div class="row from-group">
                                             <div class="col-md-12 form-group">
-                                                <img class="img-responsive" id="single_photo_{{status.statusId}}"  ng-click="open(status, image.image)" style="border: 1px solid #703684; float: left" ng-src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{image.image}}" >
+                                                <img class="img-responsive" id="single_photo_{{status.statusId}}"  ng-click="openPage(status, image.image)" style="border: 1px solid #703684; float: left" ng-src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{image.image}}" >
                                             </div>
                                         </div>
                                     </div>
@@ -239,13 +239,13 @@
                                     <div ng-repeat="image in status.images" >
                                         <div class="row from-group">
                                             <div class="col-md-12 form-group">
-                                                <img class="img-responsive" id="single_photo_{{status.statusId}}"  ng-click="open(status, image.image)"  style="border: 1px solid #703684; float: left" ng-src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{image.image}}" >
+                                                <img class="img-responsive" id="single_photo_{{status.statusId}}"  ng-click="openPage(status, image.image)"  style="border: 1px solid #703684; float: left" ng-src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{image.image}}" >
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             <!--user timeline or album photos-->
-                            <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTOS; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTOS; ?> == status.statusTypeId ">
+                            <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTOS; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTOS; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS; ?> == status.statusTypeId ">
                                 <div class="row">
                                     <div ng-repeat="(key, image) in status.images">
                                         <img class="img-responsive"  ng-click="open(status, image.image)" style="border: 1px solid #703684; float: left; height: 150px; width: 150px; margin: 0 10px 25px 15px" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}"  >
@@ -253,10 +253,10 @@
                                 </div>
                             </div>
                             <!--page timeline or album photos-->
-                            <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS; ?> == status.statusTypeId">
+                            <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?> == status.statusTypeId">
                                 <div class="row">
                                     <div ng-repeat="(key, image) in status.images">
-                                        <img class="img-responsive"  ng-click="open(status, image.image)" style="border: 1px solid #703684; float: left; height: 150px; width: 150px; margin: 0 10px 25px 15px" ng-src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{image.image}}"  >
+                                        <img class="img-responsive"  ng-click="openPage(status, image.image)" style="border: 1px solid #703684; float: left; height: 150px; width: 150px; margin: 0 10px 25px 15px" ng-src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{image.image}}"  >
                                     </div>
                                 </div>
                             </div>
@@ -422,6 +422,7 @@
     <?php $this->load->view("modal/modal_comment_liked_people_list"); ?>
     <?php $this->load->view("modal/modal_shared_people_list"); ?>
     <?php $this->load->view("member/photo/section/modal_newsfeed_photo_view"); ?>
+    <?php $this->load->view("member/photo/section/page_modal_newsfeed_photo_view"); ?>
     <script>
 
         function get_album_comments(statusId) {

@@ -102,9 +102,9 @@ class Photo_mongodb_model extends CI_Model {
      * @author created by Shemin on 20th September 2015
      */
 
-    public function add_album_like($album_id, $like_info) {
+    public function add_album_like($mapping_id, $album_id, $reference_id, $like_info) {
         $this->curl->create($this->SERVICE_PHOTO . 'addAlbumLike');
-        $this->curl->post(array("albumId" => $album_id, "likeInfo" => json_encode($like_info)));
+        $this->curl->post(array("mappingId" => $mapping_id, "albumId" => $album_id, "referenceId" => $reference_id, "likeInfo" => json_encode($like_info)));
         return $this->curl->execute();
     }
 

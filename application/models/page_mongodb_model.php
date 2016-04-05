@@ -88,6 +88,46 @@ class Page_mongodb_model extends CI_Controller {
         return $this->curl->execute();
     }
 
- 
+    public function get_slider_photos($user_id, $reference_id) {
+        $this->curl->create($this->SERVICE_PAGE . 'getSliderPhotos');
+        $this->curl->post(array("userId" => $user_id, "referenceId" => $reference_id));
+        return $this->curl->execute();
+    }
+
+    public function add_photo_like($user_id, $photo_id, $reference_id, $like_info) {
+        $this->curl->create($this->SERVICE_PAGE . 'addPhotoLike');
+        $this->curl->post(array("userId" => $user_id, "photoId" => $photo_id, "referenceId" => $reference_id, "likeInfo" => json_encode($like_info)));
+        return $this->curl->execute();
+    }
+
+    public function add_m_photo_like($user_id, $photo_id, $like_info) {
+        $this->curl->create($this->SERVICE_PAGE . 'addMPhotoLike');
+        $this->curl->post(array("userId" => $user_id, "photoId" => $photo_id, "likeInfo" => json_encode($like_info)));
+        return $this->curl->execute();
+    }
+
+    public function get_timeline_photos($page_id) {
+        $this->curl->create($this->SERVICE_PAGE . 'getTimelinePhotos');
+        $this->curl->post(array("pageId" => $page_id));
+        return $this->curl->execute();
+    }
+
+    public function get_user_albums($page_id) {
+        $this->curl->create($this->SERVICE_PAGE . 'getAlbums');
+        $this->curl->post(array("pageId" => $page_id));
+        return $this->curl->execute();
+    }
+
+    public function get_slider_album($mapping_id, $album_id, $user_id) {
+        $this->curl->create($this->SERVICE_PAGE . 'getSliderAlbum');
+        $this->curl->post(array("mappingId" => $mapping_id, "albumId" => $album_id, "userId" => $user_id));
+        return $this->curl->execute();
+    }
+
+    public function get_photos($user_id, $album_id) {
+        $this->curl->create($this->SERVICE_PHOTO . 'getPhotos');
+        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id));
+        return $this->curl->execute();
+    }
 
 }

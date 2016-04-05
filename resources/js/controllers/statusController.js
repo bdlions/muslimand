@@ -430,8 +430,69 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                             }
                         });
             };
+            
+            
+             $scope.openPage = function (statusInfo, image) {
+                var statusId = statusInfo.statusId;
+                var pageInfo = statusInfo.pageInfo;
+                var pageId = pageInfo.pageId;
+                var statusTypeId = statusInfo.statusTypeId;
+                console.log(pageInfo);
+                statusService.getSliderPagePhotoList(statusId).
+                        success(function (data, status, headers, config) {
+                            if (typeof data.photoList != "undefined") {
+                                $scope.sliderImages = data.photoList;
+                                angular.forEach($scope.sliderImages, function (photoInfo, key) {
+                                    if (photoInfo.image == image) {
+                                        photoInfo.active = true;
+                                    }
+                                    if (photoInfo.pageId == pageId) {
+                                        photoInfo.pageInfo = pageInfo;
+                                    }
+                                    if (typeof photoInfo.statusTypeId == "undefined") {
+                                        photoInfo.statusTypeId = statusTypeId;
+                                    }
+                                    if (typeof photoInfo.createdOn != "undefined") {
+                                        photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
+                                    }
+                                    if (typeof photoInfo.commentList != "undefined") {
+                                        angular.forEach(photoInfo.commentList, function (comment, key) {
+                                            if (typeof comment.createdOn != "undefined") {
+                                                comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                            }
+                                        });
+                                    }
+
+                                }, $scope.sliderImages);
+                                console.log($scope.sliderImages);
+                                $scope.modalInstance = $modal.open({
+                                    animation: true,
+                                    templateUrl: 'template/page_newsfeed.html',
+                                    scope: $scope
+                                });
+                            }
+                        });
+            };
             $scope.addPhotoLike = function (photoId, referenceId, requestFunction) {
                 statusService.addPhotoLike(photoId, referenceId).
+                        success(function (data, status, headers, config) {
+                            console.log(data);
+                            angular.forEach($scope.sliderImages, function (value, key) {
+                                if (value.photoId == photoId) {
+                                    (value.likeStatus = "1");
+                                    if (typeof value.likeCounter == "undefined") {
+                                        (value.likeCounter = 1);
+                                    } else {
+                                        (value.likeCounter = value.likeCounter + 1);
+                                    }
+                                }
+                            }, $scope.sliderImages);
+                            requestFunction();
+                        });
+                return false;
+            };
+            $scope.addPagePhotoLike = function (photoId, referenceId, requestFunction) {
+                statusService.addPagePhotoLike(photoId, referenceId).
                         success(function (data, status, headers, config) {
                             console.log(data);
                             angular.forEach($scope.sliderImages, function (value, key) {
@@ -452,6 +513,23 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 statusService.addMPhotoLike(photoId).
                         success(function (data, status, headers, config) {
                             console.log(data);
+                            angular.forEach($scope.sliderImages, function (value, key) {
+                                if (value.photoId == photoId) {
+                                    (value.likeStatus = "1");
+                                    if (typeof value.likeCounter == "undefined") {
+                                        (value.likeCounter = 1);
+                                    } else {
+                                        (value.likeCounter = value.likeCounter + 1);
+                                    }
+                                }
+                            }, $scope.sliderImages);
+                            requestFunction();
+                        });
+                return false;
+            };
+            $scope.addPageMPhotoLike = function (photoId, requestFunction) {
+                statusService.addPageMPhotoLike(photoId).
+                        success(function (data, status, headers, config) {
                             angular.forEach($scope.sliderImages, function (value, key) {
                                 if (value.photoId == photoId) {
                                     (value.likeStatus = "1");

@@ -7,11 +7,12 @@ class Pages extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->lang->load('auth');
-//$this->load->library('upload');
+        $this->load->library('upload');
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         $this->load->library('utils');
         $this->load->model('page_mongodb_model');
+        $this->load->model('photo_mongodb_model');
         $this->load->model('status_mongodb_model');
         $this->load->helper(array('form', 'url'));
         $this->load->helper('language');
@@ -416,6 +417,113 @@ class Pages extends CI_Controller {
     }
 
 //...................................................................photos.....................
+
+    function get_home_photos($page_id = "0") {
+        $photo_list = array();
+        $result_event = $this->pages_mongodb_model->get_timeline_photos($page_id);
+        if ($result_event != null) {
+            $result_event = json_decode($result_event);
+            if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
+                $photo_list = $result_event->result;
+            }
+        }
+        $user_relation = $this->get_user_relation_info($profile_id);
+        $this->data['photo_list'] = json_encode($photo_list);
+        $this->data['app'] = PHOTO_APP;
+        $this->data['user_id'] = $user_id;
+        $this->data['profile_id'] = $profile_id;
+        $this->data['user_relation'] = json_encode($user_relation);
+        $this->data['first_name'] = $this->session->userdata('first_name');
+        $this->template->load(null, "member/photo/photo_home", $this->data);
+    }
+
+    function get_user_short_album_list() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "pageId") != FALSE) {
+            $page_id = $requestInfo->pageId;
+        }
+        $result_event = $this->page_mongodb_model->get_user_albums($page_id);
+        if ($result_event != null) {
+            $temp_album_list = json_decode($result_event);
+            if (property_exists($temp_album_list, "albumList")) {
+                $response["album_list"] = $temp_album_list->albumList;
+            }
+        }
+        echo json_encode($response);
+        return;
+    }
+
+    function get_slider_photos() {
+        $user_id = $this->session->userdata('user_id');
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "referenceId") != FALSE) {
+            $reference_id = $requestInfo->referenceId;
+        }
+        $result_event = $this->page_mongodb_model->get_slider_photos($user_id, $reference_id);
+        if ($result_event != null) {
+            $temp_album_list = json_decode($result_event);
+            if (property_exists($temp_album_list, "photoList")) {
+                $response["photoList"] = $temp_album_list->photoList;
+            }
+        }
+        echo json_encode($response);
+        return;
+    }
+
+    function get_slider_album() {
+        $user_id = $this->session->userdata('user_id');
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "albumId") != FALSE) {
+            $album_id = $requestInfo->albumId;
+        }
+        if (property_exists($requestInfo, "pageId") != FALSE) {
+            $mapping_id = $requestInfo->pageId;
+        }
+        $result_event = $this->page_mongodb_model->get_slider_album($mapping_id, $album_id, $user_id);
+        if ($result_event != null) {
+            $temp_album_list = json_decode($result_event);
+            if (property_exists($temp_album_list, "photoList")) {
+                $response["photoList"] = $temp_album_list->photoList;
+            }
+            if (property_exists($temp_album_list, "pageInfo")) {
+                $response["pageInfo"] = json_decode($temp_album_list->pageInfo);
+            }
+        }
+        echo json_encode($response);
+        return;
+    }
+
+    function get_album() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "albumId") != FALSE) {
+            $album_id = $requestInfo->albumId;
+        }
+        if (property_exists($requestInfo, "pageId") != FALSE) {
+            $mapping_id = $requestInfo->pageId;
+        }
+        $response = array();
+        $result = $this->page_mongodb_model->get_photos($mapping_id, $album_id);
+        $result_array = json_decode($result);
+        if (!empty($result_array)) {
+            if (property_exists($result_array, "photoList")) {
+                $response['photo_list'] = $result_array->photoList;
+            }
+            if (property_exists($result_array, "albumInfo")) {
+                $response['album_info'] = json_decode($result_array->albumInfo);
+            }
+        }
+        echo json_encode($response);
+        return;
+    }
+
     function pages_photo() {
         $user_id = $this->session->userdata('user_id');
         $result = $this->photo_mongodb_model->get_user_albums($user_id);
@@ -553,18 +661,6 @@ class Pages extends CI_Controller {
         $this->data['user_relation'] = json_encode($user_relation);
         $this->template->load(null, "member/page/page_album_photo_view", $this->data);
     }
-
-//    function pages_about($profile_id = "0") {
-//        $user_id = $this->session->userdata('user_id');
-//        if ($profile_id == "0" && $user_id == FALSE) {
-//            redirect('auth/login', 'refresh');
-//        }
-//        $this->data['user_id'] = $user_id;
-//        $this->data['first_name'] = $this->session->userdata('first_name');
-//        $this->data['profile_id'] = $profile_id;
-//        $this->data['app'] = "app.BasicProfile";
-//        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_about", $this->data);
-//    }
 
     function pages_getting_started($page_id = 0) {
         $this->data['age_range_list'] = $this->utils->get_age_list();
@@ -832,6 +928,61 @@ class Pages extends CI_Controller {
             } else {
                 $response["status"] = "0";
                 $response["message"] = "Sorry! Error while add Status !! ";
+            }
+        }
+        echo json_encode($response);
+    }
+
+    function add_photo_like() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "photoId") != FALSE) {
+            $photo_id = $requestInfo->photoId;
+        }
+        if (property_exists($requestInfo, "referenceId") != FALSE) {
+            $reference_id = $requestInfo->referenceId;
+        }
+        $user_id = $this->session->userdata('user_id');
+        $user_info = new stdClass();
+        $user_info->userId = $user_id;
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
+        $like_info = new stdClass();
+        $like_info->userInfo = $user_info;
+        $result = $this->page_mongodb_model->add_photo_like($user_id, $photo_id, $reference_id, $like_info);
+        if ($result != null) {
+            $result = json_decode($result);
+            if ($result->responseCode != REQUEST_SUCCESSFULL) {
+                $response['message'] = "Error while Processing ! ";
+            } else {
+                $response["like_info"] = $like_info;
+            }
+        }
+        echo json_encode($response);
+    }
+
+    function add_m_photo_like() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "photoId") != FALSE) {
+            $photo_id = $requestInfo->photoId;
+        }
+        $user_id = $this->session->userdata('user_id');
+        $user_info = new stdClass();
+        $user_info->userId = $user_id;
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
+        $like_info = new stdClass();
+        $like_info->userInfo = $user_info;
+        $result = $this->page_mongodb_model->add_m_photo_like($user_id, $photo_id, $like_info);
+        if ($result != null) {
+            $result = json_decode($result);
+            if ($result->responseCode != REQUEST_SUCCESSFULL) {
+                $response['message'] = "Error while Processing ! ";
+            } else {
+                $response["like_info"] = $like_info;
             }
         }
         echo json_encode($response);

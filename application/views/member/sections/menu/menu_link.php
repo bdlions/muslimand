@@ -4,12 +4,12 @@
     <a href="<?php echo base_url(); ?>friend/get_friend_list"><li>Friends</li></a>
     <a href="<?php echo base_url(); ?>photos/get_home_photos"><li>Photos</li></a>
     <a href="<?php echo base_url(); ?>videos/"><li>Videos</li></a>
-<!--    <a href="<?php echo base_url(); ?>pages/pages_newsfeed"><li class="cursor_holder_style">Pages
+    <a href=""><li class="cursor_holder_style">Pages
             <ul class="video_ul" style="margin-left: 15px;">
                 <a href="<?php echo base_url(); ?>pages/pages_add"><li>Create a Page</li></a>
             </ul>    
         </li>
-    </a>-->
+    </a>
     <!--<a href="<?php // echo base_url();  ?>academy/"><li>Academy</li></a>-->
     <!--<a href="<?php // echo base_url();  ?>library/"><li>Library</li></a>-->
     <!--<a href="<?php // echo base_url();  ?>fund/"><li>Fund Raising</li></a>-->

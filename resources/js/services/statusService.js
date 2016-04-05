@@ -14,6 +14,16 @@ angular.module('services.Status', []).
                     }
                 });
             };
+            statusService.getSliderPagePhotoList = function (statusId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/get_slider_photos',
+                    data: {
+                        referenceId: statusId
+
+                    }
+                });
+            };
             
             statusService.addPhotoLike = function (photoId, referenceId) {
                 return $http({
@@ -25,10 +35,29 @@ angular.module('services.Status', []).
                     }
                 });
             };
+            statusService.addPagePhotoLike = function (photoId, referenceId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/add_photo_like',
+                    data: {
+                        photoId: photoId,
+                        referenceId: referenceId
+                    }
+                });
+            };
             statusService.addMPhotoLike = function (photoId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/add_m_photo_like',
+                    data: {
+                        photoId: photoId
+                    }
+                });
+            };
+            statusService.addPageMPhotoLike = function (photoId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/add_m_photo_like',
                     data: {
                         photoId: photoId
                     }

@@ -8,5 +8,6 @@
     define("EMAIL_VALIDATION_EXIST",                                            "10001");
     define("USER_NAME_VALIDATION_EXIST",                                        "10002");
     define("PAGE_NAME_VALIDATION_EXIST",                                        "10005");
+    define("USER_ALLOW_FOR_STATUS",                                             "10006");
 
  

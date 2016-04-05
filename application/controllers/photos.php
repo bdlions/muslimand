@@ -198,30 +198,6 @@ class Photos extends CI_Controller {
         $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_add_test");
     }
 
-    function get_user_albums() {
-
-        $user_id = $this->session->userdata('user_id');
-        $result = $this->photo_mongodb_model->get_user_albums($user_id);
-        $result_array = json_decode($result);
-        if (!empty($result_array)) {
-            if (property_exists($result_array, "albumList")) {
-                $this->data['user_album_list'] = json_encode($result_array->albumList);
-            }
-        }
-        $user_relation = array();
-        $user_relation['first_name'] = $this->session->userdata('first_name');
-        $user_relation['last_name'] = $this->session->userdata('last_name');
-        $user_relation['user_id'] = $user_id;
-        $this->data['app'] = PHOTO_APP;
-        $this->data['user_id'] = $user_id;
-        $this->data['profile_id'] = $user_id;
-        $this->data["first_name"] = $this->session->userdata('first_name');
-        $this->data['user_relation'] = json_encode($user_relation);
-        $this->template->load(null, "member/photo/photos_view_my_albums", $this->data);
-//        $this->template->load(MEMBER_TEMPLATE, "member/photo/photos_view_my_albums", $this->data);
-//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photos_view_my_albums", $this->data);
-    }
-
     function get_album() {
         $response = array();
         $postdata = file_get_contents("php://input");
@@ -245,7 +221,6 @@ class Photos extends CI_Controller {
         }
         echo json_encode($response);
         return;
-
     }
 
     function create_album() {
@@ -303,15 +278,24 @@ class Photos extends CI_Controller {
         if (property_exists($requestInfo, "albumId") != FALSE) {
             $album_id = $requestInfo->albumId;
         }
+        if (property_exists($requestInfo, "referenceId") != FALSE) {
+            $reference_id = $requestInfo->referenceId;
+        }
+        if (property_exists($requestInfo, "mappingId") != FALSE) {
+            $mapping_id = $requestInfo->mappingId;
+        }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
         $user_info->firstName = $this->session->userdata('first_name');
         $user_info->lastName = $this->session->userdata('last_name');
         $like_info = new stdClass();
         $like_info->userInfo = $user_info;
-        $result = $this->photo_mongodb_model->add_album_like($user_id, $album_id, $status_id, $like_info);
-        if ($result != null) {
-            $response["like_info"] = $like_info;
+        $result_event = $this->photo_mongodb_model->add_album_like($mapping_id, $album_id, $reference_id, $like_info);
+        if ($result_event != null) {
+            $result_event = json_decode($result_event);
+            if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
+                $response["like_info"] = $like_info;
+            }
         }
         echo json_encode($response);
     }
@@ -654,7 +638,7 @@ class Photos extends CI_Controller {
                     $image_add_result = $this->photo_mongodb_model->add_photos($user_id, $album_id, $user_image_list_info);
                     $image_add_result = json_decode($image_add_result);
                     if ($image_add_result->responseCode == REQUEST_SUCCESSFULL) {
-                        if ($image_add_result->result == NULL) {
+                        if ($image_add_result->result == USER_ALLOW_FOR_STATUS) {
                             $status_info = new stdClass();
                             $status_info->userId = $user_id;
                             $status_info->mappingId = $user_id;

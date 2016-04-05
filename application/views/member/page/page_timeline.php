@@ -34,7 +34,7 @@
                     <?php $this->load->view("member/page/post_status"); ?>
                     <div class="row form-group"></div>
                     <div ng-controller="statusController">
-                        <?php $this->load->view("member/page/updated_status"); ?>
+                        <?php $this->load->view("member/pagelets/updated_status"); ?>
                         <?php $this->load->view("member/page/page_about"); ?>
                     </div>
                 </div>

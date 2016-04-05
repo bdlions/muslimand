@@ -72,12 +72,14 @@ angular.module('services.Photo', []).
                 });
             };
 
-            photoService.addAlbumLike = function(albumId) {
+            photoService.addAlbumLike = function(albumId, referenceId, mappingId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/add_album_like',
                     data: {
-                        albumId: albumId
+                        albumId: albumId,
+                        referenceId: referenceId,
+                        mappingId: mappingId
                     }
                 });
             };

@@ -32,16 +32,3 @@
     </div>
 </div>
 
-<script>
-    function nextPhoto() {
-        console.log("here");
-    }
-
-    $(function() {
-        $("#template/timeline_pic-modal").on("click", function() {
-            alert("here");
-            console.log("here");
-        });
-
-    });
-</script>
