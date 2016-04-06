@@ -1282,7 +1282,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     height: 200px;
 }
 .content_hidden{
-    display: none!important;
+    display: none;
 }
 .content_show{
     visibility: visible;

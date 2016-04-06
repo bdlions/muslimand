@@ -13,12 +13,12 @@
             $(this).addClass('active');
         });
         $("#about").click(function () {
+            $("#about_next_id").show();
+            $("#about_content").show();
             $("#profile_picture_content").hide();
             $("#preferred_page_content").hide();
             $("#update_btn_id").hide();
             $("#profile_next_id").hide();
-            $("#about_next_id").show();
-            $("#about_content").show();
         });
         $("#profile_picture").click(function () {
             $("#about_content").hide();

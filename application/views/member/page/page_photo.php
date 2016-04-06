@@ -23,8 +23,14 @@
             $('#timeLineContent').hide();
             $('#updateStatusPagelet').hide();
         });
+        $('#page_photo_upload_section').hide();
+        $('#page_add_photo_id').on('click', function() {
+            $('#page_photo_upload_section').show();
+            $('#page_photo_display_section').hide();
+        });
     });
 </script>
+
 <div ng-controller="pageController">
     <div ng-init="setPageInfo('<?php echo htmlspecialchars(json_encode($page_info)) ?>')">
         <div ng-init="setMemberInfo('<?php echo htmlspecialchars(json_encode($member_info)) ?>')">
@@ -37,7 +43,6 @@
                             <?php $this->load->view("member/page/section/top_menu_bar"); ?>
                         </div>
                         <?php $this->load->view("member/page/section/page_title"); ?>
-                        <a href="<?php echo base_url(); ?>pages/pages_photo_add/{{PageBasicInfo.pageId}}"><button style="margin: 0 3px 3px 0;" class="button-custom glyphicon glyphicon-plus"> <span style="vertical-align: text-top;">Add Photo</span></button></a>
                         <div id="page_photo_display_section" style="margin-right: 18px;" ng-clock >
                             <div class="row pagelet">
                                 <div class="col-md-6">
@@ -46,7 +51,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="pull-right">
-                                        <a id="page_add_photo_id" href="<?php echo base_url(); ?>pages/pages_photo_add/{{PageBasicInfo.pageId}}"><button style="margin: 0 3px 3px 0;" class="button-custom glyphicon glyphicon-plus"> <span style="vertical-align: text-top;">Add Photo</span></button></a>
+                                        <a id="page_add_photo_id"><button style="margin: 0 3px 3px 0;" class="button-custom glyphicon glyphicon-plus"> <span style="vertical-align: text-top;">Add Photo</span></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -63,17 +68,23 @@
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <!--<div class="col-md-12" ng-init="setUserAlbumList(<?php //echo htmlspecialchars(json_encode($photo_list));     ?>)" >-->
-                                <div class="col-md-12"  >
-                                    <?php $this->load->view("member/page/section/page_photo_albums"); ?>
+                                <div class="col-md-12" ng-init="setUserAlbumList(<?php echo htmlspecialchars(json_encode($photo_list)); ?>)" >
+                                    <div class="col-md-12"  >
+                                        <?php $this->load->view("member/page/section/page_photo_albums"); ?>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-12" >
+                                        <?php $this->load->view("member/page/section/page_random_photos"); ?>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row form-group">
-                                <div class="col-md-12" >
-                                    <?php $this->load->view("member/page/section/page_random_photos"); ?>
-                                </div>
-                            </div>
+
                         </div>
+
+                            <div id="page_photo_upload_section">
+                                <?php $this->load->view("member/page/section/page_photo_add"); ?>
+                            </div>
 
                     </div>
                 </div>

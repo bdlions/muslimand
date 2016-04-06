@@ -6,22 +6,24 @@
         $('#video_sub').on('click', function() {
             $('.video_test').show();
         });
-        $('#timeLineContent').show();
+        $('#timeLineStatus').show();
         $('#updateStatusPagelet').show();
         $('#aboutPageMenu').on('click', function() {
-            $('#timeLineContent').hide();
+            $('#timeLineStatus').hide();
             $('#updateStatusPagelet').hide();
             $('#pageAboutContent').show();
         });
         $('#timelinePageMenu').on('click', function() {
             $('#pageAboutContent').hide();
-            $('#timeLineContent').show();
+            $('#photoPageContent').hide();
+            $('#timeLineStatus').show();
             $('#updateStatusPagelet').show();
         });
         $('#photoPageMenu').on('click', function() {
             $('#pageAboutContent').hide();
-            $('#timeLineContent').hide();
+            $('#timeLineStatus').hide();
             $('#updateStatusPagelet').hide();
+            $('#photoPageContent').show();
         });
     });
 </script>

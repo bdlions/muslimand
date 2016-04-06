@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pages extends CI_Controller {
@@ -255,7 +254,7 @@ class Pages extends CI_Controller {
         $this->data['profile_id'] = $mapping_id;
         $this->data['page_id'] = $mapping_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_TEMPLATE, "member/page/page_timeline", $this->data);
+        $this->template->load(NULL, "member/page/page_timeline", $this->data);
     }
 
     function pages_sort_view_my() {
@@ -279,31 +278,31 @@ class Pages extends CI_Controller {
         $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_most_liked", $this->data);
     }
 
-    function page_list($mapping_id = 0) {
-        $page_info = new stdClass();
-        $member_info = new stdClass();
-        $user_id = $this->session->userdata('user_id');
-        $result_event = $this->page_mongodb_model->get_page_info($mapping_id, $user_id);
-        if ($result_event != null) {
-            $result_event = json_decode($result_event);
-            $member_info = $result_event->pageMemberInfo;
-            $page_event = json_decode($result_event->pageInfo);
-            if ($page_event->responseCode == REQUEST_SUCCESSFULL) {
-                $page_info = $page_event->result;
-            }
-        }
-        $this->data['page_info'] = $page_info;
-        $this->data['member_info'] = $member_info;
-        $this->data['app'] = PAGE_APP;
-        $this->data['user_id'] = $user_id;
-        $this->data['profile_id'] = $mapping_id;
-        $this->data['page_id'] = $mapping_id;
-        $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->data['last_name'] = $this->session->userdata('last_name');
-        $this->data['user_gender_id'] = "2";
-        $this->data['user_current_time'] = "10.00";
-        $this->template->load(null, "member/page/page_list", $this->data);
-    }
+//    function page_list($mapping_id = 0) {
+//        $page_info = new stdClass();
+//        $member_info = new stdClass();
+//        $user_id = $this->session->userdata('user_id');
+//        $result_event = $this->page_mongodb_model->get_page_info($mapping_id, $user_id);
+//        if ($result_event != null) {
+//            $result_event = json_decode($result_event);
+//            $member_info = $result_event->pageMemberInfo;
+//            $page_event = json_decode($result_event->pageInfo);
+//            if ($page_event->responseCode == REQUEST_SUCCESSFULL) {
+//                $page_info = $page_event->result;
+//            }
+//        }
+//        $this->data['page_info'] = $page_info;
+//        $this->data['member_info'] = $member_info;
+//        $this->data['app'] = PAGE_APP;
+//        $this->data['user_id'] = $user_id;
+//        $this->data['profile_id'] = $mapping_id;
+//        $this->data['page_id'] = $mapping_id;
+//        $this->data['first_name'] = $this->session->userdata('first_name');
+//        $this->data['last_name'] = $this->session->userdata('last_name');
+//        $this->data['user_gender_id'] = "2";
+//        $this->data['user_current_time'] = "10.00";
+//        $this->template->load(null, "member/page/page_list", $this->data);
+//    }
 
     //.......................................................memebers...........................................
 

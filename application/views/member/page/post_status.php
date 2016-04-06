@@ -104,68 +104,70 @@
                 console.log(image_list[i]);
             }
         }
-        angular.element($('#save_status_id')).scope().addStatus(image_list, pageId, function (data) {
+        angular.element($('#save_status_id')).scope().addStatus(image_list, pageId, function(data) {
             if (data.status == "1") {
                 window.location = '<?php echo base_url(); ?>pages/timeline/' + pageId;
-            }else{
+            } else {
                 alert(data.message);
             }
         });
     }
-    $('#category_status').on('click', function () {
-        $('#status_privacy').hide();
-        $('#status_privacy').show();
-        $('#status').css("font-weight", "bold");
-        $('#photo').css("font-weight", "normal");
-        $('#link').css("font-weight", "normal");
-    });
-
-    $('#status').on('click', function () {
-        $('#status_privacy').hide();
-        $('#photo_details').hide();
-        $('#link_details').hide();
-        $('#status_privacy').show();
-        $('#status').css("font-weight", "bold");
-        $('#photo').css("font-weight", "normal");
-        $('#link').css("font-weight", "normal");
-        $('#category_status').on('click', function () {
+    $(function() {
+        $('#category_status').on('click', function() {
+            $('#status_privacy').hide();
+            $('#status_privacy').show();
             $('#status').css("font-weight", "bold");
             $('#photo').css("font-weight", "normal");
             $('#link').css("font-weight", "normal");
         });
-    });
 
-    $('#photo').on('click', function () {
-        $('#status_privacy').hide();
-        $('#link_details').hide();
-        $('#status_privacy').show();
-        $('#photo_details').show();
-        $('#photo').css("font-weight", "bold");
-        $('#status').css("font-weight", "normal");
-        $('#link').css("font-weight", "normal");
-        $('#category_status').on('click', function () {
+        $('#status').on('click', function() {
+            $('#status_privacy').hide();
+            $('#photo_details').hide();
+            $('#link_details').hide();
+            $('#status_privacy').show();
+            $('#status').css("font-weight", "bold");
+            $('#photo').css("font-weight", "normal");
+            $('#link').css("font-weight", "normal");
+            $('#category_status').on('click', function() {
+                $('#status').css("font-weight", "bold");
+                $('#photo').css("font-weight", "normal");
+                $('#link').css("font-weight", "normal");
+            });
+        });
+
+        $('#photo').on('click', function() {
+            $('#status_privacy').hide();
+            $('#link_details').hide();
+            $('#status_privacy').show();
+            $('#photo_details').show();
             $('#photo').css("font-weight", "bold");
             $('#status').css("font-weight", "normal");
             $('#link').css("font-weight", "normal");
+            $('#category_status').on('click', function() {
+                $('#photo').css("font-weight", "bold");
+                $('#status').css("font-weight", "normal");
+                $('#link').css("font-weight", "normal");
+            });
         });
-    });
 
-    $('#link').on('click', function () {
-        $('#settings').hide();
-        $('#photo_details').hide();
-        $('#settings').show();
-        $('#link_details').show();
-        $('#link').css("font-weight", "bold");
-        $('#photo').css("font-weight", "normal");
-        $('#status').css("font-weight", "normal");
-        $('#category_status').on('click', function () {
+        $('#link').on('click', function() {
+            $('#settings').hide();
+            $('#photo_details').hide();
+            $('#settings').show();
+            $('#link_details').show();
             $('#link').css("font-weight", "bold");
             $('#photo').css("font-weight", "normal");
             $('#status').css("font-weight", "normal");
-        });
-        $('#http').on('click', function () {
-            $('#status_privacy').show();
+            $('#category_status').on('click', function() {
+                $('#link').css("font-weight", "bold");
+                $('#photo').css("font-weight", "normal");
+                $('#status').css("font-weight", "normal");
+            });
+            $('#http').on('click', function() {
+                $('#status_privacy').show();
 
+            });
         });
     });
 </script>
