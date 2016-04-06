@@ -483,7 +483,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             $scope.addPhotoLike = function (photoId, referenceId, requestFunction) {
                 statusService.addPhotoLike(photoId, referenceId).
                         success(function (data, status, headers, config) {
-                            console.log(data);
                             angular.forEach($scope.sliderImages, function (value, key) {
                                 if (value.photoId == photoId) {
                                     (value.likeStatus = "1");

@@ -69,7 +69,6 @@ angular.module('controllers.Page', ['services.Page', 'services.Timezone']).
             };
             $scope.setPageInfo = function (pageInfo) {
                 $scope.PageBasicInfo = JSON.parse(pageInfo);
-                console.log( $scope.PageBasicInfo);
             };
             $scope.setMemberInfo = function (memberInfo) {
                 $scope.memberInfo = JSON.parse(memberInfo);

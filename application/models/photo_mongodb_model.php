@@ -316,6 +316,11 @@ class Photo_mongodb_model extends CI_Model {
         $this->curl->post(array("photoId" => $photo_id, "referenceId" => $reference_id, "commentInfo" => json_encode($coment_info), "referenceInfo" => json_encode($reference_info), "statusTypeId" => $status_type_id));
         return $this->curl->execute();
     }
+    public function add_slider_photo_comment($photo_id, $reference_id, $coment_info, $reference_info, $album_id) {
+        $this->curl->create($this->SERVICE_PHOTO . 'addSliderPhotoComment');
+        $this->curl->post(array("photoId" => $photo_id, "referenceId" => $reference_id, "commentInfo" => json_encode($coment_info), "referenceInfo" => json_encode($reference_info), "albumId" => $album_id));
+        return $this->curl->execute();
+    }
 
     public function get_photo_comments($photo_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getPhotoComments');

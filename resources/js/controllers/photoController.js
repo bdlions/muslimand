@@ -122,6 +122,9 @@ angular.module('controllers.Photo', ['services.Photo']).
                 photoService.addAlbumComment($scope.albumCommentInfo).
                         success(function (data, status, headers, config) {
                             data.comment.createdOn = "1 see ago";
+                            if (typeof $scope.albumDetail.commentList == "undefined") {
+                                $scope.albumDetail.commentList = new Array();
+                            }
                             $scope.albumDetail.commentList.push(data.comment);
                             $scope.albumCommentInfo.comment = "";
                         });
@@ -196,7 +199,7 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.addPhotoLike = function (photoId, referenceId, requestFunction) {
                 photoService.addPhotoLike(photoId, referenceId).
                         success(function (data, status, headers, config) {
-                            angular.forEach($scope.albumPhotoList, function (value, key) {
+                            angular.forEach($scope.sliderImages, function (value, key) {
                                 if (value.photoId == photoId) {
                                     (value.likeStatus = "1");
                                     if (typeof value.likeCounter == "undefined") {
@@ -205,8 +208,8 @@ angular.module('controllers.Photo', ['services.Photo']).
                                         (value.likeCounter = value.likeCounter + 1);
                                     }
                                 }
-                            }, $scope.photoInfoList);
-                            $scope.photolikeList.push(data.like_info);
+                            }, $scope.sliderImages);
+//                            $scope.photolikeList.push(data.like_info);
                             requestFunction();
                         });
                 return false;
@@ -225,18 +228,19 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.addPhotoComment = function (photoInfo) {
                 var photoId = $scope.photoCommentInfo.photoId = photoInfo.photoId;
                 $scope.photoCommentInfo.referenceId = photoInfo.referenceId;
-                $scope.photoCommentInfo.statusTypeId = photoInfo.statusTypeId;
+                $scope.photoCommentInfo.albumId = photoInfo.albumId;
                 $scope.photoCommentInfo.userInfo = photoInfo.userInfo;
                 photoService.addPhotoComment($scope.photoCommentInfo).
                         success(function (data, status, headers, config) {
-                            angular.forEach($scope.albumPhotoList, function (value, key) {
+                            data.comment.createdOn = "1 see ago";
+                            angular.forEach($scope.sliderImages, function (value, key) {
                                 if (value.photoId === photoId) {
-                                    if (typeof value.comment == "undefined") {
-                                        value.comment = new Array();
+                                    if (typeof value.commentList == "undefined") {
+                                        value.commentList = new Array();
                                     }
-                                    value.comment.push(data.comment);
+                                    value.commentList.push(data.comment);
                                 }
-                            }, $scope.albumPhotoList);
+                            }, $scope.sliderImages);
                             $scope.photoCommentInfo.comment = "";
                         });
                 return false;
@@ -244,10 +248,17 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.getPhotoComments = function (photoId, requestFunction) {
                 photoService.getPhotoComments(photoId).
                         success(function (data, status, headers, config) {
-                            angular.forEach($scope.photoInfoList, function (value, key) {
-                                if (value.photoId == photoId ? value.comment = data.comment_list : '') {
+                            if (typeof data.comment_list != "undefined") {
+                                angular.forEach(data.comment_list, function (comment, key) {
+                                    if (typeof comment.createdOn != "undefined") {
+                                        comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                    }
+                                });
+                            }
+                            angular.forEach($scope.sliderImages, function (value, key) {
+                                if (value.photoId == photoId ? value.commentList = data.comment_list : '') {
                                 }
-                            }, $scope.photoInfoList);
+                            }, $scope.sliderImages);
                             $scope.photoCommentInfo.comment = "";
                             requestFunction();
                         });
@@ -263,7 +274,6 @@ angular.module('controllers.Photo', ['services.Photo']).
 
             };
             $scope.openPhotoModal = function (photoInfo) {
-                console.log(photoInfo);
                 var albumId = photoInfo.albumId;
                 var mappingId = photoInfo.userId;
                 var photoId = photoInfo.photoId;
@@ -282,6 +292,7 @@ angular.module('controllers.Photo', ['services.Photo']).
                                     }
                                     if (typeof photoInfo.commentList != "undefined") {
                                         angular.forEach(photoInfo.commentList, function (comment, key) {
+                                            comment.userInfo = JSON.parse(comment.userInfo);
                                             if (typeof comment.createdOn != "undefined") {
                                                 comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
                                             }
@@ -289,6 +300,7 @@ angular.module('controllers.Photo', ['services.Photo']).
                                     }
 //
                                 }, $scope.sliderImages);
+                                console.log($scope.sliderImages);
                                 $scope.modalInstance = $modal.open({
                                     animation: true,
                                     templateUrl: 'template/slider_photo-modal.html',
@@ -297,25 +309,25 @@ angular.module('controllers.Photo', ['services.Photo']).
                             }
                         });
             };
-            $scope.open = function (photoInfo) {
-                var indx = $scope.albumPhotoList.indexOf(photoInfo);
-                var photoId = photoInfo.photoId;
-                photoService.getPhotoInfo(photoId).
-                        success(function (data, status, headers, config) {
-                            if (typeof data.photo_info != "undefined") {
-                                var photo = data.photo_info;
-                                photo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photo.createdOn);
-                                photo.active = true;
-                                console.log(photo);
-                                $scope.albumPhotoList[indx] = photo;
-                                $scope.modalInstance = $modal.open({
-                                    animation: true,
-                                    templateUrl: 'template/pic-modal.html',
-                                    scope: $scope
-                                });
-                            }
-                        });
-            };
+//            $scope.open = function (photoInfo) {
+//                var indx = $scope.albumPhotoList.indexOf(photoInfo);
+//                var photoId = photoInfo.photoId;
+//                photoService.getPhotoInfo(photoId).
+//                        success(function (data, status, headers, config) {
+//                            if (typeof data.photo_info != "undefined") {
+//                                var photo = data.photo_info;
+//                                photo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photo.createdOn);
+//                                photo.active = true;
+//                                console.log(photo);
+//                                $scope.albumPhotoList[indx] = photo;
+//                                $scope.modalInstance = $modal.open({
+//                                    animation: true,
+//                                    templateUrl: 'template/pic-modal.html',
+//                                    scope: $scope
+//                                });
+//                            }
+//                        });
+//            };
             $scope.ok = function () {
                 $scope.modalInstance.close();
             };

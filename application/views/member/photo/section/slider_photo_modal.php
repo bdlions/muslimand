@@ -187,7 +187,7 @@
                                 <a href id="photo_more_comment_show" onclick="get_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
                             </div>
                         </div>
-                        <div class="row form-group" ng-repeat="comment in photoInfo.comment">
+                        <div class="row form-group" ng-repeat="comment in photoInfo.commentList">
                             <div class="col-md-1">
                                 <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg" width="30" height="30">
                             </div>
@@ -200,10 +200,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        January 08, 2015 at 2:15pm. 
+                                    {{comment.createdOn}}
                                         <a>like</a>
                                         <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
-                                        . <a>31</a>
+                                        . <a> {{comment.likeCounter}}</a>
                                     </div>
                                 </div>
 
