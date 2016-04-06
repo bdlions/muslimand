@@ -96,6 +96,7 @@ a {
 .timeline_profile_picture_custom img{
     /*border: 2px solid lightgray;*/
     border-radius: 3px 3px 3px 3px ;
+    background-color: #fff;
 }
 
 

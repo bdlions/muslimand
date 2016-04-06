@@ -42,7 +42,7 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row" style="position: absolute; right: 20px;">
     <div class="col-md-12">
         <div class="pull-right" style="margin-right: 10px;">
             <ul class="nav nav_page_custom nav-pills pull-right">

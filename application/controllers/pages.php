@@ -279,18 +279,30 @@ class Pages extends CI_Controller {
         $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/pages_sort_most_liked", $this->data);
     }
 
-    function pages_newsfeed() {
+    function page_list($mapping_id = 0) {
+        $page_info = new stdClass();
+        $member_info = new stdClass();
         $user_id = $this->session->userdata('user_id');
-        $user_relation = array();
-        $user_relation['first_name'] = $this->session->userdata('first_name');
-        $user_relation['last_name'] = $this->session->userdata('last_name');
-        $user_relation['user_id'] = $user_id;
+        $result_event = $this->page_mongodb_model->get_page_info($mapping_id, $user_id);
+        if ($result_event != null) {
+            $result_event = json_decode($result_event);
+            $member_info = $result_event->pageMemberInfo;
+            $page_event = json_decode($result_event->pageInfo);
+            if ($page_event->responseCode == REQUEST_SUCCESSFULL) {
+                $page_info = $page_event->result;
+            }
+        }
+        $this->data['page_info'] = $page_info;
+        $this->data['member_info'] = $member_info;
         $this->data['app'] = PAGE_APP;
         $this->data['user_id'] = $user_id;
-        $this->data['profile_id'] = $user_id;
-        $this->data['user_relation'] = json_encode($user_relation);
+        $this->data['profile_id'] = $mapping_id;
+        $this->data['page_id'] = $mapping_id;
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(MEMBER_TEMPLATE, "member/page/page_timeline", $this->data);
+        $this->data['last_name'] = $this->session->userdata('last_name');
+        $this->data['user_gender_id'] = "2";
+        $this->data['user_current_time'] = "10.00";
+        $this->template->load(null, "member/page/page_list", $this->data);
     }
 
     //.......................................................memebers...........................................
@@ -419,19 +431,19 @@ class Pages extends CI_Controller {
         $page_photo_list = array();
         $user_id = $this->session->userdata('user_id');
         $photo_list = array();
-        $result_event = $this->page_mongodb_model->get_timeline_photos($page_id, $user_id);
-        if ($result_event != null) {
-            $result_event = json_decode($result_event);
-            $member_info = $result_event->pageMemberInfo;
-            $page_info_event = json_decode($result_event->pageInfo);
-            if ($page_info_event->responseCode == REQUEST_SUCCESSFULL) {
-                $page_info = $page_info_event->result;
-            }
-            $photo_list_event = json_decode($result_event->photoList);
-            if ($photo_list_event->responseCode == REQUEST_SUCCESSFULL) {
-                $page_photo_list = $photo_list_event->result;
-            }
-        }
+//        $result_event = $this->page_mongodb_model->get_timeline_photos($page_id, $user_id);
+//        if ($result_event != null) {
+//            $result_event = json_decode($result_event);
+//            $member_info = $result_event->pageMemberInfo;
+//            $page_info_event = json_decode($result_event->pageInfo);
+//            if ($page_info_event->responseCode == REQUEST_SUCCESSFULL) {
+//                $page_info = $page_info_event->result;
+//            }
+//            $photo_list_event = json_decode($result_event->photoList);
+//            if ($photo_list_event->responseCode == REQUEST_SUCCESSFULL) {
+//                $page_photo_list = $photo_list_event->result;
+//            }
+//        }
 
         $this->data['page_info'] = $page_info;
         $this->data['member_info'] = $member_info;
@@ -555,7 +567,7 @@ class Pages extends CI_Controller {
         $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_photo", $this->data);
     }
 
-    function pages_photo_add() {
+    function pages_photo_add($page_id = "0") {
         $result = array();
         $image_add_result = array();
         $result_ary = array();
@@ -566,6 +578,11 @@ class Pages extends CI_Controller {
         $page_image_list_info = array();
         $response = array();
         $user_id = $this->session->userdata('user_id');
+        if ($page_id != "0") {
+            $mapping_id = $page_id;
+        } else {
+            $mapping_id = $user_id;
+        }
         if (file_get_contents("php://input") != null) {
             $user_info = new stdClass();
             $user_info->userId = $user_id;
@@ -624,12 +641,25 @@ class Pages extends CI_Controller {
             }
         }
 
-        $result = $this->photo_mongodb_model->get_albums_and_categories($user_id);
-        if (!empty($result)) {
-            $result_array = json_decode($result);
-            $category_list = $result_array->categoryList;
-            $album_list = $result_array->albumList;
+//        $result = $this->photo_mongodb_model->get_albums_and_categories($user_id);
+//        if (!empty($result)) {
+//            $result_array = json_decode($result);
+//            $category_list = $result_array->categoryList;
+//            $album_list = $result_array->albumList;
+//        }
+        
+        
+        $user_id = $this->session->userdata('user_id');
+        $result_event = $this->page_mongodb_model->get_page_info($mapping_id, $user_id);
+        if ($result_event != null) {
+            $result_event = json_decode($result_event);
+            $member_info = $result_event->pageMemberInfo;
+            $page_event = json_decode($result_event->pageInfo);
+            if ($page_event->responseCode == REQUEST_SUCCESSFULL) {
+                $page_info = $page_event->result;
+            }
         }
+        
         $user_relation = array();
         $user_relation['first_name'] = $this->session->userdata('first_name');
         $user_relation['last_name'] = $this->session->userdata('last_name');
@@ -638,9 +668,10 @@ class Pages extends CI_Controller {
         $this->data['user_id'] = $user_id;
         $this->data['profile_id'] = $user_id;
         $this->data["first_name"] = $this->session->userdata('first_name');
-        $this->data['user_relation'] = json_encode($user_relation);
-        $this->data["album_lsit"] = json_encode($album_list);
-        $this->data["category_list"] = json_encode($category_list);
+        $this->data['page_info'] = $page_info;
+        $this->data['member_info'] = $member_info;
+        $this->data["album_lsit"] = json_encode(array());
+        $this->data["category_list"] = json_encode(array());
         $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_photo_add", $this->data);
     }
 

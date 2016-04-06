@@ -20,7 +20,7 @@
                     <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50; ?>50x50_{{friend.genderId}}.jpg" alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W50_H50; ?>{{friend.userId}}.jpg" />
                 </a>
                 <a href='<?php echo base_url(); ?>member/timeline/{{friend.userId}}' style="text-decoration: none;">
-                    <div class="img_caption">{{friend.firstName + " " + friend.lastName}}</div>
+                    <div class="friend_list_name_caption inline_ellipsis" title="{{friend.firstName}}&nbsp{{friend.lastName}}" data-placement="top" data-toggle="tooltip">{{friend.firstName + " " + friend.lastName}}</div>
                 </a>
             </div>
         </div>

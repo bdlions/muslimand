@@ -1,13 +1,13 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>resources/js/elif.js"></script>
 <?php if (isset($profile_id)) { ?>
-    <div ng-cloak class="scroll" id="updateStatusPagelet" infinite-scroll='getProfileStatusList(<?php echo htmlspecialchars(json_encode($profile_id)); ?>)' infinite-scroll-disabled='busy' infinite-scroll-distance='1'>
+<div ng-cloak class="scroll" id="updateStatusPagelet" style="display: none;" infinite-scroll='getProfileStatusList(<?php echo htmlspecialchars(json_encode($profile_id)); ?>)' infinite-scroll-disabled='busy' infinite-scroll-distance='1'>
     <?php } elseif (isset($page_id)) { ?> 
         <div ng-cloak class="scroll" id="updateStatusPagelet" infinite-scroll='getPageStatusList(<?php echo htmlspecialchars(json_encode($page_id)); ?>)' infinite-scroll-disabled='busy' infinite-scroll-distance='1'>
         <?php } else { ?> 
             <div ng-cloak class="scroll" id="updateStatusPagelet" infinite-scroll='getStatusList()' infinite-scroll-disabled='busy' infinite-scroll-distance='1'>
             <?php } ?>
             <div ng-repeat="status in statuses" class="form-group">
-                <div class="pagelet" id="pagelet{{status.statusId}}">
+                <div class="pagelet" id="pagelet{{status.statusId}}" style="margin-left: -15px;">
                     <div class="pagelet">
                         <div class="row">
                             <div class="col-md-2" >

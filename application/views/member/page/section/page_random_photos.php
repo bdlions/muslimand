@@ -1,4 +1,4 @@
-<div id="page_random_photos"  class="pagelet" style="margin-left: -15px; margin-right: -15px; margin-bottom: -15px; margin-top: -30px;">
+<div id="page_random_photos"  class="pagelet" style="display: none; margin-left: -15px; margin-right: -15px; margin-bottom: -15px; margin-top: -30px;">
     <div class="row form-group">
         <div class="col-md-4">
             <a href="" >

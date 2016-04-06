@@ -6,15 +6,22 @@
         $('#video_sub').on('click', function() {
             $('.video_test').show();
         });
+        $('#timeLineContent').show();
+        $('#updateStatusPagelet').show();
         $('#aboutPageMenu').on('click', function() {
             $('#timeLineContent').hide();
-            $('#timeLineUpdatedContent').hide();
+            $('#updateStatusPagelet').hide();
             $('#pageAboutContent').show();
         });
         $('#timelinePageMenu').on('click', function() {
             $('#pageAboutContent').hide();
             $('#timeLineContent').show();
-            $('#timeLineUpdatedContent').show();
+            $('#updateStatusPagelet').show();
+        });
+        $('#photoPageMenu').on('click', function() {
+            $('#pageAboutContent').hide();
+            $('#timeLineContent').hide();
+            $('#updateStatusPagelet').hide();
         });
     });
 </script>
@@ -33,8 +40,8 @@
                     <div class="row form-group"></div>
                     <?php $this->load->view("member/page/post_status"); ?>
                     <div class="row form-group"></div>
-                    <div ng-controller="statusController">
-                        <?php $this->load->view("member/pagelets/updated_status"); ?>
+                    <div ng-controller="statusController" ng-cloak>
+                        <?php $this->load->view("member/page/updated_status"); ?>
                         <?php $this->load->view("member/page/page_about"); ?>
                     </div>
                 </div>

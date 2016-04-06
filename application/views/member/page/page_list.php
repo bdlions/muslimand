@@ -15,8 +15,7 @@
     <div class="row"  ng-cloak ng-init="setUserCurrentTimeStamp(<?php echo htmlspecialchars(json_encode($user_current_time)); ?>)">
         <!--LEFT_COLUMN-->
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-            <div class="row form-group"></div>
-            <div class="row">
+            <div class="row form-group" style="padding-top: 15px;">
                 <div class="col-xs-12" class="newsfeed_profile_picture" style="margin-left: 0;">
                     <img style="background-color: #fff;" class="img-circle" fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100 . $user_id . '.jpg'; ?>" />
                 </div>
@@ -42,25 +41,37 @@
         </div>
         <!--MIDDLE COLUMN-->
         <div class="col-md-9 col-xs-12 col-sm-12 col-lg-9">
-            <div class="row form-group"></div>
-            <?php $this->load->view("member/pagelets/post_status"); ?>
-            <div class="row form-group"></div>
-            <div ng-init="setStatus((<?php echo htmlspecialchars(json_encode($status_list)); ?>))">
-                <?php $this->load->view("member/pagelets/updated_status"); ?>
+            <div class="pagelet" style="margin-top: 25px; margin-bottom: 5px;">
+                <div class="pagelet">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <span style="font-weight: bold; font-size: 20px;">Pages</span>
+                        </div>
+                        <div class="col-md-6">
+                            <a class="button-custom glyphicon glyphicon-plus" style="margin: 0 3px 3px 0; float: right;" href="<?php echo base_url(); ?>pages/pages_add">Create a Page</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="" style="color: #555;">Prime Bank</a>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                             <a href="" style="color: #555;">Entertainment</a>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                             <a href="" style="color: #555;">Book Store</a>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="row form-group"></div>
-            <?php // $this->load->view("modal/modal_share_content"); ?>
-            <div class="row form-group"></div>
-            <?php // $this->load->view("member/pagelets/shared_link"); ?>
-            <div class="row form-group"></div>
-            <?php // $this->load->view("member/pagelets/shared_photo"); ?>
-            <div class="row form-group"></div>
-            <?php // $this->load->view("member/pagelets/shared_video"); ?>
-            <div class="row form-group"></div>
-            <?php // $this->load->view("member/pagelets/updated_profile_pic"); ?>
-            <div class="row form-group"></div>
-            <?php // $this->load->view("member/pagelets/shared_status"); ?>
-            <div class="row form-group"></div>
         </div>
         <!--ADD COLUMN-->
     </div>

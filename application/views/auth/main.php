@@ -36,7 +36,7 @@
                     </li>
                 </ul>
             </div>
-            <!--<img class="img-responsive" src="<?php //echo base_url();   ?>resources/images/banner.png">-->
+            <!--<img class="img-responsive" src="<?php //echo base_url();    ?>resources/images/banner.png">-->
         </div>
         <div class="col-md-offset-1 col-md-5">
             <div class="pagelet_auth">
@@ -165,7 +165,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="professional_info">{{user.pSkill}}</div>
+                            <div class="professional_info inline_ellipsis" title="{{user.pSkill}}" data-placement="top" data-toggle="tooltip">{{user.pSkill}}</div>
                         </div>
                     </div>
                     <div class="row">
@@ -175,7 +175,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="age_info font_10px">{{user.city}}</div>
+                            <div class="age_info font_10px inline_ellipsis" title="{{user.city}}" data-placement="top" data-toggle="tooltip">{{user.city}}</div>
                         </div>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
 </div>
 
 <script>
-    $('#other_religion').on('click', function () {
+    $('#other_religion').on('click', function() {
         $('#religion').hide();
         $('#religion_input').show();
     });
@@ -194,8 +194,8 @@
         var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     }
-    $(function () {
-        $("#register_btn").on("click", function () {
+    $(function() {
+        $("#register_btn").on("click", function() {
             var firstName = $("#r_first_name").val();
             var lastName = $("#r_last_name").val();
             var rEmail = $("#r_email").val();
@@ -236,7 +236,7 @@
                 alert("Passwords do not match !");
                 return false;
             }
-            
+
             if (gender == "" || gender == "0" || gender == 0) {
                 alert("Gender is required !");
                 return false;
@@ -257,13 +257,13 @@
 
 
         });
-        $(".brand_single_image").mouseenter(function () {
+        $(".brand_single_image").mouseenter(function() {
             var brand_single_image = $(this);
             var brand_single_cover_image = $(this).find(".brand_cover_single_image");
             $(brand_single_image).show();
             $(brand_single_cover_image).hide();
         });
-        $(".brand_single_image").mouseleave(function () {
+        $(".brand_single_image").mouseleave(function() {
             var brand_single_image = $(this);
             var brand_single_cover_image = $(this).find(".brand_cover_single_image");
             if ($(brand_single_cover_image).prop("style").display === "none") {
