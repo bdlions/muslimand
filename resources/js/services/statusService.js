@@ -24,7 +24,7 @@ angular.module('services.Status', []).
                     }
                 });
             };
-            
+
             statusService.addPhotoLike = function (photoId, referenceId) {
                 return $http({
                     method: 'post',
@@ -147,6 +147,35 @@ angular.module('services.Status', []).
                     data: {
                         statusInfo: statusInfo,
                     },
+                });
+            };
+
+            statusService.addPhotoComment = function (commentInfo) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/photos/add_photo_comment',
+                    data: {
+                        commentInfo: commentInfo
+                    }
+                });
+            };
+            statusService.addPagePhotoComment = function (commentInfo) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/add_photo_comment',
+                    data: {
+                        commentInfo: commentInfo
+                    }
+                });
+            };
+
+            statusService.getPhotoComments = function (photoId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/photos/get_photo_comments',
+                    data: {
+                        photoId: photoId
+                    }
                 });
             };
             /**

@@ -215,6 +215,7 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.addPhotoComment = function (photoInfo) {
                 var photoId = $scope.photoCommentInfo.photoId = photoInfo.photoId;
                 $scope.photoCommentInfo.referenceId = photoInfo.referenceId;
+                $scope.photoCommentInfo.statusTypeId = photoInfo.statusTypeId;
                 $scope.photoCommentInfo.userInfo = photoInfo.userInfo;
                 photoService.addPhotoComment($scope.photoCommentInfo).
                         success(function (data, status, headers, config) {

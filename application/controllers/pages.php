@@ -7,7 +7,7 @@ class Pages extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->lang->load('auth');
-        $this->load->library('upload');
+//        $this->load->library('upload');
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         $this->load->library('utils');
@@ -16,11 +16,6 @@ class Pages extends CI_Controller {
         $this->load->model('status_mongodb_model');
         $this->load->helper(array('form', 'url'));
         $this->load->helper('language');
-// Load MongoDB library instead of native db driver if required
-//        $this->config->item('use_mongodb', 'ion_auth') ?
-//                        $this->load->library('mongo_db') :
-//                        $this->load->database();
-
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
     }
 
@@ -419,22 +414,34 @@ class Pages extends CI_Controller {
 //...................................................................photos.....................
 
     function get_home_photos($page_id = "0") {
+        $page_info = new stdClass();
+        $member_info = new stdClass();
+        $page_photo_list = array();
+        $user_id = $this->session->userdata('user_id');
         $photo_list = array();
-        $result_event = $this->pages_mongodb_model->get_timeline_photos($page_id);
+        $result_event = $this->page_mongodb_model->get_timeline_photos($page_id, $user_id);
         if ($result_event != null) {
             $result_event = json_decode($result_event);
-            if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
-                $photo_list = $result_event->result;
+            $member_info = $result_event->pageMemberInfo;
+            $page_info_event = json_decode($result_event->pageInfo);
+            if ($page_info_event->responseCode == REQUEST_SUCCESSFULL) {
+                $page_info = $page_info_event->result;
+            }
+            $photo_list_event = json_decode($result_event->photoList);
+            if ($photo_list_event->responseCode == REQUEST_SUCCESSFULL) {
+                $page_photo_list = $photo_list_event->result;
             }
         }
-        $user_relation = $this->get_user_relation_info($profile_id);
+
+        $this->data['page_info'] = $page_info;
+        $this->data['member_info'] = $member_info;
         $this->data['photo_list'] = json_encode($photo_list);
-        $this->data['app'] = PHOTO_APP;
         $this->data['user_id'] = $user_id;
-        $this->data['profile_id'] = $profile_id;
-        $this->data['user_relation'] = json_encode($user_relation);
+        $this->data['profile_id'] = $page_id;
+        $this->data['page_id'] = $page_id;
+        $this->data['app'] = PAGE_APP;
         $this->data['first_name'] = $this->session->userdata('first_name');
-        $this->template->load(null, "member/photo/photo_home", $this->data);
+        $this->template->load(null, "member/page/page_photo", $this->data);
     }
 
     function get_user_short_album_list() {
@@ -500,6 +507,7 @@ class Pages extends CI_Controller {
     }
 
     function get_album() {
+        $user_id = $this->session->userdata('user_id');
         $response = array();
         $postdata = file_get_contents("php://input");
         $requestInfo = json_decode($postdata);
@@ -510,7 +518,7 @@ class Pages extends CI_Controller {
             $mapping_id = $requestInfo->pageId;
         }
         $response = array();
-        $result = $this->page_mongodb_model->get_photos($mapping_id, $album_id);
+        $result = $this->page_mongodb_model->get_photos($user_id, $mapping_id, $album_id);
         $result_array = json_decode($result);
         if (!empty($result_array)) {
             if (property_exists($result_array, "photoList")) {
@@ -983,6 +991,51 @@ class Pages extends CI_Controller {
                 $response['message'] = "Error while Processing ! ";
             } else {
                 $response["like_info"] = $like_info;
+            }
+        }
+        echo json_encode($response);
+    }
+
+    function add_photo_comment() {
+        $response = array();
+        $postdata = file_get_contents("php://input");
+        $requestInfo = json_decode($postdata);
+        if (property_exists($requestInfo, "commentInfo") != FALSE) {
+            $request = $requestInfo->commentInfo;
+        }
+        if (property_exists($request, "photoId") != FALSE) {
+            $photo_id = $request->photoId;
+        }
+        if (property_exists($request, "referenceId") != FALSE) {
+            $reference_id = $request->referenceId;
+        }
+        if (property_exists($request, "statusTypeId") != FALSE) {
+            $status_type_id = $request->statusTypeId;
+        }
+        $ref_user_info = new stdClass();
+        if (property_exists($request, "userInfo")) {
+            $reference_user_info = $request->userInfo;
+            $ref_user_info->userId = $reference_user_info->userId;
+            $ref_user_info->firstName = $reference_user_info->firstName;
+            $ref_user_info->lastName = $reference_user_info->lastName;
+        }
+        $user_id = $this->session->userdata('user_id');
+        $user_info = new stdClass();
+        $user_info->userId = $user_id;
+        $user_info->firstName = $this->session->userdata('first_name');
+        $user_info->lastName = $this->session->userdata('last_name');
+        $comment_info = new stdClass();
+        if (property_exists($request, "comment") != FALSE) {
+            $comment_info->description = $request->comment;
+        }
+        $comment_info->userInfo = $user_info;
+        $result = $this->page_mongodb_model->add_photo_comment($photo_id, $reference_id, $comment_info, $ref_user_info, $status_type_id);
+        if ($result != null) {
+            $result = json_decode($result);
+            if ($result->responseCode != REQUEST_SUCCESSFULL) {
+                $response['message'] = "Error while Processing ! ";
+            } else {
+                $response["comment"] = $comment_info;
             }
         }
         echo json_encode($response);

@@ -106,9 +106,9 @@ class Page_mongodb_model extends CI_Controller {
         return $this->curl->execute();
     }
 
-    public function get_timeline_photos($page_id) {
+    public function get_timeline_photos($page_id, $user_id) {
         $this->curl->create($this->SERVICE_PAGE . 'getTimelinePhotos');
-        $this->curl->post(array("pageId" => $page_id));
+        $this->curl->post(array("pageId" => $page_id, "userId" => $user_id));
         return $this->curl->execute();
     }
 
@@ -124,9 +124,15 @@ class Page_mongodb_model extends CI_Controller {
         return $this->curl->execute();
     }
 
-    public function get_photos($user_id, $album_id) {
-        $this->curl->create($this->SERVICE_PHOTO . 'getPhotos');
-        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id));
+    public function get_photos($user_id, $mapping_id, $album_id) {
+        $this->curl->create($this->SERVICE_PAGE . 'getPhotos');
+        $this->curl->post(array("userId" => $user_id, "mappingId" => $mapping_id, "albumId" => $album_id));
+        return $this->curl->execute();
+    }
+
+    public function add_photo_comment($photo_id, $reference_id, $coment_info, $reference_info, $status_type_id) {
+        $this->curl->create($this->SERVICE_PAGE . 'addPhotoComment');
+        $this->curl->post(array("photoId" => $photo_id, "referenceId" => $reference_id, "commentInfo" => json_encode($coment_info), "referenceInfo" => json_encode($reference_info), "statusTypeId" => $status_type_id));
         return $this->curl->execute();
     }
 

@@ -130,7 +130,7 @@
     <div style="float: left;" class="row from-group">
     <div class="col-md-12">
     <span ng-if = "photoInfo.likeStatus != '1'">
-    <a href style="color: #3B59A9;"  onclick="add_photo_like(angular.element(this).scope().photoInfo)" id="page_photo_like{{photoInfo.photoId}}">
+    <a href style="color: #3B59A9;"  onclick="add_page_photo_like(angular.element(this).scope().photoInfo)" id="page_photo_like{{photoInfo.photoId}}">
     <img src="<?php echo base_url() ?>resources/images/like_icon.png">
     Like
     </a>
@@ -185,7 +185,7 @@
     <a href id="photo_more_comment_show" onclick="get_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
     </div>
     </div>
-    <div class="row form-group" ng-repeat="comment in photoInfo.comment">
+    <div class="row form-group" ng-repeat="comment in photoInfo.commentList">
     <div class="col-md-1">
     <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg" width="30" height="30">
     </div>
@@ -198,10 +198,10 @@
     </div>
     <div class="row">
     <div class="col-md-12">
-    January 08, 2015 at 2:15pm. 
+    {{comment.createdOn}}
     <a>like</a>
     <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
-    . <a>31</a>
+    . <a>{{comment.likeCounter}}</a>
     </div>
     </div>
 
@@ -213,7 +213,7 @@
     <img  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
     </div>
     <div class="col-md-10">
-    <form  ng-submit="addPhotoComment(photoInfo)">
+    <form  ng-submit="addPagePhotoComment(photoInfo)">
     <input type ="text" id ="photo_comment_field" class="form-control" placeholder="Write a comment" ng-model="photoCommentInfo.comment">
     </form>
     </div>
@@ -254,7 +254,7 @@
 
         });
     }
-    function add_photo_like(photoInfo) {
+    function add_page_photo_like(photoInfo) {
         var photoId = photoInfo.photoId;
         var referenceId = photoInfo.referenceId;
         var statusTypeId = photoInfo.statusTypeId;

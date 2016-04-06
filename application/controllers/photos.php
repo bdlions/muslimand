@@ -820,6 +820,9 @@ class Photos extends CI_Controller {
         if (property_exists($request, "referenceId") != FALSE) {
             $reference_id = $request->referenceId;
         }
+        if (property_exists($request, "statusTypeId") != FALSE) {
+            $status_type_id = $request->statusTypeId;
+        }
         $ref_user_info = new stdClass();
         if (property_exists($request, "userInfo")) {
             $reference_user_info = $request->userInfo;
@@ -837,7 +840,7 @@ class Photos extends CI_Controller {
             $comment_info->description = $request->comment;
         }
         $comment_info->userInfo = $user_info;
-        $result = $this->photo_mongodb_model->add_photo_comment($photo_id, $reference_id, $comment_info, $ref_user_info);
+        $result = $this->photo_mongodb_model->add_photo_comment($photo_id, $reference_id, $comment_info, $ref_user_info, $status_type_id);
         if ($result != null) {
             $result = json_decode($result);
             if ($result->responseCode != REQUEST_SUCCESSFULL) {

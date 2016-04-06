@@ -337,6 +337,9 @@ class Status extends CI_Controller {
         if (property_exists($status_info, "statusId")) {
             $status_id = $status_info->statusId;
         }
+        if (property_exists($status_info, "statusTypeId")) {
+            $status_type_id = $status_info->statusTypeId;
+        }
         $ref_user_info = new stdClass();
         if (property_exists($status_info, "referenceUserInfo")) {
             $reference_user_info = $status_info->referenceUserInfo;
@@ -350,7 +353,7 @@ class Status extends CI_Controller {
             $status_comment_info->description = $status_info->commentDes;
         }
         $status_comment_info->userInfo = $user_info;
-        $result = $this->status_mongodb_model->add_status_comment($ref_user_info, $status_id, $status_comment_info);
+        $result = $this->status_mongodb_model->add_status_comment($ref_user_info, $status_id, $status_type_id, $status_comment_info);
         if ($result != null) {
             $response["status_comment_info"] = $status_comment_info;
         }

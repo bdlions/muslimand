@@ -405,7 +405,7 @@
                             <img  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
                         </div>
                         <div class="col-md-11">
-                            <form  ng-submit="addComment(userGenderId, status.userInfo, status.statusId)">
+                            <form  ng-submit="addComment(userGenderId, status.userInfo, status)">
                                 <input  id="commentInputField{{status.statusId}}" type ="text" class="form-control" placeholder="Write a comment" ng-model="statusInfo.commentDes">
                             </form>
                         </div>

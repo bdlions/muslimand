@@ -10,7 +10,7 @@
     <div class="">
     <carousel>
     <slide ng-repeat="photoInfo in sliderImages" active="photoInfo.active">
-    <img ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photoInfo.image}}""  class="img-responsive" />
+    <img ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photoInfo.image}}"  class="img-responsive" />
     <div class="row" style="bottom: 55px; position: fixed; margin-left: 220px;">
     <div class="col-md-12">
     <ul class="inline pull-right padding_top_30px">
@@ -130,7 +130,7 @@
     <div style="float: left;" class="row from-group">
     <div class="col-md-12">
     <span ng-if = "photoInfo.likeStatus != '1'">
-    <a href style="color: #3B59A9;"  onclick="add_photo_like(angular.element(this).scope().photoInfo)" id="photo_like_{{photoInfo.photoId}}">
+    <a href style="color: #3B59A9;"  onclick="add_newsfeed_photo_like(angular.element(this).scope().photoInfo)" id="photo_like_{{photoInfo.photoId}}">
     <img src="<?php echo base_url() ?>resources/images/like_icon.png">
     Like
     </a>
@@ -185,7 +185,7 @@
     <a href id="photo_more_comment_show" onclick="get_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
     </div>
     </div>
-    <div class="row form-group" ng-repeat="comment in photoInfo.comment">
+    <div class="row form-group" ng-repeat="comment in photoInfo.commentList">
     <div class="col-md-1">
     <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg" width="30" height="30">
     </div>
@@ -198,10 +198,10 @@
     </div>
     <div class="row">
     <div class="col-md-12">
-    January 08, 2015 at 2:15pm. 
+    {{comment.createdOn}}
     <a>like</a>
     <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
-    . <a>31</a>
+    . <a>{{comment.likeCounter}}</a>
     </div>
     </div>
 
@@ -254,11 +254,10 @@
 
         });
     }
-    function add_photo_like(photoInfo) {
+    function add_newsfeed_photo_like(photoInfo) {
         var photoId = photoInfo.photoId;
         var referenceId = photoInfo.referenceId;
         var statusTypeId = photoInfo.statusTypeId;
-        console.log(statusTypeId);
         if ('<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE; ?>' == statusTypeId ||
                 '<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE; ?>' == statusTypeId ||
                 '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO; ?>' == statusTypeId ||
@@ -286,7 +285,6 @@
     }
 
     function open_modal_delete_photo(photoInfo) {
-//        var photoId = photoInfo.photoId;
         var albumId = photoInfo.albumId;
         var selectionInfo = " Photo ? ";
         delete_confirmation(selectionInfo, function (response) {

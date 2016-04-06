@@ -311,9 +311,9 @@ class Photo_mongodb_model extends CI_Model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function add_photo_comment($photo_id, $reference_id, $coment_info, $reference_info) {
+    public function add_photo_comment($photo_id, $reference_id, $coment_info, $reference_info, $status_type_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'addPhotoComment');
-        $this->curl->post(array("photoId" => $photo_id, "referenceId" => $reference_id, "commentInfo" => json_encode($coment_info), "referenceInfo" => json_encode($reference_info)));
+        $this->curl->post(array("photoId" => $photo_id, "referenceId" => $reference_id, "commentInfo" => json_encode($coment_info), "referenceInfo" => json_encode($reference_info), "statusTypeId" => $status_type_id));
         return $this->curl->execute();
     }
 
