@@ -672,7 +672,7 @@ class Pages extends CI_Controller {
         $this->data['member_info'] = $member_info;
         $this->data["album_lsit"] = json_encode(array());
         $this->data["category_list"] = json_encode(array());
-        $this->template->load(MEMBER_PAGE_IN_TEMPLATE, "member/page/page_photo_add", $this->data);
+        $this->template->load(null, "member/page/page_photo_add", $this->data);
     }
 
     function pages_get_photo_album($album_id = 0) {
