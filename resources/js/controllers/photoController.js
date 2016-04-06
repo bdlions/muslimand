@@ -27,7 +27,6 @@ angular.module('controllers.Photo', ['services.Photo']).
                         $scope.albumList.push(value);
                     }
                 });
-                console.log($scope.albumList);
             };
             $scope.setUserAlbumList = function (userAlbumList) {
                 $scope.userAlbums = JSON.parse(userAlbumList);
@@ -44,13 +43,22 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.getUserAlbum = function (albumId, profileId, requestFunction) {
                 photoService.getUserAlbum(albumId, profileId).
                         success(function (data, status, headers, config) {
+                            console.log(data);
                             if (typeof data.photo_list != "undefined") {
                                 $scope.albumPhotoList = data.photo_list;
+
                             }
                             if (typeof data.album_info != "undefined") {
                                 $scope.albumDetail = data.album_info;
-                                console.log($scope.albumDetail);
+                                if (typeof $scope.albumDetail.commentList != "undefined") {
+                                    angular.forEach($scope.albumDetail.commentList, function (comment, key) {
+                                        if (typeof comment.createdOn != "undefined") {
+                                            comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                        }
+                                    }, $scope.albumDetail.commentList);
+                                }
                             }
+                            console.log($scope.albumDetail);
                             requestFunction();
                         });
             };
@@ -106,30 +114,32 @@ angular.module('controllers.Photo', ['services.Photo']).
 
 
             };
-            $scope.addAlbumComment = function (albumId) {
-                $scope.albumCommentInfo.albumId = albumId;
+            $scope.addAlbumComment = function (albumInfo) {
+                var albumId = albumInfo.albumId;
+                $scope.albumCommentInfo.albumId = albumInfo.albumId;
+                $scope.albumCommentInfo.mappingId = albumInfo.userId;
+                $scope.albumCommentInfo.referenceId = albumInfo.referenceId;
                 photoService.addAlbumComment($scope.albumCommentInfo).
                         success(function (data, status, headers, config) {
-                            angular.forEach($scope.albumDetailList, function (value, key) {
-                                if (value.albumId == albumId) {
-                                    if (typeof value.comment === "undefined") {
-                                        value.comment = new Array();
-                                    }
-                                    value.comment.push(data.comment);
-                                }
-                            }, $scope.albumDetailList);
+                            data.comment.createdOn = "1 see ago";
+                            $scope.albumDetail.commentList.push(data.comment);
                             $scope.albumCommentInfo.comment = "";
                         });
                 return false;
             };
-            $scope.getAlbumComments = function (albumId, requestFunction) {
-                photoService.getAlbumComments(albumId).
+            $scope.getAlbumComments = function (albumId, mappingId, requestFunction) {
+                photoService.getAlbumComments(albumId, mappingId).
                         success(function (data, status, headers, config) {
-                            angular.forEach($scope.albumDetailList, function (value, key) {
-                                if (value.albumId == albumId ? value.comment = data.comment_list : '') {
-                                }
-                            }, $scope.albumDetailList);
-                            $scope.albumCommentInfo.comment = "";
+                            if (typeof data.comment_list != "undefine") {
+                                angular.forEach(data.comment_list, function (comment, key) {
+                                    if (typeof comment.createdOn != "undefined") {
+                                        comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                    }
+                                }, data.comment_list);
+                            }
+                            $scope.albumDetail.commentList = data.comment_list;
+                            console.log($scope.albumDetail);
+                            $scope.albumCommentInfo.commentList = "";
                             requestFunction();
                         });
                 return false;

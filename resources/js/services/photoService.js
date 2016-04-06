@@ -112,12 +112,13 @@ angular.module('services.Photo', []).
                     }
                 });
             };
-            photoService.getAlbumComments = function(albumId) {
+            photoService.getAlbumComments = function(albumId, mappingId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/photos/get_album_comments',
                     data: {
-                        albumId: albumId
+                        albumId: albumId,
+                        mappingId: mappingId
                     }
                 });
             };

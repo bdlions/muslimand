@@ -101,10 +101,10 @@
             <div class="row form-group">
                 <div class="col-md-12" id="more_comment_id">
                     <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
-                    <a href  id="album_more_comment" onclick="get_album_comments(angular.element(this).scope().albumDetail.albumId)">view{{albumDetail.commentCounter}} more comments </a>
+                    <a href  id="album_more_comment" onclick="get_album_comments(angular.element(this).scope().albumDetail)">view{{albumDetail.commentCounter}} more comments </a>
                 </div>
             </div>
-            <div class="row form-group"  ng-repeat="comment in albumDetail.comment">
+            <div class="row form-group"  ng-repeat="comment in albumDetail.commentList">
                 <div class="col-md-1">
                     <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg" width="30" height="30">
                 </div>
@@ -117,10 +117,10 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            January 08, 2015 at 2:15pm. 
+                            {{comment.createdOn}}
                             <a>like</a>
                             <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
-                            . <a>31</a>
+                            . <a>  {{comment.likeCounter}}</a>
                         </div>
                     </div>
 
@@ -131,7 +131,7 @@
                     <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_2.jpg" width="30" height="30">
                 </div>
                 <div class="col-md-11">
-                    <form  ng-submit="addAlbumComment(albumDetail.albumId)">
+                    <form  ng-submit="addAlbumComment(albumDetail)">
                         <input type ="text" id="album_comment_field" class="form-control" placeholder="Write a comment" ng-model="albumCommentInfo.comment">
                     </form>
                 </div>
@@ -145,8 +145,10 @@
             $('#modal_liked_people_list').modal('show');
         });
     }
-    function get_album_comments(albumId) {
-        angular.element($('#album_more_comment')).scope().getAlbumComments(albumId, function () {
+    function get_album_comments(albumInfo) {
+        var albumId = albumInfo.albumId;
+        var mappingId = albumInfo.userId;
+        angular.element($('#album_more_comment')).scope().getAlbumComments(albumId, mappingId, function () {
             $('#more_comment_id').hide();
         });
     }

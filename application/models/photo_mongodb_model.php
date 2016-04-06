@@ -135,15 +135,15 @@ class Photo_mongodb_model extends CI_Model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function add_album_comment($album_id, $comment_info) {
+    public function add_album_comment($album_id, $mapping_id, $reference_id, $comment_info) {
         $this->curl->create($this->SERVICE_PHOTO . 'addAlbumComment');
-        $this->curl->post(array("albumId" => $album_id, "commentInfo" => json_encode($comment_info)));
+        $this->curl->post(array("albumId" => $album_id, "mappingId" => $mapping_id, "referenceId" => $reference_id, "commentInfo" => json_encode($comment_info)));
         return $this->curl->execute();
     }
 
-    public function get_album_comments($album_id) {
+    public function get_album_comments($album_id, $mapping_id) {
         $this->curl->create($this->SERVICE_PHOTO . 'getAlbumComments');
-        $this->curl->post(array("albumId" => $album_id));
+        $this->curl->post(array("albumId" => $album_id, "mappingId" => $mapping_id));
         return $this->curl->execute();
     }
 

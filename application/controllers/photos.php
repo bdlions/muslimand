@@ -336,6 +336,12 @@ class Photos extends CI_Controller {
         if (property_exists($request, "albumId") != FALSE) {
             $album_id = $request->albumId;
         }
+        if (property_exists($request, "mappingId") != FALSE) {
+            $mapping_id = $request->mappingId;
+        }
+        if (property_exists($request, "referenceId") != FALSE) {
+            $reference_id = $request->referenceId;
+        }
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
         $user_info->firstName = $this->session->userdata('first_name');
@@ -345,9 +351,12 @@ class Photos extends CI_Controller {
             $comment_info->description = $request->comment;
         }
         $comment_info->userInfo = $user_info;
-        $result = $this->photo_mongodb_model->add_album_comment($album_id, $comment_info);
-        if ($result != null) {
-            $response["comment"] = $comment_info;
+        $result_event = $this->photo_mongodb_model->add_album_comment($album_id, $mapping_id, $reference_id, $comment_info);
+        if ($result_event != null) {
+            $result_event = json_decode($result_event);
+            if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
+                $response["comment"] = $comment_info;
+            }
         }
         echo json_encode($response);
         return;
@@ -360,11 +369,14 @@ class Photos extends CI_Controller {
         if (property_exists($requestInfo, "albumId") != FALSE) {
             $album_id = $requestInfo->albumId;
         }
-        $result = $this->photo_mongodb_model->get_album_comments($album_id);
-        $request_array = json_decode($result);
-        if (!empty($request_array)) {
-            if (property_exists($request_array, "comment") != FALSE) {
-                $response["comment_list"] = $request_array->comment;
+        if (property_exists($requestInfo, "mappingId") != FALSE) {
+            $mapping_id = $requestInfo->mappingId;
+        }
+        $result_event = $this->photo_mongodb_model->get_album_comments($album_id, $mapping_id);
+        if ($result_event != null) {
+            $result_event = json_decode($result_event);
+            if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
+                $response["comment_list"] = $result_event->result->comment;
             }
         }
         echo json_encode($response);
