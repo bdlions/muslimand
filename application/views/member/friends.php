@@ -31,16 +31,16 @@
                                 <div style="float: left; border: 1px solid #703684;">
                                     <img class="img-responsive" style="height: 75px; width: 75px;" fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>100x100_{{friend.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W100_H100; ?>{{friend.userId}}.jpg"/>
                                 </div>
-                                <div style="float: left; width: 180px; padding: 10px;">
+                                <div style="float: left; width: 180px; padding: 10px 0 0 2px; margin-top: 20px;">
                                     <div >
-                                        <a style="font-weight: bold;" href='<?php echo base_url(); ?>member/timeline/{{friend.userId}}' ><span ng-bind="friend.firstName"></span>&nbsp;<span ng-bind="friend.lastName"></span></a>
+                                        <a style="font-weight: bold;" href='<?php echo base_url(); ?>member/timeline/{{friend.userId}}' ><span ng-bind-template="{{friend.firstName}} {{friend.lastName}}"></span></a>
                                     </div>
                                     <div >
                                         <!--<span style="font-size: 12px"> Mutual friends </span>--> 
                                     </div>
                                 </div>
                                 <div style="float: right;">
-                                    <button style="margin-top: 50%;" >Friends</button>
+                                    <button style="margin-top: 28px;" >Friends</button>
                                 </div>
                             </div>
                         </div>

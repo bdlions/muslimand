@@ -153,7 +153,7 @@
                                 <div class="col-md-12">
                                     <div style="width: 100%;" class="row form-group">
                                         <div class="col-md-12">
-                                            <div style="float: left; text-align: justify;">
+                                            <div style="float: left;">
                                                 <div ng-bind="status.description" id="displayStatus3SNXd7ulUTAXfrV" class="ng-binding"></div>
                                             </div>
                                             <div style="display: none;" id="updateStatus3SNXd7ulUTAXfrV">

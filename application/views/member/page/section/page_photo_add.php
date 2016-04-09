@@ -4,9 +4,9 @@
             <span style="font-size: 20px; font-weight: bold;">Upload Photos</span>
         </div>
     </div>
-<!--    <div ng-init="setPhotoCategories(<?php echo htmlspecialchars(json_encode($category_list)); ?>)" >
+    <div ng-init="setPhotoCategories(<?php //echo htmlspecialchars(json_encode($category_list)); ?>)" >
         <div class="row form-group">
-            <div class="col-md-12" ng-init="setAlbums(<?php echo htmlspecialchars(json_encode($album_lsit)); ?>)">
+            <div class="col-md-12" ng-init="setAlbums(<?php //echo htmlspecialchars(json_encode($album_lsit)); ?>)">
                 <span style="font-size: 16px; font-weight: bold;">* Photo Album:</span><br>
                 <select class="form-control"  ng-options="album.albumId as album.title for album in albumList" ng-model="photoInfo.albumId">
                     <option value="" selected>Select Album</option>
@@ -14,15 +14,7 @@
                 <a style="text-decoration: none; cursor: pointer;"> <span id="createAlbumIdOnClick">(Create a New Photo Album)</span></a>
             </div>
         </div>
-        <div class="row form-group padding_top_10px">
-            <div class="col-md-12">
-                <span style="font-size: 16px; font-weight: bold;">* Category:</span><br>
-                <select class="form-control"  ng-options="category.categoryId as category.title for category in categoryList" ng-model="photoInfo.categoryId">
-                    <option value="" selected>Select Category</option>
-                </select>
-            </div>
-        </div>
-    </div>-->
+    </div>
     <div class="row form-group padding_top_10px">
         <div class="col-md-12">
             <span style="font-size: 16px; font-weight: bold;">Photo(s) Privacy: </span><br>

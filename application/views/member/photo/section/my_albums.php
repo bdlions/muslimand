@@ -2,7 +2,7 @@
     <div class="row form-group font_11px padding_top_10px">
         <div  class="col-md-3" ng-repeat="album in userAlbums">
             <div style="margin-bottom: 15px;" >
-                <a id="album_id_{{album.albumId}}" onclick="get_user_album(angular.element(this).scope().album.albumId)" >
+                <a ng-show="album.totalImg != 0" id="album_id_{{album.albumId}}" onclick="get_user_album(angular.element(this).scope().album.albumId)" >
                     <img style="border: 1px solid #703684; height: 120px; width: 150px;" fallback-src="<?php echo base_url() ?>resources/images/photos/albums/user_album/profile.jpg" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{album.defaultImg}}">
                     <div style="margin-right: -3px; padding: 0 2px 2px 2px;">
                         <span ng-bind="album.title"></span><br>

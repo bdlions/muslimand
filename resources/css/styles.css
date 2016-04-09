@@ -1483,7 +1483,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
         width: 1200px!important;
     }
 
-    .modal_dialog {
+    .modal_dialog{
         margin: 30px auto!important;
         width: 600px!important;
         position: relative!important;

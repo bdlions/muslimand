@@ -1,13 +1,10 @@
-
-
 <script type="text/ng-template" id="template/newsfeed.html">
-<div class="modal-body pic_modal" style="background-color: #000;">
+<div class="modal-body pic_modal" style="background-color: #000; z-index: 1024;">
     <div class="row form-group">
         <div class="col-md-offset-11 col-md-1">
             <button id="close_photo_modal" type="button"  ng-click="ok()" class="close close_custom" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
     </div>
-
     <div class="row form-group" style="background-color: #000; height: 500px; width: 600px;">
         <div class="">
             <carousel>
@@ -36,9 +33,6 @@
                             </ul>
                         </div>
                     </div>
-
-
-
                     <div class="modal_photo_pagelet" style="bottom: 70px; float: right; position: fixed; right: 40px; width: 504px; z-index: 99999999;">
                         <div class="row">
                             <div class="col-md-2" >
@@ -54,7 +48,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="row">
                                             <div class="col-md-9">
                                                 <div style="float: left;" class="ng-binding">
@@ -100,7 +93,7 @@
                             <div class="col-md-12">
                                 <div style="width: 100%;" class="row form-group">
                                     <div class="col-md-12">
-                                        <div style="float: left; text-align: justify;">
+                                        <div style="float: left;">
                                             <div ng-bind="photoInfo.description" id="displayStatus{{photoInfo.photoId}}" class="ng-binding"></div>
                                         </div>
                                         <div style="display: none;" id="updateStatus{{photoInfo.photoId}}">
@@ -148,12 +141,14 @@
                                             Comment
                                         </a>
                                         <a onclick="open_modal_share(angular.element(this).scope().photoInfo)" href="" id="share_add_id" style="color: #3B59A9;">
-                                            <img ng-src="<?php echo base_url(); ?>resources/images/share_icon.png" src="<?php echo base_url(); ?>resources/images/share_icon.png"> Share</a>
+                                            <img ng-src="<?php echo base_url(); ?>resources/images/share_icon.png" src="<?php echo base_url(); ?>resources/images/share_icon.png"> Share
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="pagelet_divider"></div>
+                        <!--<div class="pagelet_divider"></div>-->
+                        <hr>
                         <div class="row">
                             <div class="col-md-12">
                                 <span ng-if = "photoInfo.likeCounter > 0">
@@ -211,24 +206,18 @@
                                 </div>
                             </div> 
                         </div>
-
-
-                        <div class="row">
-                            <div profile_picture="" class="col-md-2">
-                                <img class="img-responsive"  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
+                        <div class="row" style="padding-top: 10px">
+                            <div profile_picture="" class="col-md-1">
+                                <img  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-11">
                                 <form  ng-submit="addPhotoComment(photoInfo)">
-                                    <input type ="text" id ="photo_comment_field" class="form-control" placeholder="Write a comment" ng-model="photoCommentInfo.comment">
+                                    <input type ="text" id ="photo_comment_field" class="form-control form_control_custom_style" placeholder="Write a comment" ng-model="photoCommentInfo.comment">
                                 </form>
                             </div>
                         </div>
                     </div>
-
-
-
                 </slide>
-
             </carousel>
         </div>
 
@@ -239,11 +228,7 @@
 <?php $this->load->view("modal/modal_liked_people_list"); ?>
 <?php $this->load->view("member/photo/modal_shared_album"); ?>
 <script type="text/javascript">
-
-    $(document).ready(function() {
-        $('.flipbook').pageFlip({});
-    });
-
+   
     function photo_comment_id_focus() {
         $('#photo_comment_field').focus();
     }

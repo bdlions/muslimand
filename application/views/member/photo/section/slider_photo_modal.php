@@ -100,7 +100,7 @@
                             <div class="col-md-12">
                                 <div style="width: 100%;" class="row form-group">
                                     <div class="col-md-12">
-                                        <div style="float: left; text-align: justify;">
+                                        <div style="float: left;">
                                             <div ng-bind="photoInfo.description" id="displayStatus{{photoInfo.photoId}}" class="ng-binding"></div>
                                         </div>
                                         <div style="display: none;" id="updateStatus{{photoInfo.photoId}}">

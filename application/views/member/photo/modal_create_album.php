@@ -21,44 +21,6 @@
                         <textarea class="form-control form_control_custom_style textarea_custom_style" ng-model="albumInfo.description"></textarea>
                     </div>
                 </div>
-                <!--<div class="row form-group"></div>-->
-<!--                <div class="row">
-                    <div class="col-md-6">
-                        <span style="font-size: 16px; font-weight: bold;">Album(s) Privacy: </span><br>
-                        <select class="form-control" name="control">
-                            <option value="0" selected="1">Everyone</option>
-                            <option value="1">Friends</option>
-                            <option value="2">Friends of Friends</option>
-                            <option value="3">Only Me</option>
-                            <option value="4">Custom</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6"></div>
-                </div>-->
-<!--                <div class="row">
-                    <div class="col-md-12">
-                        Control who can see this photo album and any photos associated with it.
-                    </div>
-                </div>-->
-                <!--<div class="row form-group"></div>-->
-<!--                <div class="row">
-                    <div class="col-md-6">
-                        <span style="font-size: 16px; font-weight: bold;">Comment Privacy: </span><br>
-                        <select class="form-control" name="control">
-                            <option value="0" selected="1">Everyone</option>
-                            <option value="1">Friends</option>
-                            <option value="2">Friends of Friends</option>
-                            <option value="3">Only Me</option>
-                            <option value="4">Custom</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6"></div>
-                </div>-->
-<!--                <div class="row">
-                    <div class="col-md-12">
-                        Control who can comment on this photo album and any photos associated with it.
-                    </div>
-                </div>-->
                 <div class="row form-group"></div>
                 <div class="row">
                     <div class="col-md-6">

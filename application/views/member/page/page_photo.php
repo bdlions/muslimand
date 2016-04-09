@@ -82,9 +82,9 @@
 
                         </div>
 
-                            <div id="page_photo_upload_section">
-                                <?php $this->load->view("member/page/section/page_photo_add"); ?>
-                            </div>
+                        <div id="page_photo_upload_section">
+                            <?php $this->load->view("member/page/section/page_photo_add"); ?>
+                        </div>
 
                     </div>
                 </div>
@@ -93,15 +93,8 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
-
 <script>
+    $("#page_random_photos").show();
     $("#page_photo_button").click(function() {
         $("#page_photo_albums").hide();
         $("#page_random_photos").show();

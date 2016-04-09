@@ -19,6 +19,11 @@
                             <textarea class="form-control textarea_custom_style" ng-model="albumInfo.description"></textarea>
                         </div>
                     </div>
+                    <div class="row form-group padding_top_10px">
+                        <div class="col-md-6">
+                            <button class="btn btn-xs" id="create_album_btn" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;" onclick="create_album()">Submit</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer"></div>

@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal_share_content" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_share_content" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: 2048;">
     <div class="modal-dialog modal_dialog">
         <div class="modal-content modal_background_color">
             <div class="modal-header">
@@ -81,8 +81,8 @@
     </div>
 </div>
 
-<script>
-    
+<script type="text/javascript">
+
     function share_status() {
         angular.element($('#status_shared_add_id')).scope().shareStatus(function() {
             $("#user_first_name").val("");

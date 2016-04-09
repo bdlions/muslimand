@@ -163,7 +163,7 @@
                             <div class="col-md-12">
                                 <div class="row form-group" style="width: 100%;">
                                     <div class="col-md-12">
-                                        <div style="float: left; text-align: justify;">
+                                        <div style="float: left;">
                                             <div id="displayStatus{{status.statusId}}" ng-bind="status.description"></div>
                                         </div>
                                         <div id="updateStatus{{status.statusId}}" style="display: none;">
@@ -262,7 +262,7 @@
                             </div>
                             <div class="row from-group">
                                 <div class="from-group col-md-4" ng-repeat="image in status.referenceInfo.images">
-                                    <img class="img-responsive" style="border: 1px solid #703684; float: left" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" width="120" height="100">
+                                    <img class="img-responsive" style="border: 1px solid #703684; float: left; height: 100px; width: 120px;" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}" >
                                 </div>
                             </div>
 
