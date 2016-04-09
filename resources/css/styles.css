@@ -1480,7 +1480,7 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
         min-width: 900px; 
     }
     .modal.in .modal-dialog{
-        width: 1200px!important;
+        width: 1200px;
     }
 
     .modal_dialog{

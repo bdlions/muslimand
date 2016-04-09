@@ -5,8 +5,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <div style="text-align: center;"><h4 class="modal-title" id="myModalLabel">Create a New Photo Album</h4></div>
             </div>
-            <div class="modal-body">
-                <div style="padding: 5px 30px;">
+            <div class="modal-body" style="padding-left: 50px;">
                     <div class="row form-group">
                         <div class="col-md-6">
                             *Name:<br>
@@ -14,9 +13,9 @@
                         </div>
                     </div>
                     <div class="row form-group padding_top_10px">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             Description:<br>
-                            <textarea class="form-control form_control_custom_style textarea_custom_style" ng-model="albumInfo.description"></textarea>
+                            <textarea class="form-control textarea_custom_style" ng-model="albumInfo.description"></textarea>
                         </div>
                     </div>
                     <div class="row form-group padding_top_10px">
@@ -29,7 +28,6 @@
                             * Required Fields
                         </div>
                     </div>
-                </div>
             </div>
             <div class="modal-footer"></div>
         </div>

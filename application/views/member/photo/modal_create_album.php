@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal_create_album_box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_create_album_box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
     <div class="modal-dialog modal_dialog">
         <div class="modal-content modal_background_color">
             <div class="modal-header">
@@ -8,11 +8,11 @@
             <div class="modal-body" style="padding-left: 50px;">
                 <div class="row form-group"></div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         *Name:<br>
                         <input class="form-control" id="album_title_id" type="text"  ng-model="albumInfo.title">
                     </div>
-                    <div class="col-md-6"></div>
+                    <div class="col-md-12"></div>
                 </div>
                 <div class="row form-group"></div>
                 <div class="row">
