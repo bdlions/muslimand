@@ -12,7 +12,6 @@
                         *Name:<br>
                         <input class="form-control" id="album_title_id" type="text"  ng-model="albumInfo.title">
                     </div>
-                    <div class="col-md-12"></div>
                 </div>
                 <div class="row form-group"></div>
                 <div class="row">
@@ -26,19 +25,14 @@
                     <div class="col-md-6">
                         <button class="btn btn-xs" id="album_create_id" style=" padding: 3px 28px; background-color: #703684; color: white; font-weight: bold;" onclick="create_album()">Submit</button>
                     </div>
-                    <div class="col-md-6"></div>
                 </div>
-                <div class="row form-group"></div>
-                <div class="row">
+                <div class="row padding_top_10px">
                     <div class="col-md-12">
                         * Required Fields
                     </div>
                 </div>
-                <div class="row form-group"></div>
             </div>
-
-            <div class="modal-footer">
-            </div>
+            <div class="modal-footer"></div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

@@ -7,13 +7,13 @@
             </div>
             <div class="modal-body" style="padding-left: 50px;">
                     <div class="row form-group">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             *Name:<br>
                             <input class="form-control" id="album_title_id" type="text"  ng-model="albumInfo.title">
                         </div>
                     </div>
                     <div class="row form-group padding_top_10px">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             Description:<br>
                             <textarea class="form-control textarea_custom_style" ng-model="albumInfo.description"></textarea>
                         </div>
