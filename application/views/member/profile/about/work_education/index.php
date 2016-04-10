@@ -231,7 +231,7 @@
 </div>
 <?php $this->load->view("common/common_delete_confirmation_modal"); ?>
 <script type="text/javascript">
-
+{{workPlace.id}}
     function show_work_place(e) {
         var workPlaceId = $(e).attr('id');
         $('#work_place_' + workPlaceId).hide();

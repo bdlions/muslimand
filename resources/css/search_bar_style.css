@@ -21,7 +21,7 @@
     box-shadow: 1px 4px 3px #888888;
     border: 1px solid #79B7EA;
     max-height: 550px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .pagelet_z_index{
     position: absolute;

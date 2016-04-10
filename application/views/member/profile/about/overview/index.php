@@ -65,7 +65,7 @@
                 <img src="<?php echo base_url(); ?>resources/images/about_icons/mail.png"  > 
             </div>
             <div class="col-md-10">
-                <h6><span ng-bind="overview.email.email"></span></h6>
+                <span style="word-wrap: break-word;" ng-bind="overview.email.email"></span>
             </div>
         </div>
         <div class="row form-group" id="about_overview_address" style="display: none">

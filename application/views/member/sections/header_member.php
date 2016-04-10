@@ -159,11 +159,11 @@
                 <img src="<?php echo base_url(); ?>resources/images/header_icons/menu.png">
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuRight">
-                <li role="presentation">
+                <li class="disabled" role="presentation">
                     <!--<a role="menuitem" tabindex="-1" href="<?php // echo base_url() ?>member/account_settings">Account settings</a>-->
                     <a role="menuitem" tabindex="-1">Account settings</a>
                 </li>
-                <li role="presentation">
+                <li class="disabled" role="presentation">
                     <a role="menuitem" tabindex="-1" >Privacy settings</a>
                     <!--<a role="menuitem" tabindex="-1" href="<?php // echo base_url() ?>member/privacy_settings">Privacy settings</a>-->
                 </li>

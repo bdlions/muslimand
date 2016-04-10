@@ -39,7 +39,7 @@
                     
                     
                     
-                     <div class="modal_photo_pagelet" style="bottom: 70px; float: right; position: fixed; right: 40px; width: 504px; z-index: 99999999;">
+                     <div class="modal_photo_pagelet modal_slider_comment_section">
                         <div class="row">
                             <div class="col-md-2" >
                                 <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{photoInfo.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{photoInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
@@ -187,34 +187,36 @@
                                 <a href id="photo_more_comment_show" onclick="get_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
                             </div>
                         </div>
-                        <div class="row form-group" ng-repeat="comment in photoInfo.commentList">
-                            <div class="col-md-1">
-                                <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg" width="30" height="30">
-                            </div>
-                            <div class="col-md-11">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a style="font-weight: bold;" href="#">{{comment.userInfo.firstName}}&nbsp{{comment.userInfo.lastName}}</a>
-                                        {{comment.description}} 
-                                    </div>
+                        <div class="modal_photo_slider_custom_scroll">
+                            <div class="row form-group" ng-repeat="comment in photoInfo.commentList">
+                                <div class="col-md-1">
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg" width="30" height="30">
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                    {{comment.createdOn}}
-                                        <a>like</a>
-                                        <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
-                                        . <a> {{comment.likeCounter}}</a>
+                                <div class="col-md-11">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <a style="font-weight: bold;" href="#">{{comment.userInfo.firstName}}&nbsp{{comment.userInfo.lastName}}</a>
+                                            {{comment.description}} 
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {{comment.createdOn}}
+                                            <a>like</a>
+                                            <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
+                                            . <a> {{comment.likeCounter}}</a>
+                                        </div>
+                                    </div>
 
+                                </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div profile_picture="" class="col-md-2">
-                                <img  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
+                            <div profile_picture="" class="col-md-1">
+                                <img class="lightgray_border"  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-11">
                                 <form  ng-submit="addPhotoComment(photoInfo)">
                                     <input type ="text" id ="photo_comment_field" class="form-control" placeholder="Write a comment" ng-model="photoCommentInfo.comment">
                                 </form>

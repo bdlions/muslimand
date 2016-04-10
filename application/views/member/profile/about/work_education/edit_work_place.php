@@ -1,4 +1,4 @@
-<div class="row" id="edit_word_place">
+<div class="row" id="edit_word_place" style="padding: 10px;">
     <div class="col-md-12" >
         <div class="row form-group">
             <div class="col-md-offset-9 col-md-3">
@@ -35,7 +35,7 @@
                 <span class="subcategory_label_style">Description</span>
             </div>
             <div class="col-md-8">
-                <textarea type="text" class="form-control form_control_custom_style" ng-model="workPlace.description"></textarea>
+                <textarea type="text" class="form-control textarea_custom_style" ng-model="workPlace.description"></textarea>
             </div>
         </div>
         <div class="row form-group">
@@ -79,7 +79,7 @@
                 <input type="submit" id="work_place_update_btn" value="Save" class="btn btn-xs form-control form_control_custom_style" style="background-color: #703684; color: white" onclick="edit_work_place(angular.element(this).scope().workPlace)">
             </div>
             <div class="col-md-3">
-                <button class="btn btn-xs form-control form_control_custom_style cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
+                <button onclick="close_work_place(angular.element(this).scope().workPlace.id)" class="btn btn-xs form-control form_control_custom_style cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
             </div>
         </div>
     </div>

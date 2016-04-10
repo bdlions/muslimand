@@ -33,7 +33,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="modal_photo_pagelet" style="bottom: 70px; float: right; position: fixed; right: 40px; width: 504px; z-index: 99999999;">
+                    <div class="modal_photo_pagelet modal_slider_comment_section">
                         <div class="row">
                             <div class="col-md-2" >
                                 <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{photoInfo.userInfo.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{photoInfo.userInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
@@ -182,7 +182,7 @@
                                 <a href id="photo_more_comment_show" onclick="get_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
                             </div>
                         </div>
-                        <div style="max-height: 180px; overflow-x: hidden; overflow-y: scroll;">
+                        <div class="modal_photo_slider_custom_scroll">
                             <div class="row form-group" ng-repeat="comment in photoInfo.commentList">
                                 <div class="col-md-1">
                                     <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg" width="30" height="30">
@@ -208,7 +208,7 @@
                         </div>
                         <div class="row" style="padding-top: 10px">
                             <div profile_picture="" class="col-md-1">
-                                <img  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
+                                <img class="lightgray_border"  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
                             </div>
                             <div class="col-md-11">
                                 <form  ng-submit="addPhotoComment(photoInfo)">

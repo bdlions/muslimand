@@ -139,8 +139,8 @@
                         </div>
                     </div>
                     <div ng-if ="userRelation.relation_ship_status == <?php echo YOUR_RELATION_TYPE_ID; ?>">
-                        <button type="button" class="button-custom" style="position: absolute; bottom: 20px; right:  140px; font-size: 80%; z-index: 1001">Update Info</button>
-                        <button type="button" class="button-custom" style="position: absolute; bottom: 20px; right:  30px; font-size: 80%; z-index: 1001">View Activity Log</button>
+<!--                        <button type="button" class="button-custom" style="position: absolute; bottom: 20px; right:  140px; font-size: 80%; z-index: 1001">Update Info</button>
+                        <button type="button" class="button-custom" style="position: absolute; bottom: 20px; right:  30px; font-size: 80%; z-index: 1001">View Activity Log</button>-->
                     </div>
                     <div ng-if ="userRelation.relation_ship_status != <?php echo YOUR_RELATION_TYPE_ID; ?>">
                         <div ng-controller="messageController">
@@ -151,8 +151,8 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Report</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" id="block_profile_id" href onclick="block_request('<?php echo $profile_id; ?>')">Block</a></li>
+                                <li  class="disabled" role="presentation"><a role="menuitem" tabindex="-1" href="#">Report</a></li>
+                                <li  class="disabled" role="presentation"><a role="menuitem" tabindex="-1" id="block_profile_id" href onclick="block_request('<?php echo $profile_id; ?>')">Block</a></li>
                             </ul>
                         </div>
                     </div>
@@ -177,7 +177,7 @@
                         <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>photos/get_home_photos">Photo</a>
                         <a class="btn btn-default" style="font-size: 100%" href="<?php echo base_url(); ?>friend/get_friend_list">Friends</a>
                     <?php } ?>
-                    <div class="btn-group" role="group">
+<!--                    <div class="btn-group" role="group">
                         <button style="font-size: 100%" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             More
                             <span class="caret"></span>
@@ -186,7 +186,7 @@
                             <li><a href="#">Groups</a></li>
                             <li><a href="#">Likes</a></li>
                         </ul>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

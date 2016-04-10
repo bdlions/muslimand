@@ -128,11 +128,11 @@
                                                         <img ng-src="<?php echo base_url(); ?>resources/images/friends_icon.png" width="15" height="15">
                                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
                                                         <ul class="dropdown-menu" role="menu">
-                                                            <li><a href="#">Everyone</a></li>
-                                                            <li><a href="#">Friends</a></li>
-                                                            <li><a href="#">Friends of friends</a></li>
-                                                            <li><a href="#">Only Me</a></li>
-                                                            <li><a href="#">Custom</a></li>
+                                                            <li class="disabled"><a href="">Everyone</a></li>
+                                                            <li class="disabled"><a href="">Friends</a></li>
+                                                            <li class="disabled"><a href="">Friends of friends</a></li>
+                                                            <li class="disabled"><a href="">Only Me</a></li>
+                                                            <li class="disabled"><a href="">Custom</a></li>
                                                         </ul>
                                                     </li>
                                                 </ul>
@@ -160,12 +160,12 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row padding_top_10px">
                             <div class="col-md-12">
-                                <div class="row form-group" style="width: 100%;">
+                                <div class="row form-group">
                                     <div class="col-md-12">
                                         <div style="float: left;">
-                                            <div id="displayStatus{{status.statusId}}" ng-bind="status.description"></div>
+                                            <div class="more" id="displayStatus{{status.statusId}}" ng-bind="status.description"></div>
                                         </div>
                                         <div id="updateStatus{{status.statusId}}" style="display: none;">
                                             <form ng-submit="updateStatus(status)" >
@@ -263,7 +263,7 @@
                                 </div>
                                 <div class="row from-group">
                                     <div class="from-group col-md-4" ng-repeat="image in status.referenceInfo.images">
-                                        <img class="img-responsive" style="border: 1px solid #703684; float: left; max-height: 272px; max-width: 500px;" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}">
+                                        <img class="img-responsive" style="border: 1px solid #703684; float: left; height: 150px; width: 150px; margin-bottom: 25px;" ng-src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{image.image}}">
                                     </div>
                                 </div>
 
@@ -403,7 +403,7 @@
                         </span>
                         <div class="row">
                             <div class="col-md-1" profile_picture>
-                                <img  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
+                                <img class="lightgray_border" fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
                             </div>
                             <div class="col-md-11">
                                 <form  ng-submit="addComment(userGenderId, status.userInfo, status)">
@@ -424,10 +424,44 @@
         <?php $this->load->view("modal/modal_shared_people_list"); ?>
         <?php $this->load->view("member/photo/section/modal_newsfeed_photo_view"); ?>
         <?php $this->load->view("member/photo/section/page_modal_newsfeed_photo_view"); ?>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var showChar = 200; 
+                var ellipsestext = "...";
+                var moretext = "Show more >";
+                var lesstext = "Show less";
+
+                $('.more').each(function() {
+                    var content = $(this).html();
+                    if (content.length > showChar) {
+                        var c = content.substr(0, showChar);
+                        var h = content.substr(showChar, content.length - showChar);
+                        var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+                        $(this).html(html);
+                    }
+                });
+
+                $(".morelink").click(function() {
+                    if ($(this).hasClass("less")) {
+                        $(this).removeClass("less");
+                        $(this).html(moretext);
+                    } else {
+                        $(this).addClass("less");
+                        $(this).html(lesstext);
+                    }
+                    $(this).parent().prev().toggle();
+                    $(this).prev().toggle();
+                    return false;
+                });
+            });
+        </script>
+
+
         <script type="text/javascript">
             $(function() {
                 $("#share_add_id").on("click", function() {
-                    alert("Here");
                     $("#template/newsfeed.html").hide();
                     $("#modal_share_content").show();
                 });
