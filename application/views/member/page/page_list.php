@@ -11,8 +11,8 @@
     }
 </script>
 
-<div ng-controller="statusController" ng-clock ng-init="setUserGender(<?php echo htmlspecialchars(json_encode($user_gender_id)); ?>)">
-    <div class="row"  ng-cloak ng-init="setUserCurrentTimeStamp(<?php echo htmlspecialchars(json_encode($user_current_time)); ?>)">
+<div ng-controller="pageController" ng-clock >
+    <div class="row"  ng-cloak  ng-init="setPageInfoList(<?php echo htmlspecialchars(json_encode($page_list)); ?>)">
         <!--LEFT_COLUMN-->
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
             <div class="row form-group" style="padding-top: 15px;">
@@ -53,20 +53,8 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-md-12">
-                            <a href="" style="color: #555;">Prime Bank</a>
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                             <a href="" style="color: #555;">Entertainment</a>
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                             <a href="" style="color: #555;">Book Store</a>
+                        <div class="col-md-12" ng-repeat=" pageInfo in pageInfoList">
+                            <a href="<?php echo base_url(); ?>pages/timeline/{{pageInfo.pageId}}" style="color: #555;">{{pageInfo.title}}</a>
                             <hr>
                         </div>
                     </div>

@@ -20,6 +20,7 @@
     define("STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS",19);
     define("STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTOS",     20);
     define("STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTOS",  21);
+    define("STATUS_TYPE_ID_ADD_PAGE_ALBUM_PHOTOS",                              22);
     
     
     define("STATUS_ID_LENGTH",                                                  15);

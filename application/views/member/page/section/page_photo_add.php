@@ -4,47 +4,19 @@
             <span style="font-size: 20px; font-weight: bold;">Upload Photos</span>
         </div>
     </div>
-    <div ng-init="setPhotoCategories(<?php //echo htmlspecialchars(json_encode($category_list)); ?>)" >
-        <div class="row form-group">
-            <div class="col-md-12" ng-init="setAlbums(<?php //echo htmlspecialchars(json_encode($album_lsit)); ?>)">
-                <span style="font-size: 16px; font-weight: bold;">* Photo Album:</span><br>
-                <select class="form-control"  ng-options="album.albumId as album.title for album in albumList" ng-model="photoInfo.albumId">
-                    <option value="" selected>Select Album</option>
-                </select>
-                <a style="text-decoration: none; cursor: pointer;"> <span id="createAlbumIdOnClick">(Create a New Photo Album)</span></a>
-            </div>
-        </div>
-    </div>
-    <div class="row form-group padding_top_10px">
+    <div class="row form-group">
         <div class="col-md-12">
-            <span style="font-size: 16px; font-weight: bold;">Photo(s) Privacy: </span><br>
-            <select class="form-control" name="control">
-                <option value="0" selected="1">Everyone</option>
-                <option value="1">Friends</option>
-                <option value="2">Friends of Friends</option>
-                <option value="3">Only Me</option>
-                <option value="4">Custom</option>
+            <span style="font-size: 16px; font-weight: bold;">* Photo Album:</span><br>
+            <select class="form-control"  ng-options="album.albumId as album.title for album in pageAlbumList" ng-model="photoInfo.albumId">
+                <option value="" selected>Select Album</option>
             </select>
-            Control who can see these photo(s). 
-        </div>
-    </div>
-    <div class="row form-group padding_top_10px">
-        <div class="col-md-12">
-            <span style="font-size: 16px; font-weight: bold;">Comment Privacy: </span><br>
-            <select class="form-control" name="control">
-                <option value="0" selected="1">Everyone</option>
-                <option value="1">Friends</option>
-                <option value="2">Friends of Friends</option>
-                <option value="3">Only Me</option>
-                <option value="4">Custom</option>
-            </select>
-            Control who can comment on these photo(s).
+            <a style="text-decoration: none; cursor: pointer;"> <span id="createAlbumIdOnClick">(Create a New Photo Album)</span></a>
         </div>
     </div>
     <div class="row form-group padding_top_10px">
         <div class="col-md-12">
             <!--image upload  start...............-->
-            <div id="fileupload" method="POST" enctype="multipart/form-data" data-ng-app="demo" data-ng-controller="DemoFileUploadController" ng-init="setPath('<?php echo base_url(); ?>photos/image_upload')" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
+            <div id="fileupload" method="POST" enctype="multipart/form-data" data-ng-app="demo" data-ng-controller="DemoFileUploadController" ng-init="setPath('<?php echo base_url(); ?>pages/image_upload')" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
                 <div class="row fileupload-buttonbar">
                     <div class="col-md-10">
                         <span class="btn btn-sm btn-success fileinput-button" ng-class="{disabled: disabled}">
@@ -110,15 +82,20 @@
 <?php $this->load->view("member/page/section/modal_page_create_album"); ?>
 <script type="text/javascript">
     function add_photos() {
+        var pageId = '<?php echo $page_id; ?>';
         var image_list = [];
         image_list = get_image_list();
-        angular.element($('#add_photos_btn_id')).scope().addPhotos(image_list, function() {
-            window.location = '<?php echo base_url(); ?>member/newsfeed';
+        angular.element($('#add_photos_btn_id')).scope().addPhotos(image_list, pageId, function (data) {
+            if(data.status == "1"){
+             window.location = '<?php echo base_url(); ?>pages/timeline/'+pageId;    
+            }else{
+                alert("Error! while uploading Images");
+            }
         });
     }
 
-    $(function() {
-        $("#createAlbumIdOnClick").on("click", function() {
+    $(function () {
+        $("#createAlbumIdOnClick").on("click", function () {
             $('#modal_page_create_album_box').modal('show');
         });
     });

@@ -143,7 +143,9 @@
                         <button type="button" class="button-custom" style="position: absolute; bottom: 20px; right:  30px; font-size: 80%; z-index: 1001">View Activity Log</button>
                     </div>
                     <div ng-if ="userRelation.relation_ship_status != <?php echo YOUR_RELATION_TYPE_ID; ?>">
-                        <button type="button" class="button-custom" style="position: absolute; bottom: 20px; right:  70px; font-size: 80%; z-index: 1001">Message</button>
+                        <div ng-controller="messageController">
+                            <button type="button" class="button-custom" style="position: absolute; bottom: 20px; right:  70px; font-size: 80%; z-index: 1001" ng-click="getChatInitialFromMessage(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)">Message</button>
+                        </div>
                         <div class="dropdown dropdown_style">
                             <button type="button" class="button-custom dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                                 <span class="caret"></span>

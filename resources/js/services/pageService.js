@@ -20,6 +20,67 @@ angular.module('services.Page', []).
                     }
                 });
             };
+
+            pageService.createAlbum = function (albumInfo) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/create_album',
+                    data: {
+                        albumInfo: albumInfo
+                    }
+                });
+            };
+
+            pageService.addPhotos = function (photoInfo) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/pages_photo_add',
+                    data: {
+                        photoInfo: photoInfo
+                    }
+                });
+            };
+
+            pageService.getPageAlbumList = function (pageId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/get_page_short_album_list',
+                    data: {
+                        pageId: pageId
+                    }
+                });
+            };
+            pageService.getPageAlbums = function (pageId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/get_page_album_list',
+                    data: {
+                        pageId: pageId
+                    }
+                });
+            };
+
+            pageService.getPageAlbum = function (albumId, pageId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/get_album',
+                    data: {
+                        albumId: albumId,
+                        pageId: pageId
+                    }
+                });
+            };
+
+            pageService.getSliderAlbum = function (albumId, mappingId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/get_slider_album',
+                    data: {
+                        albumId: albumId,
+                        mappingId: mappingId
+                    }
+                });
+            };
             //...................members.............................................................
             pageService.getInviteFriendList = function (pageId) {
                 return $http({
@@ -30,22 +91,22 @@ angular.module('services.Page', []).
                     }
                 });
             };
-            pageService.addInvitation = function (pageId, userInfo) {
+            pageService.addInvitation = function (pageInfo, userInfo) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/pages/add_invitation',
                     data: {
-                        pageId: pageId,
+                        pageInfo: pageInfo,
                         userInfo: userInfo
                     }
                 });
             };
-            pageService.joinPage = function (pageId) {
+            pageService.joinPage = function (pageInfo) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/pages/join_page',
                     data: {
-                        pageId: pageId,
+                        pageInfo: pageInfo,
                     }
                 });
             };

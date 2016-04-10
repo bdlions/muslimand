@@ -18,9 +18,9 @@ class Message_mongodb_model extends CI_Model
         $this->curl->post(array("groupId" => $group_id,"senderInfo" => json_encode($sender_info), "message" => $message));
         return json_decode($this->curl->execute());
     }
-    public function get_message_summary_list($user_id,$offset,$limit){
+    public function get_message_summary_list($user_id, $offset, $limit){
         $this->curl->create($this->SERVICE_MESSAGE . 'getMessageSummaryList');
-        $this->curl->post(array("userId" => $user_id,"offset" => $offset, "limit" => $limit));
+        $this->curl->post(array("userId" => $user_id, "offset" => $offset, "limit" => $limit));
         return json_decode($this->curl->execute());
     }
     public function get_message_list($group_id,$offset,$limit){

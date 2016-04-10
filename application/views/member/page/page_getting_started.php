@@ -76,12 +76,12 @@
 </script>
 <div class="padding_top_50px"></div>
 <div class="row" ng-controller="pageController">
-    <div class="col-md-9">
+    <div class="col-md-9" ng-init="setPageBasicInfo('<?php echo htmlspecialchars(json_encode($page_info)) ?>')">
         <div style="outline: 10px solid #fff;  border-radius: 4px;">
             <div class="pagelet" style="border: 1px solid lightgrey; border-radius: 4px;">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4>Set Up Prime Bank</h4>
+                        <h4>Set Up {{PageBasicInfo.title}}</h4>
                         <hr>
                     </div>
                 </div>

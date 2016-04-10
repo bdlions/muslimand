@@ -16,7 +16,7 @@
                 <img style="border: 1px solid #703684; height: 120px; width: 150px;"   ng-click="openPhotoModal(photo)" src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{photo.image}}">
             </div>
         </div>
-        <div class="row form-group">
+<!--        <div class="row form-group">
             <div class="col-md-4">
                 <span>1-12 of 2,666 Results</span>
             </div>
@@ -41,7 +41,7 @@
                     </ul>
                 </nav>
             </div>
-        </div>
+        </div>-->
 
         <div class="pagelet pagelet_mg_custom">
             <div class="row form-group">
@@ -106,7 +106,7 @@
             </div>
             <div class="row form-group"  ng-repeat="comment in albumDetail.commentList">
                 <div class="col-md-1">
-                    <img src="<?php echo base_url(); ?>resources/images/user_data/profile_pictures/profile_pictures_4.jpg" width="30" height="30">
+                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg" width="30" height="30">
                 </div>
                 <div class="col-md-11">
                     <div class="row">

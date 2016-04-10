@@ -1,18 +1,18 @@
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         var typingTimer;
         var doneTypingInterval = 100;
         var timeElapsed = 0;
         var timeoutfn;
         var waitForResult = false;
-        $("#typeahead").on("keyup", function() {
+        $("#typeahead").on("keyup", function () {
             waitForResult = true;
             timeElapsed = 0;
         });
-        $("#typeahead").on("keydown", function() {
+        $("#typeahead").on("keydown", function () {
             waitForResult = false;
         });
-        setInterval(function() {
+        setInterval(function () {
             if (waitForResult == true && timeElapsed >= doneTypingInterval) {
                 waitForResult = false;
                 var inputvalue = $("#typeahead").val();
@@ -23,7 +23,7 @@
                     data: {
                         input_value: inputvalue
                     },
-                    success: function(data) {
+                    success: function (data) {
                         var users_dropdown_div = $("#type_ahead_user #dropdown_user");
                         $(users_dropdown_div).remove();
                         var pages_dropdown_div = $("#type_ahead_page #dropdown_page");
@@ -38,6 +38,7 @@
                         var noOfbBUser = 0;
                         if (typeof data.users != 'undefined') {
                             noOfUsers = data.users.length;
+                            console.log(noOfUsers);
                         }
                         if (typeof data.pages != 'undefined') {
                             noOfPages = data.pages.length;
@@ -53,34 +54,34 @@
                             $("#type_ahead_user").append("<div id='dropdown_user'></div>");
                             var user_temp_div = $("#type_ahead_user #dropdown_design_user");
                             var users_dropdown_div = $("#type_ahead_user #dropdown_user");
-                            $(user_temp_div).find(".row").each(function() {
+                            $(user_temp_div).find(".row").each(function () {
                                 for (var i = 0; i < noOfUsers; i++) {
                                     $(users_dropdown_div).append($(this).clone());
                                 }
                             });
                             $(user_temp_div).hide();
-                            var count = 0;
-                            while (noOfUsers > count) {
-                                $(users_dropdown_div).find(".row ").each(function() {
+                            var usercount = 0;
+                            while (noOfUsers > usercount) {
+                                $(users_dropdown_div).find(".row ").each(function () {
                                     var user_name = $(this).find(".user_name");
                                     var user_anchor = $(this).find(".user_anchor");
                                     var user_image = $(this).find(".user_image");
                                     var user_on_error_image = $(this).find(".user_on_error_image");
-                                    $(user_anchor).attr('href', data.users[count].url);
-                                    $(user_image).attr('src', data.users[count].user_image);
-                                    $(user_on_error_image).attr('src', data.users[count].user_on_error_image);
-                                    $(user_name).html(data.users[count].firstName + ' ' + data.users[count].lastName);
-                                    count++;
+                                    $(user_anchor).attr('href', data.users[usercount].url);
+                                    $(user_image).attr('src', data.users[usercount].user_image);
+                                    $(user_on_error_image).attr('src', data.users[usercount].user_on_error_image);
+                                    $(user_name).html(data.users[usercount].firstName + ' ' + data.users[usercount].lastName);
+                                    usercount++;
                                 });
                             }
                         }
-                         if (noOfPages > 0) {
+                        if (noOfPages > 0) {
                             $(".page_image_id").show();
                             $("#type_ahead_page").append("<div id='dropdown_page'></div>");
                             var page_temp_div = $("#type_ahead_page #dropdown_design_page");
                             var pages_dropdown_div = $("#type_ahead_page #dropdown_page");
                             $(page_temp_div).find(".row").each(function () {
-                                for (var i = 0; i < noOfPages; i++) {
+                                for (var j = 0; j < noOfPages; j++) {
                                     $(pages_dropdown_div).append($(this).clone());
                                 }
                             });

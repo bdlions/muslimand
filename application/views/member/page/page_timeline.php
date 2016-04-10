@@ -28,7 +28,7 @@
     });
 </script>
 <div ng-controller="pageController">
-    <div ng-init="setPageInfo('<?php echo htmlspecialchars(json_encode($page_info)) ?>')">
+    <div ng-init="setPageBasicInfo('<?php echo htmlspecialchars(json_encode($page_info)) ?>')">
         <div ng-init="setMemberInfo('<?php echo htmlspecialchars(json_encode($member_info)) ?>')">
             <?php $this->load->view("member/page/section/cover"); ?>
 
@@ -43,7 +43,7 @@
                     <?php $this->load->view("member/page/post_status"); ?>
                     <div class="row form-group"></div>
                     <div ng-controller="statusController" ng-cloak>
-                        <?php $this->load->view("member/page/updated_status"); ?>
+                        <?php $this->load->view("member/pagelets/updated_status"); ?>
                         <?php $this->load->view("member/page/page_about"); ?>
                     </div>
                 </div>

@@ -12,7 +12,7 @@
                         <h4 class="modal-title">Invite Friends</h4>
                     </div>
                     <div class="col-md-6">
-                        <div style="margin-left: -20px;" class="input-group">
+<!--                        <div style="margin-left: -20px;" class="input-group">
                             <span style="margin-bottom: 10px; padding: 3px 12px!important;" class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
                             <input type="text" placeholder="Search for people and interests" class="form-control" id="typeahead" style="height: 26px; padding: 3px 8px!important; ">
                             <div style="display: none; top: 27px" id="page_late_id" class="row pixel_perfection pagelet_z_index">
@@ -26,19 +26,19 @@
                                             </div>
                                             <div class="row form-group">
                                                 <div class="col-md-12">
-                                                    <div id="type_ahead_user">
-                                                        <div id="dropdown_design_user">
+                                                    <div id="user">
+                                                        <div id="user_temp">
                                                             <div class="row margin_style">
-                                                                <a href="" class="user_anchor">
+                                                                <a href="" class="user_anchor_id">
                                                                     <div class="col-md-2">
-                                                                        <div class="profile-background profile_background_search_bar user_image_id">                                                                    
+                                                                        <div class="profile-background profile_background_search_bar user_image">                                                                    
                                                                             <img onerror="userImageOnError(this)" class="user_image img-responsive profile-photo" src="" alt="">
-                                                                            <!--<div class="signature_id" style="visibility:hidden;height:0px"></div>-->
+                                                                            <div class="signature_id" style="visibility:hidden;height:0px"></div>
                                                                             <img alt="" class="user_on_error_image img-responsive on-error-profile-photo" src="" style="visibility:hidden;height: 0px;">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-10 font_12px">
-                                                                        <div style="padding-top: 7px; padding-top: 7px" class="user_name">
+                                                                        <div style="padding-top: 7px; padding-top: 7px" class="user_name_class">
                                                                         </div>
                                                                     </div>
                                                                 </a> 
@@ -71,7 +71,7 @@
                                     });
                                 })(jQuery);
                             </script>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -89,10 +89,10 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div ng-if="inviteMemberInfo.status == '<?php echo PAGE_MEMBER_STATUS_ID_INVITED ?>'">
-                                            <input id="" type="button" class="button-custom" value="Liked">
+                                            <input id="" type="button" class="button-custom" value="Invited">
                                         </div>
                                         <div ng-if="inviteMemberInfo.status == '<?php echo PAGE_MEMBER_STATUS_ID_LIKED ?>'">
-                                            <input id="" type="button" class="button-custom" value="Invited">
+                                            <input id="" type="button" class="button-custom" value="Liked">
                                         </div>
                                         <div onclick="add_invitation(angular.element(this).scope().inviteMemberInfo.friendInfo)" ng-if="inviteMemberInfo.status != '<?php echo PAGE_MEMBER_STATUS_ID_LIKED ?>' && inviteMemberInfo.status != '<?php echo PAGE_MEMBER_STATUS_ID_INVITED ?>'">
                                             <input id="page_invitation_id" type="button" class="button-custom" value="Invite sent">

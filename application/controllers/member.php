@@ -49,6 +49,9 @@ class Member extends CI_Controller {
                 if (property_exists($relation_info, "lastName") != FALSE) {
                     $user_relation_info['profile_last_name'] = $relation_info->lastName;
                 }
+                if (property_exists($relation_info, "userId") != FALSE) {
+                    $user_relation_info['user_id'] = $relation_info->userId;
+                }
             }
             if (property_exists($result, "userGenderId")) {
                 $user_gender_id = json_decode($result->userGenderId);
@@ -59,6 +62,7 @@ class Member extends CI_Controller {
             $user_relation_info['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
             $user_relation_info['profile_first_name'] = $this->session->userdata('first_name');
             $user_relation_info['profile_last_name'] = $this->session->userdata('last_name');
+            $user_relation_info['user_id'] = $user_id;
         }
         return $user_relation_info;
     }

@@ -18,7 +18,8 @@
                                                     status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>' ||
                                                     status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE; ?>' ||
                                                     status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' ||
-                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>'">
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?>' ||
+                                                    status.statusTypeId == '<?php echo STATUS_TYPE_ID_ADD_PAGE_ALBUM_PHOTOS; ?>'">
                                     <img fallback-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40 ?>40x40_01.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40; ?>{{status.pageInfo.pageId}}.jpg?time= <?php echo time(); ?>" alt="">
                                 </div>
                                 <div ng-if="status.statusTypeId == '<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE; ?>' ||
@@ -252,12 +253,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--page timeline or album photos-->
-                                <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?> == status.statusTypeId">
-                                    <div class="row">
-                                        <div ng-repeat="(key, image) in status.images">
-                                            <img class="img-responsive"  ng-click="openPage(status, image.image)" style="border: 1px solid #703684; float: left; height: 150px; width: 150px; margin: 0 10px 25px 15px" ng-src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{image.image}}"  >
-                                        </div>
+                            </div>
+                            <!--page timeline or album photos-->
+                            <div ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS; ?> == status.statusTypeId || <?php echo STATUS_TYPE_ID_ADD_PAGE_ALBUM_PHOTOS; ?> == status.statusTypeId">
+                                <div class="row">
+                                    <div ng-repeat="(key, image) in status.images">
+                                        <img class="img-responsive"  ng-click="openPage(status, image.image)" style="border: 1px solid #703684; float: left; height: 150px; width: 150px; margin: 0 10px 25px 15px" ng-src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{image.image}}"  >
                                     </div>
                                 </div>
                                 <div class="row from-group">

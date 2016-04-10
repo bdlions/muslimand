@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="row form-group padding_top_10px">
+<!--    <div class="row form-group padding_top_10px">
         <div class="col-md-4">
             <span> 1-2 of 2 Results</span>
         </div>
@@ -37,5 +37,5 @@
                 </ul>
             </nav>
         </div>
-    </div>
+    </div>-->
 </div>

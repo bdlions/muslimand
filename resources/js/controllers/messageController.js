@@ -110,6 +110,16 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                             $scope.userId = $scope.userInfo.userId;
                         });
             };
+            $scope.getChatInitialFromMessage = function (userInformation) {
+                var chatUserInfo = {}
+                var userInfo = JSON.parse(userInformation);
+                chatUserInfo.userId = userInfo.user_id;
+                chatUserInfo.firstName = userInfo.profile_first_name;
+                chatUserInfo.lastName = userInfo.profile_last_name;
+                chatUserInfo.genderId = userInfo.gender_id;
+                $scope.getChatInitialInfo(chatUserInfo);
+            }
+
             $scope.getChatInitialInfo = function (chatUserInfo) {
                 var userId = chatUserInfo.userId;
                 messageService.getMessagehistory(userId).
@@ -125,12 +135,6 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                                         message.sentTime = utilsTimezone.getUnixTimeToHumanTimeWithAMPM(message.sentTime);
                                     }, $scope.messageHistory.messages);
                                 }
-
-
-//                                if (typeof chatUserInfo.message == "undefined") {
-//                                if(typeof data.message)
-//                                    $scope.messageHistory.messages.push(chatUserInfo.message);
-//                                }
                                 var userObject = $scope.messageHistory;
                                 $scope.addUserToChatUserList(userObject);
                                 $scope.reOrganizeChatBoxes();
@@ -147,7 +151,11 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                 if (userExistStatus != 1) {
                     $scope.chatUserList.push(userObject);
                 }
+//                console.log($scope.chatUserList);
             };
+
+
+
             $scope.getChatBoxes = function () {
                 $scope.reOrganizeChatBoxes();
             };
@@ -165,6 +173,7 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                     }
                 }
                 $scope.chatBoxes = tempChatBoxes;
+                console.log($scope.chatBoxes);
                 $scope.miniBoxes = tempMiniBoxes;
             };
             $scope.removeUser = function (userObject) {

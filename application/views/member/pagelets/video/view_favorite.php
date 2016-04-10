@@ -161,7 +161,7 @@
         </div>
     </div>
 </div>
-<div class="row">
+<!--<div class="row">
      <div class="col-md-4">
         <span>1-12 of 2,666 Results</span>
     </div>
@@ -186,4 +186,4 @@
   </ul>
 </nav>
     </div>
-</div>
+</div>-->

@@ -33,9 +33,20 @@ class Page_mongodb_model extends CI_Controller {
         return $this->curl->execute();
     }
 
+    public function create_album($album_info) {
+        $this->curl->create($this->SERVICE_PAGE . 'createAlbum');
+        $this->curl->post(array("albumInfo" => json_encode($album_info)));
+        return $this->curl->execute();
+    }
+
     function get_page_info($page_id, $user_id) {
         $this->curl->create($this->SERVICE_PAGE . 'getPageInfo');
         $this->curl->post(array("pageId" => $page_id, "userId" => $user_id));
+        return $this->curl->execute();
+    }
+    function get_user_pages($user_id) {
+        $this->curl->create($this->SERVICE_PAGE . 'getUserPageList');
+        $this->curl->post(array("userId" => $user_id));
         return $this->curl->execute();
     }
 
@@ -51,15 +62,15 @@ class Page_mongodb_model extends CI_Controller {
         return $this->curl->execute();
     }
 
-    function invite_member($page_id, $member_info) {
+    function invite_member($page_info, $member_info) {
         $this->curl->create($this->SERVICE_PAGE . 'inviteMember');
-        $this->curl->post(array("pageId" => $page_id, "memberInfo" => json_encode($member_info)));
+        $this->curl->post(array("pageInfo" => json_encode($page_info), "memberInfo" => json_encode($member_info)));
         return $this->curl->execute();
     }
 
-    function join_page_membership($page_id, $member_info) {
+    function join_page_membership($mapping_id, $page_info, $member_info) {
         $this->curl->create($this->SERVICE_PAGE . 'joinPageMamberShip');
-        $this->curl->post(array("pageId" => $page_id, "memberInfo" => json_encode($member_info)));
+        $this->curl->post(array("mappingId" => $mapping_id,  "pageInfo" => json_encode($page_info), "memberInfo" => json_encode($member_info)));
         return $this->curl->execute();
     }
 
@@ -106,14 +117,20 @@ class Page_mongodb_model extends CI_Controller {
         return $this->curl->execute();
     }
 
-    public function get_timeline_photos($page_id, $user_id) {
+    public function get_timeline_photos($page_id) {
         $this->curl->create($this->SERVICE_PAGE . 'getTimelinePhotos');
-        $this->curl->post(array("pageId" => $page_id, "userId" => $user_id));
+        $this->curl->post(array("pageId" => $page_id));
         return $this->curl->execute();
     }
 
-    public function get_user_albums($page_id) {
+    public function get_page_albums($page_id) {
         $this->curl->create($this->SERVICE_PAGE . 'getAlbums');
+        $this->curl->post(array("pageId" => $page_id));
+        return $this->curl->execute();
+    }
+
+    public function get_page_album_list($page_id) {
+        $this->curl->create($this->SERVICE_PAGE . 'getAlbumList');
         $this->curl->post(array("pageId" => $page_id));
         return $this->curl->execute();
     }

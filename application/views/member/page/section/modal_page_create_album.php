@@ -40,7 +40,7 @@
             alert("Please Give the Title of your Album");
             return;
         }
-        angular.element($('#create_album_btn')).scope().createAlbum(function() {
+        angular.element($('#create_album_btn')).scope().createAlbum(function () {
             $('#modal_create_album_box').modal('hide');
         });
     }

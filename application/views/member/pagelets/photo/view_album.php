@@ -18,7 +18,7 @@
             </a>
         </div>
     </div>
-    <div class="row form-group">
+<!--    <div class="row form-group">
         <div class="col-md-4">
             <span>1-12 of 2,666 Results</span>
         </div>
@@ -43,7 +43,7 @@
                 </ul>
             </nav>
         </div>
-    </div>
+    </div>-->
     <div class="pagelet pagelet_mg_custom">
         <div class="row form-group">
             <div class="col-md-12">

@@ -64,7 +64,7 @@ if (defined('ENVIRONMENT'))
 			exit('The application environment is not set correctly.');
 	}
 }
-define("SERVICE_PATH", "http://localhost:8080/");
+define("SERVICE_PATH", "http://localhost:2020/");
 /*
  *---------------------------------------------------------------
  * SYSTEM FOLDER NAME
