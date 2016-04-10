@@ -40,7 +40,7 @@
                 <span class="subcategory_label_style">Description</span>
             </div>
             <div class="col-md-8">
-                <textarea type="text" class="form-control" ng-model="college.description"></textarea>
+                <textarea style="word-wrap: break-word;" type="text" class="form-control" ng-model="college.description"></textarea>
             </div>
         </div>
         <div class="pagelet_divider"></div>

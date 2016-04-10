@@ -152,7 +152,7 @@
                             </button>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                 <li  class="disabled" role="presentation"><a role="menuitem" tabindex="-1" href="#">Report</a></li>
-                                <li  class="disabled" role="presentation"><a role="menuitem" tabindex="-1" id="block_profile_id" href onclick="block_request('<?php echo $profile_id; ?>')">Block</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" id="block_profile_id" href onclick="block_request('<?php echo $profile_id; ?>')">Block</a></li>
                             </ul>
                         </div>
                     </div>

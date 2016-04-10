@@ -166,15 +166,15 @@
     <div id="website_edit_id" style="display: none">
         <?php $this->load->view("member/profile/about/contact_basic_info/edit_website"); ?>
     </div>
-
+<!--
     <div class="row form-group"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0')">
         <div class="pagelet_divider"></div>
         <div class="col-md-12">
-            <?php $this->load->view("member/profile/about/contact_basic_info/add_language"); ?>
+            <?php //$this->load->view("member/profile/about/contact_basic_info/add_language"); ?>
         </div>
     </div>
 
-    <!--Show updated languages-->
+    Show updated languages
     <div id="language_id" style="display: none">
         <div class="row form-group">
             <div class="col-md-3">
@@ -186,7 +186,7 @@
                         <span ng-bind="language.language"></span>
                     </div>
                     <div class="col-md-2">
-                        <!--                        <div class="pull-right">
+                                                <div class="pull-right">
                                                     <button type="button" class="btn btn_style btn-default dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                                                         <span class="caret"></span>
                                                     </button>
@@ -194,12 +194,12 @@
                                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
                                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
                                                     </ul>
-                                                </div>-->
+                                                </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div id="language_edit_id" style="display: none">
         <?php //$this->load->view("member/profile/about/contact_basic_info/edit_website"); ?>
     </div>

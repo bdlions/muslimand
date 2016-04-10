@@ -169,7 +169,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <span ng-bind="college.startDate"></span> - <span ng-bind="college.endDate"></span><br>
-                            <span ng-bind="college.description"></span>
+                            <span style="word-wrap: break-word;" ng-bind="college.description"></span>
                         </div>
                     </div>
                 </div>
