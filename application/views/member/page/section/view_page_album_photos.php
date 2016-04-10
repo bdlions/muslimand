@@ -1,5 +1,5 @@
-<div id="all_album_photos" style="display: none;" ng-clock>
-    <div style="margin-bottom: 3px;">
+<div id="all_album_photos" style="display: none; margin-left: 15px" ng-clock>
+    <div style="margin-bottom: 3px; margin-top: 15px;">
         <div class="row form-group">
             <div class="col-md-12">
                 <span style="font-size: 16px; font-weight: bold;" ng-bind="albumDetail.title"></span>

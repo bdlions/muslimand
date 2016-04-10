@@ -1,24 +1,24 @@
 <script>
-    $(function () {
-        $('#photo_sub').on('click', function () {
+    $(function() {
+        $('#photo_sub').on('click', function() {
             $('.photo_test').show();
         });
-        $('#video_sub').on('click', function () {
+        $('#video_sub').on('click', function() {
             $('.video_test').show();
         });
         $('#timeLineContent').show();
         $('#updateStatusPagelet').show();
-        $('#aboutPageMenu').on('click', function () {
+        $('#aboutPageMenu').on('click', function() {
             $('#timeLineContent').hide();
             $('#updateStatusPagelet').hide();
             $('#pageAboutContent').show();
         });
-        $('#timelinePageMenu').on('click', function () {
+        $('#timelinePageMenu').on('click', function() {
             $('#pageAboutContent').hide();
             $('#timeLineContent').show();
             $('#updateStatusPagelet').show();
         });
-        $('#photoPageMenu').on('click', function () {
+        $('#photoPageMenu').on('click', function() {
             $('#pageAboutContent').hide();
             $('#timeLineContent').hide();
             $('#updateStatusPagelet').hide();
@@ -66,27 +66,27 @@
                                         <a id="page_album_button_id" onclick="get_album_list()" href="" class="btn btn-default">Albums</a>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row form-group">
+
                                 <div class="row form-group">
-                                    <div class="col-md-12" >
-                                        <?php $this->load->view("member/page/section/view_page_album_photos"); ?>
+                                    <div class="row form-group">
+                                        <div class="col-md-12" >
+                                            <?php $this->load->view("member/page/section/view_page_album_photos"); ?>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row form-group" ng-init="setTimelineList(<?php echo htmlspecialchars(json_encode($photo_list)); ?>)" >
-                                    <div class="col-md-12"  >
-                                        <?php $this->load->view("member/page/section/all_photos"); ?>
+                                    <div class="row form-group" ng-init="setTimelineList(<?php echo htmlspecialchars(json_encode($photo_list)); ?>)" >
+                                        <div class="col-md-12"  >
+                                            <?php $this->load->view("member/page/section/all_photos"); ?>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12" >
-                                        <?php $this->load->view("member/page/section/page_photo_albums"); ?>
+                                    <div class="row form-group">
+                                        <div class="col-md-12" >
+                                            <?php $this->load->view("member/page/section/page_photo_albums"); ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <div id="page_photo_upload_section" style="display: none" >
                             <?php $this->load->view("member/page/section/page_photo_add"); ?>
                         </div>
@@ -102,7 +102,7 @@
 <script>
     function get_album_list() {
         var pageId = '<?php echo $page_id; ?>';
-        angular.element($('#page_album_button_id')).scope().getPageAlbumList(pageId, function () {
+        angular.element($('#page_album_button_id')).scope().getPageAlbumList(pageId, function() {
             $("#all_photos").hide();
             $("#all_album_photos").hide();
             $("#page_photo_albums").show();
@@ -111,7 +111,7 @@
     }
     function get_page_album(albumId) {
         var pageId = '<?php echo $page_id; ?>';
-        angular.element($('#album_id_' + albumId)).scope().getPageAlbum(albumId, pageId, function () {
+        angular.element($('#album_id_' + albumId)).scope().getPageAlbum(albumId, pageId, function() {
             $("#all_photos").hide();
             $("#page_photo_albums").hide();
             $("#all_album_photos").show();
@@ -119,7 +119,7 @@
     }
     function get_page_album_list() {
         var pageId = '<?php echo $page_id; ?>';
-        angular.element($('#page_add_photo_id')).scope().getPageAlbums(pageId, function () {
+        angular.element($('#page_add_photo_id')).scope().getPageAlbums(pageId, function() {
             $('#page_photo_display_section').hide();
             $('#page_photo_upload_section').show();
 
@@ -127,7 +127,7 @@
 
     }
 
-    $(function () {
+    $(function() {
 //        $('#page_add_photo_id').on('click', function () {
 //
 //            $('#page_photo_display_section').hide();
@@ -135,7 +135,7 @@
 //        });
 
 
-        $("#page_photo_button").click(function () {
+        $("#page_photo_button").click(function() {
             $("#page_photo_albums").hide();
             $("#all_album_photos").hide();
             $("#all_photos").show();
@@ -146,7 +146,7 @@
 //        });
 
         var selector = '.page_photo_menu_list_inline a';
-        $(selector).on('click', function () {
+        $(selector).on('click', function() {
             $(selector).removeClass('active');
             $(this).addClass('active');
         });

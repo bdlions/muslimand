@@ -1,8 +1,8 @@
-<div id="page_photo_albums" class="pagelet" style="display: none; margin-left: -15px; margin-right: -15px; margin-bottom: -15px; margin-top: -14px;">
+<div id="page_photo_albums" class="pagelet" style="display: none;">
     <div class="row form-group font_11px padding_top_10px">
-        <div class="col-md-4" ng-repeat="album in pageAlbums">
+        <div class="col-md-3" ng-repeat="album in pageAlbums">
            <a id="album_id_{{album.albumId}}" onclick="get_page_album(angular.element(this).scope().album.albumId)" >
-                <img style="border: 1px solid #703684;" src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{album.defaultImg}}" width="120" height="100">
+                <img style="border: 1px solid #703684; height: 120px; width: 150px;" src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{album.defaultImg}}">
             </a>
             <div style="margin-right: -3px; padding: 0 2px 2px 2px;">
                 <a href="" > <span ng-bind="album.title"></span></a><br>
