@@ -35,20 +35,21 @@
             </div>
         </div>
     </div>
+    <!-- 
     <div id="edit_relation_status" style="display: none">
-        <?php $this->load->view("member/profile/about/family_relationship/edit_relationship"); ?>  
+        <?php //$this->load->view("member/profile/about/family_relationship/edit_relationship"); ?>  
     </div>
-    <div  class="row"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0')">
+   <div  class="row"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0')">
         <div class="pagelet_divider"></div>
         <div class="col-md-12" id="family_member_id">
             <div class="cursor_holder_style">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/plus.png">
+                <img style="border: 1px solid lightpink;" src="<?php //echo base_url(); ?>resources/images/plus.png">
                 <a class="holder_style">Add Family Member</a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <?php $this->load->view("member/profile/about/family_relationship/add_family_member"); ?>
+                <?php //$this->load->view("member/profile/about/family_relationship/add_family_member"); ?>
             </div>
         </div>
     </div>
@@ -56,7 +57,7 @@
         <div class="pagelet_divider"></div>
         <div class="row form-group" ng-repeat="fMemeber in fMemebers">
             <div class="col-md-2">
-                <img style="border: 1px solid lightpink;" src="<?php echo base_url(); ?>resources/images/face.jpg">
+                <img style="border: 1px solid lightpink;" src="<?php //echo base_url(); ?>resources/images/face.jpg">
             </div>
             <div class="col-md-10">
                 <div class="row ">
@@ -82,7 +83,8 @@
                 </div>
             </div>
         </div> 
-    </div>
+    </div>-->
+    
 </div>
 <script>
     $(function() {

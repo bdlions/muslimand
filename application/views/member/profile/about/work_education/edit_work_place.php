@@ -2,7 +2,8 @@
     <div class="col-md-12" >
         <div class="row form-group">
             <div class="col-md-offset-9 col-md-3">
-                <button style="border: 1px solid lightgray; padding: 5px;" type="button" onclick="close_work_place(angular.element(this).scope().workPlace.id)" class="close header_label_style cancelling_btn" aria-label="Close" ><span aria-hidden="true">&times;</span></button>   
+                <!--<button style="border: 1px solid lightgray; padding: 5px;" type="button" onclick="close_work_place(angular.element(this).scope().workPlace.id)" class="close header_label_style cancelling_btn" aria-label="Close" ><span aria-hidden="true">&times;</span></button>-->   
+                <button style="border: 1px solid lightgray; padding: 5px;" type="button" class="close header_label_style cancelling_btn" aria-label="Close" ><span aria-hidden="true">&times;</span></button>   
             </div>
         </div>
         <div class="row form-group">
@@ -79,7 +80,8 @@
                 <input type="submit" id="work_place_update_btn" value="Save" class="btn btn-xs form-control form_control_custom_style" style="background-color: #703684; color: white" onclick="edit_work_place(angular.element(this).scope().workPlace)">
             </div>
             <div class="col-md-3">
-                <button onclick="close_work_place(angular.element(this).scope().workPlace.id)" class="btn btn-xs form-control form_control_custom_style cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
+                <!--<button onclick="close_work_place(angular.element(this).scope().workPlace.id)" class="btn btn-xs form-control form_control_custom_style cancelling_btn" style="background-color: #703684; color: white">Cancel</button>-->
+                <button class="btn btn-xs form-control form_control_custom_style cancelling_btn" style="background-color: #703684; color: white">Cancel</button>
             </div>
         </div>
     </div>
