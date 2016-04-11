@@ -1274,7 +1274,6 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 
 .image_inline > a.active {
     color: #703684;
-    font-weight: bold;
 }
 
 .contain{

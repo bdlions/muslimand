@@ -333,7 +333,6 @@
                             <div class="row form-group">
                                 <div class="col-md-12" id="more_comment_id">
                                     <div style="float: left;">
-
                                         <img ng-src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
                                         <a href  id="status_more_comment" onclick="get_album_comments(angular.element(this).scope().status.statusId)">view {{status.commentCounter}} more comments </a>
                                     </div>

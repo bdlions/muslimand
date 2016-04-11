@@ -1,18 +1,32 @@
 <script>
-    $(function () {
+    $(function() {
         $("#update_btn_id").hide();
         $("#interest_next_id").hide();
         $("#about_next_id").hide();
-        $(".brand_cover").click(function () {
-            $(".brand_cover").show();
-            $(this).hide();
-        });
+
         var selector = '.image_inline a';
-        $(selector).on('click', function () {
+        $(selector).on('click', function() {
             $(selector).removeClass('active');
             $(this).addClass('active');
         });
-        $("#about").click(function () {
+        $("#profile_picture span").css({'color': '#703684', 'font-weight': 'bold'});
+        $("#about span").css({'color': '#333', 'font-weight': 'bold'});
+        $("#preferred_page span").css({'color': '#333', 'font-weight': 'bold'});
+        $("#profile_picture").click(function() {
+            $("#profile_picture span").css({'color': '#703684', 'font-weight': 'bold'});
+            $("#about span").css({'color': '#333', 'font-weight': 'bold'});
+            $("#preferred_page span").css({'color': '#333', 'font-weight': 'bold'});
+            $("#about_content").hide();
+            $("#preferred_page_content").hide();
+            $("#profile_picture_content").show();
+            $("#profile_next_id").show();
+            $("#update_btn_id").hide();
+            $("#about_next_id").hide();
+        });
+        $("#about").click(function() {
+            $("#profile_picture span").css({'color': '#333', 'font-weight': 'bold'});
+            $("#about span").css({'color': '#703684', 'font-weight': 'bold'});
+            $("#preferred_page span").css({'color': '#333', 'font-weight': 'bold'});
             $("#about_next_id").show();
             $("#about_content").show();
             $("#profile_picture_content").hide();
@@ -20,20 +34,28 @@
             $("#update_btn_id").hide();
             $("#profile_next_id").hide();
         });
-        $("#profile_picture").click(function () {
-            $("#about_content").hide();
-            $("#preferred_page_content").hide();
-            $("#profile_picture_content").show();
-            $("#profile_next_id").show();
-            $("#update_btn_id").hide();
-        });
-        $("#preferred_page").click(function () {
+        $("#preferred_page").click(function() {
+            $("#profile_picture span").css({'color': '#333', 'font-weight': 'bold'});
+            $("#about span").css({'color': '#333', 'font-weight': 'bold'});
+            $("#preferred_page span").css({'color': '#703684', 'font-weight': 'bold'});
             $("#about_content").hide();
             $("#profile_picture_content").hide();
             $("#preferred_page_content").show();
             $("#about_next_id").hide();
             $("#profile_next_id").hide();
             $("#update_btn_id").show();
+        });
+
+//        -----------------------------------
+        $("#profile_next_id").click(function() {
+            $("#about span").css("color", "#703684");
+            $("#profile_picture span").css("color", "#333");
+            $("#preferred_page span").css("color", "#333");
+        });
+        $("#about_next_id").click(function() {
+            $("#preferred_page span").css("color", "#703684");
+            $("#profile_picture span").css("color", "#333");
+            $("#about span").css("color", "#333");
         });
     });
     function active_profile_field() {
@@ -44,6 +66,7 @@
         $("#about_content").show();
     }
     function active_about_field() {
+//         $( "#about span" ).css( "color", "#703684" );
         $("#about_content").hide();
         $("#profile_picture_content").hide();
         $("#preferred_page_content").show();
@@ -59,15 +82,15 @@
         $("#interest_next_id").hide();
         $("#update_btn_id").show();
     }
-    
-    function update_page(){
-       var pageId = '<?php echo $page_id; ?>';
-         angular.element($('#update_btn_id')).scope().updatePage(pageId, function (data) {
-            if(data.status == 1){
-                window.location = '<?php echo base_url(); ?>pages/timeline/' +pageId;
-            }else if(data.status == 0){
+
+    function update_page() {
+        var pageId = '<?php echo $page_id; ?>';
+        angular.element($('#update_btn_id')).scope().updatePage(pageId, function(data) {
+            if (data.status == 1) {
+                window.location = '<?php echo base_url(); ?>pages/timeline/' + pageId;
+            } else if (data.status == 0) {
                 alert(data.message);
-            }else{
+            } else {
                 alert(data.message);
             }
 
@@ -90,7 +113,7 @@
                     <div class="row form-group">
                         <div class="col-md-12">
                             <div class="image_inline">
-                                <a id="profile_picture" class="active" href=""><span style="margin-left: 26px;">Profile Pictute</span><img class="img-responsive" src="<?php echo base_url(); ?>resources/images/pages/2.png"></a>
+                                <a id="profile_picture" href=""><span style="margin-left: 26px;">Profile Pictute</span><img class="img-responsive" src="<?php echo base_url(); ?>resources/images/pages/2.png"></a>
                                 <a id="about" href=""><span style="margin-left: 16px;">About</span><img class="img-responsive" src="<?php echo base_url(); ?>resources/images/pages/1.png"></a>
                                 <a id="preferred_page" href=""><span style="margin-left: 32px;">Preferred Page Audience</span><img class="img-responsive" src="<?php echo base_url(); ?>resources/images/pages/3.png"></a>
                             </div>
@@ -158,7 +181,7 @@
                                     <label style="margin-top: 5px;">Age</label>
                                 </div>
                                 <div class="col-md-2">
-                                  <select  class="form-control " ng-options="ageRange for ageRange in ageRangeList" ng-model="PageInfo.minAge">
+                                    <select  class="form-control " ng-options="ageRange for ageRange in ageRangeList" ng-model="PageInfo.minAge">
                                         <option class="form-control" value="">Please select</option>
                                     </select>
                                 </div>
@@ -166,7 +189,7 @@
                                     <label style="margin-top: 5px;">-</label>
                                 </div>
                                 <div class="col-md-2">
-                                     <select  class="form-control " ng-options="ageRange for ageRange in ageRangeList" ng-model="PageInfo.maxAge">
+                                    <select  class="form-control " ng-options="ageRange for ageRange in ageRangeList" ng-model="PageInfo.maxAge">
                                         <option class="form-control" value="">Please select</option>
                                     </select>
                                 </div>
@@ -177,7 +200,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <select  class="form-control " ng-options="gender for gender in genderList" ng-model="PageInfo.intertestedGender">
-                                     <option class="form-control" value="">Please select</option>
+                                        <option class="form-control" value="">Please select</option>
                                     </select>
                                 </div>
                             </div>

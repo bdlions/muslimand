@@ -185,7 +185,7 @@
                         <div class="modal_photo_slider_custom_scroll">
                             <div class="row form-group" ng-repeat="comment in photoInfo.commentList">
                                 <div class="col-md-1">
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg" width="30" height="30">
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg">
                                 </div>
                                 <div class="col-md-11">
                                     <div class="row">
@@ -212,7 +212,7 @@
                             </div>
                             <div class="col-md-11">
                                 <form  ng-submit="addPhotoComment(photoInfo)">
-                                    <input type ="text" id ="photo_comment_field" class="form-control form_control_custom_style" placeholder="Write a comment" ng-model="photoCommentInfo.comment">
+                                    <input type ="text" id="photo_comment_field" class="form-control form_control_custom_style" placeholder="Write a comment" ng-model="photoCommentInfo.comment">
                                 </form>
                             </div>
                         </div>
@@ -220,7 +220,6 @@
                 </slide>
             </carousel>
         </div>
-
     </div>
 </div>
 </script>
