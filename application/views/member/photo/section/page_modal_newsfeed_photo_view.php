@@ -34,10 +34,7 @@
                             </ul>
                         </div>
                     </div>
-
-
-
-                    <div class="modal_photo_pagelet" style="bottom: 70px; float: right; position: fixed; right: 40px; width: 504px; z-index: 99999999;">
+                    <div class="modal_photo_pagelet modal_slider_comment_section">
                         <div class="row">
                             <div class="col-md-2" >
                                 <img fallback-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40 ?>40x40_01.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40; ?>{{photoInfo.pageId}}.jpg?time= <?php echo time(); ?>" alt="">
@@ -65,11 +62,11 @@
                                                         <img width="15" height="15" ng-src="h<?php echo base_url(); ?>resources/images/friends_icon.png" src="<?php echo base_url(); ?>resources/images/friends_icon.png">
                                                         <a aria-expanded="false" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="caret"></span></a>
                                                         <ul role="menu" class="dropdown-menu">
-                                                            <li><a href="#">Everyone</a></li>
-                                                            <li><a href="#">Friends</a></li>
-                                                            <li><a href="#">Friends of friends</a></li>
-                                                            <li><a href="#">Only Me</a></li>
-                                                            <li><a href="#">Custom</a></li>
+                                                            <li class="disabled"><a href="#">Everyone</a></li>
+                                                            <li class="disabled"><a href="#">Friends</a></li>
+                                                            <li class="disabled"><a href="#">Friends of friends</a></li>
+                                                            <li class="disabled"><a href="#">Only Me</a></li>
+                                                            <li class="disabled"><a href="#">Custom</a></li>
                                                         </ul>
                                                     </li>
                                                 </ul>
@@ -123,7 +120,6 @@
                                 <div class="row from-group">
                                     <div class="col-md-12">
                                         <div style="float: left; text-align: justify" class="ng-binding">
-
                                         </div>
                                     </div>
                                 </div>
@@ -151,7 +147,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="pagelet_divider"></div>
+                        <!--<div class="pagelet_divider"></div>-->
+                        <hr>
                         <div class="row">
                             <div class="col-md-12">
                                 <span ng-if = "photoInfo.likeCounter > 0">
@@ -185,45 +182,42 @@
                                 <a href id="page_photo_more_comment_show_id" onclick="get_page_photo_slider_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
                             </div>
                         </div>
-                        <div class="row form-group" ng-repeat="comment in photoInfo.commentList">
-                            <div class="col-md-1">
-                                <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg" width="30" height="30">
-                            </div>
-                            <div class="col-md-11">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a style="font-weight: bold;" href="#">{{comment.userInfo.firstName}}&nbsp{{comment.userInfo.lastName}}</a>
-                                        {{comment.description}} 
-                                    </div>
+                        <div class="modal_photo_slider_custom_scroll">
+                            <div class="row form-group" ng-repeat="comment in photoInfo.commentList">
+                                <div class="col-md-1">
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg">
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        {{comment.createdOn}}
-                                        <a>like</a>
-                                        <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
-                                        . <a>{{comment.likeCounter}}</a>
+                                <div class="col-md-11">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <a style="font-weight: bold;" href="#">{{comment.userInfo.firstName}}&nbsp{{comment.userInfo.lastName}}</a>
+                                            {{comment.description}} 
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {{comment.createdOn}}
+                                            <a>like</a>
+                                            <img src="<?php echo base_url(); ?>resources/images/like_icon.png" >
+                                            . <a>{{comment.likeCounter}}</a>
+                                        </div>
+                                    </div>
 
-                            </div>
+                                </div>
+                            </div> 
                         </div>
-
                         <div class="row">
-                            <div profile_picture="" class="col-md-2">
+                            <div profile_picture="" class="col-md-1">
                                 <img  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-11">
                                 <form  ng-submit="addPagePhotoComment(photoInfo)">
-                                    <input type ="text" id ="photo_comment_field" class="form-control" placeholder="Write a comment" ng-model="photoCommentInfo.comment">
+                                    <input type ="text" id="photo_comment_field" class="form-control" placeholder="Write a comment" ng-model="photoCommentInfo.comment">
                                 </form>
                             </div>
                         </div>
                     </div>
-
-
-
                 </slide>
-
             </carousel>
         </div>
 
@@ -235,14 +229,9 @@
 <?php $this->load->view("member/photo/modal_shared_album"); ?>
 <script type="text/javascript">
 
-    $(document).ready(function() {
-        $('.flipbook').pageFlip({});
-    });
-
     function photo_comment_id_focus() {
         $('#photo_comment_field').focus();
     }
-
     function get_page_photo_slider_comments(photoId) {
         angular.element($('#page_photo_more_comment_show_id')).scope().getPhotoComments(photoId, function() {
             $('#page_photo_slider_more_comment_display_id').hide();

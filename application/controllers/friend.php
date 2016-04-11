@@ -20,7 +20,6 @@ class Friend extends CI_Controller {
 
         $this->lang->load('auth');
         $this->load->helper('language');
-      
     }
 
     function add_friend() {
@@ -38,6 +37,19 @@ class Friend extends CI_Controller {
         }
 
         echo json_encode($response);
+    }
+
+    function update_online_status() {
+        $user_id = $this->session->userdata('user_id');
+        $result_event = $this->friend_mongodb_model->update_online_status($user_id);
+        if ($result_event != NULL || $result_event != "") {
+            $result = json_decode($result);
+            if ($result->responseCode == REQUEST_SUCCESSFULL) {
+                $response['status'] = "1";
+            }else{
+              $response['status'] = "0";  
+            }
+        }
     }
 
     function approve_request() {

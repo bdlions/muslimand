@@ -22,7 +22,7 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
             $scope.ws;
             $scope.setUserId = function (userId) {
                 $scope.userId = userId;
-                $scope.ws = $websocket("ws://localhost:8089/" + $scope.userId);
+                $scope.ws = $websocket("ws://localhost:2020/" + $scope.userId);
                 $scope.ws.onMessage(function (event) {
                     var userMessage = {};
                     var userExistStatus = 0;

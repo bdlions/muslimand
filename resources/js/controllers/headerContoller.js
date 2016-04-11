@@ -26,6 +26,12 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
                             requestFunction();
                         });
             };
+            $scope.updateOnlineStatusInactive = function (requestFunction) {
+                headerService.updateOnlineStatusInactive().
+                        success(function (data, status, headers, config) {
+                            requestFunction(data);
+                        });
+            };
 
             $scope.setNotificationList = function (notificationList) {
                 $scope.allNotificationList = JSON.parse(notificationList);

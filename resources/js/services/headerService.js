@@ -31,6 +31,14 @@ angular.module('services.Header', []).
                     }
                 });
             };
+            headerService.updateOnlineStatusInactive = function () {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name  + '/friend/update_online_status',
+                    data: {
+                    }
+                });
+            };
             headerService.deleteRequest = function (friendId) {
                 return $http({
                     method: 'post',

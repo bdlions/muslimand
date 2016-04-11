@@ -173,8 +173,8 @@ class Ion_auth_model extends CI_Model {
      * @var array
      * */
     public $_cache_user_in_group = array();
-
     public $db;
+
     /**
      * caching of groups
      *
@@ -415,7 +415,6 @@ class Ion_auth_model extends CI_Model {
                 return FALSE;
             }
         }
-        
     }
 
     /**
@@ -757,7 +756,6 @@ class Ion_auth_model extends CI_Model {
 //                }
 //            }
 //        }
-
 // IP Address
         //$ip_address = $this->_prepare_ip($this->input->ip_address());
         $salt = $this->store_salt ? $this->salt() : FALSE;
@@ -818,53 +816,56 @@ class Ion_auth_model extends CI_Model {
         $this->curl->create($this->SERVICE_LANDING_PAGE . 'getUSerInfoByEmail');
         $this->curl->post(array('email' => $identity));
         $result_event = json_decode($this->curl->execute());
-        if (property_exists($result_event, "responseCode")) {
-            if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
-                $user = $result_event->result;
-                //need to implement
-                $password = $this->hash_password_validation_check($user->userId, $password);
-                if ($password === TRUE) {
-                    if ($user->accountStatusId == ACCOUNT_STATUS_ID_INACTIVE) {
-                        $this->trigger_events('post_login_unsuccessful');
-                        $this->set_error('login_unsuccessful_not_active');
+        if ($result_event != "" || $result_event != null) {
+            if (property_exists($result_event, "responseCode")) {
+                if ($result_event->responseCode == REQUEST_SUCCESSFULL) {
+                    $user = $result_event->result;
+                    //need to implement
+                    $password = $this->hash_password_validation_check($user->userId, $password);
+                    if ($password === TRUE) {
+                        if ($user->accountStatusId == ACCOUNT_STATUS_ID_INACTIVE) {
+                            $this->trigger_events('post_login_unsuccessful');
+                            $this->set_error('login_unsuccessful_not_active');
 
-                        return FALSE;
-                    }
-                    $session_data = array(
-                        'identity' => $user->{$this->identity_column},
-                        'first_name' => $user->firstName,
-                        'last_name' => $user->lastName,
-                        'email' => $user->email,
-                        'user_id' => $user->userId,
-                        'group_id' => $user->groups[0]->groupId,
-                        'old_last_login' => $user->lastLogin
-                    );
+                            return FALSE;
+                        }
+                        $session_data = array(
+                            'identity' => $user->{$this->identity_column},
+                            'first_name' => $user->firstName,
+                            'last_name' => $user->lastName,
+                            'email' => $user->email,
+                            'user_id' => $user->userId,
+                            'group_id' => $user->groups[0]->groupId,
+                            'old_last_login' => $user->lastLogin
+                        );
 
-                    $this->session->set_userdata($session_data);
+                        $this->session->set_userdata($session_data);
 
 //                    $this->set_session($user);
 
-                    $this->update_last_login($user->userId);
+                        $this->update_last_login($user->userId);
 
-                    $this->clear_login_attempts($identity);
-                    if ($remember && $this->config->item('remember_users', 'ion_auth')) {
-                    $result = $this->remember_user($user->userId);
-                        
+                        $this->clear_login_attempts($identity);
+                        if ($remember && $this->config->item('remember_users', 'ion_auth')) {
+                            $result = $this->remember_user($user->userId);
+                        }
+                        $this->trigger_events(array('post_login', 'post_login_successful'));
+                        $this->set_message('login_successful');
+                        return TRUE;
                     }
-                    $this->trigger_events(array('post_login', 'post_login_successful'));
-                    $this->set_message('login_successful');
-                    return TRUE;
                 }
             }
-        }
-
 //Hash something anyway, just to take up time
-        $this->hash_password($password);
+            $this->hash_password($password);
 
-        $this->increase_login_attempts($identity);
+            $this->increase_login_attempts($identity);
 
-        $this->trigger_events('post_login_unsuccessful');
-        $this->set_error('login_unsuccessful');
+            $this->trigger_events('post_login_unsuccessful');
+            $this->set_error('login_unsuccessful');
+        } else {
+            $this->trigger_events('post_login_unsuccessful');
+            $this->set_error('server_unavailable');
+        }
 
         return FALSE;
     }
@@ -1975,5 +1976,4 @@ class Ion_auth_model extends CI_Model {
 //            return inet_pton($ip_address);
 //        }
 //    }
-
 }

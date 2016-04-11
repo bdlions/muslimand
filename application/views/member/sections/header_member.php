@@ -116,7 +116,7 @@
     <div class="col-md-2 profile_picture">
         <a target="_self" style="text-decoration: none;" href="<?php echo base_url(); ?>timeline">
             <span style="cursor: pointer; color: #fff; font-size: 14px; font-weight: bold; vertical-align: middle;">
-                <img  style="height: 25px; width: 25px;" fallback-src="<?php echo base_url().PROFILE_PICTURE_PATH_W25_H25; ?>25x25_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 . $user_id . '.jpg'; ?>" />
+                <img  style="height: 25px; width: 25px;" fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25; ?>25x25_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W25_H25 . $user_id . '.jpg'; ?>" />
                 &nbsp; <span id="profile_name" style="text-decoration: none" ><?php echo $first_name; ?></span>
             </span>
         </a>
@@ -160,18 +160,28 @@
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuRight">
                 <li class="disabled" role="presentation">
-                    <!--<a role="menuitem" tabindex="-1" href="<?php // echo base_url() ?>member/account_settings">Account settings</a>-->
+                    <!--<a role="menuitem" tabindex="-1" href="<?php // echo base_url()  ?>member/account_settings">Account settings</a>-->
                     <a role="menuitem" tabindex="-1">Account settings</a>
                 </li>
                 <li class="disabled" role="presentation">
                     <a role="menuitem" tabindex="-1" >Privacy settings</a>
-                    <!--<a role="menuitem" tabindex="-1" href="<?php // echo base_url() ?>member/privacy_settings">Privacy settings</a>-->
+                    <!--<a role="menuitem" tabindex="-1" href="<?php // echo base_url()  ?>member/privacy_settings">Privacy settings</a>-->
                 </li>
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="<?php echo base_url() ?>auth/logout">Log out</a>
+                    <a role="menuitem" tabindex="-1"  id="user_log_out_id" onclick="updateOnlineStatusInactive()" >Log out</a>
                 </li>
             </ul>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function updateOnlineStatusInactive() {
+        angular.element($('#user_log_out_id')).scope().updateOnlineStatusInactive(function (data) {
+            console.log(data);
+            if (data.status != "0") {
+                window.location = '<?php echo base_url() ?>auth/logout';
+            }
+        });
+    }
 
+</script>
