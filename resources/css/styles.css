@@ -807,8 +807,8 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 }
 
 .photo_list_img_style a img{
-    height: 90px;
-    width: 85px;
+    height: 80px;
+    width: 80px;
 }
 
 /*------------------------------------------- Custom Buttons --------------------------------- */

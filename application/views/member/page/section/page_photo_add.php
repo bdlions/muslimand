@@ -100,3 +100,15 @@
         });
     });
 </script>
+
+<style>
+    
+    .ng-cloak {
+    display: none;
+}
+.image-size {
+    height: 100px;
+    width: 100px;
+}
+
+</style>
