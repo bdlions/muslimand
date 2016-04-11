@@ -38,12 +38,14 @@
                 </div>
                 <div class="col-md-7">
                     <?php $this->load->view("member/page/section/top_menu_bar"); ?>
-                    <?php $this->load->view("member/page/section/page_title"); ?>
+                    <?php $this->load->view("member/page/section/timeline_page_title"); ?>
                     <div class="row form-group"></div>
                     <?php $this->load->view("member/page/post_status"); ?>
                     <div class="row form-group"></div>
                     <div ng-controller="statusController" ng-cloak>
+                        <div style="margin-left: -15px;">
                         <?php $this->load->view("member/pagelets/updated_status"); ?>
+                        </div>
                         <?php $this->load->view("member/page/page_about"); ?>
                     </div>
                 </div>

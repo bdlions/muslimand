@@ -1,6 +1,6 @@
 <div id="page_photo_albums" class="pagelet" style="display: none;">
     <div class="row form-group font_11px padding_top_10px">
-        <div class="col-md-3" ng-repeat="album in pageAlbums">
+        <div class="col-md-3" ng-show="album.totalImg != 0" ng-repeat="album in pageAlbums">
            <a id="album_id_{{album.albumId}}" onclick="get_page_album(angular.element(this).scope().album.albumId)" >
                 <img style="border: 1px solid #703684; height: 120px; width: 150px;" src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{album.defaultImg}}">
             </a>

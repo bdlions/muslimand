@@ -23,9 +23,9 @@
                         <input type="file" name="userfile" multiple ng-disabled="disabled">
                     </span>
                 </div>
-                The global progress state 
+<!--                The global progress state -->
                 <div class="col-md-2 fade" data-ng-class="{in: active()}">
-                    The global progress bar 
+                    <!--The global progress bar--> 
                     <div class="progress progress_custom progress-striped active" data-file-upload-progress="progress()"><div class="progress-bar progress-bar-success" data-ng-style="{width: num + '%'}"></div></div>
                     <div class="progress-extended">&nbsp;</div>
                 </div>

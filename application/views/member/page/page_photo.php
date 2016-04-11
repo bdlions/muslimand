@@ -23,6 +23,12 @@
             $('#timeLineContent').hide();
             $('#updateStatusPagelet').hide();
         });
+        $('#aboutPageMenu').on('click', function() {
+            alert("here");
+            $('#pageAboutContent').show();
+            $('#timeLineContent').hide();
+            $('#updateStatusPagelet').hide();
+        });
         $('#page_photo_upload_section').hide();
 //        $('#page_add_photo_id').on('click', function () {
 //            $('#page_photo_upload_section').show();
@@ -42,7 +48,7 @@
                         <div style="margin-right: 5px;">
                             <?php $this->load->view("member/page/section/top_menu_bar"); ?>
                         </div>
-                        <?php $this->load->view("member/page/section/page_title"); ?>
+                        <?php $this->load->view("member/page/section/photo_page_title"); ?>
                         <div id="page_photo_display_section" style="margin-right: 18px;" ng-clock >
                             <div class="row pagelet">
                                 <div class="col-md-6">
