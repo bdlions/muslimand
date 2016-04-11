@@ -12,12 +12,12 @@
 </div>
 <div class="pagelet" style="border: 1px solid #fff;">
     <div class="row">
-        <div class="col-md-4" ng-repeat="album in albumList" style="padding-bottom: 28px;">
+        <div class="col-md-4" ng-show="album.totalImg != 0" ng-repeat="album in albumList" style="padding-bottom: 28px;">
             <div class="photo_list_img_style">
-                <a href="<?php echo base_url(); ?>photos/get_home_photos/<?php echo $profile_id; ?>" >
+                <a href="<?php echo base_url(); ?>photos/get_album/{{album.albumId}}" >
                     <img class="img-responsive"  src="<?php echo base_url() . USER_ALBUM_IMAGE_PATH ?>{{album.defaultImg}}">
                 </a>
-                <a href="<?php echo base_url(); ?>photos/get_home_photos/<?php echo $profile_id; ?>" > <span ng-bind="album.title"></span></a><br>
+                <a href="<?php echo base_url(); ?>photos/get_album/{{album.albumId}}" > <span ng-bind="album.title"></span></a><br>
                 <span ng-bind="album.totalImg"></span> photos
             </div>
         </div>
