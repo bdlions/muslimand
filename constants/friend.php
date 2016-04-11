@@ -9,6 +9,10 @@
     define("REQUEST_RECEIVER",                                  0);
     define("SHORT_FRIEND_LIST_LIMIT",                           12);
     define("SHORT_FRIEND_LIST_OFFSET",                          0);
+    define("USER_ONLINE_STATUS_ID_INACTIVE",                    0);
+    define("USER_ONLINE_STATUS_ID_ACTIVE",                      1);
+    
+    
    
 
     

@@ -1,10 +1,10 @@
-<div class="modal fade" id="modal_share_content" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: 2048;">
+<div class="modal fade" id="modal_share_content" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  aria-hidden="true" style="z-index: 2048;">
     <div class="modal-dialog modal_dialog">
         <div class="modal-content modal_background_color">
             <div class="modal-header">
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button type="button" class="close" onclick="close_modal()" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                 </div>
                 <div class="row">
@@ -25,12 +25,14 @@
                 <div class="row form-group">
                     <div class="col-md-12">
                         <div style="float: left; padding-right: 10px;">
-                            <img id="shared_user_profile_picture_set_id" src="" width="40" height="40" fallback-src="">
+                            <img  width="40" height="40"  src="" id="shared_user_profile_picture_set_id" onError="userImageOnError(this)"/>
+                            <img style="visibility:hidden;height: 0px;" src="" id="on-error-profile-photo" alt="" >
                         </div>
                         <div style="float: left;">
                             <div>
                                 <a style="font-weight: bold;"href id="status_user_id">
                                     <span id="user_first_name"></span>&nbsp;<span id="user_last_name"></span>
+                                    <span id="page_title_id"></span>
                                 </a>
                             </div>
                             <div>
@@ -70,7 +72,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="button" class="close modal_cancel_button_style" data-dismiss="modal" aria-hidden="true" value="Cancel" onclick="close()">
+                        <input type="button" class="close modal_cancel_button_style" data-dismiss="modal" aria-hidden="true" value="Cancel" onclick="close_modal()">
                     </div>
                     <div class="col-md-2">
                         <input type="button" id="status_shared_add_id" class="button-custom" value="Share" onclick="share_status()" >
@@ -82,14 +84,28 @@
 </div>
 
 <script type="text/javascript">
-
+    function userImageOnError(img) {
+        var div = img.parentNode;
+        var firstImage = img;
+        var secondImage = div.getElementsByTagName('img')[1];
+        var image = secondImage.src;
+        firstImage.src = image;
+    }
+    function close_modal() {
+        $("#user_first_name").empty()
+        $("#user_last_name").empty();
+        $("#old_description").empty();
+        $("#page_title_id").empty();
+        $('#modal_share_content').modal('hide');
+    }
     function share_status() {
-        angular.element($('#status_shared_add_id')).scope().shareStatus(function() {
-            $("#user_first_name").val("");
-            $("#user_last_name").val("");
-            $("#old_description").val("");
+        angular.element($('#status_shared_add_id')).scope().shareStatus(function () {
+            $("#user_first_name").empty()
+            $("#user_last_name").empty();
+            $("#old_description").empty();
+            $("#page_title_id").empty();
             $('#modal_share_content').modal('hide');
-            window.location = '<?php echo base_url(); ?>member/newsfeed';
+//            window.location = '<?php // echo base_url(); ?>member/newsfeed';
         });
     }
 </script>

@@ -140,7 +140,7 @@
                                             <img src="<?php echo base_url() ?>resources/images/comment_icon.png">
                                             Comment
                                         </a>
-                                        <a onclick="open_modal_share(angular.element(this).scope().photoInfo)" href="" id="share_add_id" style="color: #3B59A9;">
+                                      <a onclick="" href="" id="share_add_id" style="color: #3B59A9;">
                                             <img ng-src="<?php echo base_url(); ?>resources/images/share_icon.png" src="<?php echo base_url(); ?>resources/images/share_icon.png"> Share
                                         </a>
                                     </div>
@@ -168,18 +168,18 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="pagelet_divider"></div>
+<!--                        <div class="pagelet_divider"></div>
                         <div class="row">
                             <div class="col-md-12">
                                 <img src="<?php echo base_url(); ?>resources/images/share_icon.png" >
                                 <a href="#">{{photoInfo.shareCounter}} shares</a>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="pagelet_divider"></div>
                         <div class="row ">
-                            <div class="col-md-12" id="more_photo_comment_id">
+                            <div class="col-md-12" id="more_user_photo_slider_comment_id">
                                 <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
-                                <a href id="photo_more_comment_show" onclick="get_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
+                                <a href id="user_photo_more_comment_show" onclick="get_user_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
                             </div>
                         </div>
                         <div class="modal_photo_slider_custom_scroll">
@@ -228,18 +228,18 @@
 <?php $this->load->view("modal/modal_liked_people_list"); ?>
 <?php $this->load->view("member/photo/modal_shared_album"); ?>
 <script type="text/javascript">
-   
+
     function photo_comment_id_focus() {
         $('#photo_comment_field').focus();
     }
 
-    function get_photo_comments(photoId) {
-        angular.element($('#photo_more_comment_show')).scope().getPhotoComments(photoId, function() {
-            $('#more_photo_comment_id').hide();
+    function get_user_photo_comments(photoId) {
+        angular.element($('#user_photo_more_comment_show')).scope().getPhotoComments(photoId, function () {
+            $('#more_user_photo_slider_comment_id').hide();
         });
     }
     function open_modal_photo_like_list(photoId) {
-        angular.element($('#photo_like_list_id')).scope().getPhotoLikeList(photoId, function() {
+        angular.element($('#photo_like_list_id')).scope().getPhotoLikeList(photoId, function () {
             $('#modal_liked_people_list').modal('show');
 
         });
@@ -256,7 +256,7 @@
                 '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE; ?>' == statusTypeId ||
                 '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' == statusTypeId ||
                 '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO; ?>' == statusTypeId) {
-            angular.element($('#photo_like_' + photoId)).scope().addPhotoLike(photoId, referenceId, function() {
+            angular.element($('#photo_like_' + photoId)).scope().addPhotoLike(photoId, referenceId, function () {
                 $("#photo_like_" + photoId).hide();
                 $("#photo_unlike_" + photoId).show();
             });
@@ -267,7 +267,7 @@
                 '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTOS; ?>' == statusTypeId ||
                 '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTOS; ?>' == statusTypeId ||
                 '<?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS; ?>' == statusTypeId) {
-            angular.element($('#photo_like_' + photoId)).scope().addMPhotoLike(photoId, function() {
+            angular.element($('#photo_like_' + photoId)).scope().addMPhotoLike(photoId, function () {
                 $("#photo_like_" + photoId).hide();
                 $("#photo_unlike_" + photoId).show();
             });
@@ -277,9 +277,9 @@
     function open_modal_delete_photo(photoInfo) {
         var albumId = photoInfo.albumId;
         var selectionInfo = " Photo ? ";
-        delete_confirmation(selectionInfo, function(response) {
+        delete_confirmation(selectionInfo, function (response) {
             if (response == '<?php echo MODAL_DELETE_YES; ?>') {
-                angular.element($('#delete_content_btn')).scope().deletePhoto(photoInfo, function() {
+                angular.element($('#delete_content_btn')).scope().deletePhoto(photoInfo, function () {
                     $('#common_delete_confirmation_modal').modal('hide');
                     window.location = '<?php echo base_url(); ?>photos/get_album/' + albumId;
                 });

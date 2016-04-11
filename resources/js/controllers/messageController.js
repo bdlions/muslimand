@@ -106,6 +106,11 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                 messageService.getFriendList().
                         success(function (data, status, headers, config) {
                             $scope.friendList = data.friend_list;
+                            angular.forEach($scope.friendList, function (friendInfo, key) {
+                                if (typeof friendInfo.lastLogin != "undefined") {
+                                    friendInfo.lastLogin = utilsTimezone.convertOnlineTime($scope.userCurrentTimeStamp, friendInfo.lastLogin);
+                                }
+                            }, $scope.friendList);
                             $scope.userInfo = data.user_info;
                             $scope.userId = $scope.userInfo.userId;
                         });

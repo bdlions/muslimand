@@ -146,6 +146,55 @@ angular.module('services.Timezone', []).
                     }
                 }
             };
+            utilsTimezone.convertOnlineTime = function (userCurrentDateGmt0TimeStamp, gmt0TimeStamp) {
+                var date = new Date(gmt0TimeStamp * 1000);
+                var today = new Date(userCurrentDateGmt0TimeStamp * 1000);
+                var seconds = today.getTime() - date.getTime();
+                var seconds = seconds / 1000;
+                if (seconds <= 1) {
+                    return(seconds + " second ");
+                } else if (seconds > 1 && seconds < 60) {
+                    return (seconds + " seconds");
+                } else {
+                    var minutes = Math.floor(seconds / 60);
+                    if (minutes <= 1) {
+                        return minutes + " minute";
+                    }
+                    else if (minutes > 1 && minutes < 60) {
+                        return minutes + " minutes";
+                    } else {
+
+                        var hours = Math.floor(minutes / 60);
+                        if (hours <= 1) {
+                            return  hours + " hours";
+                        }
+                        else if (hours > 1 && hours < 24) {
+                            return hours + " hours";
+                        }
+                        else {
+                            var days = Math.floor(hours / 24);
+                            if (days <= 1) {
+                                return "yesterday";
+                            }
+                            else if (days > 1 && days < 30) {
+                                return days + " days";
+                            }
+                            else {
+                                var months = Math.floor(days / 30);
+                                if (months <= 1) {
+                                    return months + " month";
+                                }
+                                else if (months > 1 && months < 12) {
+                                    return months + " months";
+                                }
+                                else {
+                                    return date;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
 
             /*this method return time difference from  current time
              * param date humen readable date 

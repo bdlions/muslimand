@@ -1,5 +1,6 @@
 angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'infinite-scroll']).
         controller('statusController', function ($scope, $modal, statusService, utilsTimezone) {
+
             $scope.statuses = [];
             $scope.statusDetails = {};
             $scope.statusTypes = {};
@@ -16,7 +17,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             $scope.modalImages = [];
             $scope.sliderImages = [];
             $scope.singlePhoto = {};
-            $scope.userCurrentTimeStamp = new Date().getTime() / 1000;
+            $scope.userCurrentTimeStamp = new Date().getTime() / 1000 + 1000;
             $scope.timeDifferent = 0;
             $scope.userGenderId = "";
             $scope.photoCommentInfo = {};
@@ -270,20 +271,22 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
              * 
              * */
             $scope.addComment = function (genderId, referenceUserInfo, statusInfo) {
-
                 if ($scope.statusFlag != true) {
                     return;
                 }
                 $scope.statusFlag = false;
                 var statusId = statusInfo.statusId;
                 var statusTypeId = statusInfo.statusTypeId;
-                $scope.statusInfo.referenceUserInfo = referenceUserInfo;
-                $scope.statusInfo.statusId = statusId;
-                $scope.statusInfo.statusTypeId = statusTypeId;
-                if ($scope.statusInfo.commentDes == "" || $scope.statusInfo.commentDes == null) {
+                var statusCommentInfo = {};
+                statusCommentInfo.referenceUserInfo = referenceUserInfo;
+                statusCommentInfo.statusId = statusId;
+                statusCommentInfo.statusTypeId = statusTypeId;
+                statusCommentInfo.commentDes = statusInfo.commentDes;
+
+                if (statusCommentInfo.commentDes == "" || statusCommentInfo.commentDes == null) {
                     return;
                 }
-                statusService.addComment($scope.statusInfo).
+                statusService.addComment(statusCommentInfo).
                         success(function (data, status, headers, config) {
                             angular.forEach($scope.statuses, function (value, key) {
                                 if (value.statusId == statusId) {
@@ -297,9 +300,9 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                         data.status_comment_info.commentTimeDiff = "1 sec ago";
                                     }
                                     value.commentList.unshift(data.status_comment_info);
+                                    value.commentDes = "";
                                 }
                             }, $scope.statuses);
-                            $scope.statusInfo.commentDes = "";
                             $scope.statusFlag = true;
                         });
                 return false;
@@ -318,7 +321,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             $scope.shareStatus = function (requestFunction) {
                 statusService.shareStatus($scope.sharedInfo, $scope.statusShareInfo).
                         success(function (data, status, headers, config) {
-                            $scope.statuses.push(data.status_info);
+                            $scope.statuses.unshift(data.status_info);
                             $scope.statusShareInfo.description = "";
                             requestFunction();
                         });
@@ -395,8 +398,14 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             //photo slider methords...................
             $scope.open = function (statusInfo, image) {
                 var genderId = statusInfo.genderId;
-                var statusId = statusInfo.statusId;
-                var userInfo = statusInfo.userInfo;
+
+                if (typeof statusInfo.referenceInfo != "undefined") {
+                    var userInfo = statusInfo.referenceInfo.userInfo;
+                    var statusId = statusInfo.referenceInfo.statusId
+                } else {
+                    var userInfo = statusInfo.userInfo;
+                    var statusId = statusInfo.statusId;
+                }
                 userInfo.genderId = genderId;
                 var userId = statusInfo.userInfo.userId;
                 var statusTypeId = statusInfo.statusTypeId;
@@ -427,7 +436,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                     }
 
                                 }, $scope.sliderImages);
-                                console.log($scope.sliderImages);
                                 $scope.modalInstance = $modal.open({
                                     animation: true,
                                     templateUrl: 'template/newsfeed.html',
@@ -440,10 +448,15 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
 
             $scope.openPage = function (statusInfo, image) {
                 var statusId = statusInfo.statusId;
-                var pageInfo = statusInfo.pageInfo;
+                var pageInfo = {};
+                if (typeof statusInfo.pageInfo != "undefined") {
+                    pageInfo = statusInfo.pageInfo;
+                } else if (typeof statusInfo.referenceInfo != "undefined") {
+                    pageInfo = statusInfo.referenceInfo.pageInfo;
+                    statusId = statusInfo.referenceInfo.statusId
+                }
                 var pageId = pageInfo.pageId;
                 var statusTypeId = statusInfo.statusTypeId;
-                console.log(pageInfo);
                 statusService.getSliderPagePhotoList(statusId).
                         success(function (data, status, headers, config) {
                             if (typeof data.photoList != "undefined") {
@@ -471,7 +484,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                     }
 
                                 }, $scope.sliderImages);
-                                console.log($scope.sliderImages);
                                 $scope.modalInstance = $modal.open({
                                     animation: true,
                                     templateUrl: 'template/page_newsfeed.html',
@@ -598,19 +610,24 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             $scope.getPhotoComments = function (photoId, requestFunction) {
                 statusService.getPhotoComments(photoId).
                         success(function (data, status, headers, config) {
-                            angular.forEach($scope.sliderImages, function (value, key) {
-                                if (typeof data.comment_list != "undefined") {
-                                    angular.forEach(data.comment_list, function (comment, key) {
-                                        if (typeof comment.createdOn != "undefined") {
+                            console.log(data);
+                            if (typeof data.comment_list != "undefined") {
+                                angular.forEach(data.comment_list, function (comment, key) {
+                                    if (typeof comment.createdOn != "undefined") {
+                                        if ($scope.userCurrentTimeStamp > comment.createdOn) {
                                             comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                        } else {
+                                            comment.createdOn = "1 see ago"
                                         }
-                                    }, data.comment_list);
-                                }
-                                console.log(data.comment_list);
+                                    }
+
+                                }, data.comment_list);
+                            }
+                            angular.forEach($scope.sliderImages, function (value, key) {
                                 if (value.photoId == photoId ? value.commentList = data.comment_list : '') {
+                                    value.commentCounter = 0;
                                 }
                             }, $scope.sliderImages);
-                            $scope.photoCommentInfo.comment = "";
                             requestFunction();
                         });
                 return false;

@@ -179,10 +179,10 @@
                             </div>
                         </div>
                         <div class="pagelet_divider"></div>
-                        <div class="row ">
-                            <div class="col-md-12" id="more_photo_comment_id">
+                        <div class="row " ng-if ="photoInfo.commentCounter > 0 ">
+                            <div class="col-md-12" id="page_photo_slider_more_comment_display_id">
                                 <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
-                                <a href id="photo_more_comment_show" onclick="get_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
+                                <a href id="page_photo_more_comment_show_id" onclick="get_page_photo_slider_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
                             </div>
                         </div>
                         <div class="row form-group" ng-repeat="comment in photoInfo.commentList">
@@ -243,9 +243,9 @@
         $('#photo_comment_field').focus();
     }
 
-    function get_photo_comments(photoId) {
-        angular.element($('#photo_more_comment_show')).scope().getPhotoComments(photoId, function() {
-            $('#more_photo_comment_id').hide();
+    function get_page_photo_slider_comments(photoId) {
+        angular.element($('#page_photo_more_comment_show_id')).scope().getPhotoComments(photoId, function() {
+            $('#page_photo_slider_more_comment_display_id').hide();
         });
     }
     function open_modal_page_photo_likelist(photoId) {

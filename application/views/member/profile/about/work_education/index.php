@@ -29,7 +29,7 @@
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                     <!--<li role="presentation"><a role="menuitem" tabindex="-1" href ng-click="selectEditField(workPlace.id)">Edit</a></li>-->
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href onclick="show_work_place(this)" id="{{workPlace.id}}">Edit</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href onclick="opennclick ="sh_modal_work_Place_delete(this)" id="{{workPlace.id}}">Delete</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href onclick="open_modal_work_Place_delete(this)" id="{{workPlace.id}}">Delete</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -231,7 +231,6 @@
 </div>
 <?php $this->load->view("common/common_delete_confirmation_modal"); ?>
 <script type="text/javascript">
-{{workPlace.id}}
     function show_work_place(e) {
         var workPlaceId = $(e).attr('id');
         $('#work_place_' + workPlaceId).hide();

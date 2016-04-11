@@ -1,11 +1,11 @@
 <script>
-    $(function() {
+    $(function () {
         $(".chat_box_container").scrollTop(250);
     });
 </script>
 <script>
-    (function($) {
-        $(window).load(function() {
+    (function ($) {
+        $(window).load(function () {
             $("#ticker_friend .ticker").mCustomScrollbar({
                 setHeight: 300,
                 theme: "dark-3"
@@ -14,8 +14,8 @@
     })(jQuery);
 </script>
 <script>
-    (function($) {
-        $(window).load(function() {
+    (function ($) {
+        $(window).load(function () {
             $("#ticker_notification .ticker").mCustomScrollbar({
                 setHeight: 300,
                 theme: "dark-3"
@@ -24,9 +24,9 @@
     })(jQuery);
 </script>
 <script type="text/javascript">
-    $(function() {
-        $('.common_box').each(function() {
-            $(this).click(function() {
+    $(function () {
+        $('.common_box').each(function () {
+            $(this).click(function () {
                 $(this).css("background-color", "#842D80");
                 $('.common_box').not(this).css("background-color", "#703684");
             });
@@ -47,40 +47,40 @@
             <div style="border: 1px solid lightgray;">
                 <div id="ticker_notification" >
                     <div class="ticker">
-                            <div class="message_friends_border" ng-repeat="recentActivity in recentActivityList">
-                                <a  href="<?php echo base_url() ?>status/get_status_details/{{recentActivity.statusId}}">
-                                    <div class="row from-group" >
-                                        <div class="col-xs-3 col-sm-3 col-md-3">
-                                            <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{recentActivity.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{recentActivity.userInfo.userId}}.jpg?time=<?php echo time(); ?>" width="30" height="30">
-                                        </div>
-                                        <div class="col-xs-9 col-sm-9 col-md-9">
-                                            <a  style="font-weight: bold;"><b>{{recentActivity.userInfo.firstName}}&nbsp;{{recentActivity.userInfo.lastName}}</b></a> 
-                                            <span ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE; ?> == recentActivity.typeId">
-                                                update
-                                                <span ng-if="<?php echo Male; ?> == recentActivity.genderId">his</span>
-                                                <span ng-if="<?php echo Female; ?> == recentActivity.genderId">her</span>
-                                                status
-                                            </span>
-                                            <span ng-if="<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE; ?> == recentActivity.typeId">
-                                                update profile picture 
-                                            </span>
-                                            <span ng-if="<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE; ?> == recentActivity.typeId">
-                                                update cover picture 
-                                            </span>
-                                            <span ng-if="<?php echo COMMENTED_ON_ID; ?> == recentActivity.typeId">
-                                                commented on
-                                            </span>
-                                            <span ng-if="<?php echo LIKED_ON_ID; ?> == recentActivity.typeId">
-                                                liked 
-                                            </span>
-                                            <span ng-if="recentActivity.referenceUserInfo != null">
-                                                <a style="font-weight: bold;"> <span>{{recentActivity.referenceUserInfo.firstName}}&nbsp;{{recentActivity.referenceUserInfo.lastName}}</span></a>
-                                                status
-                                            </span>
-                                        </div>
-                                </a>
-                            </div>
+                        <div class="message_friends_border" ng-repeat="recentActivity in recentActivityList">
+                            <a  href="<?php echo base_url() ?>status/get_status_details/{{recentActivity.statusId}}">
+                                <div class="row from-group" >
+                                    <div class="col-xs-3 col-sm-3 col-md-3">
+                                        <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{recentActivity.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{recentActivity.userInfo.userId}}.jpg?time=<?php echo time(); ?>" width="30" height="30">
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9 col-md-9">
+                                        <a  style="font-weight: bold;"><b>{{recentActivity.userInfo.firstName}}&nbsp;{{recentActivity.userInfo.lastName}}</b></a> 
+                                        <span ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE; ?> == recentActivity.typeId">
+                                            update
+                                            <span ng-if="<?php echo Male; ?> == recentActivity.genderId">his</span>
+                                            <span ng-if="<?php echo Female; ?> == recentActivity.genderId">her</span>
+                                            status
+                                        </span>
+                                        <span ng-if="<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE; ?> == recentActivity.typeId">
+                                            update profile picture 
+                                        </span>
+                                        <span ng-if="<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE; ?> == recentActivity.typeId">
+                                            update cover picture 
+                                        </span>
+                                        <span ng-if="<?php echo COMMENTED_ON_ID; ?> == recentActivity.typeId">
+                                            commented on
+                                        </span>
+                                        <span ng-if="<?php echo LIKED_ON_ID; ?> == recentActivity.typeId">
+                                            liked 
+                                        </span>
+                                        <span ng-if="recentActivity.referenceUserInfo != null">
+                                            <a style="font-weight: bold;"> <span>{{recentActivity.referenceUserInfo.firstName}}&nbsp;{{recentActivity.referenceUserInfo.lastName}}</span></a>
+                                            status
+                                        </span>
+                                    </div>
+                            </a>
                         </div>
+                    </div>
                 </div>
 
             </div>
@@ -105,7 +105,12 @@
                                     <span class="chatting_user_name" data-toggle="tooltip" data-placement="top" title="{{friend.firstName}}&nbsp;{{friend.lastName}}">{{friend.firstName + " " + friend.lastName}}</span>
                                 </div>
                                 <div class="col-md-2">
-                                    <div class="status online"> </div>
+                                    <div ng-if="friend.onlineStatus == <?php echo USER_ONLINE_STATUS_ID_ACTIVE; ?>">
+                                        <div class="status online"> </div>
+                                    </div>
+                                    <div ng-if="friend.onlineStatus != <?php echo USER_ONLINE_STATUS_ID_ACTIVE; ?>">
+                                        <a> {{friend.lastLogin}}</a>
+                                    </div>
                                 </div>
                             </div> 
                         </div>

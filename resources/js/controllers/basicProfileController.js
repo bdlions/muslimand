@@ -115,11 +115,12 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 if (cYear != null) {
                     $scope.workInfo.endDate = cYear;
                 }
+                console.log($scope.workInfo);
                 $scope.workInfo.userId = userId;
                 basicProfileService.addWorkPlace($scope.workInfo).
                         success(function (data, status, headers, config) {
                             $scope.workPlaces.push(data.work_place);
-                            $scope.workInfo = "";
+                            $scope.workInfo = {};
                             requestFunction();
                         });
             };
@@ -144,7 +145,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 basicProfileService.addPSkill($scope.pSkillInfo).
                         success(function (data, status, headers, config) {
                             $scope.pSkills.push(data.p_skill)
-                            $scope.pSkillInfo = "";
+                            $scope.pSkillInfo = {};
                             requestFunction();
                         });
             };
@@ -169,7 +170,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 basicProfileService.addUniversity($scope.universityInfo).
                         success(function (data, status, headers, config) {
                             $scope.universities.push(data.university)
-                            $scope.universityInfo = "";
+                            $scope.universityInfo = {};
                             requestFunction();
 
                         });
@@ -194,7 +195,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 basicProfileService.addCollege($scope.collegeInfo).
                         success(function (data, status, headers, config) {
                             $scope.colleges.push(data.college)
-                            $scope.collegeInfo = "";
+                            $scope.collegeInfo = {};
                             requestFunction();
                         });
             };
@@ -218,7 +219,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 basicProfileService.addSchool($scope.schoolInfo).
                         success(function (data, status, headers, config) {
                             $scope.schools.push(data.school);
-                            $scope.schoolInfo = "";
+                            $scope.schoolInfo = {};
                             requestFunction();
                         });
             };
@@ -257,7 +258,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 basicProfileService.addCurrentCity($scope.currentCityInfo).
                         success(function (data, status, headers, config) {
                             $scope.city = data.current_city;
-                            $scope.currentCityInfo = "";
+                            $scope.currentCityInfo = {};
                             requestFunction();
                         });
             };
@@ -281,7 +282,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 basicProfileService.addHomeTown($scope.homeTownInfo).
                         success(function (data, status, headers, config) {
                             $scope.town = data.home_town;
-                            $scope.homeTownInfo = "";
+                            $scope.homeTownInfo = {};
                             requestFunction();
 
                         });
@@ -344,7 +345,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 basicProfileService.addPhone($scope.phoneInfo).
                         success(function (data, status, headers, config) {
                             $scope.mobilePhones.push(data.mobile_phone);
-                            $scope.phoneInfo = "";
+                            $scope.phoneInfo = {};
                             requestFunction();
                         });
             };
@@ -352,7 +353,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
             $scope.editMobilePhone = function (phoneInfo, requestFunction) {
                 basicProfileService.editMobilePhone(phoneInfo).
                         success(function (data, status, headers, config) {
-                            $scope.phoneInfo = "";
+                            $scope.phoneInfo = {};
                             requestFunction();
                         });
             };
@@ -369,7 +370,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 basicProfileService.addAddress($scope.addressInfo).
                         success(function (data, status, headers, config) {
                             $scope.address = data.address;
-                            $scope.addressInfo = "";
+                            $scope.addressInfo = {};
                             requestFunction();
                         });
             };
@@ -392,7 +393,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 basicProfileService.addWebsite($scope.websiteInfo).
                         success(function (data, status, headers, config) {
                             $scope.website = data.website;
-                            $scope.websiteInfo = "";
+                            $scope.websiteInfo = {};
                             requestFunction();
                         });
             };
@@ -414,7 +415,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                         success(function (data, status, headers, config) {
                             $('#email_id').show();
                             $scope.emails.push(data.email);
-                            $scope.emailInfo = "";
+                            $scope.emailInfo = {};
                             $("#email").hide();
                             $("#add_email").show();
                         });
@@ -463,7 +464,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             $('#relationship_add').show();
                             $("#relationship_add_id").hide();
                             $("#relationship_id").show();
-                            $scope.rStatusInfo = "";
+                            $scope.rStatusInfo = {};
 
                             ;
                         });
@@ -497,7 +498,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 basicProfileService.addAbout($scope.aboutInfo).
                         success(function (data, status, headers, config) {
                             $scope.about = data.about;
-                            $scope.aboutInfo = "";
+                            $scope.aboutInfo = {};
                             requestFunction();
                         });
             };
@@ -506,7 +507,7 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 basicProfileService.addFQuote($scope.fQuoteInfo).
                         success(function (data, status, headers, config) {
                             $scope.fQuote = data.f_quote;
-                            $scope.fQuoteInfo = "";
+                            $scope.fQuoteInfo = {};
                             requestFunction();
                         });
             };

@@ -107,7 +107,7 @@ class Status extends CI_Controller {
             if ($user_id != $profile_id && $profile_id != "" && $image_size == 1) {
                 $status_info->mappingId = $profile_id;
                 $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO;
-            }else if($user_id != $profile_id && $profile_id != "" && $image_size > 1) {
+            } else if ($user_id != $profile_id && $profile_id != "" && $image_size > 1) {
                 $status_info->mappingId = $profile_id;
                 $status_info->statusTypeId = STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTOS;
             } else if ($user_id != $profile_id && $profile_id != "") {
@@ -169,20 +169,28 @@ class Status extends CI_Controller {
             if (property_exists($requestInfo, "statusInfo")) {
                 $new_status_info = $requestInfo->statusInfo;
             }
-
             $user_info = new stdClass();
             $user_info->userId = $this->session->userdata('user_id');
             $user_info->firstName = $this->session->userdata('first_name');
             $user_info->lastName = $this->session->userdata('last_name');
-
-            $ref_user_info = new StdClass();
-            if (property_exists($old_status_info, "userInfo")) {
+            $ref_info = new stdClass();
+            $ref_user_info = new stdClass();
+            if (property_exists($old_status_info, "pageInfo")) {
+                $ref_user_info->pageId = $old_status_info->pageInfo->pageId;
+                $user_id = $ref_user_info->referenceId = $old_status_info->pageInfo->referenceId;
+                $ref_user_info->title = $old_status_info->pageInfo->title;
+                $ref_info->pageInfo = $ref_user_info;
+            } else if (property_exists($old_status_info, "userInfo")) {
                 $user_id = $ref_user_info->userId = $old_status_info->userInfo->userId;
                 $ref_user_info->firstName = $old_status_info->userInfo->firstName;
                 $ref_user_info->lastName = $old_status_info->userInfo->lastName;
+                $ref_info->userInfo = $ref_user_info;
             }
-            $ref_info = new stdClass();
-            $ref_info->userInfo = $ref_user_info;
+            
+            if(property_exists($old_status_info, "statusId")){
+                $ref_info->statusId = $old_status_info->statusId;
+            }
+            
             if (property_exists($old_status_info, "images")) {
                 $images = array();
                 $image_list = $old_status_info->images;
@@ -200,16 +208,16 @@ class Status extends CI_Controller {
             if (property_exists($old_status_info, "statusId")) {
                 $status_id = $old_status_info->statusId;
             }
-            $r_user_info = new stdClass();
-            $r_user_info->userInfo = $ref_user_info;
             $status_info = new stdClass();
             $status_info->userId = $this->session->userdata('user_id');
             $status_info->statusTypeId = STATUS_TYPE_ID_SHARE_OTHER_STATUS;
             $status_info->mappingId = $this->session->userdata('user_id');
             $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
+            
             if (property_exists($new_status_info, "description")) {
                 $status_info->description = $new_status_info->description;
             }
+            
             $referenceId = new stdClass();
             $referenceId->statusId = $new_status_id;
             $referenceList = array();
@@ -217,7 +225,9 @@ class Status extends CI_Controller {
             $status_info->referenceList = $referenceList;
             $status_info->userInfo = $user_info;
             $status_info->referenceInfo = $ref_info;
-            $result = $this->status_mongodb_model->share_status($user_id, $status_id, $r_user_info, $status_info);
+            $share_ref_info = new stdClass();
+            $share_ref_info->userInfo = $user_info;
+            $result = $this->status_mongodb_model->share_status($user_id, $status_id, $share_ref_info, $status_info);
             if ($result != null) {
                 $status_info->timeDiff = "1sec ago";
                 $response["status_info"] = $status_info;
@@ -273,7 +283,7 @@ class Status extends CI_Controller {
         $ref_user_info->lastName = $this->session->userdata('last_name');
         $status_like_info = new StdClass();
         $status_like_info->userInfo = $ref_user_info;
-        if(!(isset($user_id))){
+        if (!(isset($user_id))) {
             $user_id = $this->session->userdata('user_id');
         }
         $request_event = $this->status_mongodb_model->add_status_like($user_id, $status_id, $status_like_info, $status_type_id);
@@ -438,8 +448,6 @@ class Status extends CI_Controller {
             echo json_encode($response);
         }
     }
-    
-    
 
     /**
      * this methord return a user timline or newfeed  status
@@ -759,7 +767,5 @@ class Status extends CI_Controller {
         echo json_encode($recent_activities);
         return;
     }
-
-    
 
 }

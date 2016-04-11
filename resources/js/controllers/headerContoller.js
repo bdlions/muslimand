@@ -81,7 +81,6 @@ angular.module('controllers.Header', ['services.Header', 'services.Timezone']).
                                     $scope.generalNotifications.push(notificationInfo);
                                 });
                             }
-                                console.log($scope.generalNotifications);
                             requestFunction();
                         });
             };
