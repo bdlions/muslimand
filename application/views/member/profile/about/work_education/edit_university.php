@@ -52,7 +52,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-5">
-                        <select class="form-control" name="control">
+                        <select class="form-control" name="control" disabled>
                             <option selected="1" value="0">Everyone</option>
                             <option value="1">Friends</option>
                             <option value="2">Friends of Friends</option>

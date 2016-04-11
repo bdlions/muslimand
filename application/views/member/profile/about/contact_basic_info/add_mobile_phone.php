@@ -26,7 +26,7 @@
             <div class="col-md-offset-2 col-md-10">
                 <div class="row form-group">
                     <div class="col-md-5">
-                        <select class="form-control form_control_custom_style" name="control">
+                        <select class="form-control form_control_custom_style" name="control" disabled>
                             <option selected="1" value="0">Everyone</option>
                             <option value="1">Friends</option>
                             <option value="2">Friends of Friends</option>

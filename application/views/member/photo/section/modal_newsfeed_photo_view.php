@@ -147,8 +147,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--<div class="pagelet_divider"></div>-->
-                        <hr>
+                        <div class="pagelet_divider"></div>
                         <div class="row">
                             <div class="col-md-12">
                                 <span ng-if = "photoInfo.likeCounter > 0">

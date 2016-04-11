@@ -412,7 +412,7 @@ embed{
 
 .chat_box_container{
     height: 230px; 
-    overflow-y: scroll; 
+    overflow-y: auto; 
     overflow-x: hidden; 
     background-color: #E9EAED; 
     border: 1px solid #9197a3!important;
@@ -431,8 +431,7 @@ embed{
     width: 240px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-    z-index: 99999999999;
-
+    z-index: 999999999;
 }
 
 .msg_box_user_name, .msg_box_user_name:hover, .msg_box_user_name:focus, .msg_box_user_name:visited{
@@ -450,7 +449,7 @@ embed{
 .chatting_user_name, .chatting_user_name:hover,.chatting_user_name:focus,.chatting_user_name:visited{
     text-decoration: none;
     vertical-align: middle; 
-    padding-top: 5px; 
+    padding-top: 8px; 
     font-size: 10.5px; 
     display:inline-block; 
     width: 100%; 

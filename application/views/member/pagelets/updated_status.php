@@ -171,7 +171,7 @@
                                 <div class="row form-group">
                                     <div class="col-md-12">
                                         <div style="float: left;">
-                                            <div class="more" id="displayStatus{{status.statusId}}" ng-bind="status.description"></div>
+                                            <div id="displayStatus{{status.statusId}}" ng-bind="status.description"></div>
                                         </div>
                                         <div id="updateStatus{{status.statusId}}" style="display: none;">
                                             <form ng-submit="updateStatus(status)" >
@@ -291,28 +291,31 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row from-group" style="float: left; padding-top: 5px;">
+                    </div>
+                    <div class="pagelet">
+                        <div class="row" >
                             <div class="col-md-12">
-                                <span ng-if = "status.likeStatus != '1'">
-                                    <a style="color: #3B59A9;" href id="statusLike{{status.statusId}}" ng-click="addLike(status)">
-                                        <img src="<?php echo base_url(); ?>resources/images/like_icon.png"> Like </a>.
-                                </span>
-                                <span ng-if = "status.likeStatus == '1'">
-                                    <a style="color: #3B59A9;" href id="statusUnLike{{status.statusId}}" ng-click="unLike(status.statusId)">
-                                        <img ng-src="<?php echo base_url(); ?>resources/images/like_icon.png"> liked </a>. 
-                                </span>
-                                <a style="color: #3B59A9;" href onclick="select_comment_field(angular.element(this).scope().status.statusId)">
-                                    <img ng-src="<?php echo base_url(); ?>resources/images/comment_icon.png"> Comment </a>.
-                                <a style="color: #3B59A9;"  id="share_add_id" href onclick="open_modal_share(angular.element(this).scope().status)">
-                                    <img ng-src="<?php echo base_url(); ?>resources/images/share_icon.png"> Share</a>
+                                <div class="row from-group" style="float: left;">
+                                    <div class="col-md-12">
+                                        <span ng-if = "status.likeStatus != '1'">
+                                            <a style="color: #3B59A9;" href id="statusLike{{status.statusId}}" ng-click="addLike(status)">
+                                                <img src="<?php echo base_url(); ?>resources/images/like_icon.png"> Like </a>.
+                                        </span>
+                                        <span ng-if = "status.likeStatus == '1'">
+                                            <a style="color: #3B59A9;" href id="statusUnLike{{status.statusId}}" ng-click="unLike(status.statusId)">
+                                                <img ng-src="<?php echo base_url(); ?>resources/images/like_icon.png"> liked </a>. 
+                                        </span>
+                                        <a style="color: #3B59A9;" href onclick="select_comment_field(angular.element(this).scope().status.statusId)">
+                                            <img ng-src="<?php echo base_url(); ?>resources/images/comment_icon.png"> Comment </a>.
+                                        <a style="color: #3B59A9;"  id="share_add_id" href onclick="open_modal_share(angular.element(this).scope().status)">
+                                            <img ng-src="<?php echo base_url(); ?>resources/images/share_icon.png"> Share</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-
-                    <div class="pagelet">
                         <div class="row form-group" >
                             <div class="col-md-12">
+                                <div  class="pagelet_divider"></div>
                                 <div style="float: left">
                                     <span ng-if = "status.likeCounter > 0">
                                         <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
@@ -330,7 +333,6 @@
                                         </a> 
                                     </span>
                                 </div>
-
                             </div>
                         </div>
                         <span ng-if = "status.shareCounter > 0">
@@ -430,145 +432,147 @@
                 </div>
             </div>
         </div>
-    <span ng-if="busy == false">
-        <div>Loading data...</div>
-    </span>
-    <?php $this->load->view("member/pagelets/modal_share_content"); ?>
-    <?php $this->load->view("modal/modal_liked_people_list"); ?>
-    <?php $this->load->view("modal/modal_comment_liked_people_list"); ?>
-    <?php $this->load->view("modal/modal_shared_people_list"); ?>
-    <?php $this->load->view("member/photo/section/modal_newsfeed_photo_view"); ?>
-    <?php $this->load->view("member/photo/section/page_modal_newsfeed_photo_view"); ?>
+        <span ng-if="busy == false">
+            <div>Loading data...</div>
+        </span>
+        <?php $this->load->view("member/pagelets/modal_share_content"); ?>
+        <?php $this->load->view("modal/modal_liked_people_list"); ?>
+        <?php $this->load->view("modal/modal_comment_liked_people_list"); ?>
+        <?php $this->load->view("modal/modal_shared_people_list"); ?>
+        <?php $this->load->view("member/photo/section/modal_newsfeed_photo_view"); ?>
+        <?php $this->load->view("member/photo/section/page_modal_newsfeed_photo_view"); ?>
 
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var showChar = 200;
-            var ellipsestext = "...";
-            var moretext = "Show more >";
-            var lesstext = "Show less";
+        <script type="text/javascript">
+            $(function() {
+                console.log("dddd");
+                var showChar = 200;
+                var ellipsestext = "...";
+                var moretext = "Show more >";
+                var lesstext = "Show less";
 
-            $('.more').each(function () {
-                var content = $(this).html();
-                if (content.length > showChar) {
-                    var c = content.substr(0, showChar);
-                    var h = content.substr(showChar, content.length - showChar);
-                    var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-                    $(this).html(html);
-                }
+                $('.more').each(function() {
+                    console.log("inside more");
+                    var content = $(this).html();
+                    if (content.length > showChar) {
+                        var c = content.substr(0, showChar);
+                        var h = content.substr(showChar, content.length - showChar);
+                        var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+                        $(this).html(html);
+                    }
+                });
+
+                $(".morelink").click(function() {
+                    if ($(this).hasClass("less")) {
+                        $(this).removeClass("less");
+                        $(this).html(moretext);
+                    } else {
+                        $(this).addClass("less");
+                        $(this).html(lesstext);
+                    }
+                    $(this).parent().prev().toggle();
+                    $(this).prev().toggle();
+                    return false;
+                });
             });
+        </script>
 
-            $(".morelink").click(function () {
-                if ($(this).hasClass("less")) {
-                    $(this).removeClass("less");
-                    $(this).html(moretext);
-                } else {
-                    $(this).addClass("less");
-                    $(this).html(lesstext);
-                }
-                $(this).parent().prev().toggle();
-                $(this).prev().toggle();
-                return false;
+
+        <script type="text/javascript">
+            $(function() {
+                $("#share_add_id").on("click", function() {
+                    //                $("#template/newsfeed.html").hide();
+                    $("#modal_share_content").show();
+                });
             });
-        });
-    </script>
-
-
-    <script type="text/javascript">
-        $(function () {
-            $("#share_add_id").on("click", function () {
-//                $("#template/newsfeed.html").hide();
-                $("#modal_share_content").show();
-            });
-        });
-        function get_album_comments(statusId) {
-            angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function () {
-                $('#more_comment_id').hide();
-                $('#pagelet_id_1').hide();
-                $('#pagelet_id_2').hide();
-            });
-        }
-
-        function open_modal_share(statusInfo) {
-            var userId = statusInfo.userId;
-            var pageId = statusInfo.pageId;
-            var genderId = statusInfo.genderId;
-            var imageSize = 0;
-            if (statusInfo.images) {
-                imageSize = statusInfo.images.length;
+            function get_album_comments(statusId) {
+                angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function() {
+                    $('#more_comment_id').hide();
+                    $('#pagelet_id_1').hide();
+                    $('#pagelet_id_2').hide();
+                });
             }
-            var statusTypeId = statusInfo.statusTypeId;
 
-            angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function () {
+            function open_modal_share(statusInfo) {
+                var userId = statusInfo.userId;
+                var pageId = statusInfo.pageId;
+                var genderId = statusInfo.genderId;
+                var imageSize = 0;
+                if (statusInfo.images) {
+                    imageSize = statusInfo.images.length;
+                }
+                var statusTypeId = statusInfo.statusTypeId;
 
-                if (statusTypeId == '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_PROFILE_PICTURE ?>'
-                        || statusTypeId == '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE ?>'
-                        || statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE ?>'
-                        || statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_S_PHOTO ?>'
-                        || statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS ?>'
-                        || statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE ?>'
-                        || statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO ?>'
-                        || statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS ?>') {
-                    $("#page_title_id").append(statusInfo.pageInfo.title)
-                    $("#shared_user_profile_picture_set_id").attr('src', '<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40; ?>' + pageId + ".jpg");
-                    $("#on-error-profile-photo").attr('src', '<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40; ?>' + "40x40.jpg");
-                } else {
-                    $("#user_first_name").append(statusInfo.userInfo.firstName);
-                    $("#user_last_name").append(statusInfo.userInfo.lastName);
-                    $("#old_description").append(statusInfo.description);
-                    $("#shared_user_profile_picture_set_id").attr('src', '<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>' + userId + ".jpg");
-                    $("#on-error-profile-photo").attr('src', '<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>' + "40x40_" + genderId + ".jpg");
-                    if (imageSize > 0) {
-                        if (statusTypeId == '<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE ?>') {
-                            $("#status_type_id").append("Shared profile Picture");
-                        } else if (statusTypeId == '<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE ?>') {
-                            $("#status_type_id").append("Shared cover Picture");
-                        } else if (statusTypeId == '<?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS ?>') {
-                            $("#status_type_id").append("Shared Album ");
+                angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function() {
+
+                    if (statusTypeId == '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_PROFILE_PICTURE ?>'
+                            || statusTypeId == '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE ?>'
+                            || statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE ?>'
+                            || statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_S_PHOTO ?>'
+                            || statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_ADMIN_AT_PAGE_PROFILE_WITH_M_PHOTOS ?>'
+                            || statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE ?>'
+                            || statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_S_PHOTO ?>'
+                            || statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_MEMBER_AT_PAGE_PROFILE_WITH_M_PHOTOS ?>') {
+                        $("#page_title_id").append(statusInfo.pageInfo.title)
+                        $("#shared_user_profile_picture_set_id").attr('src', '<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40; ?>' + pageId + ".jpg");
+                        $("#on-error-profile-photo").attr('src', '<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40; ?>' + "40x40.jpg");
+                    } else {
+                        $("#user_first_name").append(statusInfo.userInfo.firstName);
+                        $("#user_last_name").append(statusInfo.userInfo.lastName);
+                        $("#old_description").append(statusInfo.description);
+                        $("#shared_user_profile_picture_set_id").attr('src', '<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>' + userId + ".jpg");
+                        $("#on-error-profile-photo").attr('src', '<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>' + "40x40_" + genderId + ".jpg");
+                        if (imageSize > 0) {
+                            if (statusTypeId == '<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE ?>') {
+                                $("#status_type_id").append("Shared profile Picture");
+                            } else if (statusTypeId == '<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE ?>') {
+                                $("#status_type_id").append("Shared cover Picture");
+                            } else if (statusTypeId == '<?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS ?>') {
+                                $("#status_type_id").append("Shared Album ");
+                            }
                         }
                     }
-                }
 
-                $('#modal_share_content').modal('show');
-            });
+                    $('#modal_share_content').modal('show');
+                });
 
-        }
+            }
 
-        function open_modal_like_list(statusId) {
-            angular.element($('#like_list_id')).scope().getStatusLikeList(statusId, function () {
-                $('#modal_liked_people_list').modal('show');
-            });
-        }
-        function open_modal_shared_list(statusId) {
-            angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function () {
-                $('#modal_shared_people_list').modal('show');
-            });
-        }
-        function select_edit_field(statusId) {
-            $("#displayStatus" + statusId).hide();
-            $("#updateStatus" + statusId).show();
-        }
-        function select_edit_comment_field(commentId) {
-            $("#displayStatusComment_" + commentId).hide();
-            $("#updateStatusComment_" + commentId).show();
-        }
-        function delete_status_comment(statusId, commentId) {
-            angular.element($('#delete_option_comment_line_' + commentId)).scope().deleteStatusComment(statusId, commentId, function (response) {
-                if (response == "1") {
-                    $("#comment_" + commentId).hide();
-                }
-            });
-        }
-        function get_comment_like_list(statusId, commentId) {
-            angular.element($('#comment_like_' + commentId)).scope().getStatusCommentLikeList(statusId, commentId, function () {
-                $('#modal_comment_liked_people_list').modal('show');
-            });
-        }
-        function select_comment_field(statusId) {
-            $('#commentInputField' + statusId).focus();
-        }
-        ;
-    </script>
+            function open_modal_like_list(statusId) {
+                angular.element($('#like_list_id')).scope().getStatusLikeList(statusId, function() {
+                    $('#modal_liked_people_list').modal('show');
+                });
+            }
+            function open_modal_shared_list(statusId) {
+                angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function() {
+                    $('#modal_shared_people_list').modal('show');
+                });
+            }
+            function select_edit_field(statusId) {
+                $("#displayStatus" + statusId).hide();
+                $("#updateStatus" + statusId).show();
+            }
+            function select_edit_comment_field(commentId) {
+                $("#displayStatusComment_" + commentId).hide();
+                $("#updateStatusComment_" + commentId).show();
+            }
+            function delete_status_comment(statusId, commentId) {
+                angular.element($('#delete_option_comment_line_' + commentId)).scope().deleteStatusComment(statusId, commentId, function(response) {
+                    if (response == "1") {
+                        $("#comment_" + commentId).hide();
+                    }
+                });
+            }
+            function get_comment_like_list(statusId, commentId) {
+                angular.element($('#comment_like_' + commentId)).scope().getStatusCommentLikeList(statusId, commentId, function() {
+                    $('#modal_comment_liked_people_list').modal('show');
+                });
+            }
+            function select_comment_field(statusId) {
+                $('#commentInputField' + statusId).focus();
+            }
+            ;
+        </script>
 
 
 

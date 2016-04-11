@@ -152,40 +152,40 @@ angular.module('services.Timezone', []).
                 var seconds = today.getTime() - date.getTime();
                 var seconds = seconds / 1000;
                 if (seconds <= 1) {
-                    return(seconds + " second ");
+                    return(seconds + "s");
                 } else if (seconds > 1 && seconds < 60) {
-                    return (seconds + " seconds");
+                    return (seconds + "s");
                 } else {
                     var minutes = Math.floor(seconds / 60);
                     if (minutes <= 1) {
-                        return minutes + " minute";
+                        return minutes + "m";
                     }
                     else if (minutes > 1 && minutes < 60) {
-                        return minutes + " minutes";
+                        return minutes + "m";
                     } else {
 
                         var hours = Math.floor(minutes / 60);
                         if (hours <= 1) {
-                            return  hours + " hours";
+                            return  hours + "h";
                         }
                         else if (hours > 1 && hours < 24) {
-                            return hours + " hours";
+                            return hours + "h";
                         }
                         else {
                             var days = Math.floor(hours / 24);
                             if (days <= 1) {
-                                return "yesterday";
+                                return "y";
                             }
                             else if (days > 1 && days < 30) {
-                                return days + " days";
+                                return days + "d";
                             }
                             else {
                                 var months = Math.floor(days / 30);
                                 if (months <= 1) {
-                                    return months + " month";
+                                    return months + "mon";
                                 }
                                 else if (months > 1 && months < 12) {
-                                    return months + " months";
+                                    return months + "mon";
                                 }
                                 else {
                                     return date;

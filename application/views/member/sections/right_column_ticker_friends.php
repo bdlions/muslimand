@@ -91,25 +91,25 @@
 
 <!--Chat box-->
 <div ng-controller="messageController" ng-cloak ng-init="setUserId(('<?php echo $user_id; ?>'))">
-    <div class="row" style="position: relative; top: 310px; right: 0px; width: 258px; overflow-y: scroll;">
+    <div class="row" style="position: fixed; top: 360px; right: -17px; width: 258px; overflow-y: scroll;">
         <div class="col-md-12">
             <div style="border: 1px solid lightgray;">
                 <div id="ticker_friend" >
                     <div class="ticker" >
                         <div class="message_friends_border"  ng-repeat="friend in friendList">
                             <div class="row" ng-click="getChatInitialInfo(friend)">
-                                <div class="col-md-3">
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{friend.genderId}}.jpg" class="img-responsive"  alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>{{friend.userId}}.jpg"/>
+                                <div class="col-md-2">
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{friend.genderId}}.jpg"  alt="" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>{{friend.userId}}.jpg"/>
                                 </div>
                                 <div class="col-md-7">
                                     <span class="chatting_user_name" data-toggle="tooltip" data-placement="top" title="{{friend.firstName}}&nbsp;{{friend.lastName}}">{{friend.firstName + " " + friend.lastName}}</span>
                                 </div>
-                                <div class="col-md-2">
-                                    <div ng-if="friend.onlineStatus == <?php echo USER_ONLINE_STATUS_ID_ACTIVE; ?>">
+                                <div class="col-md-3">
+                                    <div style="margin-top: 3px;" ng-if="friend.onlineStatus == <?php echo USER_ONLINE_STATUS_ID_ACTIVE; ?>">
                                         <div class="status online"> </div>
                                     </div>
-                                    <div ng-if="friend.onlineStatus != <?php echo USER_ONLINE_STATUS_ID_ACTIVE; ?>">
-                                        <a> {{friend.lastLogin}}</a>
+                                    <div style="margin-top: 5px;" ng-if="friend.onlineStatus != <?php echo USER_ONLINE_STATUS_ID_ACTIVE; ?>">
+                                        <span style="font-size: 10px; font-weight: bold;">{{friend.lastLogin}}</span>
                                     </div>
                                 </div>
                             </div> 

@@ -35,10 +35,11 @@
             </div>
         </div>
     </div>
-    <!-- 
+   
     <div id="edit_relation_status" style="display: none">
-        <?php //$this->load->view("member/profile/about/family_relationship/edit_relationship"); ?>  
+        <?php $this->load->view("member/profile/about/family_relationship/edit_relationship"); ?>  
     </div>
+     <!-- 
    <div  class="row"  ng-if="(profileId != '0' && userId == profileId) || (profileId == '0')">
         <div class="pagelet_divider"></div>
         <div class="col-md-12" id="family_member_id">
