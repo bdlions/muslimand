@@ -52,11 +52,9 @@
                 <?php $this->load->view("member/photo/section/all_photos"); ?>
             </div>
         </div>
-        <div  >
-            <div >
+            <div>
                 <?php $this->load->view("member/photo/section/view_album_photos"); ?>
             </div>
-        </div>
     </div>
 </div>
 <?php $this->load->view("member/photo/section/slider_photo_modal"); ?>

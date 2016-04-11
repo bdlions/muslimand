@@ -809,7 +809,6 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
 .photo_list_img_style a img{
     height: 90px;
     width: 85px;
-    padding-bottom: 10px;
 }
 
 /*------------------------------------------- Custom Buttons --------------------------------- */
@@ -1542,4 +1541,12 @@ a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_b
     position: fixed;
     right: 40px;
     width: 504px;
+}
+
+.photo_list_name_caption{
+    color: #703684;
+    font-weight: bold;
+    font-size: 10px;
+    padding: 2px 0;
+    width: 100%!important;
 }
