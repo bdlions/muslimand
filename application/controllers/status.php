@@ -81,6 +81,9 @@ class Status extends CI_Controller {
             $status_info->userId = $user_id;
             $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
 
+            if (property_exists($requestInfo, "genderId") != FALSE) {
+                $user_info->genderId = $requestInfo->genderId;
+            }
             if (property_exists($requestInfo, "statusInfo") != FALSE) {
                 $request = $requestInfo->statusInfo;
             }
@@ -169,10 +172,14 @@ class Status extends CI_Controller {
             if (property_exists($requestInfo, "statusInfo")) {
                 $new_status_info = $requestInfo->statusInfo;
             }
+
             $user_info = new stdClass();
             $user_info->userId = $this->session->userdata('user_id');
             $user_info->firstName = $this->session->userdata('first_name');
             $user_info->lastName = $this->session->userdata('last_name');
+            if (property_exists($requestInfo, "genderId")) {
+                $user_info->genderId = $requestInfo->genderId;
+            }
             $ref_info = new stdClass();
             $ref_user_info = new stdClass();
             if (property_exists($old_status_info, "pageInfo")) {
@@ -186,11 +193,11 @@ class Status extends CI_Controller {
                 $ref_user_info->lastName = $old_status_info->userInfo->lastName;
                 $ref_info->userInfo = $ref_user_info;
             }
-            
-            if(property_exists($old_status_info, "statusId")){
+
+            if (property_exists($old_status_info, "statusId")) {
                 $ref_info->statusId = $old_status_info->statusId;
             }
-            
+
             if (property_exists($old_status_info, "images")) {
                 $images = array();
                 $image_list = $old_status_info->images;
@@ -213,11 +220,11 @@ class Status extends CI_Controller {
             $status_info->statusTypeId = STATUS_TYPE_ID_SHARE_OTHER_STATUS;
             $status_info->mappingId = $this->session->userdata('user_id');
             $new_status_id = $status_info->statusId = $this->utils->generateRandomString(STATUS_ID_LENGTH);
-            
+
             if (property_exists($new_status_info, "description")) {
                 $status_info->description = $new_status_info->description;
             }
-            
+
             $referenceId = new stdClass();
             $referenceId->statusId = $new_status_id;
             $referenceList = array();
@@ -275,12 +282,17 @@ class Status extends CI_Controller {
             if (property_exists($status, "statusTypeId")) {
                 $status_type_id = $status->statusTypeId;
             }
+            if (property_exists($status, "genderId")) {
+                $gender_id = $status->genderId;
+            }
         }
         $ref_user_info = new StdClass(); //get from session;
         $ref_user_info->userId = $this->session->userdata('user_id');
 
         $ref_user_info->firstName = $this->session->userdata('first_name');
         $ref_user_info->lastName = $this->session->userdata('last_name');
+        $ref_user_info->genderId = $gender_id;
+
         $status_like_info = new StdClass();
         $status_like_info->userInfo = $ref_user_info;
         if (!(isset($user_id))) {
@@ -315,6 +327,9 @@ class Status extends CI_Controller {
         }
         if (property_exists($request, "commentId")) {
             $comment_id = $request->commentId;
+        }
+        if (property_exists($request, "genderId")) {
+            $ref_user_info->genderId = $request->genderId;
         }
         $status_like_info = new StdClass();
         $status_like_info->userInfo = $ref_user_info;
@@ -356,6 +371,9 @@ class Status extends CI_Controller {
             $ref_user_info->userId = $reference_user_info->userId;
             $ref_user_info->firstName = $reference_user_info->firstName;
             $ref_user_info->lastName = $reference_user_info->lastName;
+        }
+        if (property_exists($status_info, "genderId")) {
+            $user_info->genderId = $status_info->genderId;
         }
         $status_comment_info = new StdClass();
         $status_comment_info->commentId = $this->utils->generateRandomString(STATUS_COMMENT_ID_LENGTH);

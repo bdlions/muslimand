@@ -36,13 +36,13 @@
                             </ul>
                         </div>
                     </div>
-                    
-                    
-                    
-                     <div class="modal_photo_pagelet modal_slider_comment_section">
+
+
+
+                    <div class="modal_photo_pagelet modal_slider_comment_section">
                         <div class="row">
                             <div class="col-md-2" >
-                                <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{photoInfo.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{photoInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
+                                <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{photoInfo.userInfo.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{photoInfo.userInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
                             </div>
                             <div class="col-md-10">
                                 <div class="row">
@@ -154,9 +154,9 @@
                             </div>
                         </div>
                         <div class="pagelet_divider"></div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span ng-if = "photoInfo.likeCounter > 0">
+                        <span ng-if = "photoInfo.likeCounter > 0">
+                            <div class="row">
+                                <div class="col-md-12">
                                     <img src="<?php echo base_url(); ?>resources/images/like_icon.png">
                                     <a  id="like_list_id"  style="color: #3B59A9;" href onclick="open_modal_photo_like_list(angular.element(this).scope().photoInfo.photoId)" >
                                         <span ng-if = "photoInfo.likeStatus === '1'">
@@ -170,27 +170,31 @@
                                         </span>
                                         like this.
                                     </a> 
-                                </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="pagelet_divider"></div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <img src="<?php echo base_url(); ?>resources/images/share_icon.png" >
-                                <a href="#">{{photoInfo.shareCounter}} shares</a>
+                            <div class="pagelet_divider"></div>
+                        </span>
+                        <span ng-if="photoInfo.shareCounter > 0">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img src="<?php echo base_url(); ?>resources/images/share_icon.png" >
+                                    <a href="#">{{photoInfo.shareCounter}} shares</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="pagelet_divider"></div>
-                        <div class="row ">
-                            <div class="col-md-12" id="more_photo_comment_id">
-                                <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
-                                <a href id="photo_more_comment_show" onclick="get_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
+                        </span>
+                        <span ng-if="photoInfo.commentCounter > 0" id="photo_more_comment_show_{{photoInfo.photoId}}">
+                            <div class="pagelet_divider" ></div>
+                            <div class="row ">
+                                <div class="col-md-12" id="more_photo_comment_id">
+                                    <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
+                                    <a href id="photo_more_comment_show" onclick="get_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
+                                </div>
                             </div>
-                        </div>
+                        </span>
                         <div class="modal_photo_slider_custom_scroll">
                             <div class="row form-group" ng-repeat="comment in photoInfo.commentList">
                                 <div class="col-md-1">
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg" width="30" height="30">
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userInfo.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg" width="30" height="30">
                                 </div>
                                 <div class="col-md-11">
                                     <div class="row">
@@ -214,7 +218,7 @@
 
                         <div class="row">
                             <div profile_picture="" class="col-md-1">
-                                <img class="lightgray_border"  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userGenderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
+                                <img class="lightgray_border"  fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{userRelation.your_gender_id}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 . $user_id . '.jpg?time=' . time(); ?>"/>
                             </div>
                             <div class="col-md-11">
                                 <form  ng-submit="addPhotoComment(photoInfo)">
@@ -223,8 +227,8 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
+
+
                 </slide>
 
             </carousel>
@@ -238,7 +242,7 @@
 <?php $this->load->view("member/photo/modal_shared_album"); ?>
 <script type="text/javascript">
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.flipbook').pageFlip({});
     });
 
@@ -247,20 +251,21 @@
     }
 
     function get_photo_comments(photoId) {
-        angular.element($('#photo_more_comment_show')).scope().getPhotoComments(photoId, function() {
-            $('#more_photo_comment_id').hide();
+        angular.element($('#photo_more_comment_show')).scope().getPhotoComments(photoId, function () {
+            $('#photo_more_comment_show_' + photoId).hide();
         });
     }
     function open_modal_photo_like_list(photoId) {
-        angular.element($('#photo_like_list_id')).scope().getPhotoLikeList(photoId, function() {
+        angular.element($('#photo_like_list_id')).scope().getPhotoLikeList(photoId, function () {
             $('#modal_liked_people_list').modal('show');
 
         });
     }
     function add_photo_like(photoInfo) {
+        var albumId = photoInfo.albumId;
         var photoId = photoInfo.photoId;
         var referenceId = photoInfo.referenceId;
-        angular.element($('#photo_like_' + photoId)).scope().addPhotoLike(photoId, referenceId, function() {
+        angular.element($('#photo_like_' + photoId)).scope().addPhotoLike(albumId, photoId, referenceId, function () {
             $("#photo_like_" + photoId).hide();
             $("#photo_dislike_" + photoId).show();
         });
@@ -270,9 +275,9 @@
 //        var photoId = photoInfo.photoId;
         var albumId = photoInfo.albumId;
         var selectionInfo = " Photo ? ";
-        delete_confirmation(selectionInfo, function(response) {
+        delete_confirmation(selectionInfo, function (response) {
             if (response == '<?php echo MODAL_DELETE_YES; ?>') {
-                angular.element($('#delete_content_btn')).scope().deletePhoto(photoInfo, function() {
+                angular.element($('#delete_content_btn')).scope().deletePhoto(photoInfo, function () {
                     $('#common_delete_confirmation_modal').modal('hide');
                     window.location = '<?php echo base_url(); ?>photos/get_album/' + albumId;
                 });
@@ -289,8 +294,8 @@
 
 </script>
 <script>
-    $(function() {
-        $('.left.carousel-control').on("click", function() {
+    $(function () {
+        $('.left.carousel-control').on("click", function () {
             console.log("fgh");
         });
     });

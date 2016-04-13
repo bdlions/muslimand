@@ -1,7 +1,7 @@
 angular.module('services.Page', []).
         factory('pageService', function ($http, $location) {
             var pageService = {};
-            var $app_name = "/muslimand";
+            var $app_name = "";
             pageService.addPage = function (pageInfo) {
                 return $http({
                     method: 'post',
@@ -81,6 +81,80 @@ angular.module('services.Page', []).
                     }
                 });
             };
+//.....................
+            pageService.addAlbumLike = function (albumId, referenceId, mappingId, genderId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/add_album_like',
+                    data: {
+                        albumId: albumId,
+                        referenceId: referenceId,
+                        mappingId: mappingId,
+                        genderId: genderId
+                    }
+                });
+            };
+
+            pageService.addAlbumComment = function (commentInfo) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/add_album_comment',
+                    data: {
+                        commentInfo: commentInfo
+                    }
+                });
+            };
+            pageService.getAlbumComments = function (albumId, mappingId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/get_album_comments',
+                    data: {
+                        albumId: albumId,
+                        mappingId: mappingId
+                    }
+                });
+            };
+            pageService.getAlbumLikeList = function (albumId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/get_album_like_list',
+                    data: {
+                        albumId: albumId,
+                    }
+                });
+            };
+            pageService.addPhotoLike = function (albumId,photoId, referenceId, genderId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/add_photo_like',
+                    data: {
+                        albumId: albumId,
+                        photoId: photoId,
+                        referenceId: referenceId,
+                        genderId: genderId
+                    }
+                });
+            };
+            pageService.addPhotoComment = function (commentInfo, genderId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/add_photo_comment',
+                    data: {
+                        commentInfo: commentInfo,
+                        genderId: genderId
+                    }
+                });
+            };
+            pageService.getPhotoComments = function (photoId) {
+                return $http({
+                    method: 'post',
+                    url: $location.path() + $app_name + '/pages/get_photo_comments',
+                    data: {
+                        photoId: photoId
+                    }
+                });
+            };
+            //........................
             //...................members.............................................................
             pageService.getInviteFriendList = function (pageId) {
                 return $http({

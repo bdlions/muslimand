@@ -175,13 +175,15 @@
                                 <a href="#">{{photoInfo.shareCounter}} shares</a>
                             </div>
                         </div>
+                        <span  ng-if ="photoInfo.commentCounter > 0 " id="page_photo_more_comment_show_{{photoInfo.photoId}}">
                         <div class="pagelet_divider"></div>
-                        <div class="row " ng-if ="photoInfo.commentCounter > 0 ">
+                        <div class="row ">
                             <div class="col-md-12" id="page_photo_slider_more_comment_display_id">
                                 <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
                                 <a href id="page_photo_more_comment_show_id" onclick="get_page_photo_slider_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
                             </div>
                         </div>
+                        </span>
                         <div class="modal_photo_slider_custom_scroll">
                             <div class="row form-group" ng-repeat="comment in photoInfo.commentList">
                                 <div class="col-md-1">
@@ -234,7 +236,7 @@
     }
     function get_page_photo_slider_comments(photoId) {
         angular.element($('#page_photo_more_comment_show_id')).scope().getPhotoComments(photoId, function() {
-            $('#page_photo_slider_more_comment_display_id').hide();
+            $('#page_photo_more_comment_show_' + photoId).hide();
         });
     }
     function open_modal_page_photo_likelist(photoId) {

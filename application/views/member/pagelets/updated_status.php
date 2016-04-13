@@ -35,7 +35,7 @@
                                                     status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO; ?>' ||
                                                     status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTOS ?>' ||
                                                     status.statusTypeId == '<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_FRIEND_PROFILE_WITH_PHOTO; ?>'">
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{status.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40 ?>40x40_{{status.userInfo.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W40_H40; ?>{{status.userInfo.userId}}.jpg?time= <?php echo time(); ?>" alt="">
                                 </div>
                             </div>
                             <div class="col-md-10" >
@@ -93,7 +93,7 @@
                                                         cover picture 
                                                     </span>
                                                     <span ng-if="<?php echo STATUS_TYPE_ID_ADD_ALBUM_PHOTOS; ?> == status.statusTypeId">
-                                                        added new photos 
+                                                        added a new album 
                                                     </span>
                                                     <span ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE_WITH_PHOTO; ?> == status.statusTypeId">
                                                         added a new photo 
@@ -346,13 +346,13 @@
                                 </div>
                             </div>
                         </span>
-                        <span ng-if="status.commentCounter > 0">
-                            <div class="pagelet_divider" id='pagelet_id_1'></div>
+                        <span ng-if="status.commentCounter > 0" id="more_comment_{{status.statusId}}">
+                            <div class="pagelet_divider" ></div>
                             <div class="row form-group">
-                                <div class="col-md-12" id="more_comment_id">
+                                <div class="col-md-12" >
                                     <div style="float: left;">
                                         <img ng-src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
-                                        <a href  id="status_more_comment" onclick="get_album_comments(angular.element(this).scope().status.statusId)">view {{status.commentCounter}} more comments </a>
+                                        <a href  id="status_more_comment" onclick="get_status_comments(angular.element(this).scope().status.statusId)">view {{status.commentCounter}} more comments </a>
                                     </div>
                                 </div>
                             </div>
@@ -363,8 +363,7 @@
                             <div ng-repeat="commentInfo in status.commentList.slice().reverse()">
                                 <div class="row form-group" id="comment_{{commentInfo.commentId}}">
                                     <div class="col-md-1" profile_picture >
-                                        <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg" width="30" height="30">
-                                        <!--<img style="border: 1px solid lightgray; visibility:hidden; height: 0px " src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userGenderId}}.jpg">-->
+                                        <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{commentInfo.userInfo.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{commentInfo.userInfo.userId}}.jpg" width="30" height="30">
                                     </div>
                                     <div class="col-md-9">
                                         <div class="row" >
@@ -444,14 +443,14 @@
 
 
         <script type="text/javascript">
-            $(function() {
+            $(function () {
                 console.log("dddd");
                 var showChar = 200;
                 var ellipsestext = "...";
                 var moretext = "Show more >";
                 var lesstext = "Show less";
 
-                $('.more').each(function() {
+                $('.more').each(function () {
                     console.log("inside more");
                     var content = $(this).html();
                     if (content.length > showChar) {
@@ -462,7 +461,7 @@
                     }
                 });
 
-                $(".morelink").click(function() {
+                $(".morelink").click(function () {
                     if ($(this).hasClass("less")) {
                         $(this).removeClass("less");
                         $(this).html(moretext);
@@ -479,15 +478,15 @@
 
 
         <script type="text/javascript">
-            $(function() {
-                $("#share_add_id").on("click", function() {
+            $(function () {
+                $("#share_add_id").on("click", function () {
                     //                $("#template/newsfeed.html").hide();
                     $("#modal_share_content").show();
                 });
             });
-            function get_album_comments(statusId) {
-                angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function() {
-                    $('#more_comment_id').hide();
+            function get_status_comments(statusId) {
+                angular.element($('#status_more_comment')).scope().getStatusComments(statusId, function () {
+                    $('#more_comment_' +statusId).hide();
                     $('#pagelet_id_1').hide();
                     $('#pagelet_id_2').hide();
                 });
@@ -496,14 +495,14 @@
             function open_modal_share(statusInfo) {
                 var userId = statusInfo.userId;
                 var pageId = statusInfo.pageId;
-                var genderId = statusInfo.genderId;
+
                 var imageSize = 0;
                 if (statusInfo.images) {
                     imageSize = statusInfo.images.length;
                 }
                 var statusTypeId = statusInfo.statusTypeId;
 
-                angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function() {
+                angular.element($('#share_add_id')).scope().setSharedInfo(statusInfo, function () {
 
                     if (statusTypeId == '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_PROFILE_PICTURE ?>'
                             || statusTypeId == '<?php echo STATUS_TYPE_ID_PAGE_CHANGE_COVER_PICTURE ?>'
@@ -517,6 +516,7 @@
                         $("#shared_user_profile_picture_set_id").attr('src', '<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40; ?>' + pageId + ".jpg");
                         $("#on-error-profile-photo").attr('src', '<?php echo base_url() . PAGE_PROFILE_PICTURE_PATH_W40_H40; ?>' + "40x40.jpg");
                     } else {
+                        var genderId = statusInfo.userInfo.genderId;
                         $("#user_first_name").append(statusInfo.userInfo.firstName);
                         $("#user_last_name").append(statusInfo.userInfo.lastName);
                         $("#old_description").append(statusInfo.description);
@@ -539,12 +539,12 @@
             }
 
             function open_modal_like_list(statusId) {
-                angular.element($('#like_list_id')).scope().getStatusLikeList(statusId, function() {
+                angular.element($('#like_list_id')).scope().getStatusLikeList(statusId, function () {
                     $('#modal_liked_people_list').modal('show');
                 });
             }
             function open_modal_shared_list(statusId) {
-                angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function() {
+                angular.element($('#shared_list_id')).scope().getStatusShareList(statusId, function () {
                     $('#modal_shared_people_list').modal('show');
                 });
             }
@@ -557,14 +557,14 @@
                 $("#updateStatusComment_" + commentId).show();
             }
             function delete_status_comment(statusId, commentId) {
-                angular.element($('#delete_option_comment_line_' + commentId)).scope().deleteStatusComment(statusId, commentId, function(response) {
+                angular.element($('#delete_option_comment_line_' + commentId)).scope().deleteStatusComment(statusId, commentId, function (response) {
                     if (response == "1") {
                         $("#comment_" + commentId).hide();
                     }
                 });
             }
             function get_comment_like_list(statusId, commentId) {
-                angular.element($('#comment_like_' + commentId)).scope().getStatusCommentLikeList(statusId, commentId, function() {
+                angular.element($('#comment_like_' + commentId)).scope().getStatusCommentLikeList(statusId, commentId, function () {
                     $('#modal_comment_liked_people_list').modal('show');
                 });
             }

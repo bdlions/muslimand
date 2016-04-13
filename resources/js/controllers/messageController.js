@@ -178,7 +178,6 @@ angular.module('controllers.Message', ['services.Message', 'ngWebSocket']).
                     }
                 }
                 $scope.chatBoxes = tempChatBoxes;
-                console.log($scope.chatBoxes);
                 $scope.miniBoxes = tempMiniBoxes;
             };
             $scope.removeUser = function (userObject) {

@@ -1,7 +1,7 @@
 <div id="all_photos" style="margin-left: 15px;">
     <div class="row form-group">
         <div class="col-md-3" ng-repeat="photoInfo in timeLinePhotoList">
-            <img style="border: 1px solid #703684; margin-bottom: 25px; height: 120px; width: 150px;"   ng-click="openPhotoModal(photoInfo)" src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{photoInfo.image}}" >
+            <img style="border: 1px solid #703684; margin-bottom: 25px; height: 120px; width: 150px;"   ng-click="openTimelinePhotoModal(photoInfo)" src="<?php echo base_url() . PAGE_IMAGE_PATH ?>{{photoInfo.image}}" >
         </div>
     </div>
 <!--    <div class="row form-group">

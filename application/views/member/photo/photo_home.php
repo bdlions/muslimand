@@ -19,7 +19,7 @@
 </div>
 <div  ng-controller="photoController">
     <?php $this->load->view("member/photo/section/modal_create_album"); ?>
-    <div ng-clock class="pagelet">
+    <div ng-clock class="pagelet" ng-init="setUserRelation(<?php echo htmlspecialchars(json_encode($user_relation)); ?>)">
         <div class="row form-group">
             <div class="col-md-6">
                 <a href="<?php echo base_url(); ?>photos/"><img src="<?php echo base_url(); ?>resources/images/photos/icon/photo.png"></a>

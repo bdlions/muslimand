@@ -115,7 +115,6 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                 if (cYear != null) {
                     $scope.workInfo.endDate = cYear;
                 }
-                console.log($scope.workInfo);
                 $scope.workInfo.userId = userId;
                 basicProfileService.addWorkPlace($scope.workInfo).
                         success(function (data, status, headers, config) {
@@ -333,7 +332,6 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                                 }
                                 if (typeof data.basic_info.religions !== "undefined") {
                                     $scope.religion = data.basic_info.religions;
-                                    console.log($scope.religion)
                                 }
                             }
                             requestFunction(data);
@@ -449,7 +447,6 @@ angular.module('controllers.BasicProfile', ['services.BasicProfile']).
                             }
                             if (typeof data.relationship_list != "undefined") {
                                 $scope.relationShipList = data.relationship_list ;
-                                console.log($scope.relationShipList);
                                 
                             }
                             requestFunction(data);
