@@ -140,7 +140,7 @@
                                             <img src="<?php echo base_url() ?>resources/images/comment_icon.png">
                                             Comment
                                         </a>
-                                      <a onclick="" href="" id="share_add_id" style="color: #3B59A9;">
+                                        <a onclick="" href="" id="share_add_id" style="color: #3B59A9;">
                                             <img ng-src="<?php echo base_url(); ?>resources/images/share_icon.png" src="<?php echo base_url(); ?>resources/images/share_icon.png"> Share
                                         </a>
                                     </div>
@@ -167,24 +167,27 @@
                                 </span>
                             </div>
                         </div>
-<!--                        <div class="pagelet_divider"></div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <img src="<?php echo base_url(); ?>resources/images/share_icon.png" >
-                                <a href="#">{{photoInfo.shareCounter}} shares</a>
+                        <!--                        <div class="pagelet_divider"></div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <img src="<?php echo base_url(); ?>resources/images/share_icon.png" >
+                                                        <a href="#">{{photoInfo.shareCounter}} shares</a>
+                                                    </div>
+                                                </div>-->
+                        <span ng-if="photoInfo.commentCounter > 0" id="more_user_photo_slider_comment_{{photoInfo.photoId}}"  >
+                            <div class="pagelet_divider"></div>
+                            <div class="row ">
+                                <div class="col-md-12" id="more_user_photo_slider_comment_id">
+                                    <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
+                                    <a href id="user_photo_more_comment_show" onclick="get_user_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
+                                </div>
                             </div>
-                        </div>-->
+                        </span>
                         <div class="pagelet_divider"></div>
-                        <div class="row ">
-                            <div class="col-md-12" id="more_user_photo_slider_comment_id">
-                                <img src="<?php echo base_url(); ?>resources/images/comment_icon.png" >
-                                <a href id="user_photo_more_comment_show" onclick="get_user_photo_comments(angular.element(this).scope().photoInfo.photoId)">view {{photoInfo.commentCounter}} more comments</a>
-                            </div>
-                        </div>
                         <div class="modal_photo_slider_custom_scroll">
                             <div class="row form-group" ng-repeat="comment in photoInfo.commentList">
                                 <div class="col-md-1">
-                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userGenderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg" width="30" height="30">
+                                    <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{comment.userInfo.genderId}}.jpg" style="border: 1px solid lightgray" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{comment.userInfo.userId}}.jpg" width="30" height="30">
                                 </div>
                                 <div class="col-md-11">
                                     <div class="row">
@@ -234,7 +237,7 @@
 
     function get_user_photo_comments(photoId) {
         angular.element($('#user_photo_more_comment_show')).scope().getPhotoComments(photoId, function () {
-            $('#more_user_photo_slider_comment_id').hide();
+            $('#more_user_photo_slider_comment_' + photoId).hide();
         });
     }
     function open_modal_photo_like_list(photoId) {

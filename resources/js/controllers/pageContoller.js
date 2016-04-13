@@ -21,10 +21,12 @@ angular.module('controllers.Page', ['services.Page', 'services.Timezone']).
             $scope.albumPhotoList = [];
             $scope.pageAlbumList = [];
             $scope.pageInfoList = [];
+            $scope.likeList = [];
             $scope.PageInfo = {};
             $scope.albumDetail = {};
             $scope.statusInfo = {};
             $scope.PageBasicInfo = {};
+            $scope.photoCommentInfo = {};
             $scope.memberInfo = {};
             $scope.userCurrentTimeStamp = new Date().getTime() / 1000;
             $scope.pageFlag = true;
@@ -81,13 +83,17 @@ angular.module('controllers.Page', ['services.Page', 'services.Timezone']).
             $scope.setMemberInfo = function (memberInfo) {
                 $scope.memberInfo = JSON.parse(memberInfo);
             };
+            $scope.setUserGender = function (genderId) {
+                $scope.userGenderId = genderId;
+            };
             $scope.setPageInfoList = function (pageList) {
                 $scope.pageInfoList = pageList;
-                console.log($scope.pageInfoList)
             };
             $scope.setTimelineList = function (photoList) {
                 $scope.timeLinePhotoList = JSON.parse(photoList);
             };
+
+
             $scope.updatePage = function (pageId, requestFunction) {
                 $scope.PageInfo.pageId = pageId;
                 pageService.updatePage($scope.PageInfo).
@@ -124,31 +130,174 @@ angular.module('controllers.Page', ['services.Page', 'services.Timezone']).
             $scope.getPageAlbums = function (pageId, requestFunction) {
                 pageService.getPageAlbums(pageId).
                         success(function (data, status, headers, config) {
-                            console.log(data);
                             $scope.pageAlbumList = data.album_list
                             requestFunction();
                         });
             };
+            //....................
+
+            $scope.addAlbumLike = function (albumInfo) {
+                var albumId = albumInfo.albumId;
+                var referenceId = albumInfo.referenceId;
+                var mappingId = albumInfo.pageId;
+                pageService.addAlbumLike(albumId, referenceId, mappingId, $scope.userGenderId).
+                        success(function (data, status, headers, config) {
+                            $scope.albumDetail.likeStatus = "1";
+                            if (typeof $scope.albumDetail.likeCounter != "undefined") {
+                                $scope.albumDetail.likeCounter + +1;
+                            } else {
+                                $scope.albumDetail.likeCounter = 1;
+                            }
+                            $scope.albumDetail.likeCounter
+                            $scope.likeList.push(data.like_info);
+                        });
+            };
+
+
+            $scope.addAlbumComment = function (albumInfo) {
+                var albumId = albumInfo.albumId;
+                $scope.albumCommentInfo.albumId = albumInfo.albumId;
+                $scope.albumCommentInfo.mappingId = albumInfo.pageId;
+                $scope.albumCommentInfo.referenceId = albumInfo.referenceId;
+                $scope.albumCommentInfo.genderId = $scope.userGenderId;
+                pageService.addAlbumComment($scope.albumCommentInfo).
+                        success(function (data, status, headers, config) {
+                            data.comment.createdOn = "1 see ago";
+                            if (typeof $scope.albumDetail.commentList == "undefined") {
+                                $scope.albumDetail.commentList = new Array();
+                            }
+                            $scope.albumDetail.commentList.push(data.comment);
+                            $scope.albumCommentInfo.comment = "";
+                        });
+                return false;
+            };
+
+            $scope.getAlbumComments = function (albumId, mappingId, requestFunction) {
+                pageService.getAlbumComments(albumId, mappingId).
+                        success(function (data, status, headers, config) {
+                            if (typeof data.comment_list != "undefine") {
+                                angular.forEach(data.comment_list, function (comment, key) {
+                                    if (typeof comment.createdOn != "undefined") {
+                                        if ($scope.userCurrentTimeStamp > comment.createdOn) {
+                                            comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                        } else {
+                                            comment.createdOn = "1 see ago";
+                                        }
+                                    }
+                                }, data.comment_list);
+                            }
+                            $scope.albumDetail.commentList = data.comment_list;
+                            requestFunction();
+                        });
+                return false;
+            };
+
+
+            $scope.getAlbumLikeList = function (albumId, requestFunction) {
+                pageService.getAlbumLikeList(albumId).
+                        success(function (data, status, headers, config) {
+                            $scope.likeList = data.like_list;
+                            requestFunction();
+                        });
+                return false;
+            };
+
+
+
+            $scope.addPhotoLike = function (albumId, photoId, referenceId, requestFunction) {
+                pageService.addPhotoLike(albumId, photoId, referenceId, $scope.userGenderId).
+                        success(function (data, status, headers, config) {
+                            angular.forEach($scope.sliderImages, function (value, key) {
+                                if (value.photoId == photoId) {
+                                    (value.likeStatus = "1");
+                                    if (typeof value.likeCounter == "undefined") {
+                                        (value.likeCounter = 1);
+                                    } else {
+                                        (value.likeCounter = value.likeCounter + 1);
+                                    }
+                                }
+                            }, $scope.sliderImages);
+//                            $scope.photolikeList.push(data.like_info);
+                            requestFunction();
+                        });
+                return false;
+            };
+            $scope.addPhotoComment = function (photoInfo) {
+                var photoId = $scope.photoCommentInfo.photoId = photoInfo.photoId;
+                $scope.photoCommentInfo.referenceId = photoInfo.referenceId;
+                $scope.photoCommentInfo.albumId = photoInfo.albumId;
+                $scope.photoCommentInfo.userInfo = photoInfo.userInfo;
+                pageService.addPhotoComment($scope.photoCommentInfo, $scope.userGenderId).
+                        success(function (data, status, headers, config) {
+                            data.comment.createdOn = "1 see ago";
+                            angular.forEach($scope.sliderImages, function (value, key) {
+                                if (value.photoId === photoId) {
+                                    if (typeof value.commentList == "undefined") {
+                                        value.commentList = new Array();
+                                    }
+                                    value.commentList.push(data.comment);
+                                }
+                            }, $scope.sliderImages);
+                            $scope.photoCommentInfo.comment = "";
+                        });
+                return false;
+            };
+
+            $scope.getPhotoComments = function (photoId, requestFunction) {
+                pageService.getPhotoComments(photoId).
+                        success(function (data, status, headers, config) {
+                            if (typeof data.comment_list != "undefined") {
+                                angular.forEach(data.comment_list, function (comment, key) {
+                                    if (typeof comment.createdOn != "undefined") {
+                                        if ($scope.userCurrentTimeStamp > comment.createdOn) {
+                                            comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                        } else {
+                                            comment.createdOn = "1 see ago";
+                                        }
+                                    }
+                                });
+                            }
+                            angular.forEach($scope.sliderImages, function (value, key) {
+                                if (value.photoId == photoId ? value.commentList = data.comment_list : '') {
+                                }
+                            }, $scope.sliderImages);
+                            $scope.photoCommentInfo.comment = "";
+                            requestFunction();
+                        });
+                return false;
+            };
+
+
+
+//...........................
+
+
 
 
 
             $scope.getPageAlbum = function (albumId, pageId, requestFunction) {
                 pageService.getPageAlbum(albumId, pageId).
                         success(function (data, status, headers, config) {
-                            console.log(data);
                             if (typeof data.photo_list != "undefined") {
                                 $scope.albumPhotoList = data.photo_list;
                             }
                             if (typeof data.album_info != "undefined") {
                                 $scope.albumDetail = data.album_info;
+                                $scope.albumDetail.pageInfo = JSON.parse($scope.albumDetail.pageInfo);
                                 if (typeof $scope.albumDetail.commentList != "undefined") {
                                     angular.forEach($scope.albumDetail.commentList, function (comment, key) {
+                                        comment.userInfo = JSON.parse(comment.userInfo);
                                         if (typeof comment.createdOn != "undefined") {
-                                            comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                            if ($scope.userCurrentTimeStamp > comment.createdOn) {
+                                                comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                            } else {
+                                                comment.createdOn = "1 see ago";
+                                            }
                                         }
                                     }, $scope.albumDetail.commentList);
                                 }
                             }
+                            console.log($scope.albumDetail);
                             requestFunction();
                         });
             };
@@ -271,16 +420,60 @@ angular.module('controllers.Page', ['services.Page', 'services.Timezone']).
             };
 
 
-            $scope.openPhotoModal = function (photoInfo) {
+//            $scope.openPhotoModal = function (photoInfo) {
+//                var albumId = photoInfo.albumId;
+//                var mappingId = photoInfo.pageId;
+//                var photoId = photoInfo.photoId;
+//                pageService.getSliderAlbum(albumId, mappingId).
+//                        success(function (data, status, headers, config) {
+//                            var pageInfo = {};
+//                            if (typeof data.pageInfo != "undefined") {
+//                                pageInfo = data.pageInfo;
+//                            }
+//                            if (typeof data.photoList != "undefined") {
+//                                $scope.sliderImages = data.photoList;
+//                                angular.forEach($scope.sliderImages, function (photoInfo, key) {
+//                                    if (photoInfo.photoId == photoId) {
+//                                        photoInfo.active = true;
+//                                    }
+//                                    photoInfo.pageInfo = pageInfo;
+//                                    if (typeof photoInfo.createdOn != "undefined") {
+//                                        photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
+//                                    }
+//                                    if (typeof photoInfo.commentList != "undefined") {
+//                                        angular.forEach(photoInfo.commentList, function (comment, key) {
+//                                            comment.userInfo = JSON.parse(comment.userInfo);
+//                                            if (typeof comment.createdOn != "undefined") {
+//                                                comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+//                                            }
+//                                        });
+//                                    }
+//                                }, $scope.sliderImages);
+//                                $scope.modalInstance = $modal.open({
+//                                    animation: true,
+//                                    templateUrl: 'template/slider_photo-modal.html',
+//                                    scope: $scope
+//                                });
+//                            }
+//                        });
+//            };
+
+
+            $scope.openTimelinePhotoModal = function (photoInfo, pageInfo) {
+                var pageInfo = {};
+                pageInfo.pageId = $scope.PageBasicInfo.pageId;
+                pageInfo.title = $scope.PageBasicInfo.title;
+                pageInfo.referenceId = $scope.PageBasicInfo.referenceId;
+                $scope.openPhotoModal(photoInfo, pageInfo);
+
+            }
+
+            $scope.openPhotoModal = function (photoInfo, pageInfo) {
                 var albumId = photoInfo.albumId;
                 var mappingId = photoInfo.pageId;
                 var photoId = photoInfo.photoId;
                 pageService.getSliderAlbum(albumId, mappingId).
                         success(function (data, status, headers, config) {
-                            var pageInfo = {};
-                            if (typeof data.pageInfo != "undefined") {
-                                pageInfo = data.pageInfo;
-                            }
                             if (typeof data.photoList != "undefined") {
                                 $scope.sliderImages = data.photoList;
                                 angular.forEach($scope.sliderImages, function (photoInfo, key) {
@@ -288,17 +481,27 @@ angular.module('controllers.Page', ['services.Page', 'services.Timezone']).
                                         photoInfo.active = true;
                                     }
                                     photoInfo.pageInfo = pageInfo;
+
                                     if (typeof photoInfo.createdOn != "undefined") {
-                                        photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
+                                        if ($scope.userCurrentTimeStamp > photoInfo.createdOn) {
+                                            photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
+                                        } else {
+                                            photoInfo.createdOn = "1 see ago";
+                                        }
                                     }
                                     if (typeof photoInfo.commentList != "undefined") {
                                         angular.forEach(photoInfo.commentList, function (comment, key) {
                                             comment.userInfo = JSON.parse(comment.userInfo);
                                             if (typeof comment.createdOn != "undefined") {
-                                                comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                                if ($scope.userCurrentTimeStamp > comment.createdOn) {
+                                                    comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                                } else {
+                                                    comment.createdOn = "1 see ago";
+                                                }
                                             }
                                         });
                                     }
+//
                                 }, $scope.sliderImages);
                                 $scope.modalInstance = $modal.open({
                                     animation: true,
@@ -308,6 +511,9 @@ angular.module('controllers.Page', ['services.Page', 'services.Timezone']).
                             }
                         });
             };
+
+
+
             $scope.ok = function () {
                 $scope.modalInstance.close();
             };

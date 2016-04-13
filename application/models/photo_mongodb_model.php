@@ -107,6 +107,10 @@ class Photo_mongodb_model extends CI_Model {
         $this->curl->post(array("mappingId" => $mapping_id, "albumId" => $album_id, "referenceId" => $reference_id, "likeInfo" => json_encode($like_info)));
         return $this->curl->execute();
     }
+    
+    
+    
+    
 
     /*
      * This method will delete user album 
@@ -279,9 +283,9 @@ class Photo_mongodb_model extends CI_Model {
      * @author created by Rashida on 20th September 2015
      */
 
-    public function add_photo_like($user_id, $photo_id, $reference_id, $like_info) {
+    public function add_photo_like($user_id,$album_id,  $photo_id, $reference_id, $like_info) {
         $this->curl->create($this->SERVICE_PHOTO . 'addPhotoLike');
-        $this->curl->post(array("userId" => $user_id, "photoId" => $photo_id, "referenceId" => $reference_id, "likeInfo" => json_encode($like_info)));
+        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id, "photoId" => $photo_id, "referenceId" => $reference_id, "likeInfo" => json_encode($like_info)));
         return $this->curl->execute();
     }
 

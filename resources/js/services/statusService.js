@@ -1,6 +1,7 @@
 angular.module('services.Status', []).
         factory('statusService', function ($http, $location) {
-            var $app_name = "/muslimand";
+           var $app_name = "/muslimand";
+
             var statusService = {};
 
 
@@ -63,14 +64,13 @@ angular.module('services.Status', []).
                     }
                 });
             };
-
-
-            statusService.addStatus = function (statusInfo) {
+            statusService.addStatus = function (statusInfo, genderId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/status/add_status',
                     data: {
-                        statusInfo: statusInfo
+                        statusInfo: statusInfo,
+                        genderId: genderId
 
                     }
                 });
@@ -125,13 +125,14 @@ angular.module('services.Status', []).
                     }
                 });
             };
-            statusService.addStatusCommentLike = function (statusId, commentId) {
+            statusService.addStatusCommentLike = function (statusId, commentId, genderId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/status/add_status_comment_like',
                     data: {
                         statusId: statusId,
-                        commentId: commentId
+                        commentId: commentId,
+                        genderId: genderId
                     }
                 });
             };
@@ -193,13 +194,14 @@ angular.module('services.Status', []).
             /**
              * share status..
              * */
-            statusService.shareStatus = function (oldStatusInfo, statusInfo) {
+            statusService.shareStatus = function (oldStatusInfo, statusInfo, genderId) {
                 return $http({
                     method: 'post',
                     url: $location.path() + $app_name + '/status/share_status',
                     data: {
                         oldStatusInfo: oldStatusInfo,
-                        statusInfo: statusInfo
+                        statusInfo: statusInfo,
+                        genderId:genderId
                     }
                 });
             };

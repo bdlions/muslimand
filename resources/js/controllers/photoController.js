@@ -9,6 +9,7 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.photolikeList = [];
             $scope.albumInfo = {};
             $scope.albumDetail = {};
+            $scope.userRelation = {};
             $scope.albumDetailList = [];
             $scope.timeLinePhotoList = [];
             $scope.photoInfo = {};
@@ -33,6 +34,9 @@ angular.module('controllers.Photo', ['services.Photo']).
 
             };
 
+            $scope.setUserRelation = function (userInfo) {
+                $scope.userRelation = JSON.parse(userInfo);
+            };
             $scope.setPhotoInfo = function (photoInfo) {
                 $scope.photoInfoList.push(JSON.parse(photoInfo));
             };
@@ -43,22 +47,25 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.getUserAlbum = function (albumId, profileId, requestFunction) {
                 photoService.getUserAlbum(albumId, profileId).
                         success(function (data, status, headers, config) {
-                            console.log(data);
                             if (typeof data.photo_list != "undefined") {
                                 $scope.albumPhotoList = data.photo_list;
-
                             }
                             if (typeof data.album_info != "undefined") {
                                 $scope.albumDetail = data.album_info;
+                                $scope.albumDetail.userInfo = JSON.parse($scope.albumDetail.userInfo);
                                 if (typeof $scope.albumDetail.commentList != "undefined") {
                                     angular.forEach($scope.albumDetail.commentList, function (comment, key) {
+                                        comment.userInfo = JSON.parse(comment.userInfo);
                                         if (typeof comment.createdOn != "undefined") {
-                                            comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                            if ($scope.userCurrentTimeStamp > comment.createdOn) {
+                                                comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                            } else {
+                                                comment.createdOn = "1 see sgo";
+                                            }
                                         }
                                     }, $scope.albumDetail.commentList);
                                 }
                             }
-                            console.log($scope.albumDetail);
                             requestFunction();
                         });
             };
@@ -104,12 +111,19 @@ angular.module('controllers.Photo', ['services.Photo']).
                 var albumId = albumInfo.albumId;
                 var referenceId = albumInfo.referenceId;
                 var mappingId = albumInfo.userId;
-                photoService.addAlbumLike(albumId, referenceId, mappingId).
+                photoService.addAlbumLike(albumId, referenceId, mappingId, $scope.userRelation.your_gender_id).
                         success(function (data, status, headers, config) {
                             $scope.albumDetail.likeStatus = "1";
+                            if (typeof $scope.albumDetail.likeCounter != "undefined") {
+                                $scope.albumDetail.likeCounter + +1;
+                            } else {
+                                $scope.albumDetail.likeCounter = 1;
+                            }
+                            $scope.albumDetail.likeCounter
                             $scope.likeList.push(data.like_info);
                         });
             };
+
             $scope.deleteAlbumLike = function (albumId, likeId) {
 
 
@@ -119,9 +133,11 @@ angular.module('controllers.Photo', ['services.Photo']).
                 $scope.albumCommentInfo.albumId = albumInfo.albumId;
                 $scope.albumCommentInfo.mappingId = albumInfo.userId;
                 $scope.albumCommentInfo.referenceId = albumInfo.referenceId;
+                $scope.albumCommentInfo.genderId = $scope.userRelation.your_gender_id;
                 photoService.addAlbumComment($scope.albumCommentInfo).
                         success(function (data, status, headers, config) {
                             data.comment.createdOn = "1 see ago";
+                            data.comment.userGenderId = $scope.userRelation.your_gender_id;
                             if (typeof $scope.albumDetail.commentList == "undefined") {
                                 $scope.albumDetail.commentList = new Array();
                             }
@@ -130,18 +146,22 @@ angular.module('controllers.Photo', ['services.Photo']).
                         });
                 return false;
             };
+
             $scope.getAlbumComments = function (albumId, mappingId, requestFunction) {
                 photoService.getAlbumComments(albumId, mappingId).
                         success(function (data, status, headers, config) {
                             if (typeof data.comment_list != "undefine") {
                                 angular.forEach(data.comment_list, function (comment, key) {
                                     if (typeof comment.createdOn != "undefined") {
-                                        comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                        if ($scope.userCurrentTimeStamp > comment.createdOn) {
+                                            comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                        } else {
+                                            comment.createdOn = "1 see ago";
+                                        }
                                     }
                                 }, data.comment_list);
                             }
                             $scope.albumDetail.commentList = data.comment_list;
-                            console.log($scope.albumDetail);
                             $scope.albumCommentInfo.commentList = "";
                             requestFunction();
                         });
@@ -163,17 +183,7 @@ angular.module('controllers.Photo', ['services.Photo']).
                         });
             };
             //.............................photo module...............
-            $scope.getPhotos = function (userId) {
 
-            };
-            $scope.getNextPhoto = function (photoInfo, requestFunction) {
-                var photoId = photoInfo.photoId;
-                photoService.getNextPhoto(photoId).
-                        success(function (data, status, headers, config) {
-                            $scope.photoInfoList = data.photoInfo;
-                            requestFunction();
-                        });
-            };
             $scope.cropPicture = function (imageInfo, requestFunction) {
                 photoService.cropPicture(imageInfo).
                         success(function (data, status, headers, config) {
@@ -196,8 +206,8 @@ angular.module('controllers.Photo', ['services.Photo']).
                             requestFunction();
                         });
             };
-            $scope.addPhotoLike = function (photoId, referenceId, requestFunction) {
-                photoService.addPhotoLike(photoId, referenceId).
+            $scope.addPhotoLike = function (albumId, photoId, referenceId, requestFunction) {
+                photoService.addPhotoLike(albumId, photoId, referenceId, $scope.userRelation.your_gender_id).
                         success(function (data, status, headers, config) {
                             angular.forEach($scope.sliderImages, function (value, key) {
                                 if (value.photoId == photoId) {
@@ -230,7 +240,7 @@ angular.module('controllers.Photo', ['services.Photo']).
                 $scope.photoCommentInfo.referenceId = photoInfo.referenceId;
                 $scope.photoCommentInfo.albumId = photoInfo.albumId;
                 $scope.photoCommentInfo.userInfo = photoInfo.userInfo;
-                photoService.addPhotoComment($scope.photoCommentInfo).
+                photoService.addPhotoComment($scope.photoCommentInfo, $scope.userRelation.your_gender_id).
                         success(function (data, status, headers, config) {
                             data.comment.createdOn = "1 see ago";
                             angular.forEach($scope.sliderImages, function (value, key) {
@@ -251,7 +261,11 @@ angular.module('controllers.Photo', ['services.Photo']).
                             if (typeof data.comment_list != "undefined") {
                                 angular.forEach(data.comment_list, function (comment, key) {
                                     if (typeof comment.createdOn != "undefined") {
+                                        if($scope.userCurrentTimeStamp > comment.createdOn){
                                         comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                        }else{
+                                          comment.createdOn = "1 see ago";  
+                                        }
                                     }
                                 });
                             }
@@ -273,7 +287,18 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.searchPhoto = function () {
 
             };
-            $scope.openPhotoModal = function (photoInfo) {
+
+            $scope.openTimelinePotoSlider = function (photoInfo) {
+                var userInfo ={};
+                userInfo.firstName = $scope.userRelation.profile_first_name;
+                userInfo.lastName = $scope.userRelation.profile_last_name;
+                userInfo.userId = $scope.userRelation.user_id;
+                userInfo.genderId = $scope.userRelation.gender_id;
+                $scope.openPhotoModal(photoInfo, userInfo);
+
+            };
+
+            $scope.openPhotoModal = function (photoInfo, userInfo) {
                 var albumId = photoInfo.albumId;
                 var mappingId = photoInfo.userId;
                 var photoId = photoInfo.photoId;
@@ -285,22 +310,29 @@ angular.module('controllers.Photo', ['services.Photo']).
                                     if (photoInfo.photoId == photoId) {
                                         photoInfo.active = true;
                                     }
-                                    photoInfo.userInfo = data.userInfo;
+                                    photoInfo.userInfo = userInfo;
 
                                     if (typeof photoInfo.createdOn != "undefined") {
-                                        photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
+                                        if ($scope.userCurrentTimeStamp > photoInfo.createdOn) {
+                                            photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
+                                        } else {
+                                            photoInfo.createdOn = "1 see ago";
+                                        }
                                     }
                                     if (typeof photoInfo.commentList != "undefined") {
                                         angular.forEach(photoInfo.commentList, function (comment, key) {
                                             comment.userInfo = JSON.parse(comment.userInfo);
                                             if (typeof comment.createdOn != "undefined") {
-                                                comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                                if ($scope.userCurrentTimeStamp > comment.createdOn) {
+                                                    comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                                } else {
+                                                    comment.createdOn = "1 see ago";
+                                                }
                                             }
                                         });
                                     }
 //
                                 }, $scope.sliderImages);
-                                console.log($scope.sliderImages);
                                 $scope.modalInstance = $modal.open({
                                     animation: true,
                                     templateUrl: 'template/slider_photo-modal.html',
@@ -331,10 +363,5 @@ angular.module('controllers.Photo', ['services.Photo']).
             $scope.ok = function () {
                 $scope.modalInstance.close();
             };
-            $scope.next = function () {
-                alert("here");
-                var newIndex = (self.getCurrentIndex() + 1) % slides.length;
-                console.log("here");
-            }
 
         });

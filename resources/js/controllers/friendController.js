@@ -24,7 +24,6 @@ angular.module('controllers.Friend', ['services.Friend']).
                         success(function(data, status, headers, config) {
                             $scope.friends = data.friend_list;
                                 $scope.friendCounter = $scope.friends.length;
-                                console.log($scope.friendCounter);
                         });
             };
             $scope.getPendingRequest = function(requestFunction) {

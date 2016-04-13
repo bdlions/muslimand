@@ -51,31 +51,37 @@
                             <a  href="<?php echo base_url() ?>status/get_status_details/{{recentActivity.statusId}}">
                                 <div class="row from-group" >
                                     <div class="col-xs-3 col-sm-3 col-md-3">
-                                        <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{recentActivity.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{recentActivity.userInfo.userId}}.jpg?time=<?php echo time(); ?>" width="30" height="30">
+                                        <img fallback-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30 ?>30x30_{{recentActivity.userInfo.genderId}}.jpg" ng-src="<?php echo base_url() . PROFILE_PICTURE_PATH_W30_H30; ?>{{recentActivity.userInfo.userId}}.jpg?time=<?php echo time(); ?>" width="30" height="30">
                                     </div>
                                     <div class="col-xs-9 col-sm-9 col-md-9">
                                         <a  style="font-weight: bold;"><b>{{recentActivity.userInfo.firstName}}&nbsp;{{recentActivity.userInfo.lastName}}</b></a> 
                                         <span ng-if="<?php echo STATUS_TYPE_ID_POST_STATUS_BY_USER_AT_HIS_PROFILE; ?> == recentActivity.typeId">
                                             update
-                                            <span ng-if="<?php echo Male; ?> == recentActivity.genderId">his</span>
-                                            <span ng-if="<?php echo Female; ?> == recentActivity.genderId">her</span>
+                                            <span ng-if="<?php echo Male; ?> == recentActivity.userInfo.genderId">his</span>
+                                            <span ng-if="<?php echo Female; ?> == recentActivity.userInfo.genderId">her</span>
                                             status
                                         </span>
                                         <span ng-if="<?php echo STATUS_TYPE_ID_CHANGE_PROFILE_PICTURE; ?> == recentActivity.typeId">
-                                            update profile picture 
+                                            updated 
+                                            <span ng-if="<?php echo Male; ?> == recentActivity.userInfo.genderId">his</span>
+                                            <span ng-if="<?php echo Female; ?> == recentActivity.userInfo.genderId">her</span>
+                                            profile picture 
                                         </span>
                                         <span ng-if="<?php echo STATUS_TYPE_ID_CHANGE_COVER_PICTURE; ?> == recentActivity.typeId">
-                                            update cover picture 
+                                             updated 
+                                            <span ng-if="<?php echo Male; ?> == recentActivity.userInfo.genderId">his</span>
+                                            <span ng-if="<?php echo Female; ?> == recentActivity.userInfo.genderId">her</span>
+                                            cover picture 
                                         </span>
                                         <span ng-if="<?php echo COMMENTED_ON_ID; ?> == recentActivity.typeId">
                                             commented on
                                         </span>
                                         <span ng-if="<?php echo LIKED_ON_ID; ?> == recentActivity.typeId">
-                                            liked 
+                                            likes
                                         </span>
                                         <span ng-if="recentActivity.referenceUserInfo != null">
                                             <a style="font-weight: bold;"> <span>{{recentActivity.referenceUserInfo.firstName}}&nbsp;{{recentActivity.referenceUserInfo.lastName}}</span></a>
-                                            status
+                                            s'status
                                         </span>
                                     </div>
                             </a>

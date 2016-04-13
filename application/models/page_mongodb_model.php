@@ -44,6 +44,7 @@ class Page_mongodb_model extends CI_Controller {
         $this->curl->post(array("pageId" => $page_id, "userId" => $user_id));
         return $this->curl->execute();
     }
+
     function get_user_pages($user_id) {
         $this->curl->create($this->SERVICE_PAGE . 'getUserPageList');
         $this->curl->post(array("userId" => $user_id));
@@ -70,7 +71,7 @@ class Page_mongodb_model extends CI_Controller {
 
     function join_page_membership($mapping_id, $page_info, $member_info) {
         $this->curl->create($this->SERVICE_PAGE . 'joinPageMamberShip');
-        $this->curl->post(array("mappingId" => $mapping_id,  "pageInfo" => json_encode($page_info), "memberInfo" => json_encode($member_info)));
+        $this->curl->post(array("mappingId" => $mapping_id, "pageInfo" => json_encode($page_info), "memberInfo" => json_encode($member_info)));
         return $this->curl->execute();
     }
 
@@ -105,9 +106,9 @@ class Page_mongodb_model extends CI_Controller {
         return $this->curl->execute();
     }
 
-    public function add_photo_like($user_id, $photo_id, $reference_id, $like_info) {
+    public function add_photo_like($user_id, $album_id, $photo_id, $reference_id, $like_info) {
         $this->curl->create($this->SERVICE_PAGE . 'addPhotoLike');
-        $this->curl->post(array("userId" => $user_id, "photoId" => $photo_id, "referenceId" => $reference_id, "likeInfo" => json_encode($like_info)));
+        $this->curl->post(array("userId" => $user_id, "albumId" => $album_id, "photoId" => $photo_id, "referenceId" => $reference_id, "likeInfo" => json_encode($like_info)));
         return $this->curl->execute();
     }
 
@@ -122,6 +123,55 @@ class Page_mongodb_model extends CI_Controller {
         $this->curl->post(array("pageId" => $page_id));
         return $this->curl->execute();
     }
+
+//................
+    public function add_album_like($mapping_id, $album_id, $reference_id, $like_info) {
+        $this->curl->create($this->SERVICE_PAGE . 'addAlbumLike');
+        $this->curl->post(array("mappingId" => $mapping_id, "albumId" => $album_id, "referenceId" => $reference_id, "likeInfo" => json_encode($like_info)));
+        return $this->curl->execute();
+    }
+
+    public function add_album_comment($album_id, $mapping_id, $reference_id, $comment_info) {
+        $this->curl->create($this->SERVICE_PAGE . 'addAlbumComment');
+        $this->curl->post(array("albumId" => $album_id, "mappingId" => $mapping_id, "referenceId" => $reference_id, "commentInfo" => json_encode($comment_info)));
+        return $this->curl->execute();
+    }
+
+    public function get_album_comments($album_id, $mapping_id) {
+        $this->curl->create($this->SERVICE_PAGE . 'getAlbumComments');
+        $this->curl->post(array("albumId" => $album_id, "mappingId" => $mapping_id));
+        return $this->curl->execute();
+    }
+
+    public function get_album_like_list($album_id) {
+        $this->curl->create($this->SERVICE_PAGE . 'getAlbumLikeList');
+        $this->curl->post(array("albumId" => $album_id));
+        return $this->curl->execute();
+    }
+
+//    public function add_photo_like($user_id, $photo_id, $reference_id, $like_info) {
+//        $this->curl->create($this->SERVICE_PHOTO . 'addPhotoLike');
+//        $this->curl->post(array("userId" => $user_id, "photoId" => $photo_id, "referenceId" => $reference_id, "likeInfo" => json_encode($like_info)));
+//        return $this->curl->execute();
+//    }
+//     public function add_photo_comment($photo_id, $reference_id, $coment_info, $reference_info, $status_type_id) {
+//        $this->curl->create($this->SERVICE_PHOTO . 'addPhotoComment');
+//        $this->curl->post(array("photoId" => $photo_id, "referenceId" => $reference_id, "commentInfo" => json_encode($coment_info), "referenceInfo" => json_encode($reference_info), "statusTypeId" => $status_type_id));
+//        return $this->curl->execute();
+//    }
+    public function add_slider_photo_comment($photo_id, $reference_id, $coment_info, $reference_info, $album_id) {
+        $this->curl->create($this->SERVICE_PAGE . 'addSliderPhotoComment');
+        $this->curl->post(array("photoId" => $photo_id, "referenceId" => $reference_id, "commentInfo" => json_encode($coment_info), "referenceInfo" => json_encode($reference_info), "albumId" => $album_id));
+        return $this->curl->execute();
+    }
+
+    public function get_photo_comments($photo_id) {
+        $this->curl->create($this->SERVICE_PAGE . 'getPhotoComments');
+        $this->curl->post(array("photoId" => $photo_id));
+        return $this->curl->execute();
+    }
+
+    //................
 
     public function get_page_albums($page_id) {
         $this->curl->create($this->SERVICE_PAGE . 'getAlbums');

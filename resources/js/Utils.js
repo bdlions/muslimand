@@ -152,9 +152,9 @@ angular.module('services.Timezone', []).
                 var seconds = today.getTime() - date.getTime();
                 var seconds = seconds / 1000;
                 if (seconds <= 1) {
-                    return(seconds + "s");
+//                    return(seconds + "s");
                 } else if (seconds > 1 && seconds < 60) {
-                    return (seconds + "s");
+//                    return (seconds + "");
                 } else {
                     var minutes = Math.floor(seconds / 60);
                     if (minutes <= 1) {
@@ -174,7 +174,7 @@ angular.module('services.Timezone', []).
                         else {
                             var days = Math.floor(hours / 24);
                             if (days <= 1) {
-                                return "y";
+                                return "";
                             }
                             else if (days > 1 && days < 30) {
                                 return days + "d";
@@ -182,10 +182,10 @@ angular.module('services.Timezone', []).
                             else {
                                 var months = Math.floor(days / 30);
                                 if (months <= 1) {
-                                    return months + "mon";
+                                    return months + "";
                                 }
                                 else if (months > 1 && months < 12) {
-                                    return months + "mon";
+                                    return months + "";
                                 }
                                 else {
                                     return date;

@@ -114,7 +114,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 statusInfo.pageId = pageId;
                 statusService.getPageStatusList(statusInfo).
                         success(function (data, status, headers, config) {
-                            console.log(data);
                             $scope.userCurrentTimeStamp = data.user_current_time;
                             if (typeof data.status_list == "undefined" || data.status_list.length <= 0) {
                                 $scope.busy = true;
@@ -178,7 +177,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                     $scope.statusInfo.imageList = [];
                     $scope.statusInfo.imageList = imageList;
                 }
-                console.log($scope.statusInfo.description);
                 if (($scope.statusInfo.description == null || $scope.statusInfo.description == "") && ($scope.statusInfo.imageList == null || typeof $scope.statusInfo.imageList == "undefined")) {
                     return;
                 }
@@ -186,7 +184,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 $scope.statusInfo.profileId = profileUserInfo.profileId;
                 $scope.statusInfo.profileFirstName = profileUserInfo.profileFirstName;
                 $scope.statusInfo.profileLastName = profileUserInfo.profileLastName;
-                statusService.addStatus($scope.statusInfo).
+                statusService.addStatus($scope.statusInfo, $scope.userGenderId).
                         success(function (data, status, headers, config) {
                             if (typeof data.status_info.genderId === "undefined") {
                                 data.status_info.genderId = $scope.userGenderId;
@@ -227,21 +225,21 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 }
                 $scope.statusFlag = false;
                 var statusId = status.statusId;
-                statusService.addLike(status).
-                        success(function (data, status, headers, config) {
-                            angular.forEach($scope.statuses, function (value, key) {
-                                if (value.statusId == statusId) {
-                                    $scope.likeList.push(data.status_like_info);
-                                    (value.likeStatus = "1");
-                                    if (typeof value.likeCounter == "undefined") {
-                                        (value.likeCounter = 1);
-                                    } else {
-                                        (value.likeCounter = value.likeCounter + 1);
-                                    }
-                                }
-                            }, $scope.statuses);
-                            $scope.statusFlag = true;
-                        });
+                status.genderId = $scope.userGenderId;
+                statusService.addLike(status).success(function (data, status, headers, config) {
+                    angular.forEach($scope.statuses, function (value, key) {
+                        if (value.statusId == statusId) {
+                            $scope.likeList.push(data.status_like_info);
+                            (value.likeStatus = "1");
+                            if (typeof value.likeCounter == "undefined") {
+                                (value.likeCounter = 1);
+                            } else {
+                                (value.likeCounter = value.likeCounter + 1);
+                            }
+                        }
+                    }, $scope.statuses);
+                    $scope.statusFlag = true;
+                });
                 return false;
             };
             /**
@@ -249,7 +247,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
              * parameter statusId 
              * */
             $scope.addStatusCommentLike = function (statusId, commentId) {
-                statusService.addStatusCommentLike(statusId, commentId).
+                statusService.addStatusCommentLike(statusId, commentId, $scope.userGenderId).
                         success(function (data, status, headers, config) {
                             angular.forEach($scope.statuses, function (status, key) {
                                 angular.forEach(status.commentList, function (value, key) {
@@ -282,6 +280,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 statusCommentInfo.statusId = statusId;
                 statusCommentInfo.statusTypeId = statusTypeId;
                 statusCommentInfo.commentDes = statusInfo.commentDes;
+                statusCommentInfo.genderId = $scope.userGenderId;
 
                 if (statusCommentInfo.commentDes == "" || statusCommentInfo.commentDes == null) {
                     return;
@@ -292,9 +291,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                 if (value.statusId == statusId) {
                                     if (typeof value.commentList === "undefined") {
                                         value.commentList = new Array();
-                                    }
-                                    if (typeof data.status_comment_info.userGenderId === "undefined") {
-                                        data.status_comment_info.userGenderId = genderId;
                                     }
                                     if (typeof data.status_comment_info.commentTimeDiff === "undefined") {
                                         data.status_comment_info.commentTimeDiff = "1 sec ago";
@@ -319,7 +315,7 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                 return false;
             };
             $scope.shareStatus = function (requestFunction) {
-                statusService.shareStatus($scope.sharedInfo, $scope.statusShareInfo).
+                statusService.shareStatus($scope.sharedInfo, $scope.statusShareInfo, $scope.userGenderId).
                         success(function (data, status, headers, config) {
                             $scope.statuses.unshift(data.status_info);
                             $scope.statusShareInfo.description = "";
@@ -397,8 +393,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
 
             //photo slider methords...................
             $scope.open = function (statusInfo, image) {
-                var genderId = statusInfo.genderId;
-
                 if (typeof statusInfo.referenceInfo != "undefined") {
                     var userInfo = statusInfo.referenceInfo.userInfo;
                     var statusId = statusInfo.referenceInfo.statusId
@@ -406,7 +400,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                     var userInfo = statusInfo.userInfo;
                     var statusId = statusInfo.statusId;
                 }
-                userInfo.genderId = genderId;
                 var userId = statusInfo.userInfo.userId;
                 var statusTypeId = statusInfo.statusTypeId;
                 statusService.getSliderPhotoList(statusId).
@@ -417,21 +410,28 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                     if (photoInfo.image == image) {
                                         photoInfo.active = true;
                                     }
-                                    if (photoInfo.userId == userId) {
-                                        photoInfo.userInfo = userInfo;
-                                    }
+                                    photoInfo.userInfo = userInfo;
                                     if (typeof photoInfo.statusTypeId == "undefined") {
                                         photoInfo.statusTypeId = statusTypeId;
                                     }
                                     if (typeof photoInfo.createdOn != "undefined") {
-                                        photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
+                                        if ($scope.userCurrentTimeStamp > photoInfo.createdOn) {
+                                            photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
+                                        } else {
+                                            photoInfo.createdOn = "1 see ago";
+                                        }
                                     }
                                     if (typeof photoInfo.commentList != "undefined") {
                                         angular.forEach(photoInfo.commentList, function (comment, key) {
                                             comment.userInfo = JSON.parse(comment.userInfo);
                                             if (typeof comment.createdOn != "undefined") {
-                                                comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                                if ($scope.userCurrentTimeStamp > comment.createdOn) {
+                                                    comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                                } else {
+                                                    comment.createdOn = "1 see ago";
+                                                }
                                             }
+
                                         }, photoInfo.commentList);
                                     }
 
@@ -472,13 +472,21 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
                                         photoInfo.statusTypeId = statusTypeId;
                                     }
                                     if (typeof photoInfo.createdOn != "undefined") {
-                                        photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
+                                        if ($scope.userCurrentTimeStamp > photoInfo.createdOn) {
+                                            photoInfo.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, photoInfo.createdOn);
+                                        } else {
+                                            photoInfo.createdOn = "1 see ago";
+                                        }
                                     }
                                     if (typeof photoInfo.commentList != "undefined") {
                                         angular.forEach(photoInfo.commentList, function (comment, key) {
                                             comment.userInfo = JSON.parse(comment.userInfo);
                                             if (typeof comment.createdOn != "undefined") {
-                                                comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                                if ($scope.userCurrentTimeStamp > comment.createdOn) {
+                                                    comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                                } else {
+                                                    comment.createdOn = "1 see ago";
+                                                }
                                             }
                                         });
                                     }
@@ -512,7 +520,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             $scope.addPagePhotoLike = function (photoId, referenceId, requestFunction) {
                 statusService.addPagePhotoLike(photoId, referenceId).
                         success(function (data, status, headers, config) {
-                            console.log(data);
                             angular.forEach($scope.sliderImages, function (value, key) {
                                 if (value.photoId == photoId) {
                                     (value.likeStatus = "1");
@@ -530,7 +537,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             $scope.addMPhotoLike = function (photoId, requestFunction) {
                 statusService.addMPhotoLike(photoId).
                         success(function (data, status, headers, config) {
-                            console.log(data);
                             angular.forEach($scope.sliderImages, function (value, key) {
                                 if (value.photoId == photoId) {
                                     (value.likeStatus = "1");
@@ -610,7 +616,6 @@ angular.module('controllers.Status', ['services.Status', 'services.Timezone', 'i
             $scope.getPhotoComments = function (photoId, requestFunction) {
                 statusService.getPhotoComments(photoId).
                         success(function (data, status, headers, config) {
-                            console.log(data);
                             if (typeof data.comment_list != "undefined") {
                                 angular.forEach(data.comment_list, function (comment, key) {
                                     if (typeof comment.createdOn != "undefined") {

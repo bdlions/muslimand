@@ -52,16 +52,24 @@ class Photos extends CI_Controller {
                 if (property_exists($relation_info, "lastName") != FALSE) {
                     $user_relation_info['profile_last_name'] = $relation_info->lastName;
                 }
+                 $user_relation_info['user_id'] = $profile_id;
             }
             if (property_exists($result, "userGenderId")) {
                 $user_gender_id = json_decode($result->userGenderId);
                 $user_relation_info['gender_id'] = $user_gender_id;
             }
+            if (property_exists($result, "genderId")) {
+                $gender_id = json_decode($result->genderId);
+                $user_relation_info['your_gender_id'] = $gender_id;
+            }
         } else {
-            $user_relation_info['gender_id'] = $this->friend_mongodb_model->get_user_gender_info($user_id);
+            $gender_id = $this->friend_mongodb_model->get_user_gender_info($user_id);
+            $user_relation_info['gender_id'] = $gender_id;
+            $user_relation_info['your_gender_id'] = $gender_id;
             $user_relation_info['relation_ship_status'] = YOUR_RELATION_TYPE_ID;
             $user_relation_info['profile_first_name'] = $this->session->userdata('first_name');
             $user_relation_info['profile_last_name'] = $this->session->userdata('last_name');
+            $user_relation_info['user_id'] = $user_id;
         }
         return $user_relation_info;
     }
@@ -288,6 +296,9 @@ class Photos extends CI_Controller {
         $user_info->userId = $this->session->userdata('user_id');
         $user_info->firstName = $this->session->userdata('first_name');
         $user_info->lastName = $this->session->userdata('last_name');
+        if (property_exists($requestInfo, "genderId") != FALSE) {
+            $user_info->genderId = $requestInfo->genderId;
+        }
         $like_info = new stdClass();
         $like_info->userInfo = $user_info;
         $result_event = $this->photo_mongodb_model->add_album_like($mapping_id, $album_id, $reference_id, $like_info);
@@ -342,10 +353,14 @@ class Photos extends CI_Controller {
         if (property_exists($request, "referenceId") != FALSE) {
             $reference_id = $request->referenceId;
         }
+
         $user_info = new stdClass();
         $user_info->userId = $this->session->userdata('user_id');
         $user_info->firstName = $this->session->userdata('first_name');
         $user_info->lastName = $this->session->userdata('last_name');
+        if (property_exists($request, "genderId") != FALSE) {
+            $user_info->genderId = $request->genderId;
+        }
         $comment_info = new stdClass();
         if (property_exists($request, "comment") != FALSE) {
             $comment_info->description = $request->comment;
@@ -689,11 +704,8 @@ class Photos extends CI_Controller {
             $category_list = $result_array->categoryList;
             $album_list = $result_array->albumList;
         }
-        $user_relation = array();
-        $user_relation['first_name'] = $this->session->userdata('first_name');
-        $user_relation['last_name'] = $this->session->userdata('last_name');
-        $user_relation['user_id'] = $user_id;
-        $this->data['app'] = "app.Photo";
+        $user_relation = $this->get_user_relation_info($user_id);
+        $this->data['app'] = PHOTO_APP;
         $this->data['user_id'] = $user_id;
         $this->data['profile_id'] = $user_id;
         $this->data["first_name"] = $this->session->userdata('first_name');
@@ -701,7 +713,6 @@ class Photos extends CI_Controller {
         $this->data["album_lsit"] = json_encode($album_list);
         $this->data["category_list"] = json_encode($category_list);
         $this->template->load(null, "member/photo/photo_add", $this->data);
-//        $this->template->load(MEMBER_PHOTO_IN_TEMPLATE, "member/photo/photo_add", $this->data);
     }
 
     function edit_photo() {
@@ -744,6 +755,9 @@ class Photos extends CI_Controller {
         if (property_exists($requestInfo, "photoId") != FALSE) {
             $photo_id = $requestInfo->photoId;
         }
+        if (property_exists($requestInfo, "albumId") != FALSE) {
+            $album_id = $requestInfo->albumId;
+        }
         if (property_exists($requestInfo, "referenceId") != FALSE) {
             $reference_id = $requestInfo->referenceId;
         }
@@ -752,9 +766,12 @@ class Photos extends CI_Controller {
         $user_info->userId = $user_id;
         $user_info->firstName = $this->session->userdata('first_name');
         $user_info->lastName = $this->session->userdata('last_name');
+        if (property_exists($requestInfo, "genderId") != FALSE) {
+            $user_info->genderId = $requestInfo->genderId;
+        }
         $like_info = new stdClass();
         $like_info->userInfo = $user_info;
-        $result = $this->photo_mongodb_model->add_photo_like($user_id, $photo_id, $reference_id, $like_info);
+        $result = $this->photo_mongodb_model->add_photo_like($user_id, $album_id, $photo_id, $reference_id, $like_info);
         if ($result != null) {
             $result = json_decode($result);
             if ($result->responseCode != REQUEST_SUCCESSFULL) {
@@ -844,12 +861,16 @@ class Photos extends CI_Controller {
             $ref_user_info->userId = $reference_user_info->userId;
             $ref_user_info->firstName = $reference_user_info->firstName;
             $ref_user_info->lastName = $reference_user_info->lastName;
+            $ref_user_info->genderId = $reference_user_info->genderId;
         }
         $user_id = $this->session->userdata('user_id');
         $user_info = new stdClass();
         $user_info->userId = $user_id;
         $user_info->firstName = $this->session->userdata('first_name');
         $user_info->lastName = $this->session->userdata('last_name');
+        if (property_exists($requestInfo, "genderId") != FALSE) {
+            $user_info->genderId  = $requestInfo->genderId;
+        }
         $comment_info = new stdClass();
         if (property_exists($request, "comment") != FALSE) {
             $comment_info->description = $request->comment;
@@ -871,8 +892,6 @@ class Photos extends CI_Controller {
         }
         echo json_encode($response);
     }
-
-   
 
     function get_photo_comments() {
         $response = array();
@@ -1036,6 +1055,8 @@ class Photos extends CI_Controller {
             $user_info->userId = $user_id;
             $user_info->firstName = $this->session->userdata('first_name');
             $user_info->lastName = $this->session->userdata('last_name');
+            $gender_id = $this->friend_mongodb_model->get_user_gender_info($user_id);
+            $user_info->genderId = $gender_id;
             $status_info = new stdClass();
             $status_info->userId = $user_id;
             $new_status_id = $status_info->statusId = $status_id;
@@ -1084,6 +1105,8 @@ class Photos extends CI_Controller {
             $user_info->userId = $user_id;
             $user_info->firstName = $this->session->userdata('first_name');
             $user_info->lastName = $this->session->userdata('last_name');
+            $gender_id = $this->friend_mongodb_model->get_user_gender_info($user_id);
+            $user_info->genderId = $gender_id;
             $status_info = new stdClass();
             $status_info->userId = $user_id;
             $new_status_id = $status_info->statusId = $status_id;
