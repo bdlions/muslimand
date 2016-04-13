@@ -52,7 +52,16 @@ angular.module('controllers.Photo', ['services.Photo']).
                             }
                             if (typeof data.album_info != "undefined") {
                                 $scope.albumDetail = data.album_info;
-                                $scope.albumDetail.userInfo = JSON.parse($scope.albumDetail.userInfo);
+                                if (typeof $scope.albumDetail.userInfo != "undefined" && $scope.albumDetail.userInfo != $scope.albumDetail.userId) {
+                                    $scope.albumDetail.userInfo = JSON.parse($scope.albumDetail.userInfo);
+                                } else {
+                                    var  userInfo ={};
+                                    userInfo.firstName = $scope.userRelation.profile_first_name;
+                                    userInfo.lastName = $scope.userRelation.profile_last_name;
+                                    userInfo.userId = $scope.userRelation.user_id;
+                                    userInfo.genderId = $scope.userRelation.gender_id;
+                                    $scope.albumDetail.userInfo = userInfo;
+                                }
                                 if (typeof $scope.albumDetail.commentList != "undefined") {
                                     angular.forEach($scope.albumDetail.commentList, function (comment, key) {
                                         comment.userInfo = JSON.parse(comment.userInfo);
@@ -261,10 +270,10 @@ angular.module('controllers.Photo', ['services.Photo']).
                             if (typeof data.comment_list != "undefined") {
                                 angular.forEach(data.comment_list, function (comment, key) {
                                     if (typeof comment.createdOn != "undefined") {
-                                        if($scope.userCurrentTimeStamp > comment.createdOn){
-                                        comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
-                                        }else{
-                                          comment.createdOn = "1 see ago";  
+                                        if ($scope.userCurrentTimeStamp > comment.createdOn) {
+                                            comment.createdOn = utilsTimezone.convertTime($scope.userCurrentTimeStamp, comment.createdOn);
+                                        } else {
+                                            comment.createdOn = "1 see ago";
                                         }
                                     }
                                 });
@@ -289,7 +298,7 @@ angular.module('controllers.Photo', ['services.Photo']).
             };
 
             $scope.openTimelinePotoSlider = function (photoInfo) {
-                var userInfo ={};
+                var userInfo = {};
                 userInfo.firstName = $scope.userRelation.profile_first_name;
                 userInfo.lastName = $scope.userRelation.profile_last_name;
                 userInfo.userId = $scope.userRelation.user_id;

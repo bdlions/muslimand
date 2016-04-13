@@ -587,7 +587,11 @@ class Pages extends CI_Controller {
         }
         $like_info = new stdClass();
         $like_info->userInfo = $user_info;
+        if(isset($album_id) && $album_id = "" && $album_id != null){
         $result = $this->page_mongodb_model->add_photo_like($user_id, $album_id, $photo_id, $reference_id, $like_info);
+        }else{
+           $result = $this->page_mongodb_model->add_newsfeed_photo_like($user_id, $photo_id, $reference_id, $like_info);   
+        }
         if ($result != null) {
             $result = json_decode($result);
             if ($result->responseCode != REQUEST_SUCCESSFULL) {

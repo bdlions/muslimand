@@ -283,7 +283,16 @@ angular.module('controllers.Page', ['services.Page', 'services.Timezone']).
                             }
                             if (typeof data.album_info != "undefined") {
                                 $scope.albumDetail = data.album_info;
-                                $scope.albumDetail.pageInfo = JSON.parse($scope.albumDetail.pageInfo);
+                                var tempPageInfo = $scope.albumDetail.pageInfo ;
+                                if (typeof tempPageInfo != "undefined" && tempPageInfo != pageId) {
+                                    $scope.albumDetail.pageInfo = JSON.parse($scope.albumDetail.pageInfo);
+                                } else {
+                                    var pageInfo = {};
+                                    pageInfo.pageId = $scope.PageBasicInfo.pageId;
+                                    pageInfo.title = $scope.PageBasicInfo.title;
+                                    pageInfo.referenceId = $scope.PageBasicInfo.referenceId;
+                                    $scope.albumDetail.pageInfo = pageInfo;
+                                }
                                 if (typeof $scope.albumDetail.commentList != "undefined") {
                                     angular.forEach($scope.albumDetail.commentList, function (comment, key) {
                                         comment.userInfo = JSON.parse(comment.userInfo);
@@ -297,7 +306,6 @@ angular.module('controllers.Page', ['services.Page', 'services.Timezone']).
                                     }, $scope.albumDetail.commentList);
                                 }
                             }
-                            console.log($scope.albumDetail);
                             requestFunction();
                         });
             };
@@ -480,6 +488,7 @@ angular.module('controllers.Page', ['services.Page', 'services.Timezone']).
                                     if (photoInfo.photoId == photoId) {
                                         photoInfo.active = true;
                                     }
+                                    
                                     photoInfo.pageInfo = pageInfo;
 
                                     if (typeof photoInfo.createdOn != "undefined") {

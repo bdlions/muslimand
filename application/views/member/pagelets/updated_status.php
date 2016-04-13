@@ -444,7 +444,6 @@
 
         <script type="text/javascript">
             $(function () {
-                console.log("dddd");
                 var showChar = 200;
                 var ellipsestext = "...";
                 var moretext = "Show more >";

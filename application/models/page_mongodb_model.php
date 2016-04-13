@@ -111,6 +111,11 @@ class Page_mongodb_model extends CI_Controller {
         $this->curl->post(array("userId" => $user_id, "albumId" => $album_id, "photoId" => $photo_id, "referenceId" => $reference_id, "likeInfo" => json_encode($like_info)));
         return $this->curl->execute();
     }
+    public function add_newsfeed_photo_like($user_id, $photo_id, $reference_id, $like_info) {
+        $this->curl->create($this->SERVICE_PAGE . 'addNewsfeedPhotoLike');
+        $this->curl->post(array("userId" => $user_id, "photoId" => $photo_id, "referenceId" => $reference_id, "likeInfo" => json_encode($like_info)));
+        return $this->curl->execute();
+    }
 
     public function add_m_photo_like($user_id, $photo_id, $like_info) {
         $this->curl->create($this->SERVICE_PAGE . 'addMPhotoLike');

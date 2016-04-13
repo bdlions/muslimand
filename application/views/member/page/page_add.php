@@ -461,7 +461,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <label class="label_padding_top" >Name: </label>
-                                    <input type="text" class="form-control form_control_custom_style" value="{{category.title}}" ng-model="PageInfo.categoryTitle" >
+                                    <input type="text" class="form-control form_control_custom_style" value="{{category.title}}" ng-model="PageInfo.title" >
                                 </div>
                             </div>
                             <div class="row">

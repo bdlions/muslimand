@@ -80,11 +80,11 @@ class Notification extends CI_Controller {
         $offset = 0;
         $limit = 5;
         $counter_value = 0;
-//        if ($counter_value > 0) {
+        if ($counter_value > 0) {
         $result = $this->notification_mongodb_model->update_status_get_friend_notification($user_id, $offset, $limit);
-//        } else {
-//            $result = $this->notification_mongodb_model->get_friend_notifications($user_id, $offset, $limit);
-//        }
+        } else {
+            $result = $this->notification_mongodb_model->get_friend_notifications($user_id, $offset, $limit);
+        }
         $friend_notification_list = array();
         foreach ($result as $notification) {
             $notification->friendNotification = json_decode($notification->friendNotification);
