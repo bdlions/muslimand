@@ -42,7 +42,7 @@
 
                 <div class="row padding_top_20px">
                     <div class="col-md-12">
-                        <span style="font-size: 24px; ">A. Shadhiin Acount:</span>
+                        <span style="font-size: 24px; ">A. Shadhiin Account:</span>
                     </div>
                 </div>
                 <div class="row padding_top_10px">
